@@ -133,13 +133,13 @@ Mål:
 - 2-polig NVR/no-restart
 - röd emergency-stop/stoppkåpa
 - 6,3×0,8 mm Faston
-- märkström som säkert täcker DeWalt + 800 W router enligt faktisk variant
+- **motorlast/AC-3-märkning** som säkert täcker faktisk DeWalt + 800 W router, inte bara en headline AC-1/max-ampere
 
-Nominal last om DeWalt sannolik DXV30SAPTA bekräftas: ~1050 W vac + 800 W router + max 60 W HDR ≈ **1,91 kW / 8,3 A vid 230 V**. Det ligger under den verifierade 15 A-märkningen på den aktuella genuina CEM/KEDU-kandidaten, men exakt variant och inrusningsbeteende ska fortfarande verifieras.
+Om DeWalt verkligen är DXV30SAPTA blir nominell last ungefär 1050 W vac + 800 W router + max 60 W HDR ≈ **1,91 kW / 8,3 A vid 230 V**. En dokumenterad genuine KEDU **KJD12-10ZF** är 16 A AC-1 men **10 A AC-3 vid 230 V**, så den visar att rätt KJD12-klass kan täcka den nominella motorlasten. Den exakta variant vi faktiskt köper måste dock själv ha verifierad märkning; modellnamnet KJD12 räcker inte, och motorernas startström/inrush finns kvar.
 
 **Terminologi efter audit:** detta är vår NVR/maskinstopp. Vi har inte verifierat att den valda varianten utgör en safety-rated E-stop enligt maskinsäkerhetsstandard.
 
-Köp inte bara på modellnamnet: KJD12 finns i flera panel-/terminalvarianter. Kontrollera exakt märkning, dimensionsritning och terminalschema.
+Kontrollera exakt märkning, dimensionsritning, terminalschema och AC-3/motor-rating före köp.
 
 ### 11. Biltema — lokal elbox-korg
 - `35-0065` IP65 4-module enclosure — förstaval
@@ -147,6 +147,8 @@ Köp inte bara på modellnamnet: KJD12 finns i flera panel-/terminalvarianter. K
 - `46-3610` 3 m jordad 3G1,5 donor extension cord — endast om den verkliga in+ut-rutten ryms inom användbar längd efter kapning
 
 M20-glands är rätt storleksklass först efter att donor-kabelns faktiska OD bekräftats. KJD12 ska monteras så stoppet är direkt nåbart från normal operatörsplats.
+
+**Upstream gate:** donor-sladden är märkt 16 A, men det säger inget om garageuttagets fasta grupp. Innan full-lastdrift ska den verkliga säkringen/automatsäkringen och jordfelsbrytarsituationen för uttaget vara känd.
 
 ### 12. Bord / deck / spoilboard
 
@@ -161,13 +163,15 @@ Sök:
 ## Damm
 
 Behåll reuse-first-planen:
-- ägd DeWalt shop-vac — **modelltypskylt måste bekräftas** innan modellunika data som 2450 W tool outlet behandlas som faktum
+- ägd DeWalt shop-vac — **modelltypskylt måste bekräftas** innan modellunika data som 2450 W tool outlet eller ~15 kPa sealed pressure behandlas som faktum
 - printad 65 mm/Makita-kompatibel dust shoe
 - printad cyclone
 - separat styv 15–30 l behållare
 - testa befintlig 48 mm ×2,1 m slang först
 - printa adaptrar
 - slangbom/dragavlastning
+
+**Container-gate:** stål är inte automatiskt vacuum-säkert. Om den sannolika ~15 kPa DeWalt-specen stämmer motsvarar tryckskillnaden över ett ~34 cm runt lock ungefär 1,36 kN total distribuerad kraft. Den färdiga cyclone-can-assemblien ska därför provas under normal sugning och kort progressiv restriktion; synlig buckling/knäppning betyder förstärk/styvare behållare eller lämplig vacuum relief.
 
 **Statisk gate:** stockslangen är inte dokumenterad antistatisk. Före XPS/reguljär dammig körning ska den ha avsiktlig jordledare till definierad PE-punkt med kontinuitetskontroll, eller ersättas av en groundable hose. HDR-60-24 är Class II och är inte jordpunkten.
 
@@ -213,9 +217,10 @@ Kvar som verkligt checkoutarbete:
 2. StepperOnline Germany→Sweden-frakt
 3. LaskaKit slutlig total/lager + exakt 2-core variant; använd 3×2 m belt fallback om 5 m-rullen saknas
 4. Elecrow Jackpot3 landad kostnad
-5. KEDU exakt variant + Sverige-frakt
+5. KEDU exakt variant + AC-3/motor-rating + Sverige-frakt
 6. SUNLU checkout
 7. mindre LV-kabelgenomföring efter verklig kabel-OD
 8. DigiKey faktisk frakt i checkout
+9. garageuttagets upstream skydd verifieras före full-lastdrift
 
 Ändra inte specifikationer bara för att minska antal paket.
