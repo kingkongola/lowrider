@@ -2,18 +2,28 @@
 research_date: 2026-08-29
 scope: LR4 dust shoe skirt/bristles and whether TPU must be purchased
 status: recommendation-ready
-decision_state: use official/current Makita-style LR4 dust shoe geometry; TPU 95A is preferred standard but 1 mm craft foam is a validated zero/low-cost fallback, so TPU purchase is not a build blocker
-price_basis: V1E TPU set $5 reference; local material price not yet needed
+decision_state: user already owns TPU; if spool is ~95A, print V1E-style TPU bristles as first choice; craft foam remains fallback
+price_basis: already-owned TPU means zero incremental purchase cost; V1E TPU set $5 reference only
 region: Sweden / maker-built
 sources_checked:
+  - user-provided existing TPU inventory
   - V1E LR4 dust-shoe discussions
   - V1E TPU bristle product
   - V1E community TPU-free dust-shoe solution
   - V1E traditional-bristle discussion
-supersedes: null
+supersedes: earlier version of this file that treated TPU as a possible future purchase
 ---
 
 # LR4 dust shoe + bristles
+
+## Updated local inventory
+
+The user **already owns TPU filament**.
+
+Therefore there is no reason to buy TPU for the LR4 dust shoe. The only remaining check is the spool's hardness/durometer.
+
+- if approximately **95A**: use it for the standard V1E bristles
+- if substantially softer/harder or unlabeled: print a small test section first; craft foam remains a zero/low-cost fallback
 
 ## Baseline
 
@@ -53,7 +63,7 @@ Stock/standard bristles were designed around normal endmill stickout and roughly
 Source:
 - https://forum.v1e.com/t/longer-tpu-bristles-for-lr4-dust-shoes/46083
 
-## Excellent Pareto fallback — 1 mm craft foam
+## Pareto fallback — 1 mm craft foam
 
 A documented LR4 community solution avoids TPU entirely:
 - use **1 mm craft foam**
@@ -70,13 +80,7 @@ Reported advantages:
 Source:
 - https://forum.v1e.com/t/tpu-free-lr4-dust-shoe/45906
 
-### Assessment
-
-This is an unusually good bootstrap solution for us.
-
-It means **do not buy a whole TPU spool just to finish the CNC**.
-
-If 1 mm craft foam is already at home or can be bought for a few tens of SEK, the machine can be commissioned with it and upgraded to printed TPU later only if needed.
+This is now a fallback rather than the bootstrap default because TPU is already on hand.
 
 ## Traditional commercial brush strip — not preferred
 
@@ -102,17 +106,15 @@ So the dust shoe does not force us to buy 2.5-inch hose.
 
 ## First-build recommendation
 
-1. print the current Makita/65-mm LR4 dust shoe in ordinary PLA
-2. adapt its hose inlet to the actual measured DeWalt 48 mm hose cuff
-3. bootstrap skirt with **1 mm craft foam** if available
-4. test dust capture in wood/XPS
-5. only then decide whether to buy a small amount/spool of TPU 95A and print stock bristles
+1. check the owned TPU spool label for durometer
+2. if ~95A, print the standard V1E bristles first
+3. print the current Makita/65-mm LR4 dust shoe in ordinary PLA
+4. adapt its hose inlet to the actual measured DeWalt 48 mm hose cuff
+5. test dust capture in wood/XPS
+6. use 1 mm craft foam only if the owned TPU is unsuitable or the foam geometry proves more convenient
 
 ## Procurement consequence
 
 Immediate mandatory purchase for bristles: **none**.
 
-Possible later purchase:
-- TPU 95A only if foam wears badly, suction is poor, or the stock snap-in bristle convenience is worth it
-
-This keeps dust collection functional from day one without adding another filament order merely for a small flexible part.
+TPU purchase: **removed from BOM**.
