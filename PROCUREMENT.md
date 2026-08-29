@@ -18,15 +18,15 @@ Ett par kronor billigare komponent är ointressant om den skapar en extra frakt,
 Verifierat mot V1E:s aktuella LR4-hardware kit/dokumentation 2026-08-29:
 
 - 5 × NEMA17, ungefär 84 oz-in-klassen, axel minst 20 mm
-- 3 × GT2 16T drivhjul, för 10 mm rem
+- 3 × GT2 16T drivhjul, för 10 mm rem, 5 mm motoraxel
 - 6 × GT2 20T smooth idlers, 5 mm hål, för 10 mm rem
-- GT2 10 mm rem, **inte stålkord**, slutlig längd från LR4-kalkylatorn
+- GT2 10 mm rem, **glasfiber/icke-stålkord**, slutlig längd från LR4-kalkylatorn
 - 5 × endstops
 - 14 × 608-2RS, 8×22×7 mm
 - 2 × T8/Tr8×8, minst 145 mm, 4-start, 2 mm pitch, 8 mm/rev + rätt mutter
 - 2 × 5→8 mm koppling
 - 3 × kabel-extensioner från YZ_Max/Core till controller
-- 24 V PSU; V1E:s nuvarande kit är i praktiken 60 W / 2,5 A-klassen
+- 24 V PSU; 60 W / 2,5 A-klassen är en bra match
 
 Källor:
 - https://www.v1e.com/products/lowrider-v4-hardware-kit
@@ -49,22 +49,20 @@ Källor:
 2. **VEVOR** — rätt 0700C 800 W router. Specialvariant vald för kompatibilitet med den redan köpta Makita/Elaire-hylsan.
 3. **Filamentbutik** — bara om bulkpriset verkligen hamnar nära 100 kr/kg levererat.
 
-### Beställningar som ska optimeras ihop
+### Viktig korrigering: StepperOnline är inte automatiskt en enda EU-korg
 
-**StepperOnline-korg** är stark kandidat för:
-- 5 motorer
-- 24 V PSU
-- 2 × 5→8 mm flexkoppling
+Färsk produktnivåkontroll 2026-08-29 visar:
+- motorpaketet `5-17HS19-2004S1` erbjuder **Germany warehouse**
+- Mean Well `HDR-60-24` visas däremot som **Ships from China**
+- `ST-FC04` 5→8 mm flexkoppling visas också som **Ships from China**
+- andra Mean Well-alternativ som kontrollerats hos StepperOnline, t.ex. `GST60A24-P1J` och `MDR-60-24`, visas också som China/CN-sale
 
-**Amazon Prime / annan EU-butik** ska jämföras som en hel commodity-korg för:
-- 608-2RS
-- T8/Tr8×8 + muttrar
-- 16T pulleys
-- 20T smooth idlers
-- endstops
-- kablage/kontakter
-- gänglåsning/småel
-- eventuellt rem när slutlängden är låst
+Alltså ska vi **inte** lägga PSU och två billiga kopplingar i motorordern bara för att butiksnamnet är samma. Det riskerar extra försändelse/importhantering och förstör samfraktsvinsten.
+
+**Nuvarande bättre arkitektur:**
+- StepperOnline Germany: sannolikt **endast fempacket motorer**
+- PSU: köp från Sverige/EU där totalpris och elsäkerhet blir bäst
+- 5→8-kopplingar: lägg i commodity-korgen tillsammans med GT2/T8/lager/endstops om möjligt
 
 ## Motorer — verkliga alternativ
 
@@ -117,82 +115,79 @@ https://www.stepperonline.nl/5st-e-serie-nema-17-bipolair-55ncm-77-88oz-in-2a-42
 - större/längre NEMA17/NEMA23: passningsrisk och inte standard-LR4.
 - integrerad leadscrew-stepper: annan mekanisk konstruktion än LR4.
 
-## PSU — två rationella arkitekturer
+## PSU — ny huvudriktning: extern 24 V / 60 W Mean Well
 
-### A. Mean Well HDR-60-24 — sannolik vinnare om elen kapslas
-
-- 24 V
-- 2,5 A
-- 60 W
-- DIN-rail
-- observerat StepperOnline-pris: **€12,47**
-- lager observerat: 200
-
-Fördelar:
-- kan samfraktas med motorerna/kopplingarna
-- exakt rätt effektklass
-- kvalitetsaggregat
-- skyddad plastkapsling jämfört med helt öppna metall-PSU:er
-
-Nackdel:
-- 230 V-anslutningen måste byggas korrekt och sitta skyddad/kapslad.
-
-https://www.stepperonline.nl/hdr-60-24-meanwell-60w-24vdc-2-5a-115-230vac-ultra-slim-step-shape-din-rail-voeding-hdr-60-24
-
-### B. Mean Well GST60A24-P1J — säkrare/enklare extern bricka
+### A. Mean Well GST60A24-P1J — nuvarande favorit
 
 - 24 V
 - 2,5 A
 - 60 W
-- IEC C14 nätintag
 - extern Class-I desktopadapter
+- IEC C14 nätintag
 - 5,5×2,1 mm DC-plugg
+- CE/GS m.fl. godkännanden
 
-Svenska priser observerade 2026-08-29:
-- RS: ca **251 kr inkl moms**, lager
-- Mouser: ca **177 kr exkl moms** visat pris
+Färska prisreferenser 2026-08-29:
+- RS Sverige: **250,90 kr inkl moms**, 713 st redo att levereras; fri frakt först över 750 kr, annars frakt kan göra ensam order dyr
+- DigiKey Sverige: omkring **214,53 kr inkl moms**, färsk crawl visar lager; nätsladd säljs separat
+- Mouser Sverige: **176,81 kr visat enhetspris**, 1150 i lager, men deras sida anger att produkten i EU kan vara begränsad till OEM/EMS/konstruktionskunder — ska därför inte räknas som säker konsumentkanal utan checkout-verifiering
 
-Fördel: ingen exponerad 230 V-terminal vid själva CNC-elektroniken.
+Fördel: ingen exponerad 230 V-terminal vid CNC-elektroniken. Det är särskilt attraktivt i dammig garageinstallation.
 
-Nackdel: separat order kan äta upp prisfördelen; DC-plugg måste adapteras/kapas till Jackpot VMOT.
+**Inköpsregel:** köp inte från RS ensamt om 119 kr frakt tillkommer. Försök antingen samköpa andra relevanta RS-delar över fraktgränsen, hitta samma GST60A24-P1J på Amazon/annan svensk EU-kanal, eller använd DigiKey om totalen blir lägre.
 
-**Beslut ej låst:** jämför slutlig StepperOnline-checkout för A mot verkligt totalpris för B. Om HDR-korgen redan beställs och vi gör en vettig elbox är HDR sannolikt bäst totalt.
+### B. Mean Well HDR-60-24
+
+- 24 V / 2,5 A / 60 W
+- DIN-rail
+- StepperOnline observerat pris €12,47
+
+Elektriskt bra, men den aktuella StepperOnline-produkten är **China-only**, så den är inte längre en naturlig del av Germany-motorordern. Dessutom kräver den korrekt kapslad 230 V-installation.
+
+**Bedömning:** endast intressant om en annan EU-säljare ger bra totalpris eller om vi ändå bygger en ordentlig elbox och kan samköpa den.
 
 ## Kopplingar 5→8 mm
 
-StepperOnline **ST-FC04**:
+StepperOnline `ST-FC04` är tekniskt rätt:
 - flexibel beam coupling
 - 5 mm → 8 mm
 - 18×25 mm
-- observerat pris: **€1,16/st**
-- 2 behövs
+- €1,16/st
 
-Det är en mycket stark samfraktskandidat med motorerna.
+Men aktuella sidan visar **China-only**. Två kopplingar för drygt €2 är därför inte värda en separat StepperOnline-försändelse.
 
-https://www.stepperonline.nl/askoppeling
+Verifierat EU-alternativ:
+- Anodas `AN0641`, flexibel 5×8×25 mm: **€3,40/st**
+- Anodas `AN-12583`, flexibel 5×8 mm: **€4,40/st**
 
-Styv GX2025-5-8 finns också, men LR4-specen använder coupler och en liten flexibel koppling är den naturliga standardlösningen. Dyrare double-disc MP2635-5-8 (~€6,72/st) ger ingen tydlig nytta här.
+**Bedömning:** köp två standard 5→8 mm flexkopplingar i samma commodity-korg som övrig mekanik. Betala hellre några tior mer än skapa en separat China-order.
 
 ## Endstops
 
 V1E:s kompletta LR4-kit använder **5 Omron**.
 
-Exakt kvalitetskandidat i Sverige:
+Exakt kvalitetskandidat:
 - Omron **SS-5GL2**
 - RS artikel 682-2660
-- 5-pack observerat omkring **110 kr inkl moms** när tillgängligt
+- 5-pack observerat **109,90 kr inkl moms**
 
-Det är så billigt i relation till hela bygget att äkta Omron är attraktivt om de kan fås utan dyr separat frakt. Köp inte fem no-name-brytare för att spara några tior om de ligger i samma kundvagn som ett bättre alternativ.
+RS-resultaten är tidsmässigt motstridiga: en färskare crawl visar ”Add to Basket” till 109,90 kr medan en äldre crawl visar slut i lager. **Lager ska omkontrolleras precis före köp.**
+
+Alternativ `SS-5GL2-FT` finns kring 120 kr/5 men har flatstift och är inte automatiskt bättre för LR4.
+
+**Bedömning:** om SS-5GL2 faktiskt finns och kan samfraktas rationellt är äkta Omron klart värt ~110 kr för fem. Köp inte no-name bara för att spara 30–50 kr.
 
 ## 608-2RS
 
 Krav: 14 × 608-2RS, **8×22×7 mm**, gummitätade.
 
-Prisreferenser 2026-08-29:
-- Amazon/Prisjakt-index: generiskt 20-pack omkring **123 kr** har förekommit.
-- RS PRO: ca **25,62 kr/st inkl moms**, betydligt dyrare om de köps separat.
+Prisreferenser:
+- generiskt 20-pack på svenska marknaden har setts omkring **123–170 kr**
+- Tradera-exempel: 20 st för 170 kr + 10 kr frakt, men den annonsen är inte aktuell nog att vara köpunderlag
+- Fyndiq 20-pack är 309 kr + frakt och är därmed dålig deal
+- svenska stycklager 82–87 kr/st är helt fel kostnadsnivå för denna applikation
 
-**Preliminär strategi:** 20-pack commodity-lager för cirka 120–170 kr är mer rationellt än premiumlager. Belastningen och varvtalet i LR4 motiverar inte SKF-pris; 6 reservlager är dessutom användbara.
+**Strategi:** köp ett verifierat 20-pack commodity-608-2RS kring 120–180 kr. Premium SKF/RS ger ingen rimlig nytta här och 6 reservlager är användbara.
 
 ## T8 / Tr8×8
 
@@ -206,30 +201,59 @@ Kravet får inte reduceras till bara “T8”. Det ska vara:
 
 200 mm är helt okej och kan kapas. Det ökar marknaden jämfört med att leta exakt 145/150 mm.
 
-Verifierad referens:
-- Tr8x8-200, 200 mm, 8 mm diameter, 8 mm lead: ca **€11,88/st** hos OyoStepper (mutter måste verifieras separat).
+Verifierade referenser:
+- OyoStepper `Tr8x8-200`: 200 mm, Ø8, 8 mm lead, cirka **€11,88/st**; mutter måste verifieras separat
+- Anodas har verifierade Tr8×8-muttrar: POM `NUTBLOCK-TR8*8`, p2, 4-start, lead 8 mm, cirka **€4,36**; anti-backlash brass `AS0591`, 4-start, cirka **€4,80**
 
-Ingen slutlig leverantör vald ännu; denna rad ska optimeras mot Amazon/EU-korgen.
+**Viktigt:** integrerade NEMA17+T8-motorer är fel arkitektur för LR4 även om deras skruvspec råkar vara rätt.
 
-## GT2 — variantfällor
+Ingen slutlig leverantör vald ännu. Målet är ett **2-pack 200 mm Tr8×8 + 2 rätt muttrar** från samma commodity-säljare.
 
-Drivhjul:
-- exakt **16T**
+## GT2 — nu har vi exakta verkliga kandidater
+
+### Drivhjul — 3 st
+
+Krav:
+- exakt 16T
 - GT2 / 2 mm pitch
-- **10 mm rembredd**
-- **5 mm bore**
-- 3 st
+- för 10 mm rem
+- 5 mm bore
+- dubbel stoppskruv är önskvärt
 
-Idlers:
-- **20T diameter/klass**
-- **smooth** förstahandsval
-- för **10 mm rem**
-- **5 mm bore**
-- 6 st
+Verifierade EU-kandidater:
+- Allegro Polen, produktkod **GT2-16T-5B_10mm_K**, 16T / 10 mm / 5 mm, 2 stoppskruvar: **7,20 PLN/st**
+- Anodas Litauen, produktkod **AN-18925**, 16T / 10 mm / 5 mm: **€3,00/st**
+- Hellas Digital EU, artikel **070.0051**, 16T / 10 mm / 5 mm: cirka **€1,61 inkl moms/st**
 
-V1E säger att toothed idlers kan ersätta smooth om smooth inte går att få tag i, men smooth är standardvalet.
+Anodas är tekniskt verifierat men internationell frakt till Sverige anges som individuellt förhandlad, vilket gör den mindre attraktiv som ensam liten order.
 
-Många svenska 3D-butiker som ser rätt ut säljer egentligen bara 6 mm-varianter. Exempel: 123-3D:s 16T/5 mm-listning är uttryckligen max 6 mm rem och är därför **fel för LR4**.
+### Smooth idlers — 6 st
+
+Verifierad mycket bra EU-kandidat:
+- LaskaKit / POWGE **LA190008E**
+- smooth GT2 idler
+- för 10 mm rem
+- 5 mm lagerhål
+- cirka **€1,86–1,87/st inkl moms**
+- färskt lager omkring 98–132 st
+
+Även Zen3D har exakt POWGE 20T toothless / 5 mm / 9–10 mm variant, cirka €4,03, men den sågs som slut i lager.
+
+### Rem
+
+LaskaKit har verifierad:
+- `LA190013B`: 2 m GT2, 10 mm, **fiberglass**, €4,85, lager
+- `LA190013C`: 5 m GT2, 10 mm, fiberglass, cirka €7,8 när i lager; lagerstatus har varierat
+
+Vi **köper inte rem innan slutmåttet är fryst**. Men LaskaKit är intressant eftersom samma korg kan täcka exakt rätt smooth-idlers + korrekt glasfiberrem.
+
+### Korginsikt
+
+LaskaKit har rätt smooth-idlers och rem billigt men deras 16T-katalogvara som hittats är endast för 6 mm rem — **fel**. Så även där måste vi undvika att låta “samma butik” lura oss till fel variant.
+
+Det finns nu två rationella vägar:
+1. LaskaKit-korg för 6 idlers + slutlig beltmängd, och 3×16T från annan billig EU-kanal.
+2. Hitta en enda Amazon/EU-säljare som verifierat har **alla tre** GT2-rader med rätt varianter och jämför totalen mot väg 1.
 
 ## Kablage — viktigt förtydligande
 
@@ -239,36 +263,45 @@ V1E:s egna LowRider-extensioner är:
 - 22 AWG
 - sex ledare, eftersom fyra används till stepper och två kan användas till endstop
 
-Men **sexledarkabel är inte ett mekaniskt krav**. V1E-dokumentationen visar i praktiken stepper- och endstopledningar som går tillsammans genom maskinen. Vi kan därför antingen:
+Men **sexledarkabel är inte ett mekaniskt krav**. Vi kan antingen:
 
 A. efterlikna V1E med 3 × 6-ledarhärvor, eller
 B. använda 4-ledar stepper-extension + separat 2-ledar endstopkabel.
 
-Eftersom de valda StepperOnline-motorerna redan har **1 m kabel** ska vi inte köpa stora mängder dyr specialkabel innan slutlig maskinstorlek och controllerplacering är bestämda.
+Eftersom de valda StepperOnline-motorerna redan har **1 m kabel** ska vi inte köpa dyr specialkabel innan slutlig maskinstorlek och controllerplacering är bestämda.
 
 **Beslut:** kabeldimension/längd optimeras efter fryst bord och controllerplacering. Köp inte generiska “stepper extensions” ännu bara för att de råkar vara billiga.
 
 ## StepperOnline-frakt
 
-StepperOnline har tyskt lager för flera motorvarianter och rekommenderar EU-kunder att prioritera lokalt lager för snabbare leverans och enklare tullhantering. De anger också att beställningar från tyskt lager med fler än två artiklar kan få en mindre packavgift.
+StepperOnline rekommenderar EU-kunder att prioritera lokalt tyskt lager för enklare leverans. Produktens egna “Ships from”-val är viktigare än den generella butikstexten.
 
-Det betyder att vi måste jämföra **checkout-totalen**, inte bara radpriserna.
+**Kontrollerat just nu:**
+- `5-17HS19-2004S1`: Germany warehouse finns
+- `HDR-60-24`: China only på aktuell sida
+- `ST-FC04`: China only på aktuell sida
+
+De anger dessutom mindre packavgift för beställningar med fler än två artiklar från vissa lokallager. Räkna alltid checkout-totalen.
 
 ## Nuvarande bästa orderarkitektur
 
 1. HaWiWe — **klar/betald**.
-2. StepperOnline — sannolikt `5-17HS19-2004S1` + `HDR-60-24` + 2× `ST-FC04`, om allt kan skickas rationellt från EU/Tyskland.
+2. StepperOnline Germany — sannolikt **endast `5-17HS19-2004S1` fempack**.
 3. Elecrow — Jackpot3.
 4. VEVOR — 0700C 800 W.
-5. En enda commodity-korg, helst Amazon Prime eller annan EU-butik, för GT2/T8/lager/endstops/kablage efter exakt variantverifiering.
-6. PLA från billig bulkkanal om den slår commodity-korgens totalpris tydligt.
+5. PSU — sannolikt extern Mean Well GST60A24-P1J från svensk/EU-kanal, helst samfraktad med annan el om fraktgränsen annars gör den dyr.
+6. Commodity-korg A — T8 + muttrar + 5→8-kopplingar + 608-2RS + eventuellt Omron/endstop-kablage från Amazon/EU-säljare.
+7. Commodity-korg B/GT2 — optimera 16T + smooth idlers + rem; LaskaKit är nu en stark kandidat för idlers/rem men inte 16T.
+8. PLA — billig bulkkanal endast om checkout landar nära 100 kr/kg levererat.
+
+Det är **inte** ett mål i sig att minska antalet paket. En extra order är okej när den sparar tydliga pengar eller säkrar rätt specialvariant. Däremot ska vi gärna betala 30–80 kr extra i en befintlig korg för att slippa en ny liten order.
 
 ## Nästa optimeringspass
 
-Innan någon av de återstående commodity-delarna beställs:
+Innan commodity-delarna beställs:
 
-- samla 2–5 exakta kandidater per rad
-- notera SKU/ASIN/modell, vald variant, pris och lager
+- hitta 2–5 exakta kandidater per återstående rad
+- notera SKU/ASIN/modell, vald variant, pris, lager och ursprungsland/warehouse
 - markera vilka som kan ligga i samma kundvagn
-- räkna checkout-/fraktkostnad för hela kandidatkorgar
+- kontrollera faktisk Sverige-frakt i checkout när webbpriset inte räcker
 - välj billigaste **korrekta korgkombination**, inte billigaste enskilda komponent
