@@ -6,13 +6,14 @@ status: recommendation-ready
 confidence: high-on-device-class-medium-on-final-seller
 machine_target: LowRider V4 ~650×1250, VEVOR 0700C 800 W, HDR-60-24 controller PSU, existing DeWalt DXV30SAPTA
 region: Sweden / EU
-price_basis: current EU listings observed 2026-08-29; Sweden freight must be checked before order
+price_basis: current EU and Swedish listings observed 2026-08-29; exact EU seller freight must be checked before order
 sources_checked:
   - KEDU KJD12 manufacturer/order-option datasheet
   - Kahlhorn KEDU KJD12 technical sheet
   - Sinolec genuine KEDU KJD12/230V listing
   - Optimum/German KEDU KJD12 listings
   - Güde Denmark KJD12 listings
+  - IKH Sweden KJD12 XW026-1 listing and Swedish shipping table
   - DXV30SAPTA original/manual copies including explicit 2450 W tool-socket rating
   - Swedish marketplace references used only as price comparison
 supersedes:
@@ -23,7 +24,9 @@ supersedes:
 
 ## Decision
 
-Use a **genuine KEDU KJD12, 230 V, 16 A, 4-pin/2-pole NVR machine switch with the yellow/red emergency-stop cover/button** as the baseline machine mains switch.
+Use a **genuine KEDU KJD12, 230 V, 16 A, 4-pin/2-pole NVR machine switch with the yellow/red emergency-stop cover/button** as the preferred baseline machine mains switch.
+
+If genuine-KEDU EU freight is poor, **IKH Sweden `XW026-1`** is now a credible domestic fallback: it is explicitly sold as `KJD12 10/16A 57X35` / emergency-stop switch, but the IKH product page does not explicitly state KEDU as manufacturer.
 
 This is dramatically simpler than building an industrial contactor/control circuit while still providing the two practical behaviours we actually need:
 - **no-volt release / restart prevention** after mains loss
@@ -114,9 +117,32 @@ Physical unit label/socket rating should still be inspected during commissioning
 Detailed DeWalt research:
 - `research/2026-08-29-dewalt-tool-socket.md`
 
-## Current EU purchase references
+## Current purchase references
 
-### Best exact German reference
+### Preferred: genuine KEDU from EU/UK seller when delivered price is sensible
+
+Sinolec current exact unit:
+- brand: **KEDU**
+- reference `KJD12/230V`
+- DPST
+- 16(12) A / 250 V
+- emergency stop + NVR
+- IP54
+- CE/TUV/VDE/UL
+- current item price £17.94 incl UK VAT display
+- current stock roughly 97–104 units depending crawl
+
+European shipping table from Sinolec:
+- under £30 order: **£7.50** shipping
+- taxes/duties may be payable on receipt because shipment is from UK
+
+Sources:
+- https://sinolec.co.uk/gb/nvr-no-volt-release-kedu-switches/1212072-kjd12230v-nvr-emergency-safety-stop-switch-230v-16a.html
+- https://sinolec.co.uk/gb/content/1-delivery
+
+The product itself is cheap; Brexit VAT/import administration can make the delivered total less attractive than a Swedish/EU source.
+
+### Exact German reference
 
 Optimum / Stürmer spare part:
 - code **`ST0380001`** / manufacturer reference `0380001`
@@ -139,11 +165,39 @@ Sources:
 - https://www.bachgmbh.de/Schalter-230V-KEDU-KJD12-16A-IP54-4POL-0380001
 - https://www.manomano.de/p/kedu-kjd12-magnetschalter-4pin-startstop-250v-16a-mit-not-aus-funktion-druckknopfschalter-62632844
 
+### Swedish fallback: IKH `XW026-1`
+
+IKH Sweden currently lists:
+- item `XW026-1`
+- description: **KJD12 10/16A 57×35** / emergency-stop switch
+- price observed **357 SEK incl VAT** on the exact product page; category crawl has shown 363 SEK, so product page/checkout wins
+- item available in webstore
+- EAN `6418914846562`
+- gross weight ~0.147 kg
+
+Source:
+- https://www.ikh.se/en/emergency-stop-switch-for-kjd12-57x35-xw026-1
+
+IKH Sweden shipping:
+- PostNord service point from **125 SEK**
+- home delivery from 210 SEK
+- final price shown in cart
+
+Source:
+- https://www.ikh.se/sv/kundtjanst/leveranssatt
+
+Indicative service-point delivered total:
+- 357 + 125 = **~482 SEK**
+
+This is inside our accepted 400–500 SEK band and buys Swedish storefront/return handling.
+
+Caveat: IKH's page says KJD12 but does **not explicitly identify the manufacturer as KEDU**. Therefore it is a domestic fallback, not evidence-equivalent to the explicitly branded Sinolec/Optimum options.
+
 ### Denmark
 
-Güde Denmark sells genuine KEDU KJD12 variants for **205 DKK** and shows stock on current pages.
+Güde Denmark sells KJD12 variants for **205 DKK** and shows stock on current pages.
 
-However KJD12 has several panel/button variants. A Denmark listing is only valid if the chosen version visibly includes the emergency-stop actuator/cover we want.
+However KJD12 has several mechanical design variants. A Denmark listing is only valid if the chosen version visibly includes the emergency-stop actuator/cover we want.
 
 Sources:
 - https://www.guede.dk/kontakt-onoff-kjd12-p-2439.html?language=en
@@ -189,16 +243,14 @@ The KJD12 does **not** provide overload/short-circuit protection. House circuit 
 For a **genuine branded KEDU KJD12 with emergency-stop cover**, accept roughly:
 - **<=400 SEK delivered:** excellent, buy
 - **400–500 SEK delivered:** still reasonable if seller is reputable and exact variant is clear
-- **>500 SEK delivered:** re-compare EU sellers / complete station options
+- **>500 SEK delivered:** re-compare EU sellers / IKH fallback
 
-Do not spend ~900+ SEK on a prebuilt industrial station unless the simple KJD12 enclosure genuinely becomes awkward.
+For the non-manufacturer-explicit IKH fallback, ~482 SEK delivered is acceptable because Swedish return/support reduces transaction risk, but an explicitly genuine KEDU at the same all-in price wins.
 
 ## Remaining pre-order check
 
-Only one sourcing task remains:
-1. check whether exact Optimum `ST0380001` or another genuine KEDU KJD12/230V/16A/Not-Aus variant ships to Sweden
-2. record final delivered price
-3. if <=400–500 SEK, buy
-4. otherwise compare the Denmark genuine KEDU route
+1. Check exact Optimum/Sinolec/genuine-KEDU Sweden delivered total.
+2. If a genuine KEDU lands <=500 SEK, choose it.
+3. If genuine EU/UK shipping/import pushes total clearly above ~500 SEK, use IKH Sweden `XW026-1` around ~482 SEK service-point delivered, after confirming the product image/marking and 230 V terminal arrangement.
 
 No separate router/vacuum auto-start hardware is required.
