@@ -28,13 +28,15 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [x] 83 × **M3×10**, DIN 7985, 4.8, krysspår, förzinkad
 - [x] 10 × **M2.5×12**, DIN 7985, 4.8, krysspår, förzinkad
 
-**Viktigt:** detta kit är endast skruvar + muttrar. Det innehåller **inte** lager, T8-skruvar, T8-muttrar, kopplingar, remhjul, idlers, rem, ändlägen, motorer, kablage eller nätaggregat. Dessa är separata poster även i HaWiWe/V1E:s kompletta hardware kit.
+**Viktigt:** detta kit är endast skruvar + muttrar. Det innehåller **inte** lager, T8-skruvar, T8-muttrar, kopplingar, remhjul, idlers, rem, ändlägen, motorer, kablage eller nätaggregat.
 
 ## Kvar till själva LR4-maskinen
 
 PLA/printmaterial och stålrör hanteras separat och listas inte här.
 
-- [ ] **Jackpot3 CNC Controller** — förstahandsval
+### Måste köpas
+
+- [ ] **Jackpot3 CNC Controller**
 - [ ] 5 × NEMA17-stegmotorer, ca 59 Ncm / 84 oz-in, 5 mm axel, axel minst 20 mm
 - [ ] 3 × stepper wire extenders / förlängningskablage
 - [ ] 3 × GT2 10 mm, 16T remhjul
@@ -45,62 +47,68 @@ PLA/printmaterial och stålrör hanteras separat och listas inte här.
 - [ ] 2 × T8 trapetsskruv + mutter, minst 145 mm, 4-start / 2 mm pitch / 8 mm per varv
 - [ ] 2 × koppling 5 mm → 8 mm
 - [ ] 1 × nätaggregat, 24 V, minst 36 W
-- [ ] gänglåsning för remhjulens stoppskruvar
-- [ ] lätt smörjmedel till idlers/linjärskenor
-
-## Research 29 augusti 2026
-
-### Styrkort — Jackpot3
-
-**Val:** Jackpot3.
-
-Aktuella priser som verifierats:
-- V1E: **$75.99**. Förkonfigurerad för LowRider V4.
-- Elecrow: **$76.99**, i lager. Elecrow uppges av V1E som internationellt alternativ med mer direkt frakt.
-
-Jackpot3 innehåller redan **6 integrerade TMC2226-drivare**, så inga separata TMC2209 ska köpas. Kortet kör FluidNC och har Wi‑Fi/webbgränssnitt, 7 ingångar, 4 utgångar och USB‑C.
-
-**Inköpsregel:** jämför V1E mot Elecrow på totalpris till Sverige inklusive frakt/moms. Köp där slutpriset är lägst; Elecrow är sannolik favorit för Sverige men frakten måste räknas i kassan innan köp.
-
-### Router — VEVOR 710 W Makita-klon
-
-**Val:** VEVOR **VV-1B-220V**, 710 W, 65 mm kropp, 13 000–33 000 rpm, fast bas.
-
-Verifierat pris hos VEVOR EU: **42,90 €** vid research 29/8 2026. Den dyrare 3-bas-versionen kostade omkring 79,90 € och ger ingen CNC-fördel, så den ska inte köpas.
-
-Medföljande spännhylsor enligt VEVOR: **1/4", 6 mm och 8 mm**.
-
-**Varning:** den redan köpta Makita 3,175 mm-spännhylsan är inte verifierad kompatibel med VEVOR-fräsen. 65 mm kropp betyder att den mekaniskt passar samma typ av LR4-mount, men säger inget om spännhylsans kon/mutter. Kontrollera innan användning. Om Makita-spännhylsan inte passar behöver vi köpa separat 1/8"-lösning för VEVOR/ER11-kompatibel geometri.
-
-### Motorer
-
-Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**. Detta matchar V1E:s momentklass och är ett bättre köp än att spara lite på svagare motorer.
-
-Amazon Prime får gärna vinna om totalpris inkl. frakt är bäst, men vi låser inte inköp till Amazon.
-
-## Verktyg / för att kunna fräsa
-
-- [ ] VEVOR VV-1B-220V 710 W router
-- [ ] 1 × 1/8" / ca 3,175 mm single-flute frässtål för första körningarna
-- [ ] kompatibel 1/8"-spännhylsa **endast om** den köpta Makita-spännhylsan visar sig inte passa VEVOR-fräsen
-
-## Maskinens bord / fasta delar
-
+- [ ] **VEVOR VV-1B-220V 710 W router**
+- [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
 - [ ] bord/underrede
 - [ ] plan bordsskiva / spoilboard
 - [ ] material till permanenta strut plates, max 6,35 mm
-- [ ] trä-/plåtskruv för att fästa maskindelar i bordet
-- [ ] buntband eller annan enkel kabelinfästning
+- [ ] ca 18 × M4×12 mm eller längre trä-/plåtskruv för infästning i bordet; V1E anger dessa separat och de ingår inte i HaWiWe screw set
 
-## Praktiskt men inte nödvändigt för första rörelsen
+### Rekommenderat / småsaker
+
+- [ ] gänglåsning för remhjulens stoppskruvar
+- [ ] lätt smörjmedel till idlers/linjärskenor
+- [ ] buntband eller annan kabelinfästning
+
+### Valfritt senare
 
 - [ ] dammsugarslang / spånutsug
 - [ ] jordning av dammsugarslang om slanglösningen kan bygga statisk elektricitet
-- [ ] touch plate / verktygslängdsgivare — valfritt
+- [ ] touch plate / verktygslängdsgivare
+
+## Styrkort — Jackpot3
+
+**Val:** Jackpot3.
+
+Aktuella priser verifierade 2026-08-29:
+- V1E: **$75.99**
+- Elecrow: **$76.99**
+
+Jackpot3 innehåller **6 integrerade TMC2226-drivare**, så inga separata stepperdrivare ska köpas.
+
+## Router — VEVOR 710 W Makita-klon
+
+**Val:** VEVOR **VV-1B-220V**, 710 W, 65 mm kropp, 13 000–33 000 rpm, fast bas.
+
+Verifierat pris hos VEVOR EU 2026-08-29: **42,90 €**.
+
+Medföljande spännhylsor: **1/4", 6 mm och 8 mm**.
+
+### Makita/Elaire 3,175 mm-spännhylsa → VEVOR
+
+**Status 2026-08-29: starkt sannolik kompatibilitet; köp ingen ytterligare 1/8"-hylsa i förväg.**
+
+Det som är verifierat:
+
+1. Den köpta HaWiWe-hylsan är en **Elaire Makita-style 1/8" collet**, avsedd för bl.a. Makita RT700C / RT0700CX3 / RT0701C.
+   - HaWiWe: https://hawiwe.de/produkt/makita_spannzange/
+   - Elaire: https://elairecorp.com/product-category/makita-style-router-collets/
+2. VEVOR:s sida för den exakta **VV-1B-220V / produkt-ID 010376710625** anger 65 mm kropp. På VEVOR:s sida för samma produktfamilj besvarar VEVOR frågan om den ersätter Makita RT0700 med **ja**.
+   - https://eur.vevor.com/compact-router-c_10131/vevor-electric-hand-trimmer-palm-router-with-three-collets-and-fixed-base-710w-p_010376710625
+3. Det finns praktisk LR/CNC-erfarenhet på V1E-forum där en **VEVOR 0700C (Makita 700-klon)** körs med en 1/8" Makita-style/Sienci-collet i VEVOR:s originalmutter med mycket liten runout.
+   - https://forum.v1e.com/t/crappy-router-collet/50663/8
+
+**Begränsning:** jag har inte hittat ett uttalande från VEVOR/Elaire som uttryckligen säger att just Elaire MRP-1250 passar just VV-1B-220V. Därför är detta inte 100 % formellt verifierat.
+
+**Praktiskt beslut:** köp VEVOR-fräsen men ingen extra 1/8"-hylsa. När fräsen kommer: prova den köpta Elaire-hylsan utan verktyg och verifiera att den sätes korrekt i konan/muttern; därefter kontrollera runout med ett rakt 1/8"-verktyg innan första riktiga körningen.
+
+## Motorer
+
+Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**.
 
 ## Redan täckt av HaWiWe-köpet
 
 - [x] XZ-plattor
-- [x] 4 × MGN12H 150 mm linjärskenor (linear rail set)
+- [x] 4 × MGN12H 150 mm linjärskenor
 - [x] LR4-skruv/mutter-set — exakt innehåll dokumenterat ovan
-- [x] Makita 3,175 mm-spännhylsa — **köpt men kompatibilitet med VEVOR-fräsen ej verifierad**
+- [x] Makita/Elaire 3,175 mm-spännhylsa — **köpt; starkt sannolikt kompatibel med vald VEVOR, ska provpassas innan drift**
