@@ -2,24 +2,23 @@
 research_date: 2026-08-29
 scope: live purchase verification for the five LR4 stepper motors from StepperOnline Germany
 status: recommendation-ready
-decision_state: exact 5-pack remains the motor choice; Germany warehouse and item price are verified, but Sweden freight is only exposed at checkout and must not be invented
-price_basis: fresh StepperOnline product pages crawled 2026-08-26 to 2026-08-29; final shipping/VAT total requires Sweden checkout
+decision_state: exact 5-pack remains the motor choice; Germany item price is verified; keep this order motors-only because suitable PSU consolidation is not available from the same Germany route
+price_basis: fresh StepperOnline product pages crawled 2026-08-26 to 2026-08-29; final Germany-to-Sweden freight requires checkout
 region: Sweden / Germany warehouse
 sources_checked:
   - StepperOnline exact 5-pack product page
   - StepperOnline exact single-motor product page
   - StepperOnline warehouse policy/about page
-  - StepperOnline Germany-stock PSU reference for consolidation sanity check
+  - StepperOnline S-250-24 and HDR-60-24 pages for consolidation sanity check
 supersedes: price/stock assumptions in earlier motor research while preserving the same chosen model
 ---
 
 # StepperOnline motor order — live verification
 
-## Chosen item remains correct
+## Chosen item
 
-StepperOnline bundle:
-- shop model: **`5-17HS19-2004S1`**
-- contains 5 × manufacturer motor `17HS19-2004S1`
+StepperOnline bundle **`5-17HS19-2004S1`**:
+- 5 × `17HS19-2004S1`
 - NEMA17, 42×42×48 mm
 - 59 Ncm / 83.55 oz-in
 - 2.0 A/phase
@@ -27,82 +26,77 @@ StepperOnline bundle:
 - 5 mm D shaft
 - 24 mm shaft length
 - 1 m cable
-- 4-pin 2.54 mm Harwin female connector
+- 4-pin 2.54 mm female connector
 
 Fresh product page:
-- observed price **€38.13 / 5-pack**
-- observed stock **200** on the indexed page
-- selectable ship-from locations include **Germany**
-- gross listed shipment weight **2.10 kg**
+- observed price **€38.13 / five-pack**
+- observed stock around 200
+- Germany selectable as ship-from
+- shipment weight ~2.10 kg
 
 Source:
 - https://www.stepperonline.nl/5st-nema-17-bipolair-59ncm-83-55oz-in-2a-42x48mm-4-draden-met-1m-kabel-aansluiting-5-17hs19-2004s1
 
-## Germany warehouse is the correct route
+## Germany warehouse
 
-StepperOnline states that its Germany warehouse serves EU customers with local delivery/returns and avoids customs/VAT-import formalities associated with ordering from China.
+Use the Germany warehouse for EU delivery/returns and to avoid China-import handling.
 
 Source:
 - https://www.stepperonline.nl/over-ons
 
-**Checkout rule:** explicitly select **Germany** before judging the total. Do not accidentally accept China because it happens to be the page default/first option.
+Checkout must explicitly remain on Germany before the order is accepted.
 
-## Five-pack vs five single motors
+## Five-pack beats five singles
 
-The same exact single motor is currently listed around:
-- €8.75 each at qty 1
-- €8.34 each at qty 5
-
-Five singles at the qty-5 tier would be roughly:
-- 5 × €8.34 = **€41.70**
-
-The dedicated five-pack at €38.13 therefore saves about:
-- **€3.57**
-
-with no spec compromise.
+Same exact single motor was around €8.34 each at qty 5:
+- five singles ~€41.70
+- five-pack €38.13
+- bundle saves ~€3.57
 
 Source:
 - https://www.stepperonline.nl/nema-17-bipolair-59ncm-83-55oz-in-2a-42x48mm-4-draden-met-1m-kabel-aansluiting-17hs19-2004s1
 
-So the bundle remains the rational SKU.
+## Sweden freight
 
-## Sweden shipping remains a checkout-only unknown
+Public product pages do not expose a reliable Sweden-specific total for this 2.10 kg Germany shipment.
 
-The public/indexed product and warehouse pages do **not** expose a reliable Sweden-specific freight price for this exact 2.10 kg Germany-warehouse bundle.
+Do not estimate it.
 
-Therefore this file deliberately does not estimate freight.
-
-Before order:
-1. choose Germany warehouse
-2. set destination Sweden
+Checkout procedure:
+1. Germany warehouse
+2. destination Sweden
 3. record shipping + VAT-inclusive final total
-4. reject any checkout path that silently changes ship-from to China
+4. reject a checkout path that silently moves shipment to China
 
-## Should we add a PSU just to share the German shipment?
+## PSU consolidation check — explicitly rejected
 
-A fresh StepperOnline product page does show a generic `S-250-24`:
-- 24 V
-- 10 A / 250 W
-- €18.96
-- Germany is selectable
+### Generic S-250-24
 
-Source:
-- https://www.stepperonline.nl/250w-24v-10a-115-230v-schakelende-voeding-stepper-motor-cnc-router-kits-s-250-24
+StepperOnline has a cheap 24 V / 10 A / 250 W `S-250-24` with Germany selectable, but it is not appropriate cart optimization:
+- much more power than LR4/Jackpot3 needs
+- open-frame mains terminals
+- would require enclosure/safety work
 
-But this is **not a reason to add it**:
-- 250 W is unnecessary for Jackpot3/LR4
-- it is an open-frame mains supply requiring enclosure
-- our PSU research is prioritizing a cleaner/smaller safe 24 V supply
-- adding an oversized PSU merely to amortize freight is false consolidation
+Do not buy it merely to amortize motor freight.
 
-So the StepperOnline order remains **motors only** unless checkout reveals a genuinely needed exact part from the same Germany warehouse.
+### Mean Well HDR-60-24
 
-## Buy threshold / decision
+A StepperOnline `HDR-60-24` listing was also checked because that is now our preferred PSU model.
 
-Motor specification and seller are effectively locked.
+The product route checked did **not** expose a useful Germany ship-from option; it effectively led to China rather than allowing the PSU to ride with the German motor pack.
 
-**Ready to order when Germany→Sweden checkout freight is known and reasonable.**
+Therefore do not assume that the very low StepperOnline headline price can be combined with the Germany motor shipment.
 
-No further alternative-motor research is likely to be worth the time unless:
-- this five-pack disappears from Germany stock, or
-- delivered price rises materially.
+Current PSU plan is instead:
+- Mean Well `HDR-60-24` from DigiKey together with exact Omron endstops
+
+See:
+- `research/2026-08-29-final-psu-endstop-wiring-cart.md`
+
+## Final decision
+
+StepperOnline order = **five motors only**, unless checkout later reveals another already-required exact part from the **same Germany warehouse**.
+
+Ready to place once Germany→Sweden freight is visible and reasonable.
+
+No more alternative-motor research is justified unless Germany stock disappears or delivered price rises materially.
