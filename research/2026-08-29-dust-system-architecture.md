@@ -2,19 +2,30 @@
 research_date: 2026-08-29
 scope: LR4 dust-system architecture: dust shoe, hose size, vacuum type, cyclone, hose support and static mitigation
 status: recommendation-ready
-decision_state: baseline should be official-style 2.5 in hose + shop-vac + cyclone + grounded hose + gantry strain relief; exact vacuum/cyclone products remain to be optimized
-price_basis: no final product cart yet; this file locks architecture/specification only
+decision_state: use the already-owned DeWalt shop-vac as primary extractor after cyclone; official-style 2.5 in moving hose + grounded hose + gantry strain relief; old FTX is a secondary-air-handling candidate only
+price_basis: no final product cart yet; shop-vac is already owned
 region: Sweden / EU
 sources_checked:
   - current V1 Engineering LR4 documentation
   - V1 Engineering LR4 forum builds 2024–2026
   - LR4 dust-hose management threads
-supersedes: generic earlier dust-collection notes
+  - user-provided existing DeWalt shop-vac and old FTX inventory
+supersedes: generic earlier dust-collection notes and any new-shop-vac purchase plan
 ---
 
 # LR4 dust system architecture
 
 This is a required subsystem for this build, not an optional future upgrade.
+
+## 0. Existing hardware changes the plan
+
+Already owned:
+- DeWalt wet/dry grovdammsugare/shop-vac, originally about 2,500 SEK from Jula; exact model to identify
+- old FTX heat-recovery ventilation unit; exact model/airflow to identify
+
+**Do not buy a new vacuum.** The DeWalt is already in the product class that best suits an LR4 dust shoe.
+
+The FTX is not a substitute for source extraction. It may later provide enclosure underpressure, purge or ambient filtration after primary dust capture.
 
 ## 1. Hose size — use the LR4-native 2.5 in class
 
@@ -39,7 +50,7 @@ Do not buy a smaller 40 mm / 1.5 in hose merely because it is common locally. It
 
 Do not put a 4 in hose directly on the moving LR4 either. That adds bulk/mass and can interfere with movement. If a future large dust collector is used, transition to 4 in **after the moving 2.5 in section**.
 
-## 2. Vacuum type — shop-vac is the Pareto default
+## 2. Vacuum type — existing DeWalt shop-vac is the Pareto default
 
 For the 2.5 in moving hose and small router dust shoe, the V1E community consistently treats a shop-vac / wet-dry vacuum as a very good match.
 
@@ -52,9 +63,9 @@ Source:
 
 Baseline architecture:
 
-`dust shoe -> short/flexible 2.5 in moving hose -> cyclone -> shop-vac`
+`dust shoe -> short/flexible 2.5 in moving hose -> cyclone -> existing DeWalt shop-vac`
 
-Do not buy a large 100–125 mm woodworking dust collector for the LR4 merely because it sounds more industrial. It is a different pressure/flow regime and would still need a smaller moving hose at the machine.
+No vacuum purchase should occur until the DeWalt's exact model and port size have been checked.
 
 ## 3. Cyclone — strongly recommended
 
@@ -152,7 +163,18 @@ For this garage, where XPS is also a likely material, choose a **steel-spiral / 
 
 Do not rely on spraying the XPS with chemicals as the primary static strategy.
 
-## 8. Enclosure/curtain remains separate
+## 8. FTX role — secondary only
+
+The old FTX unit may be useful if its model/airflow/filter setup is suitable.
+
+Potential roles:
+- draw a small continuous airflow from a curtain enclosure to create underpressure
+- recirculate garage air through a large prefilter/fine filter as an ambient cleaner
+- purge dirty enclosure air after a job
+
+Do **not** feed raw router chips/XPS debris through the FTX heat exchanger/fans. Primary capture remains dust shoe + cyclone + DeWalt.
+
+## 9. Enclosure/curtain remains separate
 
 The dust shoe is the first line of defence, not the only line.
 
@@ -169,15 +191,17 @@ For product research, assume:
 - hose strain-relieved at the LR4 core/gantry
 - simple overhead support/swing arm
 - **cyclone separator + bucket/container**
-- **shop-vac / wet-dry vacuum**, not a large woodworking collector as default
+- **existing DeWalt shop-vac / wet-dry vacuum**
 - hose static grounding from day one
+- old FTX evaluated only for secondary fine-air / underpressure duty
 - wipeable CNC-zone curtain/enclosure added as table subsystem
 
 ## Next procurement block
 
-Now compare actual Sweden/EU products for:
-1. shop-vac around the needed pressure/flow class
-2. cyclone + bucket
-3. 2.5 in flexible steel-ribbed hose, likely only the length our ~1.0×1.62 m table needs
+Do not research a new vacuum. Instead:
+1. identify DeWalt model/port from the label
+2. optimize cyclone + bucket
+3. optimize the minimum necessary 2.5 in flexible steel-ribbed hose and adapters for our ~1.0×1.62 m table
+4. identify FTX model and airflow before deciding whether a separate enclosure/ambient fan is needed
 
-Optimization objective: adequate suction + low noise/size + cheap consumables/filters + low delivered cost. Do not pay premium for unnecessary wet-vac features or a huge tank if a smaller unit performs adequately.
+Optimization objective: reuse owned equipment first, then spend only on the missing interfaces/primary separator.
