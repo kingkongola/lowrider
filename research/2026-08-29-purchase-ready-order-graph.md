@@ -1,9 +1,8 @@
 ---
 research_date: 2026-08-29
 last_updated_at: 2026-08-29
-scope: consolidated current order graph after component-level LR4 sourcing research
-status: recommendation-ready
-decision_state: core machine hardware and PLA are product-locked or threshold-locked; remaining work is mainly checkout totals, table/base, first cutter/workholding and machine mains enclosure/distribution hardware
+scope: consolidated current order graph after component-level LR4 sourcing research\status: recommendation-ready
+decision_state: core machine hardware, PLA and compact mains enclosure are product-locked or threshold-locked; remaining work is mainly checkout totals, table/base, first cutter/workholding and a few commodity orphan items
 price_basis: only prices already verified in dated research files; unknown checkout freight/import is left unknown rather than estimated
 region: Sweden / EU
 sources_checked:
@@ -18,6 +17,7 @@ sources_checked:
   - research/2026-08-29-final-nvr-estop.md
   - research/2026-08-29-dewalt-tool-socket.md
   - research/2026-08-29-pla-bulk.md
+  - research/2026-08-29-mains-enclosure-distribution.md
 supersedes: null
 ---
 
@@ -197,17 +197,45 @@ Swedish fallback:
 - **~482 SEK indicative delivered**
 - IKH page does not explicitly state KEDU manufacturer
 
-### Machine-power topology
+## Compact 230 V enclosure/distribution: RECOMMENDATION-READY
 
-DXV30SAPTA manual gives **2450 W max connected-tool load**.
-
-VEVOR is 800 W, so baseline:
+Baseline architecture is now closed:
 
 `wall -> KJD12 -> [HDR-60-24 + DeWalt AUTO]`
 
 `VEVOR -> DeWalt tool socket`
 
-No separate vacuum-trigger relay required.
+DXV30SAPTA manual gives 2450 W max connected-tool load; VEVOR is 800 W. No vacuum trigger relay is needed.
+
+Leading enclosure:
+- Clas Ohlson GDS Electric `36-9846`
+- IP65
+- 3–5 DIN modules
+- integrated DIN rail
+- 120×160×90 mm
+- **149.90 SEK**
+
+Use only if physical KJD12 + HDR dry-layout is comfortable. If cramped, use 8-module `36-1815`, 190×150×90 mm, **249 SEK** rather than forcing it.
+
+Other simple local parts:
+- Biltema `46-3610`, 3 m H05VV-F 3G1.5, 16 A, **59.90 SEK**; donor for factory-moulded Schuko male input + female DeWalt output
+- Jula/Rutab `402070`, 2×M20 IP68 glands, **39.90 SEK**
+- 3 × Wago `221-413`; Jula 12-pack `001480` **129 SEK** if none owned
+- 4 × insulated 6.3 mm female Faston matching 1.5 mm²; Biltema `44-0020` reference **24.90 SEK/10**
+
+Estimated enclosure/distribution hardware excluding KJD12 and HDR:
+- **~404 SEK if everything is bought new**
+- potentially ~250 SEK if Wago/Faston stock already exists
+
+Safety gates:
+- KJD12 exact physical variant in hand before cutting enclosure
+- PE remains continuous/unswitched to DeWalt output
+- proper crimp + strain relief
+- no exposed live terminals when closed
+- continuity/insulation checks before energising
+
+Detailed source:
+- `research/2026-08-29-mains-enclosure-distribution.md`
 
 ## Cheap orphan 1 — 16T pulleys
 
@@ -281,13 +309,6 @@ Likely bought dust item:
 - threadlocker
 - heatshrink/cable ties as needed
 
-### 230 V enclosure/distribution
-- compact enclosure/panel around KJD12 and HDR
-- strain relief
-- appropriately rated machine distribution/outlets and mains cable
-- PE continuity
-- no exposed live terminals
-
 ## Order-placement sequence
 
 1. Motonet tubes — inspect locally
@@ -298,6 +319,7 @@ Likely bought dust item:
 6. Jackpot3 Elecrow
 7. SUNLU PLA when checkout holds ~€55–60 / ~100–110 SEK/kg
 8. orphan 16T + 608 under thresholds
-9. table/spoilboard material after used-base decision
+9. KJD12 + compact enclosure hardware once exact switch variant is in hand
+10. table/spoilboard material after used-base decision
 
 This sequence prioritizes stock/wrong-variant risk rather than technical assembly order.
