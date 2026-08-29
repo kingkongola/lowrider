@@ -6,7 +6,7 @@ Här ska bara delar för den LowRider V4 som faktiskt byggs finnas. `AUDIT.md` i
 
 - [x] Amazon Prime-medlemskap — möjlig fraktfördel, men butik väljs efter totalpris och rätt variant
 - [x] 3D-skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräcklig byggvolym för LR4
-- [x] Garagegrupp: **10 A**
+- [x] Garagegrupp: **10 A**, praktiskt beprövad med svets; plasma har kunnat lösa säkringen
 
 ## Redan köpt — HaWiWe, 29 augusti 2026
 
@@ -53,7 +53,7 @@ Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, 
 - [ ] cirka 2,7 kg vanlig styv PLA krävs; bulkplan 6 × 1 kg SUNLU om checkout håller
 - [ ] 3 × GT2 16T / 5 mm bore / för 10 mm belt
 - [ ] 6 × smooth GT2 idlers / 5 mm bearing bore / för 10 mm belt, LaskaKit `LA190008E`
-- [ ] 1 × 5 m, 10 mm fiberglass GT2 belt, LaskaKit `LA190013C`; **aktuellt i lager**, fallback 3 × 2 m av samma spec om läget ändras
+- [ ] GT2-rem: **2 mm pitch, 10 mm bred, gummi med glasfiberförstärkning, ingen stålcord**, kontinuerliga segment minst 999 / 1705 / 1705 mm. LaskaKit `LA190013C` 5 m och deras 2 m-alternativ visar nu slut på direkta produktsidan. Första checkout-kandidat: V1E:s egen Amazon-länk/SeekLiny ASIN `B097T4DFM6`, 10 m. Verifierad fallback: Technobots `6002-591`, 5 m ×10 mm fiberglass GT2
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] 1 × T8×8 400 mm rod, 4-start / 2 mm pitch / 8 mm per rev; **kapa först efter assembly-check, praktiskt mål ~150–160 mm ×2**, V1E minimum 145 mm
 - [ ] 2 × matching T8×8 brass nuts
@@ -65,13 +65,13 @@ Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, 
 
 - [ ] Jackpot3 CNC Controller — Elecrow `CQA240812C2`; kräver flashning/config
 - [ ] 5 × StepperOnline `17HS19-2004S1`, 59 Ncm / 2 A / 5 mm D-axel / 24 mm axel / 1 m kabel
-- [ ] stepper-extensioner endast där full-travel dry-fit visar behov; V1E-layouten gör 2–3 sannolika
+- [ ] stepper-extensioner endast där full-travel dry-fit visar behov
 - [ ] 10 × Omron `SS-3GL13PT`; 5 installeras, 5 reserv; kopplas NC via COM+NC
 - [ ] 10 m LaskaKit `LA150151A`, UL2464 26 AWG 3×0,14 mm²; använd 2 ledare för endstops
 - [ ] 2-poliga 2,54 mm board-side endstopkontakter/pigtails + reserv
 - [ ] Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN PSU
 - [ ] **3 m** UL2464 20 AWG / ~0,52 mm² **2-core**, nominellt ~4,8 mm OD, för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
-- [ ] **1 separat mindre kabelgenomföring/dragavlastning för 24 V-kabeln**, dimensionerad efter faktisk ~4,8 mm OD
+- [ ] 1 × Amphenol **`AIO-CSM12`**, M12×1.5 / 3–6,5 mm / IP68 för 24 V-kabelns genomföring/dragavlastning
 - [ ] **microSD till Jackpot3: inventera först**; om inget lämpligt finns, enkelt 4–32 GB FAT32 Class 4/6
 - [ ] **data-kapabel USB-C-kabel: inventera/verifiera** för flashing; köp bara om den saknas
 
@@ -89,7 +89,7 @@ Före slutliga clips/remspänning ska maskinen manuellt kunna nå alla fyra hör
 
 Inget får sträckas, bära kontaktlast, kinka eller kunna falla över bordskant/rörelsezon.
 
-## Kvar — 230 V maskinmatning / 10 A-grupp
+## Kvar — 230 V maskinmatning
 
 Baseline:
 
@@ -97,17 +97,17 @@ Baseline:
 
 `VEVOR -> DeWaltens verktygsuttag`
 
-- [ ] genuin **KEDU KJD12**, 230 V/50 Hz, 2-polig NVR/no-restart, röd stoppkåpa, korrekt märkström/motorlast och terminalvariant
-- [ ] Biltema `35-0065` IP65 4-moduls DIN-kapsling, 120×160×90 mm — **endast om riktig dry-fit ger säker terminal-/böjradie**
+- [ ] genuin **KEDU KJD12-14**, 230 V/50 Hz, 2-polig NVR/no-restart, röd stoppkåpa, 6,3×0,8 Faston; familjen är verifierad till **15 A AC-3 / 18 A AC-1**
+- [ ] Biltema `35-0065` IP65 4-moduls DIN-kapsling, 120×160×90 mm — endast om riktig dry-fit ger säker terminal-/böjradie
 - [ ] Biltema `35-0067` 12-moduls kapsling — fallback om lilla boxen blir trång
 - [ ] jordad 3G1,5 donor extension lead, t.ex. Biltema `46-3610`; 3 m endast om faktisk in+ut-rutt räcker
 - [ ] 2 × M20×1,5 kabelgenomföring för 3G1,5 nät in/ut; kontrollera faktisk donor-kabel-OD mot glandens 5–12 mm spann
 - [ ] 3 × genuine Wago 221-413 för L/N/PE-fördelning
-- [ ] isolerade 6,3×0,8 mm Faston som passar faktisk KJD12 och kabelarea
+- [ ] 10 × TE Connectivity `3-350820-2` via **DigiKey `A27824-ND`**; använd inte Marketplace-dubbletten
 
-**Känd matningsgräns:** garagegruppen är 10 A. Om DeWalt-typskylten bekräftar 1050 W blir nominell samtidig last ungefär **1,91 kW / 8,3 A vid 230 V** inklusive 800 W router och max 60 W PSU. Det är under 10 A men lämnar begränsad marginal för andra laster och uppstartstransienter. Belastningsprov på verklig grupp är därför en commissioning-gate; gruppen får inte uppsäkras som workaround utan kontroll av fasta installationen.
+**Garagegruppen:** 10 A är känd och fungerar praktiskt med svets; plasma har kunnat lösa säkringen. VEVOR 800 W + sannolik DeWalt 1050 W + controller bedöms därför inte som ett öppet projektproblem. Gör vanlig sanity-check vid första samtidiga körningen och utred endast om säkringen faktiskt löser. Uppsäkra aldrig som workaround utan kontroll av fasta installationen.
 
-**Terminologi:** KJD12 är här **NVR/maskinstopp med röd stoppkåpa**. Safety-rated E-stop-status är inte verifierad. Montera den direkt nåbar från normal operatörsplats.
+**Terminologi:** KJD12 är här **NVR/maskinstopp med röd stoppkåpa**. Safety-rated E-stop-status för den hemmabyggda helheten är inte verifierad. Montera den direkt nåbar från normal operatörsplats.
 
 PE till DeWalt-uttaget ska vara kontinuerlig och oswitchad. HDR-60-24 är Class II och ska inte användas som jordpunkt.
 
@@ -152,7 +152,7 @@ Se `TABLE.md`.
 
 ## Printkontroll innan full sats
 
-P1S har redan tillräcklig byggvolym; det är **inte** längre en projekt-gate.
+P1S har redan tillräcklig byggvolym; det är **inte** en projekt-gate.
 
 Före de långa printarna:
 - [ ] provprinta `Z_Stub` + `Z_Nut` och kontrollera passning
@@ -189,5 +189,4 @@ Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan i board box med fr
 - [ ] full-travel kabel/slang-test godkänt
 - [ ] statisk jordväg verifierad
 - [ ] Jackpot microSD/data-USB/firmware/config verifierat
-- [ ] 10 A-gruppen belastningsprovad med verkliga laster
 - [ ] 230 V PE/L/N/dragavlastning verifierad före energisering
