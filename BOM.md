@@ -8,12 +8,12 @@ Här ska bara delar för den LowRider V4 som faktiskt byggs finnas.
 
 ## Redan köpt — HaWiWe, 29 augusti 2026
 
-Ordertotal: **165,50 € inklusive 8,00 € frakt**.
+**Order betald.** Ordertotal: **165,50 € inklusive 8,00 € frakt**.
 
 - [x] Aluminium XZ plates — **39,50 €**
 - [x] Linear rail set LowRider 4 — **57,00 €**
 - [x] Screw set LowRider 4 — **32,00 €**
-- [x] Makita 1/8 inch (3,175 mm) collet — **29,00 €**
+- [x] Makita/Elaire 1/8 inch (3,175 mm) collet — **29,00 €**
 - [x] Frakt — **8,00 €**
 
 ### Exakt innehåll i köpta HaWiWe Screw set LowRider 4
@@ -32,8 +32,6 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 
 ## Kvar till själva LR4-maskinen
 
-PLA/printmaterial och stålrör hanteras separat och listas inte här.
-
 ### Måste köpas
 
 - [ ] **Jackpot3 CNC Controller**
@@ -47,24 +45,36 @@ PLA/printmaterial och stålrör hanteras separat och listas inte här.
 - [ ] 2 × T8 trapetsskruv + mutter, minst 145 mm, 4-start / 2 mm pitch / 8 mm per varv
 - [ ] 2 × koppling 5 mm → 8 mm
 - [ ] 1 × nätaggregat, 24 V, minst 36 W
-- [ ] **VEVOR VV-1B-220V 710 W router**
+- [ ] **VEVOR 0700C, 800 W, 65 mm router**
 - [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
+- [ ] PLA för LR4-delarna — ca 2,7 kg faktisk förbrukning; köp med marginal
+- [ ] stålrör i slutliga längder efter låsta mått
 - [ ] bord/underrede
 - [ ] plan bordsskiva / spoilboard
 - [ ] material till permanenta strut plates, max 6,35 mm
 - [ ] ca 18 × M4×12 mm eller längre trä-/plåtskruv för infästning i bordet; V1E anger dessa separat och de ingår inte i HaWiWe screw set
+
+### Dammhantering — del av grundbygget
+
+- [ ] LR4 dust shoe / borstlösning enligt aktuell V1E-design
+- [ ] grovdammsugare / shop-vac med tillräckligt undertryck
+- [ ] cyklonavskiljare + behållare
+- [ ] dammsugarslang i lämplig dimension
+- [ ] slangupphängning/dragavlastning så slangen inte belastar Z/gantry
+- [ ] enkel avskärmning/gardin eller annan lösning som håller CNC-smutszonen lättstädad
+- [ ] jordning/antistatisk lösning om slang/XPS ger praktiska statikproblem
 
 ### Rekommenderat / småsaker
 
 - [ ] gänglåsning för remhjulens stoppskruvar
 - [ ] lätt smörjmedel till idlers/linjärskenor
 - [ ] buntband eller annan kabelinfästning
+- [ ] arbetsstyckesfastsättning/clamps
 
 ### Valfritt senare
 
-- [ ] dammsugarslang / spånutsug
-- [ ] jordning av dammsugarslang om slanglösningen kan bygga statisk elektricitet
 - [ ] touch plate / verktygslängdsgivare
+- [ ] laser — tidigast 2027, inte del av nuvarande grundbygge
 
 ## Styrkort — Jackpot3
 
@@ -76,39 +86,33 @@ Aktuella priser verifierade 2026-08-29:
 
 Jackpot3 innehåller **6 integrerade TMC2226-drivare**, så inga separata stepperdrivare ska köpas.
 
-## Router — VEVOR 710 W Makita-klon
+## Router — VEVOR 0700C 800 W Makita-klon
 
-**Val:** VEVOR **VV-1B-220V**, 710 W, 65 mm kropp, 13 000–33 000 rpm, fast bas.
+**Val:** VEVOR **0700C**, 800 W, 220–240 V / 50 Hz, 65 mm kropp, 10 000–30 000 rpm.
 
-Verifierat pris hos VEVOR EU 2026-08-29: **42,90 €**.
+Detta ersätter den tidigare 710 W VV-1B-220V-kandidaten.
 
-Medföljande spännhylsor: **1/4", 6 mm och 8 mm**.
+VEVOR anger Makita 0700-bas-kompatibilitet för denna 0700C-familj. Det finns dessutom dokumenterad V1E-erfarenhet där en VEVOR 0700C körs med en Makita-style/Sienci 1/8"-spännhylsa i VEVOR:s originalmutter med mycket liten runout.
 
-### Makita/Elaire 3,175 mm-spännhylsa → VEVOR
+### Köpt Makita/Elaire 3,175 mm-spännhylsa → VEVOR 0700C
 
-**Status 2026-08-29: starkt sannolik kompatibilitet; köp ingen ytterligare 1/8"-hylsa i förväg.**
+**Status 2026-08-29: hög sannolikhet att den passar; ska provpassas före drift.**
 
-Det som är verifierat:
+Den köpta HaWiWe-hylsan är en **Elaire Makita-style 1/8" collet**, produktfamilj **MRP-1250**, avsedd för bl.a. Makita RT700C / RT0700CX3 / RT0701C.
 
-1. Den köpta HaWiWe-hylsan är en **Elaire Makita-style 1/8" collet**, avsedd för bl.a. Makita RT700C / RT0700CX3 / RT0701C.
-   - HaWiWe: https://hawiwe.de/produkt/makita_spannzange/
-   - Elaire: https://elairecorp.com/product-category/makita-style-router-collets/
-2. VEVOR:s sida för den exakta **VV-1B-220V / produkt-ID 010376710625** anger 65 mm kropp. På VEVOR:s sida för samma produktfamilj besvarar VEVOR frågan om den ersätter Makita RT0700 med **ja**.
-   - https://eur.vevor.com/compact-router-c_10131/vevor-electric-hand-trimmer-palm-router-with-three-collets-and-fixed-base-710w-p_010376710625
-3. Det finns praktisk LR/CNC-erfarenhet på V1E-forum där en **VEVOR 0700C (Makita 700-klon)** körs med en 1/8" Makita-style/Sienci-collet i VEVOR:s originalmutter med mycket liten runout.
-   - https://forum.v1e.com/t/crappy-router-collet/50663/8
+Praktiskt underlag:
+- VEVOR 0700C beskrivs av användare som Makita 700-klon.
+- V1E-användare har kört Makita-style/Sienci 1/8"-collet i VEVOR 0700C:s originalmutter med låg runout.
 
-**Begränsning:** jag har inte hittat ett uttalande från VEVOR/Elaire som uttryckligen säger att just Elaire MRP-1250 passar just VV-1B-220V. Därför är detta inte 100 % formellt verifierat.
-
-**Praktiskt beslut:** köp VEVOR-fräsen men ingen extra 1/8"-hylsa. När fräsen kommer: prova den köpta Elaire-hylsan utan verktyg och verifiera att den sätes korrekt i konan/muttern; därefter kontrollera runout med ett rakt 1/8"-verktyg innan första riktiga körningen.
+Det saknas ett explicit datablad från Elaire/VEVOR som nämner exakt kombinationen MRP-1250 + VEVOR 0700C. När routern kommer: provpassa hylsan utan verktyg, kontrollera korrekt säte i kona/mutter och kontrollera därefter runout med ett rakt 1/8"-verktyg.
 
 ## Motorer
 
-Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**.
+Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**, paket **5-17HS19-2004S1**.
 
 ## Redan täckt av HaWiWe-köpet
 
 - [x] XZ-plattor
 - [x] 4 × MGN12H 150 mm linjärskenor
 - [x] LR4-skruv/mutter-set — exakt innehåll dokumenterat ovan
-- [x] Makita/Elaire 3,175 mm-spännhylsa — **köpt; starkt sannolikt kompatibel med vald VEVOR, ska provpassas innan drift**
+- [x] Makita/Elaire 3,175 mm-spännhylsa — köpt; hög sannolikhet att den passar vald VEVOR 0700C, ska provpassas innan drift
