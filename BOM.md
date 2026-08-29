@@ -55,13 +55,14 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [ ] **Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN-nätaggregat**
 - [ ] ca 1 m flexibel **20 AWG / ~0,52 mm² 2-ledare** från HDR-60-24 till Jackpot3; LaskaKit UL2464-familj, välj uttryckligen 2-core i dropdown
 - [ ] **genuin KEDU KJD12**, 230 V, DPST/2-polig, NVR/no-restart, emergency-stop cover; köp <=500 kr levererat. IKH `XW026-1` är svensk fallback ~482 kr levererat men tillverkaren är inte uttryckligen KEDU på sidan.
-- [ ] **IP65 DIN-kapsling för KJD12 + HDR** — Clas Ohlson GDS Electric 3–5 moduler `36-9846`, 120×160×90 mm, 149,90 kr, om fysisk dry-fit visar tillräcklig plats. 8-modul `36-1815`, 249 kr, är fallback om den blir trång.
+- [ ] **IP65 DIN-kapsling för KJD12 + HDR** — Biltema `35-0065`, 4 moduler, 120×160×90 mm, integrerad DIN-skena, 99,90 kr. Dry-fit KJD12 + HDR innan håltagning. Biltema `35-0067`, 12 moduler, 229 kr är fallback om den lilla blir trång.
 - [ ] **1 × 3 m jordad 3G1,5 / 16 A skarvsladd som donor för fabriksmonterad han- och honkontakt**, t.ex. Biltema `46-3610`, 59,90 kr
 - [ ] **2 × M20 kabelgenomföring/förskruvning** för 3G1,5-pigtails, t.ex. Jula/Rutab `402070`, 2-pack 39,90 kr
 - [ ] **3 × genuin Wago 221-413** för intern L/N/PE-fördelning; Jula 12-pack `001480` 129 kr om inga redan finns
 - [ ] **4 × isolerad 6,3×0,8 mm flatstiftshylsa/Faston** som passar faktisk KJD12 + 1,5 mm² kabel; Biltema helisolerad 1,5–2,5 mm² `44-0020` är billig referens
 - [ ] **VEVOR 0700C, 800 W, 65 mm router** — exakt SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`; €83.99 observerat 2026-08-29, VEVOR EU Sverige-frakt förväntat €0
-- [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
+- [ ] **3 × Sorotec `L1S.M.0317`**, 3,175 mm single-flute upcut, 9 mm skärlängd — första/commissioning-fräsar. €3,70/st; tre + Sorotec Sverige-frakt ~€19,40 totalt.
+- [ ] **lång 3,175 mm single-flute 25–32 mm skärlängd** endast när första 18–19 mm plywood-jobbet faktiskt ska göras; köp inte nu
 - [ ] **SUNLU ordinary PLA, 6 × 1 kg normalspolar Mix & Match** — nuvarande Pareto-förstaval, cirka €9,19/kg / ~€55,14 för 6 kg om checkout håller bulkpris och EU-frakt. 5 kg-jättespole ~€39,99 är absolut billigare men inte förstaval.
 - [ ] **2 × Motonet rundrör Ø30×1,5 mm ×2 m, artikel `88-7123`, 189 kr/st observerat**; kontrollera faktisk OD/straightness, kapa till 1505 / 816 / 816 mm
 - [ ] bord/underrede
@@ -87,13 +88,14 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [ ] gänglåsning för remhjulens stoppskruvar
 - [ ] lätt smörjmedel till idlers/linjärskenor
 - [ ] buntband eller annan kabelinfästning
-- [ ] arbetsstyckesfastsättning/clamps
+- [ ] **ingen dedikerad clamp/T-track-order för första körningarna** — skruva arbetsstycke/sacrificial tabs direkt i MDF-spoilboard utanför toolpath; printa cam/edge clamps när verkliga jobb kräver det
 - [ ] värmekrympslang för endstoplödpunkter
 - [ ] ändhylsor/ferrules där de passar skruvterminalerna, om lämplig tång redan finns
 
 ### Valfritt senare
 
 - [ ] touch plate / verktygslängdsgivare
+- [ ] T-track / threaded-insert-grid / vacuum-table endast efter faktisk användning visar behov
 - [ ] laser — tidigast 2027, inte del av nuvarande grundbygge
 
 ## Styrkort — Jackpot3
@@ -135,7 +137,8 @@ See `research/2026-08-29-final-psu-endstop-wiring-cart.md`.
 DeWalt-manualen anger 2450 W max ansluten verktygslast; VEVOR är 800 W. Ingen separat vakuumtrigger behövs.
 
 Kapslings-Pareto:
-- Clas Ohlson GDS Electric 3–5-modulers IP65 normkapsling `36-9846`, 120×160×90, DIN-skena inkluderad, 149,90 kr
+- **Biltema `35-0065`, 4 moduler, IP65, 120×160×90 mm, DIN-skena inkluderad, 99,90 kr**
+- Biltema `35-0067`, 12 moduler, IP65, 225×200×110 mm, 229 kr är fallback om den lilla blir trång
 - KJD12 monteras i sida/ände först **efter fysisk mall/dry-fit**; KJD12 finns i flera mekaniska varianter
 - HDR på DIN-skenan
 - billig 3 m 3G1,5/16 A skarvsladd återbrukas som fabriksmonterad Schuko-hane in + Schuko-hona ut
@@ -143,9 +146,27 @@ Kapslings-Pareto:
 - PE är kontinuerlig och oswitchad till DeWalt-uttaget
 - 2 × M20-förskruvning ger dragavlastning för nätpigtails
 
-Budget för kapsling/fördelning exklusive KJD12 och HDR: **~404 kr om allt köps nytt**, närmare ~250 kr om Wago/Faston redan finns.
+Budget för kapsling/fördelning exklusive KJD12 och HDR: **~354 kr om allt köps nytt**, runt **~200 kr** om Wago/Faston redan finns.
 
 Se `research/2026-08-29-mains-enclosure-distribution.md`.
+
+## Första frässtål / workholding
+
+**Första köp:** 3 × Sorotec `L1S.M.0317`.
+
+- 3,175 mm diameter och skaft
+- single flute upcut
+- 9 mm skärlängd
+- solid carbide
+- €3,70/st
+- Sorotec Sverige-frakt upp till 0,5 kg: €8,30
+- tre fräsar levererat ungefär €19,40
+
+De korta fräsarna används först för XPS, tunnare material, testkörningar och de permanenta ~6 mm strutsen. De är styvare och bättre att lära sig på än en extra lång fräs.
+
+**Lång fräs:** vänta. När 18–19 mm plywood verkligen ska profilfräsas köps 1–2 single-flute med minst ~22–25 mm faktisk skärlängd; EU-kandidater finns kring €8–10.
+
+**Workholding:** börja med raka skruvar/sacrificial tabs i MDF-spoilboard. Ingen T-track, insert-grid eller clamp-kit behövs för commissioning. Se `research/2026-08-29-first-cutters-workholding.md`.
 
 ## Endstops
 
