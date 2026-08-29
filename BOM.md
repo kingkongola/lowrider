@@ -20,7 +20,7 @@ Ordertotal: **165,50 € inklusive 8,00 € frakt**.
 
 PLA/printmaterial och stålrör hanteras separat och listas inte här.
 
-- [ ] **Jackpot-controller** — beslutat förstahandsval
+- [ ] **Jackpot3 CNC Controller** — förstahandsval
 - [ ] 5 × NEMA17-stegmotorer, ca 59 Ncm / 84 oz-in, 5 mm axel, axel minst 20 mm
 - [ ] 3 × stepper wire extenders / förlängningskablage
 - [ ] 3 × GT2 10 mm, 16T remhjul
@@ -34,18 +34,41 @@ PLA/printmaterial och stålrör hanteras separat och listas inte här.
 - [ ] gänglåsning för remhjulens stoppskruvar
 - [ ] lätt smörjmedel till idlers/linjärskenor
 
-## Styrkort
+## Research 29 augusti 2026
 
-**Jackpot är valt.** SKR Pro-spåret från tidigare research ska inte användas för detta bygge.
+### Styrkort — Jackpot3
 
-## Router / fräsmotor
+**Val:** Jackpot3.
 
-**Makita RT0702C är uttryckligen bortvald.** Den köpta 3,175 mm-spännhylsan ska inte tolkas som att Makita-fräsen är vald. Exakt tidigare beslutad fräsmotor måste återföras från chattunderlaget innan köp; gissa inte modell här.
+Aktuella priser som verifierats:
+- V1E: **$75.99**. Förkonfigurerad för LowRider V4.
+- Elecrow: **$76.99**, i lager. Elecrow uppges av V1E som internationellt alternativ med mer direkt frakt.
+
+Jackpot3 innehåller redan **6 integrerade TMC2226-drivare**, så inga separata TMC2209 ska köpas. Kortet kör FluidNC och har Wi‑Fi/webbgränssnitt, 7 ingångar, 4 utgångar och USB‑C.
+
+**Inköpsregel:** jämför V1E mot Elecrow på totalpris till Sverige inklusive frakt/moms. Köp där slutpriset är lägst; Elecrow är sannolik favorit för Sverige men frakten måste räknas i kassan innan köp.
+
+### Router — VEVOR 710 W Makita-klon
+
+**Val:** VEVOR **VV-1B-220V**, 710 W, 65 mm kropp, 13 000–33 000 rpm, fast bas.
+
+Verifierat pris hos VEVOR EU: **42,90 €** vid research 29/8 2026. Den dyrare 3-bas-versionen kostade omkring 79,90 € och ger ingen CNC-fördel, så den ska inte köpas.
+
+Medföljande spännhylsor enligt VEVOR: **1/4", 6 mm och 8 mm**.
+
+**Varning:** den redan köpta Makita 3,175 mm-spännhylsan är inte verifierad kompatibel med VEVOR-fräsen. 65 mm kropp betyder att den mekaniskt passar samma typ av LR4-mount, men säger inget om spännhylsans kon/mutter. Kontrollera innan användning. Om Makita-spännhylsan inte passar behöver vi köpa separat 1/8"-lösning för VEVOR/ER11-kompatibel geometri.
+
+### Motorer
+
+Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**. Detta matchar V1E:s momentklass och är ett bättre köp än att spara lite på svagare motorer.
+
+Amazon Prime får gärna vinna om totalpris inkl. frakt är bäst, men vi låser inte inköp till Amazon.
 
 ## Verktyg / för att kunna fräsa
 
-- [ ] beslutad fräsmotor/router enligt tidigare chattbeslut — **inte Makita RT0702C**
-- [ ] minst 1 × 1/8" / ca 3,175 mm single-flute frässtål för första körningarna och strut plates
+- [ ] VEVOR VV-1B-220V 710 W router
+- [ ] 1 × 1/8" / ca 3,175 mm single-flute frässtål för första körningarna
+- [ ] kompatibel 1/8"-spännhylsa **endast om** den köpta Makita-spännhylsan visar sig inte passa VEVOR-fräsen
 
 ## Maskinens bord / fasta delar
 
@@ -66,4 +89,4 @@ PLA/printmaterial och stålrör hanteras separat och listas inte här.
 - [x] XZ-plattor
 - [x] 4 × MGN12H 150 mm linjärskenor (linear rail set)
 - [x] LR4-skruv/mutter-set
-- [x] Makita 3,175 mm-spännhylsa
+- [x] Makita 3,175 mm-spännhylsa — **köpt men kompatibilitet med VEVOR-fräsen ej verifierad**
