@@ -1,194 +1,196 @@
 ---
 research_date: 2026-08-29
-scope: LR4 motor wiring, endstop wiring and connector strategy for selected StepperOnline motors + Jackpot3
+scope: LR4 motor wiring, exact endstop wiring and connector strategy for selected StepperOnline motors + Jackpot3
 status: recommendation-ready
-decision_state: defer stepper extensions; dry-fit the selected 1 m motor leads first; build/buy endstop wiring separately
-price_basis: observed web prices/specifications on 2026-08-29; re-check at checkout
+decision_state: dry-fit native 1 m stepper leads before extensions; buy 10 m LaskaKit LA150151A for endstops; wire exact Omron SS-3GL13PT NC using COM+NC; use cheap 2.54 mm board connectors/pigtails
+price_basis: observed web prices/specifications 2026-08-29; re-check at checkout
 region: Sweden / EU
 sources_checked:
   - V1 Engineering LR4 documentation
   - V1 Engineering Jackpot3 documentation
-  - V1 Engineering wiring/endstop products
+  - V1 Engineering endstop/endstop-plug products
   - StepperOnline exact 17HS19-2004S1 product page
-  - V1E forum LR4 wiring discussions 2024-2026
-  - Farnell Sweden cable catalogue
-  - LaskaKit connector/cable catalogue
-supersedes: null
+  - V1E forum LR4 wiring discussions
+  - LaskaKit current cable/connector catalogue
+supersedes: earlier conclusions in this same file where exact cable source remained open and one stale SS-5GL2 reference remained
 ---
 
-# Research: wiring + connectors
+# LR4 wiring + connectors
 
-Scope intentionally limited to:
-- stepper motor leads/extensions
-- endstop wiring
-- board-side connectors
+## Stepper motor leads
 
-## Verified baseline from V1E
+Selected motors: StepperOnline `17HS19-2004S1`, five-pack `5-17HS19-2004S1`.
 
-V1E's standard LR4 kit uses:
-- 3 × stepper extension looms
-- each V1 extension is 1.5 m, 22 AWG, six conductors so motor + endstop wiring can be routed together
-- 5 × endstop wires
-- controller mounted on the **YZ_Min** side is recommended because it makes wiring easiest
-- extensions are specifically called out from **YZ_Max** and from the **Core** back to the controller
+Each selected motor already has:
+- 1 m factory lead
+- 4-pin 2.54 mm female connector
 
-V1's current endstop plug kit for LowRider uses:
-- 5 sets
-- 1200 mm wire length
-- 2-pin pre-crimped DuPont-style board connector
-- switch end is left for small spade/crimp connection
-
-Sources:
-- https://docs.v1e.com/lowrider/
-- https://www.v1e.com/products/wiring-kit-1
-- https://www.v1e.com/products/endstop-plug
-
-## Important optimization caused by our selected motors
-
-Selected motors: StepperOnline `17HS19-2004S1` / 5-pack `5-17HS19-2004S1`.
-
-Exact product page verifies each motor already has:
-- **1 m motor cable**
-- **4-pin 0.1 inch / 2.54 mm Harwin female connector** at the cable end
-- wire/pin order listed as blue, red, green, black in current forum testing of this exact motor
-
-Jackpot3 uses:
-- **open 2.54 mm male headers** for stepper outputs, explicitly chosen to fit more plug styles
-
-Therefore the selected StepperOnline motor plug is mechanically compatible with the Jackpot3's open 2.54 mm stepper header and does not require a JST conversion just to connect to the controller.
+Jackpot3 uses open 2.54 mm male stepper headers, so no JST conversion is required merely to connect these motors.
 
 Sources:
 - https://www.stepperonline.nl/5st-nema-17-bipolair-59ncm-83-55oz-in-2a-42x48mm-4-draden-met-1m-kabel-aansluiting-5-17hs19-2004s1
 - https://docs.v1e.com/electronics/jackpot3/
-- https://forum.v1e.com/t/new-lowrider-control-issue/50909/5
 
-## Do we actually need three 1.5 m extensions?
+### Extension decision
 
-Maybe not.
+Do **not** buy the three standard V1 stepper extensions yet.
 
-This is a project-specific inference, not a V1E standard recommendation.
+Our machine is only ~650×1250 usable and the motors already include unusually long 1 m leads. Mount Jackpot3 at the recommended YZ_Min side, route all factory leads, exercise full X/Y/Z travel and buy extensions only for runs that cannot retain a relaxed service loop.
 
-Our current usable X target is 650 mm. V1's calculator gives an X strut length of roughly 819 mm (`ceil(650 + 169)`). With the controller in the recommended YZ_Min bay:
-- YZ_Min motors are local and clearly do not need extra stepper extension
-- YZ_Max is roughly one gantry width away; the selected motors already provide 1000 mm cable
-- Core X travel is only ~650 mm usable and its selected motor also has 1000 mm cable
+This is a project-specific optimization, not a claim that V1's standard wiring kit is wrong for generic/full-sheet builds.
 
-The stock V1 extension recommendation assumes the generic/V1 motor lead arrangement and is designed to cover much larger machines, including full-sheet builds. V1 forum users note the 1.5 m extensions are slightly longer than needed even on a full-sheet LR4 when routed conventionally.
+## Exact endstops
 
-Because our motors unusually include a full 1 m lead, **buying three additional 1.5 m motor extensions now risks paying for cable we do not need.**
+Correct switch is **Omron `SS-3GL13PT`**.
 
-### Decision
+The older `SS-5GL2` mention in a previous revision of this file was stale and is explicitly corrected here.
 
-**Do not buy stepper extension cables yet.**
-
-When the motors and printed gantry exist:
-1. Mount Jackpot3 in the recommended first bay at YZ_Min.
-2. Route the native 1 m StepperOnline cables exactly as the V1 docs show.
-3. Move Core and Z through full travel.
-4. Require a relaxed service loop and zero connector strain at every extreme.
-5. Only extend whichever motor lead actually fails this test.
-
-This preserves V1's strain-relief requirement while exploiting the 1 m cables we are already paying for.
-
-Sources supporting routing/length context:
-- https://docs.v1e.com/lowrider/
-- https://forum.v1e.com/t/advice-on-wiring-lengths/46760
-
-## Endstop wiring is separate and still required
-
-The five Omron `SS-5GL2` switches selected in the previous research do not eliminate the need for wiring.
-
-Jackpot3 input behavior:
-- inputs are active-low
-- signal `S` is activated by connection to ground `G`
-- V1 CNC standard is **Normally Closed (NC)** endstop wiring
-- Jackpot3 endstop plug is a **2-pin** connection in normal LR4 use
+V1 Engineering's product page identifies `SS-3GL13PT`; Jackpot3 documentation specifies **Normally Closed (NC)** endstop wiring.
 
 Sources:
+- https://www.v1e.com/products/limit-switch-endstop
 - https://docs.v1e.com/electronics/jackpot3/
-- https://forum.v1e.com/t/limit-switch-plugs/54032
 
-### Practical DIY endstop loom
+Machine quantity:
+- 5 installed
 
-A clean local-EU build can use:
-- ~6 m total of flexible **2-core stranded copper** cable, 22-24 AWG class
-- five 2-pin 2.54 mm DuPont-style female connectors/pigtails at Jackpot3
-- solder + heatshrink directly to the Omron switch terminals, or correctly sized small female spade terminals
+Planned procurement:
+- 10 exact switches from DigiKey because the qty-10 discount makes five spares cost only ~32 SEK extra in the planned cart
 
-V1's own LR4 endstop set uses 5 × 1.2 m = 6 m total, so 6 m is a sensible procurement quantity and leaves the individual runs to be cut to actual routing length.
+See:
+- `research/2026-08-29-final-psu-endstop-wiring-cart.md`
 
-For endstop signal current, 24-26 AWG is electrically sufficient; V1/community generally uses/recommends 22 or 24 AWG stranded copper for robust machine wiring. Avoid CCA (copper-clad aluminium).
+## Endstop cable — now resolved
 
-Sources:
-- https://www.v1e.com/products/endstop-plug
-- https://forum.v1e.com/t/wiring-touchplate-sourcing-correct-parts/51712
-- https://forum.v1e.com/t/new-build-lr3/36163
+V1's own LowRider endstop plug kit uses:
+- 5 runs
+- 1200 mm each
+- two-wire DuPont-style board end
 
-## Candidate sources / cart implications
-
-### Farnell
-
-Farnell has suitable 2-core copper cable by the metre. One verified example:
-- Alpha Wire `B954021`
-- 2 core
-- 22 AWG / ~0.32 mm²
-- tinned copper
-- flexible PVC cable
-- observed ~32.02 SEK/m at 1 m quantity, ~30.95 SEK/m at 5+
-
-Six metres would therefore be roughly 186 SEK ex VAT before considering cart freight. This is technically excellent but not a cheap commodity-wire choice.
-
-It may become rational **only if** Farnell is already selected for exact Omron endstops + Mean Well PSU and the cable helps cross a useful shipping threshold.
+Total V1 reference length is therefore **6 m**.
 
 Source:
-- https://se.farnell.com/c/cable-wire-cable-assemblies/multicore-cable?brand=alpha-wire&no-of-cores=2core
+- https://www.v1e.com/products/endstop-plug
 
-### LaskaKit
+### Chosen cable
 
-Useful connector items:
-- 2.54 mm DuPont housings from ~€0.03
-- crimp pins ~€0.03
-- 70 cm 2-pin female-female cable `LA150058`, 26 AWG, ~€0.58, but current listing was out of stock / restock pending
-- bulk 40-piece 70 cm 2-pin F/F set `LA150090`, €6.11, in stock when observed, but gross overkill for five endstops
+LaskaKit `LA150151A`:
+- UL2464 / LIYY
+- 26 AWG
+- 3 × 0.14 mm²
+- unshielded
+- flexible copper multicore
+- current observed price around **€0.58/m**
+- current stock in the hundreds of metres
 
-LaskaKit is already the leading mechanical cart. Tiny housings/pins can be added essentially for free if we decide to crimp our own, but buying an unnecessary 40-cable set purely for consolidation is not optimal.
+Source:
+- https://www.laskakit.cz/en/connecting-cables/
 
-Sources:
-- https://www.laskakit.cz/en/dupont-konektor/
-- https://www.laskakit.cz/en/propojovaci-kabel-f-f--70cm-2pin-2-54/
+Buy **10 m** and use two of the three cores.
+
+Why 10 m:
+- only ~€5.80 in material
+- ample routing/service-loop margin over V1's 6 m baseline
+- useful spare for rework/sensors
+- rides inside the already-planned LaskaKit mechanical shipment, so no extra parcel
+
+26 AWG is electrically ample for endstop signal current; flexible stranded copper and good strain relief matter more here than conductor size.
+
+## Board-side 2.54 mm connectors
+
+### If a suitable DuPont crimper is already owned
+
+LaskaKit currently has:
+- DuPont housing family `LA217000...`, 2.54 mm, from ~€0.03
+- female socket/contact **`LA217002`**, ~€0.03 each
+
+Source:
+- https://www.laskakit.cz/en/connectors/
+
+Buy approximately:
+- 10 × 2-position housings
+- 20 × female contacts
+
+Important: select the **2-position housing visibly in the product dropdown**. Do not infer the exact suffix from the family code.
+
+### If no suitable crimper is owned
+
+Do not buy an expensive dedicated crimper just for five endstop plugs.
+
+LaskaKit `LA150090`:
+- 40 × pre-crimped 2-pin F/F cables
+- 70 cm
+- ~€6.10–6.12
+- currently in stock
+
+Source:
 - https://www.laskakit.cz/en/propojovaci-kabely-f-f-40ks-2pin-samice-samice--70cm/
 
-## Connector/crimping recommendation
+Cut five short board-side pigtails and solder/splice them to the long `LA150151A` runs.
 
-Do not buy an expensive dedicated crimping tool solely for this LowRider if it can be avoided.
+It is overkill in quantity but still cheaper and less annoying than buying a precision DuPont crimper solely for this project; the extras are reusable maker stock.
 
-Preferred order of operations:
-1. use the StepperOnline motors' factory 2.54 mm connectors directly on Jackpot3
-2. dry-fit native 1 m motor leads before buying extensions
-3. for endstops, use cheap pre-crimped 2-pin DuPont pigtails and splice/solder them to flexible 2-core cable, or use an existing suitable DuPont crimper if already available
-4. solder + heatshrink at Omron switches is acceptable and avoids tiny spade-terminal sourcing
-5. secure every connector mechanically so repeated gantry motion does not load the contact
+## Switch-side termination
 
-The V1 community repeatedly describes the factory V1 extension cables as convenient mainly because tiny connector crimping is annoying, not because there is special signalling electronics in the cable.
+Default: **solder directly to COM + NC**.
+
+Procedure:
+- conductor 1 -> COM
+- conductor 2 -> NC
+- individual heatshrink over each terminal
+- strain-relieve cable near the switch so gantry motion does not flex the solder joint
+
+V1 explicitly allows soldering these switches. This avoids another purchase and avoids using generic automotive mini-spades whose wire-size range often does not suit 26 AWG well.
 
 Sources:
-- https://forum.v1e.com/t/electronic-and-tools-sourcing-helping-a-begginer/44093
-- https://forum.v1e.com/t/where-to-buy-end-stop-wiring/50179
+- https://www.v1e.com/products/limit-switch-endstop
+- https://www.v1e.com/products/endstop-plug
 
-## Decision summary
+## 24 V PSU output cable
 
-**Locked/near-locked:**
-- StepperOnline motor's factory 4-pin 2.54 mm connector is compatible with Jackpot3's open stepper headers.
-- Mount controller at YZ_Min as V1 recommends.
-- Endstops are wired NC to Jackpot3 S/G.
-- Endstop cable should be flexible stranded copper, not CCA.
+Endstop cable is **not** the PSU cable.
 
-**Recommendation:**
-- **do not order the three standard stepper extensions yet**; exploit the selected motors' native 1 m cables and dry-fit first.
-- plan a simple five-run endstop loom using ~6 m of 2-core 22-24 AWG copper + 2-pin DuPont pigtails.
+For `HDR-60-24 -> Jackpot3`, add around 1 m of LaskaKit UL2464 20 AWG / 0.52 mm² tinned-copper multicore cable.
 
-**Still open:**
-- cheapest sensible source for ~6-10 m of flexible 2-core copper cable
-- whether cable is cheapest as Amazon/local commodity purchase or worthwhile inside the final Farnell electronics cart
+Current LaskaKit family:
+- `LA150187A` / `B` / `C` / `D`
+- 20 AWG / 0.52 mm²
+- selectable core count including **2 cores**
+- 2-core OD ~4.8 mm
+- current price from about €0.99–1.00/m
 
-This is a deliberate example of cart optimization: the motor choice changes what wiring we actually need, so blindly copying the standard BOM would likely create unnecessary purchases.
+Source:
+- https://www.laskakit.cz/en/ul2464-20awg-liyy-0-52-mm2-nestineny-vicezilovy-kabel--cerny/
+
+The indexed page does not reliably expose which suffix maps to which core count, so **select 2 cores in the product UI instead of guessing a suffix**.
+
+Use ferrules at the screw-terminal ends if an appropriate ferrule crimper is already available; otherwise follow the terminal manufacturer's accepted stripped-wire practice. Keep mains wiring physically separate from this low-voltage wiring.
+
+## Final wiring purchase additions
+
+Add to the existing LaskaKit cart:
+- 10 m `LA150151A` endstop cable: ~€5.80
+- 1 m 20 AWG UL2464 2-core variant: ~€1
+- board-side connector option:
+  - housings + `LA217002` sockets, roughly <€1 if a crimper exists, or
+  - `LA150090` ~€6.1 if no crimper exists
+
+Do not add:
+- stepper extensions yet
+- special switch-side spade terminals by default
+- shielded audio cable
+- CCA cable
+- separate cable shipment
+
+## Locked wiring rules
+
+- motors: use native 1 m leads first
+- endstops: exact `SS-3GL13PT`
+- endstop logic: NC
+- switch terminals: COM + NC
+- endstop cable: 10 m `LA150151A`
+- switch end: solder + heatshrink
+- board end: 2-pin 2.54 mm female connector/pigtail
+- PSU output: ~1 m 20 AWG 2-core LaskaKit UL2464
+
+This closes the previously open cable-source question without adding a new vendor/order.
