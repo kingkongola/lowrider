@@ -77,3 +77,47 @@ Följande ska **inte** avgöras genom mer skrivbordsresearch innan delarna finns
 - kabel-/slanglängder efter verklig komponentplacering
 
 De är uttryckliga mät-/dry-fit-gates i `AUDIT.md` och `CHECKLIST.md`.
+
+## 2026-08-30 — inköpsrad + commissioning-audit
+
+Nästa auditpass gick igenom kvarvarande köp som en fysisk kedja: rätt del → passar grannkomponenten → går att montera/koppla → kan driftsättas utan dold saknad del.
+
+### Huvudkomponenterna överlevde igen
+
+Ingen anledning hittades att byta:
+- Motonet Ø30×1,5-rör
+- StepperOnline-motorerna
+- GT2 16T / idlers / 10 mm fiberglass-rem
+- 608-2RS
+- T8×8 + 5→8-kopplingar
+- HDR-60-24
+- Omron-endstops
+- Jackpot3
+- VEVOR 0700C
+- Sorotec `L1S.M.0317`
+- grundarkitekturen för bord/damm/el
+
+### Nya fynd
+
+1. **T8 400 mm ska inte automatiskt halveras.** V1E kräver 145 mm+, så ~199 mm fungerar men ger bara onödigt utstick. Ny praktisk kapregel: cirka 150–160 mm ×2 efter verklig assembly-check.
+2. **GT2 5 m har ren lagerfallback:** 3×2 m av samma 10 mm fiberglass-spec, eftersom 999/1705/1705 mm kan få varsin längd utan skarv.
+3. **20 AWG UL2464 är inte dokumenterad continuous-flex.** Den används med stor avslappnad rörelseloop; krävs snäv kabelkedjeböj byts kabeltyp.
+4. **2-core 20 AWG är nominellt ~4,8 mm OD.** Det bekräftar behovet av separat mindre gland; M20 nätglandens 5–12 mm är fel marginal för LV-kabeln.
+5. **DigiKey fri frakt var för självsäkert bokförd.** 615 kr-gränsen är verifierad, men ~622 kr-korgen är en inkl-momsuppskattning och hjälpsidan klargör inte momsbasen. Checkout får avgöra.
+6. **MicroSD saknades i vår commissioning-BOM.** Elecrow listar board + 5 tvåledarpluggar + 6 heatsinks, inte kort. V1E föredrar microSD för G-code: >2 GB, FAT32, Class 4–6. Inventera först, köp billigt endast om det saknas.
+7. **Data-USB-C är en verklig dependency.** Elecrow-kortet måste flashas och V1E varnar specifikt för charge-only-kablar. Inventera före köp.
+8. **Endstops är inte runtime limits som standard.** V1E säger att de bara är aktiva under homing. De är home/auto-square-sensorer, inte kollisionsskydd/nödstopp.
+9. **Printmiljön blev en explicit gate.** Minst 200×200×190 mm byggvolym, skew-kontroll, `Z_Stub`/`Z_Nut` testfit och slicer bridge-preview innan hela 2,7 kg-satsen.
+10. **Jackpot-kabeldragning/kylning förtydligad.** Board box, fri luftväg, kablar bredvid kortet/inte över antennen och avlastade anslutningar. Ingen fläkt köps utan behov.
+11. **Motorcommissioning förtydligad.** 2,54 mm-kontakterna passar Jackpot3; coil/connector-riktning verifieras och eventuell pluggreversering sker endast spänningslöst.
+
+### Canonical state uppdaterat
+
+- `AUDIT.md` — andra auditpasset, fynd 11–20
+- `PROCUREMENT.md` — checkout-/microSD-/USB-/T8-/belt-/flexkabelkorrigeringar
+- `BOM.md` — commissioning-dependencies och print-gates
+- `CHECKLIST.md` — fysisk exekveringsordning
+- `SOURCING.md` — bort med antagen DigiKey-frifrakt, in med lagerfallbacks
+- `DECISIONS.md` — D014: commissioning-dependencies är del av BOM
+
+Efter detta är kvarvarande osäkerheter huvudsakligen sådant som **bör** vara osäkert tills verkliga delar finns: toleranser, bordets styvhet, kabel/slangrutter, collet-runout, KJD12-variant och checkout-totaler.
