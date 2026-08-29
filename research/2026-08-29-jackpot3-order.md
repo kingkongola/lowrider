@@ -1,157 +1,196 @@
 ---
 research_date: 2026-08-29
-scope: Jackpot3 controller sourcing for Sweden
+last_updated_at: 2026-08-29
+scope: Jackpot3 controller sourcing for Sweden, exact Elecrow SKU, current stock, firmware state, and import economics
 status: recommendation-ready
-decision_state: Elecrow remains preferred international source; exact Sweden checkout total must be verified before order
-price_basis: observed web prices on 2026-08-29; shipping/tax must be re-checked in checkout
+confidence: high-on-product-medium-on-final-delivered-total
+decision_state: Jackpot3 remains the controller choice; buy from Elecrow direct unless final Sweden checkout/import route is unexpectedly poor; do not downgrade to Jackpot2 because future laser/PWM is a real planned use
+price_basis: official Elecrow/V1E pages observed 2026-08-29; Elecrow shipping is checkout-only and their published terms place tax/import responsibility on buyer
 region: Sweden / China-direct vs US
+observed_price:
+  Elecrow_USD: 76.99
+  V1E_USD: 75.99
+  approximate_Elecrow_SEK_at_2026_08_29_reference_fx_before_shipping_import: 737.44
 sources_checked:
-  - Elecrow V1 Engineering store
-  - V1 Engineering product page and Jackpot3 documentation
-  - V1 Engineering forum, European Elecrow reports
-  - Elecrow shipping/tax policy
-  - Swedish Customs / Tullverket
-supersedes: null
+  - Elecrow exact Jackpot3 product page
+  - Elecrow V1 Engineering storefront
+  - Elecrow shipping/import terms
+  - V1 Engineering Jackpot3 product page and documentation
+  - V1 Engineering Jackpot2 product/docs
+  - V1 Engineering forum European Elecrow reports
+  - Tullverket Sweden current low-value import/VAT rules effective 2026-07-01
+supersedes: previous checkout-unknown Jackpot3 note while preserving Elecrow as preferred supplier
 ---
 
-# Research: Jackpot3 purchase / delivery economics
+# Jackpot3 — Sweden purchase plan
 
-## Required controller
+## Decision
 
-The selected controller remains **Jackpot3**.
+**Controller stays Jackpot3.**
 
-Current V1E/Elecrow facts:
-- 6 integrated TMC2226 drivers
-- ESP32 / Wi-Fi
-- 7 inputs
-- four selectable 5 V / input-voltage outputs
-- full PWM capability on 5 V outputs, useful for future laser
-- 9–24 VDC input
+Preferred source:
+- **Elecrow direct**
 
-Source:
-- https://docs.v1e.com/electronics/jackpot3/
+Exact Elecrow identity:
+- product: Jackpot3 CNC Controller
+- SKU: **`CQA240812C2`**
+- observed price: **$76.99**
+- availability: **in stock**
+- listed product weight: **300 g**
 
-## Elecrow direct
+Official page:
+- https://www.elecrow.com/jackpot3-cnc-controller.html
 
-Current V1 Engineering seller page on Elecrow:
-- **Jackpot3 CNC controller: USD 76.99**
-- in stock on current indexed seller page
-- the V1 Engineering Elecrow store currently has only three products; the other two shown products are out of stock, so there is no obvious useful LR4 item to add merely for consolidation
+Elecrow current V1 Engineering storefront contains only three V1 items and Jackpot3 is the only current controller product shown in stock, so there is no useful V1-specific filler to add merely to amortize freight.
 
 Source:
 - https://www.elecrow.com/store/V1EngineeringInc
 
-### Important firmware difference
+## What is included
 
-V1E's own US store states its Jackpot3 is **pre-flashed/programmed for LowRider V4** and includes:
+Elecrow exact page states:
 - 1 × Jackpot3 board
-- 5 × plugs
-- 6 × heat sinks
-- no USB cable
+- 5 × two-wire terminal plugs
+- 6 × self-adhesive heat sinks
+- six integrated TMC2226 stepper drivers
+- integrated ESP32
 
-A December 2025 V1E forum report from a European Elecrow buyer states that **Elecrow boards were not flashed** and needed the normal V1E Jackpot3 installation procedure.
+No separate drivers or ESP32 should be bought.
 
-Therefore assume Elecrow unit may require flashing/config upload unless its current checkout/product description explicitly states otherwise.
-
-This is not a hardware disadvantage; it is a setup step.
-
-Sources:
-- https://www.v1e.com/products/jackpot3-cnc-controller
-- https://forum.v1e.com/t/setting-up-jackpot-3/52509
-
-## Why Elecrow is still the preferred international route
-
-V1E's own Jackpot3 page explicitly directs international users to Elecrow to save on shipping.
-
-European community evidence is positive:
-- December 2025 European user described Elecrow shipping as fast/easy
-- March 2026 German buyer reported a damaged board, received a return label quickly, and replacement arrived from China two days later
-- earlier European Jackpot direct-buy reports describe Elecrow as well packaged and economically much better than US shipping
+Jackpot3 hardware also provides:
+- 7 inputs
+- 4 selectable 5 V / line-voltage outputs
+- **full PWM on the 5 V output mode**
+- USB-C
+- RJ11 expansion/pendant socket
+- MicroSD
+- FluidNC / GRBL-compatible control
 
 Sources:
+- https://www.elecrow.com/jackpot3-cnc-controller.html
+- https://docs.v1e.com/electronics/jackpot3/
+
+## Elecrow board must be flashed
+
+This is now explicit rather than inferred.
+
+Elecrow's current Jackpot3 page says:
+- **“You will need to flash them”**
+
+V1E US store, by contrast, states its board is pre-flashed/programmed for LowRider V4.
+
+So the Elecrow saving comes with a small setup step:
+1. connect with a data-capable USB-C cable
+2. install the V1E-tested FluidNC version using current docs
+3. upload LowRider V4 `config.yaml` and associated V1 config/macros
+4. verify board operation before connecting the full machine
+
+This is not a reason to pay transatlantic V1E shipping; it is a normal documented setup task.
+
+Sources:
+- https://www.elecrow.com/jackpot3-cnc-controller.html
 - https://www.v1e.com/products/jackpot3-cnc-controller
-- https://forum.v1e.com/t/setting-up-jackpot-3/52509
-- https://forum.v1e.com/t/mpcnc-primo-germany-cologne/53656
+- https://docs.v1e.com/electronics/jackpot3/
 
-## Shipping cost cannot be fixed from public pages
+## Why not Jackpot2 to save $22 headline price?
 
-Elecrow calculates shipping from:
-- destination
-- parcel weight
-- selected shipping method
+Current V1E Jackpot2:
+- headline sale price **$55**
+- 6 integrated TMC2226 drivers
+- but V1E explicitly states **NO PWM** on its outputs because of a design mistake
+- the product page says it is not intended as the normal newbie/default controller
 
-The partner-seller material says global shipping can start very low, but that is not a guaranteed Sweden price for this specific board.
+Sources:
+- https://www.v1e.com/products/the-jackpot2-cnc-controller
+- https://docs.v1e.com/electronics/jackpot2/
 
-**Do not record a guessed delivered price.** Exact Sweden shipping must be read from checkout immediately before ordering.
+For this project, laser is intentionally deferred to 2027 rather than abandoned. Jackpot3's full 5 V PWM output therefore prevents a future controller workaround/replacement.
+
+The ~$22 raw board saving is not compelling because:
+- Jackpot2 is US-store sourced rather than the direct Elecrow international route found for Jackpot3
+- international freight/import can erase much of the headline difference
+- missing PWM is a real future limitation for our planned use
+
+**Keep Jackpot3.**
+
+## V1E US store comparison
+
+V1E current price:
+- **$75.99**
+- essentially identical board headline price
+- pre-flashed for LR4
+
+V1E itself directs international buyers to Elecrow for more direct/lower shipping.
 
 Source:
-- https://www.elecrow.com/Elecrow_partner_seller_Sell_DIY_Eletronics_online
+- https://www.v1e.com/products/jackpot3-cnc-controller
 
-## Sweden tax / customs warning — important in 2026
+Therefore US store is fallback only if Elecrow checkout behaves badly.
 
-Elecrow's published terms state that taxes and import duties are **not included in shipping cost** and the buyer is responsible for them unless checkout explicitly handles them.
+## Sweden import treatment — important after 1 July 2026
 
-Swedish Customs states that for goods sent from outside the EU:
-- import VAT is always due; normally 25% for this type of goods
-- from **1 July 2026**, goods valued at €150 or less also generally incur a **€3 customs charge per item** under the new low-value rule
-- carrier administration/declaration charges can also occur
-- if a seller uses IOSS, VAT can instead be collected at checkout
-
-Therefore the true Elecrow cost is not merely `USD 76.99 + displayed freight` unless checkout explicitly shows Swedish VAT/IOSS treatment.
+Elecrow's current terms say:
+- taxes/import duties are **not included in shipping cost**
+- buyer is responsible for import taxes/duties
 
 Sources:
 - https://www.elecrow.com/shippinginfo
 - https://www.elecrow.com/terms-and-condition
+
+Tullverket current rules for online purchases shipped from outside the EU:
+- Swedish VAT is always due; normally **25 %** for this type of product
+- for goods worth €150 or less, from **1 July 2026** there is also a temporary **€3 customs charge per goods line/item**
+- VAT is calculated on product value + freight + customs charge
+- carrier declaration/administration fee may also be added
+- if a seller uses IOSS, VAT can be collected at checkout instead, but the current Elecrow public policy does not provide evidence sufficient to assume IOSS for this order
+
+Sources:
 - https://www.tullverket.se/privat/panatet/handlapanatet/tullverketsguidefornathandelutanforeu/vadaravgiftenpaminvara.4.153f8c8c16ffad23c221cb2.html
 - https://www.tullverket.se/privat/panatet/handlapanatet/tullraknarenvadaravgiftenpaminvara/omtullarochavgifternarduhandlarpanatet/nytullavgiftfranden1juli2026.4.5dd2f9d519e1cbdf1a071f.html
 
-## US V1E store comparison
+### Consequence
 
-Current V1E store price:
-- **USD 75.99**
+Do **not** budget Jackpot as merely $76.99 ≈ 737 SEK.
 
-The board price is effectively the same as Elecrow, but V1E itself says international buyers can save on shipping through Elecrow.
+Even before Elecrow freight and carrier handling, Swedish VAT + the new low-value customs charge push the real landed cost materially above the headline board price.
 
-Historical European reports for direct US Jackpot purchases show shipping/processing/VAT dominating the purchase, so the US store should be treated as fallback rather than default for Sweden.
+The exact final number cannot be honestly fixed until Elecrow checkout reveals:
+- shipping method/cost
+- whether Swedish VAT is collected at checkout
+- whether an IOSS/tax line appears
+
+## Why Elecrow still wins provisionally
+
+Despite the import overhead:
+- V1E US store has essentially the same board price and is also outside the EU
+- V1E explicitly recommends Elecrow to international users to save on shipping
+- current European user reports confirm successful Jackpot3 deliveries and responsive replacement handling
+
+A March 2026 German user reported a damaged Jackpot3 from Elecrow; Elecrow supplied a return label and replacement from China quickly. That is useful evidence that the low-cost route is not necessarily unsupported.
 
 Source:
-- https://www.v1e.com/products/jackpot3-cnc-controller
+- https://forum.v1e.com/t/mpcnc-primo-germany-cologne/53656
 
-## Do we add anything else to Elecrow?
+## Checkout rule
 
-Current answer: **probably no**.
+At actual Elecrow checkout record:
+1. SKU remains `CQA240812C2`
+2. board price remains about $76.99
+3. destination = Sweden
+4. shipping method + cost
+5. whether VAT is collected
+6. any tax/IOSS wording
+7. delivery estimate
 
-The V1 Engineering Elecrow storefront currently exposes:
-- Jackpot3 — available
-- custom V1 ESP32 — out of stock
-- old Jackpot — out of stock
+Then compare with V1E US checkout only if Elecrow freight/tax handling is unexpectedly bad.
 
-Jackpot3 already integrates its ESP32 and six drivers. We do not need extra stepper drivers or ESP32 modules.
+Do not add unrelated Elecrow electronics merely to dilute shipping.
 
-Adding unrelated Elecrow electronics just to amortize freight violates the cart-optimization rule.
+## Buy status
 
-## Decision
+**Product and supplier are recommendation-ready. Final delivered total remains checkout-gated.**
 
-**Preferred supplier: Elecrow direct**, subject to a final Sweden checkout check.
-
-At checkout record:
-1. board price
-2. shipping method / cost
-3. whether Swedish VAT is collected at checkout
-4. whether any IOSS/tax line appears
-5. delivery estimate
-
-Then compare all-in expected cost to V1E US store only if Elecrow shipping/tax treatment is unexpectedly poor.
-
-### Buy / no-buy threshold
-
-No artificial SEK threshold is locked yet because the exact freight and VAT treatment are unknown. The board itself at USD 76.99 is the right price class; the decision should be based on **all-in Sweden cost**, not headline price.
-
-## Setup note after arrival
-
-Assume Elecrow board may need initial flashing:
-- follow current Jackpot3 V1E docs
-- load LowRider V4 config
-- verify firmware/config before connecting full machine
-
-Do not count a USB cable as included.
+No further controller-model research is justified unless:
+- Elecrow goes out of stock
+- Sweden checkout produces an unexpectedly high all-in price
+- the 2027 laser requirement is intentionally dropped
