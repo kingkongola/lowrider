@@ -1,175 +1,196 @@
 ---
 researched_at: 2026-08-29
+last_updated_at: 2026-08-29
 scope: machine mains power, emergency stop / NVR, controller PSU interaction
 status: researched-not-ordered
-confidence: medium-high
+confidence: high-on-architecture-medium-on-final-supplier
 machine_target: LowRider V4, ~650x1250 mm usable area
 constraints:
   - dust-prone garage
   - VEVOR 0700C router ~800 W
   - Jackpot3 controller at 24 VDC
   - prefer low complexity and low delivered cost
-  - emergency stop should stop both router and motion if practical
+  - machine stop should stop both router and motion
 sources_checked:
   - V1 Engineering Jackpot3 docs
   - V1 Engineering 24 V PSU page
+  - E-Switch KJD17 datasheet
   - Farnell Sweden
-  - DigiKey
-  - RS Sweden
-  - Kew Online / KJD17-D2 reference
+  - DigiKey Sweden
+  - ABB emergency-stop catalog / Swedish distributors
+  - Kew Online KJD17-D2 reference
 observed_prices_are_time_sensitive: true
 ---
 
 # Research: machine power + stop architecture
 
-This slice intentionally covers only the 230 V machine-power architecture and stop behavior. It does **not** specify the complete electronics enclosure yet.
+This slice covers the 230 V machine-power architecture and stop behavior. It does **not** yet lock a full enclosure/BOM.
 
 ## Electrical facts from V1E
 
-Jackpot3 accepts **9–24 VDC** and requires at least about **19 W**. V1E's normal LowRider supply is **24 V / 2.5 A / 60 W or larger**.
-
-Jackpot3 has a revised power plug/socket rather than the old screw-terminal power input. The board has no need for a mains supply inside its printed board box.
+Jackpot3 accepts **9–24 VDC** and needs at least about **19 W**. V1E normally uses **24 V / 2.5 A / 60 W or larger** for LowRider.
 
 Sources:
 - https://docs.v1e.com/electronics/jackpot3/
 - https://www.v1e.com/products/24v-power-supply
 
-## Important design goal
+## Design goal
 
-A useful stop should remove energy from **both**:
+A useful machine stop should remove energy from both:
 1. the 24 V motion controller / steppers, and
 2. the 230 V router.
 
-Stopping only Jackpot3 while leaving the router spinning is not the preferred machine-level stop architecture.
+Stopping only Jackpot3 while the router remains powered is not the preferred architecture.
 
-## Candidate architecture A — NVR machine switch upstream of both router and PSU
+## KJD17 family — exact variant distinction matters
 
-A no-volt-release (NVR) machine switch is attractive because it combines:
-- machine ON/OFF switching
-- power-failure dropout
-- mandatory manual restart after power returns
-- sufficient current rating for router + 24 V PSU
+E-Switch KJD17 part-number coding shows:
+- function `1` = normal Off-On NVR
+- function `2` = Off-On **with remote trip**
+- 230 V / 50 Hz is the correct voltage-frequency code for Sweden
 
-### Strong EU candidate: E-Switch KJD17 series
+Therefore:
+- `KJD17-21413-112` = guarded normal NVR Off-On
+- `KJD17-22413-112` = guarded NVR Off-On **with remote trip**
 
-Farnell Sweden lists `KJD17-22413-112` / `KJD17-21413-112` class devices with:
-- DPST
-- 230 VAC
-- 16 A
-- industrial pushbutton construction
-- IP54
-- electromagnetic no-voltage-release behavior
-- automatic dropout on mains failure, so the machine does not unexpectedly restart
+Both are 230 VAC, 16 A, DPST, IP54-class industrial switches with no-volt-release behavior.
 
-Observed Farnell price for `KJD17-22413-112`: **134.04 SEK ex VAT** (~167.55 SEK incl VAT) before final cart/shipping.
-
-DigiKey also lists KJD17 variants around **133–150 SEK incl VAT** depending exact variant/market.
+Current Swedish price references:
+- Farnell `KJD17-22413-112`: **134.04 SEK ex VAT** (~167.55 incl VAT)
+- DigiKey Sweden `KJD17-22413-112`: **169.45 SEK incl VAT**
 
 Sources:
-- https://se.farnell.com/e-switch/kjd17-22413-112/pb-switch-dpst-16a-230v-panel/dp/4051018
-- https://se.farnell.com/e-switch/kjd17-21413-112/pb-switch-dpst-16a-230v-panel/dp/4051016
-- https://www.digikey.se/en/products/detail/e-switch/KJD17-21413-112/4028288
+- E-Switch KJD17 datasheet: https://www.diverseelectronics.com/upload/documents/KJD17.pdf
+- Farnell: https://se.farnell.com/e-switch/kjd17-22413-112/pb-switch-dpst-16a-230v-panel/dp/4051018
+- DigiKey: https://www.digikey.se/en/products/detail/e-switch/KJD17-22413-112/16019184
 
-### Load margin
+## Important safety correction: remote trip is NOT automatically a true E-stop
 
-Approximate running load:
-- VEVOR 0700C router: ~800 W => ~3.5 A at 230 V nominal
-- 24 V / 60–100 W controller PSU: <0.5 A mains-side nominal
+The `KJD17-22413-112` remote-trip/A1 input is useful for guard/interlock circuits. It can drop the NVR coil.
 
-Total nominal running current remains far below a 16 A KJD17 rating.
+However, do **not** assume that placing a mushroom only in the A1/remote-trip loop is equivalent to a true upstream emergency disconnect. Community wiring discussions point out a failure mode: depending on wiring, holding START can energize the load even when the remote-trip loop is open. A welded/failed KJD17 contact is another reason not to treat the A1 loop as the sole emergency power isolation.
 
-This gives much more switching margin than small 230 V emergency-stop contact blocks rated only around 4–6 A in AC-15 service.
+So:
+- remote trip = useful interlock capability
+- remote trip alone = **not our final machine E-stop strategy**
 
-## Candidate architecture B — enclosed KJD17-D2 with separate mushroom emergency stop
+Reference discussion:
+- https://www.model-engineer.co.uk/forums/topic/e-stop-wiring/
 
-A known complete workshop-machine solution is `KJD17-D2`:
+## Load margin
+
+Approximate nominal running load:
+- VEVOR 0700C router ~800 W => ~3.5 A at 230 V
+- 24 V / 60–100 W controller PSU => <0.5 A mains-side nominal
+
+Total nominal load is comfortably below a 16 A KJD17 main-switch rating.
+
+## Architecture A — KJD17 NVR as machine ON/OFF, plus proper upstream E-stop
+
+This is the technically clean modular architecture:
+
+`wall -> emergency disconnect -> KJD17 NVR -> switched router + controller PSU`
+
+Benefits:
+- emergency device removes power before the NVR and load
+- NVR prevents automatic restart after power restoration
+- router and controller are both de-energized
+- KJD17 can still use its remote-trip input later for guard/interlock logic
+
+Downside: a genuinely rated E-stop that can safely interrupt the full mains load adds cost.
+
+## ABB certified mushroom candidate
+
+ABB `CE3T-10R-02`, part `1SFA619500R1051`:
+- 30 mm red mushroom
+- twist release
+- **2 NC**
+- complete compact device
+- IP66/IP67/IP69K front rating
+- conforms to EN/IEC 60947-5-5 / EN ISO 13850 family requirements in ABB catalog
+
+Swedish observed pricing:
+- CS MegaStore: **283 SEK incl VAT + 49 SEK shipping = ~332 SEK delivered**
+- RS Sweden: **333.42 SEK incl VAT**, free shipping threshold 500 SEK
+- price aggregators have shown from ~233 SEK
+
+Important: this device is ideal as a safety control contact device, but final current-utilization rating must be respected. Do not blindly run router load through a safety contact merely because the catalog says 24–300 V. If used with KJD17, safest industrial pattern is to use the E-stop to de-energize a properly rated switching element rather than rely on an underspecified pilot-device contact for router current.
+
+Sources:
+- ABB catalog: https://library.e.abb.com/public/12123c6f16c142d198fe63610e88bf5e/1SFC151007C0201_RevE3_Pilot%20devices%20catalog%20-%202025-04-03.pdf
+- CS MegaStore: https://www.csmegastore.se/i/1502612/przycisk-bezpiecze%C5%84stwa-grzybkowy-30mm-2r-0-1z-2r-24-300-v-czerwony-ce3t-10r-02-1sfa619500r1051
+- RS: https://se.rs-online.com/web/p/emergency-stop-push-buttons/2255897
+
+## Architecture B — complete KJD17-D2 NVR + mushroom station
+
+This remains the most attractive **single-box** concept found.
+
+Known `KJD17-D2` complete station reference:
 - 220–240 V
-- 16 A
-- NVR start/stop
-- separate emergency-stop button
-- two NC emergency contact blocks rated 12 A / 250 V on the referenced product
-- complete enclosure around 80×115×90 mm
+- 16 A NVR start/stop
+- separate emergency-stop mushroom
+- 2 NC emergency contacts stated as 12 A / 250 V
+- complete ~80×115×90 mm enclosure
+- reference price **£15.90** before Sweden shipping/import handling
 
-Observed reference price: **£15.90** from Kew Online before Sweden shipping/import handling.
-
-This is functionally very attractive, but the verified seller found is UK-based. Post-Brexit Sweden delivery economics are therefore currently worse/less predictable than buying an EU-distributed KJD17 switch.
+If an EU seller with credible component provenance and sensible delivered price is found, this could beat a DIY KJD17 + separate certified mushroom + contactor arrangement on both cost and simplicity.
 
 Source:
 - https://www.kewonline.net/store/product/a-nvr-no-volt-release-stopstart-emergency-stop-switch-kjd17-d2
 
-## Candidate architecture C — generic panel mushroom directly switching mains
+## Architecture C — KJD17 only, no mushroom
 
-Rejected as first choice.
+A guarded KJD17 gives:
+- green START
+- red STOP
+- NVR/no-restart protection
+- 16 A DPST main switching
 
-A certified mushroom can switch mains, but the good industrial units become surprisingly expensive. For example, RS PRO emergency-stop modules are properly rated/certified, but an individual unit is often far more expensive than the KJD17 NVR approach.
+For initial bench testing this is materially safer than a normal toggle switch, but it is **not the same physical human-factor safety as a large latching mushroom**.
 
-A cheap generic 22 mm mushroom from marketplace sellers can claim 10 A / 230–440 V, but switching ratings, positive-opening behavior and build quality are harder to trust.
-
-Therefore **do not optimize the machine stop by buying the cheapest red mushroom button**.
-
-Sources:
-- https://se.rs-online.com/web/p/emergency-stop-push-buttons/2420839
-- https://se.rs-online.com/web/p/nodstoppknappar/2420837
+Do not call this a finished E-stop solution.
 
 ## PSU implication
 
-This research changes the PSU preference slightly.
+This research strengthens the preference for an external Mean Well brick if the price premium stays modest.
 
-### Cleaner architecture
+### External brick path
 
-If we use an **external 24 V brick** such as Mean Well `GST60A24-P1J`, the mains side can remain extremely simple:
+Using `GST60A24-P1J`:
 
-`wall -> NVR machine switch -> two switched 230 V outlets -> router + 24 V brick`
+`switched 230 V -> router plug + 24 V brick plug -> Jackpot3`
 
-Advantages:
-- no open 230 V PSU terminals inside the CNC electronics enclosure
-- one machine switch removes power from both router and controller
-- easier to keep mains wiring physically separate from Jackpot3/endstop wiring
-- easier service/replacement
+Pros:
+- no open 230 V PSU terminals inside CNC electronics
+- simpler mains enclosure
+- easier separation of mains and low-voltage wiring
+- simpler service/replacement
 
-### Cheaper architecture
+### Open PSU path
 
-Using `LRS-100-24` remains electrically good and cheaper, but then its exposed mains terminals require a proper enclosed mains section. That partly erodes its ~50–100 SEK price advantage once enclosure, terminals and extra wiring are counted.
+`LRS-100-24` remains cheap and electrically excellent, but requires a proper mains enclosure around its exposed terminals.
 
-**Updated decision rule:** prefer the external `GST60A24-P1J` if delivered total remains within roughly **100–150 SEK** of the complete, safely-enclosed `LRS-100-24` solution.
+**Current rule:** prefer `GST60A24-P1J` if its delivered total is within roughly **100–150 SEK** of the complete safely-enclosed `LRS-100-24` solution.
 
-## What is actually needed in the mains box
+## Current decision state
 
-For a minimal build using external 24 V brick:
-- 1 × industrial NVR machine switch, DPST, 230 V, >=10 A; KJD17 16 A is leading candidate
-- grounded 3-core incoming flex + strain relief
-- protective earth continuity to downstream sockets / any metal enclosure
-- 2 switched grounded outlets (or an equivalent properly enclosed output arrangement)
-- insulated enclosure / panel suitable for the switch and terminals
+Locked principles:
+- machine ON/OFF should use NVR/no-volt-release behavior
+- router and controller should share the same machine-level power shutdown path
+- do not use a cheap marketplace mushroom as the only safety component
+- do not treat KJD17 remote-trip/A1 as a standalone true E-stop
 
-Not automatically needed:
-- DIN rail
-- contactor
-- separate relay
-- separate internal 230 V fuse, provided the selected devices are correctly rated and supplied from a normally protected Swedish socket circuit; final wiring still follows component requirements
-- 24 V case fan unless Jackpot3 thermal testing shows a need
+Leading product for machine ON/OFF:
+- **E-Switch `KJD17-22413-112`** because remote trip costs little and gives useful future interlock capability
 
-V1E states case fans are optional; if used they are normally 24 V and hardwired to board input power.
+Still open:
+- cheapest credible way to add a proper large emergency mushroom that really removes machine power
+- whether a complete KJD17-D2-like station can be sourced economically inside the EU
+- exact enclosure/outlet arrangement
 
-Source:
-- https://docs.v1e.com/electronics/jackpot3/
+## Next research action
 
-## Current recommendation
-
-**Leading architecture:**
-
-Use a 16 A, 230 V **NVR machine switch upstream of both router and controller PSU**. This is simpler and more useful than a low-voltage-only E-stop.
-
-Preferred sourcing direction:
-1. EU-distributed E-Switch KJD17 from Farnell/DigiKey if a suitable guarded/large-stop physical actuator is confirmed.
-2. KJD17-D2 complete NVR + mushroom enclosure only if final delivered Sweden cost is competitive.
-3. Avoid no-name standalone mushroom switches merely to save tens of SEK.
-
-## Remaining verification before order
-
-- inspect exact KJD17-21413 vs 22413 actuator/guard geometry and choose the version easiest to hit quickly
-- check whether an EU seller has a complete enclosed KJD17-D2-equivalent at sensible delivered price
-- price the final switched outlet/enclosure arrangement
-- compare total system cost for `GST60A24-P1J + simple NVR box` versus `LRS-100-24 + larger mains/electronics enclosure`
-
-No machine-power parts should be ordered from this file alone until those four points are resolved.
+Small next slice:
+1. search EU/Sweden for complete **NVR + mushroom + enclosure** stations rated >=10 A / 230 V
+2. compare delivered price against DIY `KJD17-22413-112 + certified mushroom + switching element`
+3. only then lock machine-power hardware
