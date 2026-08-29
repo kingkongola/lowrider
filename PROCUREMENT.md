@@ -21,35 +21,55 @@ Täcker:
 - GT2 **999 / 1705 / 1705 mm = 4409 mm**
 - minimum bord **941×1563 mm**, praktisk deck ~1000×1620
 - printer: **Bambu Lab P1S 256³** — LR4-byggvolym är redan löst
-- garagegrupp: **10 A**
+- garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet matningsproblem
 
 ## Aktuell ordergraf
 
 ### 1. Motonet — rör, lokal pickup
-- 2 × `88-7123`
-- Ø30×1,5 mm ×2 m
-- observerat 189 kr/st
+- 2 × `88-7123`, Ø30×1,5 mm ×2 m
 - kontrollera fysisk OD/rakhet/bucklor före betalning och kapning
 
-### 2. LaskaKit — mekanik + lågspänning
+### 2. LaskaKit — mekanik + lågspänning, rem exkluderad
 
 Köp:
 - 6 × `LA190008E` smooth idlers, 5 mm hål, 10 mm rem
 - 1 × `LA190032A` T8×8 400 mm rod
 - 2 × `LA190033A` T8×8 brass nuts
 - 2 × `LA190031` 5→8 couplers
-- 1 × `LA190013C` **5 m / 10 mm fiberglass GT2** — live 2026-08-30 i lager
 - 10 m `LA150151A` endstop cable
 - 3 m UL2464 20 AWG / ~0,52 mm² **2-core**, nominellt ~4,8 mm OD
 - board-side 2-pin endstop connector/pigtail-lösning efter crimperläge
 
-Fallback om 5 m-remmen ändrar lagerstatus: 3 × 2 m av samma 10 mm fiberglass-spec. Segmenten 999/1705/1705 mm ryms utan skarv.
+**Lagerkorrigering 2026-08-30:** direkt produktsida för LaskaKit `LA190013C` 5 m / 10 mm fiberglass GT2 visar **slut**, och även deras 2 m-alternativ visas slut. Äldre kategoridata som sade lager var stale. Remmen flyttas därför till separat källa.
 
 T8: kapa inte stången mitt itu. V1E minimum är 145 mm; sikta praktiskt på **~150–160 mm ×2 efter fysisk assembly-check**.
 
 24 V-kabeln går från fast HDR-box till rörlig Jackpot. UL2464 är inte bevisad continuous-flex-kabel; använd stor mjuk rörelseloop. Om verklig routing kräver snäv repetitiv böj/kabelkedja: byt kabeltyp.
 
-### 3. StepperOnline Germany — motors only
+### 3. GT2-rem — separat källa
+
+Exakt krav:
+- GT2 / 2 mm pitch
+- 10 mm bredd
+- gummi/neopren
+- glasfiberförstärkning, **ingen stålcord**
+- minst tre kontinuerliga bitar 999 / 1705 / 1705 mm
+
+**Förstaval live:** Roboter-Bausatz `RBS12747`:
+- GT2, 2 mm
+- 10 mm
+- gummi + fiberglass core
+- meterware/open belt
+- omedelbart tillgänglig
+- vid 5 m: **€2,25/m = €11,25 före frakt**
+
+Beställ 5 löpmeter endast om checkout/butik bekräftar att meterware levereras som en kontinuerlig längd. Det räcker till 4409 mm med ~591 mm marginal.
+
+Alternativ:
+- V1E:s egen Amazon-länk, SeekLiny ASIN `B097T4DFM6`, 10 m / 10 mm / fiberglass; Sverige/Prime checkout-gated
+- Technobots `6002-591`, 5 m / 10 mm fiberglass; exakt men UK gör den sekundär
+
+### 4. StepperOnline Germany — motors only
 
 - 1 × fempack `5-17HS19-2004S1`
 - 59 Ncm / 2 A
@@ -57,9 +77,9 @@ T8: kapa inte stången mitt itu. V1E minimum är 145 mm; sikta praktiskt på **~
 - 1 m fabrikskabel
 - Germany warehouse, live i lager och Sverige stöds
 
-Stepperextensioner köps först efter full-travel dry-fit; 2–3 kan behövas men inget ska gissas.
+Stepperextensioner köps först efter full-travel dry-fit.
 
-### 4. DigiKey — konsoliderad komponentkorg
+### 5. DigiKey — konsoliderad komponentkorg
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -70,9 +90,9 @@ Köp exakt:
 - 10 × TE Connectivity `3-350820-2` **via DigiKey `A27824-ND`**
 - 1 × Amphenol `AIO-CSM12` — M12×1.5, 3–6.5 mm, IP68, till ~4,8 mm 24 V-kabel
 
-**SKU-fälla:** använd inte Marketplace-listningen `5831-3-350820-2-ND` för Faston; den har MOQ 1000/separat fraktrisk. `A27824-ND` är den vanliga DigiKey-lagerartikeln.
+**SKU-fälla:** använd inte Marketplace-listningen `5831-3-350820-2-ND`; den har MOQ 1000/separat fraktrisk.
 
-`AIO-CSM12` löser den tidigare saknade lilla LV-förskruvningen och är en riktig behövd rad, inte filler.
+`AIO-CSM12` löser den tidigare saknade lilla LV-förskruvningen och är inte filler.
 
 Live pris-sanity 2026-08-30:
 - tidigare sex rader ~494,48 kr ex moms / ~618,10 kr inkl moms
@@ -80,7 +100,7 @@ Live pris-sanity 2026-08-30:
 
 DigiKey anger 615 kr fri-fraktgräns men offentliga sidan klargör inte säkert momsbasen. **Checkout avgör. Köp ingen filler.**
 
-### 5. VEVOR EU — router
+### 6. VEVOR EU — router
 
 - exact `0700C`
 - SKU `YXKXBJ710W65AH7WLV2`
@@ -90,48 +110,41 @@ DigiKey anger 615 kr fri-fraktgräns men offentliga sidan klargör inte säkert 
 - 65 mm body
 - 10 000–30 000 rpm
 
-VEVOR:s EU-marknadsföring återanvänder texten “6.5A motor”, men samma 6,5 A-text används på 120 V / 800 W-versionen där den matematiskt hör hemma. 0700C-manualen anger 220–240 V och 800 W men ingen 6,5 A EU-märkström. **6,5 A används därför inte som EU-current-spec.**
-
-Med sannolik DeWalt DXV30SAPTA är sammanlagd märkteffekt ~1,91 kW = ~8,3 A real-power-ekvivalent vid 230 V. Det är inte en garanti för verklig RMS-ström/startförlopp; 10 A-gruppen belastningsprovas.
+VEVOR:s EU-marknadsföring återanvänder texten “6.5A motor” från 120 V-versionen. 0700C-manualen anger EU-modellen 220–240 V / 800 W men ingen 6,5 A EU-märkström. 6,5 A används inte som EU-current-spec.
 
 Provpassa köpt Elaire-collet och mät runout. Routerförlängning endast efter full-travel dry-fit.
 
-### 6. Elecrow — Jackpot3
+### 7. Elecrow — Jackpot3
 
 - exact `CQA240812C2`
-- live $76.99, in stock
+- live $76.99, in stock i senaste kontroll
 - Sverige-frakt/VAT/import checkout-gated
 - kräver V1E FluidNC + LR4-config före driven rörelse
 
 Elecrow listar board + fem 2-wire terminal plugs + sex heatsinks; microSD anges inte.
 
-Inventera först:
-- data-kapabel USB-C
-- FAT32 microSD >2 GB, helst Class 4/6
+Inventera först data-USB-C och FAT32 microSD >2 GB, helst Class 4/6.
 
-Jackpot monteras i rörlig board box med fri luftväg; kablar bredvid, inte över kort/antenn. Ingen fläkt före faktiskt behov.
-
-### 7. SUNLU — PLA
+### 8. SUNLU — PLA
 
 - ordinary PLA
 - LR4 cirka 2,7 kg inklusive mount + board box
 - bulkplan 6 × 1 kg normalspolar
-- live 6-roll tier från ~€9,19/kg
 - köp om Sweden checkout håller ungefär 100–110 kr/kg levererat
 
-P1S löser byggvolymen. Före hela satsen återstår bara rätt 30 mm/65 mm-filer, slicer-preview och `Z_Stub`/`Z_Nut`-testfit.
+P1S löser byggvolymen. Kvar före full sats: rätt 30 mm/65 mm-filer, slicer-preview och `Z_Stub`/`Z_Nut`-testfit.
 
-### 8. Sorotec — commissioning cutters
+### 9. Sorotec — commissioning cutters
 
 - 3 × `L1S.M.0317`
 - 3,175 mm dia/shank
 - single flute upcut
 - 9 mm cutting length
-- live ~€3,70/st, tillgänglig
+- live ~€3,70/st i senaste kontroll
 
-Rätt för commissioning + 5–6 mm struts. Lång plywoodfräs köps först inför verkligt 18–19 mm-jobb.
+Rätt för commissioning + 5–6 mm struts. Lång plywoodfräs köps senare vid verkligt behov.
 
-### 9. Allegro — GT2 16T orphan
+### 10. Allegro — GT2 16T orphan
 
 Need 3 exact:
 - `GT2-16T-5B_10mm_K`
@@ -139,36 +152,32 @@ Need 3 exact:
 - 5 mm bore
 - för 10 mm belt
 - dual grub screws
-- live ~7,20 PLN/st
+- live ~7,20 PLN/st i senaste kontroll
 
-Byt säljare, inte spec, om Sverige-frakt blir dålig. LaskaKits 16T-del för 6 mm rem är fel.
+Byt säljare, inte spec, om Sverige-frakt blir dålig.
 
-### 10. KEDU KJD12-14 — NVR/maskinstopp
+### 11. KEDU KJD12-14 — NVR/maskinstopp
 
-**Preferred exact family is now KEDU `KJD12-14`.**
+Preferred exact family: **KEDU `KJD12-14`**.
 
 KEDU-datablad verifierar:
-- 18 A AC-1 / **15 A AC-3** (EN60947/TÜV)
+- 18 A AC-1 / **15 A AC-3**
 - coil option `V3` = 230 V / 50 Hz
 - 6,3×0,8 mm Faston
 - IP54
 - accessory `A3` = emergency-stop button + waterproof cover
 
-CEM Elettromeccanica har live genuin KEDU med bipolar NVR + röd svamp/gul kåpa; deras eBay-annons identifierar delen som **KJD12-14**. Produktpris runt €15 direkt / ~€22 på eBay-nivå; Sverige-frakt är checkout-gated.
+CEM Elettromeccanica har konkret genuin KEDU med bipolar NVR + röd svamp/gul kåpa; deras eBay-annons identifierar KJD12-14. Sverige-frakt checkout-gated.
 
-Köp endast om den levererade varianten faktiskt är 230 V/50 Hz KJD12-14 med rätt actuator/terminaler. Denna spec har god marginal både mot vår nominella last och 10 A-gruppen.
+Terminologi: **NVR/maskinstopp**, inte påstående att den hemmabyggda helheten är en certifierad safety-rated E-stop-krets.
 
-Terminologi: **NVR/maskinstopp**, inte påstående om att den hemmabyggda helheten är en certifierad safety-rated E-stop-krets.
-
-### 11. Biltema — lokal elbox
+### 12. Biltema — lokal elbox
 
 - `35-0065` IP65 4-module enclosure — först efter fysisk KJD12/HDR dry-fit
 - `35-0067` större fallback
 - `46-3610` 3 m 3G1,5 donor extension cord — endast om verklig in+ut-rutt räcker
 
-KJD12 ska vara direkt nåbar från normal operatörsplats.
-
-### 12. Bord / deck / spoilboard
+### 13. Bord / deck / spoilboard
 
 - begagnat styvt **160–180 cm**, helst 90–100 cm djupt
 - helst ≤700 kr
@@ -189,17 +198,11 @@ Reuse-first:
 
 Stålbehållare är inte automatiskt vacuum-säker; färdig cyclone-can ska deformationstestas kontrollerat.
 
-## 10 A garagegrupp — designregel
+## 10 A garagegrupp
 
-Känd grupp: **10 A**.
+Känd 10 A-grupp fungerar praktiskt med svets; plasma har kunnat lösa säkringen. VEVOR 800 W + DeWalt + liten PSU behandlas därför **inte som ett öppet projektproblem**.
 
-Före riktig fräsning:
-1. bekräfta DeWalt-typskylt
-2. identifiera B10/C10/etc, JFB och delade laster
-3. kör DeWalt ensam
-4. kör controller + DeWalt AUTO + VEVOR utan skärlast
-5. prova normal fräsning utan andra stora laster på samma grupp
-6. vid nuisance trip: ändra last-/kretsarkitektur, **aldrig uppsäkra utan verifiering av fasta installationen**
+Vid första samtidiga körningen: vanlig sanity-check. Om säkringen faktiskt löser, utred då. Uppsäkra aldrig som workaround utan kontroll av fasta installationen.
 
 ## Endstop-semantik
 
@@ -208,15 +211,16 @@ Före riktig fräsning:
 ## Aktuell köpstatus
 
 **Spec klar; endast checkout/frakt kvar:**
-1. LaskaKit
-2. StepperOnline Germany
-3. DigiKey — med `A27824-ND` + `AIO-CSM12`
-4. VEVOR 0700C
-5. Elecrow Jackpot3
-6. SUNLU ordinary PLA
-7. Sorotec cutters
-8. Allegro 16T
-9. CEM/eBay KEDU KJD12-14
+1. LaskaKit utan rem
+2. Roboter-Bausatz 5 m `RBS12747` — jämför landad kostnad mot Amazon-ASIN
+3. StepperOnline Germany
+4. DigiKey — `A27824-ND` + `AIO-CSM12`
+5. VEVOR 0700C
+6. Elecrow Jackpot3
+7. SUNLU ordinary PLA
+8. Sorotec cutters
+9. Allegro 16T
+10. CEM/eBay KJD12-14
 
 **Fysisk kontroll istället för mer webbresearch:**
 - Motonet-rör
@@ -224,6 +228,5 @@ Före riktig fräsning:
 - VEVOR/Elaire collet/runout
 - DeWalt-typskylt
 - full-travel kablar/slang
-- 10 A-grupp under verklig last
 
 Ändra inte specifikationer bara för att minska antal paket.
