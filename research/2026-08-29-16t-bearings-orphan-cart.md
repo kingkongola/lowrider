@@ -1,198 +1,196 @@
 ---
 research_date: 2026-08-29
+last_updated_at: 2026-08-29
 scope: remaining orphan mechanical items: 3× GT2 16T 5mm/10mm pulleys and 14× 608-2RS bearings
 status: recommendation-ready
-decision_state: do not distort larger carts to absorb these cheap items; 16T can come from a verified low-cost EU/Choice source; Amazon Prime remains attractive for 608 only if an exact current 20-pack listing can be verified, otherwise use low-cost EU/Allegro
-price_basis: observed prices 2026-08-29; international shipping/variant selection must be verified before order
-region: Sweden / EU / low-value marketplace fallback
+decision_state: keep these as orphan commodity purchases; use exact Allegro 16T if Sweden checkout is sensible, otherwise exact AliExpress Choice fallback; for 608 first check the active Swedish Tradera seller for a current 20-pack around <=200 SEK delivered, otherwise use low-cost EU/Allegro; do not force either item into a worse larger cart
+price_basis: observed prices 2026-08-29; marketplace shipping and current listing state must be verified at checkout
+region: Sweden / EU / marketplace fallback
 sources_checked:
-  - Allegro exact 16T pulley listing
-  - Allegro EU/Sweden international shipping documentation
-  - AliExpress indexed current 10mm-width pulley packs
-  - Allegro 608-2RS commodity/premium references
-  - Amazon.se targeted exact-model searches
-  - external product references for legacy Amazon ASIN B07X5T7DGS
-supersedes: assumption that 16T and 608 must necessarily share one seller
+  - V1 Engineering current LR4 BOM
+  - Allegro exact 16T pulley product
+  - Allegro exact 608-2RS listings/search results
+  - Allegro Sweden international shipping documentation
+  - targeted Amazon.se exact-variant searches
+  - Tradera Swedish 608-2RS seller/listings
+  - Fyndiq exact 20-pack reference
+  - AliExpress indexed 10mm-width pulley packs
+supersedes: earlier assumption that Amazon Prime would probably be the 608 winner
 ---
 
-# 16T pulleys + 608 bearings: orphan-item strategy
+# Final orphan strategy: 16T pulleys + 608-2RS
 
-## Why these should not drive the whole order graph
+These are now intentionally treated as cheap orphan items. Their low item value means they must not distort the already-good LaskaKit/DigiKey/StepperOnline carts.
 
-After the LaskaKit cart is resolved, two cheap mechanical families remain:
-- 3 × GT2 drive pulley
-- 14 × 608-2RS bearings
+## 1. 16T drive pulleys
 
-Both are commodity items. Forcing another otherwise-worse cart merely to consolidate them can easily cost more than one small shipment.
+### Locked LR4 requirement
 
-The objective is now:
-- exact variant
-- low delivered cost
-- no geometry surprises
-
-not absolute minimum parcel count.
-
-## 1. Exact 16T requirement
-
-Locked LR4 spec:
-- **16 teeth**
+V1E current BOM calls for:
+- 3 × pulley
 - GT2 / 2 mm pitch
-- for **10 mm belt**
+- **16 teeth**
+- **10 mm belt**
 - **5 mm bore**
-- aluminium
-- 3 required
-- two radial set screws preferred
 
-## Allegro exact candidate — strongest fully specified current listing
+Source:
+- https://docs.v1e.com/lowrider/
 
-Offer/product:
-- manufacturer code `GT2-16T-5B_10mm_K`
+### Best fully verified part: Allegro `GT2-16T-5B_10mm_K`
+
+Current exact product:
 - 16T
-- 10 mm belt
 - 5 mm bore
-- tread width 11 mm
+- for 10 mm GT2 belt
+- 11 mm tread width
 - aluminium
 - **2 set screws included**
 - observed price **7.20 PLN each**
-- listing showed 18 pcs available
-- seller `NsCNC`, business/Super Seller, 99.8% shown
 
 Need 3:
-- **21.60 PLN in parts**
+- parts = **21.60 PLN**
 
 Source:
 - https://allegro.pl/oferta/napedowe-kolo-zebate-gt2-na-pasek-10mm-walek-5mm-16t-cnc-druk-3d-18355347606
 
-### Sweden shipping caveat
+This remains the strongest exact-spec listing because the geometry is explicitly stated rather than inferred from a variant title.
 
-Allegro officially supports DHL/DPD international shipping from Poland to Sweden **when the seller enables that method**.
+### Sweden shipping rule
 
-Current Allegro help lists maximum seller-set Sweden prices around:
-- DHL Sweden: up to **53.99 PLN**
-- DPD Sweden: up to **56.99 PLN**
+Allegro supports DHL/DPD delivery from Poland to Sweden when the seller enables it, but the exact seller/order freight must be checked in checkout.
 
-These are platform maxima, not proof that this exact NsCNC offer ships to Sweden or what checkout will charge.
+Do not accept an international freight charge that makes three tiny pulleys absurdly expensive.
 
-Sources:
-- https://help.allegro.com/en/sell/c/dhl-international-delivery-options
-- https://help.allegro.com/en/sell/a/allegro-dpd-courier-international-shipping-from-poland-to-the-european-union-LR80YA872fw
+**Buy rule:** if delivered total for 3 exact Allegro pulleys is roughly <=150–180 SEK, just buy them and stop optimizing.
 
-**Buy condition:** use Allegro only if Sweden can actually be selected on this exact seller/order and delivered total stays sensible.
+### AliExpress / Choice fallback
 
-## AliExpress / Choice fallback — potentially even cheaper
-
-Fresh indexed listing, product ID `1005012977561121`:
-- 5 pcs aluminium GT2 pulleys
-- selectable 16T / 20T
-- selectable 5 / 6.35 / 8 mm bore
-- title explicitly includes fit for **10 mm belt width**
-- observed headline around **US$6.62 / 5 pcs** before variant-specific price/shipping
-
-Source reference:
-- https://www.pricearchive.org/aliexpress.com/item/1005012977561121
-
-This is economically attractive because buying 5 gives two useful spares.
-
-But marketplace variant risk is high. **Do not order from the headline alone.** Checkout variant must visibly resolve to:
+Current indexed 5-pack candidates exist with selectable:
 - 16T
 - 5 mm bore
 - 10 mm belt width
-- quantity 5
 
-Also verify Swedish VAT/Choice shipping in checkout.
+A previously identified 5-pack product ID is `1005012977561121`, headline around US$6.62 before variant-specific checkout.
 
-A second current 2-piece listing exists under product ID `1005006189009543`, also advertising 16/20T, multiple bores and GT2-10 mm compatibility, but again exact variant pricing must be checked.
+This can be even better because two spare pulleys are useful.
 
-## Previous EU shop candidates remain valid
+But marketplace variant selection is the risk. Checkout must visibly resolve to:
+- 16T
+- 5 mm bore
+- 10 mm belt width
+- qty 5
 
-Known exact alternatives:
-- Hellas Digital `070.0051`: ~€1.61 each
-- Anodas `AN-18925`: ~€3 each
+If exact variant + Swedish VAT/Choice shipping is around <=120–150 SEK delivered, it beats a badly-shipped Allegro order.
 
-The issue is not part price but standalone shipping.
+### EU-shop fallbacks
 
-Therefore use them only if another purchase from those sellers appears.
+Still exact but only useful if freight can be shared:
+- Hellas Digital `070.0051`, ~€1.61 each
+- Anodas `AN-18925`, ~€3 each
 
-## 2. 608-2RS requirement
+Do not create a €15 shipment for €5 of pulleys.
 
-Locked spec:
+## 2. 608-2RS bearings
+
+### Locked requirement
+
 - 608-2RS
 - **8×22×7 mm**
-- rubber seals both sides
-- 14 required
+- rubber seal both sides
+- 14 installed
+- preferred procurement quantity: **20**
 
-Preferred procurement quantity:
-- **20 pcs**, leaving 6 spares
+V1E uses these as simple guide bearings. Premium SKF/NSK is not justified.
 
-Target delivered cost from prior research:
-- roughly **<=180 SEK**
+## Swedish Tradera route — current first check
 
-## Allegro proves bearings themselves are extremely cheap
-
-Current examples:
-- generic/MW `608 2RS`, exact 8×22×7: **2.00 PLN each**, 4.93/5 across 183 ratings on the indexed offer
-- TCT 608 2RS exact 8×22×7: around **1.10 PLN each** in another indexed offer
-- ZVL 608 2RSR: around 5 PLN each
-- NSK premium 608 2RS: around 9.85 PLN each
-
-Sources:
-- https://allegro.pl/oferta/lozysko-kulkowe-zwykle-mw-608-2rs-8x22x7mm-17809698450
-- https://allegro.pl/oferta/608-2rs-lozysko-kulkowe-8x22x7-mm-608-2rsr-608-rs-tct-5665261914
-- https://allegro.pl/oferta/lozysko-kulkowe-608-2rsr-zvl-8x22x7-2rs-rs-gumki-8413722125
-
-At 2 PLN each, even 20 bearings are only 40 PLN in parts. Shipping dominates.
-
-## Do not buy premium NSK/SKF for LR4 guide bearings
-
-The bearings are simple rolling guide elements in this machine. V1E specifies 608-2RS, not precision-brand bearings.
-
-A premium NSK example at ~9.85 PLN each would make 14 bearings ~138 PLN before shipping — several times the commodity cost with no meaningful LR4 payoff.
-
-## Can Allegro combine pulleys + bearings?
-
-No same-seller 608 listing from `NsCNC` was verified in this research pass.
-
-Therefore do not assume Allegro can consolidate these items. If checkout/seller catalogue later reveals exact 608-2RS from NsCNC at sensible cost, great; otherwise keep bearings separate.
-
-## Amazon Prime check — useful negative result
-
-A targeted Amazon.se search on 2026-08-29 did **not** produce a current listing that could be verified end-to-end as all of:
-- 20 bearings
+A Swedish business seller, `Motion_And_Rotaion` / related earlier seller identity, has repeatedly listed exact:
 - 608-2RS
 - 8×22×7 mm
 - double rubber seal
-- current Amazon.se price/availability
+- chrome/hardened steel
 
-A legacy candidate remains externally identifiable:
-- ASIN **`B07X5T7DGS`**
-- TIMESET 20-pack
-- external references describe it as 608-2RS / 8×22×7 / rubber-sealed
+A verified 20-pack listing was:
+- **170 SEK**
+- **10 SEK Sweden shipping**
+- total **180 SEK delivered**
 
-But the current Amazon.se listing, selectable variant, price and availability could **not** be verified in this pass. Therefore this ASIN is **not approved for purchase** yet.
+Source/reference:
+- https://www.tradera.com/item/301813/723643685/20st-608-2rs-ball-bearing-8x22x7mm-608-2rs-rubber-sealed
 
-Other fresh web results prove that 20-pack 608-2RS / 8×22×7 commodity packs are common, but they were not current Swedish Amazon product pages.
+That exact 20-pack page is an older listing and must not be described as currently active. However, the same seller family is still visibly active in August 2026 selling fresh 608-2RS sets with the same exact 8×22×7 specification.
 
-Examples/reference only:
-- PGN 20-pack 608-2RS 8×22×7 is a widely listed commodity product
-- multiple current non-Amazon sellers list exact 20-packs
+Therefore the new practical rule is:
 
-**Rule:** if the user finds an Amazon Prime listing/screenshot, verify the actual selected option against `20 pcs / 608-2RS / 8×22×7` and compare delivered price. Do not trust title fragments or an old ASIN.
+**First check the seller's current inventory for a 20-pack. If exact 20-pack is <=200 SEK delivered from Sweden, buy it.**
 
-## Decision tree
+Why this is attractive:
+- domestic shipping
+- no variant/import ambiguity
+- exact dimension/seal spec
+- six useful spares
+- total already inside our previous target band
 
-### 16T pulleys
-1. Check exact Allegro `GT2-16T-5B_10mm_K` Sweden checkout.
-2. Compare delivered total against a verified AliExpress Choice 5-pack with exact 16T/5mm/10mm variant.
-3. If both shipping routes are poor, use Hellas/Anodas only when another order can share freight.
+## Allegro fallback for bearings
 
-### 608 bearings
-1. If a current Amazon Prime 20-pack exact `608-2RS 8×22×7` appears around **<=180 SEK delivered**, use it for convenience.
-2. Otherwise use a low-cost EU/Allegro commodity seller if Sweden delivery keeps total below target.
-3. Do not pay SKF/NSK premium.
-4. Legacy Amazon ASIN `B07X5T7DGS` remains **unverified/current-status unknown**, not approved.
+Fresh Allegro search results show exact generic 608-2RS / 8×22×7 in 10-packs around:
+- ~9.4–10.2 PLN per 10-pack
 
-## Current conclusion
+So two 10-packs can be only ~20 PLN in parts. Freight dominates.
 
-**These items are intentionally allowed to remain separate orphans.**
+Examples/search evidence:
+- https://allegro.pl/listing?string=%C5%82o%C5%BCysko+kryte+8+22+608rs
 
-A 50–150 SEK shipping difference here is smaller than the risk/cost of contaminating the already-good LaskaKit cart with wrong variants or premium parts.
+If a seller ships two exact 10-packs to Sweden cheaply enough, this can beat Tradera. But do not assume Polish domestic 'with delivery' prices apply to Sweden.
+
+### Quality tier
+
+Generic commodity 608-2RS is acceptable for LR4.
+
+Named low/mid-cost Polish/European brands such as CX, KINEX or CODEX are also fine if the delivered premium is tiny, but no benefit justifies paying several times more.
+
+## Amazon Prime — no longer the assumed winner
+
+Repeated targeted Amazon.se searches still failed to verify a current exact listing end-to-end as:
+- 20 pcs
+- 608-2RS
+- 8×22×7
+- rubber seals both sides
+- current Swedish price/availability
+
+Legacy ASIN `B07X5T7DGS` remains **unverified and not approved**.
+
+Prime is still welcome if an exact current listing appears, but it no longer gets priority merely because Prime exists.
+
+## Rejected current Swedish option
+
+Fyndiq has a current exact 20-pack around:
+- 309 SEK
+- +29 SEK freight
+
+It is correct specification but poor value versus the historical/current Swedish Tradera seller pricing and cheap EU commodity sources.
+
+Source:
+- https://fyndiq.se/produkt/20-st-608-2rs-kullager-lagerstal-lager-8x22x7mm-d-256fc72ef6e24828/
+
+## Checkout decision tree
+
+### 16T
+1. Try exact Allegro `GT2-16T-5B_10mm_K` ×3.
+2. If Sweden delivered <=150–180 SEK: buy.
+3. If freight is bad, verify exact AliExpress Choice 5-pack 16T/5mm/10mm.
+4. Buy the Choice pack if <=120–150 SEK delivered with VAT and exact variant visibly selected.
+5. Hellas/Anodas only if freight is shared with another real purchase.
+
+### 608
+1. Check current Tradera inventory from the active Swedish 608 seller.
+2. If exact 20-pack 608-2RS / 8×22×7 is <=200 SEK delivered: buy.
+3. Otherwise price 2×10 exact packs on Allegro including Sweden delivery.
+4. Amazon Prime only if an exact current 20-pack is actually verifiable around <=180–200 SEK delivered.
+5. Reject Fyndiq at ~338 SEK delivered and reject SKF/NSK premium.
+
+## Final status
+
+The specs and thresholds are now locked. What remains is only live checkout/listing state.
+
+These parts do **not** justify more architecture research. They should be bought opportunistically under the thresholds above while the larger carts are being placed.
