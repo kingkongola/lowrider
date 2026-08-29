@@ -103,6 +103,8 @@ Endstops: **Omron SS-3GL13PT**. Köp 10, installera 5 och behåll 5 reserv. Kopp
 
 DigiKey-korgen konsoliderar även 16 × 608-2RS, Wago, M20 nätgenomföringar och Faston enligt `PROCUREMENT.md`.
 
+**Auditgräns:** DigiKey anger fri frakt vid 615 kr men vår ~622 kr är en inkl-momsuppskattning. Fri frakt räknas inte som säker förrän checkout visar den.
+
 ## D011 — Ø30 mm rails låser printvariant och strut-wing
 **Status:** beslutat / audit-fynd
 
@@ -121,11 +123,12 @@ KJD12 + HDR-60-24 sitter i en **fast box på bordet**. Jackpot3 sitter separat p
 
 Tidigare antagande om ~1 m 24 V-kabel är borttaget.
 
-- köp 3 m flexibel 20 AWG 2-core som längdmarginal
+- köp 3 m 20 AWG 2-core som längdmarginal
 - kapa/terminera efter full-travel dry-fit
 - 24 V-utgången får egen kabelgenomföring/dragavlastning
 - routerkabel, 24 V, stepper/endstopkablar och vac-hose testas tillsammans vid alla rörelseextremer innan slutlig kabelinfästning
 - Jackpot-boxen hålls separat och luftig; den ska inte stoppas in i 230 V-boxen
+- UL2464/PVC-rutten ska ha stor rörelseloop; krävs snäv repetitiv böj används continuous-flex-kabel i stället
 
 ## D013 — KJD12 är NVR/maskinstopp, inte påstått safety-rated E-stop
 **Status:** beslutat terminologi/säkerhetsgräns
@@ -138,3 +141,18 @@ Den ska:
 - vara direkt nåbar från normal operatörsplats
 - väljas efter exakt 230 V/50 Hz-variant, märkdata, terminalschema och mekaniska mått
 - dry-fittas i kapslingen innan håltagning
+
+## D014 — Commissioning-dependencies är del av BOM, inte eftertanke
+**Status:** beslutat / andra auditpasset
+
+Andra inköpsauditens huvudfynd är att en komplett komponentlista inte räcker om maskinen ändå inte kan flashas, köras eller verifieras.
+
+Därför gäller:
+- Elecrow Jackpot3 kräver **data-kapabel USB-C** för flashing; inventera först
+- Jackpot3 behöver ett lämpligt **microSD >2 GB, FAT32, helst Class 4/6** för den föredragna G-code-filvägen; inventera först, köp bara om det saknas
+- endstops är i standardkonfiguration **home/auto-square-sensorer**, inte runtime hard limits/kollisionsskydd
+- printer-gate före full sats: minst 200×200×190 mm byggvolym, skew-kontroll, `Z_Stub`/`Z_Nut` testfit och bridge-preview
+- 400 mm T8-stång kapas inte automatiskt i halvor; praktiskt mål är cirka 150–160 mm ×2 efter fysisk kontroll, V1E minimum 145 mm
+- om 5 m GT2-rullen saknas är 3×2 m samma 10 mm fiberglass-spec en ren fallback utan skarvar
+
+Princip: **en rad är inte godkänd bara för att delen i sig är rätt; dess monterings-, kabel-, konfigurations- och commissioning-gränssnitt måste också vara täckta.**
