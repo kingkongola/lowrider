@@ -51,9 +51,9 @@ Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, 
 - [ ] cirka 2,7 kg vanlig styv PLA krävs; bulkplan 6 × 1 kg SUNLU om checkout håller
 - [ ] 3 × GT2 16T / 5 mm bore / för 10 mm belt
 - [ ] 6 × smooth GT2 idlers / 5 mm bearing bore / för 10 mm belt, LaskaKit `LA190008E`
-- [ ] 1 × 5 m, 10 mm fiberglass GT2 belt, LaskaKit `LA190013C`; 5 m räcker till 4409 mm kalkylerat behov
+- [ ] 1 × 5 m, 10 mm fiberglass GT2 belt, LaskaKit `LA190013C`; **fallback 3 × 2 m av samma spec** om 5 m-rullen är slut
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
-- [ ] 1 × T8×8 400 mm rod, 4-start / 2 mm pitch / 8 mm per rev; kapas till två >145 mm Z-skruvar
+- [ ] 1 × T8×8 400 mm rod, 4-start / 2 mm pitch / 8 mm per rev; **kapa först efter assembly-check, praktiskt mål ~150–160 mm ×2**, V1E minimum 145 mm
 - [ ] 2 × matching T8×8 brass nuts
 - [ ] 2 × 5→8 mm flexible couplers
 - [ ] material till permanenta strut plates, 5–6 mm MDF/hardboard preferred, max 6,35 mm
@@ -68,12 +68,16 @@ Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, 
 - [ ] 10 m LaskaKit `LA150151A`, UL2464 26 AWG 3×0,14 mm²; använd 2 ledare för endstops
 - [ ] 2-poliga 2,54 mm board-side endstopkontakter/pigtails + reserv
 - [ ] Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN PSU
-- [ ] **3 m** flexibel UL2464 20 AWG / ~0,52 mm² **2-core** för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
-- [ ] **1 separat mindre kabelgenomföring/dragavlastning för 24 V-kabeln**, dimensionerad efter faktisk kabel-OD
+- [ ] **3 m** UL2464 20 AWG / ~0,52 mm² **2-core**, nominellt ~4,8 mm OD, för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
+- [ ] **1 separat mindre kabelgenomföring/dragavlastning för 24 V-kabeln**, dimensionerad efter faktisk ~4,8 mm OD
+- [ ] **microSD till Jackpot3: inventera först**; om inget lämpligt finns, enkelt 4–32 GB FAT32 Class 4/6
+- [ ] **data-kapabel USB-C-kabel: inventera/verifiera** för flashing; köp bara om den saknas
 
 ### Fysisk kabelregel
 
 HDR-boxen är fast på bordet medan Jackpot3 sitter på den rörliga beam/gantryn. Därför får ingen 24 V-längd, routerkabel eller stepperextension slutmonteras utifrån skrivbordsmått.
+
+Den valda UL2464/PVC-kabeln är flexibel flertrådig men inte dokumenterad som continuous-flex/drag-chain. Använd stor avslappnad rörelseloop. Om verklig routing kräver liten repetitiv böjradie ska en uttryckligt continuous-flex-kabel användas i stället.
 
 Före slutliga clips/remspänning ska maskinen manuellt kunna nå alla fyra hörn + Z-extremer med samtidigt monterade:
 - 24 V-kabel
@@ -95,7 +99,7 @@ Baseline:
 - [ ] Biltema `35-0065` IP65 4-moduls DIN-kapsling, 120×160×90 mm — **endast om riktig dry-fit ger säker terminal-/böjradie**
 - [ ] Biltema `35-0067` 12-moduls kapsling — fallback om lilla boxen blir trång
 - [ ] jordad 3G1,5 donor extension lead, t.ex. Biltema `46-3610`; 3 m endast om faktisk in+ut-rutt räcker
-- [ ] 2 × M20×1,5 kabelgenomföring för 3G1,5 nät in/ut
+- [ ] 2 × M20×1,5 kabelgenomföring för 3G1,5 nät in/ut; kontrollera faktisk donor-kabel-OD mot glandens 5–12 mm spann
 - [ ] 3 × genuine Wago 221-413 för L/N/PE-fördelning
 - [ ] isolerade 6,3×0,8 mm Faston som passar faktisk KJD12 och kabelarea
 
@@ -107,7 +111,7 @@ PE till DeWalt-uttaget ska vara kontinuerlig och oswitchad. HDR-60-24 är Class 
 
 - [ ] VEVOR 0700C, 800 W, 65 mm body, 10 000–30 000 rpm — SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`
 - [ ] provpassa köpt Elaire/Makita-style 1/8" collet och kontrollera korrekt säte + runout före riktig fräsning
-- [ ] 3 × Sorotec `L1S.M.0317`, 3,175 mm single-flute upcut, 9 mm skärlängd
+- [ ] 3 × Sorotec `L1S.M.0317`, 3,175 mm single-flute upcut, 9 mm spiral/skärlängd; commissioning + 5–6 mm strut-material
 - [ ] router-förlängningskabel **endast** om full-travel dry-fit visar att fabriksledningen inte räcker
 - [ ] lång 3,175 mm single-flute, minst ~22–25 mm faktisk skärlängd, först inför verkligt 18–19 mm plywoodjobb
 
@@ -124,7 +128,7 @@ Se `TABLE.md`.
 
 - [ ] LR4 dust shoe för Makita/65 mm — printas
 - [ ] V1E TPU-bristles med redan ägd TPU om ~95A
-- [x] DeWalt shop-vac finns
+- [x] DeWalt shop-vac finns; **bekräfta typskylt innan AUTO/tool-socket-spec används som faktum**
 - [ ] 3D-printad cyklonavskiljare först; kommersiell endast fallback
 - [ ] styv 15–30 l uppsamlingsbehållare före DeWalt
 - [ ] testa befintlig DeWalt 48 mm ×2,1 m slang först
@@ -142,15 +146,29 @@ Se `TABLE.md`.
 - [ ] ändhylsor/ferrules där de passar skruvterminalerna och rätt tång finns
 - [ ] ingen T-track/clamp-order nu — skruv/tabs i spoilboard först
 
+## Print-gate innan full sats
+
+V1E anger minst 200×200×190 mm tillgänglig byggvolym.
+
+Före de långa printarna:
+- [ ] verifiera byggvolym
+- [ ] kontrollera printer skew/90°
+- [ ] provprinta `Z_Stub` + `Z_Nut` och kontrollera passning
+- [ ] granska Dust Skirt/YZ_Plate bridges i slicer-preview, särskilt vid Cura-baserad slicer
+- [ ] använd högsta aktuella versionsnummer på versionsmärkta delar
+
 ## Konfigurationsgate för Jackpot3
 
 Elecrow-kortet är inte V1E-förkonfigurerat. Före driven rörelse:
 - flasha V1E:s vid byggtillfället aktuellt testade FluidNC-paket
 - ladda rätt LR4-konfiguration
+- verifiera microSD om det ska användas för G-code
 - kontrollera motorutgångar/endstopstatus
 - börja jogga 1 mm i taget
 
-Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan med fri luftväg; stoppa den inte i den slutna 230 V-kapslingen.
+Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan i board box med fri luftväg. Kablar går bredvid kortet, inte över kort/antenn, och avlastas innan de lämnar boxen. Ingen fläkt köps innan behov visas.
+
+**Endstop-semantik:** de fem Omron-brytarna är home/auto-square-endstops. I V1E:s standardkonfiguration är de bara aktiva under homing och är **inte runtime hard limits eller kollisionsskydd**.
 
 ## Valfritt senare
 
@@ -167,4 +185,5 @@ Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan med fri luftväg; 
 - [ ] KJD12/HDR-box fysisk dry-fit godkänd
 - [ ] full-travel kabel/slang-test godkänt
 - [ ] statisk jordväg verifierad
+- [ ] Jackpot microSD/data-USB/firmware/config verifierat
 - [ ] 230 V PE/L/N/dragavlastning verifierad före energisering
