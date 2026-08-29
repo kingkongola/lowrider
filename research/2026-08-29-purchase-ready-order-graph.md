@@ -3,7 +3,7 @@ research_date: 2026-08-29
 last_updated_at: 2026-08-29
 scope: consolidated current order graph after component-level LR4 sourcing research
 status: recommendation-ready
-decision_state: core machine hardware, PLA and compact mains enclosure are product-locked or threshold-locked; remaining work is mainly checkout totals, table/base, first cutter/workholding and a few commodity orphan items
+decision_state: core machine hardware, PLA, compact mains enclosure and commissioning tooling are product-locked or threshold-locked; remaining work is mainly checkout totals, table/base and a few commodity orphan items/consumables
 price_basis: only prices already verified in dated research files; unknown checkout freight/import is left unknown rather than estimated
 region: Sweden / EU
 sources_checked:
@@ -19,6 +19,7 @@ sources_checked:
   - research/2026-08-29-dewalt-tool-socket.md
   - research/2026-08-29-pla-bulk.md
   - research/2026-08-29-mains-enclosure-distribution.md
+  - research/2026-08-29-first-cutters-workholding.md
 supersedes: null
 ---
 
@@ -165,6 +166,36 @@ Checkout gate:
 - 6-roll discount actually applied
 - free/low shipping holds
 
+## Order 7 — Sorotec commissioning cutters: PURCHASE-READY
+
+- 3 × `L1S.M.0317`
+- 3.175 mm diameter + shank
+- single-flute upcut
+- 9 mm cutting length
+- solid carbide
+- €3.70 each
+
+Parts:
+- **€11.10**
+
+Verified Sorotec Sweden freight up to 0.5 kg:
+- **€8.30**
+
+Expected delivered:
+- **~€19.40**
+
+Use these for commissioning, XPS, thin material and the ~6 mm permanent struts.
+
+Do **not** buy the long plywood cutter yet. When an 18–19 mm sheet-through-cut job is actually queued, buy 1–2 single-flutes with at least ~22–25 mm cutting length from the best current EU source.
+
+Workholding purchase for commissioning:
+- **none by default**
+- screws/sacrificial tabs directly into MDF spoilboard
+- no T-track, insert grid or clamp kit until actual use shows need
+
+Detailed source:
+- `research/2026-08-29-first-cutters-workholding.md`
+
 ## Local pickup — Motonet: NEAR PURCHASE-READY
 
 - 2 × Motonet `88-7123`
@@ -200,7 +231,7 @@ Swedish fallback:
 
 ## Compact 230 V enclosure/distribution: RECOMMENDATION-READY
 
-Baseline architecture is now closed:
+Baseline architecture:
 
 `wall -> KJD12 -> [HDR-60-24 + DeWalt AUTO]`
 
@@ -208,15 +239,15 @@ Baseline architecture is now closed:
 
 DXV30SAPTA manual gives 2450 W max connected-tool load; VEVOR is 800 W. No vacuum trigger relay is needed.
 
-Leading enclosure:
-- Clas Ohlson GDS Electric `36-9846`
+Leading enclosure is now Biltema:
+- **Biltema `35-0065`**
 - IP65
-- 3–5 DIN modules
+- 4 DIN modules
 - integrated DIN rail
 - 120×160×90 mm
-- **149.90 SEK**
+- **99.90 SEK**
 
-Use only if physical KJD12 + HDR dry-layout is comfortable. If cramped, use 8-module `36-1815`, 190×150×90 mm, **249 SEK** rather than forcing it.
+Physical KJD12 + HDR dry-layout is mandatory before cutting. If cramped, use Biltema `35-0067`, 12 modules, 225×200×110 mm, **229 SEK**.
 
 Other simple local parts:
 - Biltema `46-3610`, 3 m H05VV-F 3G1.5, 16 A, **59.90 SEK**; donor for factory-moulded Schuko male input + female DeWalt output
@@ -225,15 +256,8 @@ Other simple local parts:
 - 4 × insulated 6.3 mm female Faston matching 1.5 mm²; Biltema `44-0020` reference **24.90 SEK/10**
 
 Estimated enclosure/distribution hardware excluding KJD12 and HDR:
-- **~404 SEK if everything is bought new**
-- potentially ~250 SEK if Wago/Faston stock already exists
-
-Safety gates:
-- KJD12 exact physical variant in hand before cutting enclosure
-- PE remains continuous/unswitched to DeWalt output
-- proper crimp + strain relief
-- no exposed live terminals when closed
-- continuity/insulation checks before energising
+- **~354 SEK if everything is bought new**
+- around **~200 SEK** if Wago/Faston stock already exists
 
 Detailed source:
 - `research/2026-08-29-mains-enclosure-distribution.md`
@@ -300,15 +324,11 @@ Likely bought dust item:
 - reuse suitable tabletop as structural deck if possible
 - otherwise OSB/plywood deck + removable ~12 mm MDF spoilboard
 
-### First cutter(s)
-- 3.175 mm single-flute upcut
-- short general/learning cutter first
-- long cutter only for 18–19 mm plywood
-
-### Workholding / small consumables
-- first clamps/screws strategy
+### Job-triggered tooling / small consumables
+- long 25–32 mm single-flute only when thick plywood job appears
 - threadlocker
 - heatshrink/cable ties as needed
+- printed cam/edge clamps only when direct spoilboard screws are inconvenient
 
 ## Order-placement sequence
 
@@ -319,8 +339,9 @@ Likely bought dust item:
 5. VEVOR router
 6. Jackpot3 Elecrow
 7. SUNLU PLA when checkout holds ~€55–60 / ~100–110 SEK/kg
-8. orphan 16T + 608 under thresholds
-9. KJD12 + compact enclosure hardware once exact switch variant is in hand
-10. table/spoilboard material after used-base decision
+8. Sorotec 3× commissioning cutters
+9. orphan 16T + 608 under thresholds
+10. KJD12 + Biltema compact enclosure hardware once exact switch variant is in hand
+11. table/spoilboard material after used-base decision
 
 This sequence prioritizes stock/wrong-variant risk rather than technical assembly order.
