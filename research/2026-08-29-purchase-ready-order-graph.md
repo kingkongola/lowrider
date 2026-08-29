@@ -1,7 +1,8 @@
 ---
 research_date: 2026-08-29
 last_updated_at: 2026-08-29
-scope: consolidated current order graph after component-level LR4 sourcing research\status: recommendation-ready
+scope: consolidated current order graph after component-level LR4 sourcing research
+status: recommendation-ready
 decision_state: core machine hardware, PLA and compact mains enclosure are product-locked or threshold-locked; remaining work is mainly checkout totals, table/base, first cutter/workholding and a few commodity orphan items
 price_basis: only prices already verified in dated research files; unknown checkout freight/import is left unknown rather than estimated
 region: Sweden / EU
