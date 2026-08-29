@@ -41,23 +41,26 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 ### Måste köpas
 
 - [ ] **Jackpot3 CNC Controller**
-- [ ] 5 × NEMA17-stegmotorer, ca 59 Ncm / 84 oz-in, 5 mm axel, axel minst 20 mm
+- [ ] 5 × NEMA17-stegmotorer — StepperOnline `5-17HS19-2004S1`, 59 Ncm / 83.55 oz-in, 2 A, 5 mm D-axel, 24 mm axel, 1 m kabel
 - [ ] stepper wire extenders endast där dry-fit visar att motorernas befintliga 1 m-kablar inte räcker
-- [ ] 3 × GT2 10 mm, 16T remhjul
+- [ ] 3 × GT2 10 mm, 16T remhjul, 5 mm hål
 - [ ] 6 × GT2 10 mm, 20T släta idlers, 5 mm hål
-- [ ] GT2 10 mm rem — exakt längd från LR4-kalkylatorn
-- [ ] 5 × ändlägesbrytare + kablage/kontakter
+- [ ] GT2 10 mm rem — låsta segment 999 / 1705 / 1705 mm; 5 m totalt räcker
+- [ ] **5 × Omron `SS-3GL13PT` installerade; planerat köp 10 st från DigiKey (5 reserv)**
+- [ ] **10 m LaskaKit `LA150151A`, UL2464 26 AWG 3×0,14 mm²**, använd 2 ledare för NC-endstops
+- [ ] 5 × 2-poliga 2,54 mm board-side endstopkontakter/pigtails; köp extra kontakter billigt för reserv
 - [ ] 14 × 608-2RS lager
 - [ ] 2 × T8 trapetsskruv + mutter, minst 145 mm, 4-start / 2 mm pitch / 8 mm per varv
 - [ ] 2 × koppling 5 mm → 8 mm
-- [ ] 1 × nätaggregat, 24 V, minst 36 W
+- [ ] **Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN-nätaggregat**
+- [ ] ca 1 m flexibel **20 AWG / ~0,52 mm² 2-ledare** från HDR-60-24 till Jackpot3; LaskaKit UL2464-familj, välj uttryckligen 2-core i dropdown
 - [ ] **VEVOR 0700C, 800 W, 65 mm router**
 - [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
 - [ ] PLA för LR4-delarna — ca 2,7 kg faktisk förbrukning; köp med marginal
-- [ ] stålrör i slutliga längder efter låsta mått
+- [ ] stålrör i slutliga längder: 816 / 816 / 1505 mm
 - [ ] bord/underrede
-- [ ] plan bordsskiva / spoilboard
-- [ ] material till permanenta strut plates, max 6,35 mm
+- [ ] plan bordsskiva / löstagbar spoilboard
+- [ ] material till permanenta 819 mm strut plates, max 6,35 mm; bootstrap med printade temp-struts och fräs slutliga ur billig skivrest
 - [ ] ca 18 × M4×12 mm eller längre trä-/plåtskruv för infästning i bordet; V1E anger dessa separat och de ingår inte i HaWiWe screw set
 
 ### Dammhantering — del av grundbygget
@@ -79,6 +82,8 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [ ] lätt smörjmedel till idlers/linjärskenor
 - [ ] buntband eller annan kabelinfästning
 - [ ] arbetsstyckesfastsättning/clamps
+- [ ] värmekrympslang för endstoplödpunkter
+- [ ] ändhylsor/ferrules där de passar skruvterminalerna, om lämplig tång redan finns
 
 ### Valfritt senare
 
@@ -95,6 +100,30 @@ Aktuella priser verifierade 2026-08-29:
 
 Jackpot3 innehåller **6 integrerade TMC2226-drivare**, så inga separata stepperdrivare ska köpas.
 
+## PSU — Mean Well HDR-60-24
+
+**Val:** Mean Well **`HDR-60-24`**, 24 V / 2,5 A / 60 W, DIN-rail.
+
+Current planned source: DigiKey together with exact Omron endstops.
+
+Reasons:
+- correct V1-class 24 V / 60 W supply
+- closed/touch-protected DIN format rather than exposed LRS terminals
+- cheaper current procurement path than the external GST60 brick
+- fits the planned machine-level NVR/control enclosure cleanly
+
+See `research/2026-08-29-final-psu-endstop-wiring-cart.md`.
+
+## Endstops
+
+**Exact type:** Omron `SS-3GL13PT`.
+
+- LR4 requires 5 installed
+- planned buy: **10** at DigiKey qty-10 tier
+- five spares cost only ~32 SEK more than buying five at the current price structure
+- wire **Normally Closed**, using COM + NC
+- default switch termination: solder + heatshrink
+
 ## Router — VEVOR 0700C 800 W Makita-klon
 
 **Val:** VEVOR **0700C**, 800 W, 220–240 V / 50 Hz, 65 mm kropp, 10 000–30 000 rpm.
@@ -109,15 +138,13 @@ VEVOR anger Makita 0700-bas-kompatibilitet för denna 0700C-familj. Det finns de
 
 Den köpta HaWiWe-hylsan är en **Elaire Makita-style 1/8" collet**, produktfamilj **MRP-1250**, avsedd för bl.a. Makita RT700C / RT0700CX3 / RT0701C.
 
-Praktiskt underlag:
-- VEVOR 0700C beskrivs av användare som Makita 700-klon.
-- V1E-användare har kört Makita-style/Sienci 1/8"-collet i VEVOR 0700C:s originalmutter med låg runout.
-
 Det saknas ett explicit datablad från Elaire/VEVOR som nämner exakt kombinationen MRP-1250 + VEVOR 0700C. När routern kommer: provpassa hylsan utan verktyg, kontrollera korrekt säte i kona/mutter och kontrollera därefter runout med ett rakt 1/8"-verktyg.
 
 ## Motorer
 
-Fortsatt bra kandidat: **STEPPERONLINE 5-pack NEMA17, ca 59 Ncm / 84 oz-in, 2 A**, paket **5-17HS19-2004S1**.
+**Val:** StepperOnline 5-pack **`5-17HS19-2004S1`**.
+
+StepperOnline-order ska hållas motors-only om inte checkout visar en annan redan behövd del från samma Germany warehouse. PSU ska inte flyttas dit via China-route bara för falsk samfrakt.
 
 ## Redan täckt av HaWiWe-köpet
 
