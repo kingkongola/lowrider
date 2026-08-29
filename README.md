@@ -14,8 +14,12 @@ Hålla reda på:
 
 ## Aktuellt
 
-- LowRider V4 är vald och delar är köpta.
-- Tänkt arbetsyta är ungefär **650 × 1200 mm**, men exakt slutmått ska verifieras innan något storleksberoende kapas eller köps.
+- **LowRider V4 är slutligt vald.** PrintNC/IndyMill är inte längre aktiva maskinalternativ för detta bygge.
+- HaWiWe-order med XZ-plattor, linjärskenor, skruvsats och Makita/Elaire 1/8"-spännhylsa är **betald**.
+- Tänkt arbetsyta är ungefär **650 × 1250 mm**, men exakt slutmått ska verifieras i aktuell LR4-kalkylator innan något storleksberoende kapas eller köps.
+- Dammhantering är en del av grundbygget eftersom CNC:n delar garage med motorarbete.
+- Laser är ett senare projekt, tidigast 2027. Plasma ingår inte i nuvarande scope.
+- Målet är att få maskinen körklar i god tid före Halloween 2026.
 
 ## Filer
 
@@ -23,10 +27,12 @@ Hålla reda på:
 - [BOM.md](BOM.md) — köpt / saknas / behöver verifieras
 - [DECISIONS.md](DECISIONS.md) — endast beslut som påverkar detta bygge
 - [BUILD_LOG.md](BUILD_LOG.md) — vad som faktiskt gjorts
+- [SOURCING.md](SOURCING.md) — konkreta kandidater, priser och inköpsplan
 
 ## Nästa steg
 
-1. Inventera exakt vilka LowRider-delar som redan är köpta.
-2. Fastställ slutlig arbetsyta och exakta mått.
-3. Köp/bygg bara det som saknas.
-4. Montera, konfigurera, kalibrera och göra första riktiga fräsningen.
+1. Frys arbetsyta och exakta mått.
+2. Köp PLA och börja printa rätt LR4-delar.
+3. Köp bara verifierade standarddelar som saknas.
+4. Bygg bord och dammhantering som en del av grundinstallationen.
+5. Montera, konfigurera, kalibrera och göra första riktiga fräsningen.
