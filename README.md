@@ -1,38 +1,32 @@
 # LowRider V4
 
-Persistent project state for the LowRider V4 build.
+Det här repot är bara för att få den köpta **LowRider V4** färdigbyggd och körklar.
 
-## Current decision
+## Syfte
 
-Build **LowRider V4**. Parts have been purchased, so this is no longer a machine-selection project.
+Hålla reda på:
+- vad som redan är köpt
+- vad som saknas
+- slutliga mått
+- byggordning
+- beslut som påverkar bygget
+- avbockning fram till första fungerande fräsning
 
-Why LR4 won over PrintNC/IndyMill:
-- substantially lower cost to get running
-- much less machine-building overhead before useful work can start
-- large work area is valuable for sheet goods, furniture, workshop fixtures, signs, jigs, plastics and general maker projects
-- occasional/light aluminium work is useful, but heavy/fast aluminium machining is not the primary requirement
-- PrintNC remains a possible future *different tool*: smaller/stiffer metal-oriented CNC rather than a reason to overbuild the LR4
+## Aktuellt
 
-## Target geometry
+- LowRider V4 är vald och delar är köpta.
+- Tänkt arbetsyta är ungefär **650 × 1200 mm**, men exakt slutmått ska verifieras innan något storleksberoende kapas eller köps.
 
-Current chosen working area: **about 650 × 1200 mm**.
+## Filer
 
-Earlier discussion also mentioned 650 × 1250 mm; treat 1200 mm as the latest accepted target until the final V1 calculator/cut dimensions are frozen before cutting rails/table parts.
+- [CHECKLIST.md](CHECKLIST.md) — det som återstår, i byggordning
+- [BOM.md](BOM.md) — köpt / saknas / behöver verifieras
+- [DECISIONS.md](DECISIONS.md) — endast beslut som påverkar detta bygge
+- [BUILD_LOG.md](BUILD_LOG.md) — vad som faktiskt gjorts
 
-The router table lives **inside the garage**. Plasma is explicitly **not** integrated into this table: if plasma CNC happens later, use a **separate outdoor plasma table** and move the LowRider gantry to it. A future plasma table can copy the relevant X/Y rail/belt geometry.
+## Nästa steg
 
-## Design principle
-
-Build a standard, well-sorted LR4 first. Do not spend money turning it into a PrintNC. Upgrade only when a real limitation has been observed.
-
-## Persistent files
-
-- [CHECKLIST.md](CHECKLIST.md) — project plan / things to tick off
-- [BOM.md](BOM.md) — purchased, required and unresolved components
-- [DECISIONS.md](DECISIONS.md) — decisions and rationale
-- [PROJECTS.md](PROJECTS.md) — what the machine is intended to enable
-- [BUILD_LOG.md](BUILD_LOG.md) — dated build notes
-
-## Immediate next milestone
-
-Inventory exactly what has already been purchased, then freeze the final machine dimensions from the official LR4 calculator before buying/cutting the table, rails or other size-dependent material.
+1. Inventera exakt vilka LowRider-delar som redan är köpta.
+2. Fastställ slutlig arbetsyta och exakta mått.
+3. Köp/bygg bara det som saknas.
+4. Montera, konfigurera, kalibrera och göra första riktiga fräsningen.
