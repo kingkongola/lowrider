@@ -2,7 +2,7 @@
 research_date: 2026-08-29
 scope: whether the LR4 shop-vac cyclone can be 3D printed instead of purchased
 status: recommendation-ready
-decision_state: yes; print-first is the new Pareto default, using a proven single-stage cyclone or Thien-style separator plus a rigid container; commercial cyclone remains fallback
+decision_state: yes; print-first is the new Pareto default, using a proven single-stage cyclone or Thien-style separator plus a separate rigid steel collection container upstream of the DeWalt; commercial cyclone remains fallback
 price_basis: filament near ~100 SEK/kg target; actual printed cost depends on model mass and print time
 region: Sweden / maker-built
 sources_checked:
@@ -32,6 +32,18 @@ Sources:
 - https://www.jpthien.com/cy.htm
 - https://community.carbide3d.com/t/how-to-build-a-99-efficient-cyclone-dust-collector/1972
 
+## Important architecture clarification
+
+The existing DeWalt shop-vac already has a **metal tank**. That is not the container discussed below.
+
+A cyclone separator needs a **separate collection container upstream of the vacuum**:
+
+`LR4 -> cyclone -> separate collection can -> DeWalt shop-vac`
+
+The purpose is that almost all chips/dust fall into the separate can before the air reaches the DeWalt. The DeWalt's own metal tank should therefore stay nearly empty/clean during normal CNC use.
+
+The implosion warning applies only to a possible thin **cyclone collection bucket**, not to the DeWalt's metal tank.
+
 ## Economics
 
 A commercial branded cyclone head previously researched costs roughly:
@@ -41,13 +53,13 @@ A commercial branded cyclone head previously researched costs roughly:
 
 A printed cyclone typically consumes only a fraction of a kilogram to perhaps around 1 kg depending on model/scale. With our filament target near **100 SEK/kg**, the printed plastic cost is therefore usually **tens of SEK rather than hundreds**.
 
-The rigid collection container is needed either way, so that cost does not favour the commercial cyclone head.
+The separate collection container is needed either way, so that cost does not favour the commercial cyclone head.
 
 ## Recommended architecture
 
 For this LR4:
 
-`LR4 dust shoe -> flexible ~2.5 in moving hose -> PRINTED CYCLONE -> rigid 20–40 L container -> short adapter/hose -> existing DeWalt shop-vac`
+`LR4 dust shoe -> flexible ~2.5 in moving hose -> PRINTED CYCLONE -> separate rigid steel 15–30 L collection container -> short adapter/hose -> existing DeWalt shop-vac`
 
 This becomes the new default to test before buying a commercial cyclone.
 
@@ -136,22 +148,16 @@ Build rules:
 Source:
 - https://www.reddit.com/r/functionalprint/comments/1ctkjwb/i_3d_printed_a_two_stage_cyclone_separator_for/
 
-## Container is more important than the printed cyclone structurally
+## Separate collection container
 
-The user's likely DeWalt is around **17 kPa** maximum vacuum.
+Preferred:
+- rigid steel roughly 15–30 L
+- lid that can be gasketed/sealed
+- cyclone mounts through the lid with a printed flange and gasket
 
-A thin plastic bucket can collapse if the hose blocks. The cyclone itself does not prevent this.
+This container sits **before the DeWalt**. It is not the DeWalt tank.
 
-Preferred container:
-- rigid steel 20–40 L drum/bin with airtight lid
-
-Alternative:
-- heavily reinforced plastic bucket plus a printed vacuum-relief valve
-
-DN50 printable relief-valve designs specifically exist because cyclone bins can collapse under vacuum.
-
-Source:
-- https://makerworld.com/models/974326-dn50-vacuum-valve-cyclone-separator
+A thin plastic collection bucket can collapse if the hose blocks; this is why steel is preferred. With a steel collection can this concern largely disappears.
 
 ## Static / XPS issue
 
@@ -160,12 +166,12 @@ Important limitation: **ordinary PLA is electrically insulating**. A printed cyc
 Therefore the static strategy must be system-level:
 - use a groundable steel-wire/spiral moving hose where practical
 - bond/ground the metal hose spiral
-- use a metal collection drum if possible and bond it to protective earth / the chosen common ground strategy
+- use a metal collection can and bond it to the chosen grounding strategy
 - keep electronics physically separated from dust hose discharge/static paths
 
 Do not assume “conductive-looking” carbon filament solves grounding; most conductive filaments have much higher resistance than metal conductors and are not a substitute for a proper grounding conductor.
 
-A commercial ESD cyclone remains a fallback if static proves troublesome, but paying ~€46 before testing a ~50 SEK printed cyclone is not Pareto.
+A commercial ESD cyclone remains a fallback if static proves troublesome, but paying ~€46 before testing a printed cyclone is not Pareto.
 
 ## Port sizes for our build
 
@@ -188,9 +194,9 @@ Before buying a commercial separator:
 1. choose a proven conventional cyclone STL/reference design
 2. adapt inlet/outlet to our actual hose dimensions
 3. print in cheap ordinary PLA
-4. mount airtight on a rigid container
+4. mount airtight on a separate rigid steel collection can
 5. vacuum a known mass of sawdust/XPS crumbs
-6. inspect/weigh what reaches the DeWalt tank/filter
+6. inspect what reaches the DeWalt tank/filter
 7. check suction subjectively or with a simple differential-pressure/manometer test if desired
 8. if performance is good, stop researching commercial cyclones
 
