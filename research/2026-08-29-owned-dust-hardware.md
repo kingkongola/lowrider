@@ -2,61 +2,67 @@
 research_date: 2026-08-29
 scope: already-owned dust/air-handling hardware relevant to LR4
 status: recommendation-ready
-decision_state: do not buy a new shop-vac; existing DeWalt is likely DXV38SPTA and is already suitable class; verify label before locking adapters; investigate old FTX only as secondary air handling
+decision_state: do not buy a new shop-vac; existing DeWalt is very likely DXV30SAPTA and is already suitable class; verify rating plate before locking model-specific adapters; investigate old FTX only as secondary air handling
 price_basis: already owned; no purchase cost should be assigned to build
 region: Sweden
 sources_checked:
-  - user-provided inventory
-  - Jula current DeWalt vacuum listings
-  - DeWalt DXV38SPTA published/manual specifications
+  - user-provided screenshot showing DeWalt DXV30SAPTA 30 L / 1050 W
+  - Jula current DXV30SAPTA product page
+  - DXV30SAPTA manual/specification
   - current LR4 dust-system architecture research
-supersedes: any plan to research/buy a new shop-vac before checking the existing DeWalt
+supersedes: previous guess that the owned vacuum was DXV38SPTA
 ---
 
 # Already-owned dust/air hardware
 
 ## DeWalt wet/dry vacuum
 
-User already owns a **DeWalt grovdammsugare / shop-vac bought from Jula for about 2,500 SEK**.
+User already owns a **DeWalt grovdammsugare / shop-vac bought from Jula**.
 
-### Likely model: `DXV38SPTA`
+### Very likely model: `DXV30SAPTA`
 
-Current Jula listing is an unusually close match to the user's description:
-- DeWalt `DXV38SPTA`
-- current Jula price **2,499 SEK**
-- 38 L tank
-- 1250 W
+User supplied a screenshot of the Jula listing and said this is probably the machine:
+- DeWalt `DXV30SAPTA`
+- 30 L stainless tank
+- 1050 W
 - 230 V tool socket with automatic start/stop
-- 48 mm × 2.1 m hose
-- airflow **2550 L/min = 42.5 L/s**
-- published seal pressure **17 kPa**
-- washable cartridge filter, nominal 5 µm / 95 % on Jula page
+- blow function
+- current Jula listing price observed 2026-08-29: **1,999 SEK**
+
+Official/manual specifications:
+- power: **1050 W**
+- seal pressure: **15 kPa**
+- airflow: **37.8 L/s = 2268 L/min**
+- tank: **30 L stainless steel**
+- hose: **48 mm × 2.1 m**
+- power cable: 3.05 m
 
 Sources:
-- https://www.jula.se/catalog/hem-och-hushall/stad-och-kladvard/dammsugare/grovdammsugare/grovdammsugare-030849/
-- DXV38SPTA manual/spec references
+- https://www.jula.se/catalog/hem-och-hushall/stad-och-kladvard/dammsugare/grovdammsugare/grovdammsugare-015478/
+- https://www.bauhaus.se/media/pdf/1163387A.pdf
 
-**Confidence: high but not confirmed.** A historical Jula purchase around 2,500 SEK could still be another DeWalt model. Confirm the rating plate before ordering model-specific adapters/filters.
+**Confidence: very high but still not serial/rating-plate confirmed.** Do not order a proprietary replacement filter or hard adapter solely from this identification until the label is checked.
 
-### Suitability for LR4 if confirmed
+### Suitability for LR4
 
 This is already a strong match for the planned CNC dust system:
-- 17 kPa static pressure is shop-vac territory and well suited to a small dust shoe
-- 42.5 L/s is ample source-capture airflow for this class when hose losses are controlled
-- 48 mm native hose is close enough to the LR4 2.5-inch dust-shoe class that a short printed/tapered adapter is straightforward
-- automatic tool socket may be useful, though final machine-power/NVR architecture must be checked before relying on it
+- 15 kPa static pressure is appropriate shop-vac territory for a small router dust shoe
+- 37.8 L/s airflow is substantial for a 48 mm hose
+- native **48 mm × 2.1 m hose** is especially interesting because 48–50 mm hose sizes have precedent in V1E dust-shoe designs
+- automatic tool socket may be useful, though final NVR/machine-power architecture must determine how router/vacuum auto-start is integrated
 
 Therefore **no new vacuum purchase is justified**.
 
 ### Procurement consequence
 
-Before buying hose/adapters/cyclone:
-1. confirm exact model number from rating plate
-2. confirm actual existing hose/port dimensions
-3. inspect cartridge filter/bag condition
-4. decide whether the 48 mm DeWalt hose is used only from cyclone→vacuum while a lighter 2.5-inch moving hose is used from LR4→cyclone
+New default is even more aggressive about reuse:
+1. confirm model/rating plate when convenient
+2. measure actual hose cuff OD/ID with calipers
+3. first test the existing **48 mm × 2.1 m hose as the moving LR4 hose**
+4. print the dust-shoe/cyclone adapters around the real hose dimensions
+5. only buy a separate 2.5-inch hose if the DeWalt hose proves too short, too stiff, too heavy or measurably restrictive in real use
 
-The last arrangement is currently preferred because it keeps the moving hose flexible while preserving the DeWalt's native connection on the stationary side.
+This supersedes the earlier assumption that the DeWalt hose should only be used on the stationary cyclone→vacuum side.
 
 ## Old FTX ventilation unit
 
@@ -109,11 +115,12 @@ Before designing around it:
 
 ## Current dust-system cost impact
 
-This inventory removes the expected vacuum purchase entirely.
+This inventory removes the expected vacuum purchase entirely and may also remove the need to purchase a moving hose.
 
 Likely remaining dust costs become mostly:
-- cyclone separator + rigid bucket/container
-- correct flexible 2.5-inch-class moving hose / adapters
+- printed cyclone
+- separate rigid collection can
+- printed adapters
 - hose support/boom
 - dust-shoe brush/material
 - antistatic grounding
