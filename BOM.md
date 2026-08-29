@@ -16,6 +16,20 @@ Ordertotal: **165,50 € inklusive 8,00 € frakt**.
 - [x] Makita 1/8 inch (3,175 mm) collet — **29,00 €**
 - [x] Frakt — **8,00 €**
 
+### Exakt innehåll i köpta HaWiWe Screw set LowRider 4
+
+Verifierat mot HaWiWe produktsida **2026-08-29**:
+https://hawiwe.de/produkt/schraubenset-lowrider-4/
+
+- [x] 14 × **M8×40**, DIN 933 / ISO 4017, 8.8, förzinkad
+- [x] 14 × **M8 nyloc/låsmutter**, DIN 985
+- [x] 60 × **M5×30**, DIN 7985, 4.8, krysspår, förzinkad
+- [x] 60 × **M5 nyloc/låsmutter**, DIN 985
+- [x] 83 × **M3×10**, DIN 7985, 4.8, krysspår, förzinkad
+- [x] 10 × **M2.5×12**, DIN 7985, 4.8, krysspår, förzinkad
+
+**Viktigt:** detta kit är endast skruvar + muttrar. Det innehåller **inte** lager, T8-skruvar, T8-muttrar, kopplingar, remhjul, idlers, rem, ändlägen, motorer, kablage eller nätaggregat. Dessa är separata poster även i HaWiWe/V1E:s kompletta hardware kit.
+
 ## Kvar till själva LR4-maskinen
 
 PLA/printmaterial och stålrör hanteras separat och listas inte här.
@@ -88,5 +102,5 @@ Amazon Prime får gärna vinna om totalpris inkl. frakt är bäst, men vi låser
 
 - [x] XZ-plattor
 - [x] 4 × MGN12H 150 mm linjärskenor (linear rail set)
-- [x] LR4-skruv/mutter-set
+- [x] LR4-skruv/mutter-set — exakt innehåll dokumenterat ovan
 - [x] Makita 3,175 mm-spännhylsa — **köpt men kompatibilitet med VEVOR-fräsen ej verifierad**
