@@ -10,21 +10,25 @@ Hålla reda på:
 - slutliga mått
 - byggordning
 - beslut som påverkar bygget
-- avbockning fram till första fungerande fräsning
+- fysisk integrationskontroll fram till första fungerande fräsning
 
 ## Aktuellt
 
 - **LowRider V4 är slutligt vald.** PrintNC/IndyMill är inte längre aktiva maskinalternativ för detta bygge.
 - HaWiWe-order med XZ-plattor, linjärskenor, skruvsats och Makita/Elaire 1/8"-spännhylsa är **betald**: 165,50 € inklusive 8,00 € frakt.
-- Arbetsytan är nu **låst till 650 × 1250 mm användbart område** med köpta 6,0 mm HaWiWe XZ-plattor.
-- Exakt LR4-geometri är dokumenterad: **816 / 816 / 1505 mm rör**, **819 mm struts**, **999 / 1705 / 1705 mm remsegment**, minimum bord **941 × 1563 mm**, praktisk CNC-deck cirka **1000 × 1620 mm**.
-- Bordets huvudstrategi är ett styvt begagnat **180×90/100 cm** bord med befintlig skiva + avtagbar ~1000×1620 CNC-deck. Ingen torsionsbox eller specialbyggt underrede före första körningen.
+- Arbetsytan är **låst till 650 × 1250 mm användbart område** med köpta 6,0 mm HaWiWe XZ-plattor.
+- Exakt LR4-geometri är verifierad: **816 / 816 / 1505 mm rör**, **819 mm strut-input**, **999 / 1705 / 1705 mm remsegment**, minimum bord **941 × 1563 mm**, praktisk CNC-deck cirka **1000 × 1620 mm**.
+- Rörspåret är **Ø30×1,5 mm stål**, vilket innebär att alla dimensionsberoende LR4-printar ska vara **30 mm-varianten**.
+- Bordets huvudstrategi är ett styvt begagnat **160–180 × helst 90–100 cm** bord med befintlig skiva + avtagbar ~1000×1620 CNC-deck. På 90 cm djupa bord ska deckens cirka 50 mm långsidesöverhäng få verkligt stöd/infästning i LR4:s kantzon.
 - Dammhantering är en del av grundbygget eftersom CNC:n delar garage med motorarbete.
+- Elarkitekturen är fast KJD12/HDR-box + rörlig Jackpot3 på beam. Det gör **24 V-ledningen och routerkabeln till rörliga maskinkablar**; längd och dragavlastning avgörs med full-travel dry-fit.
+- KJD12 behandlas som **NVR/maskinstopp med röd stoppkåpa**, inte som verifierad safety-rated E-stop.
 - Laser är ett senare projekt, tidigast 2027. Plasma ingår inte i nuvarande scope.
 - Målet är att få maskinen körklar i god tid före Halloween 2026.
 
 ## Filer
 
+- [AUDIT.md](AUDIT.md) — oberoende system-/fysisk revision och bygg-gates
 - [CHECKLIST.md](CHECKLIST.md) — det som återstår, i byggordning
 - [BOM.md](BOM.md) — köpt / saknas / behöver verifieras
 - [DECISIONS.md](DECISIONS.md) — endast beslut som påverkar detta bygge
@@ -32,15 +36,16 @@ Hålla reda på:
 - [SOURCING.md](SOURCING.md) — aktuella konkreta köpvägar
 - [PROCUREMENT.md](PROCUREMENT.md) — aktuell order-/kundvagnsarkitektur och inköpsordning
 - [TABLE.md](TABLE.md) — bords-/underredesarkitektur och köpgränser
-- [research/](research/) — daterad evidens och historiska alternativ; nyare research supersederar äldre när de krockar
+- [research/](research/) — daterad evidens och historiska alternativ; kanoniska toppnivåfiler supersederar äldre research när de krockar
 
 ## Aktuell arbetsordning
 
-1. Slutför live checkout för små orphan-delar: 16T-remhjul och 608-2RS.
-2. Placera de redan produktlåsta orderna när checkout-totalerna håller: Motonet/LaskaKit/StepperOnline/DigiKey/VEVOR/Elecrow/SUNLU/Sorotec.
-3. Hitta och fysiskt kontrollera ett begagnat 180×90/100-bord; köp helst ≤700 kr om rackingtestet passerar.
-4. Börja printa rätt LR4-delar i vanlig styv PLA.
-5. Bygg avtagbar CNC-deck + spoilboard och integrera dammhantering.
-6. Montera, konfigurera, kalibrera och göra första riktiga fräsningen.
+1. Slutför checkout för den enda verkliga mekaniska orphan-delen: **3 × GT2 16T / 5 mm / 10 mm**.
+2. Placera de redan produktlåsta orderna när checkout-totalerna håller: Motonet/LaskaKit/StepperOnline/DigiKey/VEVOR/Elecrow/SUNLU/Sorotec/KEDU.
+3. Hitta och fysiskt kontrollera ett begagnat **160–180 × helst 90–100 cm** bord; köp helst ≤700 kr om racking- och kantstödstest passerar.
+4. Börja printa senaste LR4-delarna i **30 mm-variant**, med Makita/65 mm tool mount.
+5. Bygg avtagbar CNC-deck + spoilboard och integrera damm/el/kabelrörelse.
+6. Montera och gör gemensamt full-travel-test med slang + alla rörliga kablar innan slutlig kabelinfästning/remspänning.
+7. Flasha Elecrow Jackpot3 med V1E:s aktuellt testade FluidNC + LR4-config, konfigurera, kalibrera och gör första riktiga fräsningen.
 
-Broad alternative research ska inte återöppna redan låsta komponenter utan ett konkret problem med pris, lager eller kompatibilitet.
+Broad alternative research ska inte återöppna redan låsta komponenter utan ett konkret problem med pris, lager, kompatibilitet eller fysisk integration.
