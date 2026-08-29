@@ -108,6 +108,66 @@ Elecrow-kortet är inte V1E-förkonfigurerat.
 
 V1E betonar luftflöde över Jackpot3 och rekommenderar board box på YZ_Min/beam. Vår fasta kapsling innehåller KJD12 + HDR + nätfördelning; Jackpot3 ligger separat på den rörliga beam/gantryn.
 
+## Andra auditpasset — inköpsrad för inköpsrad
+
+### 11. T8-stången: kapa inte slentrianmässigt i två lika ~199 mm-bitar
+
+V1E kräver två T8×8-skruvar **145 mm eller längre**. En 400 mm-stång är därför ett bra köp, men två lika halvor ger onödigt mycket stång som sticker upp över Z vid full höjd.
+
+**Ny regel:** utgå från cirka **150–160 mm per Z-skruv**, inte halva stången. Slutlig kaplängd bekräftas mot de verkliga delarna före kapning. Extra längd är mekaniskt tillåten men ger ingen funktionell vinst här.
+
+### 12. GT2 5 m har en exakt fallback om lagret svajar
+
+Låsta segment är 999 / 1705 / 1705 mm. Om LaskaKit 5 m-rullen `LA190013C` är slut kan **3 × 2 m av samma 10 mm fiberglass GT2-spec** användas: varje maskinsegment ryms på en egen 2 m-längd. Ingen skarv behövs.
+
+### 13. 20 AWG-kabeln är elektriskt okej men inte automatiskt en drag-chain-kabel
+
+Den valda LaskaKit 2-core UL2464-kabeln är nominellt 20 AWG / 0,52 mm² och cirka **4,8 mm OD**. Tre meter 20 AWG ger rimligt spänningsfall även vid PSU:ns fulla 2,5 A, men UL2464/PVC-specen i sig bevisar inte continuous-flex/drag-chain-rating.
+
+**Ny regel:** använd stor avslappnad rörelseloop och undvik snäv repetitiv böj. Om den verkliga kabeldragningen kräver liten böjradie i kabelkedja ska kabeltypen bytas till uttryckligt continuous-flex innan slutmontage.
+
+Den nominella 4,8 mm OD:n bekräftar också varför M20-genomföringen för 5–12 mm nätkabel inte ska återanvändas till 24 V-ledningen.
+
+### 14. DigiKey fri frakt är inte verifierad förrän checkout säger det
+
+DigiKey anger fri Sverige-frakt vid **615 kr** och 170 kr under gränsen. Nuvarande komponentkorg har uppskattats till cirka 622 kr **inklusive moms**. Hjälpsidan anger inte tydligt om 615-kronorsgränsen bedöms före eller efter moms.
+
+**Korrigering:** behandla fri frakt som checkout-gated. Köp inte filler och räkna inte hem besparingen förrän varukorgen faktiskt visar 0 kr frakt.
+
+### 15. Jackpot3 saknar en explicit microSD-rad i vår BOM
+
+Elecrow anger att paketet innehåller Jackpot3-kort, fem 2-ledarpluggkontakter och sex självhäftande kylflänsar. **MicroSD-kort anges inte som inkluderat.** V1E säger att microSD fortfarande är den föredragna filvägen för G-code och rekommenderar >2 GB, FAT32, Class 4 bäst / upp till Class 6.
+
+**Ny regel:** inventera först. Om inget kompatibelt kort redan finns, köp ett litet **4–32 GB FAT32 Class 4/6 microSD**. Undvik att köpa ett dyrt modernt high-speed/A1-kort bara för CNC:n; V1E beskriver sådana som mer problematiska.
+
+### 16. Data-kapabel USB-C är en commissioning-dependency
+
+Elecrow-kortet måste flashas. V1E:s felsökning pekar uttryckligen ut charge-only USB-kabel som vanlig orsak till utebliven USB-anslutning.
+
+**Ny regel:** verifiera att en data-kapabel USB-C-kabel finns innan flashing. Det är en inventeringspunkt, inte ett automatiskt köp.
+
+### 17. Endstops är inte runtime-limits som standard
+
+V1E är explicit: LR4:s endstops är normalt endast aktiva under homing. De stoppar inte maskinen under vanlig G-code-körning om man inte gör en avancerad limit-konfiguration.
+
+**Konsekvens:** de fem Omron-brytarna är auto-square/home-sensorer, inte kollisionsskydd och inte en ersättning för KJD12/maskinstopp eller operatörstillsyn.
+
+### 18. Printförutsättningarna måste verifieras före 2,7 kg långa prints
+
+V1E anger minst **200×200×190 mm** tillgänglig byggvolym, rekommenderar skew-kontroll och föreslår att `Z_Stub` + `Z_Nut` provprintas för passning innan stora delar. De varnar också för att Cura-baserade slicers kan brygga vissa interna features fel, särskilt Dust Skirt/YZ_Plate.
+
+**Ny gate:** verifiera skrivare/byggvolym/skew, gör de två små passningsprintarna och granska bridges i slicer-preview innan hela satsen körs.
+
+### 19. Jackpot3 kylning/kabeldragning
+
+V1E säger att kablar ska gå **bredvid**, inte över Jackpot3, att antennen inte ska täckas och att anslutningar ska avlastas innan de lämnar board box. Fläkt är valfri; om en används ska den matcha PSU-spänningen.
+
+**Ny regel:** official-style Jackpot3 board box + fri luftväg + kabelavlastning är del av standardmontaget. Köp inte fläkt innan drift visar behov.
+
+### 20. Motoranslutning ska verifieras före första driven rörelse
+
+StepperOnline-motorernas 2,54 mm-kontaktfamilj passar Jackpot3:s öppna headers, men färg/coil-pair och riktning ska ändå kontrolleras före normal jogg. Om en motor går fel håll: spänningslöst först, sedan vänd kontakt enligt V1E:s instruktion.
+
 ## FYSISKA GATES — får inte ersättas av mer webbresearch
 
 1. Motonet-rör: mät OD, kontrollera rakhet/bucklor innan kapning.
@@ -117,9 +177,11 @@ V1E betonar luftflöde över Jackpot3 och rekommenderar board box på YZ_Min/bea
 5. Elboxplacering: KJD12 ska vara direkt nåbar och kablarna ska nå utan drag.
 6. Bord/deck: kontrollera racking, planhet och lokal styvhet i LR4:s långkantsspår.
 7. Komplett rörelseprov utan fräs: alla fyra hörn + Z-extremer med slang och samtliga rörliga kablar monterade.
-8. Endstops: kontrollera NC-funktion och kabelavlastning före homing.
+8. Endstops: kontrollera NC-funktion och kabelavlastning före homing; behandla dem inte som runtime-limits.
 9. Statisk jordning: kontinuitet/verifierad jordväg före XPS och regelbunden trä/MDF-körning.
 10. 230 V: PE-kontinuitet, korrekt L/N-brytning enligt faktisk KJD12-variant, dragavlastning och inga åtkomliga spänningsförande delar innan energisering.
+11. Jackpot3: kompatibelt microSD + data-kapabel USB-C + rätt firmware/config verifierat före första G-code.
+12. Printar: byggvolym/skew/testfit/bridge-preview godkänt innan full sats.
 
 ## Kvar att auditera senare när delarna finns fysiskt
 
@@ -129,5 +191,6 @@ Det går inte att webverifiera bort toleranserna i:
 - exakt KJD12-panelvariant
 - kabel- och slanglängder efter faktisk bordplacering
 - bordets lokala vridstyvhet
+- faktisk continuous-flex-belastning i vald 24 V-kabelrutt
 
 De är därför uttryckliga mät-/dry-fit-gates, inte antaganden.
