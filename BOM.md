@@ -30,13 +30,18 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 
 **Viktigt:** detta kit är endast skruvar + muttrar. Det innehåller **inte** lager, T8-skruvar, T8-muttrar, kopplingar, remhjul, idlers, rem, ändlägen, motorer, kablage eller nätaggregat.
 
+## Redan ägt — relevant verkstadsutrustning
+
+- [x] **DeWalt grovdammsugare / wet-dry shop-vac**, köpt från Jula för cirka 2 500 kr. Exakt modell ännu okänd; identifiera modell innan slang/filter/prestanda optimeras.
+- [x] **Äldre FTX-aggregat**, modell/prestanda ännu okänd. Potentiell återbrukskandidat för sekundär luftfiltrering eller undertryck/utsug kring CNC-zonen; ska inte matas med rått CNC-spån/damm utan separat förfilter/primäravskiljning.
+
 ## Kvar till själva LR4-maskinen
 
 ### Måste köpas
 
 - [ ] **Jackpot3 CNC Controller**
 - [ ] 5 × NEMA17-stegmotorer, ca 59 Ncm / 84 oz-in, 5 mm axel, axel minst 20 mm
-- [ ] 3 × stepper wire extenders / förlängningskablage
+- [ ] stepper wire extenders endast där dry-fit visar att motorernas befintliga 1 m-kablar inte räcker
 - [ ] 3 × GT2 10 mm, 16T remhjul
 - [ ] 6 × GT2 10 mm, 20T släta idlers, 5 mm hål
 - [ ] GT2 10 mm rem — exakt längd från LR4-kalkylatorn
@@ -57,12 +62,13 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 ### Dammhantering — del av grundbygget
 
 - [ ] LR4 dust shoe / borstlösning enligt aktuell V1E-design
-- [ ] grovdammsugare / shop-vac med tillräckligt undertryck
+- [x] grovdammsugare / shop-vac — DeWalt finns redan; modell/prestanda ska verifieras
 - [ ] cyklonavskiljare + behållare
-- [ ] dammsugarslang i lämplig dimension
+- [ ] 2.5"-klass flexibel dammsugarslang / adapter till befintlig DeWalt
 - [ ] slangupphängning/dragavlastning så slangen inte belastar Z/gantry
 - [ ] enkel avskärmning/gardin eller annan lösning som håller CNC-smutszonen lättstädad
 - [ ] jordning/antistatisk lösning om slang/XPS ger praktiska statikproblem
+- [ ] utvärdera befintligt FTX-aggregat som sekundär luftfiltrering/undertryck efter att modell och flöde identifierats
 
 ### Rekommenderat / småsaker
 
