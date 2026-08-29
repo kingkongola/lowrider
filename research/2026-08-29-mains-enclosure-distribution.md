@@ -10,11 +10,12 @@ price_basis: current Swedish retail pages observed 2026-08-29; store stock must 
 sources_checked:
   - Mean Well HDR-60-24 datasheet/current DigiKey dimensions
   - KEDU KJD12 reference dimensions
-  - Clas Ohlson GDS Electric IP65 DIN enclosures
+  - Biltema IP65 norm enclosures and junction boxes
+  - Clas Ohlson GDS Electric IP65 DIN enclosures as fallback/reference
   - Biltema 3G1.5 extension lead and 6.3 mm Faston terminals
   - Jula M20 IP68 cable glands and Wago 221-413
   - existing DeWalt DXV30SAPTA tool-socket research
-supersedes: generic open question for 230 V enclosure/distribution in purchase-ready-order-graph
+supersedes: previous preference for Clas Ohlson 36-9846 as the compact enclosure
 ---
 
 # Compact 230 V machine enclosure / distribution
@@ -60,8 +61,6 @@ Rather than buying separate loose Schuko plug + socket hardware, use one approve
 - trim cable lengths to suit the table
 - any suitable offcut can provide short internal 1.5 mm² jumpers
 
-This avoids DIY mains plug/socket termination and gives known 16 A cable/ends cheaply.
-
 Current cheap reference:
 - Biltema article `46-3610`
 - 3 m
@@ -72,21 +71,37 @@ Current cheap reference:
 Source:
 - https://www.biltema.se/hem/jul/jul-i-koket/skarvsladd-jordad-3-m-2000055051
 
-For this dry indoor garage/table application H05VV-F is sufficient if protected from mechanical abuse. If the machine is later used wet/outdoors, replace this with an appropriate H07RN-F/IP44 lead instead.
+For this dry indoor garage/table application H05VV-F is sufficient if protected from mechanical abuse.
 
-## Enclosure candidate — compact Pareto default
+## Enclosure — Biltema is now the Pareto default
 
-Clas Ohlson GDS Electric norm enclosure:
-- article `36-9846`
-- 3–5 DIN modules
+Biltema norm enclosure:
+- article **`35-0065`**
+- 4 DIN modules
 - **IP65**
 - integrated DIN rail
-- 120 × 160 × 90 mm external
 - halogen-free plastic
-- **149.90 SEK** observed
+- **120 × 160 × 90 mm**
+- observed price **99.90 SEK**
 
 Source:
-- https://www.clasohlson.com/se/GDS-Electric-normkapsling-3-5-moduler%2C-IP65/p/36-9846
+- https://www.biltema.se/bygg/elinstallationer/normcentraler/normkapsling-4-moduler-2000066035
+
+This is essentially the same external size class as the previously selected Clas Ohlson 3–5-module box (120×160×90 mm), but about **50 SEK cheaper** and already includes the DIN rail needed by HDR-60-24.
+
+### Why not Biltema's ordinary cheap junction boxes?
+
+Biltema also has very cheap IP65 junction boxes:
+- 88×88×53 mm: 64.90 SEK
+- 100×100×70 mm: 84.90 SEK
+- 200×155×80 mm: 199 SEK
+
+Sources:
+- https://www.biltema.se/bygg/elinstallationer/eldosor/kopplingsdosa-ip65-88-x-88-mm-2000065979
+- https://www.biltema.se/bygg/elinstallationer/eldosor/kopplingsdosa-ip65-100-x-100-mm-2000065980
+- https://www.biltema.se/bygg/elinstallationer/eldosor/kopplingsdosa-ip65-200-x-155-mm-2000065982
+
+The two small boxes are too cramped for HDR + KJD12 + safe wire bend/routing. The large 200×155 box has space but **no included DIN rail** and costs twice the 4-module norm enclosure. Therefore it is not actually the cheaper complete solution.
 
 ### Fit sanity check
 
@@ -94,89 +109,71 @@ HDR-60-24 dimensions:
 - 52.5 × 90 × 54.5 mm
 - standard DIN rail TS-35
 
-Source:
-- https://www.digikey.se/en/products/detail/mean-well-usa-inc/HDR-60-24/7703804
-- Mean Well `HDR-60` datasheet
+Typical KJD12 reference dimensions are roughly 86–88 × 55–56 mm faceplate, with ~35 mm depth behind panel depending variant.
 
-Typical genuine KEDU KJD12 reference dimensions:
-- mounting plate roughly 86–88 × 55–56 mm
-- depth behind plate ~35 mm
-- approximate panel hole around 40 × 60 mm on one common KJD12 form
+A 120×160×90 mm enclosure is plausible, but the exact KJD12 variant should be physically dry-fitted before cutting.
 
-Sources:
-- https://charnwood.net/product/on-off-switch/
-- KEDU KJD12 dimensional datasheet / Macma reference
+Before cutting:
+1. have exact KJD12 in hand
+2. clip HDR-60-24 onto the real DIN rail
+3. make a paper/cardboard KJD12 template
+4. verify terminal and wire-bend clearance
+5. only then cut the switch opening
 
-A 120 × 90 mm enclosure end/side face is therefore geometrically large enough for the KJD12 faceplate, while the HDR occupies only 52.5 mm of DIN width.
-
-**However:** KJD12 has several mechanical variants and the exact moulding/cable-entry layout of the enclosure matters. Do not cut the box from nominal dimensions alone.
-
-Before purchase/cutting:
-1. have the exact KJD12 in hand
-2. make a cardboard/paper cutout for its body/faceplate
-3. dry-place the real HDR-60-24 on the DIN rail
-4. verify terminal/wire bend clearance
-5. only then cut the KJD12 opening
-
-If the 3–5-module enclosure feels cramped, move one size up rather than forcing it:
-- Clas Ohlson 8-module IP65 enclosure `36-1815`
-- 190 × 150 × 90 mm
-- **249 SEK**
+If cramped, do not force it. Biltema also sells a **12-module IP65** norm enclosure:
+- article `35-0067`
+- 225×200×110 mm
+- integrated DIN rail
+- **229 SEK**
 
 Source:
-- https://www.clasohlson.com/se/Normkapsling-IP65%2C-8-moduler/p/36-1815
+- https://www.biltema.se/bygg/elinstallationer/normcentraler/normkapsling-12-moduler-2000054143
 
-Extra cost is only ~99 SEK, so cramped mains wiring is never worth preserving the smaller box.
+That is the clean fallback and is still cheaper than many dedicated control cabinets.
 
 ## Mains distribution inside the box
 
-After KJD12, switched L and N each need to feed two loads:
+After KJD12, switched L and N each feed:
 - HDR-60-24
 - DeWalt output lead
 
-PE only connects:
+PE connects:
 - input PE
 - DeWalt output PE
 
-Three `Wago 221-413` three-conductor connectors are therefore sufficient:
+Three `Wago 221-413` three-conductor connectors are sufficient:
 - switched L: KJD12 output + HDR L + DeWalt-output L
 - switched N: KJD12 output + HDR N + DeWalt-output N
 - PE: input PE + DeWalt-output PE, third port unused
 
-Wago 221-413 rating/current reference:
-- flexible/solid conductors through 4 mm² class
-- 32 A / 450 V class
-
-Cheap local reference:
-- Jula article `001480`
-- 12-pack Wago 221-413
+Jula reference:
+- article `001480`
+- 12-pack genuine Wago 221-413
 - **129 SEK**
 
 Source:
 - https://www.jula.se/catalog/el-och-belysning/elinstallation/installationsmateriel/kopplingslister-och-kopplingsklammor/kopplingsklammor-001480/
 
-Only three are used; the remaining nine are useful general workshop stock. If genuine 221-413 are already owned, buy none.
+If genuine Wagos are already in workshop stock, buy none.
 
 ## KJD12 terminals
 
-KJD12 commonly uses 6.3 × 0.8 mm Faston tabs.
+KJD12 commonly uses 6.3×0.8 mm Faston tabs.
 
-Use correctly crimped insulated female 6.3 mm receptacles matching the actual conductor area.
+Use properly crimped insulated female 6.3 mm receptacles matching actual conductor area.
 
-Cheap current reference:
-- Biltema helisolerad 6.3 mm female Faston
+Biltema reference:
 - article `44-0020`
 - 1.5–2.5 mm²
-- **24.90 SEK / 10** on current catalogue
+- **24.90 SEK / 10**
 
-Do not solder directly onto the mains switch tabs; use proper removable crimp terminals.
+Do not solder directly to mains switch tabs.
 
 ## Cable entries / strain relief
 
-Use real cable glands for the two 3G1.5 mains pigtails rather than relying on a loose hole/membrane.
+Use real cable glands for the 3G1.5 leads.
 
-Current reference:
-- Jula/Rutab M20
+Jula/Rutab M20 reference:
 - article `402070`
 - IP68
 - 2-pack
@@ -185,65 +182,57 @@ Current reference:
 Source:
 - https://www.jula.se/catalog/el-och-belysning/elinstallation/installationsmateriel/kabelgenomforing/forskruvningar-402070/
 
-The small 24 V cable to Jackpot3 can use an existing appropriately sized sealed enclosure entry if it provides real strain relief; otherwise add a smaller gland when the actual cable OD is known.
+The 24 V cable to Jackpot3 can use a correctly sized smaller gland once actual cable OD is known.
 
 ## Extra fuse / breaker?
 
 No separate DIN MCB is part of the Pareto baseline.
 
-Reason:
-- the machine is a plug-connected appliance on an already protected Swedish branch circuit
-- KJD12 / 3G1.5 / DeWalt path are all 10–16 A class
-- HDR-60-24 includes its own electronic protection functions
+The machine is plug-connected to an already protected branch circuit; adding a generic duplicate 16 A MCB does not materially improve the baseline system.
 
-Adding another generic 16 A MCB inside the box does not materially improve protection when the upstream circuit is already 10/16 A and would mainly add cost/space.
+## Updated incremental cost
 
-If later a smaller branch fuse is wanted specifically for auxiliary electronics, design it intentionally; do not add a duplicate breaker by habit.
+Excluding separately budgeted **KJD12** and **HDR-60-24**:
 
-## Estimated enclosure/distribution cost
+- Biltema 4-module IP65 DIN enclosure: **99.90 SEK**
+- Biltema 3 m 3G1.5 extension lead: **59.90 SEK**
+- Jula M20 glands: **39.90 SEK**
+- Wago 221-413 12-pack: **129 SEK**
+- 6.3 mm insulated Faston pack: **24.90 SEK**
 
-Excluding the already separately budgeted **KJD12** and **HDR-60-24**:
+Total if all must be bought:
+- **~354 SEK**
 
-- small IP65 DIN enclosure: 149.90 SEK
-- 3 m 3G1.5 extension lead donor: 59.90 SEK
-- 2 × M20 glands: 39.90 SEK
-- Wago 221-413 12-pack: 129 SEK
-- 6.3 mm insulated female Faston pack: ~24.90 SEK
+If genuine Wagos/Faston supplies already exist:
+- roughly **~200 SEK** incremental for enclosure + donor lead + glands
 
-Total if buying everything new:
-- **~404 SEK**
-
-If genuine Wagos/Faston/crimp supplies already exist in the workshop, the actual incremental cost can be closer to **~250 SEK**.
-
-If the 8-module enclosure is needed instead of the compact one, add ~99 SEK.
+Moving to Biltema's 12-module enclosure adds about 129 SEK over the 4-module box.
 
 ## Safety / commissioning gate
 
-This is mains voltage. The architecture is intentionally simple, but assembly quality matters more than cleverness.
-
 Before energising:
-- follow KJD12 terminal numbering/datasheet; never infer line/load from wire colour
-- switch L and N through the two KJD12 poles as designed
-- PE remains continuous and unswitched to the DeWalt output
-- use correct crimp tooling for Faston terminals
-- no bare copper/live terminal accessible with enclosure closed
+- follow exact KJD12 terminal numbering/datasheet
+- switch L and N through the intended two poles
+- keep PE continuous and unswitched to the DeWalt output
+- use correct crimp tooling
+- no exposed live parts with enclosure closed
 - real strain relief on every cable
-- continuity-test PE from wall-plug earth to female-socket earth
+- continuity-test PE
 - verify no L/N-to-PE short
 - verify KJD12 no-volt release before connecting router
-- verify DeWalt AUTO operation with a small/test load before the router
+- verify DeWalt AUTO with a test load first
 
-If there is any uncertainty about mains assembly/testing, have the finished box checked/wired by someone competent with 230 V equipment. This is not a fixed-building-installation design guide.
+If uncertain about mains assembly/testing, have the finished portable machine box checked/wired by someone competent with 230 V equipment.
 
 ## Decision
 
-**Pareto baseline:**
-- GDS Electric 3–5 module IP65 enclosure
-- KJD12 on a side/end face after physical template check
+**Pareto baseline is now Biltema-heavy:**
+- Biltema `35-0065` 4-module IP65 DIN enclosure — 99.90 SEK
+- KJD12 in panel after physical fit check
 - HDR-60-24 on included DIN rail
-- donor 3 m 3G1.5 extension lead provides moulded input/output connectors
+- Biltema 3 m 3G1.5 donor extension lead
 - Wago branch distribution
 - M20 glands
-- insulated 6.3 mm Faston terminals
+- insulated 6.3 mm Faston
 
-Only move to the 8-module enclosure if the real dry-layout is cramped.
+Use Biltema `35-0067` 12-module box only if the real component dry-fit proves the small box uncomfortable.
