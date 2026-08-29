@@ -4,7 +4,7 @@ Här ska bara delar för den LowRider V4 som faktiskt byggs finnas.
 
 ## Inköpsförutsättning
 
-- [x] **Amazon Prime-medlemskap** — räkna alltid Amazon Prime-frakt när vi jämför totalpris.
+- [x] **Amazon Prime-medlemskap** — använd Prime som möjlig fraktfördel, men välj butik efter totalpris inklusive frakt.
 
 ## Redan köpt — HaWiWe, 29 augusti 2026
 
@@ -18,9 +18,9 @@ Ordertotal: **165,50 € inklusive 8,00 € frakt**.
 
 ## Kvar till själva LR4-maskinen
 
-Utgår från V1E:s aktuella officiella LR4-BOM och räknar bort sådant som redan köpts ovan. PLA/printmaterial och stålrör hanteras separat och listas inte här.
+PLA/printmaterial och stålrör hanteras separat och listas inte här.
 
-- [ ] 1 × styrkort med minst 5 drivare
+- [ ] **Jackpot-controller** — beslutat förstahandsval
 - [ ] 5 × NEMA17-stegmotorer, ca 59 Ncm / 84 oz-in, 5 mm axel, axel minst 20 mm
 - [ ] 3 × stepper wire extenders / förlängningskablage
 - [ ] 3 × GT2 10 mm, 16T remhjul
@@ -34,38 +34,17 @@ Utgår från V1E:s aktuella officiella LR4-BOM och räknar bort sådant som reda
 - [ ] gänglåsning för remhjulens stoppskruvar
 - [ ] lätt smörjmedel till idlers/linjärskenor
 
-## Aktuell inköpskandidat — research 29 augusti 2026
+## Styrkort
 
-Målet är låg totalkostnad inklusive frakt, utan att dumsnåla, och helst få beställningar.
+**Jackpot är valt.** SKR Pro-spåret från tidigare research ska inte användas för detta bygge.
 
-### Amazon.se / Prime — stark kandidat för smådelar + motorer
+## Router / fräsmotor
 
-- STEPPERONLINE 5-pack NEMA17, **59 Ncm / 84 oz-in, 2 A, 1 m kabel** — omkring **608 kr** vid kontroll. Detta matchar momentet i V1E:s eget LR4-kit (84 oz-in) och är därför förstahandsval framför billigare svagare motorer.
-- 5 × TMC2209 finns omkring 300–370 kr om SKR Pro väljs.
-- 5→8 mm kopplingar och diverse GT2/kablage finns billigt och Prime kan göra samlad Amazon-order ekonomiskt attraktiv.
-
-**Viktigt:** kontrollera Prime/frakt och aktuell säljare i kassan innan köp; sökresultat garanterar inte att varje artikel har Prime.
-
-### Styrkort
-
-V1E:s dokumentation har färdig LR-firmware för **BIGTREETECH SKR Pro V1.1/V1.2 + TMC2209**, och rekommenderar 5-driver-kort för LR4. Det är därför ett låg-risk-val om det hittas till bra totalpris. Undvik att köpa ett billigare 4-driver-kort — LR4 behöver fem individuellt drivna motorer för standard dual-endstop-upplägget.
-
-### Nätaggregat
-
-V1E:s BOM kräver minst 36 W och deras eget LR4-kit använder **24 V**. 24 V / 2.5 A (60 W) är beprövat i V1E-kitet och räcker; köp inte ett stort 350 W-aggregat bara för att summera motorernas märkström — stepperdrivarna fungerar inte så från nätaggregatets sida.
-
-### Router
-
-**Makita RT0702C** är målet eftersom den köpta 3,175 mm-spännhylsan är för Makita 700-serien. Prisresearch 29/8:
-- Prisjakt: ca **1 532 kr** lägsta observerade pris
-- Proshop: **1 657 kr inklusive fri frakt**
-- CS Megastore: **1 626 kr inklusive fri frakt** vid kontroll
-
-Köp separat från billig svensk/EU-butik om Amazon inte slår totalpriset; det finns ingen anledning att betala extra bara för att minska antalet paket.
+**Makita RT0702C är uttryckligen bortvald.** Den köpta 3,175 mm-spännhylsan ska inte tolkas som att Makita-fräsen är vald. Exakt tidigare beslutad fräsmotor måste återföras från chattunderlaget innan köp; gissa inte modell här.
 
 ## Verktyg / för att kunna fräsa
 
-- [ ] Makita RT0702C
+- [ ] beslutad fräsmotor/router enligt tidigare chattbeslut — **inte Makita RT0702C**
 - [ ] minst 1 × 1/8" / ca 3,175 mm single-flute frässtål för första körningarna och strut plates
 
 ## Maskinens bord / fasta delar
