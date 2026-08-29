@@ -40,7 +40,7 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 
 ### Måste köpas
 
-- [ ] **Jackpot3 CNC Controller**
+- [ ] **Jackpot3 CNC Controller** — Elecrow `CQA240812C2`, $76.99 observerat 2026-08-29, in stock, 300 g; kräver flashning. Sverige-frakt/import fortfarande checkout-gated.
 - [ ] 5 × NEMA17-stegmotorer — StepperOnline `5-17HS19-2004S1`, 59 Ncm / 83.55 oz-in, 2 A, 5 mm D-axel, 24 mm axel, 1 m kabel
 - [ ] stepper wire extenders endast där dry-fit visar att motorernas befintliga 1 m-kablar inte räcker
 - [ ] 3 × GT2 10 mm, 16T remhjul, 5 mm hål
@@ -54,10 +54,10 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [ ] 2 × koppling 5 mm → 8 mm
 - [ ] **Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN-nätaggregat**
 - [ ] ca 1 m flexibel **20 AWG / ~0,52 mm² 2-ledare** från HDR-60-24 till Jackpot3; LaskaKit UL2464-familj, välj uttryckligen 2-core i dropdown
-- [ ] **VEVOR 0700C, 800 W, 65 mm router**
+- [ ] **VEVOR 0700C, 800 W, 65 mm router** — exakt SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`; €83.99 observerat 2026-08-29, VEVOR EU Sverige-frakt förväntat €0
 - [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
 - [ ] PLA för LR4-delarna — ca 2,7 kg faktisk förbrukning; köp med marginal
-- [ ] stålrör i slutliga längder: 816 / 816 / 1505 mm
+- [ ] **2 × Motonet rundrör Ø30×1,5 mm ×2 m, artikel `88-7123`, 189 kr/st observerat**; kontrollera faktisk OD/straightness, kapa till 1505 / 816 / 816 mm
 - [ ] bord/underrede
 - [ ] plan bordsskiva / löstagbar spoilboard
 - [ ] material till permanenta 819 mm strut plates, max 6,35 mm; bootstrap med printade temp-struts och fräs slutliga ur billig skivrest
@@ -95,10 +95,14 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 **Val:** Jackpot3.
 
 Aktuella priser verifierade 2026-08-29:
-- V1E: **$75.99**
-- Elecrow: **$76.99**
+- V1E: **$75.99**, pre-flashed för LR4
+- Elecrow: **$76.99**, SKU `CQA240812C2`, in stock, måste flashas
 
 Jackpot3 innehåller **6 integrerade TMC2226-drivare**, så inga separata stepperdrivare ska köpas.
+
+Elecrow är fortfarande förstaval för Sverige eftersom V1E själv rekommenderar den direkta internationella rutten, men slutkostnaden måste inkludera frakt, svensk moms, den nya lågvarutullen från 1 juli 2026 och eventuell transportörs administrationsavgift. Se `research/2026-08-29-jackpot3-order.md`.
+
+**Jackpot2 väljs bort:** $55 är billigare headline, men den saknar PWM på utgångarna. Det är en onödig framtida begränsning med planerad laser senare.
 
 ## PSU — Mean Well HDR-60-24
 
@@ -126,11 +130,18 @@ See `research/2026-08-29-final-psu-endstop-wiring-cart.md`.
 
 ## Router — VEVOR 0700C 800 W Makita-klon
 
-**Val:** VEVOR **0700C**, 800 W, 220–240 V / 50 Hz, 65 mm kropp, 10 000–30 000 rpm.
+**Val:** VEVOR **0700C**, SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`.
 
-Detta ersätter den tidigare 710 W VV-1B-220V-kandidaten.
+Current official VEVOR EU observation 2026-08-29:
+- **€83.99**
+- in stock
+- 220–240 V / 50 Hz
+- 800 W
+- 65 mm body
+- 10 000–30 000 rpm
+- standard VEVOR EU shipping policy implies **free Sweden shipping** for this non-heavy product
 
-VEVOR anger Makita 0700-bas-kompatibilitet för denna 0700C-familj. Det finns dessutom dokumenterad V1E-erfarenhet där en VEVOR 0700C körs med en Makita-style/Sienci 1/8"-spännhylsa i VEVOR:s originalmutter med mycket liten runout.
+This replaces the old price-unknown state and the stale 710 W candidate.
 
 ### Köpt Makita/Elaire 3,175 mm-spännhylsa → VEVOR 0700C
 
@@ -139,6 +150,23 @@ VEVOR anger Makita 0700-bas-kompatibilitet för denna 0700C-familj. Det finns de
 Den köpta HaWiWe-hylsan är en **Elaire Makita-style 1/8" collet**, produktfamilj **MRP-1250**, avsedd för bl.a. Makita RT700C / RT0700CX3 / RT0701C.
 
 Det saknas ett explicit datablad från Elaire/VEVOR som nämner exakt kombinationen MRP-1250 + VEVOR 0700C. När routern kommer: provpassa hylsan utan verktyg, kontrollera korrekt säte i kona/mutter och kontrollera därefter runout med ett rakt 1/8"-verktyg.
+
+## Rails — Motonet 30 mm
+
+**Nuvarande förstaval:** Motonet `88-7123`, rundrör **Ø30×1,5 mm, 2 m**.
+
+V1E accepterar 30 mm OD och minst 1,3 mm vägg, så nominellt är röret direkt inom LR4-spec.
+
+Köp:
+- 2 × 2 m
+- observerat pris: **189 kr/st = 378 kr totalt**
+
+Kapa:
+- 1505 mm
+- 816 mm
+- 816 mm
+
+Kontrollera med skjutmått att faktisk OD ligger ungefär 29,8–30,2 mm och välj raka/oslagna exemplar innan kapning. Se `research/2026-08-29-steel-tubes-gavle.md`.
 
 ## Motorer
 
