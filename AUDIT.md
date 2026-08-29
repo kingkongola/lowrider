@@ -1,196 +1,183 @@
-# Systemaudit — 2026-08-29
+# Systemaudit — current state 2026-08-30
 
-Syfte: oberoende kontroll av att LowRider V4-planen inte bara är dokumentmässigt konsekvent utan faktiskt går att bygga, koppla och köra i den fysiska världen.
+Syfte: kontrollera att LowRider-planen faktiskt går ihop mekaniskt, elektriskt och praktiskt — inte bara att BOM-raderna ser rimliga ut.
 
-Statusnyckel:
-- **VERIFIERAT** — stöds av aktuell primärkälla eller direkt geometri.
-- **FYSISK GATE** — kan inte avgöras säkert före provpassning/mätning av verkliga delar.
-- **KORRIGERAT** — tidigare plan innehöll ett konkret fel eller en för stark formulering.
+Status:
+- **VERIFIERAT** — kan behandlas som projektstate.
+- **FYSISK GATE** — måste mätas/provas på verkliga delar.
+- **CHECKOUT GATE** — exakt frakt/total kan inte fastställas säkert från indexerade sidor.
 
 ## Samlad bedömning
 
-Grundarkitekturen är sund. Ingen upptäckt kräver byte av maskin, arbetsyta, rördimension, motorer, styrkort eller routerspår.
+Grundarkitekturen håller. Ingen audit har krävt byte av LowRider V4, 650×1250-arbetsyta, Ø30×1,5-rör, motorer, Jackpot3, HDR-60-24 eller VEVOR 0700C.
 
-Det fanns däremot flera integrationsluckor som kunde ha orsakat omköp eller ett dåligt bygge om BOM:en följdes mekaniskt. De viktigaste är kabelrörelse från fast elbox till rörlig maskin, exakt 30 mm-printvariant, strut-generatorinställning, infästning i deckens överhäng och oklar terminologi kring KJD12 som "nödstopp".
+De tidigare farliga luckorna har flyttats från antaganden till uttryckliga bygg-/checkout-gates.
 
-## VERIFIERAT
+## VERIFIERAT — mekanik
 
-### Geometri
+- arbetsyta **650×1250 mm**
+- X-rör **816 mm ×2**, Y-rör **1505 mm**
+- strut-generator: `819`, `front_wing_size=30`
+- GT2 **999 / 1705 / 1705 mm = 4409 mm**
+- 5 m 10 mm fiberglass GT2 räcker
+- 3 × drive pulley: GT2, 16T, 5 mm bore, 10 mm belt
+- 6 × smooth idler, 5 mm hole, 10 mm belt
+- 14 × 608-2RS installeras
+- T8×8, 4-start, 8 mm lead; V1E minimum 145 mm
+- StepperOnline `17HS19-2004S1`: rätt NEMA17/axelström/axeldimension
 
-För 650 × 1250 mm användbar arbetsyta och 6,0 mm XZ-plattor ger aktuell V1E-kalkylator:
-- X-rör: 816 mm ×2
-- Y-rör: 1505 mm
-- strut-input: 819 mm
-- GT2: 999 + 1705 + 1705 = 4409 mm
-- minimum bord: 941 × 1563 mm
+T8 400 mm-röret kapas först efter assembly-check; cirka **150–160 mm ×2** är praktiskt mål, inte två 199 mm-halvor.
 
-5 m korrekt 10 mm GT2-rem räcker med cirka 591 mm nominell marginal.
+## VERIFIERAT — print
 
-### Rör
+Printer är **Bambu Lab P1S, 256×256×256 mm**. V1E:s minimum 200×200×190 är redan uppfyllt.
 
-Ø30 × 1,5 mm stål ligger inom V1E:s LR4-krav: 29,5/30/32 mm OD, ±0,2 mm och minst 1,3 mm vägg. Två 2 m-rör räcker till 1505 + 816 + 816 mm.
+Alltså: **ingen printer-capability gate**.
 
-### Motorer och drivning
+Kvar före hela print-satsen:
+- latest LR4
+- alla diameterberoende delar = **30 mm**
+- router mount = **Makita/65 mm**
+- `Z_Stub` + `Z_Nut` snabb testfit
+- slicer-preview av bridges/unsupported features
 
-StepperOnline `17HS19-2004S1` uppfyller kraven: NEMA17, 5 mm D-axel, 24 mm axellängd, 2 A och 1 m kabel. Jackpot3 har öppna 2,54 mm motorheaders, så fabrikskontakterna är praktiskt användbara.
+## VERIFIERAT — drivning/styrning
 
-LR4 kräver 3 × 16T/10 mm/5 mm drive pulleys, 6 × släta 20T-idlers för 10 mm rem, 14 × 608-2RS och två T8×8 Z-skruvar. Nuvarande spec matchar detta.
+- Jackpot3 accepterar 24 V
+- HDR-60-24, 24 V/2,5 A/60 W är rätt storleksklass
+- Omron `SS-3GL13PT` kopplas NC via COM+NC
+- endstops är home/auto-square-sensorer, **inte runtime hard limits** i standardconfig
+- Elecrow Jackpot3 kräver flashning/config före driven rörelse
+- microSD ingår inte dokumenterat; inventera FAT32-kort
+- data-kapabel USB-C krävs för säker flashing
 
-### Styrning och PSU
+## VERIFIERAT — live inköpsrader 2026-08-30
 
-Jackpot3 accepterar 9–24 VDC och V1E anger minst 19 W. Mean Well HDR-60-24, 24 V/2,5 A/60 W, är därför elektriskt rimlig med god marginal för grundmaskinen.
+### LaskaKit
+5 m / 10 mm fiberglass GT2 är live i lager. Idlers, T8, muttrar, kopplingar och kablage är också tillgängliga i aktuell kontroll.
 
-### XZ-plattor
+### StepperOnline
+`5-17HS19-2004S1` är live i lager med Germany warehouse och Sverige stöds.
 
-HaWiWe 6,0 mm XZ-plattor + HaWiWe LR4-skruvset är en avsiktlig EU-kombination, inte en oavsiktlig blandning. Provmontera ändå M3-skruvarna mot MGN-blocken innan slutdragning.
+### DigiKey
+Korgen är variantverifierad. Två viktiga korrigeringar:
+- Faston ska vara **DigiKey `A27824-ND`**, inte Marketplace-dubbletten med MOQ 1000.
+- lägg till **Amphenol `AIO-CSM12`**, M12 / 3–6,5 mm / IP68 för ~4,8 mm 24 V-kabeln.
 
-## KORRIGERAT / måste ändras i projektstate
+Detta löser den tidigare saknade LV-förskruvningen.
 
-### 1. Fast HDR-box → rörlig Jackpot: 1 m 24 V-kabel får inte vara låst
+### KEDU
+Preferred family är nu **genuine KEDU KJD12-14**:
+- 230 V/50 Hz coil option finns
+- **15 A AC-3 / 18 A AC-1** enligt KEDU-datablad
+- 6,3×0,8 Faston
+- IP54
+- emergency-stop button/cover finns som KEDU-tillbehör
 
-V1E:s standardlösning monterar PSU och styrkort på den rörliga beam/gantryn. Vår lösning flyttar HDR-60-24 till en fast KJD12-box på bordet men behöll cirka 1 m PSU-kabel i BOM:en.
+CEM Elettromeccanica har live genuin KEDU med svamp/kåpa och deras eBay-annons identifierar delen som `KJD12-14`.
 
-Det är en integrationsmiss: kabeln måste nu följa Y-rörelsen och ha service-loop utan drag i kontakterna.
+Vi kallar ändå helheten **NVR/maskinstopp**, inte certifierad safety-rated E-stop-krets.
 
-**Ny regel:** köp 3 m flexibel 20 AWG / ~0,52 mm² tvåledare som billig längdmarginal, men kapa/terminera först efter full-travel dry-fit. Om den verkliga rutten mot förmodan blir längre ska kabelarea/spänningsfall omvärderas.
+## KORRIGERAT — 24 V-kabelrörelse
 
-### 2. Separat lågspännings-genomföring saknades
+HDR sitter fast i bordets elbox medan Jackpot sitter på rörlig beam. Därför:
+- köp 3 m 20 AWG 2-core som längdmarginal
+- kapa efter full-travel dry-fit
+- stor mjuk rörelseloop
+- UL2464 är inte bevisad continuous-flex; använd riktig chain-flex endast om verklig routing kräver snäv repetitiv böj
+- separat M12-gland `AIO-CSM12`
 
-De två planerade M20-förskruvningarna går åt till 3G1,5 in/ut. 24 V-kabeln behöver egen mekanisk dragavlastning genom boxen.
+## KORRIGERAT — VEVOR 6,5 A
 
-**Ny regel:** välj en separat mindre kabelgenomföring efter uppmätt ytterdiameter på den faktiska 20 AWG-kabeln.
+VEVOR:s 220–240 V-webbsida återanvänder marknadsföringstext “6.5A motor”. Samma 6,5 A används på 120 V / 800 W-versionen, där siffran är matematiskt rimlig. 0700C-manualen anger 220–240 V och 800 W men ingen 6,5 A EU-märkström.
 
-### 3. Printvariant måste vara exakt 30 mm
+**Slutsats:** 6,5 A ska inte användas som EU-routerström.
 
-"Senaste LR4-delar" räcker inte som instruktion. LR4 har dimensionsvarianter för rören.
+Med bekräftad DXV30SAPTA skulle märkteffekterna summera till ~1,91 kW, motsvarande ~8,3 A real power vid 230 V. Verklig RMS-ström/starttransient är fortfarande fysisk gate.
 
-**Ny regel:** alla rail-/brace-/clip-delar med diameterstorlek ska vara **30 mm-varianten** för Motonet Ø30-röret. Kontrollera slicerfilnamn före långa prints.
+## 10 A GARAGEGRUPP — designförutsättning
 
-### 4. Strut-generatorn behöver två låsta parametrar
+Garagegruppen är **10 A**, inte 16 A.
 
-För vår maskin:
-- `strut_length = 819`
-- `front_wing_size = 30`
+Det är inte automatiskt ett blockerande problem, men marginalen är tillräckligt liten för att kräva verkligt belastningsprov.
 
-V1E anger att generatorn avsiktligt gör slutkonturen cirka 0,5 mm mindre; 819 mm ska därför matas in i generatorn, inte användas som manuellt färdigmått på SVG:n.
+Före riktig fräsning:
+1. identifiera B10/C10/etc, jordfelsbrytare och delade laster
+2. bekräfta DeWalt-typskylt
+3. DeWalt ensam
+4. controller + DeWalt AUTO + router utan skärlast
+5. normal fräsning utan andra stora laster på gruppen
 
-### 5. 90 cm bord är fortsatt giltigt, men 50 mm decköverhäng måste bära maskinens kantzon
+Om gruppen löser: ändra last-/kretsarkitektur. **Uppsäkra aldrig som workaround utan att fasta installationen verifierats.**
 
-På ett 900 mm djupt bord med ~1000 mm deck blir överhänget cirka 50 mm per långsida. V1E monterar Y-rail/belt clips med den yttre bordskanten som gemensam referens.
+## FYSISK GATE — bord
 
-**Ny regel:** deckens båda långkanter ska ha lokal bärighet och säker skruvinfästning där LR4 rullar/rail/belt clips ligger. Om befintlig bordsskiva slutar 50 mm in ska kanten vid behov få underliggande list/blockning eller genomgående infästning. Godkänn inte en lös 11 mm OSB-kant bara för att totala måttet stämmer.
+Minimum footprint är 941×1563 mm; praktisk deck ~1000×1620.
 
-### 6. Routerkabeln är också en rörlig kabel
+160–180 × 90–100 cm begagnat bord är giltigt. På 90 cm djup överhänger deck ~50 mm per långsida; LR4:s rail/wheel/belt-clip-zon måste få verkligt lokalt stöd/infästning. En lös 11 mm OSB-kant räcker inte som bärande antagande.
 
-VEVOR-kabeln måste följa Core/gantry tillsammans med övriga ledningar/slang. Dess fabriksledning får inte antas räcka innan bordet och elboxens placering är kända.
+## FYSISK GATE — damm
 
-**Ny regel:** inga slutliga kabelclips före ett gemensamt full-travel-test med routerkabel, 24 V, motor/endstop och dammsugarslang på plats.
+- bekräfta DeWalt-modell
+- testa befintlig 48 mm ×2,1 m slang först
+- slangens vikt får inte belasta Core/Z
+- stockslangen är inte verifierat antistatisk; ordna definierad jordväg eller groundable hose före XPS/reguljär dammig drift
+- stål-cyclone-can är inte automatiskt vacuum-säker; kontrollerat deformationstest krävs
 
-### 7. KJD12: kalla den inte säkerhetsklassad E-stop utan bevis
+## FYSISK GATE — router
 
-KJD12 är verifierad som tvåpolig elektromagnetisk NVR/start-stop med underspänningsutlösning, och varianter finns med röd emergency-stop-kåpa. Underlaget räcker däremot inte för att påstå att den valda varianten utgör en verifierad säkerhetsklassad nödstoppfunktion enligt maskinsäkerhetsstandard.
+VEVOR 0700C:
+- 65 mm body är rätt mountklass
+- 800 W / 220–240 V
+- Elaire/Makita-style 1/8" collet har hög sannolikhet men exakt kombination saknar formellt kompatibilitetsdatablad
 
-**Ny terminologi:** `KJD12 NVR/maskinstopp med röd stoppkåpa`. Den ska vara direkt nåbar från normal operatörsplats. Exakt variant, terminalschema och märkdata kontrolleras före håltagning/koppling.
+Provpassa collet och kontrollera runout innan riktig fräsning.
 
-### 8. Statisk jordning är ännu inte färdigdesignad
+## FYSISK GATE — full rörelse
 
-Den återanvända DeWalt 48 mm-slangen är inte dokumenterad som antistatisk. V1E varnar uttryckligen för statisk laddning i vac-hose.
+Före slutliga clips/remspänning ska maskinen nå alla fyra hörn + Z-extremer med samtidigt monterade:
+- 24 V-kabel
+- routerkabel
+- stepper/endstop-kablar
+- vac-hose
 
-**Gate före XPS/reguljär dammig körning:** antingen groundable/steel-ribbed hose eller en avsiktlig jordledare med definierad PE-anslutningspunkt och kontinuitetskontroll. HDR-60-24 är Class II och är inte jordpunkten.
+Inget får sträckas, kinka, bära kontaktlast eller falla in i rörelsezonen.
 
-### 9. Elecrow Jackpot3 kräver firmware/config innan motorprov
+## 230 V gate
 
-Elecrow-kortet är inte V1E-förkonfigurerat.
+Före energisering:
+- riktig KJD12-14/HDR dry-fit i kapsling
+- exakt terminalschema
+- PE kontinuerlig/oswitchad till DeWalt-uttaget
+- korrekta Faston/crimps
+- riktiga kabelgenomföringar/dragavlastning
+- inga åtkomliga live-delar
+- PE-kontinuitet och ingen L/N→PE-kortslutning
+- NVR/no-restart-test med router frånkopplad
 
-**Ny regel:** flasha V1E:s vid byggtillfället aktuellt testade FluidNC-paket och rätt LR4-konfiguration innan driven rörelse/homing provas.
+## CHECKOUT GATES
 
-### 10. Jackpot-boxen ska inte hamna i den slutna 230 V-boxen
+Specen är klar för:
+- LaskaKit
+- StepperOnline
+- DigiKey
+- VEVOR
+- Elecrow
+- SUNLU
+- Sorotec
+- Allegro 16T
+- CEM/eBay KEDU KJD12-14
 
-V1E betonar luftflöde över Jackpot3 och rekommenderar board box på YZ_Min/beam. Vår fasta kapsling innehåller KJD12 + HDR + nätfördelning; Jackpot3 ligger separat på den rörliga beam/gantryn.
+Det som återstår där är landad kostnad/frakt — inte ny komponentresearch.
 
-## Andra auditpasset — inköpsrad för inköpsrad
+## Nästa verkliga osäkerheter
 
-### 11. T8-stången: kapa inte slentrianmässigt i två lika ~199 mm-bitar
+Mer webbresearch ger nu låg marginalnytta för:
+- Motonet-rörens faktiska rakhet/OD
+- bordets verkliga vridstyvhet
+- collet/runout
+- DeWalt-typskylt
+- kabel-/slangrörelse
+- 10 A-gruppens beteende under verklig last
 
-V1E kräver två T8×8-skruvar **145 mm eller längre**. En 400 mm-stång är därför ett bra köp, men två lika halvor ger onödigt mycket stång som sticker upp över Z vid full höjd.
-
-**Ny regel:** utgå från cirka **150–160 mm per Z-skruv**, inte halva stången. Slutlig kaplängd bekräftas mot de verkliga delarna före kapning. Extra längd är mekaniskt tillåten men ger ingen funktionell vinst här.
-
-### 12. GT2 5 m har en exakt fallback om lagret svajar
-
-Låsta segment är 999 / 1705 / 1705 mm. Om LaskaKit 5 m-rullen `LA190013C` är slut kan **3 × 2 m av samma 10 mm fiberglass GT2-spec** användas: varje maskinsegment ryms på en egen 2 m-längd. Ingen skarv behövs.
-
-### 13. 20 AWG-kabeln är elektriskt okej men inte automatiskt en drag-chain-kabel
-
-Den valda LaskaKit 2-core UL2464-kabeln är nominellt 20 AWG / 0,52 mm² och cirka **4,8 mm OD**. Tre meter 20 AWG ger rimligt spänningsfall även vid PSU:ns fulla 2,5 A, men UL2464/PVC-specen i sig bevisar inte continuous-flex/drag-chain-rating.
-
-**Ny regel:** använd stor avslappnad rörelseloop och undvik snäv repetitiv böj. Om den verkliga kabeldragningen kräver liten böjradie i kabelkedja ska kabeltypen bytas till uttryckligt continuous-flex innan slutmontage.
-
-Den nominella 4,8 mm OD:n bekräftar också varför M20-genomföringen för 5–12 mm nätkabel inte ska återanvändas till 24 V-ledningen.
-
-### 14. DigiKey fri frakt är inte verifierad förrän checkout säger det
-
-DigiKey anger fri Sverige-frakt vid **615 kr** och 170 kr under gränsen. Nuvarande komponentkorg har uppskattats till cirka 622 kr **inklusive moms**. Hjälpsidan anger inte tydligt om 615-kronorsgränsen bedöms före eller efter moms.
-
-**Korrigering:** behandla fri frakt som checkout-gated. Köp inte filler och räkna inte hem besparingen förrän varukorgen faktiskt visar 0 kr frakt.
-
-### 15. Jackpot3 saknar en explicit microSD-rad i vår BOM
-
-Elecrow anger att paketet innehåller Jackpot3-kort, fem 2-ledarpluggkontakter och sex självhäftande kylflänsar. **MicroSD-kort anges inte som inkluderat.** V1E säger att microSD fortfarande är den föredragna filvägen för G-code och rekommenderar >2 GB, FAT32, Class 4 bäst / upp till Class 6.
-
-**Ny regel:** inventera först. Om inget kompatibelt kort redan finns, köp ett litet **4–32 GB FAT32 Class 4/6 microSD**. Undvik att köpa ett dyrt modernt high-speed/A1-kort bara för CNC:n; V1E beskriver sådana som mer problematiska.
-
-### 16. Data-kapabel USB-C är en commissioning-dependency
-
-Elecrow-kortet måste flashas. V1E:s felsökning pekar uttryckligen ut charge-only USB-kabel som vanlig orsak till utebliven USB-anslutning.
-
-**Ny regel:** verifiera att en data-kapabel USB-C-kabel finns innan flashing. Det är en inventeringspunkt, inte ett automatiskt köp.
-
-### 17. Endstops är inte runtime-limits som standard
-
-V1E är explicit: LR4:s endstops är normalt endast aktiva under homing. De stoppar inte maskinen under vanlig G-code-körning om man inte gör en avancerad limit-konfiguration.
-
-**Konsekvens:** de fem Omron-brytarna är auto-square/home-sensorer, inte kollisionsskydd och inte en ersättning för KJD12/maskinstopp eller operatörstillsyn.
-
-### 18. Printförutsättningarna måste verifieras före 2,7 kg långa prints
-
-V1E anger minst **200×200×190 mm** tillgänglig byggvolym, rekommenderar skew-kontroll och föreslår att `Z_Stub` + `Z_Nut` provprintas för passning innan stora delar. De varnar också för att Cura-baserade slicers kan brygga vissa interna features fel, särskilt Dust Skirt/YZ_Plate.
-
-**Ny gate:** verifiera skrivare/byggvolym/skew, gör de två små passningsprintarna och granska bridges i slicer-preview innan hela satsen körs.
-
-### 19. Jackpot3 kylning/kabeldragning
-
-V1E säger att kablar ska gå **bredvid**, inte över Jackpot3, att antennen inte ska täckas och att anslutningar ska avlastas innan de lämnar board box. Fläkt är valfri; om en används ska den matcha PSU-spänningen.
-
-**Ny regel:** official-style Jackpot3 board box + fri luftväg + kabelavlastning är del av standardmontaget. Köp inte fläkt innan drift visar behov.
-
-### 20. Motoranslutning ska verifieras före första driven rörelse
-
-StepperOnline-motorernas 2,54 mm-kontaktfamilj passar Jackpot3:s öppna headers, men färg/coil-pair och riktning ska ändå kontrolleras före normal jogg. Om en motor går fel håll: spänningslöst först, sedan vänd kontakt enligt V1E:s instruktion.
-
-## FYSISKA GATES — får inte ersättas av mer webbresearch
-
-1. Motonet-rör: mät OD, kontrollera rakhet/bucklor innan kapning.
-2. HaWiWe-paket: inventera antal och fysisk passform mot BOM.
-3. VEVOR/Elaire-collet: provpassa säte och kontrollera runout.
-4. KJD12 + HDR: riktig dry-fit i 120×160×90-box; gå upp till större box om terminal-/böjradie blir trång.
-5. Elboxplacering: KJD12 ska vara direkt nåbar och kablarna ska nå utan drag.
-6. Bord/deck: kontrollera racking, planhet och lokal styvhet i LR4:s långkantsspår.
-7. Komplett rörelseprov utan fräs: alla fyra hörn + Z-extremer med slang och samtliga rörliga kablar monterade.
-8. Endstops: kontrollera NC-funktion och kabelavlastning före homing; behandla dem inte som runtime-limits.
-9. Statisk jordning: kontinuitet/verifierad jordväg före XPS och regelbunden trä/MDF-körning.
-10. 230 V: PE-kontinuitet, korrekt L/N-brytning enligt faktisk KJD12-variant, dragavlastning och inga åtkomliga spänningsförande delar innan energisering.
-11. Jackpot3: kompatibelt microSD + data-kapabel USB-C + rätt firmware/config verifierat före första G-code.
-12. Printar: byggvolym/skew/testfit/bridge-preview godkänt innan full sats.
-
-## Kvar att auditera senare när delarna finns fysiskt
-
-Det går inte att webverifiera bort toleranserna i:
-- verklig rör-OD/rakhet
-- router-collet-kona/runout
-- exakt KJD12-panelvariant
-- kabel- och slanglängder efter faktisk bordplacering
-- bordets lokala vridstyvhet
-- faktisk continuous-flex-belastning i vald 24 V-kabelrutt
-
-De är därför uttryckliga mät-/dry-fit-gates, inte antaganden.
+De ska mätas/provas.
