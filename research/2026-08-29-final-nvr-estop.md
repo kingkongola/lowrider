@@ -4,7 +4,7 @@ last_updated_at: 2026-08-29
 scope: final Pareto machine mains switch / NVR / emergency-stop choice for LR4
 status: recommendation-ready
 confidence: high-on-device-class-medium-on-final-seller
-machine_target: LowRider V4 ~650×1250, VEVOR 0700C 800 W, HDR-60-24 controller PSU, existing DeWalt shop-vac
+machine_target: LowRider V4 ~650×1250, VEVOR 0700C 800 W, HDR-60-24 controller PSU, existing DeWalt DXV30SAPTA
 region: Sweden / EU
 price_basis: current EU listings observed 2026-08-29; Sweden freight must be checked before order
 sources_checked:
@@ -13,7 +13,7 @@ sources_checked:
   - Sinolec genuine KEDU KJD12/230V listing
   - Optimum/German KEDU KJD12 listings
   - Güde Denmark KJD12 listings
-  - Italian KEDU safety-switch distributor
+  - DXV30SAPTA original/manual copies including explicit 2450 W tool-socket rating
   - Swedish marketplace references used only as price comparison
 supersedes:
   - earlier idea that a KJD17 remote-trip switch plus separate contactor/mushroom is the default Pareto architecture
@@ -60,13 +60,59 @@ Source:
 
 ## Load margin for our machine
 
-Core machine loads are modest:
+Core nominal cutting loads:
+- DeWalt DXV30SAPTA: 1050 W
 - VEVOR router: ~800 W
-- HDR-60-24: 60 W maximum DC output class, much less than 1 A mains-side
+- HDR-60-24: roughly <=70 W mains input class at full load
 
-Even if the existing ~1050 W DeWalt vacuum is later placed on the same machine-level switched supply, combined nominal power is around 1.9 kW, roughly 8–9 A at 230 V before transients.
+Combined nominal power is around **1.9 kW**, approximately **8.3 A at 230 V** before motor starting transients.
 
-That is still within the KJD12's 16 A resistive / 10 A AC-3 reference class. Final wiring/fusing should of course respect the actual outlet/cable ratings.
+That remains inside the KJD12's 16 A AC-1 / 10 A AC-3 reference class. Final wiring, connectors, enclosure and upstream circuit protection must still be appropriately rated.
+
+## DeWalt auto-start topology is now verified
+
+The previous open question was whether the existing DeWalt DXV30SAPTA tool socket could safely supply the 800 W router.
+
+A DXV30SAPTA manual distributed by jem & fix explicitly gives:
+- **maximum connected electric-tool power: 2450 W**
+
+The VEVOR 0700C is only 800 W, about one third of that rating.
+
+The DeWalt manual also verifies:
+- automatic vacuum start/stop from the connected tool
+- approximately 15 seconds run-on after the tool is switched off
+
+Sources:
+- https://media.jemogfix.dk/prod-mediafiles/dk/pdf/1140_9077574_001.pdf
+- https://www.bauhaus.se/media/pdf/1163387A.pdf
+- https://www.manualslib.com/manual/3147173/Dewalt-Dxv30sapta.html?page=22
+
+### Locked baseline mains topology
+
+```text
+wall
+  |
+  v
+KJD12 NVR / emergency stop
+  |
+  +----> HDR-60-24 ----> Jackpot3
+  |
+  +----> DeWalt DXV30SAPTA [AUTO mode]
+                       |
+                       +---- 230 V tool socket ----> VEVOR 0700C
+```
+
+Benefits:
+- one machine-level KJD12 stop removes mains from controller, vacuum and router
+- DeWalt provides the router-triggered vacuum start automatically
+- vacuum continues ~15 s after normal router shutdown
+- KJD12 no-volt release prevents automatic machine restart after supply loss
+- no separate vacuum-trigger relay/smart switch is needed
+
+Physical unit label/socket rating should still be inspected during commissioning; if the actual machine is marked with a lower tool-socket limit, the physical marking wins over the generic manual.
+
+Detailed DeWalt research:
+- `research/2026-08-29-dewalt-tool-socket.md`
 
 ## Current EU purchase references
 
@@ -103,7 +149,7 @@ Sources:
 - https://www.guede.dk/kontakt-onoff-kjd12-p-2439.html?language=en
 - https://www.guede.dk/startstop-switch-kedu-kjd12-design-p-2420.html?language=en
 
-## Why not the Swedish Fyndiq/Fruugo generics
+## Why not Swedish Fyndiq/Fruugo generics
 
 Current Swedish marketplace pages show KJD12/KJD12-14 products around ~214–338 SEK plus small freight, but manufacturer identity and exact emergency-stop mechanics are often unclear/unbranded.
 
@@ -127,12 +173,9 @@ If the project later needs door interlocks, safety relays, automatic spindle con
 
 Do not leave mains terminals exposed.
 
-Preferred simple arrangement:
-
-`wall plug -> KJD12 -> switched machine distribution -> router + HDR-60-24 (and optionally vacuum)`
-
 Implementation:
 - mount KJD12 in a small robust insulated or earthed enclosure/front panel
+- use a properly rated two-outlet machine distribution after the switch: one for DeWalt, one for HDR-60-24 supply/enclosure
 - strain relief on mains entry/exit
 - use correctly rated flexible cable and insulated 6.3 mm female Faston terminals or equivalent approved terminations
 - protective earth bypasses the switch and remains continuous to all Class-I loads/enclosures
@@ -140,20 +183,6 @@ Implementation:
 - do not rely on wire colours; follow terminal numbering/data sheet
 
 The KJD12 does **not** provide overload/short-circuit protection. House circuit protection and any machine-specific fuse/breaker remain separate functions.
-
-## Possible DeWalt simplification to investigate later
-
-The existing DeWalt has an automatic tool socket. If its exact tool-socket rating is sufficient for the 800 W VEVOR, a clean topology may be:
-
-`KJD12 machine supply -> DeWalt + HDR-60-24`
-
-and
-
-`VEVOR router -> DeWalt auto-start tool socket`
-
-Then one KJD12 stop could remove power from controller, vacuum and router while the DeWalt handles vacuum auto-start.
-
-Do **not** lock this topology until the DXV30SAPTA tool-socket maximum load and auto-start behaviour are verified from its manual.
 
 ## Buy threshold
 
@@ -166,10 +195,10 @@ Do not spend ~900+ SEK on a prebuilt industrial station unless the simple KJD12 
 
 ## Remaining pre-order check
 
-Only one checkout task remains:
+Only one sourcing task remains:
 1. check whether exact Optimum `ST0380001` or another genuine KEDU KJD12/230V/16A/Not-Aus variant ships to Sweden
 2. record final delivered price
 3. if <=400–500 SEK, buy
 4. otherwise compare the Denmark genuine KEDU route
 
-No further contactor/safety-relay research is warranted for the baseline build unless this sourcing fails.
+No separate router/vacuum auto-start hardware is required.
