@@ -49,14 +49,20 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 - [ ] **5 × Omron `SS-3GL13PT` installerade; planerat köp 10 st från DigiKey (5 reserv)**
 - [ ] **10 m LaskaKit `LA150151A`, UL2464 26 AWG 3×0,14 mm²**, använd 2 ledare för NC-endstops
 - [ ] 5 × 2-poliga 2,54 mm board-side endstopkontakter/pigtails; köp extra kontakter billigt för reserv
-- [ ] 14 × 608-2RS lager
+- [ ] 14 × 608-2RS lager; köp helst 20-pack <=200 kr levererat
 - [ ] 2 × T8 trapetsskruv + mutter, minst 145 mm, 4-start / 2 mm pitch / 8 mm per varv
 - [ ] 2 × koppling 5 mm → 8 mm
 - [ ] **Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN-nätaggregat**
 - [ ] ca 1 m flexibel **20 AWG / ~0,52 mm² 2-ledare** från HDR-60-24 till Jackpot3; LaskaKit UL2464-familj, välj uttryckligen 2-core i dropdown
+- [ ] **genuin KEDU KJD12**, 230 V, DPST/2-polig, NVR/no-restart, emergency-stop cover; köp <=500 kr levererat. IKH `XW026-1` är svensk fallback ~482 kr levererat men tillverkaren är inte uttryckligen KEDU på sidan.
+- [ ] **IP65 DIN-kapsling för KJD12 + HDR** — Clas Ohlson GDS Electric 3–5 moduler `36-9846`, 120×160×90 mm, 149,90 kr, om fysisk dry-fit visar tillräcklig plats. 8-modul `36-1815`, 249 kr, är fallback om den blir trång.
+- [ ] **1 × 3 m jordad 3G1,5 / 16 A skarvsladd som donor för fabriksmonterad han- och honkontakt**, t.ex. Biltema `46-3610`, 59,90 kr
+- [ ] **2 × M20 kabelgenomföring/förskruvning** för 3G1,5-pigtails, t.ex. Jula/Rutab `402070`, 2-pack 39,90 kr
+- [ ] **3 × genuin Wago 221-413** för intern L/N/PE-fördelning; Jula 12-pack `001480` 129 kr om inga redan finns
+- [ ] **4 × isolerad 6,3×0,8 mm flatstiftshylsa/Faston** som passar faktisk KJD12 + 1,5 mm² kabel; Biltema helisolerad 1,5–2,5 mm² `44-0020` är billig referens
 - [ ] **VEVOR 0700C, 800 W, 65 mm router** — exakt SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`; €83.99 observerat 2026-08-29, VEVOR EU Sverige-frakt förväntat €0
 - [ ] minst 1 × 1/8" / 3,175 mm single-flute frässtål
-- [ ] PLA för LR4-delarna — ca 2,7 kg faktisk förbrukning; köp med marginal
+- [ ] **SUNLU ordinary PLA, 6 × 1 kg normalspolar Mix & Match** — nuvarande Pareto-förstaval, cirka €9,19/kg / ~€55,14 för 6 kg om checkout håller bulkpris och EU-frakt. 5 kg-jättespole ~€39,99 är absolut billigare men inte förstaval.
 - [ ] **2 × Motonet rundrör Ø30×1,5 mm ×2 m, artikel `88-7123`, 189 kr/st observerat**; kontrollera faktisk OD/straightness, kapa till 1505 / 816 / 816 mm
 - [ ] bord/underrede
 - [ ] plan bordsskiva / löstagbar spoilboard
@@ -114,9 +120,32 @@ Reasons:
 - correct V1-class 24 V / 60 W supply
 - closed/touch-protected DIN format rather than exposed LRS terminals
 - cheaper current procurement path than the external GST60 brick
-- fits the planned machine-level NVR/control enclosure cleanly
+- fits the planned compact machine-level NVR/control enclosure cleanly
 
 See `research/2026-08-29-final-psu-endstop-wiring-cart.md`.
+
+## 230 V maskinmatning / kapsling
+
+**Baseline:**
+
+`vägg -> KJD12 -> [HDR-60-24 + DeWalt AUTO]`
+
+`VEVOR -> DeWaltens verktygsuttag`
+
+DeWalt-manualen anger 2450 W max ansluten verktygslast; VEVOR är 800 W. Ingen separat vakuumtrigger behövs.
+
+Kapslings-Pareto:
+- Clas Ohlson GDS Electric 3–5-modulers IP65 normkapsling `36-9846`, 120×160×90, DIN-skena inkluderad, 149,90 kr
+- KJD12 monteras i sida/ände först **efter fysisk mall/dry-fit**; KJD12 finns i flera mekaniska varianter
+- HDR på DIN-skenan
+- billig 3 m 3G1,5/16 A skarvsladd återbrukas som fabriksmonterad Schuko-hane in + Schuko-hona ut
+- tre Wago 221-413 delar L/N/PE
+- PE är kontinuerlig och oswitchad till DeWalt-uttaget
+- 2 × M20-förskruvning ger dragavlastning för nätpigtails
+
+Budget för kapsling/fördelning exklusive KJD12 och HDR: **~404 kr om allt köps nytt**, närmare ~250 kr om Wago/Faston redan finns.
+
+Se `research/2026-08-29-mains-enclosure-distribution.md`.
 
 ## Endstops
 
