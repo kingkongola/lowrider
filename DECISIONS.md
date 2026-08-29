@@ -15,7 +15,7 @@ Användbar arbetsyta låses till **650 × 1250 mm** med de köpta 6,0 mm HaWiWe 
 Aktuell V1E-kalkylator ger:
 - 2 × X-rör: **816 mm**
 - 1 × Y-rör: **1505 mm**
-- strut: **819 mm**
+- strut-input: **819 mm**
 - X-rem: **999 mm**
 - Y-remmar: **1705 mm ×2**
 - total GT2: **4409 mm**, alltså räcker 5 m
@@ -30,11 +30,13 @@ Storleken rymmer en nominell kvarts 1220×2440-skiva (610×1220) med marginal ut
 Bygg maskinen korrekt och få den körklar innan eventuella modifieringar. Uppgradera först när en faktisk begränsning har visat sig.
 
 ## D004 — Begagnat bord + avtagbar CNC-deck
-**Status:** beslutat huvudspår
+**Status:** beslutat huvudspår / audit-korrigerat
 
-Första bordslösningen ska vara ett styvt begagnat mat-/konferens-/kontorsbord, helst **180×90 eller 180×100 cm**, med befintlig strukturell skiva kvar.
+Första bordslösningen ska vara ett styvt begagnat mat-/konferens-/kontorsbord, **160–180 cm långt och helst 90–100 cm djupt**, med befintlig strukturell skiva kvar.
 
-Ovanpå monteras en **avtagbar ~1000×1620 mm CNC-deck** i i första hand 11 mm OSB eller ungefär 12 mm konstruktionsplywood, beroende på det faktiska bordets top. Deck skruvas/bultas, inte limmas. Separat ~12 mm MDF används som löstagbar spoilboard.
+Ovanpå monteras en avtagbar ~1000×1620 mm CNC-deck i första hand av 11 mm OSB eller ungefär 12 mm konstruktionsplywood. Separat ~12 mm MDF används som löstagbar spoilboard.
+
+På ett 90 cm djupt bord överhänger en 1000 mm deck cirka 50 mm per långsida. Där ska LR4:s rail/wheel/belt-clip-zon få verkligt lokalt stöd och säker infästning; använd blockning/list eller genomgående infästning om befintlig bordsskiva inte bär kanten.
 
 Prisregler:
 - 0–400 kr: starkt köp om geometri + rackingtest passerar
@@ -42,7 +44,7 @@ Prisregler:
 - 700–1000 kr: endast tydligt högkvalitativt/styvt kommersiellt underrede
 - >1000 kr: normalt vänta
 
-Ingen torsionsbox, specialsvetsad ram, höj-/sänkbart skrivbord eller hjulsystem ska byggas/köpas före första körningen utan ett konkret behov.
+Ingen torsionsbox, specialsvetsad ram, höj-/sänkbart skrivbord eller hjulsystem före första körningen utan konkret behov.
 
 ## D005 — Jackpot3 som styrkort
 **Status:** beslutat förstahandsval
@@ -50,39 +52,37 @@ Ingen torsionsbox, specialsvetsad ram, höj-/sänkbart skrivbord eller hjulsyste
 Jackpot3 väljs framför SKR Pro och äldre Jackpot-versioner om prisskillnaden inte är orimlig.
 
 Skäl:
-- V1E säljer Jackpot3 som aktuell standardlösning och den är förkonfigurerad för LowRider V4.
-- 6 integrerade TMC2226-drivare, alltså inga separata stepper-drivers att köpa eller montera.
-- FluidNC, Wi‑Fi och webbgränssnitt direkt på kortet.
-- 7 ingångar och 4 valbara 5 V / linjenivå-utgångar.
-- full PWM på 5 V-utgångarna; detta lämnar möjlighet till laser senare.
-- USB‑C och integrerad RJ11/pendant-anslutning.
+- aktuell V1E-standardlösning för LR4
+- 6 integrerade TMC2226-drivare
+- FluidNC, Wi‑Fi och webbgränssnitt
+- öppna 2,54 mm stepperheaders
+- full PWM på 5 V-utgångarna; möjlighet till laser senare
+
+Elecrow-kortet kräver flashning. V1E:s vid byggtillfället aktuellt testade FluidNC + rätt LR4-config ska laddas innan driven rörelse/homing.
 
 ## D006 — VEVOR 0700C, 800 W, 65 mm som fräsmotor
-**Status:** beslutat förstahandsval
+**Status:** beslutat förstahandsval / fysisk verifiering återstår
 
 Målmodell: **VEVOR 0700C, 800 W, 220–240 V / 50 Hz, 65 mm kropp, 10 000–30 000 rpm**.
 
-Skäl:
-- modellen heter uttryckligen **0700C** och VEVOR anger kompatibilitet med Makita 0700-bas.
-- 65 mm kropp passar LR4:s Makita-format.
-- VEVOR anger 6,35 mm och 8 mm spännhylsor som standard.
-- dokumenterat V1E-fall finns med VEVOR 0700C + Makita-style 1/8"-hylsa och låg rapporterad runout.
-- den redan köpta HaWiWe-hylsan är en Elaire Makita-style 1/8" / 3,175 mm för Makita RT700/RT0700/RT0701-familjen.
+Den redan köpta HaWiWe-hylsan är en Elaire Makita-style 1/8" / 3,175 mm för Makita RT700/RT0700/RT0701-familjen.
 
-**Begränsning:** inget formellt VEVOR/Elaire-datablad säger uttryckligen att just Elaire MRP-1250 passar VEVOR 0700C. Hylsan ska därför provpassas och runout kontrolleras innan riktig fräsning.
+**Gate:** inget formellt VEVOR/Elaire-datablad verifierar exakt MRP-1250 + VEVOR 0700C. Hylsan ska provpassas och runout kontrolleras innan riktig fräsning. Tool mount ska vara Makita/65 mm-varianten.
 
 ## D007 — Dammhantering ingår i grundbygget
 **Status:** beslutat
 
-CNC:n delar garage med motorarbete. Dammutsug är därför inte en senare bekvämlighetsuppgradering utan ett grundkrav före regelbunden fräsning i trä, MDF eller XPS.
+CNC:n delar garage med motorarbete. Dammutsug är ett grundkrav före regelbunden fräsning i trä, MDF eller XPS.
 
-Grundlösningen ska minst omfatta:
-- LR4-dust shoe
+Grundlösningen:
+- LR4 dust shoe för Makita/65 mm
 - befintlig DeWalt shop-vac
 - cyklonavskiljare, printad först
 - separat styv uppsamlingsbehållare
-- slangdragning/avlastning som inte belastar Z eller gantry
-- möjlighet att begränsa och lätt städa den smutsiga CNC-zonen
+- slangdragning/avlastning som inte belastar Core/Z
+- möjlighet att begränsa och lätt städa CNC-zonen
+
+Stockslangen är inte verifierat antistatisk. Statisk jordväg till definierad PE-punkt eller groundable hose ska vara löst före XPS/reguljär dammig drift.
 
 ## D008 — Laser senare
 **Status:** uppskjutet
@@ -92,15 +92,49 @@ Laser är intressant men ska inte påverka grundbygget mer än valet av Jackpot3
 ## D009 — Plasma inte i nuvarande scope
 **Status:** bortprioriterat
 
-Plasma ska inte styra bord, inköp eller byggordning nu. Fokus är att få en bra router-CNC körklar först. Den avtagbara CNC-decken gör att underredet inte behöver låsas permanent till routertoppen.
+Plasma ska inte styra bord, inköp eller byggordning nu. Fokus är router-CNC först.
 
-## D010 — Mean Well HDR-60-24 + exact Omron från DigiKey
+## D010 — Mean Well HDR-60-24 + exact Omron + DigiKey-konsolidering
 **Status:** beslutat förstahandskorg
 
-24 V-nätaggregat låses till **Mean Well HDR-60-24, 24 V / 2,5 A / 60 W** i DIN-format.
+24 V-nätaggregat: **Mean Well HDR-60-24, 24 V / 2,5 A / 60 W**.
 
-Endstops låses till **Omron SS-3GL13PT**. Köp 10, installera 5 och behåll 5 reserv. Koppla NC, COM + NC.
+Endstops: **Omron SS-3GL13PT**. Köp 10, installera 5 och behåll 5 reserv. Koppla NC, COM + NC.
 
-Nuvarande inköpsväg är DigiKey för HDR + Omron i samma korg. Detta **supersederar den äldre provisoriska GST60A24-P1J-riktningen**.
+DigiKey-korgen konsoliderar även 16 × 608-2RS, Wago, M20 nätgenomföringar och Faston enligt `PROCUREMENT.md`.
 
-Lågspännings-/endstopkabel läggs i den redan planerade LaskaKit-korgen; StepperOnline ska fortsatt vara motors-only.
+## D011 — Ø30 mm rails låser printvariant och strut-wing
+**Status:** beslutat / audit-fynd
+
+Motonet Ø30×1,5 mm är railspåret.
+
+Konsekvenser:
+- alla diameterberoende LR4-printar ska vara **30 mm-varianten**
+- permanenta struts genereras med `strut_length=819`
+- `front_wing_size=30`
+- generatorns avsiktliga ~0,5 mm reduktion ska inte kompenseras manuellt
+
+## D012 — Fast elbox + rörlig maskin gör kabelrörelse till konstruktionskrav
+**Status:** beslutat / audit-korrigering
+
+KJD12 + HDR-60-24 sitter i en **fast box på bordet**. Jackpot3 sitter separat på den **rörliga beam/YZ_Min-sidan**.
+
+Tidigare antagande om ~1 m 24 V-kabel är borttaget.
+
+- köp 3 m flexibel 20 AWG 2-core som längdmarginal
+- kapa/terminera efter full-travel dry-fit
+- 24 V-utgången får egen kabelgenomföring/dragavlastning
+- routerkabel, 24 V, stepper/endstopkablar och vac-hose testas tillsammans vid alla rörelseextremer innan slutlig kabelinfästning
+- Jackpot-boxen hålls separat och luftig; den ska inte stoppas in i 230 V-boxen
+
+## D013 — KJD12 är NVR/maskinstopp, inte påstått safety-rated E-stop
+**Status:** beslutat terminologi/säkerhetsgräns
+
+KJD12 är verifierad som elektromagnetisk start/stop med no-voltage release/underspänningsutlösning, och varianter finns med röd emergency-stop-kåpa.
+
+Vi har inte verifierat att den valda varianten uppfyller en specifik safety-rated E-stop-kategori/standard. Repot ska därför kalla den **KJD12 NVR/maskinstopp med röd stoppkåpa**.
+
+Den ska:
+- vara direkt nåbar från normal operatörsplats
+- väljas efter exakt 230 V/50 Hz-variant, märkdata, terminalschema och mekaniska mått
+- dry-fittas i kapslingen innan håltagning
