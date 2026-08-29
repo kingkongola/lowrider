@@ -9,115 +9,46 @@
   - Linear rail set LowRider 4 — 57,00 €
   - Screw set LowRider 4 — 32,00 €
   - Makita/Elaire 1/8" collet — 29,00 €
-- Arbetsytan låst till **650 × 1250 mm** med aktuell V1E-kalkylator och köpta 6,0 mm XZ-plattor.
-- Exakt geometri dokumenterad:
-  - rör 816 / 816 / 1505 mm
-  - strut-input 819 mm
-  - GT2 999 / 1705 / 1705 mm, totalt 4409 mm
-  - minimum bord 941 × 1563 mm
-  - praktisk CNC-deck ~1000 × 1620 mm
-- Jackpot3 valt.
-- Routerspår: **VEVOR 0700C 800 W, 65 mm**.
-- PSU/endstops: **Mean Well HDR-60-24 + Omron SS-3GL13PT**.
-- Dammhantering satt som grundkrav.
-- Laser skjuten till tidigast 2027; plasma utanför nuvarande scope.
+- Arbetsytan låst till **650 × 1250 mm**.
+- Exakt geometri: rör 816 / 816 / 1505 mm, strut 819, GT2 999 / 1705 / 1705 mm, minimum bord 941 × 1563 mm, deck ~1000×1620 mm.
+- Jackpot3, VEVOR 0700C, HDR-60-24 och Omron-spåret valdes.
 
 ## 2026-08-29 — oberoende system-/fysisk audit
 
-En andra pass genomfördes med annan uppgift än första researchen: försök falsifiera planen och kontrollera att delsystemen faktiskt går ihop i en fysisk LR4.
-
-### Grund som överlevde audit utan omtag
-
-- LowRider V4
-- 650 ×1250 arbetsyta
-- 816 / 816 / 1505 mm rörgeometri
-- 819 mm strut-input
-- 999 / 1705 / 1705 mm GT2
-- Ø30×1,5 mm stålrails
-- StepperOnline `17HS19-2004S1`
-- Jackpot3
-- Mean Well HDR-60-24
-- Omron SS-3GL13PT
-- VEVOR 0700C-spåret, med kvarstående fysisk collet/runout-gate
-- reuse-first DeWalt dust extraction
-
-### Konkreta fel/luckor som hittades och korrigerades
-
-1. **~1 m 24 V-kabel var fel sak att låsa.** HDR sitter fast på bordet men Jackpot rör sig med beam/gantry. Ändrat till 3 m inköpsmarginal + slutlig kapning först efter full-travel dry-fit.
-2. **Egen LV-kabelgenomföring saknades.** De två M20 går åt till nät in/ut; 24 V får separat dimensionerad genomföring.
-3. **Printdiameter var för implicit.** Alla diameterberoende delar låsta till **30 mm-variant**.
-4. **Strut-generatorn saknade wing-parametern.** Låst till `strut_length=819`, `front_wing_size=30`.
-5. **90 cm bord var geometriskt rätt men kantlasten var odokumenterad.** ~50 mm decköverhäng ska lokalt stödjas/fästas i LR4:s rail/wheel/belt-clip-zon.
-6. **Routerkabelns rörelse saknades som gate.** Slang + 24 V + router + stepper/endstop ska nu full-travel-testas tillsammans före slutlig kabelinfästning.
-7. **KJD12 kallades för säkert "nödstopp" för starkt.** Ny terminologi: NVR/maskinstopp med röd stoppkåpa; safety-rated E-stop-status ej verifierad.
-8. **Statisk jordning hade ingen färdig definierad slutpunkt.** Det är nu blockerande gate före XPS/reguljär dammig drift; HDR är Class II och inte jordpunkt.
-9. **Elecrow Jackpot3-flashning var inte explicit i byggordningen.** Nu gate före driven rörelse/homing.
-10. **Toppnivåfiler hade driftat isär.** `README.md` och `SOURCING.md` hade kvar 608 som orphan och äldre bordssökkrav trots nyare `PROCUREMENT.md`. Canonical state reconcilerat.
-11. Äldre geometry research hade kvar ett provisoriskt **32 mm** railmål trots nu låst 30 mm Motonet-spår. Researchfilen korrigerad.
-
-### Repo uppdaterat
-
-- nytt `AUDIT.md`
-- `CHECKLIST.md` — fysiska build gates
-- `TABLE.md` — verklig edge-support/load path
-- `README.md` — aktuell state
-- `SOURCING.md` — reconcilerad mot procurement
-- `PROCUREMENT.md` — rörlig kabelintegration
-- `BOM.md` — korrigerad fysisk BOM
-- `DECISIONS.md` — nya auditbeslut D011–D013
-- `research/2026-08-29-geometry-650x1250.md` — 30 mm-spåret reconcilerat
-
-### Kvarvarande osäkerhet är nu av rätt typ
-
-Följande ska **inte** avgöras genom mer skrivbordsresearch innan delarna finns:
-- verklig Motonet-rördiameter/rakhet
-- Elaire-collet i verklig VEVOR-kona + runout
-- exakt KJD12-panel-/terminalvariant
-- faktisk bordsvridstyvhet/kantstöd
-- kabel-/slanglängder efter verklig komponentplacering
-
-De är uttryckliga mät-/dry-fit-gates i `AUDIT.md` och `CHECKLIST.md`.
+Grundarkitekturen överlevde. Konkreta korrigeringar:
+- ~1 m 24 V-kabel var fel att låsa när HDR är fast och Jackpot rörlig → 3 m marginal + full-travel dry-fit.
+- separat LV-gland behövs.
+- alla dimensionsberoende prints = 30 mm; strut `819` + `front_wing_size=30`.
+- 90 cm bord fungerar men ~50 mm decköverhäng måste ha verkligt stöd i LR4:s kantzon.
+- routerkabel + 24 V + stepper/endstop + vac-hose ska provas tillsammans över full rörelse.
+- KJD12 beskrivs som NVR/maskinstopp, inte verifierad safety-rated E-stop.
+- statisk jordning blev explicit gate.
+- Elecrow Jackpot3 måste flashas/configureras.
+- canonical top-level state reconcilerades.
 
 ## 2026-08-30 — inköpsrad + commissioning-audit
 
-Nästa auditpass gick igenom kvarvarande köp som en fysisk kedja: rätt del → passar grannkomponenten → går att montera/koppla → kan driftsättas utan dold saknad del.
+Huvudkomponenterna överlevde igen. Fynd:
+- T8 400 mm ska inte automatiskt halveras; ~150–160 mm ×2 efter assembly-check, V1E minimum 145 mm.
+- UL2464 20 AWG är inte explicit continuous-flex; stor mjuk loop, chain-flex bara om verklig routing kräver det.
+- microSD + data-USB-C är commissioning-dependencies men inventeras före köp.
+- standard-endstops är home/auto-square, inte runtime hard limits.
+- Jackpot-kablar ska gå bredvid kort/antenn med fri luftväg.
+- DigiKey-frifrakt behandlas som checkout-gated.
 
-### Huvudkomponenterna överlevde igen
+## 2026-08-30 — live cart reconciliation
 
-Ingen anledning hittades att byta:
-- Motonet Ø30×1,5-rör
-- StepperOnline-motorerna
-- GT2 16T / idlers / 10 mm fiberglass-rem
-- 608-2RS
-- T8×8 + 5→8-kopplingar
-- HDR-60-24
-- Omron-endstops
-- Jackpot3
-- VEVOR 0700C
-- Sorotec `L1S.M.0317`
-- grundarkitekturen för bord/damm/el
+Live-kontroll av riktiga produktsidor gav ytterligare korrigeringar:
 
-### Nya fynd
+1. **Bambu P1S var aldrig en verklig print-gate.** P1S 256³ överstiger V1E:s minimum 200×200×190. Kvar är endast rätt LR4-version/30 mm/65 mm variant, slicer-preview och litet `Z_Stub`/`Z_Nut` testfit.
+2. **10 A-garagegruppen de-eskalerades.** Gruppen är praktiskt beprövad med svets; plasma har kunnat lösa säkringen. VEVOR 800 W + DeWalt + controller betraktas därför inte som öppet projektproblem. Endast normal sanity-check vid första samtidiga körningen.
+3. **VEVOR:s “6.5A” på EU-sidan identifierades som återanvänd 120 V-marknadsföring.** Manualen anger EU 220–240 V / 800 W, inte 6,5 A. Ingen falsk 6,5 A EU-last används i dimensioneringen.
+4. **LaskaKit-remmens lagerstatus var stale.** Äldre kategoridata sade lager, men direkta produktsidan visar både 5 m och 2 m 10 mm fiberglass GT2 som slut. Remmen flyttades ur LaskaKit-korgen.
+5. **GT2-remmen fick ny exakt EU-källa:** Roboter-Bausatz `RBS12747`, GT2/2 mm, 10 mm, gummi + glasfiber, meterware, live i lager, €2,25/m vid 5 m. Fem meter räcker till exakta 4409 mm; checkout ska bekräfta kontinuerlig 5 m-längd och Sverige-frakt.
+6. **DigiKey SKU-fälla hittades:** TE `3-350820-2` ska köpas som vanliga lagerartikeln `A27824-ND`, inte Marketplace-dubbletten med MOQ 1000.
+7. **Saknad LV-gland löstes konkret:** Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68 passar nominell ~4,8 mm 24 V-kabel och läggs i DigiKey-korgen.
+8. **KEDU spikades till rätt familj:** genuine `KJD12-14`, 230 V/50 Hz-variant, 15 A AC-3 / 18 A AC-1, Faston 6,3×0,8 och röd svamp/gul kåpa. CEM/eBay är konkret köpväg.
+9. **SUNLU:** Sverige är uttryckligen listat i EU-leveransområdet; officiella sidan anger normalt fri EU-frakt, men checkout för den faktiska korgen är fortfarande facit.
+10. **Jackpot3:** live $76.99/in stock vid kontrollen.
 
-1. **T8 400 mm ska inte automatiskt halveras.** V1E kräver 145 mm+, så ~199 mm fungerar men ger bara onödigt utstick. Ny praktisk kapregel: cirka 150–160 mm ×2 efter verklig assembly-check.
-2. **GT2 5 m har ren lagerfallback:** 3×2 m av samma 10 mm fiberglass-spec, eftersom 999/1705/1705 mm kan få varsin längd utan skarv.
-3. **20 AWG UL2464 är inte dokumenterad continuous-flex.** Den används med stor avslappnad rörelseloop; krävs snäv kabelkedjeböj byts kabeltyp.
-4. **2-core 20 AWG är nominellt ~4,8 mm OD.** Det bekräftar behovet av separat mindre gland; M20 nätglandens 5–12 mm är fel marginal för LV-kabeln.
-5. **DigiKey fri frakt var för självsäkert bokförd.** 615 kr-gränsen är verifierad, men ~622 kr-korgen är en inkl-momsuppskattning och hjälpsidan klargör inte momsbasen. Checkout får avgöra.
-6. **MicroSD saknades i vår commissioning-BOM.** Elecrow listar board + 5 tvåledarpluggar + 6 heatsinks, inte kort. V1E föredrar microSD för G-code: >2 GB, FAT32, Class 4–6. Inventera först, köp billigt endast om det saknas.
-7. **Data-USB-C är en verklig dependency.** Elecrow-kortet måste flashas och V1E varnar specifikt för charge-only-kablar. Inventera före köp.
-8. **Endstops är inte runtime limits som standard.** V1E säger att de bara är aktiva under homing. De är home/auto-square-sensorer, inte kollisionsskydd/nödstopp.
-9. **Printmiljön blev en explicit gate.** Minst 200×200×190 mm byggvolym, skew-kontroll, `Z_Stub`/`Z_Nut` testfit och slicer bridge-preview innan hela 2,7 kg-satsen.
-10. **Jackpot-kabeldragning/kylning förtydligad.** Board box, fri luftväg, kablar bredvid kortet/inte över antennen och avlastade anslutningar. Ingen fläkt köps utan behov.
-11. **Motorcommissioning förtydligad.** 2,54 mm-kontakterna passar Jackpot3; coil/connector-riktning verifieras och eventuell pluggreversering sker endast spänningslöst.
-
-### Canonical state uppdaterat
-
-- `AUDIT.md` — andra auditpasset, fynd 11–20
-- `PROCUREMENT.md` — checkout-/microSD-/USB-/T8-/belt-/flexkabelkorrigeringar
-- `BOM.md` — commissioning-dependencies och print-gates
-- `CHECKLIST.md` — fysisk exekveringsordning
-- `SOURCING.md` — bort med antagen DigiKey-frifrakt, in med lagerfallbacks
-- `DECISIONS.md` — D014: commissioning-dependencies är del av BOM
-
-Efter detta är kvarvarande osäkerheter huvudsakligen sådant som **bör** vara osäkert tills verkliga delar finns: toleranser, bordets styvhet, kabel/slangrutter, collet-runout, KJD12-variant och checkout-totaler.
+Efter reconciliation är komponent-specifikationen i praktiken klar. Kvar är främst verkliga checkout-totaler samt fysiska kontroller av rör, bord, collet/runout, DeWalt-typskylt och kabel/slangrörelse.
