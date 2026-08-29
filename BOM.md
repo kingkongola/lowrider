@@ -5,6 +5,8 @@ Här ska bara delar för den LowRider V4 som faktiskt byggs finnas. `AUDIT.md` i
 ## Inköpsförutsättning
 
 - [x] Amazon Prime-medlemskap — möjlig fraktfördel, men butik väljs efter totalpris och rätt variant
+- [x] 3D-skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräcklig byggvolym för LR4
+- [x] Garagegrupp: **10 A**
 
 ## Redan köpt — HaWiWe, 29 augusti 2026
 
@@ -51,7 +53,7 @@ Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, 
 - [ ] cirka 2,7 kg vanlig styv PLA krävs; bulkplan 6 × 1 kg SUNLU om checkout håller
 - [ ] 3 × GT2 16T / 5 mm bore / för 10 mm belt
 - [ ] 6 × smooth GT2 idlers / 5 mm bearing bore / för 10 mm belt, LaskaKit `LA190008E`
-- [ ] 1 × 5 m, 10 mm fiberglass GT2 belt, LaskaKit `LA190013C`; **fallback 3 × 2 m av samma spec** om 5 m-rullen är slut
+- [ ] 1 × 5 m, 10 mm fiberglass GT2 belt, LaskaKit `LA190013C`; **aktuellt i lager**, fallback 3 × 2 m av samma spec om läget ändras
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] 1 × T8×8 400 mm rod, 4-start / 2 mm pitch / 8 mm per rev; **kapa först efter assembly-check, praktiskt mål ~150–160 mm ×2**, V1E minimum 145 mm
 - [ ] 2 × matching T8×8 brass nuts
@@ -87,7 +89,7 @@ Före slutliga clips/remspänning ska maskinen manuellt kunna nå alla fyra hör
 
 Inget får sträckas, bära kontaktlast, kinka eller kunna falla över bordskant/rörelsezon.
 
-## Kvar — 230 V maskinmatning
+## Kvar — 230 V maskinmatning / 10 A-grupp
 
 Baseline:
 
@@ -95,13 +97,15 @@ Baseline:
 
 `VEVOR -> DeWaltens verktygsuttag`
 
-- [ ] genuin **KEDU KJD12**, 230 V/50 Hz, 2-polig NVR/no-restart, röd stoppkåpa, korrekt märkström och terminalvariant
+- [ ] genuin **KEDU KJD12**, 230 V/50 Hz, 2-polig NVR/no-restart, röd stoppkåpa, korrekt märkström/motorlast och terminalvariant
 - [ ] Biltema `35-0065` IP65 4-moduls DIN-kapsling, 120×160×90 mm — **endast om riktig dry-fit ger säker terminal-/böjradie**
 - [ ] Biltema `35-0067` 12-moduls kapsling — fallback om lilla boxen blir trång
 - [ ] jordad 3G1,5 donor extension lead, t.ex. Biltema `46-3610`; 3 m endast om faktisk in+ut-rutt räcker
 - [ ] 2 × M20×1,5 kabelgenomföring för 3G1,5 nät in/ut; kontrollera faktisk donor-kabel-OD mot glandens 5–12 mm spann
 - [ ] 3 × genuine Wago 221-413 för L/N/PE-fördelning
 - [ ] isolerade 6,3×0,8 mm Faston som passar faktisk KJD12 och kabelarea
+
+**Känd matningsgräns:** garagegruppen är 10 A. Om DeWalt-typskylten bekräftar 1050 W blir nominell samtidig last ungefär **1,91 kW / 8,3 A vid 230 V** inklusive 800 W router och max 60 W PSU. Det är under 10 A men lämnar begränsad marginal för andra laster och uppstartstransienter. Belastningsprov på verklig grupp är därför en commissioning-gate; gruppen får inte uppsäkras som workaround utan kontroll av fasta installationen.
 
 **Terminologi:** KJD12 är här **NVR/maskinstopp med röd stoppkåpa**. Safety-rated E-stop-status är inte verifierad. Montera den direkt nåbar från normal operatörsplats.
 
@@ -130,7 +134,7 @@ Se `TABLE.md`.
 - [ ] V1E TPU-bristles med redan ägd TPU om ~95A
 - [x] DeWalt shop-vac finns; **bekräfta typskylt innan AUTO/tool-socket-spec används som faktum**
 - [ ] 3D-printad cyklonavskiljare först; kommersiell endast fallback
-- [ ] styv 15–30 l uppsamlingsbehållare före DeWalt
+- [ ] styv 15–30 l uppsamlingsbehållare före DeWalt; vakuumtålighet måste provas, stål i sig är ingen garanti
 - [ ] testa befintlig DeWalt 48 mm ×2,1 m slang först
 - [ ] kort stationär cyclone→DeWalt-koppling
 - [ ] slangupphängning/dragavlastning så slangen inte belastar Core/Z
@@ -146,16 +150,15 @@ Se `TABLE.md`.
 - [ ] ändhylsor/ferrules där de passar skruvterminalerna och rätt tång finns
 - [ ] ingen T-track/clamp-order nu — skruv/tabs i spoilboard först
 
-## Print-gate innan full sats
+## Printkontroll innan full sats
 
-V1E anger minst 200×200×190 mm tillgänglig byggvolym.
+P1S har redan tillräcklig byggvolym; det är **inte** längre en projekt-gate.
 
 Före de långa printarna:
-- [ ] verifiera byggvolym
-- [ ] kontrollera printer skew/90°
 - [ ] provprinta `Z_Stub` + `Z_Nut` och kontrollera passning
-- [ ] granska Dust Skirt/YZ_Plate bridges i slicer-preview, särskilt vid Cura-baserad slicer
+- [ ] granska bridges/unsupported geometry i slicer-preview
 - [ ] använd högsta aktuella versionsnummer på versionsmärkta delar
+- [ ] verifiera 30 mm- och Makita/65 mm-varianterna en sista gång
 
 ## Konfigurationsgate för Jackpot3
 
@@ -186,4 +189,5 @@ Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan i board box med fr
 - [ ] full-travel kabel/slang-test godkänt
 - [ ] statisk jordväg verifierad
 - [ ] Jackpot microSD/data-USB/firmware/config verifierat
+- [ ] 10 A-gruppen belastningsprovad med verkliga laster
 - [ ] 230 V PE/L/N/dragavlastning verifierad före energisering
