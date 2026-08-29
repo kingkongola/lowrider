@@ -1,117 +1,66 @@
 # Checklist
 
-This is the operational checklist. Keep unknowns as unknowns rather than guessing.
+## 1. Inventera köpta delar
+- [ ] Lista exakt vad som redan är köpt
+- [ ] Markera vad som saknas
 
-## 0. Machine choice
+## 2. Frys måtten
+- [ ] Bekräfta slutlig arbetsyta, ungefär 650 × 1200 mm
+- [ ] Ta fram exakta mått från aktuell LR4-kalkylator
+- [ ] Bestäm bordets yttermått
+- [ ] Bestäm bordshöjd
+- [ ] Kontrollera totalhöjd och frigång för slang/kablar
 
-- [x] Compare PrintNC / LowRider / IndyMill
-- [x] Decide on LowRider V4
-- [x] Buy LowRider parts (exact inventory still to be recorded)
-- [x] Decide not to make LR4 a pseudo-PrintNC
-
-## 1. Freeze geometry
-
-- [x] Choose compact, useful work area: about 650 × 1200 mm
-- [ ] Enter final X/Y work area in current official V1E LR4 calculator
-- [ ] Record exact rail/tube/cut dimensions
-- [ ] Record exact machine footprint
-- [ ] Decide final table outer dimensions and edge/sarg clearance
-- [ ] Decide comfortable table height
-- [ ] Check total height and garage clearance including hose/cable movement
-
-**Do not cut size-dependent material before this section is frozen.**
-
-## 2. Inventory what is already bought
-
-- [ ] List kit/printed parts already purchased
-- [ ] Controller
-- [ ] Stepper motors
-- [ ] Belts/pulleys/idlers
-- [ ] Bearings/hardware
-- [ ] Router/spindle
-- [ ] Power supply/electrical parts
-- [ ] Tubes/rails
-- [ ] Endstops/probe
-- [ ] Dust collection parts
-
-## 3. Buy only what is missing
-
-- [ ] Tubes/rails to frozen dimensions
-- [ ] Table material
+## 3. Köp/ordna det som saknas
+- [ ] Rör/skenor i rätt längd
+- [ ] Bordsmaterial
 - [ ] Spoilboard
-- [ ] Router/spindle if not already bought
-- [ ] Correct collets
-- [ ] First useful set of cutters
-- [ ] Electrical enclosure / safe mains switching as required
-- [ ] Cable management
-- [ ] Dust shoe + hose/adapters
-- [ ] Workholding hardware
+- [ ] Router/spindel om den inte redan är köpt
+- [ ] Frässtål för första körningarna
+- [ ] El/kapsling/nödstopp efter behov
+- [ ] Kabelhantering
+- [ ] Spånutsug/dust shoe
+- [ ] Arbetsstyckesfastsättning
 
-## 4. Print / prepare LR4 parts
+## 4. Förbered delar
+- [ ] Säkerställ rätt LR4-version på alla delar
+- [ ] Print eventuella saknade delar
+- [ ] Kontrollera printade delar och hårdvara
 
-- [ ] Verify exact LR4 release/version used by purchased parts
-- [ ] Print any missing parts
-- [ ] Inspect critical printed parts before assembly
-- [ ] Prepare struts according to standard LR4 design
+## 5. Bygg bord
+- [ ] Bygg plant och styvt bord
+- [ ] Montera rail/belt-geometri korrekt
+- [ ] Montera spoilboard
+- [ ] Lägg till sarg/skydd utan att störa rörelsen
 
-## 5. Build table
+## 6. Montera maskinen
+- [ ] Montera gantry
+- [ ] Montera Y-delar
+- [ ] Montera remmar
+- [ ] Montera Z
+- [ ] Montera router/spindel
+- [ ] Kontrollera fri rörelse över hela slaget
+- [ ] Rikta/squara maskinen
 
-- [ ] Flat, torsion-resistant base
-- [ ] Install LR4 rail/belt mounting geometry accurately
-- [ ] Install replaceable spoilboard
-- [ ] Add practical edge/sarg protection without interfering with moving parts
-- [ ] Provide access for cleaning chips/dust
-- [ ] Decide whether table needs wheels/folding/storage features **only if they solve an actual garage-space problem**
+## 7. Elektronik
+- [ ] Montera controller
+- [ ] Koppla motorer
+- [ ] Koppla endstops/probe om de används
+- [ ] Ordna dragavlastning och kabelhantering
+- [ ] Ordna säker avstängning/nödstopp
+- [ ] Verifiera motorriktning
+- [ ] Verifiera homing/squaring
 
-## 6. Mechanical assembly
+## 8. Driftsättning
+- [ ] Torrkör utan fräs
+- [ ] Plana spoilboard
+- [ ] Kontrollera X/Y-mått
+- [ ] Kontrollera diagonaler/squareness
+- [ ] Kontrollera Z-djup
+- [ ] Fräs kalibreringsbit
+- [ ] Spara fungerande grundinställningar
 
-- [ ] Assemble X gantry
-- [ ] Install Y components
-- [ ] Install belts
-- [ ] Install Z mechanism
-- [ ] Mount router/spindle
-- [ ] Check free movement through full travel by hand
-- [ ] Square machine
-
-## 7. Electronics & control
-
-- [ ] Mount controller safely
-- [ ] Wire steppers
-- [ ] Wire endstops/probe if used
-- [ ] Cable strain relief / moving cable management
-- [ ] Emergency stop / practical power isolation
-- [ ] Verify motor directions one axis at a time
-- [ ] Verify homing/squaring behavior
-
-## 8. First motion / commissioning
-
-- [ ] No-tool dry run
-- [ ] Surface spoilboard
-- [ ] Check X/Y dimensional accuracy
-- [ ] Check diagonals/squareness
-- [ ] Check Z depth accuracy
-- [ ] Cut calibration square/circle
-- [ ] Record known-good baseline settings
-
-## 9. First real materials
-
-- [ ] Plywood/MDF test project
-- [ ] Solid wood test
-- [ ] Plastic test when useful
-- [ ] Aluminium test only after wood workflow is stable
-- [ ] Record feeds/speeds that actually work on this machine
-
-## 10. Workshop integration
-
-- [ ] Dust extraction workflow that is easy enough to actually use
-- [ ] Cutter storage
-- [ ] Collet/tool storage
-- [ ] Workholding storage
-- [ ] CNC-made workshop holders/panels as early useful projects
-
-## Later, not required to get running
-
-- [ ] Evaluate aluminium limitations from actual cuts before modifying machine
-- [ ] Consider upgrades only against a measured problem
-- [ ] Separate outdoor plasma table, if plasma becomes a real project
-- [ ] Future small/stiff PrintNC only if repeated metal jobs justify a second CNC
+## 9. Första riktiga jobb
+- [ ] Plywood/MDF
+- [ ] Massivt trä
+- [ ] Dokumentera feeds/speeds som faktiskt fungerar
