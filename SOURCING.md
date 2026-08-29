@@ -1,148 +1,139 @@
-# Sourcing plan — researched 2026-08-29
+# Sourcing plan — current 2026-08-29
 
-Mål: bra kvalitet utan dumsnålhet, låg total kostnad inklusive frakt och så få beställningar som rimligt.
+Mål: bra kvalitet utan dumsnålhet, låg total kostnad inklusive frakt och så få beställningar som **ekonomiskt rimligt**.
 
-**Temporalitet:** priser/lageruppgifter ska omkontrolleras före köp.
+**Temporalitet:** priser/lager ska omkontrolleras före köp. Exakta evidens och historiska alternativ finns i daterade filer under `research/`. `PROCUREMENT.md` är den kanoniska order-/kundvagnsöversikten.
 
 ## Låsta val
 
-- Maskin: **LowRider V4** — PrintNC/IndyMill är inte längre aktiva alternativ.
+- Maskin: **LowRider V4**
+- Arbetsyta: **650 × 1250 mm**
+- CNC-deck: cirka **1000 × 1620 mm**
 - Controller: **Jackpot3**
-- Router: **VEVOR 0700C, 800 W, 65 mm, 10 000–30 000 rpm**
-- Amazon Prime finns och används som möjlig fraktfördel, men butik väljs efter totalpris inklusive frakt.
-- Laser väntar till tidigast 2027.
-- Plasma ingår inte i nuvarande scope.
-- Dammutsug är ett grundkrav, inte en senare lyxuppgradering.
+- Router: **VEVOR 0700C, 800 W, 65 mm**
+- PSU: **Mean Well HDR-60-24**
+- Endstops: **Omron SS-3GL13PT**, köp 10/installera 5
+- Motorer: StepperOnline **`5-17HS19-2004S1`** fempack
+- Amazon Prime finns som möjlig fraktfördel, men butik väljs efter totalpris och rätt variant
+- Laser väntar till tidigast 2027
+- Plasma ingår inte i nuvarande scope
+- Dammutsug är ett grundkrav
 
 ## Redan köpt och betalt — ska inte sourcas igen
 
-HaWiWe-order 2026-08-29, **165,50 € inklusive 8,00 € frakt, betald**:
-- Aluminium XZ plates — 39,50 €
-- 4 × MGN12H 150 mm linear rails — 57,00 €
-- Schraubenset LowRider 4 — 32,00 €
-- Elaire/Makita-style 1/8" (3,175 mm) collet — 29,00 €
+HaWiWe, **165,50 € inklusive 8,00 € frakt**:
+- Aluminium XZ plates, 6,0 mm
+- 4 × MGN12H 150 mm linear rails
+- LR4 screw set
+- Elaire/Makita-style 1/8" (3,175 mm) collet
 
-Schraubenset täcker exakt:
-- 14 × M8×40
-- 14 × M8 nyloc
-- 60 × M5×30
-- 60 × M5 nyloc
-- 83 × M3×10
-- 10 × M2.5×12
+## Aktuella köpvägar
 
-Källa: https://hawiwe.de/produkt/schraubenset-lowrider-4/
+### Motonet — rör
+- 2 × `88-7123`
+- Ø30×1,5 mm ×2 m
+- observerat 189 kr/st
+- kontrollera OD/rakhet före betalning
+- kapa 1505 / 816 / 816 mm
 
-## Kvar att köpa
+### LaskaKit — mekanik + lågspänningskablage
+- 6 × `LA190008E` smooth idlers
+- 1 × `LA190032A` Tr8×8 400 mm
+- 2 × `LA190033A` Tr8×8 brass nuts
+- 2 × `LA190031` 5→8 couplers
+- 1 × `LA190013C` 5 m, 10 mm fiberglass GT2 belt om lager; annars 3 × `LA190013B`
+- 10 m `LA150151A` endstop cable
+- ~1 m UL2464 20 AWG **2-core** PSU-output cable
+- board connectors/pigtails efter crimperläge
 
-### Elecrow / V1E
-- 1 × **Jackpot3 CNC Controller**
-  - Elecrow SKU: **CQA240812C2**
-  - Elecrow pris observerat 2026-08-29: **US$76.99** före checkout-frakt
-  - https://www.elecrow.com/jackpot3-cnc-controller.html
-  - V1E referens: https://www.v1e.com/products/jackpot3-cnc-controller
+### StepperOnline Germany — motors only
+- 1 × `5-17HS19-2004S1`
+- Germany warehouse
+- observerat €38,13
+- checkout-frakt till Sverige återstår
 
-### StepperOnline / Amazon — motorer och PSU
-- 1 paket = 5 × NEMA17, 59 Ncm / 83.55 oz-in, 2 A
-  - paket: **5-17HS19-2004S1**
-  - motor: **17HS19-2004S1**
-  - jämför StepperOnline EU mot Amazon Prime på totalpris inklusive frakt
-- 1 × 24 V PSU, minst 36 W
-  - Mean Well är föredraget när priset är rimligt
-  - kandidat: **HDR-60-24**, 24 V / 2,5 A / 60 W
+### DigiKey — PSU + endstops
+- 1 × Mean Well `HDR-60-24`, `1866-2249-ND`
+- 10 × Omron `SS-3GL13PT`, `SW768-ND`
+- senaste beräknade korg ~495 kr levererad
 
-### VEVOR EU — rätt router
-- 1 × **VEVOR 0700C, 800 W** compact router
-  - modell: **0700C**
-  - VEVOR produkt-ID/URL: **010235793217**
-  - 220–240 V / 50 Hz
-  - 800 W
-  - 10 000–30 000 rpm
-  - 65 mm kropp
-  - VEVOR anger kompatibilitet med Makita 0700-bas
-  - https://eur.vevor.com/compact-router-c_10131/vevor-wood-router-1-25hp-800w-compact-wood-trimmer-router-combo-tool-with-plunge-and-fixed-base-30000rpm-6-variable-speeds-with-1-4-5-16-collets-dust-hood-for-woodworking-slotting-trimming-p_010235793217
+Detta supersederar äldre GST60/RS-spår.
 
-**Varför denna och inte VV-1B-220V 710 W:**
-- den heter uttryckligen 0700C och matchar därmed bättre den Makita 700-familj som den redan köpta Elaire-hylsan är gjord för
-- dokumenterat V1E-fall finns där en VEVOR 0700C körs med Makita-style/Sienci 1/8"-collet i VEVOR:s originalmutter med mycket liten runout
-- https://forum.v1e.com/t/crappy-router-collet/50663/8
+### VEVOR EU — router
+- exakt **0700C**
+- SKU `YXKXBJ710W65AH7WLV2`
+- product ID `010235793217`
+- observerat €83,99
+- provpassa redan köpt Elaire-collet och kontrollera runout efter ankomst
 
-### PLA — målet är nära 100 kr/kg
+### Elecrow — Jackpot3
+- `CQA240812C2`
+- observerat US$76,99
+- Sverige-frakt/VAT/import ska avgöras i checkout
 
-LR4 behöver ungefär **2,7 kg PLA**. Köp hellre 4–6 kg så att omprint och framtida reservdelar inte kräver ny färg/batch.
+### SUNLU — PLA
+- ordinary PLA
+- 6 × 1 kg normala spolar
+- observerad Mix & Match-nivå från €9,19/kg
+- köp endast om Sverige-checkout håller ungefär 100–110 kr/kg levererat
 
-**Bästa prisvärda kandidat hittad 2026-08-29:**
-- **SUNLU vanlig PLA 1,75 mm, bulk/Mix&Match direkt från SUNLU EU**
-- MOQ: 6 kg
-- observerat bulkpris vid 6 rullar: från **€9,19/kg**
-- 10+ rullar: från €8,99/kg
-- SUNLU anger fri frakt till större delen av EU; Sverige ska verifieras i checkout före köp
-- dimensionstolerans enligt produktsidan: 1,75 ± 0,02 mm
-- https://store.sunlu.com/sv-fr/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer
+### Sorotec — första frässtål
+- 3 × `L1S.M.0317`
+- 3,175 mm single-flute upcut, 9 mm skärlängd
+- senast cirka €19,40 levererat
 
-Vid aktuell EUR/SEK-kurs 2026-08-29 motsvarar €9,19/kg ungefär **102 kr/kg** före eventuell checkout-avvikelse. Detta träffar kostnadsmålet betydligt bättre än Amazon just nu.
+### Orphan: GT2 16T
+- 3 × exact 16T / 5 mm bore / 10 mm belt
+- preferred Allegro `GT2-16T-5B_10mm_K`
+- aktuellt 7,20 PLN/st
+- köp om total <=150–180 kr levererat
 
-**Amazon-läget 2026-08-29:**
-- SUNLU PLA+ 5 kg svart: ca 699,99 kr ≈ 140 kr/kg
-- SUNLU PLA+ 4 kg svart: ca 599,99 kr ≈ 150 kr/kg
-- JAYO PLA+ 4,4 kg: ca 602 kr ≈ 137 kr/kg
+### Orphan: 608-2RS
+- exact 8×22×7 mm / 2RS
+- 14 behövs
+- preferred 20-pack <=200 kr levererat
+- aktuell svensk fallback: två Tradera 8-pack á 79 kr; om samfrakt ger en 39-kronorsfrakt blir 16 st **197 kr levererat**
+- checkout måste bekräfta totalen
 
-Amazon/Prime är alltså bekvämt men inte billigast just nu om målet är runt 100 kr/kg.
+### NVR / el
+- genuin KEDU KJD12, 2-polig NVR/no-restart med emergency-stop cover, köp <=500 kr levererat
+- IKH `XW026-1` är svensk fallback om genuin KEDU inte vinns på totalpris
+- Biltema `35-0065` IP65 4-moduls kapsling förstahandsval efter fysisk dry-fit
 
-**Creality:**
-- Soleyin Ultra PLA har mycket bra bulkpriser, t.ex. 6 kg för €59 / 10 kg för €89, men de aktuella bundle-varianterna som kontrollerades 2026-08-29 visades som slutsålda. Bevaka, men köp inte baserat på ett stale pris.
+## Bord / underrede
 
-**Materialval:** vanlig PLA är förstahandsval för strukturella LR4-delar. PLA+ är inte nödvändigt bara för att namnet låter bättre; V1E-designen är byggd runt styv PLA.
+Huvudspår:
+- begagnat styvt **180×90 eller 180×100 cm**
+- helst <=700 kr
+- behåll befintlig skiva
+- skruva/bulta avtagbar ~1000×1620 OSB/ply CNC-deck ovanpå
+- separat ~12 mm MDF-spoilboard
 
-### Commodity-delar — V1E-spec
+Aktuell live research:
+- en verifierad Gävle-lead på 700 kr finns, men mått och underrede är ännu inte verifierade
+- två tidigare nämnda leads kunde inte återverifieras och ska inte behandlas som aktuella
 
-Källa: https://docs.v1e.com/lowrider/
-
-- 3 × **GT2 16T pulley, 10 mm belt, 5 mm bore**
-- 6 × **GT2 20T smooth idler, 10 mm belt, 5 mm bore**
-- GT2-rem **10 mm**, utan stålkord — längd från LR4-kalkylatorn
-- 5 × mekaniska endstops + kablage/kontakter
-- 14 × **608-2RS** lager
-- 2 × **T8 leadscrew + nut**, minst 145 mm, 4-start, 2 mm pitch, 8 mm/rev
-- 2 × **5→8 mm** axelkoppling
-- 3 × stepper extension cables
-- ca 18 × **M4×12 mm+** trä-/plåtskruv för bordsmontage; dessa ingår inte i HaWiWe screw set
-- gänglåsning till pulley grub screws
-- lätt smörjmedel
-- minst 1 × 1/8" / 3,175 mm single-flute frässtål
-
-## Makita/Elaire-collet → VEVOR 0700C
-
-**Bedömning 2026-08-29: hög sannolikhet att den passar. Ingen extra 1/8"-collet ska köpas i förväg.**
-
-Verifierat underlag:
-
-1. HaWiWe-hylsan är importerad från **Elaire** och är avsedd för Makita RT700C / RT0700CX3 / RT0701C m.fl.
-   - Elaire-produktfamilj: **MRP-1250**
-   - https://hawiwe.de/produkt/makita_spannzange/
-   - https://elairecorp.com/product-category/makita-style-router-collets/
-2. VEVOR:s 800 W-router heter uttryckligen **0700C**, har 65 mm kropp och VEVOR anger Makita 0700-bas-kompatibilitet.
-3. Praktiskt V1E-fall: en användare kör **VEVOR 0700C (Makita 700-klon)** med 1/8" Makita-style/Sienci-collet i VEVOR:s originalmutter och rapporterar mycket liten runout.
-   - https://forum.v1e.com/t/crappy-router-collet/50663/8
-
-Det saknas ett explicit datablad från VEVOR/Elaire som säger “MRP-1250 passar VEVOR 0700C”. Därför ska den provpassas före drift och runout kontrolleras med ett rakt 1/8"-verktyg.
-
-## Bord / damm
-
-Fortfarande kvar:
-- slutlig arbetsyta och bordsmått
-- bord/underrede
-- plan bordsskiva / spoilboard
-- material till permanenta strut plates, max 6,35 mm
-- kabelinfästning/buntband
-- dust shoe
-- grovdammsugare/shop-vac
-- cyklonavskiljare
-- slang och avlastad slangupphängning
-- enkel lättstädad avskärmning/gardin runt CNC-zonen
+Se:
+- `TABLE.md`
+- `research/2026-08-29-table-live-candidates.md`
 
 ## Ska inte köpas ännu
 
-- GT2-remlängd före att slutmåtten är låsta i LR4-kalkylatorn
+- stepper-extensioner före dry-fit av motorernas befintliga 1 m-ledningar
 - extra 1/8"-spännhylsa
+- lång plywoodfräs före konkret 18–19 mm jobb
+- T-track / insert-grid / vacuum-table före verkligt behov
+- ny grovdammsugare eller ny slang innan befintlig DeWalt-lösning testats
 - laserutrustning före 2027
 - prestandauppgraderingar innan standardmaskinen fungerar
+
+## Nästa sourcingarbete
+
+Ingen bred komponentjakt behövs nu.
+
+Återstår främst:
+1. verifiera live checkout för 16T + 608
+2. verifiera checkout-totaler på de redan valda huvudkorgarna
+3. kontrollera Motonet-rören fysiskt
+4. hitta/inspektera ett faktiskt 180×90/100-bord
+5. uppdatera daterad research om pris/lager ändras så mycket att ett val faktiskt behöver omprövas
