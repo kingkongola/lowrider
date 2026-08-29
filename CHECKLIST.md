@@ -24,7 +24,7 @@
 - [ ] Jackpot3
 - [ ] 5 × StepperOnline `17HS19-2004S1`
 - [ ] LaskaKit-korg: 6 idlers, 10 mm fiberglass GT2-rem, T8×8, muttrar, kopplingar och lågspänningskablage
-- [ ] Om 5 m GT2-rullen saknas: använd **3 × 2 m** av samma 10 mm fiberglass-spec; varje 999/1705/1705-segment får egen längd
+- [ ] 5 m GT2-rullen `LA190013C` är aktuellt i lager; använd **3 × 2 m** av samma spec endast som fallback
 - [ ] Köp **3 m** UL2464 20 AWG / ~0,52 mm² tvåledare för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
 - [ ] Egen mindre kabelgenomföring/dragavlastning för 24 V-ledningen, dimensioneras efter faktisk kabel-OD (~4,8 mm nominellt)
 - [ ] 3 × exakta GT2 16T / 5 mm / 10 mm remhjul
@@ -56,14 +56,13 @@
 - [ ] Verifiera att lösningen fångar trä/XPS-spån innan regelbunden användning i motorverkstaden
 
 ## 5. Förbered printade/flat parts
-- [ ] Verifiera minst **200×200×190 mm** tillgänglig byggvolym på skrivaren
-- [ ] Kontrollera printer skew/90° med hög testbit/vinkel
-- [ ] Provprinta `Z_Stub` + `Z_Nut` och kontrollera passning innan stora delar
+- [x] Skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräckligt för V1E:s LR4-minimum 200×200×190 mm; ingen separat byggvolym/skew-gate behövs
+- [ ] Provprinta `Z_Stub` + `Z_Nut` och kontrollera passning innan hela satsen
 - [ ] Säkerställ senaste LR4-version på alla printade delar
 - [ ] Säkerställ uttryckligen **30 mm rail-variant** på alla diameterberoende delar före slicning
 - [ ] Säkerställ **Makita/65 mm tool-mount-variant** för VEVOR 0700C
 - [ ] Använd högsta aktuella versionsnummer på versionsmärkta filer
-- [ ] Granska interna bridges i slicer-preview, särskilt Dust Skirt/YZ_Plate om Cura-baserad slicer används
+- [ ] Granska interna bridges/unsupported geometry i slicer-preview innan de långa printarna
 - [ ] Print kompletta LR4-deluppsättningen i vanlig styv PLA inklusive Jackpot3 board box
 - [ ] Kontrollera printade delar och hårdvara
 - [ ] Bootstrap med 4 printade temp-struts
@@ -115,17 +114,22 @@
 - [ ] Montera KJD12 NVR/maskinstopp; kalla den inte säkerhetsklassad E-stop utan separat verifiering
 - [ ] Verifiera homing/squaring och endstop-status
 
-## 9. 230 V commissioning-gate
+## 9. 230 V / känd 10 A garagegrupp
+- [x] Garagegruppen är **10 A**
+- [ ] Bekräfta DeWalt-typskylt. Om DXV30SAPTA: nominell last blir ungefär 1050 W vac + 800 W router + max 60 W HDR = **~1,91 kW / ~8,3 A vid 230 V**
+- [ ] Identifiera automatsäkringens karakteristik (t.ex. B10/C10), jordfelsbrytare och vilka andra uttag/laster som delar samma grupp
+- [ ] Planera normal CNC-drift utan andra stora laster på samma 10 A-grupp
 - [ ] Dry-fit faktisk KJD12 + HDR i kapslingen innan håltagning; använd större kapsling om terminal-/böjradie blir trång
 - [ ] Följ exakt terminalschema för den KJD12-variant som faktiskt levereras
-- [ ] Bekräfta KJD12 **motorlast/AC-3-märkning**, inte bara headline-ampere, mot faktisk DeWalt + VEVOR + HDR; KJD12-10ZF-referensen är 10 A AC-3 vid 230 V
-- [ ] Bekräfta vilken säkring/automatsäkring och jordfelsbrytare det faktiska garageuttaget ligger på; donor-sladdens 16 A-märkning säger inget om den fasta gruppen
+- [ ] Bekräfta KJD12 **motorlast/AC-3-märkning**, inte bara headline-ampere, mot faktisk DeWalt + VEVOR + HDR
 - [ ] KJD12 bryter avsedda L/N-poler; PE förblir kontinuerlig/oswitchad till DeWalt-uttaget
 - [ ] Kontrollera faktisk 3G1,5-kabel-OD mot M20-glandens 5–12 mm spann
 - [ ] Egen korrekt kabelgenomföring/dragavlastning för 24 V-utgången
 - [ ] Inga åtkomliga spänningsförande delar med boxen stängd
 - [ ] Kontinuitetstesta PE och verifiera ingen L/N→PE-kortslutning före energisering
 - [ ] Verifiera NVR/no-restart-funktionen med router frånkopplad
+- [ ] Belastningsprov på den **faktiska 10 A-gruppen**: DeWalt ensam först, därefter DeWalt AUTO + VEVOR + controller. Bekräfta stabil uppstart utan nuisance trip innan riktig fräsning
+- [ ] Byt/uppsäkra aldrig gruppen som workaround utan att den fasta installationen är verifierad för det
 - [ ] Om osäker på 230 V-montage/provning eller befintlig uttagsgrupp: låt kompetent elektriker/person kontrollera installationen och den färdiga portabla boxen
 
 ## 10. Driftsättning
