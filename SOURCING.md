@@ -6,17 +6,21 @@ Mål: bra kvalitet utan dumsnålhet, låg total kostnad inklusive frakt och så 
 
 ## Låsta val
 
+- Maskin: **LowRider V4** — PrintNC/IndyMill är inte längre aktiva alternativ.
 - Controller: **Jackpot3**
-- Router: **VEVOR VV-1B-220V, 710 W, 65 mm, 13 000–33 000 rpm**
+- Router: **VEVOR 0700C, 800 W, 65 mm, 10 000–30 000 rpm**
 - Amazon Prime finns och används som möjlig fraktfördel, men butik väljs efter totalpris inklusive frakt.
+- Laser väntar till tidigast 2027.
+- Plasma ingår inte i nuvarande scope.
+- Dammutsug är ett grundkrav, inte en senare lyxuppgradering.
 
-## Redan köpt — ska inte sourcas igen
+## Redan köpt och betalt — ska inte sourcas igen
 
-HaWiWe-order 2026-08-29:
-- Aluminium XZ plates
-- 4 × MGN12H 150 mm linear rails
-- Schraubenset LowRider 4
-- Elaire/Makita-style 1/8" (3,175 mm) collet
+HaWiWe-order 2026-08-29, **165,50 € inklusive 8,00 € frakt, betald**:
+- Aluminium XZ plates — 39,50 €
+- 4 × MGN12H 150 mm linear rails — 57,00 €
+- Schraubenset LowRider 4 — 32,00 €
+- Elaire/Makita-style 1/8" (3,175 mm) collet — 29,00 €
 
 Schraubenset täcker exakt:
 - 14 × M8×40
@@ -37,23 +41,57 @@ Källa: https://hawiwe.de/produkt/schraubenset-lowrider-4/
   - https://www.elecrow.com/jackpot3-cnc-controller.html
   - V1E referens: https://www.v1e.com/products/jackpot3-cnc-controller
 
-### StepperOnline EU
+### StepperOnline / Amazon — motorer och PSU
 - 1 paket = 5 × NEMA17, 59 Ncm / 83.55 oz-in, 2 A
   - paket: **5-17HS19-2004S1**
   - motor: **17HS19-2004S1**
-  - observerat pris 2026-08-29: **€38.13 / 5-pack**
-  - https://www.stepperonline.nl/5st-nema-17-bipolair-59ncm-83-55oz-in-2a-42x48mm-4-draden-met-1m-kabel-aansluiting-5-17hs19-2004s1
-- 1 × Mean Well 24 V / 2.5 A / 60 W PSU
-  - **HDR-60-24**
-  - observerat pris 2026-08-29: **€12.47**
-  - https://www.stepperonline.nl/hdr-60-24-meanwell-60w-24vdc-2-5a-115-230vac-ultra-slim-step-shape-din-rail-voeding-hdr-60-24
+  - jämför StepperOnline EU mot Amazon Prime på totalpris inklusive frakt
+- 1 × 24 V PSU, minst 36 W
+  - Mean Well är föredraget när priset är rimligt
+  - kandidat: **HDR-60-24**, 24 V / 2,5 A / 60 W
 
-### VEVOR EU
-- 1 × **VV-1B-220V** fixed-base compact router
-  - produkt-ID i URL: **010376710625**
-  - 710 W, 220 V, 65 mm, 13 000–33 000 rpm
-  - observerat pris 2026-08-29: **€42.90**
-  - https://eur.vevor.com/compact-router-c_10131/vevor-electric-hand-trimmer-palm-router-with-three-collets-and-fixed-base-710w-p_010376710625
+### VEVOR EU — rätt router
+- 1 × **VEVOR 0700C, 800 W** compact router
+  - modell: **0700C**
+  - VEVOR produkt-ID/URL: **010235793217**
+  - 220–240 V / 50 Hz
+  - 800 W
+  - 10 000–30 000 rpm
+  - 65 mm kropp
+  - VEVOR anger kompatibilitet med Makita 0700-bas
+  - https://eur.vevor.com/compact-router-c_10131/vevor-wood-router-1-25hp-800w-compact-wood-trimmer-router-combo-tool-with-plunge-and-fixed-base-30000rpm-6-variable-speeds-with-1-4-5-16-collets-dust-hood-for-woodworking-slotting-trimming-p_010235793217
+
+**Varför denna och inte VV-1B-220V 710 W:**
+- den heter uttryckligen 0700C och matchar därmed bättre den Makita 700-familj som den redan köpta Elaire-hylsan är gjord för
+- dokumenterat V1E-fall finns där en VEVOR 0700C körs med Makita-style/Sienci 1/8"-collet i VEVOR:s originalmutter med mycket liten runout
+- https://forum.v1e.com/t/crappy-router-collet/50663/8
+
+### PLA — målet är nära 100 kr/kg
+
+LR4 behöver ungefär **2,7 kg PLA**. Köp hellre 4–6 kg så att omprint och framtida reservdelar inte kräver ny färg/batch.
+
+**Bästa prisvärda kandidat hittad 2026-08-29:**
+- **SUNLU vanlig PLA 1,75 mm, bulk/Mix&Match direkt från SUNLU EU**
+- MOQ: 6 kg
+- observerat bulkpris vid 6 rullar: från **€9,19/kg**
+- 10+ rullar: från €8,99/kg
+- SUNLU anger fri frakt till större delen av EU; Sverige ska verifieras i checkout före köp
+- dimensionstolerans enligt produktsidan: 1,75 ± 0,02 mm
+- https://store.sunlu.com/sv-fr/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer
+
+Vid aktuell EUR/SEK-kurs 2026-08-29 motsvarar €9,19/kg ungefär **102 kr/kg** före eventuell checkout-avvikelse. Detta träffar kostnadsmålet betydligt bättre än Amazon just nu.
+
+**Amazon-läget 2026-08-29:**
+- SUNLU PLA+ 5 kg svart: ca 699,99 kr ≈ 140 kr/kg
+- SUNLU PLA+ 4 kg svart: ca 599,99 kr ≈ 150 kr/kg
+- JAYO PLA+ 4,4 kg: ca 602 kr ≈ 137 kr/kg
+
+Amazon/Prime är alltså bekvämt men inte billigast just nu om målet är runt 100 kr/kg.
+
+**Creality:**
+- Soleyin Ultra PLA har mycket bra bulkpriser, t.ex. 6 kg för €59 / 10 kg för €89, men de aktuella bundle-varianterna som kontrollerades 2026-08-29 visades som slutsålda. Bevaka, men köp inte baserat på ett stale pris.
+
+**Materialval:** vanlig PLA är förstahandsval för strukturella LR4-delar. PLA+ är inte nödvändigt bara för att namnet låter bättre; V1E-designen är byggd runt styv PLA.
 
 ### Commodity-delar — V1E-spec
 
@@ -72,39 +110,39 @@ Källa: https://docs.v1e.com/lowrider/
 - lätt smörjmedel
 - minst 1 × 1/8" / 3,175 mm single-flute frässtål
 
-## Makita/Elaire-collet → VEVOR: kompatibilitet
+## Makita/Elaire-collet → VEVOR 0700C
 
-**Bedömning 2026-08-29: starkt sannolik kompatibilitet. Ingen extra 1/8"-collet ska köpas i förväg.**
+**Bedömning 2026-08-29: hög sannolikhet att den passar. Ingen extra 1/8"-collet ska köpas i förväg.**
 
 Verifierat underlag:
 
 1. HaWiWe-hylsan är importerad från **Elaire** och är avsedd för Makita RT700C / RT0700CX3 / RT0701C m.fl.
+   - Elaire-produktfamilj: **MRP-1250**
    - https://hawiwe.de/produkt/makita_spannzange/
-   - Elaire 1/8" Makita-style: produkt **MRP-1250**
    - https://elairecorp.com/product-category/makita-style-router-collets/
-2. VEVOR:s exakta VV-1B-220V har 65 mm kropp; VEVOR anger i sin produktfamilj att den kan ersätta Makita RT0700.
-   - https://eur.vevor.com/compact-router-c_10131/vevor-electric-hand-trimmer-palm-router-with-three-collets-and-fixed-base-710w-p_010376710625
-3. Praktiskt V1E/CNC-fall: en användare kör **VEVOR 0700C (Makita 700-klon)** med 1/8" Makita-style/Sienci-collet i VEVOR:s originalmutter och rapporterar mycket liten runout.
+2. VEVOR:s 800 W-router heter uttryckligen **0700C**, har 65 mm kropp och VEVOR anger Makita 0700-bas-kompatibilitet.
+3. Praktiskt V1E-fall: en användare kör **VEVOR 0700C (Makita 700-klon)** med 1/8" Makita-style/Sienci-collet i VEVOR:s originalmutter och rapporterar mycket liten runout.
    - https://forum.v1e.com/t/crappy-router-collet/50663/8
 
-Det saknas däremot ett explicit datablad från VEVOR/Elaire som säger “MRP-1250 passar VV-1B-220V”. Därför ska den provpassas före drift och runout kontrolleras med ett rakt 1/8"-verktyg.
+Det saknas ett explicit datablad från VEVOR/Elaire som säger “MRP-1250 passar VEVOR 0700C”. Därför ska den provpassas före drift och runout kontrolleras med ett rakt 1/8"-verktyg.
 
-## Bord / fasta delar
+## Bord / damm
 
 Fortfarande kvar:
+- slutlig arbetsyta och bordsmått
 - bord/underrede
 - plan bordsskiva / spoilboard
 - material till permanenta strut plates, max 6,35 mm
 - kabelinfästning/buntband
-
-## Valfritt senare
-
-- dammsugarslang / spånutsug
-- slangjordning vid behov
-- touch plate
+- dust shoe
+- grovdammsugare/shop-vac
+- cyklonavskiljare
+- slang och avlastad slangupphängning
+- enkel lättstädad avskärmning/gardin runt CNC-zonen
 
 ## Ska inte köpas ännu
 
 - GT2-remlängd före att slutmåtten är låsta i LR4-kalkylatorn
 - extra 1/8"-spännhylsa
+- laserutrustning före 2027
 - prestandauppgraderingar innan standardmaskinen fungerar
