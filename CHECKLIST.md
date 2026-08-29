@@ -44,9 +44,10 @@
 ## 4. Dammhantering — grundkrav
 - [ ] Välj/printa LR4 dust shoe som passar **65 mm Makita-formatet**
 - [x] Grovdammsugare/shop-vac finns: DeWalt, sannolikt DXV30SAPTA
-- [ ] Bekräfta DeWalt-typskylt innan modellens AUTO/tool-socket-effekt används som faktum
+- [ ] Bekräfta DeWalt-typskylt innan modellens AUTO/tool-socket-effekt eller ~15 kPa sealed pressure används som faktum
 - [ ] Printa cyklonavskiljare
-- [ ] Ordna separat styv 15–30 l uppsamlingsbehållare
+- [ ] Ordna separat styv 15–30 l uppsamlingsbehållare; **stål är kandidat, inte garanti mot buckling/implosion**
+- [ ] Efter tät montering: vakuumtesta behållare/lock kontrollerat med normalflöde och kort progressiv restriktion; stoppa vid synlig deformation/knäppning och förstärk/byt behållare eller ordna lämplig vacuum relief
 - [ ] Testa befintlig DeWalt 48 mm × 2,1 m slang innan ny slang köps
 - [ ] Bygg slangupphängning/dragavlastning som inte belastar gantry/Z
 - [ ] Lös statisk jordning med definierad PE-punkt eller groundable hose; HDR-60-24 är **inte** jordpunkt
@@ -117,14 +118,15 @@
 ## 9. 230 V commissioning-gate
 - [ ] Dry-fit faktisk KJD12 + HDR i kapslingen innan håltagning; använd större kapsling om terminal-/böjradie blir trång
 - [ ] Följ exakt terminalschema för den KJD12-variant som faktiskt levereras
-- [ ] Bekräfta KJD12 märkström mot faktisk DeWalt-typskylt + VEVOR + HDR; planerad ~15 A-variant har nominell marginal om DeWalt verkligen är 1050 W-modellen
+- [ ] Bekräfta KJD12 **motorlast/AC-3-märkning**, inte bara headline-ampere, mot faktisk DeWalt + VEVOR + HDR; KJD12-10ZF-referensen är 10 A AC-3 vid 230 V
+- [ ] Bekräfta vilken säkring/automatsäkring och jordfelsbrytare det faktiska garageuttaget ligger på; donor-sladdens 16 A-märkning säger inget om den fasta gruppen
 - [ ] KJD12 bryter avsedda L/N-poler; PE förblir kontinuerlig/oswitchad till DeWalt-uttaget
 - [ ] Kontrollera faktisk 3G1,5-kabel-OD mot M20-glandens 5–12 mm spann
 - [ ] Egen korrekt kabelgenomföring/dragavlastning för 24 V-utgången
 - [ ] Inga åtkomliga spänningsförande delar med boxen stängd
 - [ ] Kontinuitetstesta PE och verifiera ingen L/N→PE-kortslutning före energisering
 - [ ] Verifiera NVR/no-restart-funktionen med router frånkopplad
-- [ ] Om osäker på 230 V-montage/provning: låt kompetent person kontrollera den färdiga portabla boxen
+- [ ] Om osäker på 230 V-montage/provning eller befintlig uttagsgrupp: låt kompetent elektriker/person kontrollera installationen och den färdiga portabla boxen
 
 ## 10. Driftsättning
 - [ ] Torrkör utan fräs
