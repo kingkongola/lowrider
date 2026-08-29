@@ -2,7 +2,7 @@
 research_date: 2026-08-29
 scope: remaining orphan mechanical items: 3× GT2 16T 5mm/10mm pulleys and 14× 608-2RS bearings
 status: recommendation-ready
-decision_state: do not distort larger carts to absorb these cheap items; buy 16T from a verified low-cost EU/Choice source and 608 as a separate 20-pack with low/free shipping; exact final sellers remain checkout-dependent
+decision_state: do not distort larger carts to absorb these cheap items; 16T can come from a verified low-cost EU/Choice source; Amazon Prime remains attractive for 608 only if an exact current 20-pack listing can be verified, otherwise use low-cost EU/Allegro
 price_basis: observed prices 2026-08-29; international shipping/variant selection must be verified before order
 region: Sweden / EU / low-value marketplace fallback
 sources_checked:
@@ -10,7 +10,8 @@ sources_checked:
   - Allegro EU/Sweden international shipping documentation
   - AliExpress indexed current 10mm-width pulley packs
   - Allegro 608-2RS commodity/premium references
-  - previous Swedish 608 research
+  - Amazon.se targeted exact-model searches
+  - external product references for legacy Amazon ASIN B07X5T7DGS
 supersedes: assumption that 16T and 608 must necessarily share one seller
 ---
 
@@ -27,7 +28,7 @@ Both are commodity items. Forcing another otherwise-worse cart merely to consoli
 The objective is now:
 - exact variant
 - low delivered cost
-- no counterfeit/geometry surprises
+- no geometry surprises
 
 not absolute minimum parcel count.
 
@@ -153,11 +154,29 @@ No same-seller 608 listing from `NsCNC` was verified in this research pass.
 
 Therefore do not assume Allegro can consolidate these items. If checkout/seller catalogue later reveals exact 608-2RS from NsCNC at sensible cost, great; otherwise keep bearings separate.
 
-## Amazon Prime role
+## Amazon Prime check — useful negative result
 
-Amazon remains a good likely channel for the **20-pack 608-2RS**, because free Prime delivery can beat extremely low overseas item price plus international freight.
+A targeted Amazon.se search on 2026-08-29 did **not** produce a current listing that could be verified end-to-end as all of:
+- 20 bearings
+- 608-2RS
+- 8×22×7 mm
+- double rubber seal
+- current Amazon.se price/availability
 
-However, no current Amazon.se ASIN was verified end-to-end in this pass. Do not record an unverified Amazon variant as approved.
+A legacy candidate remains externally identifiable:
+- ASIN **`B07X5T7DGS`**
+- TIMESET 20-pack
+- external references describe it as 608-2RS / 8×22×7 / rubber-sealed
+
+But the current Amazon.se listing, selectable variant, price and availability could **not** be verified in this pass. Therefore this ASIN is **not approved for purchase** yet.
+
+Other fresh web results prove that 20-pack 608-2RS / 8×22×7 commodity packs are common, but they were not current Swedish Amazon product pages.
+
+Examples/reference only:
+- PGN 20-pack 608-2RS 8×22×7 is a widely listed commodity product
+- multiple current non-Amazon sellers list exact 20-packs
+
+**Rule:** if the user finds an Amazon Prime listing/screenshot, verify the actual selected option against `20 pcs / 608-2RS / 8×22×7` and compare delivered price. Do not trust title fragments or an old ASIN.
 
 ## Decision tree
 
@@ -167,9 +186,10 @@ However, no current Amazon.se ASIN was verified end-to-end in this pass. Do not 
 3. If both shipping routes are poor, use Hellas/Anodas only when another order can share freight.
 
 ### 608 bearings
-1. Look for a verified Amazon Prime 20-pack exact `608-2RS 8×22×7` around <=180 SEK delivered.
+1. If a current Amazon Prime 20-pack exact `608-2RS 8×22×7` appears around **<=180 SEK delivered**, use it for convenience.
 2. Otherwise use a low-cost EU/Allegro commodity seller if Sweden delivery keeps total below target.
 3. Do not pay SKF/NSK premium.
+4. Legacy Amazon ASIN `B07X5T7DGS` remains **unverified/current-status unknown**, not approved.
 
 ## Current conclusion
 
