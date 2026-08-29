@@ -23,15 +23,15 @@
 - [ ] PLA: cirka 2,7 kg krävs för LR4; nuvarande bulkplan 6 × 1 kg SUNLU ordinary PLA om checkout håller
 - [ ] Jackpot3
 - [ ] 5 × StepperOnline `17HS19-2004S1`
-- [ ] LaskaKit-korg: 6 idlers, 10 mm fiberglass GT2-rem, T8×8, muttrar, kopplingar och lågspänningskablage
-- [ ] 5 m GT2-rullen `LA190013C` är aktuellt i lager; använd **3 × 2 m** av samma spec endast som fallback
+- [ ] LaskaKit-korg: 6 idlers, T8×8, muttrar, kopplingar och lågspänningskablage — **rem exkluderad så länge direkt produktsida visar slut**
+- [ ] GT2-rem separat: minst segment **999 / 1705 / 1705 mm**, GT2/2 mm, **10 mm bred, gummi + glasfiber, ingen stålcord**. Första checkout-kandidat är V1E:s egen Amazon-länk/SeekLiny ASIN `B097T4DFM6` (10 m); Technobots `6002-591` 5 m är verifierad fallback
 - [ ] Köp **3 m** UL2464 20 AWG / ~0,52 mm² tvåledare för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
-- [ ] Egen mindre kabelgenomföring/dragavlastning för 24 V-ledningen, dimensioneras efter faktisk kabel-OD (~4,8 mm nominellt)
+- [ ] 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68 som dragavlastning för ~4,8 mm 24 V-kabel
 - [ ] 3 × exakta GT2 16T / 5 mm / 10 mm remhjul
-- [ ] DigiKey: Mean Well `HDR-60-24`, 10 × Omron `SS-3GL13PT`, 16 × 608-2RS, Wago, M20 och Faston enligt `PROCUREMENT.md`
-- [ ] Verifiera **DigiKey-frakten i checkout**; anta inte att ~622 kr inkl moms automatiskt passerar 615-kronorsgränsen
+- [ ] DigiKey: Mean Well `HDR-60-24`, 10 × Omron `SS-3GL13PT`, 16 × 608-2RS, Wago, M20, **A27824-ND Faston** och `AIO-CSM12` enligt `PROCUREMENT.md`
+- [ ] Verifiera DigiKey-frakten i checkout; köp ingen filler
 - [ ] VEVOR 0700C 800 W router
-- [ ] genuin KEDU KJD12/NVR med röd stoppkåpa eller dokumenterad fallback
+- [ ] genuin **KEDU KJD12-14**, 230 V/50 Hz, NVR + röd stoppkåpa; verifiera exakt levererad variant
 - [ ] kompakt IP65 el-kapsling efter fysisk dry-fit av KJD12/HDR
 - [ ] bordsmaterial/CNC-deck efter valt begagnat bord
 - [ ] ~12 mm MDF-spoilboard
@@ -47,7 +47,7 @@
 - [ ] Bekräfta DeWalt-typskylt innan modellens AUTO/tool-socket-effekt eller ~15 kPa sealed pressure används som faktum
 - [ ] Printa cyklonavskiljare
 - [ ] Ordna separat styv 15–30 l uppsamlingsbehållare; **stål är kandidat, inte garanti mot buckling/implosion**
-- [ ] Efter tät montering: vakuumtesta behållare/lock kontrollerat med normalflöde och kort progressiv restriktion; stoppa vid synlig deformation/knäppning och förstärk/byt behållare eller ordna lämplig vacuum relief
+- [ ] Efter tät montering: vakuumtesta behållare/lock kontrollerat; stoppa vid synlig deformation/knäppning
 - [ ] Testa befintlig DeWalt 48 mm × 2,1 m slang innan ny slang köps
 - [ ] Bygg slangupphängning/dragavlastning som inte belastar gantry/Z
 - [ ] Lös statisk jordning med definierad PE-punkt eller groundable hose; HDR-60-24 är **inte** jordpunkt
@@ -56,13 +56,13 @@
 - [ ] Verifiera att lösningen fångar trä/XPS-spån innan regelbunden användning i motorverkstaden
 
 ## 5. Förbered printade/flat parts
-- [x] Skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräckligt för V1E:s LR4-minimum 200×200×190 mm; ingen separat byggvolym/skew-gate behövs
+- [x] Skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräcklig; ingen separat byggvolym/skew-gate
 - [ ] Provprinta `Z_Stub` + `Z_Nut` och kontrollera passning innan hela satsen
 - [ ] Säkerställ senaste LR4-version på alla printade delar
 - [ ] Säkerställ uttryckligen **30 mm rail-variant** på alla diameterberoende delar före slicning
 - [ ] Säkerställ **Makita/65 mm tool-mount-variant** för VEVOR 0700C
 - [ ] Använd högsta aktuella versionsnummer på versionsmärkta filer
-- [ ] Granska interna bridges/unsupported geometry i slicer-preview innan de långa printarna
+- [ ] Granska bridges/unsupported geometry i slicer-preview innan de långa printarna
 - [ ] Print kompletta LR4-deluppsättningen i vanlig styv PLA inklusive Jackpot3 board box
 - [ ] Kontrollera printade delar och hårdvara
 - [ ] Bootstrap med 4 printade temp-struts
@@ -81,7 +81,7 @@
 ## 7. Montera maskinen
 - [ ] Montera gantry
 - [ ] Montera Y-delar
-- [ ] Kapa T8×8 först när fysisk assembly kan mätas; sikta ungefär **150–160 mm ×2**, inte automatiskt ~199 mm-halvor
+- [ ] Kapa T8×8 först när fysisk assembly kan mätas; sikta ungefär **150–160 mm ×2**
 - [ ] Montera T8 fullt sittande i koppling mot motoraxel och kontrollera lätt Z-rörelse utan binding
 - [ ] Montera remmar
 - [ ] Montera Z
@@ -95,47 +95,41 @@
 - [ ] Montera Jackpot3 i rätt board box på rörlig beam/YZ_Min-sida
 - [ ] Dra kablar **bredvid**, inte över Jackpot3 eller dess antenn; avlasta anslutningar innan kablar lämnar boxen
 - [ ] Lämna fri luftväg; köp ingen fläkt innan verkligt behov visas
-- [ ] Elecrow-kort: flasha V1E:s vid byggtillfället aktuellt testade FluidNC + rätt LR4-konfiguration **innan driven rörelse/homing**
+- [ ] Elecrow-kort: flasha V1E:s aktuellt testade FluidNC + rätt LR4-konfiguration **innan driven rörelse/homing**
 - [ ] Verifiera data-kapabel USB-C före flashing
 - [ ] Verifiera FAT32 microSD om det ska användas för G-code
 - [ ] Koppla motorer; verifiera coil-pair/connector-orientering
 - [ ] Första motortest 1 mm i taget; vänd motorplugg endast helt spänningslöst om riktning är fel
 - [ ] Koppla 5 endstops som NC, COM + NC
-- [ ] Verifiera med `$Limits`/motsvarande att varje endstop ändrar status korrekt
+- [ ] Verifiera att varje endstop ändrar status korrekt
 - [ ] **Kom ihåg:** standard-endstops är bara aktiva under homing, inte runtime hard limits/kollisionsskydd
-- [ ] Dry-fit motorernas 1 m-kablar; räkna med att 2–3 förlängningar kan behövas men köp bara verkligt behov
+- [ ] Dry-fit motorernas 1 m-kablar; köp endast de förlängningar som faktiskt behövs
 - [ ] Placera fast KJD12/HDR-box så KJD12 är direkt nåbar från normal operatörsplats
 - [ ] Dry-fit 24 V-kabel från fast HDR-box till rörlig Jackpot; ingen kontakt får bära kabeldrag
 - [ ] Om 24 V-kabeln måste böjas snävt repetitivt i kabelkedja: byt till uttryckligt continuous-flex-kabel innan slutmontage
 - [ ] Dry-fit VEVOR:s nätkabel längs samma rörliga system; använd förlängning endast om verklig räckvidd kräver det
 - [ ] **Före slutliga clips/remspänning:** kör Core/gantry manuellt till alla fyra hörn + Z-extremer med dammsugarslang, routerkabel, 24 V, stepper- och endstopkablar samtidigt monterade
-- [ ] Verifiera inga sträckta ledningar, snäva böjar, snag-punkter eller kabel som kan falla framför/bakom bordet
+- [ ] Verifiera inga sträckta ledningar, snäva böjar, snag-punkter eller kabel som kan falla i rörelsezonen
 - [ ] Ordna all dragavlastning först efter godkänt full-travel-test
 - [ ] Montera KJD12 NVR/maskinstopp; kalla den inte säkerhetsklassad E-stop utan separat verifiering
 - [ ] Verifiera homing/squaring och endstop-status
 
 ## 9. 230 V / känd 10 A garagegrupp
-- [x] Garagegruppen är **10 A**
-- [ ] Bekräfta DeWalt-typskylt. Om DXV30SAPTA: nominell last blir ungefär 1050 W vac + 800 W router + max 60 W HDR = **~1,91 kW / ~8,3 A vid 230 V**
-- [ ] Identifiera automatsäkringens karakteristik (t.ex. B10/C10), jordfelsbrytare och vilka andra uttag/laster som delar samma grupp
-- [ ] Planera normal CNC-drift utan andra stora laster på samma 10 A-grupp
-- [ ] Dry-fit faktisk KJD12 + HDR i kapslingen innan håltagning; använd större kapsling om terminal-/böjradie blir trång
-- [ ] Följ exakt terminalschema för den KJD12-variant som faktiskt levereras
-- [ ] Bekräfta KJD12 **motorlast/AC-3-märkning**, inte bara headline-ampere, mot faktisk DeWalt + VEVOR + HDR
+- [x] Garagegruppen är **10 A** och praktiskt beprövad med svets; plasma har däremot kunnat lösa säkringen
+- [ ] Bekräfta DeWalt-typskylt för modellunika data
+- [ ] Dry-fit faktisk KJD12-14 + HDR i kapslingen innan håltagning; använd större kapsling om terminal-/böjradie blir trång
+- [ ] Följ exakt terminalschema för den KJD12-14-variant som faktiskt levereras
 - [ ] KJD12 bryter avsedda L/N-poler; PE förblir kontinuerlig/oswitchad till DeWalt-uttaget
 - [ ] Kontrollera faktisk 3G1,5-kabel-OD mot M20-glandens 5–12 mm spann
-- [ ] Egen korrekt kabelgenomföring/dragavlastning för 24 V-utgången
 - [ ] Inga åtkomliga spänningsförande delar med boxen stängd
 - [ ] Kontinuitetstesta PE och verifiera ingen L/N→PE-kortslutning före energisering
 - [ ] Verifiera NVR/no-restart-funktionen med router frånkopplad
-- [ ] Belastningsprov på den **faktiska 10 A-gruppen**: DeWalt ensam först, därefter DeWalt AUTO + VEVOR + controller. Bekräfta stabil uppstart utan nuisance trip innan riktig fräsning
-- [ ] Byt/uppsäkra aldrig gruppen som workaround utan att den fasta installationen är verifierad för det
-- [ ] Om osäker på 230 V-montage/provning eller befintlig uttagsgrupp: låt kompetent elektriker/person kontrollera installationen och den färdiga portabla boxen
+- [ ] Vid första samtidiga DeWalt + VEVOR-körningen: vanlig sanity-check att gruppen håller. **Ingen separat elutredning om inget faktiskt problem uppstår**
+- [ ] Uppsäkra aldrig gruppen som workaround utan kontroll av fasta installationen
 
 ## 10. Driftsättning
 - [ ] Torrkör utan fräs
 - [ ] Verifiera full rörelse ännu en gång under driven jogg, börja 1 mm i taget
-- [ ] Bekräfta att endstops inte antas skydda under G-code-körning; operatör + KJD12 är fortfarande säkerhetsbarriärerna
 - [ ] Plana spoilboard
 - [ ] Kontrollera X/Y-mått
 - [ ] Kontrollera diagonaler/squareness
