@@ -1,151 +1,160 @@
 ---
 research_date: 2026-08-29
-scope: source LR4 steel rails locally/within Sweden for locked-candidate 650×1250 geometry
+last_updated_at: 2026-08-29
+scope: source LR4 steel rails locally/within Sweden for locked 650×1250 geometry
 status: recommendation-ready
-decision_state: target one 6 m length of 32×2 mm EN10305-3 precision steel tube; local Gävle steel merchant is preferred if price is normal because it can cut exact lengths and eliminates long-goods freight
-price_basis: public web pages rarely expose retail price for this industrial product; obtain/verify quote before purchase
+decision_state: Motonet Ø30×1.5 mm ×2 m round steel tube, article 88-7123, is now the leading Pareto choice; buy 2 lengths if local stock/straightness/actual OD check passes
+price_basis: Motonet Swedish product page observed 2026-08-29; 189 SEK per 2 m length; store availability must be checked in Motonet UI before pickup
 region: Gävle / Sweden
 sources_checked:
-  - V1 Engineering LR4 rail specification
-  - V1 Engineering current calculator
+  - V1 Engineering current LR4 rail specification
+  - locked LR4 geometry research
+  - Motonet Sweden article 88-7123
+  - Motonet Finland matching article/product identity
   - Handelsstål i Gävle / Uppsala Handelsstål
   - Stålgruppen
   - BE Group Sweden
-  - EN10305-3 tolerance references
-  - Gerdmans pre-cut steel-tube reference
-supersedes: null
+supersedes: previous preference for quoted/cut 32×2 mm EN10305-3 precision tube
 ---
 
-# Research: LR4 steel rails — Gävle / Sweden
+# LR4 rails — Motonet 30 mm is now the first choice
 
-## Exact material need for 650×1250 mm machine
+## Exact material need
 
-From the current calculator using the purchased 6.0 mm HaWiWe XZ plates:
+For the locked ~650×1250 mm usable-area build with the purchased 6.0 mm HaWiWe plates:
 - 2 × **816 mm** X rails
 - 1 × **1505 mm** Y rail
 - finished total = **3137 mm**
 
-A little stock must be allowed for saw kerf and end cleanup.
+## V1E rail requirement
 
-## Material specification
-
-V1E accepts round steel rails with:
-- OD 29.5, 30 or **32 mm**
-- OD tolerance ±0.2 mm
-- wall >=1.3 mm
+Current V1 Engineering LR4 documentation accepts:
+- **29.5 mm, 30 mm or 32 mm OD**
+- actual OD within approximately ±0.2 mm of the chosen nominal
+- wall thickness **at least 1.3 mm**
 - steel / stainless / DOM steel
+- aluminium and carbon fibre are explicitly not acceptable
 
-V1E explicitly discourages paying for very thick walls or solid rod because the added mass gives little useful rigidity.
+V1E also states that very thick walls/solid rods add mass and cost for little useful rigidity.
 
-Recommended Swedish commodity specification:
+Source:
+- https://docs.v1e.com/lowrider/
 
-**32×2 mm welded precision steel tube, EN10305-3, E220/E235 class or equivalent.**
+## Motonet exact candidate
 
-Why:
-- exactly one of V1E's supported ODs
-- 2 mm wall exceeds the 1.3 mm minimum without becoming pointlessly heavy
-- precision-tube standard gives controlled OD and straightness
-- much cheaper than decorative stainless in normal industrial channels
-
-## Tolerance sanity check
-
-Published EN10305-3 dimensional tables put 32 mm OD precision tube within a diameter-tolerance class that is inside V1E's ±0.2 mm requirement (commonly ~±0.15 mm for this diameter range in the referenced table/version).
-
-This is much safer than buying a random nominal “32 mm pipe” whose actual OD may be a plumbing nominal size such as 33.7 mm.
-
-Do **not** buy 33.7 mm EN10255/EN10217 pipe: 33.7 mm is outside the LR4 supported 32 mm geometry.
-
-## Leading source: Handelsstål i Gävle AB
-
-Local identifiable metal supplier:
-- Handelsstål i Gävle AB
-- Trutvägen 4, 803 09 Gävle
-- 026-495 99 00
-- Mon–Fri 07–16
-
-Their own site states:
-- Gävle location is a steel/metal supplier
-- well-stocked range; missing material can commonly be obtained within 1–2 days
-- they cut steel, profiles and **tubes to requested dimensions** with bandsaws
-- Gävle is part of the same operation as Uppsala Handelsstål and is a Tibnor distribution partner
+Motonet Sweden:
+- product: **Rundrör Ø30 × 1.5 mm, 2 m**
+- article: **88-7123**
+- product identity / model: 4011894
+- nominal OD: **30 mm**
+- wall: **1.5 mm**
+- length: **2000 mm**
+- listed weight: **2.095 kg per 2 m**
+- observed price: **189 SEK each**
+- reserve-and-pickup workflow exists; exact Gävle stock is store-selector dependent and not exposed in the public crawl
 
 Sources:
-- https://www.ua-handelsstal.se/
-- https://www.ua-handelsstal.se/kontakt/
-- https://www.ua-handelsstal.se/tjanster/kapning/
+- https://www.motonet.se/produkt/rundror-o-30-x-15-mm-2-m?product=88-7123
+- matching Finnish Motonet product: https://www.motonet.fi/tuote/huonekaluputki-o30-x-15-mm-2-m-pyorea?product=88-7123
 
-### What to ask for
+The listed mass is consistent with ordinary steel tubing of this geometry, and the matching Motonet catalogue places the item in the furniture/steel tube family. It is not the nearby aluminium item `75-00228`.
 
-Quote request should be precise:
+## Why it fits LR4 directly
 
-> 1 st rundsvetsat precisionsstålrör 32×2 mm, EN10305-3, gärna E220/E235, kapa till 1505 + 816 + 816 mm. Jag behöver ytterdiameter 32,0 mm inom ±0,2 mm. Vad kostar material + tre bitar/kapning inkl moms för privatkund?
+- 30 mm is one of V1E's explicit supported rail diameters.
+- 1.5 mm wall exceeds V1E's 1.3 mm minimum.
+- no special 32 mm print geometry is needed; print/use the **30 mm LR4 rail variant**.
+- two retail 2 m lengths are enough for the entire compact machine.
 
-This avoids being sold 33.7 mm plumbing/structural pipe.
+The only specification not published tightly enough by Motonet is **actual OD tolerance/straightness**, so inspect before final cutting.
 
-### Best-case procurement
+## Exact two-stick cut plan
 
-If they will sell roughly the required ~3.14 m plus cutting, buy only that.
+Buy **2 × 2000 mm**.
 
-If they only sell full mill lengths, buy **one 6 m bar**, not three bars. One 6 m length easily yields all three rails and leaves ~2.85 m useful spare.
+Stick A:
+- cut **1505 mm** Y rail
+- nominal remainder ~495 mm before kerf/end cleanup
 
-Because the shop is local, full-length transport can also be solved by having them cut it before pickup.
+Stick B:
+- cut **816 mm** X rail
+- cut **816 mm** X rail
+- combined = 1632 mm
+- nominal remainder ~368 mm before kerf/end cleanup
 
-## National reference 1 — Stålgruppen
+Total stock:
+- 4000 mm
 
-Stålgruppen lists exact:
-- **32×2 mm**
-- EN10305-3
-- 6 m stock length
-- 1.48 kg/m
-- 8.88 kg per 6 m bar
-- indicated 1–2 day availability
+Required finished rails:
+- 3137 mm
 
-This proves the exact specification is a standard Swedish steel-stock item.
+Total nominal spare/waste:
+- ~863 mm minus saw kerfs/end cleanup
 
-Source:
-- https://www.stalgruppen.se/stallager/ror/precstalror/32x2
+This is materially cleaner than buying a 6 m industrial bar.
 
-Public indexed page does not expose a trustworthy retail delivered price, so it is a specification/availability benchmark rather than current cart winner.
+## Cost
 
-## National reference 2 — BE Group
+Observed Motonet price:
+- 2 × 189 SEK = **378 SEK** total material
 
-BE Group lists exact product:
-- `Prec stålrör E220/E235 EN10305-3 32x2 mm 6.0 m`
-- article **1202106605**
-- 32.00 mm OD
-- 2.00 mm wall
-- ~1.47–1.48 kg/m
-- E220/E235
-- EN10305-3
+If available for local reserve/pickup, there is effectively no long-goods freight problem.
 
-Source:
-- https://www.begroup.se/produkter/ror/svetsade-precisionsstalror/runda-e220-235/prec-stalror-e220-e235-en10305-3-32x2-mm-6-0-m
+That makes Motonet the new Pareto winner unless a local steel merchant quotes substantially less than 378 SEK including cutting.
 
-Again, long-goods delivery economics mean this is primarily a benchmark unless local pickup/quote beats Handelsstål Gävle.
+## In-store acceptance test
 
-## Rejected shortcut — generic/pre-cut 32×2 support tubes
+Before buying/cutting, preferably bring calipers and do a quick practical check:
 
-Gerdmans sells 32×2 steel support tubes with free shipping in 500/800/1000/1200/1500 mm lengths.
+1. Measure OD in several places and rotations.
+   - target nominal: 30.0 mm
+   - LR4 requirement: approximately 29.8–30.2 mm for the 30 mm variant
+2. Roll/sight the tube or place against a known straight reference.
+   - reject obviously bowed/dented lengths
+3. Inspect the bearing-running surface.
+   - minor cosmetic finish is fine
+   - reject deep dents, heavy seam damage or severe rust
+4. Confirm the label/article is **88-7123**, not aluminium `75-00228` or square tube `88-7124`.
 
-This looks tempting, but the LR4 Y rail needs **1505 mm**. Their 1500 mm part is 5 mm too short for the exact calculator geometry, and the product is not documented as EN10305-3 precision tube.
+A Motonet review on the same product identity also reports that the tube held its dimensions and was not crooked/rusty, which is encouraging but not a replacement for checking the two physical pieces we buy.
 
-Do not shrink or distort the machine simply to use these commodity pallet supports.
+## 30 mm vs previous 32×2 precision-tube plan
 
-## Price target
+### Motonet 30×1.5
 
-No reliable consumer quote was exposed online for local 32×2 EN10305-3 stock, so do not invent a SEK target as fact.
+Pros:
+- only **378 SEK total** at current price
+- exactly enough using two 2 m sticks
+- retail purchase, no quote/minimum-order friction
+- likely local pickup
+- explicitly valid V1E OD and wall thickness
 
-Economic logic:
-- required steel mass is only ~4.64 kg for the finished rails
-- even a full 6 m bar is only ~8.9 kg
-- raw material is commodity steel, so **long-goods freight/cutting/minimum-order charges are likely to dominate**, not steel value
+Cons:
+- no published precision-tube tolerance standard
+- must physically check actual OD/straightness
 
-Therefore local pickup/cutting is strongly preferred even if the per-metre steel price is somewhat higher than an online merchant.
+### 32×2 EN10305-3 from steel merchant
+
+Pros:
+- formally controlled precision-tube dimensions/tolerance
+- easy to specify exact cut lengths professionally
+
+Cons:
+- quote/minimum-order friction
+- usually 6 m stock
+- likely more expensive for this tiny material requirement
+- gives no meaningful LR4 performance advantage if the Motonet tubes are straight and in tolerance
 
 ## Recommendation
 
-1. Formally lock 650×1250 usable geometry.
-2. First quote **Handelsstål i Gävle** for exact 32×2 EN10305-3 cut to 1505/816/816 mm.
-3. Ask both price for exact cut quantity and price for a full 6 m bar cut into those pieces.
-4. Compare only if their quote is unexpectedly high; Stålgruppen and BE Group are verified specification fallbacks.
-5. Do not buy stainless unless ordinary precision steel sourcing becomes strangely expensive. It has no meaningful value advantage for this LR4.
+**Buy the Motonet 30×1.5 mm steel tubes if the physical pieces pass the simple caliper/straightness check.**
+
+Order/pickup quantity:
+- **2 × Motonet 88-7123**
+
+Then cut:
+- 1505 mm
+- 816 mm
+- 816 mm
+
+No reason remains to pursue 32×2 EN10305-3 unless Motonet local stock is absent or the actual tubes are measurably out of tolerance/bent.
