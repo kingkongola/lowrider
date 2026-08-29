@@ -1,170 +1,251 @@
 ---
 research_date: 2026-08-29
-scope: mandatory LR4 procurement gap audit after component-by-component research
+last_updated_at: 2026-08-29
+scope: current mandatory LR4 procurement gap audit after component-by-component research
 status: recommendation-ready
-decision_state: separate purchase-ready rows from dimension-gated and still-unresearched rows; next priority is freeze 650x1250 geometry because it unlocks tubes, belt and table
-price_basis: observed prices from dated research files; all prices/stock must be re-checked at checkout
+decision_state: most major components are now locked; remaining work is checkout verification plus a small set of orphan/safety/table items
+price_basis: dated research files under research/; all observed prices/stock must be rechecked at checkout
 region: Sweden / EU
 sources_checked:
   - BOM.md
-  - CHECKLIST.md
+  - TABLE.md
   - PROCUREMENT.md
-  - dated files under research/
+  - current dated files under research/
   - V1 Engineering LR4 docs/calculator
-supersedes: null
+supersedes: earlier version of this gap audit that still treated geometry, PSU, tubes and dust architecture as unresolved
 ---
 
-# Procurement gap audit
+# Procurement gap audit — current state
 
-Purpose: stop re-researching already solved rows and expose exactly what still blocks ordering/building.
+Purpose: show only what is actually still unresolved and stop re-researching decisions that are already good enough.
 
-## A. Already purchased / paid
+## A. Done / already owned
 
-- HaWiWe aluminium XZ plates, 6 mm
-- 4 × MGN12H 150 mm linear rails
-- LR4 screw set
-- Elaire/Makita-style MRP-1250 1/8 in / 3.175 mm collet
+### Paid HaWiWe order
+- 6 mm aluminium XZ plates
+- 4 × MGN12H 150 mm rails
+- LR4 screw/nut set
+- Elaire/Makita-style `MRP-1250` 1/8 in collet
+- paid total: **€165.50 incl €8 shipping**
 
-Status: **done; physical inventory when parcel arrives**.
+### Existing useful equipment
+- DeWalt wet/dry vacuum, very likely `DXV30SAPTA`
+- old FTX ventilation unit for possible secondary enclosure/ambient-air duty
+- TPU filament for stock LR4 dust-shoe bristles if durometer is suitable (~95A)
 
-## B. Specification and preferred product essentially locked
+## B. Product/specification locked — checkout only
 
-### Motors
-- 5-pack StepperOnline `5-17HS19-2004S1`
-- 59 Ncm / 83.55 oz-in, 2 A, 1.8°, 48 mm body, 24 mm shaft
-- Germany warehouse candidate
+### Jackpot3 controller
+- **Jackpot3** remains selected
+- preferred source: Elecrow
+- exact SKU: `CQA240812C2`
+- observed: **$76.99**, in stock, 300 g
+- requires flashing when bought from Elecrow
+- no verified current EU reseller found
 
-State: **purchase-ready after final delivered-price/warehouse checkout check**.
+Still needed:
+- Elecrow Sweden shipping
+- VAT/import/IOSS treatment in checkout
+- resulting all-in landed total
+
+File: `research/2026-08-29-jackpot3-order.md`
 
 ### Router
-- exact VEVOR `0700C`
+- exact **VEVOR 0700C**
 - SKU `YXKXBJ710W65AH7WLV2`
 - product ID `010235793217`
-- 800 W, 65 mm, 10,000–30,000 rpm, 220–240 V
+- 800 W / 65 mm / 10,000–30,000 rpm / 220–240 V
+- observed official VEVOR EU price **€83.99**
+- current VEVOR EU policy implies free Sweden shipping
 
-State: **purchase-ready after Sweden checkout/coupon check**. Do not substitute 710 W model.
+State: **purchase-ready; only final Sweden checkout/coupon verification remains**.
 
-### Controller
-- Jackpot3
-- Elecrow is the leading international purchase route unless final V1E delivered cost unexpectedly wins
+File: `research/2026-08-29-vevor-0700c-router.md`
 
-State: **product locked; final shipping/tax checkout still needed**.
+### Motors
+- StepperOnline 5-pack `5-17HS19-2004S1`
+- 59 Ncm / 83.55 oz-in
+- 2 A
+- 48 mm body
+- 24 mm 5 mm D-shaft
+- 1 m lead / 2.54 mm connector
+- observed €38.13 / 5-pack
+- Germany warehouse selectable
 
-### Endstops
-- 5 × Omron `SS-3GL13PT` baseline V1E-style switch
-- earlier `SS-5GL2` baseline assumption is superseded; it is an optional geometry mod, not default
+Still needed:
+- exact Germany→Sweden checkout freight
 
-State: **specification locked; supplier/cart open**.
+File: `research/2026-08-29-stepperonline-motor-order-live.md`
 
-### Z drive / GT2 commodity cluster
-Leading LaskaKit cart:
-- 6 × correct smooth idlers for 10 mm GT2 / 5 mm bore
-- 5 m fiberglass 10 mm GT2 belt
-- 1 × 400 mm Tr8x8 4-start rod, cut into two Z screws
-- 2 × matching T8x8 brass nuts
-- 2 × flexible 5→8 mm couplers
+### PSU + endstops
+- Mean Well **`HDR-60-24`**, 24 V / 2.5 A / 60 W
+- exact Omron **`SS-3GL13PT`**
+- buy 10 switches, install 5, keep 5 spares
+- current DigiKey planned delivered cart ~495 SEK class
 
-State: **strong recommendation, but hold until machine size is formally frozen and final stock/shipping is rechecked**.
+State: **recommendation-ready**.
 
-### PLA
-Current price leader:
-- SUNLU regular PLA 5 kg large spool around €39.99 when Europe/Sweden shipping terms hold
-- approximate raw price ~89 SEK/kg at 2026-08-29 reference FX
+File: `research/2026-08-29-final-psu-endstop-wiring-cart.md`
 
-Alternative when colour flexibility matters:
-- Creality Soleyin Ultra bulk around ~109 SEK/kg when bulk packs are actually in stock
+## C. Mechanical cart locked
 
-State: **product family recommendation-ready; colour/format and Sweden checkout still open**.
+### Geometry
+Locked/current target:
+- usable area ~650×1250 mm
+- tubes: 816 / 816 / 1505 mm
+- X belt 999 mm
+- Y belts 1705 / 1705 mm
+- total GT2 need 4409 mm
+- strut ~819 mm
+- minimum table ~941×1563 mm; practical cassette around ~1000×1620 mm
 
-## C. Exact specification known, supplier/cart still open
+File: `research/2026-08-29-geometry-650x1250.md`
 
-### 16T drive pulleys
-Need 3 ×:
-- GT2 / 2 mm pitch
+### LaskaKit cart
+Recommended cluster:
+- 6 × smooth 10 mm GT2 idlers
+- 1 × 400 mm T8×8 rod
+- 2 × T8×8 brass nuts
+- 2 × 5→8 mm couplers
+- 5 m 10 mm fiberglass GT2 belt if stock confirms; otherwise 3×2 m
+- 10 m endstop signal cable
+- ~1 m 20 AWG 2-core 24 V cable
+- board-side pigtails/connectors as needed
+
+Base mechanical cart:
+- ~€42.45 delivered with 5 m belt before added low-cost cable
+- ~€49.34 with 3×2 m belt fallback before added cable
+
+State: **checkout-ready**.
+
+File: `research/2026-08-29-laskakit-final-mechanical-cart.md`
+
+### Steel rails — newly solved
+New first choice:
+- Motonet `88-7123`
+- round steel tube **Ø30×1.5 mm ×2 m**
+- 2 pcs
+- observed **189 SEK each = 378 SEK total**
+- V1E nominal OD/wall requirements are met
+
+Cut plan:
+- stick A → 1505 mm
+- stick B → 816 + 816 mm
+
+Only physical acceptance remains:
+- actual OD ~29.8–30.2 mm
+- straight / undented
+
+State: **local purchase-ready if physical stock passes inspection**.
+
+File: `research/2026-08-29-steel-tubes-gavle.md`
+
+## D. Dust system is largely solved, not a major shopping gap
+
+Architecture:
+- print LR4 dust shoe
+- print TPU bristles using already-owned TPU if suitable
+- reuse existing DeWalt 48 mm ×2.1 m hose first
+- print cyclone first
+- use separate rigid 15–30 L metal collection container
+- cyclone → DeWalt shop-vac
+- simple hose support/strain relief
+- evaluate FTX only for secondary enclosure/ambient-air use
+
+Still open:
+- exact metal collection bucket/container
+- final printed cyclone STL/geometry and adapters after hose dimensions are physically measured
+- static grounding details
+- simple wipeable curtain/enclosure material
+
+No new vacuum purchase is needed.
+
+## E. Remaining true procurement gaps
+
+### 1. 3 × GT2 16T drive pulleys
+Exact requirement:
 - 16T
+- 2 mm pitch
 - 5 mm bore
 - for 10 mm belt
 
-Verified candidates exist at Hellas Digital, Anodas and Allegro. Item cost is tiny; shipping dominates.
+Verified candidates:
+- Allegro exact two-set-screw part
+- AliExpress/Choice possible 5-pack if exact variant can be validated
+- Hellas/Anodas EU fallbacks
 
-State: **orphan-cart problem**.
+State: **cheap orphan item; seller/checkout still open**.
 
-### 608-2RS bearings
-Need 14; preferred purchase quantity 20 for spares.
+### 2. 20-pack 608-2RS bearings
+Need 14 installed; buy 20.
 - 8×22×7 mm
-- rubber seals both sides
+- rubber-sealed 2RS
 - commodity quality is sufficient
-- target delivered total <= ~180 SEK
 
-State: **supplier/cart open**.
+Amazon Prime remains opportunistic but no current Amazon.se variant has been verified end-to-end.
 
-### PSU
-Two valid architectures remain:
-1. external Mean Well `GST60A24-P1J` 24 V / 2.5 A / 60 W — cleaner mains architecture
-2. Mean Well `LRS-100-24` — cheaper raw PSU but needs safe enclosure for exposed mains terminals
+State: **seller open**.
 
-Rule: prefer the external brick if its complete delivered premium over the safely enclosed LRS solution is only ~100–150 SEK.
+### 3. Machine mains NVR / emergency stop
+Principles are locked:
+- no-volt release / no automatic restart
+- router and controller power should stop together
+- do not treat a flimsy marketplace mushroom as the sole safety device
 
-State: **supplier/cart + complete-system price still open**.
+Leading low-cost hardware families:
+- KEDU/KJD NVR solution
+- complete NVR + mushroom station if a credible EU source wins
 
-### Main stop / NVR
-Leading Pareto architecture:
-- genuine KEDU `KJD12`, 230 V, NVR/no-restart, emergency-stop cover
+State: **final product/seller still open**.
 
-State: **architecture selected; Sweden-delivered seller and final enclosure/output arrangement still open**.
+### 4. First cutters
+Strategy locked:
+- 3.175 mm single-flute upcut as the default
+- buy a few cheap learning cutters rather than a huge mixed starter set
+- long cutter only when 18–19 mm plywood through-cuts are actually needed
 
-## D. Dimension-gated — do not order until 650×1250 is formally frozen
+State: **exact low-cost seller/cart still open**.
 
-### Steel rails/tubes
-V1E accepted rail OD:
-- 29.5, 30 or 32 mm ±0.2 mm
-- steel/stainless/DOM
-- wall >=1.3 mm
+### 5. PLA final checkout
+Current price leader:
+- SUNLU ordinary PLA large 5 kg spool around €39.99 when EU/Sweden terms hold
 
-Current likely Swedish choice: precision steel tube around 32×2 mm if locally inexpensive.
+Alternative:
+- Creality Soleyin Ultra bulk when stocked
 
-Final cut lengths must come from current LR4 calculator after work area freeze.
+State: **final colour/spool-format/Sweden checkout open**.
 
-### Belt
-Existing research calculates ~4.409 m total for 650×1250, making a 5 m roll sufficient. This becomes orderable only when that work area is formally frozen.
+### 6. Table/underframe
+Architecture is locked but the used physical base is intentionally opportunistic:
+- stable used dining/conference-table base first
+- LR4-specific ~1000×1620 top/cassette
+- reuse existing top as structural deck if suitable
+- otherwise cheap OSB or plywood structural deck
+- removable ~12 mm MDF spoilboard
 
-### Table
-Current concept:
-- reuse a stable used dining/conference-table base if economical
-- own rigid CNC top/cassette
-- removable/replaceable centre/spoilboard architecture
-- wheels only for movement; machine rests on stable feet when cutting
+State: **find actual used base; do not buy new structural sheet prematurely**.
 
-Final dimensions follow the calculator plus practical edge protection.
+## F. Conditional / deliberately deferred
 
-## E. Mandatory but insufficiently optimized/researched
+### Stepper extensions
+Do not buy yet.
 
-These still deserve their own small research blocks:
+Selected motors have 1 m leads. Dry-fit first and extend only runs that lack a relaxed service loop at full travel.
 
-1. **steel tube supplier + actual cut lengths + delivered/local pickup cost**
-2. **dust system**: shop-vac, cyclone, hose diameter/length, dust shoe interface, hose support, static mitigation
-3. **first tooling**: exact 1/8 in single-flute cutter(s), preferably sensible starter set without junk bundle
-4. **strut-plate material**: cheap/stable <=6.35 mm material and how to make the first permanent set
-5. **table material/base sourcing** after dimensions are frozen
-6. **workholding**: minimum useful clamps / screw strategy for first jobs
-7. **small electrical/mechanical consumables**: endstop wire, connectors, cable sleeve/ties, threadlocker, M4 table screws; buy only after cart consolidation
+### Laser
+2027 project. Jackpot3 preserves PWM capability but no laser hardware is part of current build.
 
-## F. Cable-extender correction
+### Plasma
+No current hardware. Table architecture merely avoids blocking a future removable plasma centre cassette.
 
-BOM currently lists 3 stepper extension cables as unconditional. Research indicates the selected StepperOnline motors already include 1 m leads and our machine is much smaller than a full-sheet LR4.
+## Current priority from here
 
-Therefore treat motor extensions as **conditional**, not automatically mandatory:
-- assemble/dry-route with final controller position
-- verify full X/Y/Z travel with strain relief
-- buy extensions only where necessary
+1. Close **16T pulleys + 608 bearings**.
+2. Close **NVR / emergency-stop station**.
+3. Close **PLA + first cutters**.
+4. Check out the already-resolved big carts: VEVOR, Jackpot3, motors, DigiKey, LaskaKit.
+5. Pick up Motonet tubes if physical stock passes OD/straightness check.
+6. Find the used table base.
+7. Produce final order scenarios: cheapest correct / recommended Pareto / fewest parcels.
 
-Endstop wiring remains required separately.
-
-## Priority order from here
-
-1. **Freeze 650×1250 geometry using the current calculator and the purchased 6 mm XZ plates.**
-2. Once frozen, convert LaskaKit cart from recommendation to buy-ready and derive exact steel tube lengths/table footprint.
-3. Resolve the orphan 16T pulleys + 608 bearings by cart consolidation.
-4. Resolve PSU + KJD12/NVR as a complete safe mains system, not isolated components.
-5. Research dust collection as a separate mandatory subsystem.
-6. Only then produce final cart scenarios: cheapest correct / Pareto / fewest parcels.
+At this point, broad alternative-component research has sharply diminishing returns. Most remaining work is checkout validation and small orphan-item consolidation rather than architecture selection.
