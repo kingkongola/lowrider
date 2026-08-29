@@ -1,215 +1,235 @@
 ---
 research_date: 2026-08-29
-scope: final LaskaKit mechanical cart after locking 650×1250 LR4 geometry
+scope: final LaskaKit cart after locking 650×1250 LR4 geometry, including mechanical parts and low-voltage wiring additions
 status: recommendation-ready
-decision_state: LaskaKit is the recommended cart for 6 smooth idlers + complete T8 Z drive + couplers + GT2 belt; use 5 m belt if checkout confirms stock, otherwise 3×2 m segments
-price_basis: fresh indexed prices/stock observed 2026-08-29; LaskaKit pages have one conflicting 5 m belt stock signal, so checkout must decide belt variant
+decision_state: LaskaKit is the recommended cart for 6 smooth idlers + T8 Z drive + couplers + GT2 belt plus endstop/24V low-voltage cable; use 5 m belt if checkout confirms stock, otherwise 3×2 m
+price_basis: fresh indexed prices/stock observed 2026-08-29; checkout is authoritative for belt variant, 20AWG core-count variant and shipping
 region: Sweden / EU
 sources_checked:
-  - LaskaKit exact product pages
-  - LaskaKit fresh CNC category pages
+  - LaskaKit exact mechanical product pages
+  - LaskaKit current cable and DuPont connector catalogue
   - LaskaKit Sweden shipping table
-  - locked LR4 geometry file
+  - locked LR4 geometry and final electronics/wiring research
 supersedes: cart-level conclusions in 2026-08-29-gt2-drive.md and 2026-08-29-t8-z-drive.md
 ---
 
-# Final LaskaKit mechanical cart
+# Final LaskaKit cart
 
-## Geometry now removes the belt uncertainty
+## Geometry
 
-Locked machine calculations:
-- X belt: **999 mm**
-- Y belts: **1705 mm ×2**
-- exact total: **4409 mm**
+Locked belt segments for the 650×1250 machine:
+- X: **999 mm**
+- Y: **1705 mm ×2**
+- total: **4409 mm**
 
-Source:
-- `research/2026-08-29-geometry-650x1250.md`
+Source: `research/2026-08-29-geometry-650x1250.md`.
 
-This means either:
-- **1×5 m continuous roll**, cut into the three required pieces, or
-- **3×2 m rolls**, one per belt segment
+Therefore either one 5 m roll or three independent 2 m rolls are mechanically valid.
 
-Both are mechanically valid because LR4 uses three separate open belt sections; no individual belt needs to exceed 1705 mm.
-
-## Recommended cart lines
+## Mechanical lines
 
 ### 1. Smooth idlers — 6 pcs
 
 LaskaKit / POWGE `LA190008E`:
 - smooth GT2 idler
-- 5 mm bearing/bore
-- for **10 mm belt**
-- current observed price **€1.87 each**
-- fresh indexed stock around **76–98 pcs** depending page crawl
-
-Need 6:
-- **~€11.22**
+- 5 mm bore
+- for 10 mm belt
+- ~€1.87 each
+- need 6: **~€11.22**
 
 Source:
 - https://www.laskakit.cz/en/powge--kladka-gt2--hladka--s-loziskem-5-mm--pro-remen-10mm/
 
-Important: nearby `LA190008C` / other variants are for 6 mm belt. Do not substitute by code similarity.
+Do not substitute nearby 6 mm-belt variants.
 
-## 2. T8 Z rod — 1 pc
+### 2. T8×8 rod — 1 pc
 
-LaskaKit `LA190032A`:
+`LA190032A`:
 - T8×8
 - 400 mm
 - 4-start / 8 mm lead
 - stainless 304
-- fresh indexed price around **€8.15–8.19**
-- fresh stock signal around **5–14 pcs** depending crawl
+- ~€8.19
 
-Need 1.
-
-Cut once near centre to obtain roughly two ~199 mm Z screws after kerf, comfortably above V1E's 145 mm minimum.
+Cut near centre for two ~199 mm Z screws.
 
 Source:
 - https://www.laskakit.cz/en/trapezova-tyc-t8x8-400mm/
 
-## 3. T8×8 brass nuts — 2 pcs
+### 3. T8×8 brass nuts — 2 pcs
 
-LaskaKit `LA190033A`:
+`LA190033A`:
 - brass
-- T8×8
-- 4-start
-- current observed price **~€1.31–1.32 each**
-- stock available in current indexed pages
-
-Need 2:
-- **~€2.64**
+- T8×8 / 4-start
+- ~€1.32 each
+- **~€2.64** total
 
 Source:
 - https://www.laskakit.cz/en/matice-pro-trapezovou-tyc-t8x8--mosaz/
 
-Do **not** buy `LA190033B`: that is T8×2 and wrong for LR4.
+Do not buy `LA190033B`; that is T8×2.
 
-## 4. Flexible 5→8 mm couplers — 2 pcs
+### 4. Flexible couplers — 2 pcs
 
-LaskaKit `LA190031`:
-- aluminium 6061
-- 5 mm → 8 mm
-- 19 mm OD
-- 25 mm long
-- 4×M3 clamping screws
-- current observed price **~€1.81–1.83 each**
-- in stock
-
-Need 2:
-- **~€3.66**
+`LA190031`:
+- 5 mm -> 8 mm
+- aluminium
+- 19 mm OD × 25 mm long
+- ~€1.83 each
+- **~€3.66** total
 
 Source:
 - https://www.laskakit.cz/en/pruzna-spojka-hlinikova-sviraci-5x8mm/
 
-## 5A. Preferred GT2 belt — 1×5 m
+### 5A. Preferred GT2 belt — 1×5 m
 
-LaskaKit `LA190013C`:
+`LA190013C`:
 - GT2
 - 10 mm wide
-- 5 m
 - fiberglass reinforced
-- current category price **~€7.81**
+- ~€7.81
 
 Source:
 - https://www.laskakit.cz/en/remen-gt2-5m-se-skelnym-vlaknem-10mm/
 
-### Stock warning
+Stock indexing has conflicted between an older unavailable page and a fresher in-stock category page. Verify at checkout.
 
-There is a live-index inconsistency:
-- the older individual product crawl says **currently unavailable**
-- a much fresher category crawl (2 days old) shows `LA190013C` **in stock, 18 pcs**, €7.81
+### 5B. Fallback belt — 3×2 m
 
-Therefore treat stock as **checkout-verification required**, not as definitely available/unavailable.
-
-## 5B. No-wait belt fallback — 3×2 m
-
-LaskaKit `LA190013B`:
+`LA190013B`:
 - GT2
 - 10 mm
-- 2 m
 - fiberglass
-- fresh category listing shows **in stock**
-- current observed price around **€4.90 each**
+- ~€4.90 each
+- need 3: **~€14.70**
 
-Need 3 if the 5 m roll is unavailable:
-- **~€14.70**
+One 2 m roll per 999 / 1705 / 1705 mm segment.
 
 Source:
 - https://www.laskakit.cz/en/3d-printing-cnc-machines/page-2/
 
-Cut plan:
-- roll 1 → 999 mm X belt; large spare remains
-- roll 2 → 1705 mm Y belt
-- roll 3 → 1705 mm Y belt
+## Low-voltage wiring additions
 
-Cost penalty vs 5 m roll:
-- about **€6.89** extra
+These additions eliminate a separate cable order.
 
-That is roughly the price of eliminating belt-stock dependency and leaves ~1.59 m total spare belt.
+### 6. Endstop cable — 10 m
+
+`LA150151A`:
+- UL2464 / LIYY
+- 26 AWG
+- 3 × 0.14 mm²
+- unshielded flexible copper multicore
+- current ~€0.58/m
+
+Buy **10 m: ~€5.80**.
+
+Only two cores are used for the NC endstop circuit; third core remains spare.
+
+Source:
+- https://www.laskakit.cz/en/connecting-cables/
+
+### 7. HDR-60-24 -> Jackpot3 cable — 1 m
+
+LaskaKit UL2464 20 AWG / 0.52 mm² multicore family `LA150187A...D`:
+- stranded tinned copper
+- unshielded
+- selectable core count including 2-core
+- current price from ~€0.99–1.00/m
+
+Buy **1 m, select 2 cores visibly in the product UI**.
+
+The indexed HTML does not prove which suffix maps to 2-core, so do not guess the suffix.
+
+Source:
+- https://www.laskakit.cz/en/ul2464-20awg-liyy-0-52-mm2-nestineny-vicezilovy-kabel--cerny/
+
+### 8A. Endstop board connectors if a DuPont crimper is already owned
+
+LaskaKit:
+- 2.54 mm DuPont housing family `LA217000...`, from ~€0.03
+- female crimp socket `LA217002`, ~€0.03
+
+Suggested:
+- 10 × 2-position housings
+- 20 × `LA217002` sockets
+
+Select 2-position housing in checkout; suffix mapping is not locked from indexed data.
+
+Source:
+- https://www.laskakit.cz/en/connectors/
+
+### 8B. If no DuPont crimper is owned
+
+Use `LA150090` instead:
+- 40 × pre-crimped 2-pin F/F leads
+- 70 cm
+- ~€6.10–6.12
+- current stock available
+
+Cut five short pigtails and splice/solder to the long endstop cable.
+
+Source:
+- https://www.laskakit.cz/en/propojovaci-kabely-f-f-40ks-2pin-samice-samice--70cm/
 
 ## Shipping to Sweden
 
-LaskaKit's published current table:
-- **GLS Sweden: €8.93**
-
-All international shipments dispatch from their Czech base.
+Previously verified LaskaKit table:
+- GLS Sweden **€8.93**
 
 Source:
 - https://www.laskakit.cz/en/shipping-and-payment/
 
-## Delivered-cart estimates
+Because this shipment is already required for the mechanical parts, the wiring's **marginal freight is effectively zero** unless checkout changes the shipping class/price.
 
-### Preferred cart with 5 m belt
+## Cart totals
 
-Approx parts:
-- 6 idlers: €11.22
-- T8 rod: €8.19
-- 2 nuts: €2.64
-- 2 couplers: €3.66
-- 5 m belt: €7.81
+### Mechanical baseline with 5 m belt
 
-Parts subtotal: **~€33.52**
+- parts: ~€33.52
+- shipping: €8.93
+- delivered baseline: **~€42.45**
 
-+ published Sweden GLS: €8.93
+### Add wiring with existing DuPont crimper
 
-Estimated delivered: **~€42.45** before any checkout rounding/price changes.
+Add approximately:
+- 10 m endstop cable: €5.80
+- 1 m 20 AWG 2-core: ~€1.00
+- housings/contacts: roughly <€1
 
-### Fallback cart with 3×2 m belt
+Expected total becomes roughly **€49–50 delivered**, subject to checkout.
 
-Replace €7.81 belt with ~€14.70:
+### Add wiring without DuPont crimper
 
-Parts subtotal: **~€40.41**
+Use `LA150090` (~€6.1) instead of loose housings/contacts.
 
-+ €8.93 shipping
+Expected total becomes roughly **€55 delivered** with the preferred 5 m belt.
 
-Estimated delivered: **~€49.34**.
+### Belt fallback effect
 
-## Items deliberately NOT added
+If 5 m belt is unavailable, add approximately **€6.89** to either total by using 3×2 m rolls.
 
-### Endstops
-LaskaKit has cheap switches, but not the exact V1E baseline Omron `SS-3GL13PT`. Do not compromise the actuator geometry just to fill this cart.
+## Deliberately not added
 
-### 16T drive pulleys
-LaskaKit's nearby 16T variants found are for 6 mm belt. Wrong. The LR4 requires 3×16T / 5 mm bore / **10 mm belt**.
-
-### 608 bearings
-No verified LaskaKit line gives enough cart advantage over a cheap commodity 20-pack elsewhere.
-
-### Touch probe
-LaskaKit sells a cheap touch probe (~€4), but it is optional and not necessary to commission the machine. Do not add optional parts merely because shipping is already paid.
-
-### Energy chain
-Not required by the current LR4 wiring/hose architecture.
+- exact Omron endstops: buy from DigiKey, not substitute LaskaKit switches
+- 16T drive pulleys: nearby verified LaskaKit options are wrong width; keep separate orphan source
+- 608 bearings: commodity 20-pack remains separate
+- touch probe: optional
+- energy chain: not required
+- stepper extensions: dry-fit factory 1 m motor leads first
 
 ## Purchase status
 
-**Recommendation-ready, but not placed.**
+**Recommendation-ready, not placed.**
 
-At checkout:
-1. add exact SKUs above
-2. try `LA190013C` 5 m first
-3. if unavailable, decide whether waiting is worthwhile; otherwise use 3× `LA190013B`
-4. confirm GLS Sweden remains €8.93
-5. confirm T8 rod remains in stock — this is the lowest-stock core item observed
+Checkout sequence:
+1. add `LA190008E` ×6
+2. add `LA190032A` ×1
+3. add `LA190033A` ×2
+4. add `LA190031` ×2
+5. try `LA190013C` ×1; fallback to `LA190013B` ×3 if unavailable
+6. add `LA150151A` ×10 m
+7. add 1 m of the UL2464 20 AWG family with **2-core variant explicitly selected**
+8. choose board connector route based on whether a suitable DuPont crimper is already owned
+9. verify GLS Sweden and final total
 
-This cart is now sufficiently resolved that further research is unlikely to save meaningful money unless another vendor happens to bundle the missing 16T pulleys as well.
+This is now both the mechanical cart and the low-voltage wiring cart.
