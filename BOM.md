@@ -32,8 +32,8 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 
 ## Redan ägt — relevant verkstadsutrustning
 
-- [x] **DeWalt grovdammsugare / wet-dry shop-vac**, köpt från Jula för cirka 2 500 kr. Exakt modell ännu okänd; identifiera modell innan slang/filter/prestanda optimeras.
-- [x] **Äldre FTX-aggregat**, modell/prestanda ännu okänd. Potentiell återbrukskandidat för sekundär luftfiltrering eller undertryck/utsug kring CNC-zonen; ska inte matas med rått CNC-spån/damm utan separat förfilter/primäravskiljning.
+- [x] **DeWalt grovdammsugare / wet-dry shop-vac**, mycket sannolikt **DXV30SAPTA** enligt användarens Jula-skärmdump. 30 l, 1050 W, 15 kPa, 37,8 l/s, 48 mm × 2,1 m slang. Bekräfta typskylt innan modellunika reservdelar beställs.
+- [x] **Äldre FTX-aggregat**, modell/prestanda ännu okänd. Potentiell återbrukskandidat för sekundär luftfiltrering eller undertryck/utsug kring CNC-zonen; ska inte matas med rått CNC-spån/damm utan separat primäravskiljning.
 
 ## Kvar till själva LR4-maskinen
 
@@ -61,13 +61,15 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 
 ### Dammhantering — del av grundbygget
 
-- [ ] LR4 dust shoe / borstlösning enligt aktuell V1E-design
-- [x] grovdammsugare / shop-vac — DeWalt finns redan; modell/prestanda ska verifieras
-- [ ] cyklonavskiljare + behållare
-- [ ] 2.5"-klass flexibel dammsugarslang / adapter till befintlig DeWalt
+- [ ] LR4 dust shoe — printas; standard TPU 95A-bristles är bra men **1 mm hobbyfoam är godkänd bootstrap-lösning** och gör TPU-köp icke-blockerande
+- [x] grovdammsugare / shop-vac — befintlig DeWalt, sannolikt DXV30SAPTA
+- [ ] cyklonavskiljare — **3D-print först**, kommersiell separator endast fallback
+- [ ] separat styv 15–30 l uppsamlingsbehållare före DeWalt; billig stålhink/askhink är förstaval
+- [ ] rörlig dammsugarslang — **testa befintlig DeWalt 48 mm × 2,1 m först**; köp 2.5" endast om dry-fit/prestanda kräver det
+- [ ] kort stationär cyklon→DeWalt-koppling, helst slangstum/rör/printad adapter
 - [ ] slangupphängning/dragavlastning så slangen inte belastar Z/gantry
 - [ ] enkel avskärmning/gardin eller annan lösning som håller CNC-smutszonen lättstädad
-- [ ] jordning/antistatisk lösning om slang/XPS ger praktiska statikproblem
+- [ ] jordning/antistatisk lösning; befintlig DeWalt-slang är inte dokumenterad som ESD, så separat jordledare enligt V1E-plan ska utvärderas
 - [ ] utvärdera befintligt FTX-aggregat som sekundär luftfiltrering/undertryck efter att modell och flöde identifierats
 
 ### Rekommenderat / småsaker
@@ -80,6 +82,7 @@ https://hawiwe.de/produkt/schraubenset-lowrider-4/
 ### Valfritt senare
 
 - [ ] touch plate / verktygslängdsgivare
+- [ ] TPU 95A för standard-LR4-bristles om hobbyfoam-lösningen inte räcker eller snap-in-bristles önskas
 - [ ] laser — tidigast 2027, inte del av nuvarande grundbygge
 
 ## Styrkort — Jackpot3
