@@ -2,16 +2,28 @@
 
 Bordet ska inte behandlas som en eftertanke. Det är en del av maskinen, men vi ska inte överbygga det innan LowRider fungerar.
 
+## Låst/nästan låst geometri
+
+Nuvarande byggmål är **650 × 1250 mm användbar arbetsyta** med de köpta 6,0 mm HaWiWe XZ-plattorna.
+
+Aktuell V1E-kalkyl ger:
+- minimum bord: **941 × 1563 mm**
+- praktiskt mål för CNC-kassett/top: cirka **1000 × 1620 mm**
+- strut length: **819 mm**
+- rör: **816 / 816 / 1505 mm**
+- GT2-rem totalt: **4409 mm**, så 5 m räcker
+
+Detaljer och formler:
+- `research/2026-08-29-geometry-650x1250.md`
+
 ## Krav
 
-- dimensioneras först efter att slutlig LR4-arbetsyta är fryst i aktuell kalkylator
-- nuvarande mål: ungefär **650 × 1250 mm arbetsyta**
 - plant/styvt nog för trä, plywood, XPS och lätt aluminium
 - lätt att dammsuga och våttorka eftersom samma garage används för motorarbete
 - ska kunna flyttas undan praktiskt
 - under skärning ska lasten stå på fasta/ställbara fötter, inte mjuka hjul
 - dammslang/kablar ska kunna hängas utan att dra i gantry/Z
-- mitten/spoilboarden bör vara utbytbar så bordet inte låser framtida användning
+- mitten/spoilboarden ska vara utbytbar så bordet inte låser framtida användning
 - plasma är **inte** ett nuvarande byggkrav, men en utbytbar mittsektion gör en framtida metall-/vattenbordsinsats möjlig utan att vi bygger för plasma nu
 
 ## Grundidé: underrede + CNC-kassett
@@ -19,26 +31,25 @@ Bordet ska inte behandlas som en eftertanke. Det är en del av maskinen, men vi 
 Separera två funktioner:
 
 1. **Underrede** — bär vikten, ger höjd, förvaring och mobilitet.
-2. **CNC-kassett/top** — håller LR4:s exakta geometri, rails/belts och spoilboard.
+2. **CNC-kassett/top** — håller LR4:s exakta geometri, rails/belts och den utbytbara mitten.
 
 Det gör att vi kan återanvända ett billigt begagnat bord/underrede utan att låta dess bordsskiva definiera CNC-precisionen.
 
 Skiss:
 
 ```text
-     permanent CNC-top / kassett
-┌─────────────────────────────┐
-│ LR4-sida / rail / belt      │
-│ ┌─────────────────────────┐ │
-│ │                         │ │
-│ │   UTBYTBAR MITTSEKTION  │ │
-│ │   + MDF spoilboard      │ │
-│ │                         │ │
-│ └─────────────────────────┘ │
-│ LR4-sida / rail / belt      │
-└─────────────────────────────┘
-             ↓
-   stabilt underrede / ben
+     permanent CNC-top / kassett ~1000×1620
+┌────────────────────────────────────┐
+│ permanent LR4 rail/belt structure  │
+│  ┌──────────────────────────────┐  │
+│  │ removable structural center │  │
+│  │ + removable 12 mm MDF       │  │
+│  │   spoilboard                │  │
+│  └──────────────────────────────┘  │
+│ permanent LR4 rail/belt structure  │
+└────────────────────────────────────┘
+                  ↓
+        stabilt underrede / ben
 ```
 
 Den permanenta ytterramen håller maskingeometrin. Mittdelen är förbruknings-/funktionsyta.
@@ -63,6 +74,7 @@ Kontrollera före köp:
 - faktisk fri bredd mellan ben
 - om underredet klarar en top som eventuellt överhänger några cm
 - total höjd efter CNC-top
+- om befintlig bordsskiva är styv nog att återanvända som structural deck
 
 ### B. Pingisbord
 
@@ -83,7 +95,7 @@ Intressant om:
 
 Bra om inget vettigt begagnat dyker upp.
 
-V1E visar att mycket enkla bord fungerar. Maskinen kan bootstrappas på sågbockar/2×4 och MDF/OSB och sedan fräsa delar till ett bättre bord.
+V1E visar att mycket enkla bord fungerar. Maskinen kan bootstrappas på sågbockar/2×4 och skiva och sedan fräsa delar till ett bättre bord.
 
 Fördelar:
 - exakt rätt yttermått
@@ -115,36 +127,69 @@ Bra lösningar:
 
 V1E-byggare rapporterar att rullbara LR4-bord är mycket praktiska för att komma åt baksidan och flytta maskinen undan.
 
-## Spoilboard och utbytbar mitt
+## Structural deck + spoilboard + utbytbar mitt
 
-Håll isär:
-- strukturell top/kassett
-- **MDF-spoilboard**, som ska kunna planfräsas och bytas
+Håll isär tre funktioner:
 
-MDF är lämpligt som spoilboard eftersom det är plant och lätt att plana. Det behöver inte betyda att hela bordet måste byggas av MDF.
+1. **outer cassette/frame** — håller rails/belts i rätt relation
+2. **structural center deck** — bär arbetsstycket
+3. **MDF-spoilboard** — förbrukningsyta som planfräses och byts
 
-Utbytbar mitt kan göras med exempelvis:
-- skruvad bärskiva i plywood/OSB
-- MDF-spoilboard ovanpå
-- definierade referens-/stödpunkter i ytterramen
+### Structural deck: köp inget innan underredet är valt
 
-Detta gör även drop-table/tjocka arbetsstycken enklare senare.
+Prioritetsordning:
+
+1. **Återanvänd befintlig bordsskiva** om den är tillräckligt styv. Kostnad 0 kr.
+2. **11 mm OSB** är värdefallback om ny skiva behövs; färsk svensk referens ~239 kr för 1197×2500.
+3. **12 mm konstruktionsplywood** är premiumsteget; ~399 kr för 1200×2500, bättre skruvhållning och trevligare vid upprepad demontering.
+
+Se:
+- `research/2026-08-29-structural-center-cassette.md`
+
+### Spoilboard: löstagbar ~12 mm MDF
+
+Nuvarande Pareto-target är **cirka 12 mm MDF** över den strukturella mitten.
+
+Skälen:
+- tillräckligt med material för planfräsning och skruvfastsättning
+- billigare/lättare än 18–19 mm
+- strukturen ska komma från lagret under, inte från spoilboarden
+- enkelt att byta när den är slut
+
+Den behöver bara täcka arbetsområdet plus rimlig marginal, inte hela 1000×1620-kassetten. Storleksordning **~700×1300 mm** är ett arbetsantagande; slutmåttet tas först när ytterram och stöd är ritade.
+
+### Permanenta strut plates
+
+Bygg först på V1E:s fyra printade temp-struts och låt sedan LR4 fräsa sina egna permanenta struts.
+
+För slutdelarna:
+- 5–6 mm MDF förstaval
+- hardboard är okej
+- max 6,35 mm
+- **inte 1/4" plywood** enligt aktuella LR4-instruktioner
+- köp helst offcut; full 6 mm MDF-skiva kostar omkring 395–473 kr och är onödig endast för två smala 819 mm-delar
+
+Se:
+- `research/2026-08-29-spoilboard-strut-plates.md`
 
 ## Damm som bordskrav
 
 Bordet ska göra dammhanteringen lätt, inte svår:
-- plats under eller bredvid för shop-vac + cyklon
+- plats under eller bredvid för befintlig DeWalt + printad cyklon
 - slanganslutning på en bestämd sida
 - möjlighet till svängarm/slangbom ovanför
 - släta/avtorkningsbara ytor nära CNC:n
 - möjlighet till enkel transparent PVC-/plastgardin runt smutszonen
 - inga onödiga tyg-/filtlösningar som blir permanenta dammreservoarer
+- gamla FTX-aggregatet kan senare utvärderas för sekundärt undertryck/luftfiltrering, aldrig råspån
 
 ## Referenser från V1E-communityn
 
+- Aktuell LR4-dokumentation och bootstrap med temp-struts:
+  https://docs.v1e.com/lowrider/
 - Bootstrap med gammalt pool-/pingisbord/köksbord eller sågbockar:
   https://forum.v1e.com/t/lowrider-v4-new-build-bootstrapped-torsion-box-table/53192
-- Aktuell diskussion där shop-vac + cyklon rekommenderas och torsionsbox ses som bra men inte nödvändig:
+- Aktuell diskussion där enkla bord och MDF-spoilboard diskuteras:
   https://forum.v1e.com/t/lowrider-v4/53926
 - Ping Pong Table LR4:
   https://forum.v1e.com/t/ping-pong-table-lr4/54091
@@ -155,8 +200,6 @@ Bordet ska göra dammhanteringen lätt, inte svår:
 
 ## Nuvarande riktning
 
-**Sök först ett billigt/gratis stabilt begagnat matbords- eller konferensbordsunderrede. Bygg sedan en egen LR4-specifik top/kassett ovanpå.**
+**Sök först ett billigt/gratis stabilt begagnat matbords- eller konferensbordsunderrede. Återanvänd dess top om den är strukturellt bra; bygg annars billig OSB/plywood-center. Lägg en separat löstagbar ~12 mm MDF-spoilboard ovanpå.**
 
-Bygg inte en avancerad torsionsbox före första körningen om vi inte hittar en mycket enkel/billig väg. Maskinen kan först köras på en enklare top och senare hjälpa till att bygga sin egen bättre top.
-
-Exakt topmått och rör/rem-längder låses först efter LR4-kalkylatorn.
+Bygg inte en avancerad torsionsbox före första körningen. LR4 är uttryckligen byggd för att kunna bootstrapas och sedan förbättra sina egna delar.
