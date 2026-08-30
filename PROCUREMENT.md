@@ -26,6 +26,7 @@ Vid leverans räcker normal mottagningskontroll: transportskada + att de fyra be
 - printer **Bambu Lab P1S**
 - garagegrupp **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet matningsproblem
 - V1E anger **ca 2,7 kg PLA** för full LR4-sats inklusive tool mount + board box
+- Amazon Prime finns; Amazon-köp behöver därför **inte** samordnas för fraktens skull
 
 ## Optimerad ordergraf
 
@@ -111,6 +112,7 @@ Därför:
 - köp en fjärde rulle endast om merkostnaden är liten eller reservfilament ändå är önskat
 - inget krav på SUNLU; välj billigaste välrecenserade vanliga styva PLA som fungerar bra i P1S
 - Amazon.se/Prime prioriteras om levererat pris slår separat filamentbutik
+- tack vare Prime finns **ingen samköpsbonus** med NVR eller andra Amazon-varor; optimera varje Amazon-rad separat
 
 Den tidigare 6 kg SUNLU-planen är **borttagen**: den optimerade fel variabel (bulkpris/kg) och gav ~3 kg onödigt lager för just detta bygge.
 
@@ -128,7 +130,7 @@ Aktuella enkla köpvägar inkluderar:
 - Clas Ohlson KJD12 230 V / 10 A, 299 kr
 - Amazon.se-resultat för KEDU KJD12-14 runt 281 kr
 
-Om NVR och PLA båda köps via Amazon kan de samlas i samma lågfriktionsorder; det är en bonus, inte ett skäl att välja sämre komponent.
+Välj billigaste dokumenterade lämpliga variant. Prime gör att NVR-valet inte behöver påverkas av andra Amazon-köp.
 
 ### 8. Sorotec-fräsar — **DEFER, inte order nu**
 
@@ -166,13 +168,13 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 3. StepperOnline — motorer
 4. Elecrow — Jackpot3
 5. VEVOR — router
-6. Amazon/Prime — 3 kg PLA; NVR kan eventuellt samköpas här
+6. Amazon/Prime — 3 kg PLA
 
-**NVR:** lokal/Amazon.
+**NVR:** lokal/Amazon, optimeras separat eftersom Prime eliminerar behovet av samköp.
 
 **Sorotec:** uppskjuten.
 
-= fortfarande **6 huvudbeställningar**, men filamentordern är nu rätt dimensionerad och potentiellt samma Amazon-order som NVR.
+= **6 huvudbeställningar**, plus lokala/Prime-småköp som inte behöver orderkonsolideras.
 
 ## Kvar att verifiera i checkout
 
@@ -180,6 +182,6 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 2. Elecrow Jackpot3 → Sverige frakt + faktisk moms/importhantering
 3. Roboter-Bausatz: €14,99-frakt + bekräfta 5 m rem som kontinuerlig längd
 4. DigiKey: bekräfta 0 kr frakt med nya kabelrader i korgen
-5. Amazon: välj 3 × 1 kg ordinary PLA efter **lägsta levererade totalpris**, inte märke; överväg samtidig NVR om rätt variant finns
+5. Amazon: välj 3 × 1 kg ordinary PLA efter **lägsta levererade totalpris och rimlig kvalitet**, utan samköpshänsyn
 
 Det finns nu inget starkt skäl att återöppna leverantörsstrukturen. Nästa förbättring kommer främst från checkout-priser, inte fler komponentbyten.
