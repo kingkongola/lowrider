@@ -23,8 +23,9 @@ Hålla reda på:
 - Bordets huvudstrategi är ett styvt begagnat **160–180 × helst 90–100 cm** bord med befintlig skiva + avtagbar ~1000×1620 CNC-deck. På 90 cm djupa bord ska deckens cirka 50 mm långsidesöverhäng få verkligt stöd/infästning i LR4:s kantzon.
 - Dammhantering är en del av grundbygget eftersom CNC:n delar garage med motorarbete.
 - Garagegruppen är **10 A och praktiskt beprövad med svets**; plasma har däremot kunnat lösa säkringen. CNC-kombinationen VEVOR 800 W + sannolik DeWalt 1050 W + liten controller-PSU bedöms därför inte som ett öppet elproblem. Gör bara normal sanity-check vid första samtidiga körningen; utred först om säkringen faktiskt löser.
-- Elarkitekturen är fast KJD12/HDR-box + rörlig Jackpot3 på beam. Det gör **24 V-ledningen och routerkabeln till rörliga maskinkablar**; längd och dragavlastning avgörs med full-travel dry-fit.
-- KJD12 behandlas som **NVR/maskinstopp med röd stoppkåpa**, inte som verifierad safety-rated E-stop.
+- Controller-baseline är **V1E Jackpot2**. V1E beskriver den som funktionellt identisk med Jackpot3 för vanlig CNC, men utan snabb PWM. För router-LR4 är det rätt Pareto-val; direkt laserstyrning kräver senare expansion/controllerbyte om laser blir ett konkret projekt.
+- Elarkitekturen är fast NVR/HDR-box + rörlig Jackpot2 på beam. Det gör **24 V-ledningen och routerkabeln till rörliga maskinkablar**; längd och dragavlastning avgörs med full-travel dry-fit.
+- NVR/maskinstopp väljs efter funktion och märkdata, inte KEDU-proveniens som självändamål.
 - Laser är ett senare projekt, tidigast 2027. Plasma ingår inte i nuvarande scope.
 - Målet är att få maskinen körklar i god tid före Halloween 2026.
 
@@ -42,13 +43,14 @@ Hålla reda på:
 
 ## Aktuell arbetsordning
 
-1. Lös den enda aktuella mekaniska lagerluckan: **GT2 10 mm-rem**; LaskaKits direkta produktsida visar 5 m-rullen som slut trots äldre kategoridata.
-2. Slutför checkout för **3 × GT2 16T / 5 mm / 10 mm** och övriga produktlåsta order.
-3. Placera de redan produktlåsta orderna när checkout-totalerna håller: Motonet/LaskaKit/StepperOnline/DigiKey/VEVOR/Elecrow/SUNLU/Sorotec/KEDU + separat remkälla vid behov.
-4. Hitta och fysiskt kontrollera ett begagnat **160–180 × helst 90–100 cm** bord; köp helst ≤700 kr om racking- och kantstödstest passerar.
-5. Printa senaste LR4-delarna i **30 mm-variant**, med Makita/65 mm tool mount, på P1S.
-6. Bygg avtagbar CNC-deck + spoilboard och integrera damm/el/kabelrörelse.
-7. Montera och gör gemensamt full-travel-test med slang + alla rörliga kablar innan slutlig kabelinfästning/remspänning.
-8. Flasha Elecrow Jackpot3 med V1E:s aktuellt testade FluidNC + LR4-config, konfigurera, kalibrera och gör första riktiga fräsningen.
+1. Slutför checkout på den optimerade mekanikkorgen hos Roboter-Bausatz.
+2. Slutför DigiKey-korgen med elektronik, lager, elsmådelar och lågspänningskablage.
+3. Kontrollera landad kostnad för **V1E Jackpot2 ($55 före frakt/skatt)** mot alternativen; Jackpot2 är baseline så länge dess landade pris fortfarande är rationellt.
+4. Placera övriga produktlåsta order: StepperOnline-motorer, VEVOR 0700C och cirka 3 kg vanlig PLA via billig Prime-väg.
+5. Hitta och fysiskt kontrollera ett begagnat **160–180 × helst 90–100 cm** bord; köp helst ≤700 kr om racking- och kantstödstest passerar.
+6. Printa senaste LR4-delarna i **30 mm-variant**, med Makita/65 mm tool mount, på P1S.
+7. Bygg avtagbar CNC-deck + spoilboard och integrera damm/el/kabelrörelse.
+8. Montera och gör gemensamt full-travel-test med slang + alla rörliga kablar innan slutlig kabelinfästning/remspänning.
+9. Flasha Jackpot2 med V1E:s aktuellt testade FluidNC + LR4-config, konfigurera, kalibrera och gör första riktiga fräsningen.
 
 Broad alternative research ska inte återöppna redan låsta komponenter utan ett konkret problem med pris, lager, kompatibilitet eller fysisk integration.
