@@ -1,10 +1,10 @@
 # Checklist
 
-## 1. Inventera köpta delar
+## 1. Mottagning av köpta delar
 - [x] HaWiWe-order dokumenterad
 - [x] HaWiWe-order betald
 - [x] Markera exakt vad som täcks av skruvsatsen
-- [ ] När paketet kommer: fysisk inventering mot BOM
+- [ ] När HaWiWe-paketet kommer: normal mottagningskontroll — kontrollera transportskada och att de fyra beställda produktgrupperna finns med; ingen separat BOM-inventering krävs
 - [ ] Provmontera M3×10 mot 6,0 mm XZ-plattor/MGN-block och kontrollera att inget bottnar eller binder
 
 ## 2. Geometri / bord
