@@ -46,19 +46,25 @@ Prisregler:
 
 Ingen torsionsbox, specialsvetsad ram, höj-/sänkbart skrivbord eller hjulsystem före första körningen utan konkret behov.
 
-## D005 — Jackpot3 som styrkort
+## D005 — Jackpot2 som styrkort
 **Status:** beslutat förstahandsval
 
-Jackpot3 väljs framför SKR Pro och äldre Jackpot-versioner om prisskillnaden inte är orimlig.
+**V1E Jackpot2** väljs som baseline för detta router-first LowRider V4-bygge.
+
+V1E beskriver Jackpot2 som funktionellt identisk med Jackpot3 för normal CNC-drift, men utan den snabba PWM-output som främst behövs för direkt laserstyrning. Jackpot2 kostar aktuellt **$55 före frakt/skatt**, mot Jackpot3 $75,99 hos V1E.
 
 Skäl:
-- aktuell V1E-standardlösning för LR4
-- 6 integrerade TMC2226-drivare
-- FluidNC, Wi‑Fi och webbgränssnitt
-- öppna 2,54 mm stepperheaders
-- full PWM på 5 V-utgångarna; möjlighet till laser senare
+- samma relevanta FluidNC/LR4-kärnfunktion för fräsning
+- integrerade stepperdrivers/ESP32, microSD, USB-C och V1E:s färdiga firmware/config-spår
+- tre spänningsvalbara outputs och extra IO räcker för normal router-CNC och många framtida tillbehör
+- framtida VFD-spindel är ett reellt LR4-upgrade path men behöver inte Jackpot3:s snabba laser-PWM; VFD kan styras via t.ex. 0–10 V/RS485-lösning
+- vi betalar därför inte extra idag enbart för en laseroption som uttryckligen är uppskjuten
 
-Elecrow-kortet kräver flashning. V1E:s vid byggtillfället aktuellt testade FluidNC + rätt LR4-config ska laddas innan driven rörelse/homing.
+Nackdel/medvetet tradeoff:
+- Jackpot2 saknar snabb PWM och V1E säger uttryckligen att den **inte ska väljas för direkt laserstyrning**
+- om laser blir ett konkret projekt senare får vi då välja expansion/controllerbyte efter det faktiska laserbyggets behov
+
+Jackpot2 ska flashas med V1E:s aktuellt rekommenderade FluidNC + LR4-config före driven rörelse/homing.
 
 ## D006 — VEVOR 0700C, 800 W, 65 mm som fräsmotor
 **Status:** beslutat förstahandsval / fysisk verifiering återstår
@@ -84,10 +90,12 @@ Grundlösningen:
 
 Stockslangen är inte verifierat antistatisk. Statisk jordväg till definierad PE-punkt eller groundable hose ska vara löst före XPS/reguljär dammig drift.
 
-## D008 — Laser senare
+## D008 — Laser senare och får inte överoptimera grundbygget
 **Status:** uppskjutet
 
-Laser är intressant men ska inte påverka grundbygget mer än valet av Jackpot3. Tidigast aktuellt 2027.
+Laser är intressant men tidigast aktuellt 2027 och ska inte driva controllerkostnaden idag.
+
+Jackpot2-tradeoffen är medveten: direkt laser-PWM saknas. Om laser senare blir ett konkret projekt väljs då lämplig expansion/controller utifrån den faktiska lasermodulen, kapslingen och säkerhetslösningen.
 
 ## D009 — Plasma inte i nuvarande scope
 **Status:** bortprioriterat
@@ -101,9 +109,7 @@ Plasma ska inte styra bord, inköp eller byggordning nu. Fokus är router-CNC f�
 
 Endstops: **Omron SS-3GL13PT**. Köp 10, installera 5 och behåll 5 reserv. Koppla NC, COM + NC.
 
-DigiKey-korgen konsoliderar även 16 × 608-2RS, Wago, M20 nätgenomföringar och Faston enligt `PROCUREMENT.md`.
-
-**Auditgräns:** DigiKey anger fri frakt vid 615 kr men vår ~622 kr är en inkl-momsuppskattning. Fri frakt räknas inte som säker förrän checkout visar den.
+DigiKey-korgen konsoliderar även 16 × 608-2RS, Wago, M20 nätgenomföringar, Faston och lågspänningskablage enligt `PROCUREMENT.md`.
 
 ## D011 — Ø30 mm rails låser printvariant och strut-wing
 **Status:** beslutat / audit-fynd
@@ -119,7 +125,7 @@ Konsekvenser:
 ## D012 — Fast elbox + rörlig maskin gör kabelrörelse till konstruktionskrav
 **Status:** beslutat / audit-korrigering
 
-KJD12 + HDR-60-24 sitter i en **fast box på bordet**. Jackpot3 sitter separat på den **rörliga beam/YZ_Min-sidan**.
+NVR + HDR-60-24 sitter i en **fast box på bordet**. Jackpot2 sitter separat på den **rörliga beam/YZ_Min-sidan**.
 
 Tidigare antagande om ~1 m 24 V-kabel är borttaget.
 
@@ -128,14 +134,14 @@ Tidigare antagande om ~1 m 24 V-kabel är borttaget.
 - 24 V-utgången får egen kabelgenomföring/dragavlastning
 - routerkabel, 24 V, stepper/endstopkablar och vac-hose testas tillsammans vid alla rörelseextremer innan slutlig kabelinfästning
 - Jackpot-boxen hålls separat och luftig; den ska inte stoppas in i 230 V-boxen
-- UL2464/PVC-rutten ska ha stor rörelseloop; krävs snäv repetitiv böj används continuous-flex-kabel i stället
+- PVC-rutten ska ha stor rörelseloop; krävs snäv repetitiv böj används continuous-flex-kabel i stället
 
-## D013 — KJD12 är NVR/maskinstopp, inte påstått safety-rated E-stop
+## D013 — NVR/maskinstopp, inte påstått safety-rated E-stop
 **Status:** beslutat terminologi/säkerhetsgräns
 
-KJD12 är verifierad som elektromagnetisk start/stop med no-voltage release/underspänningsutlösning, och varianter finns med röd emergency-stop-kåpa.
+Reellt krav är en 230 V NVR/no-voltage-release med lämplig motorlastmärkning, tydlig stoppfunktion och dokumenterad terminalkoppling. KJD12 är en lämplig familj men exakt KEDU-proveniens är inte ett projektkrav.
 
-Vi har inte verifierat att den valda varianten uppfyller en specifik safety-rated E-stop-kategori/standard. Repot ska därför kalla den **KJD12 NVR/maskinstopp med röd stoppkåpa**.
+Vi har inte verifierat att den valda varianten/hemmabyggda helheten uppfyller en specifik safety-rated E-stop-kategori/standard. Repot ska därför kalla funktionen **NVR/maskinstopp**.
 
 Den ska:
 - vara direkt nåbar från normal operatörsplats
@@ -145,14 +151,13 @@ Den ska:
 ## D014 — Commissioning-dependencies är del av BOM, inte eftertanke
 **Status:** beslutat / andra auditpasset
 
-Andra inköpsauditens huvudfynd är att en komplett komponentlista inte räcker om maskinen ändå inte kan flashas, köras eller verifieras.
+En komplett komponentlista räcker inte om maskinen ändå inte kan flashas, köras eller verifieras.
 
 Därför gäller:
-- Elecrow Jackpot3 kräver **data-kapabel USB-C** för flashing; inventera först
-- Jackpot3 behöver ett lämpligt **microSD >2 GB, FAT32, helst Class 4/6** för den föredragna G-code-filvägen; inventera först, köp bara om det saknas
+- Jackpot2 kräver **data-kapabel USB-C** för flashing; inventera först
+- lämpligt **microSD >2 GB, FAT32** behövs för föredragen lokal G-code-filväg; inventera först, köp bara om det saknas
 - endstops är i standardkonfiguration **home/auto-square-sensorer**, inte runtime hard limits/kollisionsskydd
-- printer-gate före full sats: minst 200×200×190 mm byggvolym, skew-kontroll, `Z_Stub`/`Z_Nut` testfit och bridge-preview
+- P1S har redan tillräcklig byggvolym; kvar är endast rätt 30 mm/65 mm-varianter, `Z_Stub`/`Z_Nut` testfit och slicer-preview
 - 400 mm T8-stång kapas inte automatiskt i halvor; praktiskt mål är cirka 150–160 mm ×2 efter fysisk kontroll, V1E minimum 145 mm
-- om 5 m GT2-rullen saknas är 3×2 m samma 10 mm fiberglass-spec en ren fallback utan skarvar
 
 Princip: **en rad är inte godkänd bara för att delen i sig är rätt; dess monterings-, kabel-, konfigurations- och commissioning-gränssnitt måste också vara täckta.**
