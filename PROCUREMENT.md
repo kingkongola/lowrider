@@ -44,7 +44,7 @@ Köp:
 
 Ungefärlig merchandise ~€39–40; publicerad Sverige-frakt **€14,99**. Totalt ~€54–55 före eventuella checkoutavvikelser.
 
-För remmen: bekräfta att 5 löpmeter levereras som en kontinuerlig längd.
+**Remkontroll 2026-08-30:** RBS12747 är uttryckligen `Meterware`; produktsidan säger att priset gäller 1 m och att fler meter beställs genom högre antal. Specen är GT2 / 2 mm / 10 mm / gummi med glasfiberkärna. Detta är rätt typ. Vid order: 5 st = 5 löpmeter; om checkout/orderbekräftelse mot förmodan visar kapade enmetersbitar, stoppa ordern.
 
 T8 kapas först efter fysisk assembly-check; praktiskt mål ~150–160 mm ×2.
 
@@ -67,19 +67,19 @@ Kabelbeslut: DigiKey-kablarna kostar ungefär **274 kr totalt** för 3 m + 10 m 
 
 SKU-fälla: använd inte Marketplace-dubbletten `5831-3-350820-2-ND`.
 
-Tidigare korg utan kablar ~641 kr inkl moms. Med kablarna blir korgen klart över DigiKeys publicerade fri-fraktgräns **615 kr**; checkout är fortfarande slutlig auktoritet.
+**Frakt verifierad 2026-08-30:** DigiKey anger fri leverans till Sverige vid **≥615 kr i SEK** och 170 kr under gränsen. Marketplace-produkter räknas inte in. Vår korg ligger klart över 615 kr och använder den vanliga `A27824-ND`, inte Marketplace-dubbletten. Baseline är därför **0 kr DigiKey-frakt**, under förutsättning att checkout inte flaggar någon rad som Marketplace/separat leverans.
 
 ### 3. StepperOnline Germany — motorer
 
 - 1 × fempack `5-17HS19-2004S1`
-- **€41,06** aktuell artikelkostnad
+- aktuell artikelkostnad cirka **€41 / $41,90 beroende på storefront/valuta**
 - 59 Ncm / 2 A
 - 5 mm D-axel / 24 mm axel
 - 1 m kabel
-- fempacket väger ca **2,03 kg**
-- Germany warehouse stöder uttryckligen leverans till Sverige
+- fempacket väger ca **2,1 kg**
+- Germany warehouse stöder uttryckligen leverans till **Sverige**
 
-StepperOnline publicerar inte en statisk Sverige-frakt för denna korg; exakt DHL Paket(EU)-pris räknas efter valt land/lager i cart. Detta är ett **rent checkout-prisfrågetecken**, inte ett komponentfrågetecken.
+StepperOnline rekommenderar lokalt EU-lager för EU och deras aktuella hjälpsida listar Sverige bland länder som tyska lagret levererar till. Exakt fraktpris publiceras däremot inte statiskt utan kräver adress/postnummer i cart/checkout. Detta är nu ett **rent prisfält att läsa av i checkout**, inte något mer research kan lösa säkert.
 
 ### 4. Elecrow — Jackpot3
 
@@ -90,7 +90,7 @@ StepperOnline publicerar inte en statisk Sverige-frakt för denna korg; exakt DH
 - unik vald controller
 - kräver V1E FluidNC + LR4-config
 
-Elecrow anger att frakten beräknas i cart/checkout och att importmoms/skatter inte ingår i frakten. Därför är **landad kostnad fortfarande verkligt checkout-gated**.
+Elecrow anger att frakt beräknas i cart/checkout. Deras publicerade policy säger också att importskatter/avgifter inte ingår och betalas av mottagaren. För 300 g finns air-mail som möjlig fraktklass, men faktisk Sverige-frakt måste läsas i cart. Därför är **Elecrow den största kvarvarande landad-kostnad-osäkerheten**.
 
 Inventera data-USB-C och FAT32 microSD hemma först.
 
@@ -114,7 +114,7 @@ Därför:
 - Amazon.se/Prime prioriteras om levererat pris slår separat filamentbutik
 - tack vare Prime finns **ingen samköpsbonus** med NVR eller andra Amazon-varor; optimera varje Amazon-rad separat
 
-Den tidigare 6 kg SUNLU-planen är **borttagen**: den optimerade fel variabel (bulkpris/kg) och gav ~3 kg onödigt lager för just detta bygge.
+Webbsökningen visar exempelvis ordinary PLA runt 170–180 kr/kg på Amazon.se, men Amazon-priser är dynamiska. Välj vid köp efter aktuellt Prime-pris; 3 kg är behovet, inte 6 kg.
 
 ### 7. NVR/maskinstopp — lokal/Amazon först, **inte egen specialorder**
 
@@ -176,12 +176,19 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 
 = **6 huvudbeställningar**, plus lokala/Prime-småköp som inte behöver orderkonsolideras.
 
-## Kvar att verifiera i checkout
+## Kvar efter webbresearch 2026-08-30
 
-1. StepperOnline Germany → Sverige exakt DHL-frakt
-2. Elecrow Jackpot3 → Sverige frakt + faktisk moms/importhantering
-3. Roboter-Bausatz: €14,99-frakt + bekräfta 5 m rem som kontinuerlig längd
-4. DigiKey: bekräfta 0 kr frakt med nya kabelrader i korgen
-5. Amazon: välj 3 × 1 kg ordinary PLA efter **lägsta levererade totalpris och rimlig kvalitet**, utan samköpshänsyn
+**Verifierat nog för köp utan mer research:**
+- Roboter-Bausatz: spec + meterware-rem + publicerad Sverige-frakt
+- DigiKey: spec + korg över verifierad 615 kr fri-fraktgräns
+- StepperOnline: exakt motor/fempack + tyska lagret levererar till Sverige
+- Elecrow: exakt Jackpot3, pris/lager/vikt
+- Amazon PLA: 3 kg är rätt kvantitet; välj aktuellt Prime-pris
 
-Det finns nu inget starkt skäl att återöppna leverantörsstrukturen. Nästa förbättring kommer främst från checkout-priser, inte fler komponentbyten.
+**Kan endast avgöras i faktisk checkout:**
+1. StepperOnline Germany → exakt Sverige-frakt för ~2,1 kg
+2. Elecrow Jackpot3 → exakt Sverige-frakt; därefter lägg på svensk importmoms/ev. transportörsavgift enligt faktisk fraktmetod
+3. Roboter-Bausatz → sista orderbekräftelsen att qty 5 meterware hanteras som sammanhängande längd
+4. DigiKey → kontrollera att checkout verkligen visar 0 kr frakt och ingen Marketplace-rad
+
+Det finns inget värde i att gissa dessa checkoutfält. Nästa steg är att öppna respektive kundvagn och läsa de faktiska totalsummorna innan betalning.
