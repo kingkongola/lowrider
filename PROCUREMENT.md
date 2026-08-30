@@ -25,6 +25,7 @@ Vid leverans räcker normal mottagningskontroll: transportskada + att de fyra be
 - GT2 **999 / 1705 / 1705 mm = 4409 mm**
 - printer **Bambu Lab P1S**
 - garagegrupp **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet matningsproblem
+- V1E anger **ca 2,7 kg PLA** för full LR4-sats inklusive tool mount + board box
 
 ## Optimerad ordergraf
 
@@ -100,18 +101,18 @@ Inventera data-USB-C och FAT32 microSD hemma först.
 
 Provpassa Elaire-collet och kontrollera runout efter leverans.
 
-### 6. SUNLU — PLA bulk
+### 6. PLA — Amazon/Prime först, **3 kg behovsstyrt köp**
 
-- ordinary PLA
-- ca 2,7 kg behövs för maskinen
-- MOQ/bulkspår: **6 kg**
-- aktuell officiell nivå från ungefär **€9,99/kg** beroende färg/variant
+V1E anger cirka **2,7 kg filament för en full LR4-sats inklusive tool mount + board box**.
 
-Fraktinformationen är motsägelsefull mellan SUNLU:s storefronts:
-- globala shipping-sidan listar Sverige i Europa och säger normalt fri frakt
-- den aktuella tyska EU-policyn listar Sverige i EU North och tar **€16,99 för 3,76–6,25 kg**
+Därför:
+- **3 × 1 kg ordinary PLA är baseline-köpet**
+- 3 kg lämnar cirka 300 g / ~11 % nominell marginal
+- köp en fjärde rulle endast om merkostnaden är liten eller reservfilament ändå är önskat
+- inget krav på SUNLU; välj billigaste välrecenserade vanliga styva PLA som fungerar bra i P1S
+- Amazon.se/Prime prioriteras om levererat pris slår separat filamentbutik
 
-För en 6 kg-order blir worst-case med €9,99/kg ungefär **€76,93 totalt = €12,82/kg** före eventuella variantprisskillnader. Det är fortfarande betydligt bättre råpris än svenska enstaka SUNLU-rullar kring 179 kr/kg, så SUNLU bulk förblir baseline. Checkout avgör om frakten är 0 eller €16,99.
+Den tidigare 6 kg SUNLU-planen är **borttagen**: den optimerade fel variabel (bulkpris/kg) och gav ~3 kg onödigt lager för just detta bygge.
 
 ### 7. NVR/maskinstopp — lokal/Amazon först, **inte egen specialorder**
 
@@ -127,7 +128,7 @@ Aktuella enkla köpvägar inkluderar:
 - Clas Ohlson KJD12 230 V / 10 A, 299 kr
 - Amazon.se-resultat för KEDU KJD12-14 runt 281 kr
 
-Välj billigaste dokumenterade, lämpliga variant. Ingen internationell specialorder som standard.
+Om NVR och PLA båda köps via Amazon kan de samlas i samma lågfriktionsorder; det är en bonus, inte ett skäl att välja sämre komponent.
 
 ### 8. Sorotec-fräsar — **DEFER, inte order nu**
 
@@ -165,20 +166,20 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 3. StepperOnline — motorer
 4. Elecrow — Jackpot3
 5. VEVOR — router
-6. SUNLU — PLA
+6. Amazon/Prime — 3 kg PLA; NVR kan eventuellt samköpas här
 
 **NVR:** lokal/Amazon.
 
 **Sorotec:** uppskjuten.
 
-= **6 huvudbeställningar**, plus lokala köp.
+= fortfarande **6 huvudbeställningar**, men filamentordern är nu rätt dimensionerad och potentiellt samma Amazon-order som NVR.
 
-## Kvar att optimera / verifiera i checkout
+## Kvar att verifiera i checkout
 
 1. StepperOnline Germany → Sverige exakt DHL-frakt
 2. Elecrow Jackpot3 → Sverige frakt + faktisk moms/importhantering
-3. SUNLU: om aktuell storefront ger 0 eller €16,99 frakt för 6 kg
-4. Roboter-Bausatz: €14,99-frakt + bekräfta 5 m rem som kontinuerlig längd
-5. DigiKey: bekräfta 0 kr frakt med nya kabelrader i korgen
+3. Roboter-Bausatz: €14,99-frakt + bekräfta 5 m rem som kontinuerlig längd
+4. DigiKey: bekräfta 0 kr frakt med nya kabelrader i korgen
+5. Amazon: välj 3 × 1 kg ordinary PLA efter **lägsta levererade totalpris**, inte märke; överväg samtidig NVR om rätt variant finns
 
 Det finns nu inget starkt skäl att återöppna leverantörsstrukturen. Nästa förbättring kommer främst från checkout-priser, inte fler komponentbyten.
