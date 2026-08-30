@@ -81,16 +81,27 @@ SKU-fälla: använd inte Marketplace-dubbletten `5831-3-350820-2-ND`.
 
 StepperOnline rekommenderar lokalt EU-lager för EU och deras aktuella hjälpsida listar Sverige bland länder som tyska lagret levererar till. Exakt fraktpris publiceras däremot inte statiskt utan kräver adress/postnummer i cart/checkout. Detta är nu ett **rent prisfält att läsa av i checkout**, inte något mer research kan lösa säkert.
 
-### 4. Elecrow — Jackpot3
+### 4. V1 Engineering — Jackpot2 baseline
 
-- exact `CQA240812C2`
-- aktuell artikelkostnad **$76,99**
-- in stock
-- produktvikt **300 g**
-- unik vald controller
-- kräver V1E FluidNC + LR4-config
+- **V1E Jackpot2**
+- aktuell artikelkostnad **$55**
+- V1E beskriver Jackpot2 som funktionellt identisk med Jackpot3 för vanlig CNC, men utan fast/snabb PWM-output för laser
+- integrerade stepperdrivers/ESP32, USB-C, microSD, FluidNC och V1E:s firmware/config-spår
+- tre spänningsvalbara outputs + extra IO
 
-Elecrow anger att frakt beräknas i cart/checkout. Deras publicerade policy säger också att importskatter/avgifter inte ingår och betalas av mottagaren. För 300 g finns air-mail som möjlig fraktklass, men faktisk Sverige-frakt måste läsas i cart. Därför är **Elecrow den största kvarvarande landad-kostnad-osäkerheten**.
+Varför Jackpot2 är baseline:
+- vårt bygge är router-CNC först
+- V1E säger uttryckligen att Jackpot2 är budgetvalet när laser inte planeras
+- framtida 65 mm VFD-spindel är ett realistiskt LR4-upgrade path men behöver inte Jackpot3:s laser-PWM; styrning kan lösas via t.ex. 0–10 V/RS485
+- laser är uppskjuten till senare projekt och får inte överoptimera grundbygget
+
+Medveten nackdel:
+- Jackpot2 saknar PWM på de tre outputs och är **inte rätt val för direkt laserstyrning** enligt V1E
+- om laser senare blir konkret får vi välja expansion/controllerbyte efter det faktiska laserprojektet
+
+V1E räknar internationell frakt live i checkout och internationella order kan få svensk importmoms/avgifter. **Landad Jackpot2-kostnad är därför fortfarande checkout-gated.**
+
+Fallback-regel: jämför alltid faktiskt landat Jackpot2-pris mot Jackpot3 via Elecrow innan betalning. Om USA-frakt + moms äter upp $20,99 artikelprisskillnaden ska vi inte betala mer bara för att tvåan är baseline.
 
 Inventera data-USB-C och FAT32 microSD hemma först.
 
@@ -114,7 +125,7 @@ Därför:
 - Amazon.se/Prime prioriteras om levererat pris slår separat filamentbutik
 - tack vare Prime finns **ingen samköpsbonus** med NVR eller andra Amazon-varor; optimera varje Amazon-rad separat
 
-Webbsökningen visar exempelvis ordinary PLA runt 170–180 kr/kg på Amazon.se, men Amazon-priser är dynamiska. Välj vid köp efter aktuellt Prime-pris; 3 kg är behovet, inte 6 kg.
+Webbsökningen visar ordinary PLA runt 170–180 kr/kg på Amazon.se, men Amazon-priser är dynamiska. Välj vid köp efter aktuellt Prime-pris; 3 kg är behovet, inte 6 kg.
 
 ### 7. NVR/maskinstopp — lokal/Amazon först, **inte egen specialorder**
 
@@ -124,11 +135,11 @@ Reellt krav:
 - tydlig, lättåtkomlig stoppfunktion
 - dokumenterad terminalkoppling
 
-`KJD12-14` är en bra verifierad familj, men exakt CEM/KEDU-specialorder är inte ett projektkrav.
+KJD12-familjen är en bra verifierad väg, men exakt CEM/KEDU-specialorder är inte ett projektkrav.
 
 Aktuella enkla köpvägar inkluderar:
 - Clas Ohlson KJD12 230 V / 10 A, 299 kr
-- Amazon.se-resultat för KEDU KJD12-14 runt 281 kr
+- Amazon.se KJD12/KEDU-alternativ; variant och märkdata verifieras vid köp
 
 Välj billigaste dokumenterade lämpliga variant. Prime gör att NVR-valet inte behöver påverkas av andra Amazon-köp.
 
@@ -166,7 +177,7 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 1. Roboter-Bausatz — mekanik
 2. DigiKey — elektronik/el + 24 V- och endstopkabel
 3. StepperOnline — motorer
-4. Elecrow — Jackpot3
+4. V1 Engineering — Jackpot2 baseline
 5. VEVOR — router
 6. Amazon/Prime — 3 kg PLA
 
@@ -178,16 +189,16 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första frä
 
 ## Kvar efter webbresearch 2026-08-30
 
-**Verifierat nog för köp utan mer research:**
+**Verifierat nog för köp utan mer komponentresearch:**
 - Roboter-Bausatz: spec + meterware-rem + publicerad Sverige-frakt
 - DigiKey: spec + korg över verifierad 615 kr fri-fraktgräns
 - StepperOnline: exakt motor/fempack + tyska lagret levererar till Sverige
-- Elecrow: exakt Jackpot3, pris/lager/vikt
+- Jackpot2: rätt V1E-funktion för router-LR4 och $55 artikelpris; laser-PWM saknas medvetet
 - Amazon PLA: 3 kg är rätt kvantitet; välj aktuellt Prime-pris
 
 **Kan endast avgöras i faktisk checkout:**
 1. StepperOnline Germany → exakt Sverige-frakt för ~2,1 kg
-2. Elecrow Jackpot3 → exakt Sverige-frakt; därefter lägg på svensk importmoms/ev. transportörsavgift enligt faktisk fraktmetod
+2. V1E Jackpot2 → exakt Sverige-frakt + svensk moms/importhantering; jämför landat mot Jackpot3/Elecrow innan betalning
 3. Roboter-Bausatz → sista orderbekräftelsen att qty 5 meterware hanteras som sammanhängande längd
 4. DigiKey → kontrollera att checkout verkligen visar 0 kr frakt och ingen Marketplace-rad
 
