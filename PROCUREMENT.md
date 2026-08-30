@@ -46,7 +46,7 @@ För remmen: bekräfta att 5 löpmeter levereras som en kontinuerlig längd.
 
 T8 kapas först efter fysisk assembly-check; praktiskt mål ~150–160 mm ×2.
 
-### 2. DigiKey — elektronik + elsmådelar + generiskt kablage om priset är rimligt
+### 2. DigiKey — elektronik + elsmådelar + båda generiska kabelraderna
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -55,27 +55,40 @@ Köp exakt:
 - 3 × genuine Wago `221-413`
 - 2 × Altech `5309 720/SET` M20×1.5, 5–12 mm
 - 10 × TE `3-350820-2` via **`A27824-ND`**
-- 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68 för ~4,8 mm 24 V-kabel
-- 24 V 2-core ~0,5 mm² och endstopkabel här **endast om** priset är vettigt; annars lokalt. Dessa generiska kablar får inte skapa en separat internationell order.
+- 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68
+- **3 m Tensility `30-00416`**, 2×20 AWG, ca 3,99 mm OD, Digi-Spool — 24 V fast box → rörlig Jackpot
+- **10 m Tensility `30-00377`**, 3×26 AWG UL2464, ca 3,99 mm OD, Digi-Spool — endstops
+
+Kabelbeslut: DigiKey-kablarna kostar ungefär **274 kr totalt** för 3 m + 10 m med aktuella meterpriser. De är dyrare per meter än LaskaKit, men billigare för hela systemet eftersom de inte skapar en separat €8,93-order. Därför tas LaskaKit bort helt ur baseline.
+
+`30-00416` är flexibel flertrådig PVC-kabel men inte uttryckligen continuous-flex/drag-chain. Samma fysiska regel kvarstår: stor mjuk rörelseloop; byt endast om slutlig routing kräver snäv repetitiv böj.
 
 SKU-fälla: använd inte Marketplace-dubbletten `5831-3-350820-2-ND`.
 
-Nuvarande korg utan extra kabel ~641 kr inkl moms. DigiKeys publicerade fri-fraktgräns är 615 kr; checkout avgör slutligt.
+Tidigare korg utan kablar ~641 kr inkl moms. Med kablarna blir korgen klart över DigiKeys publicerade fri-fraktgräns **615 kr**; checkout är fortfarande slutlig auktoritet.
 
 ### 3. StepperOnline Germany — motorer
 
 - 1 × fempack `5-17HS19-2004S1`
+- **€41,06** aktuell artikelkostnad
 - 59 Ncm / 2 A
 - 5 mm D-axel / 24 mm axel
 - 1 m kabel
+- fempacket väger ca **2,03 kg**
+- Germany warehouse stöder uttryckligen leverans till Sverige
 
-Behåll separat så länge identiska motorer inte kan köpas materially billigare landat från annan redan använd leverantör.
+StepperOnline publicerar inte en statisk Sverige-frakt för denna korg; exakt DHL Paket(EU)-pris räknas efter valt land/lager i cart. Detta är ett **rent checkout-prisfrågetecken**, inte ett komponentfrågetecken.
 
 ### 4. Elecrow — Jackpot3
 
 - exact `CQA240812C2`
+- aktuell artikelkostnad **$76,99**
+- in stock
+- produktvikt **300 g**
 - unik vald controller
 - kräver V1E FluidNC + LR4-config
+
+Elecrow anger att frakten beräknas i cart/checkout och att importmoms/skatter inte ingår i frakten. Därför är **landad kostnad fortfarande verkligt checkout-gated**.
 
 Inventera data-USB-C och FAT32 microSD hemma först.
 
@@ -90,9 +103,17 @@ Provpassa Elaire-collet och kontrollera runout efter leverans.
 ### 6. SUNLU — PLA bulk
 
 - ordinary PLA
-- ca 2,7 kg behövs för maskinen; 6 kg-köp är ekonomiskt bulkspår om Sweden-checkout håller målpriset
+- ca 2,7 kg behövs för maskinen
+- MOQ/bulkspår: **6 kg**
+- aktuell officiell nivå från ungefär **€9,99/kg** beroende färg/variant
 
-### 7. NVR/maskinstopp — lokal/Amazon först, **inte egen specialorder som princip**
+Fraktinformationen är motsägelsefull mellan SUNLU:s storefronts:
+- globala shipping-sidan listar Sverige i Europa och säger normalt fri frakt
+- den aktuella tyska EU-policyn listar Sverige i EU North och tar **€16,99 för 3,76–6,25 kg**
+
+För en 6 kg-order blir worst-case med €9,99/kg ungefär **€76,93 totalt = €12,82/kg** före eventuella variantprisskillnader. Det är fortfarande betydligt bättre råpris än svenska enstaka SUNLU-rullar kring 179 kr/kg, så SUNLU bulk förblir baseline. Checkout avgör om frakten är 0 eller €16,99.
+
+### 7. NVR/maskinstopp — lokal/Amazon först, **inte egen specialorder**
 
 Reellt krav:
 - 230 V NVR/no-voltage-release
@@ -103,10 +124,10 @@ Reellt krav:
 `KJD12-14` är en bra verifierad familj, men exakt CEM/KEDU-specialorder är inte ett projektkrav.
 
 Aktuella enkla köpvägar inkluderar:
-- Clas Ohlson KJD12 230 V / 10 A, 299 kr — kontrollera fysisk actuator/terminalvariant före val
-- Amazon.se-resultat för KEDU KJD12-14 runt 281 kr — checkout/Prime/variant verifieras
+- Clas Ohlson KJD12 230 V / 10 A, 299 kr
+- Amazon.se-resultat för KEDU KJD12-14 runt 281 kr
 
-Välj billigaste dokumenterade, lämpliga variant. Ingen mening med dyr separat EU-frakt bara för KEDU-proveniens.
+Välj billigaste dokumenterade, lämpliga variant. Ingen internationell specialorder som standard.
 
 ### 8. Sorotec-fräsar — **DEFER, inte order nu**
 
@@ -119,7 +140,7 @@ Tekniskt förstaval kvar:
 
 Ingen bra motsvarighet hittades hos Roboter-Bausatz. VEVOR:s kit är 2-flute och ersätter inte specen; Makera har rätt single-flute men skulle ändå bli separat order.
 
-Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) först när första fräsjobbet närmar sig och kombinera då med eventuellt långt plywoodstål/andra faktiskt uppkomna behov. Målet är att undvika att betala internationell frakt på €11,10 merchandise i förtid.
+Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) när första fräsjobbet närmar sig och kombinera med andra verkligt uppkomna fräsbehov.
 
 ## Lokala köp — inte shipping-optimering
 
@@ -128,9 +149,8 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) först när förs
 - kontrollera OD/rakhet före köp/kapning
 
 ### Biltema / lokal el
-- kapsling efter fysisk KJD12/HDR dry-fit
+- kapsling efter fysisk NVR/HDR dry-fit
 - donor 3G1,5 endast om verklig kabelrutt motiverar det
-- generiskt lågspänningskablage kan köpas lokalt om billigare än DigiKey
 
 ### Bord/material
 - begagnat styvt 160–180 × helst 90–100 cm
@@ -141,25 +161,24 @@ Därför: skapa **ingen Sorotec-order nu**. Beställ fräs(ar) först när förs
 
 **Beställ nu / när checkout håller:**
 1. Roboter-Bausatz — mekanik
-2. DigiKey — elektronik/el
+2. DigiKey — elektronik/el + 24 V- och endstopkabel
 3. StepperOnline — motorer
 4. Elecrow — Jackpot3
 5. VEVOR — router
 6. SUNLU — PLA
 
-**NVR:** lokal/Amazon, bör inte kräva separat dyr internationell order.
+**NVR:** lokal/Amazon.
 
-**Sorotec:** uppskjuten tills verkligt fräsbehov; inte del av nuvarande orderbatch.
+**Sorotec:** uppskjuten.
 
-Det betyder i praktiken **6 huvudbeställningar nu**, plus lokala köp. KEDU-specialorder och Sorotec-paket är borttagna ur baseline.
+= **6 huvudbeställningar**, plus lokala köp.
 
-## Kvar att optimera
+## Kvar att optimera / verifiera i checkout
 
-1. slutlig landad StepperOnline-kostnad
-2. kan DigiKey absorbera 24 V/endstopkabel billigare än lokalt?
-3. SUNLU Sweden-checkout
-4. Elecrow landad kostnad
-5. Roboter-Bausatz checkout och kontinuerlig 5 m rem
-6. NVR: välj billig dokumenterad svensk/Amazon-variant när fysisk kapslingslayout är känd
+1. StepperOnline Germany → Sverige exakt DHL-frakt
+2. Elecrow Jackpot3 → Sverige frakt + faktisk moms/importhantering
+3. SUNLU: om aktuell storefront ger 0 eller €16,99 frakt för 6 kg
+4. Roboter-Bausatz: €14,99-frakt + bekräfta 5 m rem som kontinuerlig längd
+5. DigiKey: bekräfta 0 kr frakt med nya kabelrader i korgen
 
-Ändra inte specs bara för färre paket.
+Det finns nu inget starkt skäl att återöppna leverantörsstrukturen. Nästa förbättring kommer främst från checkout-priser, inte fler komponentbyten.
