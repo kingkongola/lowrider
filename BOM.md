@@ -42,6 +42,21 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead**, vald variant `T8 × 8 mm`, 2-pack
 
+## Redan köpt — DigiKey
+
+**Betald 2026-09-03: faktiskt debiterat 986,98 kr. Delsumma 789,58 kr + VAT 197,40 kr + fri UPS Worldwide Saver DDP.**
+
+- [x] 1 × Mean Well `HDR-60-24` — `1866-2249-ND`
+- [x] 10 × Omron/Aratas `SS-3GL13PT` — `SW768-ND`
+- [x] 16 × 608-2RS 8×22×7 mm — `1995-1010-ND`
+- [x] 3 × Wago `221-413` — `2946-221-413-ND`
+- [x] 2 × Altech `5309 720/SET`, M20 / 5–12 mm — `1920-5309720/SET-ND`
+- [x] 10 × TE `3-350820-2` — `A27824-ND`
+- [x] 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm — `AIO-CSM12-ND`
+- [x] 3 m Tensility `30-00416`, 2×20 AWG
+- [x] 10 m Tensility `30-00377`, 3×26 AWG
+- [x] 3 × Molex KK 2,54 mm 2-polig 150 mm kabelassembly `2177961021`; kapas till 6 pigtails, 5 används + 1 reserv
+
 ## Redan ägt
 
 - [x] Bambu Lab P1S
@@ -64,7 +79,6 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — mekanik
 
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
-- [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
 - [ ] cirka 2,7 kg vanlig styv PLA; köp **3 kg**, inte 6 kg
@@ -75,21 +89,21 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] Elecrow Jackpot3 `CQA240812C2`
 - [ ] 1 × StepperOnline fempack `5-17HS19-2004S1`
-- [ ] Mean Well `HDR-60-24`
-- [ ] 10 × Omron `SS-3GL13PT`
-- [ ] 3 m Tensility `30-00416`, 2×20 AWG, för fast HDR-box → rörlig Jackpot
-- [ ] 10 m Tensility `30-00377`, 3×26 AWG, för endstops
-- [ ] 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68
-- [ ] 2-poliga board-side endstopkontakter/pigtails
+- [x] Mean Well `HDR-60-24`
+- [x] 10 × Omron `SS-3GL13PT`
+- [x] 3 m Tensility `30-00416`, 2×20 AWG
+- [x] 10 m Tensility `30-00377`, 3×26 AWG
+- [x] 1 × Amphenol `AIO-CSM12`
+- [x] 2-poliga board-side endstop-pigtails via 3 × Molex `2177961021`
 - [ ] stepperextensioner endast om dry-fit visar behov
 - [ ] data-USB-C: inventera först
 - [ ] microSD >2 GB FAT32: inventera först
 
 ## DigiKey-el/smådelar
 
-- [ ] 3 × genuine Wago `221-413`
-- [ ] 2 × Altech `5309 720/SET`, M20×1.5 / 5–12 mm
-- [ ] 10 × TE `3-350820-2` via **`A27824-ND`**, inte Marketplace-dubblett
+- [x] 3 × genuine Wago `221-413`
+- [x] 2 × Altech `5309 720/SET`, M20×1.5 / 5–12 mm
+- [x] 10 × TE `3-350820-2` via `A27824-ND`
 
 ## 230 V / NVR
 
