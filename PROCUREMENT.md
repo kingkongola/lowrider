@@ -31,25 +31,36 @@ Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
 Den tidigare DMW-vägen behövs inte längre. eBay-spåret löste den svåraste mekanikraden billigare genom en Kina-säljare där eBay hanterade importavgifterna i köpet.
 
+### LaskaKit, Tjeckien — CLOSED / ORDERED
+
+Köpt 2026-09-03:
+- 6 × `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt
+- 1 × `LA190032A` T8×8 400 mm, 4-start / 8 mm lead
+- 2 × `LA190031` flexible coupling 5→8 mm
+- 1 × `LA190013C` GT2 5 m × 10 mm fiberglass belt
+
+Checkout:
+- varor: **30,75 €**
+- GLS Sweden: **8,93 €**
+- total: **39,68 €**
+- faktiskt debiterat: **444 kr**
+
+**De två T8×8-mässingsmuttrarna ingår inte.** `LA190033A` visade `momentálně nedostupné` / för närvarande otillgänglig vid faktisk köpgenomgång. LaskaKit-order ska inte återöppnas bara för dessa två billiga orphan-delar.
+
 ## Beställ nu
 
-### 1. LaskaKit, Tjeckien — mekanikkärna
+### 1. T8×8 brass nuts — separat orphan
 
-Roboter-Bausatz och Allegro är blockerade för svensk leverans i faktisk checkout. Aktiv EU-direktbutik för de återstående mekanikraderna är LaskaKit.
+Behov:
+- **2 × T8×8 brass nut**
+- 4-start
+- 2 mm pitch
+- **8 mm lead/revolution**
+- standard flänsad form som passar LR4 `Z_Nut`
 
-Köp exakt:
+LaskaKit `LA190033A` är rätt spec men var slut vid köp. Köp därför exakt motsvarande från en annan källa, med eBay som naturlig förstakontroll eftersom remhjulsköpet visade att eBay kan ge låg total kostnad och tydlig importhantering.
 
-| Rad | Antal | Live-snapshot 2026-09-03 |
-|---|---:|---:|
-| `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt | 6 | 1,86 €/st |
-| `LA190032A` T8×8 400 mm, 4-start / 8 mm lead | 1 | 8,19 € |
-| `LA190033A` T8×8 brass nut | 2 | ~1,31–1,32 €/st |
-| `LA190031` flexible coupling 5→8 mm | 2 | 1,82 €/st |
-| `LA190013C` GT2 5 m × 10 mm fiberglass belt | 1 | 7,81 € |
-
-LaskaKits aktuella kategoriindex visar `LA190013C` **i lager (18 st)**. Den äldre direkta produktsidans cache säger slutsåld, så faktisk varukorg är lagerfacit. Om 5 m-rullen inte går att lägga i korgen: använd 3 × `LA190013B` 2 m/10 mm fiberglass; varje av våra segment 999 / 1705 / 1705 mm ryms på en egen 2 m-längd.
-
-Med 5 m-rullen är aktuell varubaseline cirka **33,4 €**. LaskaKits egen aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**, alltså ungefär **42,3 € landat baseline** före eventuell destinationsmoms-/checkoutjustering. Faktisk svensk adress i checkout är ändå sista gate.
+Ändra inte till `T8×2`; det är fel lead/start för LR4.
 
 ### 2. DigiKey — elektronik + lager + kablage
 
@@ -168,17 +179,17 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. LaskaKit, Tjeckien — mekanikkärna
+1. 2 × T8×8-mässingsmutter — separat liten orphan, först eBay
 2. DigiKey
 3. StepperOnline Germany
 4. VEVOR EU
 5. 3DJake
 
-Redan köpt: HaWiWe, Elecrow och eBay/POWGE-remhjulen. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
+Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen och LaskaKit-mekanikkärnan. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
-## Checkout-gates — enda kvarvarande prisosäkerheterna
+## Checkout-gates — kvarvarande prisosäkerheter
 
-1. LaskaKit → faktisk svensk checkout ska acceptera adressen; publicerad GLS Sweden är 8,93 €; kontrollera att `LA190013C` faktiskt kan läggas i korgen.
+1. T8×8-mässingsmuttrar → exakt spec + svensk landad kostnad.
 2. StepperOnline Germany → Sverige-frakt.
 3. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
 4. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
