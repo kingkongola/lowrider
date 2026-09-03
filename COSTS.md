@@ -19,7 +19,20 @@ Praktiskt mål för detta bygge: håll färdig standardnära LR4 nära **9 000 k
 | 2026-09-03 | eBay / HKGY01 | 2 × flänsad T8×8 mässingsmutter, 2 mm pitch / 4-start / 8 mm lead | listning visade US$4.34 + US$1.00 frakt, `Includes import fees` | **67 kr** |
 | 2026-09-03 | DigiKey | HDR-60-24 + 10 Omron endstops + 16×608-2RS + Wago + kabelgenomföringar + TE Faston + 13 m kablage + 3× Molex 2-poliga pigtails | 789,58 kr varor + 197,40 kr moms, fri UPS DDP | **986,98 kr** |
 
-**Faktiskt betalt hittills: 4 359,98 kr.**
+**Verifierat faktiskt debiterat hittills: 4 359,98 kr.**
+
+## Lagda order — faktisk kortdebitering ännu ej verifierad
+
+Amazon kan debitera först när varan skickas. Dessa order är lagda och ingår därför i projektets **committed cost**, men flyttas till tabellen ovan först när faktisk SEK-debitering är känd.
+
+| Datum | Leverantör | Innehåll | Visat orderpris |
+|---|---|---|---:|
+| 2026-09-03 | Amazon.se | 5 × STEPPERONLINE `17HS19-2004S1`, 59 Ncm / 84 oz-in, 2 A | **608,37 kr**, Prime/fri frakt |
+| 2026-09-03 | Amazon.se / AIM Tools Ltd | KATSU `101750`, 220–240 V, 710 W, ~65 mm Makita-formfaktor | **620,00 kr**, Prime/fri frakt |
+
+**Lagda Amazon-order: 1 228,37 kr.**
+
+**Committed project cost (verifierat debiterat + lagda order): 5 588,35 kr.**
 
 Elecrow-avstämning: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €.
 
@@ -33,7 +46,7 @@ DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40
 
 ## Kvarvarande köp — ej spenderat ännu
 
-Aktuella estimat finns endast i `PROCUREMENT.md` och ska inte blandas ihop med faktisk kostnad. När en order läggs flyttas dess verkliga SEK-debitering hit.
+Aktuella estimat finns endast i `PROCUREMENT.md` och ska inte blandas ihop med faktisk kostnad. När en order läggs flyttas dess verkliga SEK-debitering hit eller till pending-sektionen ovan tills kortdebiteringen är verifierad.
 
 ## Kostnadsdisciplin
 
@@ -41,4 +54,5 @@ Aktuella estimat finns endast i `PROCUREMENT.md` och ska inte blandas ihop med f
 - behåll leverantörens valuta för felsökning/retur
 - frakt, moms, DDP och avgifter ingår i faktisk projektkostnad
 - gamla snapshots får inte räknas som spenderat
+- Amazon-order kan vara lagda innan kortet faktiskt debiteras; håll dem separata tills debiteringen syns
 - budgeten inkluderar de delar som behövs för en körklar standardmaskin; senare laser/plasma/T-track/vacuum-table räknas som separata uppgraderingar
