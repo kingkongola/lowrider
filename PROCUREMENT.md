@@ -1,13 +1,24 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-03.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot.
+**Live snapshot: 2026-09-03.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt
 
 ### HaWiWe — CLOSED / SHIPPED
-**165,50 € inklusive 8,00 € frakt.**
 
-6,0 mm XZ-plattor + 4 × MGN12H 150 mm + LR4 screw set + Makita/Elaire 1/8" collet.
+- ordervaluta: **165,50 € inklusive 8,00 € frakt**
+- faktiskt debiterat: **1 853 kr**
+- innehåll: 6,0 mm XZ-plattor + 4 × MGN12H 150 mm + LR4 screw set + Makita/Elaire 1/8" collet
+
+### Elecrow — CLOSED / ORDERED
+
+- 1 × **Jackpot3 CNC Controller `CQA240812C2`**
+- controller efter rabatt: **69,44 €**
+- DDP Economy: **14,11 €**
+- checkout total: **83,55 €**
+- faktiskt debiterat: **937 kr**
+
+Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
 ## Beställ nu
 
@@ -71,22 +82,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 4. Elecrow — controller
-
-Köp:
-- 1 × **Jackpot3 CNC Controller `CQA240812C2`**
-
-Snapshot:
-- **$76,99**
-- **In stock**
-- 300 g
-- säljs av V1 Engineering via Elecrow
-
-Elecrow räknar frakt i cart/checkout. Deras policy säger att importskatt/tull inte ingår i frakten. Kontrollera därför **landat estimat** innan betalning.
-
-Fallback-regel: om V1E Jackpot2 faktiskt kan checkas ut och landar klart billigare utan väntan får Jackpot2 ersätta denna rad. Annars köp Elecrow Jackpot3 och gå vidare.
-
-### 5. VEVOR EU — router
+### 4. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -96,11 +92,11 @@ Köp exakt:
 - 800 W
 - 65 mm kropp
 
-Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 € i dagens kontroll, men VEVOR justerar moms efter destinationsland och den svenska/EU-sidan är dynamisk. **Lås därför inte 63,99 € som svensk totalsumma; svensk checkout är facit.** VEVOR:s EU-fraktpolicy anger för närvarande fri frakt för normala produkter till Sverige.
+Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 € i dagens kontroll, men VEVOR justerar moms efter destinationsland och den svenska/EU-sidan är dynamisk. **Svensk checkout är facit.** VEVOR:s EU-fraktpolicy anger för närvarande fri frakt för normala produkter till Sverige.
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 6. 3DJake Sverige — PLA
+### 5. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -116,7 +112,7 @@ Live 2026-09-03:
 - **landad baseline: 559 kr**
 - EU-intern leverans, ingen importtull
 
-Detta slår den tidigare 3D Prima-baselinen på känt landat pris och ersätter den. Köp inte 6 kg; behovet är cirka 2,7 kg.
+Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ## Lokalt / separat
 
@@ -145,24 +141,22 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 ## Orderantal nu
 
-Huvudorder:
+Kvarvarande huvudorder:
 1. Roboter-Bausatz
 2. DigiKey
 3. StepperOnline Germany
-4. Elecrow
-5. VEVOR EU
-6. 3DJake
+4. VEVOR EU
+5. 3DJake
 
-Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
+Elecrow är redan köpt. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
 1. StepperOnline Germany → Sverige-frakt.
-2. Elecrow Jackpot3 → Sverige-frakt + faktisk import-/momsbehandling.
-3. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-4. Roboter-Bausatz → svensk destinationsmoms + bekräfta qty 5 meterware.
-5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+2. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
+3. Roboter-Bausatz → svensk destinationsmoms + bekräfta qty 5 meterware.
+4. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
 
-3DJake PLA har däremot ett komplett offentligt landat baselinepris: **559 kr**.
+3DJake PLA har ett komplett offentligt landat baselinepris: **559 kr**.
 
 Bred sourcingresearch är avslutad. Återöppna endast om någon av dessa checkout-gates fallerar.

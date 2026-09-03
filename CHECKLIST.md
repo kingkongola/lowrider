@@ -5,7 +5,7 @@
 - [ ] Roboter-Bausatz-korg exakt enligt `PROCUREMENT.md`; kontrollera ~52,52 € snapshot, svensk destinationsmoms och qty 5 meterware
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
-- [ ] Elecrow Jackpot3 `CQA240812C2`; läs frakt + import/momsestimat i checkout
+- [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
 - [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
@@ -71,6 +71,7 @@
 
 - [ ] inventera data-USB-C
 - [ ] inventera FAT32 microSD >2 GB
+- [ ] när Jackpot3 anländer: kontrollera transportskada/korrekt kort
 - [ ] montera Jackpot3 luftigt på rörlig beam/YZ_Min-sida
 - [ ] kablar bredvid, inte över kort/antenn
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config

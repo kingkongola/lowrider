@@ -47,6 +47,17 @@
 - VEVOR 0700C exakt SKU liveverifierades köpbar; tysk storefront visade 63,99 €, men svensk checkout gjordes explicit till prisgate eftersom destinationsmomsen kan ändra summan. EU-fraktpolicy anger fri frakt för normalprodukt till Sverige.
 - DigiKey fri-fraktgräns Sverige verifierades till 615 kr; `HDR-60-24` och Digi-Spool-kablar har tillräckligt aktuellt lager.
 - Clas Ohlson KJD12 230 V/10 A verifierades till 299 kr som enkel NVR-kandidat; exakt KEDU-proveniens togs bort som krav.
-- Controllerköpet flyttades från teknisk Jackpot2-baseline till **Elecrow Jackpot3 `CQA240812C2`** som aktiv köpväg: Elecrow visar $76,99/In stock medan V1E-butikstatus är motsägelsefull. D015 dokumenterar att ändringen är sourcingdriven, inte laserdriven.
-- PLA låstes till **3 × eSUN PLA Basic Black 1 kg från 3DJake**: 148 kr/st, 444 kr varor + 115 kr svensk standardfrakt = 559 kr landat baseline; lagersaldo 2 979 vid kontrollen. Detta ersatte både SUNLU/3D Prima/Amazon-spåren.
+- Controllerköpet flyttades från teknisk Jackpot2-baseline till Elecrow Jackpot3 `CQA240812C2` som aktiv köpväg.
+- PLA låstes till 3 × eSUN PLA Basic Black 1 kg från 3DJake: 148 kr/st, 444 kr varor + 115 kr svensk standardfrakt = 559 kr landat baseline.
 - Historiska val behölls endast som historik; aktiva filer säger nu samma sak.
+
+## 2026-09-03 — verkliga kostnader + Jackpot3 köpt
+
+- HaWiWe-kostnaden reconcilerades mot faktisk bankdebitering: **1 853 kr** för de fyra produktgrupperna, ordervaluta 165,50 €.
+- Jackpot3 `CQA240812C2` köpt från Elecrow.
+- rabatt gav controllerpris **69,44 €**.
+- DDP Economy **14,11 €** valdes.
+- checkout total **83,55 €**.
+- faktisk bankdebitering **937 kr**.
+- faktisk spenderad projektsumma hittills: **2 790 kr**.
+- `COSTS.md` skapades som kanonisk ledger; SEK-debitering är facit framåt.

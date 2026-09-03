@@ -1,10 +1,10 @@
 # BOM
 
-Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs. Flyktiga priser/lager finns i `PROCUREMENT.md`, inte här.
+Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs. Flyktiga priser/lager finns i `PROCUREMENT.md`; faktisk kostnad finns i `COSTS.md`.
 
 ## Redan köpt — HaWiWe
 
-**Betald 2026-08-29: 165,50 € inklusive 8,00 € frakt. Skickad 2026-09-03.**
+**Betald 2026-08-29: faktiskt debiterat 1 853 kr. Ordervaluta 165,50 € inklusive 8,00 € frakt. Skickad 2026-09-03.**
 
 - [x] Aluminium XZ plates, 6,0 mm
 - [x] 4 × MGN12H 150 mm linear rails
@@ -14,6 +14,12 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
   - 83 × M3×10
   - 10 × M2.5×12
 - [x] Makita/Elaire 1/8" / 3,175 mm collet
+
+## Redan köpt — Elecrow
+
+**Betald 2026-09-03: faktiskt debiterat 937 kr. Checkout 83,55 € inklusive DDP Economy.**
+
+- [x] Jackpot3 CNC Controller `CQA240812C2`
 
 ## Redan ägt
 
@@ -52,7 +58,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 ## Kvar — motorer/styrning/lågspänning
 
-- [ ] Elecrow Jackpot3 `CQA240812C2`
+- [x] Elecrow Jackpot3 `CQA240812C2`
 - [ ] 1 × StepperOnline fempack `5-17HS19-2004S1`
 - [ ] Mean Well `HDR-60-24`
 - [ ] 10 × Omron `SS-3GL13PT`

@@ -31,9 +31,9 @@ Få standardmaskinen körklar innan modifieringar. Uppgraderingar kräver ett vi
 Styvt begagnat bord 160–180 cm långt, helst 90–100 cm djupt och helst ≤700 kr. Befintlig bordsskiva behålls. Ovanpå: avtagbar ~1000×1620 structural deck + löstagbar ~12 mm MDF-spoilboard. 90 cm bord kräver verkligt stöd/infästning under decköverhänget i LR4:s kantzon.
 
 ## D005 — Jackpot2 som tekniskt router-first-val
-**Status:** **superseded för inköp av D015**
+**Status:** superseded av D015
 
-Jackpot2 var det tekniskt billigaste rimliga valet för router-only eftersom snabb laser-PWM inte behövs. Detta är fortfarande en korrekt funktionsbedömning men inte längre aktiv köpväg.
+Jackpot2 var det tekniskt billigaste rimliga valet för router-only eftersom snabb laser-PWM inte behövs. Detta är fortfarande en korrekt funktionsbedömning men är inte längre aktiv köpväg.
 
 ## D006 — VEVOR 0700C
 **Status:** låst
@@ -82,15 +82,14 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. Endstops är home/auto-square, inte runtime hard limits.
 
-## D015 — Elecrow Jackpot3 är aktiv controller-köpväg
-**Status:** låst 2026-09-03 på sourcinggrund
+## D015 — Jackpot3 från Elecrow
+**Status:** **köpt 2026-09-03**
 
-Aktivt köp är **Elecrow Jackpot3 `CQA240812C2`**.
+Controller är **Elecrow Jackpot3 `CQA240812C2`**.
 
-Skäl:
-- Elecrow visar $76,99 och uttryckligen **In stock**.
-- V1E:s egna Jackpot2/Jackpot3-sidor ger motsägelsefull butikstatus (sold-out-markering samtidigt som add-to-cart visas), så tillgängligheten är inte tillräckligt robust för projektplanen.
-- V1E hänvisar internationella Jackpot3-kunder till Elecrow som direktare köpväg.
-- skillnaden mot Jackpot2 är ett sourcingbeslut, inte ett nytt funktionskrav; laser är fortfarande uppskjuten.
+- checkout: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €
+- faktisk bankdebitering: **937 kr**
+- DDP valdes för att undvika separat tull-/transportörshantering
+- beslutet är nu stängt; Jackpot2-fallbacken är inte längre aktiv
 
-Fallback: om V1E Jackpot2 vid faktisk checkout går att köpa och **landar klart billigare** än Elecrow utan leveransfördröjning får köpet gå tillbaka till Jackpot2. Annars ska bygget inte fördröjas för att spara den nominella artikelprisskillnaden.
+Laser är fortfarande uppskjuten och var inte skälet till köpet.
