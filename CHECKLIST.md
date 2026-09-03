@@ -2,12 +2,12 @@
 
 ## 1. Beställningar — nu
 
-- [ ] Roboter-Bausatz-korg exakt enligt `PROCUREMENT.md`; kontrollera 52,52 € snapshot och qty 5 meterware
+- [ ] Roboter-Bausatz-korg exakt enligt `PROCUREMENT.md`; kontrollera ~52,52 € snapshot, svensk destinationsmoms och qty 5 meterware
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
 - [ ] Elecrow Jackpot3 `CQA240812C2`; läs frakt + import/momsestimat i checkout
-- [ ] VEVOR 0700C `YXKXBJ710W65AH7WLV2`
-- [ ] 3 kg ordinary stiff PLA via billigaste verifierade Sverige/Prime/EU-väg
+- [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
+- [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
 ## 2. Lokalt / fysiskt
 

@@ -42,11 +42,11 @@
 - HaWiWe har skickat den redan betalda ordern.
 - Hela top-level-repot reconcilerades eftersom äldre `BOM/CHECKLIST/SOURCING/AUDIT` fortfarande bar Jackpot3/LaskaKit/6 kg SUNLU/Allegro/KEDU-specialorder trots nyare beslut.
 - En tydlig kanonisk hierarki infördes: `PROCUREMENT.md` är enda ordermatrisen; BOM innehåller specs/kvantiteter; sourcing innehåller evidens; audit innehåller fysiska gates.
-- Roboter-Bausatz-korgen liveverifierades: alla sex artikeltyper tillgängliga; 37,53 € varor + 14,99 € Sverige-frakt = 52,52 € snapshot.
+- Roboter-Bausatz-korgen liveverifierades: alla sex artikeltyper tillgängliga; 37,53 € varor + 14,99 € publicerad Sverige-frakt = 52,52 € butikssnapshot före eventuell svensk destinationsmomsjustering.
 - StepperOnline fempack `5-17HS19-2004S1` liveverifierades till 38,13 €, 200 i lager; Germany warehouse är aktivt EU-spår.
-- VEVOR 0700C exakt SKU liveverifierades till 63,99 € och köpbar.
-- DigiKey fri-fraktgräns Sverige verifierades till 615 kr; `HDR-60-24` och 20 AWG Digi-Spool visades med stort lager.
+- VEVOR 0700C exakt SKU liveverifierades köpbar; tysk storefront visade 63,99 €, men svensk checkout gjordes explicit till prisgate eftersom destinationsmomsen kan ändra summan. EU-fraktpolicy anger fri frakt för normalprodukt till Sverige.
+- DigiKey fri-fraktgräns Sverige verifierades till 615 kr; `HDR-60-24` och Digi-Spool-kablar har tillräckligt aktuellt lager.
 - Clas Ohlson KJD12 230 V/10 A verifierades till 299 kr som enkel NVR-kandidat; exakt KEDU-proveniens togs bort som krav.
-- SUNLU/filament gjordes medvetet butiksolåst: endast 3 kg ordinary stiff PLA är projektkravet.
 - Controllerköpet flyttades från teknisk Jackpot2-baseline till **Elecrow Jackpot3 `CQA240812C2`** som aktiv köpväg: Elecrow visar $76,99/In stock medan V1E-butikstatus är motsägelsefull. D015 dokumenterar att ändringen är sourcingdriven, inte laserdriven.
+- PLA låstes till **3 × eSUN PLA Basic Black 1 kg från 3DJake**: 148 kr/st, 444 kr varor + 115 kr svensk standardfrakt = 559 kr landat baseline; lagersaldo 2 979 vid kontrollen. Detta ersatte både SUNLU/3D Prima/Amazon-spåren.
 - Historiska val behölls endast som historik; aktiva filer säger nu samma sak.

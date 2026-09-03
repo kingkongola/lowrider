@@ -24,9 +24,11 @@ Köp exakt:
 | `RBS12747` GT2 10 mm fiberglass meterware | 5 m | 2,25 €/m | 11,25 € |
 | `RBS12867` GT2 16T / 5 mm / 10 mm | 3 | 1,04 € | 3,12 € |
 
-**Varor: 37,53 €. Sverige-frakt: 14,99 €. Snapshot total: 52,52 € inklusive tysk moms.**
+**Varor: 37,53 €. Publicerad Sverige-frakt: 14,99 €. Snapshot: 52,52 € med butikens visade tyska moms.**
 
 Alla sex artikeltyper visas som omedelbart tillgängliga. `RBS12747` är meterware; qty 5 ska motsvara 5 m. Kontrollera orderbekräftelsen och stoppa endast om den uttryckligen skulle visa fem separata 1 m-bitar.
+
+Svensk destinationsmoms kan justera slutsumman i checkout. **52,52 € är därför en stark snapshot, inte en garanterad landad totalsumma.**
 
 Detta ersätter LaskaKit + separat Allegro helt.
 
@@ -34,7 +36,7 @@ Detta ersätter LaskaKit + separat Allegro helt.
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
-- 10 × Omron `SS-3GL13PT` / `SW768-ND`
+- 10 × Omron/Aratas `SS-3GL13PT` / `SW768-ND`
 - 16 × 608-2RS / `1995-1010-ND`
 - 3 × Wago `221-413`
 - 2 × Altech `5309 720/SET`, M20×1.5 / 5–12 mm
@@ -46,10 +48,12 @@ Köp exakt:
 Livefakta:
 - `HDR-60-24`: 5 753 i lager; 198,93 kr ex moms / 248,66 kr inkl moms.
 - `30-00416`: 26 274 m i lager; 23,96 kr/m ex moms vid 1–4 m; tre meter = 71,88 kr ex moms.
+- `30-00377`: svensk DigiKey-listning visar 294 m i lager; behovet är 10 m.
+- övriga låsta rader visar också tillräckligt lager i aktuell kontroll.
 - `A27824-ND` är den vanliga lagerartikeln; använd inte Marketplace-dubbletten.
 - full korg passerar DigiKeys svenska fri-fraktgräns **615 kr**; under gränsen kostar frakt 170 kr.
 
-Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och kabelpriser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
+Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
 
 ### 3. StepperOnline Germany — motorer
 
@@ -82,7 +86,7 @@ Elecrow räknar frakt i cart/checkout. Deras policy säger att importskatt/tull 
 
 Fallback-regel: om V1E Jackpot2 faktiskt kan checkas ut och landar klart billigare utan väntan får Jackpot2 ersätta denna rad. Annars köp Elecrow Jackpot3 och gå vidare.
 
-### 5. VEVOR — router
+### 5. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -92,21 +96,27 @@ Köp exakt:
 - 800 W
 - 65 mm kropp
 
-VEVOR DE snapshot: **63,99 €**, köpbar 2026-09-03.
+Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 € i dagens kontroll, men VEVOR justerar moms efter destinationsland och den svenska/EU-sidan är dynamisk. **Lås därför inte 63,99 € som svensk totalsumma; svensk checkout är facit.** VEVOR:s EU-fraktpolicy anger för närvarande fri frakt för normala produkter till Sverige.
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 6. PLA — 3 kg, butik inte låst
+### 6. 3DJake Sverige — PLA
 
-Behovet är cirka 2,7 kg. Köp **3 × 1 kg vanlig styv PLA** eller motsvarande 3 kg, inte 6 kg.
+Köp exakt:
+- **3 × eSUN PLA Basic Black**
+- 1,75 mm
+- 1 kg/spole
+- tillverkar-EAN `6922572210929`
 
-Regel:
-- Amazon Prime får gärna vinna om levererat pris är lägst.
-- SUNLU är inte låst; deras 3 kg-/bulkvarianter visar varierande lagerstatus just nu.
-- undvik silk/flex/wood-filled och andra special-PLA till maskindelarna.
-- välj välrecenserad ordinary PLA som P1S kör stabilt.
+Live 2026-09-03:
+- **148 kr/st inklusive moms**
+- **2 979 st i lager** vid aktuell kontroll
+- varor: **444 kr**
+- svensk standardfrakt under 1 099 kr: **115 kr**
+- **landad baseline: 559 kr**
+- EU-intern leverans, ingen importtull
 
-Den här raden ska prissättas samma dag som ordern läggs; dynamiska Amazon/SUNLU-priser ska inte hårdkodas som projektfakta.
+Detta slår den tidigare 3D Prima-baselinen på känt landat pris och ersätter den. Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ## Lokalt / separat
 
@@ -115,6 +125,7 @@ Den här raden ska prissättas samma dag som ordern läggs; dynamiska Amazon/SUN
 - 2 × `88-7123`, Ø30×1,5×2000 mm.
 - köp **inte blint online**: fysisk OD/rakhet är en gate.
 - kapa först efter kontroll: 1505 / 816 / 816 mm.
+- aktuell nätlager/pris har inte kunnat verifieras tillräckligt robust; hitta inte på ett tal.
 
 ### NVR/maskinstopp
 
@@ -139,8 +150,8 @@ Huvudorder:
 2. DigiKey
 3. StepperOnline Germany
 4. Elecrow
-5. VEVOR
-6. PLA via aktuell billigaste Sverige/Prime/EU-väg
+5. VEVOR EU
+6. 3DJake
 
 Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
@@ -149,7 +160,9 @@ Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 1. StepperOnline Germany → Sverige-frakt.
 2. Elecrow Jackpot3 → Sverige-frakt + faktisk import-/momsbehandling.
 3. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-4. PLA → samma-dag-pris.
-5. Roboter-Bausatz → bekräfta qty 5 meterware; snapshot total 52,52 € bör annars hålla.
+4. Roboter-Bausatz → svensk destinationsmoms + bekräfta qty 5 meterware.
+5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+
+3DJake PLA har däremot ett komplett offentligt landat baselinepris: **559 kr**.
 
 Bred sourcingresearch är avslutad. Återöppna endast om någon av dessa checkout-gates fallerar.

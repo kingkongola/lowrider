@@ -11,9 +11,9 @@ Aktiv konsoliderad mekanikkälla. Verifierat 2026-09-03:
 - `RBS10595` 5→8 mm coupler — tillgänglig
 - `RBS12747` GT2 10 mm, 2 mm pitch, gummi + glasfiber, meterware — tillgänglig
 - `RBS12867` 16T / 5 mm / 10 mm — tillgänglig
-- Sverige DHL flat rate 14,99 €
+- Sverige DHL flat rate 14,99 € publicerat
 
-Korgen ersätter tidigare LaskaKit + separat rem + Allegro.
+Korgen ersätter tidigare LaskaKit + separat rem + Allegro. Butikens listpriser använder tysk moms; svensk checkout kan justera destinationsmomsen.
 
 ## DigiKey
 
@@ -39,15 +39,15 @@ V1E Jackpot2 är fortfarande tekniskt tillräcklig för routerbygget, men V1E:s 
 
 ## VEVOR
 
-Exakt `0700C`, SKU `YXKXBJ710W65AH7WLV2`. VEVOR DE visar 63,99 € och köpknappar 2026-09-03. 220–240 V / 50 Hz / 800 W.
+Exakt `0700C`, SKU `YXKXBJ710W65AH7WLV2`, 220–240 V / 50 Hz / 800 W / 65 mm. EU-köpvägen är aktiv och VEVOR:s EU-policy anger fri standardfrakt för normala produkter till Sverige. Slutpriset måste läsas med Sverige som destination eftersom moms kan lokaliseras; tysk 63,99 €-snapshot är inte låst som svensk totalsumma.
 
 ## PLA
 
-Specen är 3 kg ordinary stiff PLA. Märke/butik är medvetet olåst eftersom pris och lager rör sig snabbt. SUNLU-bulk är inte en projektdependency. Amazon Prime finns.
+Aktiv väg 2026-09-03: 3DJake Sverige, **eSUN PLA Basic Black 1,75 mm / 1 kg**. 148 kr/st, 2 979 i lager i aktuell kontroll. Tre spolar = 444 kr; standardfrakt Sverige 115 kr under 1 099 kr; baseline landat **559 kr**. Detta ersätter tidigare SUNLU/3D Prima/Amazon-öppna spår.
 
 ## Motonet
 
-Rörspår: 2 × `88-7123`, Ø30 mm, 2 m. Historisk produktidentifiering är stark, men själva köpet är fysisk: mät OD/rakhet innan köp och kapning.
+Rörspår: 2 × `88-7123`, Ø30 mm, 2 m. Historisk produktidentifiering är stark, men själva köpet är fysisk: mät OD/rakhet innan köp och kapning. Aktuellt webblager/pris är inte tillräckligt robust verifierat och ska därför inte anges som faktum.
 
 ## NVR
 
@@ -61,3 +61,4 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 - separat KEDU/CEM-specialorder — inte baseline
 - Sorotec — deferred tills verkligt fräsbehov
 - SUNLU 6 kg — borttaget; behovet är 3 kg
+- 3D Prima PLA — ersatt av billigare komplett landad 3DJake-baseline
