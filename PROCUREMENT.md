@@ -22,40 +22,46 @@ Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
 ## Beställ nu
 
-### 1. LaskaKit — mekanikkärna
+### 1. LaskaKit, Tjeckien — mekanikkärna
 
-Roboter-Bausatz och Allegro är blockerade för svensk leverans i faktisk checkout. Aktiv direktbutik för fem av sex mekanikrader är nu LaskaKit.
+Roboter-Bausatz och Allegro är blockerade för svensk leverans i faktisk checkout. Aktiv EU-direktbutik för fem av sex mekanikrader är nu LaskaKit.
 
 Köp exakt:
 
 | Rad | Antal | Live-snapshot 2026-09-03 |
 |---|---:|---:|
 | `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt | 6 | 1,86 €/st |
-| `LA190032A` T8×8 400 mm, 4-start / 8 mm lead | 1 | ~8,19 € |
-| `LA190033A` T8×8 brass nut | 2 | ~1,32 €/st |
-| `LA190031` flexible coupling 5→8 mm | 2 | ~1,83 €/st |
+| `LA190032A` T8×8 400 mm, 4-start / 8 mm lead | 1 | 8,19 € |
+| `LA190033A` T8×8 brass nut | 2 | ~1,31–1,32 €/st |
+| `LA190031` flexible coupling 5→8 mm | 2 | 1,82 €/st |
 | `LA190013C` GT2 5 m × 10 mm fiberglass belt | 1 | 7,81 € |
 
-Den tidigare slutsålda 5 m-rullen `LA190013C` är **i lager igen** och är bättre än 3 × 2 m: en enda obruten 5 m-längd räcker till våra segment **999 / 1705 / 1705 mm** med cirka 591 mm total marginal.
+LaskaKits aktuella kategoriindex visar `LA190013C` **i lager (18 st)**. Den äldre direkta produktsidans cache säger slutsåld, så faktisk varukorg är lagerfacit. Om 5 m-rullen inte går att lägga i korgen: använd 3 × `LA190013B` 2 m/10 mm fiberglass; varje av våra segment 999 / 1705 / 1705 mm ryms på en egen 2 m-längd.
 
-Aktuell varubaseline är cirka **33,5 €**. LaskaKits egen aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**, så baseline landat är cirka **42,4 €** före eventuell destinationsmoms-/checkoutjustering. Faktisk svensk checkout är ändå sista gate.
+Med 5 m-rullen är aktuell varubaseline cirka **33,4 €**. LaskaKits egen aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**, alltså ungefär **42,3 € landat baseline** före eventuell destinationsmoms-/checkoutjustering. Faktisk svensk adress i checkout är ändå sista gate.
 
-### 2. HomeDIYer — 3 × exakt 16T drive pulley
+### 2. DMW Industrietechnik, Tyskland — 3 × exakt 16T drive pulley
 
-LaskaKit har ingen 16T-variant för 10 mm rem; deras 16T är endast för 6 mm och ska inte användas.
+LaskaKit har ingen 16T-variant för 10 mm rem; deras 16T är för 6 mm och ska inte användas.
 
-Aktiv separat källa:
-- produkt: `20T/16T GT2 Gear 5mm/6.35mm/8mm Pulley Aluminum for 3D Printer 10mm Timing Belt`
-- välj **Tooth = 16T**
-- välj **Bore = 5mm**
-- välj **QTY = 1pc** och lägg **3 st** i korgen
+Aktiv EU-källa:
+- säljare: **DMW Industrietechnik**, Sindelfingen, Tyskland
+- plattform: eBay.de
+- item: **`124891176610`**
+- välj `Typ = Synchronriemenscheibe`
+- välj `Riemenbreite = 10mm`
+- välj `Bohrung Ø = 5mm`
+- välj `Zähne = Z 16`
+- antal: **3**
 - GT2 / 2 mm pitch
-- för **10 mm belt**
 - aluminium
-- set screw(s) ingår
-- aktuell produktsida visar lager
+- aktuell indexerad listning: **>10 tillgängliga**, cirka **4,02 €/st inkl tysk moms** före variant-/checkoutjustering
 
-HomeDIYers egen shipping policy listar uttryckligen **Sweden — Standard shipping 10–20 business days — Free Shipping** och anger VAT för EU-order. Efter Roboter/Allegro-felen räcker inte policyn ensam: köp först när checkout med den faktiska svenska adressen accepterar Sverige. Exakt pris för vald 16T/5mm-variant läses i korgen; produktens defaultpris för annan variant ska inte bokföras som vårt pris.
+DMW:s listning visar **Warenpost International Premium 7,56 €**, lagerort **Sindelfingen, Deutschland**. En aktuell DMW-listnings fraktsektion anger säljarens scope som **"Versand nach: Amerika, Europa"** och gratis extra frakt för ytterligare artiklar med samma fraktvillkor. Sverige ligger i Europa, men efter Roboter/Allegro-felen är faktisk svensk adress i checkout fortfarande facit.
+
+eBay-listningen erbjuder **`Als Gast kaufen`**, så inget eBay-konto behöver skapas. Klicka gästköp, fyll svensk adress och avbryt om Sverige inte accepteras eller om specifik frakt avviker orimligt.
+
+Grovt baseline med listat grundpris: 3 × 4,02 € + 7,56 € ≈ **19,62 €**. Faktisk variantkorg vinner.
 
 ### 3. DigiKey — elektronik + lager + kablage
 
@@ -128,7 +134,7 @@ Live 2026-09-03:
 
 Köp inte 6 kg; behovet är cirka 2,7 kg.
 
-## Blockerade sourcingvägar
+## Blockerade / ej aktiva sourcingvägar
 
 ### Roboter-Bausatz — BLOCKED 2026-09-03
 
@@ -137,6 +143,10 @@ Butikens fraktsida publicerade Sverige/14,99 €, men faktisk checkout saknade S
 ### Allegro / `4Makers_pl` + `ABC-RC_pl` — BLOCKED 2026-09-03
 
 Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och faktisk svensk leveransadress gick varken `4Makers_pl` eller `ABC-RC_pl` att leverera till Sverige. **Korg-/plattformfrakt är inte leveransbevis.** Allegro-spåret är stängt.
+
+### HomeDIYer — INACTIVE
+
+Tekniskt korrekt 16T-variant identifierades, men källan är inte EU och behövs inte. DMW i Tyskland ersätter den helt.
 
 ## Lokalt / separat
 
@@ -166,8 +176,8 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. LaskaKit — mekanikkärna
-2. HomeDIYer — 3 × 16T/5mm/10mm drive pulley
+1. LaskaKit, Tjeckien — mekanikkärna
+2. DMW Industrietechnik, Tyskland — 3 × 16T/5mm/10mm drive pulley
 3. DigiKey
 4. StepperOnline Germany
 5. VEVOR EU
@@ -175,10 +185,12 @@ Kvarvarande huvudorder:
 
 Elecrow är redan köpt. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
+**Mekanikens två webborders är nu båda EU-baserade.** Grov baseline för LaskaKit + DMW är cirka **62 € totalt inklusive publicerade frakter**, innan faktisk svensk checkout/variantpris.
+
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
-1. LaskaKit → faktisk svensk checkout ska acceptera adressen; publicerad GLS Sweden är 8,93 €.
-2. HomeDIYer → välj exakt 16T/5mm/10mm och bekräfta svensk adress i checkout; shipping policy listar Sverige.
+1. LaskaKit → faktisk svensk checkout ska acceptera adressen; publicerad GLS Sweden är 8,93 €; kontrollera att `LA190013C` faktiskt kan läggas i korgen.
+2. DMW/eBay.de → välj exakt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, qty 3 och kör **gästcheckout** med svensk adress; säljarens fraktscope anger Europa men adressen är facit.
 3. StepperOnline Germany → Sverige-frakt.
 4. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
 5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
