@@ -4,38 +4,45 @@
 
 ## Checkout-regel efter två falska positiva
 
-**En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk endast när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
+**En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk först när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
 
-## LaskaKit — ACTIVE mekanikkärna
+För små mekanikdelar prioriteras dessutom **EU-källor framför USA/övrig import** när exakt spec finns i EU. Målet är få beställningar utan tull/importhuvudvärk.
 
-Direktbutikens aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**.
+## LaskaKit, Tjeckien — ACTIVE mekanikkärna
+
+Direktbutikens aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €** och anger att försändelserna går från Rychnov nad Kněžnou, Tjeckien.
 
 Verifierat 2026-09-03:
-- `LA190008E` smooth GT2 idler, 5 mm bearing, för 10 mm belt — i lager; köp 6.
-- `LA190032A` T8×8 400 mm — 8 mm lead, 4-start, stainless 304 — i lager; köp 1.
-- `LA190033A` T8×8 brass nut — rätt Tr8×8 — köp 2.
-- `LA190031` flexible coupling 5×8 mm — i lager; köp 2.
-- `LA190013C` GT2 5 m × 10 mm fiberglass — **i lager igen**; köp 1.
+- `LA190008E` smooth GT2 idler, 5 mm bearing, för 10 mm belt — aktuell POWGE-kategori visar **76 i lager**, 1,86 €/st; köp 6.
+- `LA190032A` T8×8 400 mm — 8 mm lead, 4-start — aktuell CNC-kategori visar **5 i lager**, 8,19 €; köp 1.
+- `LA190033A` T8×8 brass nut — rätt Tr8×8 / 8 mm lead / 4-start — köp 2.
+- `LA190031` flexible coupling 5×8 mm — aktuell kategori visar **19 i lager**, 1,82 €/st; köp 2.
+- `LA190013C` GT2 5 m × 10 mm fiberglass — aktuell CNC-kategori visar **18 i lager**, 7,81 €; köp 1.
 
 5 m-remmen är optimal: behovet är 999 + 1705 + 1705 = 4409 mm, vilket lämnar cirka 591 mm total marginal.
 
+Det finns en cachekonflikt för `LA190013C`: äldre direkt produktsida säger slutsåld medan nyare kategoriindex säger 18 i lager. Därför är faktisk LaskaKit-korg lagerfacit. Om 5 m-rullen faller bort används 3 × 2 m 10 mm fiberglass-rem utan att ändra maskinspec.
+
 LaskaKit har inte vår drive pulley: deras aktuella 16T/5mm är för **6 mm belt**, medan 10 mm-varianterna är 20T. Ändra inte 16T-specen.
 
-## HomeDIYer — ACTIVE 16T-källa, checkout-gated
+## DMW Industrietechnik, Tyskland — ACTIVE 16T-källa, checkout-gated
 
-Exakt produktfamilj verifierad:
-- `20T/16T GT2 Gear 5mm/6.35mm/8mm Pulley Aluminum for 3D Printer 10mm Timing Belt`
-- GT2 / 2 mm pitch
-- välj 16T
-- välj 5 mm bore
-- kompatibel med 10 mm belt
-- aluminium
-- set screw(s)
-- lager visas på produktsidan
+Exakt produktfamilj på eBay.de, item **`124891176610`**:
+- säljare **DMW Industrietechnik**, kommersiell säljare
+- lagerort **Sindelfingen, Deutschland**
+- välj `Typ = Synchronriemenscheibe`
+- välj `Riemenbreite = 10mm`
+- välj `Bohrung Ø = 5mm`
+- välj `Zähne = Z 16`
+- köp 3
+- aluminium, GT2 / 2 mm pitch
+- aktuell indexerad listning visar **>10 tillgängliga** och grundpris cirka **4,02 € inkl moms**
 
-HomeDIYers egen shipping policy listar uttryckligen **Sweden: Standard shipping (10–20 business days), Free Shipping** och anger VAT för EU-order.
+Samma listning visar **Warenpost International Premium 7,56 €**. En aktuell DMW-listnings detaljerade fraktsektion anger **`Versand nach: Amerika, Europa`** och lagerort Sindelfingen. Detta är säljar-specifik evidens, inte bara en generell eBay-policy.
 
-Detta är starkare evidens än Allegro-plattformsfrakt, men efter tidigare missar är svensk adress i faktisk checkout fortfarande obligatorisk gate före köp. Exakt 16T/5mm-variantpris ska läsas efter variantval; defaultpriset för 20T ska inte användas som facit.
+eBay-listningen visar dessutom **`Als Gast kaufen`**. Ingen eBay-registrering behöver därför göras bara för att prova svensk checkout. Fyll Sverige som leveransadress och köp endast om checkout accepterar adressen.
+
+Detta ersätter HomeDIYer helt och håller mekanikens webborders inom EU.
 
 ## Roboter-Bausatz — BLOCKED
 
@@ -93,8 +100,9 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 
 - Roboter-Bausatz — svensk checkout blockerar leverans.
 - Allegro `4Makers_pl` / `ABC-RC_pl` — faktisk seller-checkout blockerar Sverige.
+- HomeDIYer — tekniskt användbar men icke-EU och onödig när DMW Tyskland har exakt variant.
 - Hellas Digital 16T — exakt komponent finns, men svensk leverans är inte explicit verifierad; fallback research, inte aktiv väg.
-- Amazon-indexerade 16T-alternativ — Sverigeleverans inte verifierad; inte aktiv väg.
+- Amazon-indexerade 16T-alternativ — Sverigeleverans/spec inte tillräckligt verifierad; inte aktiv väg.
 - Technobots GT2 — endast historisk fallback.
 - separat KEDU/CEM-specialorder — inte baseline.
 - Sorotec — deferred tills verkligt fräsbehov.
