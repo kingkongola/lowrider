@@ -74,10 +74,21 @@
 - LaskaKit saknar fortfarande exakt 16T / 5 mm / 10 mm drive pulley.
 - Ett kort icke-EU-spår via HomeDIYer noterades, men det ersattes innan köp.
 
-## 2026-09-03 — mekanikköp hålls inom EU
+## 2026-09-03 — DMW identifierad som EU-spår
 
 - Icke-EU-spåret HomeDIYer stängdes utan köp.
 - Exakt **GT2 16T / 5 mm bore / 10 mm belt** hittades hos **DMW Industrietechnik i Sindelfingen, Tyskland**, eBay item `124891176610`.
-- Listningen har valbara `Synchronriemenscheibe / 10mm / 5mm / Z 16`, visar >10 tillgängliga och erbjuder gästcheckout.
-- DMW:s säljarfrakt anges som Warenpost International Premium och säljarens detaljerade fraktscope som **Europa**. Svensk adress i faktisk gästcheckout är fortfarande köp-gate.
-- Aktiv mekanikarkitektur är därför **två EU-order**: LaskaKit (Tjeckien) + DMW Industrietechnik (Tyskland), grovt cirka 62 € inklusive publicerade frakter före checkoutjustering.
+- Listningen hade valbara `Synchronriemenscheibe / 10mm / 5mm / Z 16` och gästcheckout.
+- DMW:s säljarfrakt angavs som Warenpost International Premium och fraktscope som Europa.
+- Vid faktisk köpgenomgång visade det sig senare att endast **2** exakta exemplar fanns kvar, så spåret kunde inte fylla behovet på 3.
+
+## 2026-09-03 — 16T-remhjulen köpta via eBay/POWGE
+
+- eBay söktes bredare på den fulla variantspecen och gav ett **3-pack** från `POWGE Synchronous Belts and Pulleys`.
+- Vald variant: **GT2/2GT, 16T, 5 mm bore, för 10 mm belt**, pack quantity 3.
+- eBay visade **fri frakt** och **`Includes import fees`**.
+- Listat leveransfönster vid köp: **17 sep – 7 okt 2026**.
+- Faktiskt debiterat: **72 kr**.
+- DMW och övriga 16T-fallbacks stängdes därmed.
+- Faktiskt spenderad projektsumma efter köpet: **2 862 kr**.
+- Sourcinglärdom: för billiga variantkänsliga commodity-delar ska eBay sökas tidigt. EU-ursprung är inte målet i sig; rätt spec + låg total landad kostnad + tydlig importhantering är bättre beslutsvariabler.
