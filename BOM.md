@@ -1,192 +1,115 @@
 # BOM
 
-Här ska bara delar för den LowRider V4 som faktiskt byggs finnas. `AUDIT.md` innehåller de fysiska integrationsgates som inte får ersättas av antaganden.
+Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs. Flyktiga priser/lager finns i `PROCUREMENT.md`, inte här.
 
-## Inköpsförutsättning
+## Redan köpt — HaWiWe
 
-- [x] Amazon Prime-medlemskap — möjlig fraktfördel, men butik väljs efter totalpris och rätt variant
-- [x] 3D-skrivare: **Bambu Lab P1S, 256×256×256 mm** — tillräcklig byggvolym för LR4
-- [x] Garagegrupp: **10 A**, praktiskt beprövad med svets; plasma har kunnat lösa säkringen
+**Betald 2026-08-29: 165,50 € inklusive 8,00 € frakt. Skickad 2026-09-03.**
 
-## Redan köpt — HaWiWe, 29 augusti 2026
-
-**Order betald: 165,50 € inklusive 8,00 € frakt.**
-
-- [x] Aluminium XZ plates, **6,0 mm** — 39,50 €
-- [x] 4 × MGN12H 150 mm linear rails — 57,00 €
-- [x] Screw set LowRider 4 — 32,00 €
-- [x] Makita/Elaire 1/8" (3,175 mm) collet — 29,00 €
-- [x] Frakt — 8,00 €
-
-### Exakt innehåll i HaWiWe screw set
-
-- [x] 14 × M8×40 + 14 × M8 nyloc
-- [x] 60 × M5×30 + 60 × M5 nyloc
-- [x] 83 × M3×10
-- [x] 10 × M2.5×12
-
-Kitet innehåller inte lager, T8, T8-muttrar, kopplingar, remhjul, idlers, rem, endstops, motorer, kablage eller PSU.
+- [x] Aluminium XZ plates, 6,0 mm
+- [x] 4 × MGN12H 150 mm linear rails
+- [x] LR4 screw set:
+  - 14 × M8×40 + 14 × M8 nyloc
+  - 60 × M5×30 + 60 × M5 nyloc
+  - 83 × M3×10
+  - 10 × M2.5×12
+- [x] Makita/Elaire 1/8" / 3,175 mm collet
 
 ## Redan ägt
 
-- [x] DeWalt wet/dry shop-vac, mycket sannolikt DXV30SAPTA; sannolik spec 30 l / 1050 W / 15 kPa / 37,8 l/s / 48 mm ×2,1 m slang. Bekräfta typskylt före modellunika köp.
-- [x] Äldre FTX-aggregat — endast kandidat för sekundär luftfiltrering/undertryck, aldrig rått CNC-spån utan primäravskiljning
-- [x] TPU-filament — kontrollera hårdhet; ~95A passar V1E:s dust-shoe-bristles
-- [x] Threadlocker finns redan
+- [x] Bambu Lab P1S
+- [x] DeWalt wet/dry shop-vac; exakt modell/typskylt ska bekräftas före modellunika antaganden
+- [x] TPU-filament; kontrollera hårdhet före dust-shoe-bristles
+- [x] Threadlocker
+- [x] äldre FTX-aggregat; endast kandidat som sekundär filtrering/undertryck
 
-## Låst maskingeometri
+## Låst geometri
 
-- användbar arbetsyta: **650 × 1250 mm**
-- X-rör: **816 mm ×2**
-- Y-rör: **1505 mm**
-- strut-generatorinput: **819 mm**
-- strut `front_wing_size`: **30 mm**
-- GT2: **999 + 1705 + 1705 = 4409 mm**
-- minimum bord: **941 × 1563 mm**
-- praktisk CNC-deck: cirka **1000 × 1620 mm**
+- arbetsyta 650 × 1250 mm
+- X-rör 816 mm ×2
+- Y-rör 1505 mm
+- Ø30×1,5 mm
+- strut-input 819 mm, `front_wing_size=30`
+- GT2 999 + 1705 + 1705 = 4409 mm
+- minimum bord 941 × 1563 mm
+- deck cirka 1000×1620 mm
 
 ## Kvar — mekanik
 
-- [ ] 2 × Motonet `88-7123`, stålrör Ø30×1,5 mm ×2 m; mät OD/rakhet före kapning
-- [ ] **senaste LR4-printar i 30 mm-variant** på alla diameterberoende delar
-- [ ] Makita/**65 mm** tool mount för VEVOR 0700C
-- [ ] cirka 2,7 kg vanlig styv PLA krävs; bulkplan 6 × 1 kg SUNLU om checkout håller
-- [ ] 3 × GT2 16T / 5 mm bore / för 10 mm belt
-- [ ] 6 × smooth GT2 idlers / 5 mm bearing bore / för 10 mm belt, LaskaKit `LA190008E`
-- [ ] GT2-rem: **2 mm pitch, 10 mm bred, gummi med glasfiberförstärkning, ingen stålcord**, kontinuerliga segment minst 999 / 1705 / 1705 mm. LaskaKit `LA190013C` 5 m och deras 2 m-alternativ visar nu slut på direkta produktsidan. Första checkout-kandidat: V1E:s egen Amazon-länk/SeekLiny ASIN `B097T4DFM6`, 10 m. Verifierad fallback: Technobots `6002-591`, 5 m ×10 mm fiberglass GT2
+- [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
+- [ ] 6 × Roboter-Bausatz `RBS12910`, smooth idler, 5 mm hål, 10 mm rem
+- [ ] 1 × `RBS12872`, T8×8 400 mm + brass nut
+- [ ] 1 × `RBS12749`, extra T8×8 brass nut
+- [ ] 2 × `RBS10595`, flexible coupler 5→8 mm
+- [ ] 5 m × `RBS12747`, GT2/2 mm, 10 mm, gummi + glasfiber, meterware
+- [ ] 3 × `RBS12867`, GT2 16T / 5 mm / 10 mm
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
-- [ ] 1 × T8×8 400 mm rod, 4-start / 2 mm pitch / 8 mm per rev; **kapa först efter assembly-check, praktiskt mål ~150–160 mm ×2**, V1E minimum 145 mm
-- [ ] 2 × matching T8×8 brass nuts
-- [ ] 2 × 5→8 mm flexible couplers
-- [ ] material till permanenta strut plates, 5–6 mm MDF/hardboard preferred, max 6,35 mm
-- [ ] ca 18 × M4×12 eller längre trä-/plåtskruv för rail/belt-clip/table-infästning enligt verklig deck
+- [ ] senaste LR4-printar i 30 mm-variant
+- [ ] Makita/65 mm tool mount
+- [ ] cirka 2,7 kg vanlig styv PLA; köp **3 kg**, inte 6 kg
+- [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
+- [ ] rail/belt/table-infästning enligt faktisk deck
 
-## Kvar — motorer, styrning och lågspänning
+## Kvar — motorer/styrning/lågspänning
 
-- [ ] Jackpot3 CNC Controller — Elecrow `CQA240812C2`; kräver flashning/config
-- [ ] 5 × StepperOnline `17HS19-2004S1`, 59 Ncm / 2 A / 5 mm D-axel / 24 mm axel / 1 m kabel
-- [ ] stepper-extensioner endast där full-travel dry-fit visar behov
-- [ ] 10 × Omron `SS-3GL13PT`; 5 installeras, 5 reserv; kopplas NC via COM+NC
-- [ ] 10 m LaskaKit `LA150151A`, UL2464 26 AWG 3×0,14 mm²; använd 2 ledare för endstops
-- [ ] 2-poliga 2,54 mm board-side endstopkontakter/pigtails + reserv
-- [ ] Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W DIN PSU
-- [ ] **3 m** UL2464 20 AWG / ~0,52 mm² **2-core**, nominellt ~4,8 mm OD, för fast HDR-box → rörlig Jackpot; kapa först efter full-travel dry-fit
-- [ ] 1 × Amphenol **`AIO-CSM12`**, M12×1.5 / 3–6,5 mm / IP68 för 24 V-kabelns genomföring/dragavlastning
-- [ ] **microSD till Jackpot3: inventera först**; om inget lämpligt finns, enkelt 4–32 GB FAT32 Class 4/6
-- [ ] **data-kapabel USB-C-kabel: inventera/verifiera** för flashing; köp bara om den saknas
+- [ ] Elecrow Jackpot3 `CQA240812C2`
+- [ ] 1 × StepperOnline fempack `5-17HS19-2004S1`
+- [ ] Mean Well `HDR-60-24`
+- [ ] 10 × Omron `SS-3GL13PT`
+- [ ] 3 m Tensility `30-00416`, 2×20 AWG, för fast HDR-box → rörlig Jackpot
+- [ ] 10 m Tensility `30-00377`, 3×26 AWG, för endstops
+- [ ] 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm / IP68
+- [ ] 2-poliga board-side endstopkontakter/pigtails
+- [ ] stepperextensioner endast om dry-fit visar behov
+- [ ] data-USB-C: inventera först
+- [ ] microSD >2 GB FAT32: inventera först
 
-### Fysisk kabelregel
+## DigiKey-el/smådelar
 
-HDR-boxen är fast på bordet medan Jackpot3 sitter på den rörliga beam/gantryn. Därför får ingen 24 V-längd, routerkabel eller stepperextension slutmonteras utifrån skrivbordsmått.
+- [ ] 3 × genuine Wago `221-413`
+- [ ] 2 × Altech `5309 720/SET`, M20×1.5 / 5–12 mm
+- [ ] 10 × TE `3-350820-2` via **`A27824-ND`**, inte Marketplace-dubblett
 
-Den valda UL2464/PVC-kabeln är flexibel flertrådig men inte dokumenterad som continuous-flex/drag-chain. Använd stor avslappnad rörelseloop. Om verklig routing kräver liten repetitiv böjradie ska en uttryckligt continuous-flex-kabel användas i stället.
+## 230 V / NVR
 
-Före slutliga clips/remspänning ska maskinen manuellt kunna nå alla fyra hörn + Z-extremer med samtidigt monterade:
-- 24 V-kabel
-- VEVOR-routerkabel
-- motor/endstopkablar
-- dammsugarslang
+Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `VEVOR -> DeWalt tool socket` om DeWalt-typskylten bekräftar rätt funktion.
 
-Inget får sträckas, bära kontaktlast, kinka eller kunna falla över bordskant/rörelsezon.
+- [ ] KJD12-familj NVR, 230 V, minst lämplig märkström; Clas Ohlson 50-2929 230 V/10 A är aktiv enkel kandidat
+- [ ] kapsling först efter fysisk NVR/HDR dry-fit
+- [ ] jordad 3G1,5 donor lead om faktisk rutt kräver det
+- [ ] PE kontinuerlig/oswitchad
 
-## Kvar — 230 V maskinmatning
+## Router / första skär
 
-Baseline:
+- [ ] VEVOR 0700C, SKU `YXKXBJ710W65AH7WLV2`, 220–240 V, 800 W, 65 mm
+- [ ] provpassa Elaire-collet och kontrollera säte/runout
+- [ ] commissioning-fräs `L1S.M.0317` eller motsvarande 3,175 mm single-flute upcut först när första fräsjobbet närmar sig; separat Sorotec-order är fortfarande uppskjuten
+- [ ] lång 3,175 mm plywoodfräs först vid verkligt 18–19 mm jobb
 
-`vägg -> KJD12 NVR -> [HDR-60-24 + DeWalt AUTO]`
+## Bord/deck
 
-`VEVOR -> DeWaltens verktygsuttag`
+- [ ] styvt begagnat bord 160–180 × helst 90–100 cm, helst ≤700 kr
+- [ ] avtagbar ~1000×1620 deck, 11 mm OSB value default eller ~12 mm konstruktionsplywood
+- [ ] ~12 mm löstagbar MDF-spoilboard
+- [ ] lokal kantblockning/infästning om 90 cm bord ger ~50 mm överhäng
 
-- [ ] genuin **KEDU KJD12-14**, 230 V/50 Hz, 2-polig NVR/no-restart, röd stoppkåpa, 6,3×0,8 Faston; familjen är verifierad till **15 A AC-3 / 18 A AC-1**
-- [ ] Biltema `35-0065` IP65 4-moduls DIN-kapsling, 120×160×90 mm — endast om riktig dry-fit ger säker terminal-/böjradie
-- [ ] Biltema `35-0067` 12-moduls kapsling — fallback om lilla boxen blir trång
-- [ ] jordad 3G1,5 donor extension lead, t.ex. Biltema `46-3610`; 3 m endast om faktisk in+ut-rutt räcker
-- [ ] 2 × M20×1,5 kabelgenomföring för 3G1,5 nät in/ut; kontrollera faktisk donor-kabel-OD mot glandens 5–12 mm spann
-- [ ] 3 × genuine Wago 221-413 för L/N/PE-fördelning
-- [ ] 10 × TE Connectivity `3-350820-2` via **DigiKey `A27824-ND`**; använd inte Marketplace-dubbletten
+## Damm
 
-**Garagegruppen:** 10 A är känd och fungerar praktiskt med svets; plasma har kunnat lösa säkringen. VEVOR 800 W + sannolik DeWalt 1050 W + controller bedöms därför inte som ett öppet projektproblem. Gör vanlig sanity-check vid första samtidiga körningen och utred endast om säkringen faktiskt löser. Uppsäkra aldrig som workaround utan kontroll av fasta installationen.
+- [ ] LR4 dust shoe för Makita/65 mm
+- [ ] TPU-bristles om befintlig TPU är lämplig
+- [ ] printad cyklon först
+- [ ] styv 15–30 l behållare och kontrollerat vakuumtest
+- [ ] testa befintlig DeWalt-slang före ny slang
+- [ ] slangupphängning/dragavlastning
+- [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
-**Terminologi:** KJD12 är här **NVR/maskinstopp med röd stoppkåpa**. Safety-rated E-stop-status för den hemmabyggda helheten är inte verifierad. Montera den direkt nåbar från normal operatörsplats.
+## Köp inte ännu
 
-PE till DeWalt-uttaget ska vara kontinuerlig och oswitchad. HDR-60-24 är Class II och ska inte användas som jordpunkt.
-
-## Router / frässtål
-
-- [ ] VEVOR 0700C, 800 W, 65 mm body, 10 000–30 000 rpm — SKU `YXKXBJ710W65AH7WLV2`, product ID `010235793217`
-- [ ] provpassa köpt Elaire/Makita-style 1/8" collet och kontrollera korrekt säte + runout före riktig fräsning
-- [ ] 3 × Sorotec `L1S.M.0317`, 3,175 mm single-flute upcut, 9 mm spiral/skärlängd; commissioning + 5–6 mm strut-material
-- [ ] router-förlängningskabel **endast** om full-travel dry-fit visar att fabriksledningen inte räcker
-- [ ] lång 3,175 mm single-flute, minst ~22–25 mm faktisk skärlängd, först inför verkligt 18–19 mm plywoodjobb
-
-## Bord / deck / spoilboard
-
-- [ ] styvt begagnat bord **160–180 cm långt**, helst 90–100 cm djupt, helst ≤700 kr
-- [ ] avtagbar ~1000×1620 structural CNC deck, 11 mm OSB value default eller ~12 mm konstruktionsplywood
-- [ ] separat löstagbar ~12 mm MDF-spoilboard över arbetszonen
-- [ ] lokal blockning/list/genomgående infästning där 90 cm-bord lämnar ~50 mm decköverhäng under LR4:s rail/wheel/belt-clip-zon
-
-Se `TABLE.md`.
-
-## Dammhantering — del av grundbygget
-
-- [ ] LR4 dust shoe för Makita/65 mm — printas
-- [ ] V1E TPU-bristles med redan ägd TPU om ~95A
-- [x] DeWalt shop-vac finns; **bekräfta typskylt innan AUTO/tool-socket-spec används som faktum**
-- [ ] 3D-printad cyklonavskiljare först; kommersiell endast fallback
-- [ ] styv 15–30 l uppsamlingsbehållare före DeWalt; vakuumtålighet måste provas, stål i sig är ingen garanti
-- [ ] testa befintlig DeWalt 48 mm ×2,1 m slang först
-- [ ] kort stationär cyclone→DeWalt-koppling
-- [ ] slangupphängning/dragavlastning så slangen inte belastar Core/Z
-- [ ] enkel avtorkningsbar avskärmning/gardin runt CNC-zonen
-- [ ] **statisk jordning:** definierad PE-anslutning + kontinuitetskontroll för stockslangen, eller groundable/steel-ribbed hose; måste vara löst före XPS/reguljär trä/MDF-körning
-- [ ] utvärdera FTX endast som sekundär luftfiltrering/undertryck efter modellidentifiering
-
-## Småsaker
-
-- [ ] lätt smörjmedel till idlers/linjärskenor
-- [ ] buntband/tape/wire sleeve för kabelinfästning efter full-travel-test
-- [ ] värmekrympslang för endstoplödpunkter
-- [ ] ändhylsor/ferrules där de passar skruvterminalerna och rätt tång finns
-- [ ] ingen T-track/clamp-order nu — skruv/tabs i spoilboard först
-
-## Printkontroll innan full sats
-
-P1S har redan tillräcklig byggvolym; det är **inte** en projekt-gate.
-
-Före de långa printarna:
-- [ ] provprinta `Z_Stub` + `Z_Nut` och kontrollera passning
-- [ ] granska bridges/unsupported geometry i slicer-preview
-- [ ] använd högsta aktuella versionsnummer på versionsmärkta delar
-- [ ] verifiera 30 mm- och Makita/65 mm-varianterna en sista gång
-
-## Konfigurationsgate för Jackpot3
-
-Elecrow-kortet är inte V1E-förkonfigurerat. Före driven rörelse:
-- flasha V1E:s vid byggtillfället aktuellt testade FluidNC-paket
-- ladda rätt LR4-konfiguration
-- verifiera microSD om det ska användas för G-code
-- kontrollera motorutgångar/endstopstatus
-- börja jogga 1 mm i taget
-
-Jackpot3 ska sitta separat på den rörliga beam/YZ_Min-sidan i board box med fri luftväg. Kablar går bredvid kortet, inte över kort/antenn, och avlastas innan de lämnar boxen. Ingen fläkt köps innan behov visas.
-
-**Endstop-semantik:** de fem Omron-brytarna är home/auto-square-endstops. I V1E:s standardkonfiguration är de bara aktiva under homing och är **inte runtime hard limits eller kollisionsskydd**.
-
-## Valfritt senare
-
-- [ ] touch plate / verktygslängdsgivare
-- [ ] T-track / threaded-insert-grid / vacuum-table först efter faktisk användning
-- [ ] laser tidigast 2027
-
-## Fysiska gates som blockerar slutgodkännande
-
-- [ ] Motonet-rör uppmätta/raka
-- [ ] HaWiWe-delar inventerade/provmonterade
-- [ ] VEVOR-collet/runout verifierad
-- [ ] faktiskt bord racking- och edge-support-godkänt
-- [ ] KJD12/HDR-box fysisk dry-fit godkänd
-- [ ] full-travel kabel/slang-test godkänt
-- [ ] statisk jordväg verifierad
-- [ ] Jackpot microSD/data-USB/firmware/config verifierat
-- [ ] 230 V PE/L/N/dragavlastning verifierad före energisering
+- T-track/vacuum-table
+- routerförlängning
+- stepperextensioner
+- extra collet
+- controllerfläkt
+- ny shop-vac/slang
+- lång plywoodfräs
+- microSD/USB-C innan inventering

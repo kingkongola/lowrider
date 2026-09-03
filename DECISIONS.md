@@ -1,163 +1,96 @@
 # Decisions
 
-Endast beslut som påverkar detta LowRider-bygge.
+Endast beslut som påverkar den LowRider V4 som faktiskt byggs. Nyare beslut supersederar äldre när det anges uttryckligen.
 
 ## D001 — LowRider V4
-**Status:** beslutat / delar köpta
+**Status:** låst
 
-Bygg LowRider V4. Maskinvalet är avslutat. PrintNC och IndyMill är inte längre aktiva alternativ för detta bygge.
+Bygg LowRider V4. PrintNC och IndyMill är inte aktiva alternativ.
 
 ## D002 — Arbetsyta 650 × 1250 mm
-**Status:** beslutat / geometri verifierad
+**Status:** låst
 
-Användbar arbetsyta låses till **650 × 1250 mm** med de köpta 6,0 mm HaWiWe XZ-plattorna.
-
-Aktuell V1E-kalkylator ger:
-- 2 × X-rör: **816 mm**
-- 1 × Y-rör: **1505 mm**
-- strut-input: **819 mm**
-- X-rem: **999 mm**
-- Y-remmar: **1705 mm ×2**
-- total GT2: **4409 mm**, alltså räcker 5 m
-- minimum bord: **941 × 1563 mm**
-- praktisk CNC-deck: cirka **1000 × 1620 mm**
-
-Storleken rymmer en nominell kvarts 1220×2440-skiva (610×1220) med marginal utan onödigt garagefotavtryck.
+Geometri:
+- X-rör 816 mm ×2
+- Y-rör 1505 mm
+- Ø30×1,5 mm
+- strut-input 819 mm
+- `front_wing_size=30`
+- GT2 999 / 1705 / 1705 mm = 4409 mm
+- minimum bord 941 × 1563 mm
+- praktisk deck ~1000×1620 mm
 
 ## D003 — Standardnära bygge först
-**Status:** beslutat
+**Status:** låst
 
-Bygg maskinen korrekt och få den körklar innan eventuella modifieringar. Uppgradera först när en faktisk begränsning har visat sig.
+Få standardmaskinen körklar innan modifieringar. Uppgraderingar kräver ett visat behov.
 
-## D004 — Begagnat bord + avtagbar CNC-deck
-**Status:** beslutat huvudspår / audit-korrigerat
+## D004 — Begagnat bord + avtagbar deck
+**Status:** låst
 
-Första bordslösningen ska vara ett styvt begagnat mat-/konferens-/kontorsbord, **160–180 cm långt och helst 90–100 cm djupt**, med befintlig strukturell skiva kvar.
+Styvt begagnat bord 160–180 cm långt, helst 90–100 cm djupt och helst ≤700 kr. Befintlig bordsskiva behålls. Ovanpå: avtagbar ~1000×1620 structural deck + löstagbar ~12 mm MDF-spoilboard. 90 cm bord kräver verkligt stöd/infästning under decköverhänget i LR4:s kantzon.
 
-Ovanpå monteras en avtagbar ~1000×1620 mm CNC-deck i första hand av 11 mm OSB eller ungefär 12 mm konstruktionsplywood. Separat ~12 mm MDF används som löstagbar spoilboard.
+## D005 — Jackpot2 som tekniskt router-first-val
+**Status:** **superseded för inköp av D015**
 
-På ett 90 cm djupt bord överhänger en 1000 mm deck cirka 50 mm per långsida. Där ska LR4:s rail/wheel/belt-clip-zon få verkligt lokalt stöd och säker infästning; använd blockning/list eller genomgående infästning om befintlig bordsskiva inte bär kanten.
+Jackpot2 var det tekniskt billigaste rimliga valet för router-only eftersom snabb laser-PWM inte behövs. Detta är fortfarande en korrekt funktionsbedömning men inte längre aktiv köpväg.
 
-Prisregler:
-- 0–400 kr: starkt köp om geometri + rackingtest passerar
-- 400–700 kr: normal Pareto-zon
-- 700–1000 kr: endast tydligt högkvalitativt/styvt kommersiellt underrede
-- >1000 kr: normalt vänta
+## D006 — VEVOR 0700C
+**Status:** låst
 
-Ingen torsionsbox, specialsvetsad ram, höj-/sänkbart skrivbord eller hjulsystem före första körningen utan konkret behov.
+VEVOR 0700C, 220–240 V / 50 Hz, 800 W, 65 mm kropp, 10 000–30 000 rpm. Köpt HaWiWe/Elaire Makita-style 1/8" collet ska provpassas och runout verifieras före riktig fräsning.
 
-## D005 — Jackpot2 som styrkort
-**Status:** beslutat förstahandsval
+## D007 — Dammhantering i grundbygget
+**Status:** låst
 
-**V1E Jackpot2** väljs som baseline för detta router-first LowRider V4-bygge.
+LR4 dust shoe + befintlig DeWalt shop-vac + cyklon + separat uppsamlingsbehållare + slangavlastning. Statisk jordväg ska vara löst före regelbunden MDF/trä/XPS-körning.
 
-V1E beskriver Jackpot2 som funktionellt identisk med Jackpot3 för normal CNC-drift, men utan den snabba PWM-output som främst behövs för direkt laserstyrning. Jackpot2 kostar aktuellt **$55 före frakt/skatt**, mot Jackpot3 $75,99 hos V1E.
-
-Skäl:
-- samma relevanta FluidNC/LR4-kärnfunktion för fräsning
-- integrerade stepperdrivers/ESP32, microSD, USB-C och V1E:s färdiga firmware/config-spår
-- tre spänningsvalbara outputs och extra IO räcker för normal router-CNC och många framtida tillbehör
-- framtida VFD-spindel är ett reellt LR4-upgrade path men behöver inte Jackpot3:s snabba laser-PWM; VFD kan styras via t.ex. 0–10 V/RS485-lösning
-- vi betalar därför inte extra idag enbart för en laseroption som uttryckligen är uppskjuten
-
-Nackdel/medvetet tradeoff:
-- Jackpot2 saknar snabb PWM och V1E säger uttryckligen att den **inte ska väljas för direkt laserstyrning**
-- om laser blir ett konkret projekt senare får vi då välja expansion/controllerbyte efter det faktiska laserbyggets behov
-
-Jackpot2 ska flashas med V1E:s aktuellt rekommenderade FluidNC + LR4-config före driven rörelse/homing.
-
-## D006 — VEVOR 0700C, 800 W, 65 mm som fräsmotor
-**Status:** beslutat förstahandsval / fysisk verifiering återstår
-
-Målmodell: **VEVOR 0700C, 800 W, 220–240 V / 50 Hz, 65 mm kropp, 10 000–30 000 rpm**.
-
-Den redan köpta HaWiWe-hylsan är en Elaire Makita-style 1/8" / 3,175 mm för Makita RT700/RT0700/RT0701-familjen.
-
-**Gate:** inget formellt VEVOR/Elaire-datablad verifierar exakt MRP-1250 + VEVOR 0700C. Hylsan ska provpassas och runout kontrolleras innan riktig fräsning. Tool mount ska vara Makita/65 mm-varianten.
-
-## D007 — Dammhantering ingår i grundbygget
-**Status:** beslutat
-
-CNC:n delar garage med motorarbete. Dammutsug är ett grundkrav före regelbunden fräsning i trä, MDF eller XPS.
-
-Grundlösningen:
-- LR4 dust shoe för Makita/65 mm
-- befintlig DeWalt shop-vac
-- cyklonavskiljare, printad först
-- separat styv uppsamlingsbehållare
-- slangdragning/avlastning som inte belastar Core/Z
-- möjlighet att begränsa och lätt städa CNC-zonen
-
-Stockslangen är inte verifierat antistatisk. Statisk jordväg till definierad PE-punkt eller groundable hose ska vara löst före XPS/reguljär dammig drift.
-
-## D008 — Laser senare och får inte överoptimera grundbygget
+## D008 — Laser senare
 **Status:** uppskjutet
 
-Laser är intressant men tidigast aktuellt 2027 och ska inte driva controllerkostnaden idag.
+Laser tidigast 2027 och får inte överoptimera grundbygget.
 
-Jackpot2-tradeoffen är medveten: direkt laser-PWM saknas. Om laser senare blir ett konkret projekt väljs då lämplig expansion/controller utifrån den faktiska lasermodulen, kapslingen och säkerhetslösningen.
+## D009 — Plasma utanför scope
+**Status:** låst
 
-## D009 — Plasma inte i nuvarande scope
-**Status:** bortprioriterat
+Plasma styr inte bord, controller eller inköp i nuvarande bygge.
 
-Plasma ska inte styra bord, inköp eller byggordning nu. Fokus är router-CNC först.
+## D010 — Mean Well + Omron + DigiKey-konsolidering
+**Status:** låst
 
-## D010 — Mean Well HDR-60-24 + exact Omron + DigiKey-konsolidering
-**Status:** beslutat förstahandskorg
+- Mean Well `HDR-60-24`, 24 V / 2,5 A / 60 W.
+- 10 × Omron `SS-3GL13PT`, 5 installerade + 5 reserv, NC via COM+NC.
+- DigiKey samlar även 16 × 608-2RS, Wago, nätgenomföringar, Faston och lågspänningskablar enligt `PROCUREMENT.md`.
 
-24 V-nätaggregat: **Mean Well HDR-60-24, 24 V / 2,5 A / 60 W**.
+## D011 — Ø30 mm rails
+**Status:** låst
 
-Endstops: **Omron SS-3GL13PT**. Köp 10, installera 5 och behåll 5 reserv. Koppla NC, COM + NC.
+Alla diameterberoende printar = 30 mm. Permanenta struts: `strut_length=819`, `front_wing_size=30`.
 
-DigiKey-korgen konsoliderar även 16 × 608-2RS, Wago, M20 nätgenomföringar, Faston och lågspänningskablage enligt `PROCUREMENT.md`.
+## D012 — Fast elbox + rörlig controller
+**Status:** låst
 
-## D011 — Ø30 mm rails låser printvariant och strut-wing
-**Status:** beslutat / audit-fynd
+NVR + HDR sitter fast på bordet. Jackpot sitter på rörlig beam/YZ_Min-sida. Köp 3 m 20 AWG 2-core som längdmarginal; kapa efter full-travel dry-fit. Routerkabel, 24 V, motor/endstop och vac-hose provas samtidigt i alla rörelseextremer.
 
-Motonet Ø30×1,5 mm är railspåret.
+## D013 — NVR/maskinstopp
+**Status:** låst
 
-Konsekvenser:
-- alla diameterberoende LR4-printar ska vara **30 mm-varianten**
-- permanenta struts genereras med `strut_length=819`
-- `front_wing_size=30`
-- generatorns avsiktliga ~0,5 mm reduktion ska inte kompenseras manuellt
+Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättåtkomlig stoppfunktion och dokumenterad terminalkoppling. Exakt KEDU-proveniens är inte ett projektkrav. Funktionen kallas NVR/maskinstopp, inte verifierad safety-rated E-stop.
 
-## D012 — Fast elbox + rörlig maskin gör kabelrörelse till konstruktionskrav
-**Status:** beslutat / audit-korrigering
+## D014 — Commissioning-dependencies
+**Status:** låst
 
-NVR + HDR-60-24 sitter i en **fast box på bordet**. Jackpot2 sitter separat på den **rörliga beam/YZ_Min-sidan**.
+Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. Endstops är home/auto-square, inte runtime hard limits.
 
-Tidigare antagande om ~1 m 24 V-kabel är borttaget.
+## D015 — Elecrow Jackpot3 är aktiv controller-köpväg
+**Status:** låst 2026-09-03 på sourcinggrund
 
-- köp 3 m 20 AWG 2-core som längdmarginal
-- kapa/terminera efter full-travel dry-fit
-- 24 V-utgången får egen kabelgenomföring/dragavlastning
-- routerkabel, 24 V, stepper/endstopkablar och vac-hose testas tillsammans vid alla rörelseextremer innan slutlig kabelinfästning
-- Jackpot-boxen hålls separat och luftig; den ska inte stoppas in i 230 V-boxen
-- PVC-rutten ska ha stor rörelseloop; krävs snäv repetitiv böj används continuous-flex-kabel i stället
+Aktivt köp är **Elecrow Jackpot3 `CQA240812C2`**.
 
-## D013 — NVR/maskinstopp, inte påstått safety-rated E-stop
-**Status:** beslutat terminologi/säkerhetsgräns
+Skäl:
+- Elecrow visar $76,99 och uttryckligen **In stock**.
+- V1E:s egna Jackpot2/Jackpot3-sidor ger motsägelsefull butikstatus (sold-out-markering samtidigt som add-to-cart visas), så tillgängligheten är inte tillräckligt robust för projektplanen.
+- V1E hänvisar internationella Jackpot3-kunder till Elecrow som direktare köpväg.
+- skillnaden mot Jackpot2 är ett sourcingbeslut, inte ett nytt funktionskrav; laser är fortfarande uppskjuten.
 
-Reellt krav är en 230 V NVR/no-voltage-release med lämplig motorlastmärkning, tydlig stoppfunktion och dokumenterad terminalkoppling. KJD12 är en lämplig familj men exakt KEDU-proveniens är inte ett projektkrav.
-
-Vi har inte verifierat att den valda varianten/hemmabyggda helheten uppfyller en specifik safety-rated E-stop-kategori/standard. Repot ska därför kalla funktionen **NVR/maskinstopp**.
-
-Den ska:
-- vara direkt nåbar från normal operatörsplats
-- väljas efter exakt 230 V/50 Hz-variant, märkdata, terminalschema och mekaniska mått
-- dry-fittas i kapslingen innan håltagning
-
-## D014 — Commissioning-dependencies är del av BOM, inte eftertanke
-**Status:** beslutat / andra auditpasset
-
-En komplett komponentlista räcker inte om maskinen ändå inte kan flashas, köras eller verifieras.
-
-Därför gäller:
-- Jackpot2 kräver **data-kapabel USB-C** för flashing; inventera först
-- lämpligt **microSD >2 GB, FAT32** behövs för föredragen lokal G-code-filväg; inventera först, köp bara om det saknas
-- endstops är i standardkonfiguration **home/auto-square-sensorer**, inte runtime hard limits/kollisionsskydd
-- P1S har redan tillräcklig byggvolym; kvar är endast rätt 30 mm/65 mm-varianter, `Z_Stub`/`Z_Nut` testfit och slicer-preview
-- 400 mm T8-stång kapas inte automatiskt i halvor; praktiskt mål är cirka 150–160 mm ×2 efter fysisk kontroll, V1E minimum 145 mm
-
-Princip: **en rad är inte godkänd bara för att delen i sig är rätt; dess monterings-, kabel-, konfigurations- och commissioning-gränssnitt måste också vara täckta.**
+Fallback: om V1E Jackpot2 vid faktisk checkout går att köpa och **landar klart billigare** än Elecrow utan leveransfördröjning får köpet gå tillbaka till Jackpot2. Annars ska bygget inte fördröjas för att spara den nominella artikelprisskillnaden.
