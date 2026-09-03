@@ -43,12 +43,12 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — mekanik
 
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
-- [ ] 6 × Roboter-Bausatz `RBS12910`, smooth idler, 5 mm hål, 10 mm rem
-- [ ] 1 × `RBS12872`, T8×8 400 mm + brass nut
-- [ ] 1 × `RBS12749`, extra T8×8 brass nut
-- [ ] 2 × `RBS10595`, flexible coupler 5→8 mm
-- [ ] 5 m × `RBS12747`, GT2/2 mm, 10 mm, gummi + glasfiber, meterware
-- [ ] 3 × `RBS12867`, GT2 16T / 5 mm / 10 mm
+- [ ] 6 × smooth GT2 idler, 5 mm hål/bearing, för 10 mm rem; aktiv SKU LaskaKit `LA190008E`
+- [ ] 1 × T8×8 400 mm, 4-start / 8 mm lead; aktiv SKU LaskaKit `LA190032A`
+- [ ] 2 × T8×8 brass nut; aktiv SKU LaskaKit `LA190033A`
+- [ ] 2 × flexible coupler 5→8 mm; aktiv SKU LaskaKit `LA190031`
+- [ ] GT2 10 mm glasfiberrem: tre obrutna segment minst 999 / 1705 / 1705 mm; aktiv väg 3 × 2 m LaskaKit `LA190013B`
+- [ ] 3 × GT2 drive pulley **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**, två låsskruvar föredras; aktuell Allegro-kandidat `16T W10 B5 WZ`
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount

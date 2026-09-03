@@ -22,28 +22,40 @@ Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
 ## Beställ nu
 
-### 1. Roboter-Bausatz — mekanik
+### 1. LaskaKit — mekanikkärna
+
+Roboter-Bausatz är **BLOCKED** för Sverige; se `SOURCING.md`. Aktiv ersättare för fem av sex mekanikrader är LaskaKit.
 
 Köp exakt:
 
-| Rad | Antal | Pris 2026-09-03 | Delsumma |
+| Rad | Antal | Pris-snapshot | Delsumma |
 |---|---:|---:|---:|
-| `RBS12910` smooth idler 5 mm / 10 mm belt | 6 | 1,34 € | 8,04 € |
-| `RBS12872` T8×8 400 mm + brass nut | 1 | 9,95 € | 9,95 € |
-| `RBS12749` extra brass nut | 1 | 1,67 € | 1,67 € |
-| `RBS10595` flexible coupler 5→8 mm | 2 | 1,75 € | 3,50 € |
-| `RBS12747` GT2 10 mm fiberglass meterware | 5 m | 2,25 €/m | 11,25 € |
-| `RBS12867` GT2 16T / 5 mm / 10 mm | 3 | 1,04 € | 3,12 € |
+| `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt | 6 | 1,86 € | 11,16 € |
+| `LA190032A` T8×8 400 mm stainless rod, **utan mutter** | 1 | 8,19 € | 8,19 € |
+| `LA190033A` T8×8 brass nut | 2 | 1,31 € | 2,62 € |
+| `LA190031` flexible coupling 5→8 mm | 2 | 1,83 € | 3,66 € |
+| `LA190013B` GT2 2 m × 10 mm fiberglass belt | 3 | 4,85 € | 14,55 € |
 
-**Varor: 37,53 €. Publicerad Sverige-frakt: 14,99 €. Snapshot: 52,52 € med butikens visade tyska moms.**
+**Varor snapshot: 40,18 €. Publicerad GLS-frakt till Sverige: 8,93 €. Baseline före eventuell destinationsmomsjustering: 49,11 €. Checkout är facit.**
 
-Alla sex artikeltyper visas som omedelbart tillgängliga. `RBS12747` är meterware; qty 5 ska motsvara 5 m. Kontrollera orderbekräftelsen och stoppa endast om den uttryckligen skulle visa fem separata 1 m-bitar.
+Varför 3 × 2 m rem: maskinen behöver tre segment om **999 / 1705 / 1705 mm**. Varje segment ryms på en egen 2 m-rulle och lämnar totalt cirka 1,59 m reserv. Den exakta 5 m-rullen `LA190013C` är just nu slutsåld och ska inte blockera bygget.
 
-Svensk destinationsmoms kan justera slutsumman i checkout. **52,52 € är därför en stark snapshot, inte en garanterad landad totalsumma.**
+### 2. Allegro — 3 × exakt 16T drive pulley
 
-Detta ersätter LaskaKit + separat Allegro helt.
+LaskaKit saknar aktuell **16T / 5 mm bore / 10 mm belt**-variant. Aktiv kandidat:
 
-### 2. DigiKey — elektronik + lager + kablage
+- 3 × `16T W10 B5 WZ`
+- GT2 / 2 mm pitch
+- 16 tänder
+- 5 mm axelhål
+- för 10 mm rem
+- cirka 11 mm tandbana
+- 2 låsskruvar ingår
+- aktuell listning: **8,99 PLN/st**, 19 st visade
+
+Allegro stöder leverans till Sverige som plattform, men den exakta säljarens Sverige-frakt är **checkout-gated**. Köp endast om just denna order erbjuder Sverige och landad totalsumma är rimlig. Ändra inte spec för att slippa frakt.
+
+### 3. DigiKey — elektronik + lager + kablage
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -66,7 +78,7 @@ Livefakta:
 
 Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
 
-### 3. StepperOnline Germany — motorer
+### 4. StepperOnline Germany — motorer
 
 Köp:
 - 1 × fempack `5-17HS19-2004S1`
@@ -82,7 +94,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 4. VEVOR EU — router
+### 5. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -96,7 +108,7 @@ Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 5. 3DJake Sverige — PLA
+### 6. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -113,6 +125,12 @@ Live 2026-09-03:
 - EU-intern leverans, ingen importtull
 
 Köp inte 6 kg; behovet är cirka 2,7 kg.
+
+## Blockerad sourcingväg
+
+### Roboter-Bausatz — BLOCKED 2026-09-03
+
+Butikens fraktsida publicerar Sverige/14,99 €, men faktisk checkout saknar Sverige i landlistan. Amazon Pay accepterade den svenska adressen som identitet/adress men återgången till butiken gav uttryckligen **"Leveranser till den valda leveransadressen är inte möjliga."** Därmed är Roboter-Bausatz inte en användbar köpväg och ska inte provas igen utan att butiken ändrar checkouten.
 
 ## Lokalt / separat
 
@@ -142,21 +160,23 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderantal nu
 
 Kvarvarande huvudorder:
-1. Roboter-Bausatz
-2. DigiKey
-3. StepperOnline Germany
-4. VEVOR EU
-5. 3DJake
+1. LaskaKit
+2. Allegro 16T
+3. DigiKey
+4. StepperOnline Germany
+5. VEVOR EU
+6. 3DJake
 
 Elecrow är redan köpt. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
-1. StepperOnline Germany → Sverige-frakt.
-2. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-3. Roboter-Bausatz → svensk destinationsmoms + bekräfta qty 5 meterware.
-4. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+1. LaskaKit → svensk checkout/destinationsmoms; publicerad GLS Sverige-frakt 8,93 €.
+2. Allegro 16T → exakt Sverige-frakt för aktuell säljarlistning.
+3. StepperOnline Germany → Sverige-frakt.
+4. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
+5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
 
 3DJake PLA har ett komplett offentligt landat baselinepris: **559 kr**.
 
-Bred sourcingresearch är avslutad. Återöppna endast om någon av dessa checkout-gates fallerar.
+Bred sourcingresearch är avslutad utom där en konkret checkout-gate fallerar.

@@ -2,12 +2,15 @@
 
 ## 1. Beställningar — nu
 
-- [ ] Roboter-Bausatz-korg exakt enligt `PROCUREMENT.md`; kontrollera ~52,52 € snapshot, svensk destinationsmoms och qty 5 meterware
+- [ ] LaskaKit-korg enligt `PROCUREMENT.md`: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190033A`, 2× `LA190031`, 3× `LA190013B`; verifiera GLS Sverige och checkouttotal
+- [ ] Allegro: 3 × exakt `16T W10 B5 WZ`; köp bara om aktuell listning erbjuder Sverige-frakt till rimlig totalsumma
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
 - [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
 - [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
+
+**Roboter-Bausatz är blockerad:** svensk adress nekas även via Amazon Pay. Försök inte igen utan ändrad checkoutstatus.
 
 ## 2. Lokalt / fysiskt
 
@@ -48,6 +51,7 @@
 - [ ] montera gantry/Y/Z
 - [ ] kapa T8 efter verklig assembly-check, cirka 150–160 mm ×2
 - [ ] kontrollera lätt Z-rörelse utan binding
+- [ ] kapa de tre remmarna först när routing verifierats; målsegment 999 / 1705 / 1705 mm
 - [ ] montera 16T/rem/idlers
 - [ ] montera VEVOR i 65 mm mount
 - [ ] provpassa Elaire-collet
