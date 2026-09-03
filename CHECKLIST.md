@@ -3,14 +3,14 @@
 ## 1. Beställningar — nu
 
 - [ ] LaskaKit: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190033A`, 2× `LA190031`, 1× `LA190013C`; välj Sverige och verifiera faktisk checkout innan betalning
-- [ ] HomeDIYer: 3 × drive pulley med **Tooth 16T / Bore 5mm / 10mm belt**; verifiera svensk adress i checkout trots att shipping policy uttryckligen listar Sverige
+- [ ] DMW Industrietechnik/eBay.de item `124891176610`: välj **Synchronriemenscheibe / 10mm / 5mm / Z 16**, antal 3; använd **Als Gast kaufen** och verifiera svensk adress innan betalning
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
 - [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
 - [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
-**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. Försök inte igen utan ändrad checkoutstatus.**
+**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. HomeDIYer/USA är inte aktivt; mekanikens webborders ska hållas inom EU.**
 
 ## 2. Lokalt / fysiskt
 
