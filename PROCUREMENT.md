@@ -22,40 +22,42 @@ Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
 ## Beställ nu
 
-### 1. LaskaKit — mekanikkärna
+### 1. Allegro — konsoliderad mekanik, två säljare
 
-Roboter-Bausatz är **BLOCKED** för Sverige; se `SOURCING.md`. Aktiv ersättare för fem av sex mekanikrader är LaskaKit.
+Roboter-Bausatz är blockerad för Sverige. LaskaKit behövs inte som separat huvudorder om båda Allegro-säljarna faktiskt erbjuder Sverige i checkout.
+
+#### Säljare A: `4Makers_pl`
 
 Köp exakt:
 
 | Rad | Antal | Pris-snapshot | Delsumma |
 |---|---:|---:|---:|
-| `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt | 6 | 1,86 € | 11,16 € |
-| `LA190032A` T8×8 400 mm stainless rod, **utan mutter** | 1 | 8,19 € | 8,19 € |
-| `LA190033A` T8×8 brass nut | 2 | 1,31 € | 2,62 € |
-| `LA190031` flexible coupling 5→8 mm | 2 | 1,83 € | 3,66 € |
-| `LA190013B` GT2 2 m × 10 mm fiberglass belt | 3 | 4,85 € | 14,55 € |
+| smooth GT2 idler, 10 mm belt / 5 mm shaft, `KSG1020T` | 6 | 7,99 PLN | 47,94 PLN |
+| GT2 10 mm fiberglass belt, 1 m listing, `GT210WS1M` | 5 m | 13,00 PLN/m | 65,00 PLN |
+| GT2 drive pulley 16T / 5 mm shaft / 10 mm belt | 3 | 6,90 PLN | 20,70 PLN |
+| flexible aluminium coupling 5×8 mm, `SPE5X8` | 2 | 6,25 PLN | 12,50 PLN |
+| standard brass Tr8×8 nut, `NAKMOS8LSC` | 1 | 4,29 PLN | 4,29 PLN |
 
-**Varor snapshot: 40,18 €. Publicerad GLS-frakt till Sverige: 8,93 €. Baseline före eventuell destinationsmomsjustering: 49,11 €. Checkout är facit.**
+**4Makers goods subtotal: 150,43 PLN.**
 
-Varför 3 × 2 m rem: maskinen behöver tre segment om **999 / 1705 / 1705 mm**. Varje segment ryms på en egen 2 m-rulle och lämnar totalt cirka 1,59 m reserv. Den exakta 5 m-rullen `LA190013C` är just nu slutsåld och ska inte blockera bygget.
+Remannonsen säger uttryckligen att flera köpta meter levereras som **ett sammanhängande stycke**; qty 5 ska därför ge 5 m i ett stycke. Det är idealiskt för våra segment **999 / 1705 / 1705 mm**.
 
-### 2. Allegro — 3 × exakt 16T drive pulley
+#### Säljare B: `Zadar-Sklep`
 
-LaskaKit saknar aktuell **16T / 5 mm bore / 10 mm belt**-variant. Aktiv kandidat:
+Köp:
+- 1 × **T8×8 400 mm, 8 mm diameter, 4-start / 8 mm lead + brass nut**
+- snapshot: **29,50 PLN**
+- offer/listing: `8954932033`
 
-- 3 × `16T W10 B5 WZ`
-- GT2 / 2 mm pitch
-- 16 tänder
-- 5 mm axelhål
-- för 10 mm rem
-- cirka 11 mm tandbana
-- 2 låsskruvar ingår
-- aktuell listning: **8,99 PLN/st**, 19 st visade
+Viktigt: denna rad **innehåller redan en mutter**. Därför köps bara **1 extra Tr8×8-mutter** från 4Makers. Totalt blir det exakt två muttrar, inte tre.
 
-Allegro stöder leverans till Sverige som plattform, men den exakta säljarens Sverige-frakt är **checkout-gated**. Köp endast om just denna order erbjuder Sverige och landad totalsumma är rimlig. Ändra inte spec för att slippa frakt.
+**Allegro goods total före frakt: 179,93 PLN.**
 
-### 3. DigiKey — elektronik + lager + kablage
+Allegro-plattformen stöder DPD/DHL till Sverige, men varje säljare måste ha Sverige aktiverat. **Checkout för båda säljarna är därför gate.** Samma Allegro-korg betyder inte nödvändigtvis samma paket eller en enda fraktavgift.
+
+Om båda säljarna erbjuder Sverige till rimlig total: köp och stäng mekanikkorgen. Om en av dem blockerar Sverige byter vi endast den blockerade raden/säljaren; specs ändras inte. LaskaKit är fallback, inte aktiv huvudorder.
+
+### 2. DigiKey — elektronik + lager + kablage
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -78,7 +80,7 @@ Livefakta:
 
 Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
 
-### 4. StepperOnline Germany — motorer
+### 3. StepperOnline Germany — motorer
 
 Köp:
 - 1 × fempack `5-17HS19-2004S1`
@@ -94,7 +96,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 5. VEVOR EU — router
+### 4. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -108,7 +110,7 @@ Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 6. 3DJake Sverige — PLA
+### 5. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -126,11 +128,15 @@ Live 2026-09-03:
 
 Köp inte 6 kg; behovet är cirka 2,7 kg.
 
-## Blockerad sourcingväg
+## Blockerade / fallback sourcingvägar
 
 ### Roboter-Bausatz — BLOCKED 2026-09-03
 
-Butikens fraktsida publicerar Sverige/14,99 €, men faktisk checkout saknar Sverige i landlistan. Amazon Pay accepterade den svenska adressen som identitet/adress men återgången till butiken gav uttryckligen **"Leveranser till den valda leveransadressen är inte möjliga."** Därmed är Roboter-Bausatz inte en användbar köpväg och ska inte provas igen utan att butiken ändrar checkouten.
+Butikens fraktsida publicerar Sverige/14,99 €, men faktisk checkout saknar Sverige i landlistan. Amazon Pay accepterade den svenska adressen som identitet/adress men återgången till butiken gav uttryckligen **"Leveranser till den valda leveransadressen är inte möjliga."** Därmed är Roboter-Bausatz inte en användbar köpväg.
+
+### LaskaKit — FALLBACK
+
+LaskaKit har tekniskt korrekta idlers/T8/nuts/couplers och 2 m 10 mm fiberglass-rem samt publicerad Sverige-frakt. Behåll endast som fallback om någon konkret Allegro-rad inte kan checkas ut till Sverige. Skapa inte en separat LaskaKit-order bara av gammal planvana.
 
 ## Lokalt / separat
 
@@ -157,22 +163,23 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 `L1S.M.0317` är fortsatt tekniskt bra commissioning-fräs, men separat order är **DEFER**. Köp när första fräsjobbet närmar sig och kombinera med de fräsar som då faktiskt behövs.
 
-## Orderantal nu
+## Orderarkitektur nu
 
-Kvarvarande huvudorder:
-1. LaskaKit
-2. Allegro 16T
-3. DigiKey
-4. StepperOnline Germany
-5. VEVOR EU
-6. 3DJake
+Kvarvarande huvudplattformar:
+1. Allegro — mekanik, **2 säljare / sannolikt 2 försändelser**
+2. DigiKey
+3. StepperOnline Germany
+4. VEVOR EU
+5. 3DJake
 
 Elecrow är redan köpt. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
+Detta tar bort LaskaKit som egen huvudorder. Allegro är dock inte ärligt en enda fysisk leverans eftersom mekaniken kommer från två säljare.
+
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
-1. LaskaKit → svensk checkout/destinationsmoms; publicerad GLS Sverige-frakt 8,93 €.
-2. Allegro 16T → exakt Sverige-frakt för aktuell säljarlistning.
+1. Allegro `4Makers_pl` → Sverige måste erbjudas; läs faktisk frakt och kontrollera 5 m sammanhängande rem.
+2. Allegro `Zadar-Sklep` → Sverige måste erbjudas; läs faktisk frakt.
 3. StepperOnline Germany → Sverige-frakt.
 4. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
 5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.

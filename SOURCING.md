@@ -9,34 +9,84 @@ Roboter-Bausatz hade rätt delar och publicerade en Sverige-frakt på 14,99 €,
 - Amazon Pay kunde läsa den svenska adressen.
 - efter återgång till handlaren svarade checkouten: **"Leveranser till den valda leveransadressen är inte möjliga."**
 
-Det publicerade fraktpriset är alltså inte tillräckligt bevis för faktisk svensk leverans. Roboter-Bausatz är borttaget som aktiv källa tills deras checkout ändras.
+Det publicerade fraktpriset är alltså inte tillräckligt bevis för faktisk svensk leverans.
 
-## LaskaKit — aktiv mekanikkärna
+## Allegro — aktiv konsoliderad mekanikväg
 
-LaskaKit publicerar **GLS Sweden 8,93 €** och har en verklig internationell frakttabell med Sverige.
+Målet är nu att slippa separat LaskaKit-order. Allegro har officiell DPD/DHL-infrastruktur från Polen till Sverige, men **säljaren måste själv ha Sverige aktiverat**, så checkout är fortfarande facit.
 
-Aktiva rader:
-- `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt — aktuell kontroll visar gott lager.
-- `LA190032A` T8×8 400 mm, stainless 304, 4-start / 8 mm lead — mutter ingår uttryckligen inte.
-- `LA190033A` T8×8 brass nut — köp 2.
-- `LA190031` flexible coupling 5×8 mm — köp 2.
-- `LA190013B` GT2 2 m × 10 mm fiberglass — köp 3.
+### `4Makers_pl` — fem mekanikrader hos samma säljare
 
-Den tidigare perfekta 5 m-rullen `LA190013C` är nu **slutsåld**. Tre 2 m-rullar är ändå mekaniskt rena eftersom våra tre remsegment är 999 / 1705 / 1705 mm och därför kan tas ett per rulle utan skarv.
+Verifierat 2026-09-03:
 
-## 16T drive pulleys — Allegro checkout-gate
+- **Smooth idler:** `KOŁO SWOBODNE GŁADKIE GT2 10mm WAŁEK 5mm JAK 20T`
+  - producer code `KSG1020T`
+  - 10 mm GT2 belt
+  - 5 mm shaft/bore
+  - 7,99 PLN/st
+  - offer `10997887930`
+  - köp 6
 
-LaskaKit har inte aktuell 16T-variant för 10 mm rem. Exakt aktuell kandidat på Allegro:
-- tillverkarkod/listningskod `16T W10 B5 WZ`
-- GT2 2 mm pitch
-- 16T
-- 5 mm bore
-- 10 mm belt
-- ca 11 mm tooth track
-- två låsskruvar
-- 8,99 PLN/st vid kontroll, 19 st visade
+- **Drive pulley:** `KOŁO NAPĘDOWE PASKA GT2 10mm WAŁEK 5mm ZĘBY 16T`
+  - GT2
+  - 16T
+  - 5 mm shaft
+  - 10 mm belt
+  - aktuell 4Makers-listning 6,90 PLN/st
+  - köp 3
 
-Allegro har internationell leveransinfrastruktur till Sverige, men exakt säljarerbjudande måste bekräfta Sverige i checkout. Specen är låst även om säljaren behöver bytas.
+- **Belt:** `PASEK ZĘBATY GT2 10mm RDZEŃ WŁÓKNO SZKLANE - 1m`
+  - producer code `GT210WS1M`
+  - pitch 2 mm
+  - width 10 mm
+  - fiberglass core
+  - 13,00 PLN/m
+  - offer `11895522331`
+  - annonsen säger att flera köpta meter levereras som **ett helt sammanhängande stycke**
+  - köp qty 5 = 5 m
+
+- **Coupler:** `SPRZĘGŁO ALUMINIOWE ELASTYCZNE 5x8mm`
+  - producer code `SPE5X8`
+  - 5 mm ↔ 8 mm
+  - 6,25 PLN/st
+  - offer `10997503256`
+  - köp 2
+
+- **Extra T8 nut:** `ŚCIĘTA NAKRĘTKA MOSIĘŻNA ŚRUBY TRAPEZOWEJ TR8x8`
+  - producer code `NAKMOS8LSC`
+  - brass
+  - Tr8×8, 8 mm lead, 4-start
+  - 4,29 PLN
+  - offer `17192910503`
+  - köp **1**, inte 2
+
+4Makers-varor totalt: **150,43 PLN**.
+
+### `Zadar-Sklep` — T8-spindel + första muttern
+
+Verifierad aktuell Allegro-listning:
+- `Śruba trapezowa 8mm skok 8mm 400mm + nakrętka`
+- diameter 8 mm
+- 4 starts
+- lead 8 mm
+- length 400 mm
+- **mutter ingår**
+- 29,50 PLN
+- offer `8954932033`
+
+Detta är varför 4Makers-korgen bara ska innehålla **en extra mutter**. Tidigare två-extra-mutter-tanke hade gett tre muttrar totalt och är borttagen.
+
+### Allegro-fraktgräns
+
+Allegro stöder officiellt DPD och DHL från Polen till Sverige. DPD:s publicerade maximala säljarpris till Sverige är 56,99 PLN, men säljaren kan sätta lägre pris. Detta är **inte** ett löfte om att just `4Makers_pl` eller `Zadar-Sklep` har Sverige aktiverat.
+
+Köpvägen godkänns först när båda säljarna visas med svensk leverans i faktisk checkout. Samma Allegro-plattform innebär inte automatiskt samma försändelse eller gemensam fraktavgift.
+
+## LaskaKit — FALLBACK
+
+LaskaKit publicerar GLS Sweden och har tekniskt korrekta alternativ för smooth idlers, T8×8, muttrar, 5×8 couplers och 10 mm fiberglass-rem. Det är nu fallback, inte aktiv huvudorder.
+
+Använd LaskaKit endast för den rad som eventuellt fallerar i Allegro-checkout; skapa inte hela LaskaKit-korgen om Allegro håller.
 
 ## DigiKey
 
@@ -83,6 +133,7 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 ## Inte aktiva sourcingvägar
 
 - Roboter-Bausatz — svensk checkout blockerar leverans trots publicerad Sverige-frakt
+- LaskaKit full mekanikkorg — nu fallback om en Allegro-rad fallerar
 - Technobots GT2 — endast historisk fallback
 - separat KEDU/CEM-specialorder — inte baseline
 - Sorotec — deferred tills verkligt fräsbehov

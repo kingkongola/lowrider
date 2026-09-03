@@ -10,7 +10,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - HaWiWe-order: **betald 1 853 kr och skickad**. Ordervaluta 165,50 € inkl frakt. Innehåll: 6,0 mm XZ-plattor, 4 × MGN12H 150 mm, LR4 screw set och Makita/Elaire 1/8" collet.
 - Controller: **Elecrow Jackpot3 `CQA240812C2` är köpt**, faktisk debitering **937 kr** inklusive DDP Economy.
 - Faktiskt betalt hittills: **2 790 kr**. Se `COSTS.md`.
-- Mekanikinköp: **Roboter-Bausatz är blockerad för svensk leverans i faktisk checkout**. Aktiv ersättare är LaskaKit för idlers/T8/nuts/couplers/3×2 m rem + separat exakt 16T-köp enligt `PROCUREMENT.md`.
+- Mekanikinköp: Roboter-Bausatz är blockerad. Aktiv Pareto-väg är nu **Allegro**, huvudsakligen `4Makers_pl` plus en T8×8 400 mm-rad från `Zadar-Sklep`. Det tar bort LaskaKit som separat huvudorder; se `PROCUREMENT.md`.
 - Printer: **Bambu Lab P1S**; alla diameterberoende LR4-printar ska vara **30 mm-variant**, tool mount **Makita/65 mm**.
 - Router: **VEVOR 0700C**, 800 W, 65 mm.
 - Filament: **3 × 1 kg eSUN PLA Basic Black 1,75 mm från 3DJake** är aktuell pris-/lagerbaseline: 444 kr varor + 115 kr svensk standardfrakt = **559 kr**.
@@ -33,8 +33,8 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Aktuell arbetsordning
 
-1. Lägg LaskaKit-mekanikkorgen enligt `PROCUREMENT.md`; kontrollera svensk checkout.
-2. Checka ut exakt 3 × 16T / 5 mm / 10 mm på Allegro; om Sverige-frakten är orimlig byter vi endast säljare, inte spec.
+1. Bygg Allegro-korgen enligt `PROCUREMENT.md`: `4Makers_pl` + `Zadar-Sklep`; verifiera att **båda** erbjuder Sverige och notera faktisk frakt innan betalning.
+2. Om någon Allegro-säljare blockerar Sverige: ersätt bara den raden via fallback, inte hela planen.
 3. Lägg resterande huvudorder: DigiKey, StepperOnline Germany, VEVOR EU och 3DJake PLA. **Jackpot3 är redan köpt.**
 4. Köp Motonet-rör först efter fysisk OD-/rakhetskontroll.
 5. Hitta begagnat bord och gör rackingtest.

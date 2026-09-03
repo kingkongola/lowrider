@@ -61,3 +61,14 @@
 - faktisk bankdebitering **937 kr**.
 - faktisk spenderad projektsumma hittills: **2 790 kr**.
 - `COSTS.md` skapades som kanonisk ledger; SEK-debitering är facit framåt.
+
+## 2026-09-03 — Roboter-blockering och Allegro-konsolidering
+
+- Roboter-Bausatz nekade faktisk svensk leverans även efter Amazon Pay-adressöverföring; publicerad Sverige-frakt bedöms stale/otillräcklig och vägen stängdes.
+- En kort LaskaKit + separat 16T-plan skapades som fallback.
+- Ny kontroll visade att `4Makers_pl` på Allegro har fem av sex exakta mekanikrader: smooth idlers, 10 mm fiberglass GT2-rem, 16T/5 mm/10 mm drive pulleys, 5×8 couplers och Tr8×8 brass nut.
+- 5 m-remmen kan köpas som qty 5 av 1 m-annonsen och säljaren anger sammanhängande stycke.
+- Exakt T8×8 400 mm + brass nut finns hos `Zadar-Sklep` på samma Allegro-plattform.
+- Eftersom spindelraden redan innehåller en mutter korrigerades mekanikkorgen till **bara en extra mutter** från 4Makers.
+- Allegro-varor före frakt: **179,93 PLN** totalt över två säljare.
+- LaskaKit flyttades från aktiv huvudorder till fallback. Allegro är en plattform men två säljare innebär sannolikt två försändelser; svensk leverans måste verifieras per säljare i checkout.
