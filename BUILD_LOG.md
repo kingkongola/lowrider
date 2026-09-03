@@ -70,7 +70,14 @@
 
 - LaskaKits egen fraktsida listar explicit **GLS Sweden 8,93 €**.
 - `LA190008E`, `LA190032A`, `LA190033A` och `LA190031` är rätt mekanikspecer.
-- Den tidigare slutsålda 5 m-rullen `LA190013C` är nu tillbaka i lager, vilket gör 1 × 5 m bättre än 3 × 2 m.
+- Den tidigare slutsålda 5 m-rullen `LA190013C` visades åter i lager i det nyare kategoriindexet, vilket gör 1 × 5 m bättre än 3 × 2 m om faktisk korg bekräftar lager.
 - LaskaKit saknar fortfarande exakt 16T / 5 mm / 10 mm drive pulley.
-- HomeDIYer har en produktfamilj med exakt 16T / 5 mm / 10 mm och deras egen shipping policy listar Sverige med standardfrakt 10–20 arbetsdagar.
-- Efter Roboter/Allegro gäller ändå samma gate: svensk adress måste accepteras i faktisk checkout innan köp.
+- Ett kort icke-EU-spår via HomeDIYer noterades, men det ersattes innan köp.
+
+## 2026-09-03 — mekanikköp hålls inom EU
+
+- Icke-EU-spåret HomeDIYer stängdes utan köp.
+- Exakt **GT2 16T / 5 mm bore / 10 mm belt** hittades hos **DMW Industrietechnik i Sindelfingen, Tyskland**, eBay item `124891176610`.
+- Listningen har valbara `Synchronriemenscheibe / 10mm / 5mm / Z 16`, visar >10 tillgängliga och erbjuder gästcheckout.
+- DMW:s säljarfrakt anges som Warenpost International Premium och säljarens detaljerade fraktscope som **Europa**. Svensk adress i faktisk gästcheckout är fortfarande köp-gate.
+- Aktiv mekanikarkitektur är därför **två EU-order**: LaskaKit (Tjeckien) + DMW Industrietechnik (Tyskland), grovt cirka 62 € inklusive publicerade frakter före checkoutjustering.
