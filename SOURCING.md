@@ -2,96 +2,50 @@
 
 **Snapshot 2026-09-03.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför de aktiva köpvägarna är valda och ska inte skapa alternativa BOM-rader. Faktisk kostnad finns i `COSTS.md`.
 
-## Roboter-Bausatz — BLOCKED
+## Checkout-regel efter två falska positiva
 
-Roboter-Bausatz hade rätt delar och publicerade en Sverige-frakt på 14,99 €, men köpvägen fallerade i faktisk checkout 2026-09-03:
-- Sverige saknades i butikens manuella landlista.
-- Amazon Pay kunde läsa den svenska adressen.
-- efter återgång till handlaren svarade checkouten: **"Leveranser till den valda leveransadressen är inte möjliga."**
+**En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk endast när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
 
-Det publicerade fraktpriset är alltså inte tillräckligt bevis för faktisk svensk leverans.
+## LaskaKit — ACTIVE mekanikkärna
 
-## Allegro — aktiv konsoliderad mekanikväg
-
-Målet är att slippa separat LaskaKit-order. Allegro har officiell DPD/DHL-infrastruktur från Polen till Sverige, men **säljaren måste själv ha Sverige aktiverat**, så checkout är fortfarande facit.
-
-### `4Makers_pl` — fem mekanikrader hos samma säljare
+Direktbutikens aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**.
 
 Verifierat 2026-09-03:
+- `LA190008E` smooth GT2 idler, 5 mm bearing, för 10 mm belt — i lager; köp 6.
+- `LA190032A` T8×8 400 mm — 8 mm lead, 4-start, stainless 304 — i lager; köp 1.
+- `LA190033A` T8×8 brass nut — rätt Tr8×8 — köp 2.
+- `LA190031` flexible coupling 5×8 mm — i lager; köp 2.
+- `LA190013C` GT2 5 m × 10 mm fiberglass — **i lager igen**; köp 1.
 
-- **Smooth idler:** `KOŁO SWOBODNE GŁADKIE GT2 10mm WAŁEK 5mm JAK 20T`
-  - producer code `KSG1020T`
-  - 10 mm GT2 belt
-  - 5 mm shaft/bore
-  - 7,99 PLN/st
-  - offer `10997887930`
-  - köp 6
+5 m-remmen är optimal: behovet är 999 + 1705 + 1705 = 4409 mm, vilket lämnar cirka 591 mm total marginal.
 
-- **Drive pulley:** `KOŁO NAPĘDOWE PASKA GT2 10mm WAŁEK 5mm ZĘBY 16T`
-  - GT2
-  - 16T
-  - 5 mm shaft
-  - 10 mm belt
-  - aktuell 4Makers-listning 6,90 PLN/st
-  - köp 3
+LaskaKit har inte vår drive pulley: deras aktuella 16T/5mm är för **6 mm belt**, medan 10 mm-varianterna är 20T. Ändra inte 16T-specen.
 
-- **Belt:** `PASEK ZĘBATY GT2 10mm RDZEŃ WŁÓKNO SZKLANE - 1m`
-  - producer code `GT210WS1M`
-  - pitch 2 mm
-  - width 10 mm
-  - fiberglass core
-  - 13,00 PLN/m
-  - offer `11895522331`
-  - annonsen säger att flera köpta meter levereras som **ett helt sammanhängande stycke**
-  - köp qty 5 = 5 m
+## HomeDIYer — ACTIVE 16T-källa, checkout-gated
 
-- **Coupler:** `SPRZĘGŁO ALUMINIOWE ELASTYCZNE 5x8mm`
-  - producer code `SPE5X8`
-  - 5 mm ↔ 8 mm
-  - 6,25 PLN/st
-  - offer `10997503256`
-  - köp 2
+Exakt produktfamilj verifierad:
+- `20T/16T GT2 Gear 5mm/6.35mm/8mm Pulley Aluminum for 3D Printer 10mm Timing Belt`
+- GT2 / 2 mm pitch
+- välj 16T
+- välj 5 mm bore
+- kompatibel med 10 mm belt
+- aluminium
+- set screw(s)
+- lager visas på produktsidan
 
-- **Extra T8 nut:** vanlig 4-håls `NAKRĘTKA MOSIĘŻNA ŚRUBY TRAPEZOWEJ TR8x8`
-  - producer code `NAKMOS8L`
-  - brass
-  - Tr8×8 / 8 mm lead / 4-start
-  - 4,29 PLN i aktuell korg
-  - köp **1**, inte 2
+HomeDIYers egen shipping policy listar uttryckligen **Sweden: Standard shipping (10–20 business days), Free Shipping** och anger VAT för EU-order.
 
-4Makers-varor totalt: **150,43 PLN**.
+Detta är starkare evidens än Allegro-plattformsfrakt, men efter tidigare missar är svensk adress i faktisk checkout fortfarande obligatorisk gate före köp. Exakt 16T/5mm-variantpris ska läsas efter variantval; defaultpriset för 20T ska inte användas som facit.
 
-Riktad sökning genom 4Makers aktuella Allegro-utbud hittar **Tr8×8-muttrar men ingen korrekt Tr8×8-spindel**. Den 400 mm-spindel som faktiskt lades i användarens 4Makers-korg är märkt **TR8X2**, alltså 2 mm lead, och dessutom **"Nowy z defektem"**. Den ska tas bort och får inte användas som substitut.
+## Roboter-Bausatz — BLOCKED
 
-### `ABC-RC_pl` — exakt T8×8-spindel + första muttern
+Roboter-Bausatz hade rätt delar och publicerade Sverige-frakt, men faktisk checkout 2026-09-03 nekade svensk adress även efter Amazon Pay-adressöverföring. Vägen är stängd.
 
-Aktuell verifierad Allegro-listning:
-- `Śruba Trapezowa T8x8 400mm - Nakrętka z Brązu THSL-400-8D`
-- offer `17625893658`
-- product code `THSL-400-8D` / 8605
-- diameter 8 mm
-- 4 starts
-- lead 8 mm
-- length 400 mm
-- **bronsmutter ingår**
-- skick `Nowy`, vilket Allegro definierar som ny utan fel/defekter
-- aktuell offer-snapshot 19,58 PLN, 95 st visade
+## Allegro — BLOCKED
 
-Detta matchar den låsta LR4-specen exakt. 400 mm räcker eftersom bygget kapar två slutliga Z-spindlar om cirka 150–160 mm vardera efter assembly-check.
+Allegro-korgen med `4Makers_pl` + `ABC-RC_pl` visade en till synes komplett order och frakt, men efter inloggning/adressval nekade båda säljarna leverans till Sverige. Detta bevisar att plattformens generella Sverige-stöd och korgfrakt inte är tillräcklig evidens.
 
-Detta är varför 4Makers-korgen bara ska innehålla **en extra mutter**. Totalt blir det två muttrar.
-
-### Allegro-fraktgräns
-
-Allegro stöder officiellt DPD och DHL från Polen till Sverige. Säljarna måste dock själva ha Sverige aktiverat.
-
-Köpvägen godkänns först när både `4Makers_pl` och `ABC-RC_pl` visas med svensk leverans i faktisk checkout. Samma Allegro-plattform innebär inte automatiskt samma försändelse eller gemensam fraktavgift.
-
-## LaskaKit — FALLBACK
-
-LaskaKit publicerar GLS Sweden och har tekniskt korrekta alternativ för smooth idlers, T8×8, muttrar, 5×8 couplers och 10 mm fiberglass-rem. Det är nu fallback, inte aktiv huvudorder.
-
-Använd LaskaKit endast för den rad som eventuellt fallerar i Allegro-checkout; skapa inte hela LaskaKit-korgen om Allegro håller.
+Historiska Allegro-rader får finnas i `BUILD_LOG.md`, men ska inte återaktiveras utan faktisk svensk seller-checkout.
 
 ## DigiKey
 
@@ -125,25 +79,25 @@ Exakt `0700C`, SKU `YXKXBJ710W65AH7WLV2`, 220–240 V / 50 Hz / 800 W / 65 mm. E
 
 ## PLA
 
-Aktiv väg 2026-09-03: 3DJake Sverige, **eSUN PLA Basic Black 1,75 mm / 1 kg**. 148 kr/st, 2 979 i lager i aktuell kontroll. Tre spolar = 444 kr; standardfrakt Sverige 115 kr under 1 099 kr; baseline landat **559 kr**. Detta ersätter tidigare SUNLU/3D Prima/Amazon-öppna spår.
+Aktiv väg 2026-09-03: 3DJake Sverige, **eSUN PLA Basic Black 1,75 mm / 1 kg**. 148 kr/st, 2 979 i lager i aktuell kontroll. Tre spolar = 444 kr; standardfrakt Sverige 115 kr under 1 099 kr; baseline landat **559 kr**.
 
 ## Motonet
 
-Rörspår: 2 × `88-7123`, Ø30 mm, 2 m. Historisk produktidentifiering är stark, men själva köpet är fysisk: mät OD/rakhet innan köp och kapning. Aktuellt webblager/pris är inte tillräckligt robust verifierat och ska därför inte anges som faktum.
+Rörspår: 2 × `88-7123`, Ø30 mm, 2 m. Själva köpet är fysisk: mät OD/rakhet innan köp och kapning.
 
 ## NVR
 
-KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 V, har lämplig märkström, dokumenterat schema och no-voltage-release. Clas Ohlson `50-2929`, KJD12 230 V/10 A, 299 kr är enkel aktuell kandidat. Exakt KEDU-proveniens är inte ett mål i sig.
+KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 V, har lämplig märkström, dokumenterat schema och no-voltage-release. Clas Ohlson `50-2929`, KJD12 230 V/10 A, 299 kr är enkel aktuell kandidat.
 
 ## Inte aktiva sourcingvägar
 
-- Roboter-Bausatz — svensk checkout blockerar leverans trots publicerad Sverige-frakt
-- 4Makers `TR8X2 400MM` — fel lead och dessutom listad som ny med defekt
-- Zadar-Sklep `8954932033` — tidigare kandidat borttagen när defektstatus upptäcktes
-- LaskaKit full mekanikkorg — fallback om en Allegro-rad fallerar
-- Technobots GT2 — endast historisk fallback
-- separat KEDU/CEM-specialorder — inte baseline
-- Sorotec — deferred tills verkligt fräsbehov
-- SUNLU 6 kg — borttaget; behovet är 3 kg
-- 3D Prima PLA — ersatt av billigare komplett landad 3DJake-baseline
-- Jackpot2 — historiskt controlleralternativ; Jackpot3 är redan köpt
+- Roboter-Bausatz — svensk checkout blockerar leverans.
+- Allegro `4Makers_pl` / `ABC-RC_pl` — faktisk seller-checkout blockerar Sverige.
+- Hellas Digital 16T — exakt komponent finns, men svensk leverans är inte explicit verifierad; fallback research, inte aktiv väg.
+- Amazon-indexerade 16T-alternativ — Sverigeleverans inte verifierad; inte aktiv väg.
+- Technobots GT2 — endast historisk fallback.
+- separat KEDU/CEM-specialorder — inte baseline.
+- Sorotec — deferred tills verkligt fräsbehov.
+- SUNLU 6 kg — borttaget; behovet är 3 kg.
+- 3D Prima PLA — ersatt av billigare komplett landad 3DJake-baseline.
+- Jackpot2 — historiskt controlleralternativ; Jackpot3 är redan köpt.

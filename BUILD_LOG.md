@@ -40,16 +40,13 @@
 ## 2026-09-03 — HaWiWe skickat + full repo reconciliation
 
 - HaWiWe har skickat den redan betalda ordern.
-- Hela top-level-repot reconcilerades eftersom äldre `BOM/CHECKLIST/SOURCING/AUDIT` fortfarande bar Jackpot3/LaskaKit/6 kg SUNLU/Allegro/KEDU-specialorder trots nyare beslut.
+- Hela top-level-repot reconcilerades eftersom äldre `BOM/CHECKLIST/SOURCING/AUDIT` fortfarande bar gamla sourcing-/controller-val trots nyare beslut.
 - En tydlig kanonisk hierarki infördes: `PROCUREMENT.md` är enda ordermatrisen; BOM innehåller specs/kvantiteter; sourcing innehåller evidens; audit innehåller fysiska gates.
-- Roboter-Bausatz-korgen liveverifierades: alla sex artikeltyper tillgängliga; 37,53 € varor + 14,99 € publicerad Sverige-frakt = 52,52 € butikssnapshot före eventuell svensk destinationsmomsjustering.
 - StepperOnline fempack `5-17HS19-2004S1` liveverifierades till 38,13 €, 200 i lager; Germany warehouse är aktivt EU-spår.
-- VEVOR 0700C exakt SKU liveverifierades köpbar; tysk storefront visade 63,99 €, men svensk checkout gjordes explicit till prisgate eftersom destinationsmomsen kan ändra summan. EU-fraktpolicy anger fri frakt för normalprodukt till Sverige.
-- DigiKey fri-fraktgräns Sverige verifierades till 615 kr; `HDR-60-24` och Digi-Spool-kablar har tillräckligt aktuellt lager.
-- Clas Ohlson KJD12 230 V/10 A verifierades till 299 kr som enkel NVR-kandidat; exakt KEDU-proveniens togs bort som krav.
-- Controllerköpet flyttades från teknisk Jackpot2-baseline till Elecrow Jackpot3 `CQA240812C2` som aktiv köpväg.
+- VEVOR 0700C exakt SKU liveverifierades köpbar; svensk checkout är prisgate.
+- DigiKey fri-fraktgräns Sverige verifierades till 615 kr.
+- Clas Ohlson KJD12 230 V/10 A verifierades till 299 kr som enkel NVR-kandidat.
 - PLA låstes till 3 × eSUN PLA Basic Black 1 kg från 3DJake: 148 kr/st, 444 kr varor + 115 kr svensk standardfrakt = 559 kr landat baseline.
-- Historiska val behölls endast som historik; aktiva filer säger nu samma sak.
 
 ## 2026-09-03 — verkliga kostnader + Jackpot3 köpt
 
@@ -62,13 +59,18 @@
 - faktisk spenderad projektsumma hittills: **2 790 kr**.
 - `COSTS.md` skapades som kanonisk ledger; SEK-debitering är facit framåt.
 
-## 2026-09-03 — Roboter-blockering och Allegro-konsolidering
+## 2026-09-03 — Roboter-blockering och Allegro-falsk positiv
 
-- Roboter-Bausatz nekade faktisk svensk leverans även efter Amazon Pay-adressöverföring; publicerad Sverige-frakt bedöms stale/otillräcklig och vägen stängdes.
-- En kort LaskaKit + separat 16T-plan skapades som fallback.
-- Ny kontroll visade att `4Makers_pl` på Allegro har fem av sex exakta mekanikrader: smooth idlers, 10 mm fiberglass GT2-rem, 16T/5 mm/10 mm drive pulleys, 5×8 couplers och Tr8×8 brass nut.
-- 5 m-remmen kan köpas som qty 5 av 1 m-annonsen och säljaren anger sammanhängande stycke.
-- Exakt T8×8 400 mm + brass nut finns hos `Zadar-Sklep` på samma Allegro-plattform.
-- Eftersom spindelraden redan innehåller en mutter korrigerades mekanikkorgen till **bara en extra mutter** från 4Makers.
-- Allegro-varor före frakt: **179,93 PLN** totalt över två säljare.
-- LaskaKit flyttades från aktiv huvudorder till fallback. Allegro är en plattform men två säljare innebär sannolikt två försändelser; svensk leverans måste verifieras per säljare i checkout.
+- Roboter-Bausatz nekade faktisk svensk leverans även efter Amazon Pay-adressöverföring; publicerad Sverige-frakt var inte tillräcklig evidens.
+- Allegro-korgen konsoliderades därefter till `4Makers_pl` + `ABC-RC_pl` och visade 191,88 PLN inklusive två frakter.
+- Efter inloggning och faktisk svensk adress visade det sig att **varken 4Makers_pl eller ABC-RC_pl levererar till Sverige**.
+- Allegro-spåret stängdes. Lärdom: plattformsfrakt/korgsumma räcker inte; faktisk seller-checkout med svensk adress är facit.
+
+## 2026-09-03 — mekanik flyttad till LaskaKit + HomeDIYer
+
+- LaskaKits egen fraktsida listar explicit **GLS Sweden 8,93 €**.
+- `LA190008E`, `LA190032A`, `LA190033A` och `LA190031` är rätt mekanikspecer.
+- Den tidigare slutsålda 5 m-rullen `LA190013C` är nu tillbaka i lager, vilket gör 1 × 5 m bättre än 3 × 2 m.
+- LaskaKit saknar fortfarande exakt 16T / 5 mm / 10 mm drive pulley.
+- HomeDIYer har en produktfamilj med exakt 16T / 5 mm / 10 mm och deras egen shipping policy listar Sverige med standardfrakt 10–20 arbetsdagar.
+- Efter Roboter/Allegro gäller ändå samma gate: svensk adress måste accepteras i faktisk checkout innan köp.

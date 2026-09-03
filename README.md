@@ -10,7 +10,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - HaWiWe-order: **betald 1 853 kr och skickad**. Ordervaluta 165,50 € inkl frakt. Innehåll: 6,0 mm XZ-plattor, 4 × MGN12H 150 mm, LR4 screw set och Makita/Elaire 1/8" collet.
 - Controller: **Elecrow Jackpot3 `CQA240812C2` är köpt**, faktisk debitering **937 kr** inklusive DDP Economy.
 - Faktiskt betalt hittills: **2 790 kr**. Se `COSTS.md`.
-- Mekanikinköp: Roboter-Bausatz är blockerad. Aktiv Pareto-väg är **Allegro**: nästan allt från `4Makers_pl`, men korrekt T8×8 400 mm + första muttern från `ABC-RC_pl`. 4Makers `TR8X2 400MM` är uttryckligen fel och ska bort ur korgen.
+- Mekanikinköp: **Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout.** Aktiv väg är LaskaKit för idlers/T8/muttrar/couplers/5 m GT2 och HomeDIYer för exakt 3 × 16T/5mm/10mm; se `PROCUREMENT.md`.
 - Printer: **Bambu Lab P1S**; alla diameterberoende LR4-printar ska vara **30 mm-variant**, tool mount **Makita/65 mm**.
 - Router: **VEVOR 0700C**, 800 W, 65 mm.
 - Filament: **3 × 1 kg eSUN PLA Basic Black 1,75 mm från 3DJake** är aktuell pris-/lagerbaseline: 444 kr varor + 115 kr svensk standardfrakt = **559 kr**.
@@ -33,8 +33,8 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Aktuell arbetsordning
 
-1. Bygg Allegro-korgen enligt `PROCUREMENT.md`: `4Makers_pl` + `ABC-RC_pl`; ta bort 4Makers `TR8X2 400MM`, verifiera att **båda** säljarna erbjuder Sverige och notera faktisk frakt innan betalning.
-2. Om ABC-RC blockerar Sverige: ersätt bara T8×8-raden via fallback, inte hela planen.
+1. Bygg LaskaKit-korgen enligt `PROCUREMENT.md`; välj Sverige i riktig checkout och stoppa om svensk adress inte accepteras.
+2. Lägg 3 × exakt 16T/5mm/10mm från HomeDIYer; välj den exakta varianten och stoppa om svensk adress inte accepteras.
 3. Lägg resterande huvudorder: DigiKey, StepperOnline Germany, VEVOR EU och 3DJake PLA. **Jackpot3 är redan köpt.**
 4. Köp Motonet-rör först efter fysisk OD-/rakhetskontroll.
 5. Hitta begagnat bord och gör rackingtest.

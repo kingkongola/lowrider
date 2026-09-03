@@ -43,13 +43,12 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — mekanik
 
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
-- [ ] 6 × smooth GT2 idler, 5 mm shaft/bore, för 10 mm rem; aktiv Allegro-kandidat 4Makers `KSG1020T`
-- [ ] 1 × T8×8 400 mm, 4-start / 8 mm lead + första muttern; aktiv Allegro-kandidat ABC-RC `THSL-400-8D`, offer `17625893658`
-- [ ] 1 × ytterligare standard T8×8 brass nut; aktiv Allegro-kandidat 4Makers `NAKMOS8L` — endast en extra eftersom ABC-RC-spindeln redan inkluderar den första
-- [ ] 2 × flexible coupler 5→8 mm; aktiv Allegro-kandidat 4Makers `SPE5X8`
-- [ ] 5 m GT2/2 mm, 10 mm, gummi + glasfiber, sammanhängande meterware; aktiv Allegro-kandidat 4Makers `GT210WS1M`
-- [ ] 3 × GT2 drive pulley **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**; aktiv 4Makers-listning
-- [ ] köp **inte** 4Makers `TR8X2 400MM`; den har 2 mm lead och är dessutom listad som ny med defekt
+- [ ] 6 × smooth GT2 idler, 5 mm hål/bearing, för 10 mm rem; aktiv LaskaKit `LA190008E`
+- [ ] 1 × T8×8 400 mm, 4-start / 8 mm lead; aktiv LaskaKit `LA190032A`
+- [ ] 2 × T8×8 brass nut; aktiv LaskaKit `LA190033A`
+- [ ] 2 × flexible coupler 5→8 mm; aktiv LaskaKit `LA190031`
+- [ ] 1 × 5 m GT2/2 mm, 10 mm, glasfiberförstärkt; aktiv LaskaKit `LA190013C`; kapa senare till 999 / 1705 / 1705 mm
+- [ ] 3 × GT2 drive pulley **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**, set screw-retention; aktiv HomeDIYer-variant enligt `PROCUREMENT.md`
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount

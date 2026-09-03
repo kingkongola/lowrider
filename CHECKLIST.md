@@ -2,17 +2,15 @@
 
 ## 1. Beställningar — nu
 
-- [ ] Allegro / `4Makers_pl`: 6× smooth idler `KSG1020T`, 5×1 m fiberglass GT2 `GT210WS1M`, 3× 16T/5mm/10mm drive pulley, 2× `SPE5X8`, 1× standard Tr8×8 brass nut `NAKMOS8L`; verifiera Sverige + faktisk frakt
-- [ ] **ta bort** 4Makers `TR8X2 400MM` ur korgen: fel 2 mm lead och dessutom märkt ny med defekt
-- [ ] Allegro / `ABC-RC_pl`: 1× `THSL-400-8D`, T8×8 400 mm + bronsmutter, offer `17625893658`; verifiera Sverige + faktisk frakt
-- [ ] innan betalning på Allegro: kontrollera att remraden är qty 5 och fortfarande säger sammanhängande stycke; kontrollera att det bara ligger **1 extra mutter** från 4Makers
+- [ ] LaskaKit: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190033A`, 2× `LA190031`, 1× `LA190013C`; välj Sverige och verifiera faktisk checkout innan betalning
+- [ ] HomeDIYer: 3 × drive pulley med **Tooth 16T / Bore 5mm / 10mm belt**; verifiera svensk adress i checkout trots att shipping policy uttryckligen listar Sverige
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
 - [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
 - [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
-**Roboter-Bausatz är blockerad. LaskaKit är fallback, inte en order vi lägger nu.**
+**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. Försök inte igen utan ändrad checkoutstatus.**
 
 ## 2. Lokalt / fysiskt
 
@@ -53,7 +51,7 @@
 - [ ] montera gantry/Y/Z
 - [ ] kapa T8 efter verklig assembly-check, cirka 150–160 mm ×2
 - [ ] kontrollera lätt Z-rörelse utan binding
-- [ ] kapa remmen först när routing verifierats; målsegment 999 / 1705 / 1705 mm
+- [ ] kapa 5 m-remmen först när routing verifierats; målsegment 999 / 1705 / 1705 mm
 - [ ] montera 16T/rem/idlers
 - [ ] montera VEVOR i 65 mm mount
 - [ ] provpassa Elaire-collet
