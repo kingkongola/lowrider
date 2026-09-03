@@ -21,6 +21,12 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] Jackpot3 CNC Controller `CQA240812C2`
 
+## Redan köpt — eBay / POWGE
+
+**Betald 2026-09-03: faktiskt debiterat 72 kr. Fri frakt och `Includes import fees` visades i eBay-checkout/listning.**
+
+- [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**, set-screw retention
+
 ## Redan ägt
 
 - [x] Bambu Lab P1S
@@ -48,7 +54,6 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [ ] 2 × T8×8 brass nut; aktiv LaskaKit `LA190033A`
 - [ ] 2 × flexible coupler 5→8 mm; aktiv LaskaKit `LA190031`
 - [ ] 1 × 5 m GT2/2 mm, 10 mm, glasfiberförstärkt; aktiv LaskaKit `LA190013C`; kapa senare till 999 / 1705 / 1705 mm
-- [ ] 3 × GT2 drive pulley **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**, set-screw retention; aktiv EU-kandidat DMW Industrietechnik/eBay.de item `124891176610`, välj `Synchronriemenscheibe / 10mm / 5mm / Z 16`
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
