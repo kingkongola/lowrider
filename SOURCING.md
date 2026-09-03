@@ -13,7 +13,7 @@ Det publicerade fraktpriset är alltså inte tillräckligt bevis för faktisk sv
 
 ## Allegro — aktiv konsoliderad mekanikväg
 
-Målet är nu att slippa separat LaskaKit-order. Allegro har officiell DPD/DHL-infrastruktur från Polen till Sverige, men **säljaren måste själv ha Sverige aktiverat**, så checkout är fortfarande facit.
+Målet är att slippa separat LaskaKit-order. Allegro har officiell DPD/DHL-infrastruktur från Polen till Sverige, men **säljaren måste själv ha Sverige aktiverat**, så checkout är fortfarande facit.
 
 ### `4Makers_pl` — fem mekanikrader hos samma säljare
 
@@ -52,35 +52,40 @@ Verifierat 2026-09-03:
   - offer `10997503256`
   - köp 2
 
-- **Extra T8 nut:** `ŚCIĘTA NAKRĘTKA MOSIĘŻNA ŚRUBY TRAPEZOWEJ TR8x8`
-  - producer code `NAKMOS8LSC`
+- **Extra T8 nut:** vanlig 4-håls `NAKRĘTKA MOSIĘŻNA ŚRUBY TRAPEZOWEJ TR8x8`
+  - producer code `NAKMOS8L`
   - brass
-  - Tr8×8, 8 mm lead, 4-start
-  - 4,29 PLN
-  - offer `17192910503`
+  - Tr8×8 / 8 mm lead / 4-start
+  - 4,29 PLN i aktuell korg
   - köp **1**, inte 2
 
 4Makers-varor totalt: **150,43 PLN**.
 
-### `Zadar-Sklep` — T8-spindel + första muttern
+Riktad sökning genom 4Makers aktuella Allegro-utbud hittar **Tr8×8-muttrar men ingen korrekt Tr8×8-spindel**. Den 400 mm-spindel som faktiskt lades i användarens 4Makers-korg är märkt **TR8X2**, alltså 2 mm lead, och dessutom **"Nowy z defektem"**. Den ska tas bort och får inte användas som substitut.
 
-Verifierad aktuell Allegro-listning:
-- `Śruba trapezowa 8mm skok 8mm 400mm + nakrętka`
+### `ABC-RC_pl` — exakt T8×8-spindel + första muttern
+
+Aktuell verifierad Allegro-listning:
+- `Śruba Trapezowa T8x8 400mm - Nakrętka z Brązu THSL-400-8D`
+- offer `17625893658`
+- product code `THSL-400-8D` / 8605
 - diameter 8 mm
 - 4 starts
 - lead 8 mm
 - length 400 mm
-- **mutter ingår**
-- 29,50 PLN
-- offer `8954932033`
+- **bronsmutter ingår**
+- skick `Nowy`, vilket Allegro definierar som ny utan fel/defekter
+- aktuell offer-snapshot 19,58 PLN, 95 st visade
 
-Detta är varför 4Makers-korgen bara ska innehålla **en extra mutter**. Tidigare två-extra-mutter-tanke hade gett tre muttrar totalt och är borttagen.
+Detta matchar den låsta LR4-specen exakt. 400 mm räcker eftersom bygget kapar två slutliga Z-spindlar om cirka 150–160 mm vardera efter assembly-check.
+
+Detta är varför 4Makers-korgen bara ska innehålla **en extra mutter**. Totalt blir det två muttrar.
 
 ### Allegro-fraktgräns
 
-Allegro stöder officiellt DPD och DHL från Polen till Sverige. DPD:s publicerade maximala säljarpris till Sverige är 56,99 PLN, men säljaren kan sätta lägre pris. Detta är **inte** ett löfte om att just `4Makers_pl` eller `Zadar-Sklep` har Sverige aktiverat.
+Allegro stöder officiellt DPD och DHL från Polen till Sverige. Säljarna måste dock själva ha Sverige aktiverat.
 
-Köpvägen godkänns först när båda säljarna visas med svensk leverans i faktisk checkout. Samma Allegro-plattform innebär inte automatiskt samma försändelse eller gemensam fraktavgift.
+Köpvägen godkänns först när både `4Makers_pl` och `ABC-RC_pl` visas med svensk leverans i faktisk checkout. Samma Allegro-plattform innebär inte automatiskt samma försändelse eller gemensam fraktavgift.
 
 ## LaskaKit — FALLBACK
 
@@ -133,7 +138,9 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 ## Inte aktiva sourcingvägar
 
 - Roboter-Bausatz — svensk checkout blockerar leverans trots publicerad Sverige-frakt
-- LaskaKit full mekanikkorg — nu fallback om en Allegro-rad fallerar
+- 4Makers `TR8X2 400MM` — fel lead och dessutom listad som ny med defekt
+- Zadar-Sklep `8954932033` — tidigare kandidat borttagen när defektstatus upptäcktes
+- LaskaKit full mekanikkorg — fallback om en Allegro-rad fallerar
 - Technobots GT2 — endast historisk fallback
 - separat KEDU/CEM-specialorder — inte baseline
 - Sorotec — deferred tills verkligt fräsbehov
