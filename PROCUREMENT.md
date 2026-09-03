@@ -29,8 +29,6 @@ Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 - listat leveransfönster vid köp: **17 sep – 7 okt 2026**
 - faktiskt debiterat: **72 kr**
 
-Den tidigare DMW-vägen behövs inte längre. eBay-spåret löste den svåraste mekanikraden billigare genom en Kina-säljare där eBay hanterade importavgifterna i köpet.
-
 ### LaskaKit, Tjeckien — CLOSED / ORDERED
 
 Köpt 2026-09-03:
@@ -45,8 +43,6 @@ Checkout:
 - total: **39,68 €**
 - faktiskt debiterat: **444 kr**
 
-De två T8×8-mässingsmuttrarna var slut hos LaskaKit och köptes därför separat på eBay nedan.
-
 ### eBay / HKGY01 — CLOSED / ORDERED
 
 Köpt 2026-09-03:
@@ -58,34 +54,34 @@ Köpt 2026-09-03:
 - listat leveransfönster: **9 okt – 9 nov 2026**
 - faktiskt debiterat: **67 kr**
 
-Detta stänger den sista lilla mekaniska orphan-raden som uppstod när LaskaKit `LA190033A` var slut.
+### DigiKey — CLOSED / ORDERED
+
+Köpt 2026-09-03:
+- 10 × `SW768-ND` / Omron-Aratas `SS-3GL13PT`
+- 16 × `1995-1010-ND` / 608-2RS 8×22×7 mm
+- 1 × `1866-2249-ND` / Mean Well `HDR-60-24`
+- 3 × `2946-221-413-ND` / Wago `221-413`
+- 2 × `1920-5309720/SET-ND` / Altech `5309 720/SET`
+- 10 × `A27824-ND` / TE `3-350820-2`
+- 1 × `AIO-CSM12-ND` / Amphenol `AIO-CSM12`
+- 3 m × `839-30-00416-DS-ND` / Tensility `30-00416`, 2×20 AWG
+- 10 m × `839-30-00377-DS-ND` / Tensility `30-00377`, 3×26 AWG
+- 3 × `900-2177961021-ND` / Molex KK 2,54 mm 2-polig 150 mm kabelassembly; kapas till 6 pigtails
+
+Checkout:
+- delsumma: **789,58 kr**
+- frakt: **0,00 kr**
+- VAT: **197,40 kr**
+- total: **986,98 kr**
+- fraktmetod: **UPS Worldwide Saver**
+- Incoterms: **DDP, tull betalas av DigiKey**
+- beräknad transporttid: **4 dagar**
+
+DigiKey-order är därmed stängd. Ingen separat kabel-/kontaktorder behövs för baseline-endstops eller 24 V-matning.
 
 ## Beställ nu
 
-### 1. DigiKey — elektronik + lager + kablage
-
-Köp exakt:
-- 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
-- 10 × Omron/Aratas `SS-3GL13PT` / `SW768-ND`
-- 16 × 608-2RS / `1995-1010-ND`
-- 3 × Wago `221-413`
-- 2 × Altech `5309 720/SET`, M20×1.5 / 5–12 mm
-- 10 × TE `3-350820-2` via **`A27824-ND`**
-- 1 × Amphenol `AIO-CSM12`
-- 3 m Tensility `30-00416`, Digi-Spool, 2×20 AWG
-- 10 m Tensility `30-00377`, Digi-Spool, 3×26 AWG
-
-Livefakta:
-- `HDR-60-24`: 5 753 i lager; 198,93 kr ex moms / 248,66 kr inkl moms.
-- `30-00416`: 26 274 m i lager; 23,96 kr/m ex moms vid 1–4 m; tre meter = 71,88 kr ex moms.
-- `30-00377`: svensk DigiKey-listning visar 294 m i lager; behovet är 10 m.
-- övriga låsta rader visar också tillräckligt lager i aktuell kontroll.
-- `A27824-ND` är den vanliga lagerartikeln; använd inte Marketplace-dubbletten.
-- full korg passerar DigiKeys svenska fri-fraktgräns **615 kr**; under gränsen kostar frakt 170 kr.
-
-Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
-
-### 2. StepperOnline Germany — motorer
+### 1. StepperOnline Germany — motorer
 
 Köp:
 - 1 × fempack `5-17HS19-2004S1`
@@ -101,7 +97,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 3. VEVOR EU — router
+### 2. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -115,7 +111,7 @@ Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 4. 3DJake Sverige — PLA
+### 3. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -125,7 +121,6 @@ Köp exakt:
 
 Live 2026-09-03:
 - **148 kr/st inklusive moms**
-- **2 979 st i lager** vid aktuell kontroll
 - varor: **444 kr**
 - svensk standardfrakt under 1 099 kr: **115 kr**
 - **landad baseline: 559 kr**
@@ -137,7 +132,7 @@ Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ### DMW Industrietechnik — INACTIVE / REPLACED
 
-DMW/eBay.de hade tekniskt korrekt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, men bara två exemplar visade sig finnas kvar när köpet skulle göras. Spåret ersattes av POWGE/eBay-köpet med ett färdigt trepack. Köp inte DMW-remhjul nu.
+DMW/eBay.de hade tekniskt korrekt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, men bara två exemplar visade sig finnas kvar när köpet skulle göras. Spåret ersattes av POWGE/eBay-köpet med ett färdigt trepack.
 
 ### Roboter-Bausatz — BLOCKED 2026-09-03
 
@@ -145,7 +140,7 @@ Butikens fraktsida publicerade Sverige/14,99 €, men faktisk checkout saknade S
 
 ### Allegro / `4Makers_pl` + `ABC-RC_pl` — BLOCKED 2026-09-03
 
-Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och faktisk svensk leveransadress gick varken `4Makers_pl` eller `ABC-RC_pl` att leverera till Sverige. **Korg-/plattformfrakt är inte leveransbevis.** Allegro-spåret är stängt.
+Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och faktisk svensk leveransadress gick varken `4Makers_pl` eller `ABC-RC_pl` att leverera till Sverige. **Korg-/plattformfrakt är inte leveransbevis.**
 
 ### HomeDIYer — INACTIVE
 
@@ -158,13 +153,12 @@ Tekniskt korrekt 16T-variant identifierades, men den behövs inte efter POWGE/eB
 - 2 × `88-7123`, Ø30×1,5×2000 mm.
 - köp **inte blint online**: fysisk OD/rakhet är en gate.
 - kapa först efter kontroll: 1505 / 816 / 816 mm.
-- aktuell nätlager/pris har inte kunnat verifieras tillräckligt robust; hitta inte på ett tal.
 
 ### NVR/maskinstopp
 
 Enkel aktiv kandidat: Clas Ohlson art. `50-2929`, **KJD12 230 V / 10 A, 299 kr**.
 
-Köp först när terminalschema/mått är tillräckliga för den planerade kapslingen. Exakt KEDU/KJD12-14-proveniens är inte krav.
+Köp först när terminalschema/mått är tillräckliga för den planerade kapslingen.
 
 ### Biltema/elbox
 
@@ -179,19 +173,19 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. DigiKey
-2. StepperOnline Germany
-3. VEVOR EU
-4. 3DJake
+1. StepperOnline Germany
+2. VEVOR EU
+3. 3DJake
 
-Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen, LaskaKit-mekanikkärnan och eBay/HKGY01 T8×8-muttrarna. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
+Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen, LaskaKit-mekanikkärnan, eBay/HKGY01 T8×8-muttrarna och hela DigiKey-korgen.
+
+Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
 ## Checkout-gates — kvarvarande prisosäkerheter
 
 1. StepperOnline Germany → Sverige-frakt.
-2. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-3. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+2. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
 
-3DJake PLA har ett komplett offentligt landat baselinepris: **559 kr**.
+3DJake PLA har ett offentligt landat baselinepris: **559 kr**.
 
 Bred sourcingresearch är avslutad utom där en konkret checkout-gate fallerar.
