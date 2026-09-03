@@ -44,20 +44,31 @@ Remannonsen säger uttryckligen att flera köpta meter levereras som **ett samma
 
 Använd den vanliga 4-hålsmuttern `NAKMOS8L`, inte den avkapade 2-hålsvarianten `NAKMOS8LSC`.
 
-#### Säljare B: `Zadar-Sklep`
+**Köp inte 4Makers-raden `TR8X2 400MM` som syns i aktuell korg.** Den är både fel spec (**2 mm lead i stället för Tr8×8 / 8 mm lead**) och märkt **"Nowy z defektem" / ny med defekt**.
 
-Köp:
-- 1 × **T8×8 400 mm, 8 mm diameter, 4-start / 8 mm lead + brass nut**
-- snapshot: **29,50 PLN**
-- offer/listing: `8954932033`
+#### Säljare B: `ABC-RC_pl`
 
-Viktigt: denna rad **innehåller redan en mutter**. Därför köps bara **1 extra Tr8×8-mutter** från 4Makers. Totalt blir det exakt två muttrar, inte tre.
+Köp exakt:
+- 1 × **Śruba Trapezowa T8x8 400mm - Nakrętka z Brązu THSL-400-8D**
+- offer/listing: **`17625893658`**
+- product code: **`THSL-400-8D` / 8605**
+- diameter **8 mm**
+- **4 starts**
+- **8 mm lead**
+- längd **400 mm**
+- **bronsmutter ingår**
+- skick: **Nowy** — uttryckligen ny utan fel/defekter
+- aktuell Allegro-snapshot: **19,58 PLN**, 95 st visade
 
-**Allegro goods total före frakt: 179,93 PLN.**
+Detta är exakt vår låsta T8-spec. 400 mm räcker eftersom slutlig assembly kapas till cirka 150–160 mm ×2.
+
+Eftersom ABC-RC-raden redan innehåller en mutter köps bara **1 extra Tr8×8-mutter** från 4Makers. Totalt blir det exakt två muttrar.
+
+**Allegro goods total före frakt: cirka 170,01 PLN** med aktuell ABC-RC-snapshot.
 
 Allegro-plattformen stöder DPD/DHL till Sverige, men varje säljare måste ha Sverige aktiverat. **Checkout för båda säljarna är därför gate.** Samma Allegro-korg betyder inte nödvändigtvis samma paket eller en enda fraktavgift.
 
-Om båda säljarna erbjuder Sverige till rimlig total: köp och stäng mekanikkorgen. Om en av dem blockerar Sverige byter vi endast den blockerade raden/säljaren; specs ändras inte. LaskaKit är fallback, inte aktiv huvudorder.
+Om båda säljarna erbjuder Sverige till rimlig total: köp och stäng mekanikkorgen. Om ABC-RC blockerar Sverige byter vi bara T8-raden; resten av 4Makers-korgen ligger fast. LaskaKit är fallback, inte aktiv huvudorder.
 
 ### 2. DigiKey — elektronik + lager + kablage
 
@@ -181,7 +192,7 @@ Detta tar bort LaskaKit som egen huvudorder. Allegro är dock inte ärligt en en
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
 1. Allegro `4Makers_pl` → Sverige måste erbjudas; läs faktisk frakt och kontrollera 5 m sammanhängande rem.
-2. Allegro `Zadar-Sklep` → Sverige måste erbjudas; läs faktisk frakt.
+2. Allegro `ABC-RC_pl` → Sverige måste erbjudas; läs faktisk frakt för T8×8-raden.
 3. StepperOnline Germany → Sverige-frakt.
 4. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
 5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
