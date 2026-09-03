@@ -45,24 +45,24 @@ Checkout:
 - total: **39,68 €**
 - faktiskt debiterat: **444 kr**
 
-**De två T8×8-mässingsmuttrarna ingår inte.** `LA190033A` visade `momentálně nedostupné` / för närvarande otillgänglig vid faktisk köpgenomgång. LaskaKit-order ska inte återöppnas bara för dessa två billiga orphan-delar.
+De två T8×8-mässingsmuttrarna var slut hos LaskaKit och köptes därför separat på eBay nedan.
+
+### eBay / HKGY01 — CLOSED / ORDERED
+
+Köpt 2026-09-03:
+- **2 × flänsad T8×8 brass nut**
+- vald variant: `T8 × 8 mm`
+- 2 mm pitch / 4-start / 8 mm lead
+- pack: **2 Pcs**, quantity 1
+- annonsen visade **`Includes import fees`**
+- listat leveransfönster: **9 okt – 9 nov 2026**
+- faktiskt debiterat: **67 kr**
+
+Detta stänger den sista lilla mekaniska orphan-raden som uppstod när LaskaKit `LA190033A` var slut.
 
 ## Beställ nu
 
-### 1. T8×8 brass nuts — separat orphan
-
-Behov:
-- **2 × T8×8 brass nut**
-- 4-start
-- 2 mm pitch
-- **8 mm lead/revolution**
-- standard flänsad form som passar LR4 `Z_Nut`
-
-LaskaKit `LA190033A` är rätt spec men var slut vid köp. Köp därför exakt motsvarande från en annan källa, med eBay som naturlig förstakontroll eftersom remhjulsköpet visade att eBay kan ge låg total kostnad och tydlig importhantering.
-
-Ändra inte till `T8×2`; det är fel lead/start för LR4.
-
-### 2. DigiKey — elektronik + lager + kablage
+### 1. DigiKey — elektronik + lager + kablage
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -85,7 +85,7 @@ Livefakta:
 
 Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
 
-### 3. StepperOnline Germany — motorer
+### 2. StepperOnline Germany — motorer
 
 Köp:
 - 1 × fempack `5-17HS19-2004S1`
@@ -101,7 +101,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 4. VEVOR EU — router
+### 3. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -115,7 +115,7 @@ Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 5. 3DJake Sverige — PLA
+### 4. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -179,20 +179,18 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. 2 × T8×8-mässingsmutter — separat liten orphan, först eBay
-2. DigiKey
-3. StepperOnline Germany
-4. VEVOR EU
-5. 3DJake
+1. DigiKey
+2. StepperOnline Germany
+3. VEVOR EU
+4. 3DJake
 
-Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen och LaskaKit-mekanikkärnan. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
+Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen, LaskaKit-mekanikkärnan och eBay/HKGY01 T8×8-muttrarna. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
 ## Checkout-gates — kvarvarande prisosäkerheter
 
-1. T8×8-mässingsmuttrar → exakt spec + svensk landad kostnad.
-2. StepperOnline Germany → Sverige-frakt.
-3. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-4. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+1. StepperOnline Germany → Sverige-frakt.
+2. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
+3. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
 
 3DJake PLA har ett komplett offentligt landat baselinepris: **559 kr**.
 
