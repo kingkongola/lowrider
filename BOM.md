@@ -57,6 +57,13 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [x] 10 m Tensility `30-00377`, 3×26 AWG
 - [x] 3 × Molex KK 2,54 mm 2-polig 150 mm kabelassembly `2177961021`; kapas till 6 pigtails, 5 används + 1 reserv
 
+## Redan köpt — Amazon.se
+
+**Beställt 2026-09-03. Live Amazon-priser vid köp: motorer 608,37 kr och router 620,00 kr, båda med Prime/fri frakt. Faktisk kortdebitering verifieras separat i `COSTS.md`.**
+
+- [x] 5 × STEPPERONLINE `17HS19-2004S1`, **59 Ncm / 84 oz-in, 2,0 A, 42×42×48 mm, Ø5 mm D-axel, 1 m kabel med kontakt**
+- [x] KATSU `101750`, 220–240 V, 710 W, variabelt varvtal, cirka 64,8/65 mm motorhus; Makita RT0700-familjens formfaktor
+
 ## Redan ägt
 
 - [x] Bambu Lab P1S
@@ -88,7 +95,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — motorer/styrning/lågspänning
 
 - [x] Elecrow Jackpot3 `CQA240812C2`
-- [ ] 5 × NEMA17 i `17HS19-2004S1`-klass: 59 Ncm / 84 oz-in, 2 A, 42×42×48 mm, Ø5 mm D-axel; exakt StepperOnline 5-pack är fortfarande referensspec men leverantör ej låst
+- [x] 5 × STEPPERONLINE `17HS19-2004S1`, 59 Ncm / 84 oz-in, 2 A, 42×42×48 mm, Ø5 mm D-axel, 1 m kabel
 - [x] Mean Well `HDR-60-24`
 - [x] 10 × Omron `SS-3GL13PT`
 - [x] 3 m Tensility `30-00416`, 2×20 AWG
@@ -116,9 +123,9 @@ Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `router -> DeWalt tool so
 
 ## Router / första skär
 
-- [ ] 230 V router i Makita RT0700/RT0702-kompatibel 65 mm formfaktor; ny leverantör/modell ska låsas efter live sourcing
+- [x] KATSU `101750`, 220–240 V / 710 W / variabelt varvtal / cirka 65 mm kropp, köpt Amazon.se
+- [ ] provpassa redan köpt Elaire/Makita-style 1/8"-collet i KATSU 101750 och kontrollera säte/runout före riktig fräsning
 - [ ] **Köp inte VEVOR `0700C`**: live VEVOR-sida visade discontinued och officiell UK produktsäkerhetsrapport för modell `0700C` klassade elchockrisken som allvarlig p.g.a. bristande isolation/elektrisk hållfasthet
-- [ ] provpassa redan köpt Elaire/Makita-style 1/8"-collet och kontrollera säte/runout mot den router som faktiskt köps
 - [ ] commissioning-fräs `L1S.M.0317` eller motsvarande 3,175 mm single-flute upcut först när första fräsjobbet närmar sig; separat Sorotec-order är fortfarande uppskjuten
 - [ ] lång 3,175 mm plywoodfräs först vid verkligt 18–19 mm jobb
 
