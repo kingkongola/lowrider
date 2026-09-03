@@ -2,7 +2,8 @@
 
 ## 1. Beställningar — nu
 
-- [ ] LaskaKit: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190033A`, 2× `LA190031`, 1× `LA190013C`; välj Sverige och verifiera faktisk checkout innan betalning
+- [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190031`, 1× `LA190013C`; GLS Sweden ingick
+- [ ] 2 × **T8×8 brass nut, 4-start / 8 mm lead** — köp separat; LaskaKit `LA190033A` var slut och ingick inte i 444-kronorsordern
 - [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — köpt via eBay/POWGE 2026-09-03, **72 kr faktiskt debiterat**, fri frakt och importavgifter inkluderade
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
@@ -10,7 +11,7 @@
 - [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
-**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av det redan genomförda eBay/POWGE-köpet.**
+**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av det redan genomförda eBay/POWGE-köpet. LaskaKit är nu stängd för allt utom de två mässingsmuttrarna som inte gick att köpa där.**
 
 ## 2. Lokalt / fysiskt
 
