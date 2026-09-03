@@ -10,8 +10,9 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - HaWiWe-order: **betald 1 853 kr och skickad**. Ordervaluta 165,50 € inkl frakt. Innehåll: 6,0 mm XZ-plattor, 4 × MGN12H 150 mm, LR4 screw set och Makita/Elaire 1/8" collet.
 - Controller: **Elecrow Jackpot3 `CQA240812C2` är köpt**, faktisk debitering **937 kr** inklusive DDP Economy.
 - Drive pulleys: **3 × GT2/2GT 16T / 5 mm bore / 10 mm belt är köpta via eBay/POWGE**, faktisk debitering **72 kr**, fri frakt och importavgifter inkluderade i eBay-köpet.
-- Faktiskt betalt hittills: **2 862 kr**. Se `COSTS.md`.
-- Mekanikinköp: **Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout.** DMW-spåret ersattes när bara två exakta exemplar återstod. Kvarvarande mekanikkärna är **LaskaKit i Tjeckien** för idlers/T8/muttrar/couplers/5 m GT2; se `PROCUREMENT.md`.
+- LaskaKit-mekanikkärna: **köpt för 444 kr** inklusive GLS Sweden. Innehåll: 6 smooth idlers, T8×8 400 mm, 2 × 5→8-koppling och 5 m GT2 10 mm glasfiber. **De två T8×8-mässingsmuttrarna var slut och återstår separat.**
+- Faktiskt betalt hittills: **3 306 kr**. Se `COSTS.md`.
+- Mekanikinköp: **Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout.** DMW-spåret ersattes av eBay/POWGE. LaskaKit är nu stängd; återstående lilla mekanikorphan är **2 × T8×8 brass nut, 4-start / 8 mm lead**.
 - Printer: **Bambu Lab P1S**; alla diameterberoende LR4-printar ska vara **30 mm-variant**, tool mount **Makita/65 mm**.
 - Router: **VEVOR 0700C**, 800 W, 65 mm.
 - Filament: **3 × 1 kg eSUN PLA Basic Black 1,75 mm från 3DJake** är aktuell pris-/lagerbaseline: 444 kr varor + 115 kr svensk standardfrakt = **559 kr**.
@@ -34,8 +35,8 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Aktuell arbetsordning
 
-1. Bygg LaskaKit-korgen enligt `PROCUREMENT.md`; välj Sverige i riktig checkout och stoppa om svensk adress inte accepteras eller rätt 5 m-rem inte är köpbar.
-2. Lägg resterande huvudorder: DigiKey, StepperOnline Germany, VEVOR EU och 3DJake PLA. **Jackpot3 och 16T-remhjulen är redan köpta.**
+1. Köp de **2 × T8×8-mässingsmuttrarna** separat med exakt 4-start / 8 mm lead; eBay är förstakontroll.
+2. Lägg resterande huvudorder: DigiKey, StepperOnline Germany, VEVOR EU och 3DJake PLA. **Jackpot3, 16T-remhjulen och LaskaKit-mekaniken är redan köpta.**
 3. Köp Motonet-rör först efter fysisk OD-/rakhetskontroll.
 4. Hitta begagnat bord och gör rackingtest.
 5. När HaWiWe kommer: kontrollera transportskada + fyra produktgrupper och provpassa M3×10 mot XZ/MGN.
