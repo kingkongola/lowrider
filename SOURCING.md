@@ -2,11 +2,11 @@
 
 **Snapshot 2026-09-03.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför de aktiva köpvägarna är valda och ska inte skapa alternativa BOM-rader. Faktisk kostnad finns i `COSTS.md`.
 
-## Checkout-regel efter två falska positiva
+## Checkout-regel efter falska positiva
 
 **En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk först när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
 
-För små mekanikdelar prioriteras dessutom **EU-källor framför USA/övrig import** när exakt spec finns i EU. Målet är få beställningar utan tull/importhuvudvärk.
+För billiga standardiserade mekanikdelar ska eBay/andra marknadsplatser kontrolleras tidigt när exakt variant kan verifieras och checkouten tydligt hanterar svensk moms/import. Ursprungsland i sig är inte ett skäl att avvisa en bättre väg; total landad kostnad, exakt spec, importfriktion och leveranstid är det relevanta.
 
 ## LaskaKit, Tjeckien — ACTIVE mekanikkärna
 
@@ -23,26 +23,31 @@ Verifierat 2026-09-03:
 
 Det finns en cachekonflikt för `LA190013C`: äldre direkt produktsida säger slutsåld medan nyare kategoriindex säger 18 i lager. Därför är faktisk LaskaKit-korg lagerfacit. Om 5 m-rullen faller bort används 3 × 2 m 10 mm fiberglass-rem utan att ändra maskinspec.
 
-LaskaKit har inte vår drive pulley: deras aktuella 16T/5mm är för **6 mm belt**, medan 10 mm-varianterna är 20T. Ändra inte 16T-specen.
+LaskaKit har inte vår drive pulley: deras aktuella 16T/5mm är för **6 mm belt**, medan 10 mm-varianterna är 20T. Ändra inte 16T-specen. Den raden är nu redan köpt via eBay/POWGE.
 
-## DMW Industrietechnik, Tyskland — ACTIVE 16T-källa, checkout-gated
+## eBay / POWGE — CLOSED 16T drive pulleys
 
-Exakt produktfamilj på eBay.de, item **`124891176610`**:
-- säljare **DMW Industrietechnik**, kommersiell säljare
-- lagerort **Sindelfingen, Deutschland**
-- välj `Typ = Synchronriemenscheibe`
-- välj `Riemenbreite = 10mm`
-- välj `Bohrung Ø = 5mm`
-- välj `Zähne = Z 16`
-- köp 3
-- aluminium, GT2 / 2 mm pitch
-- aktuell indexerad listning visar **>10 tillgängliga** och grundpris cirka **4,02 € inkl moms**
+Köpt 2026-09-03 från **POWGE Synchronous Belts and Pulleys** via eBay:
+- 3 × GT2/2GT drive pulley
+- **16T**
+- **5 mm bore**
+- för **10 mm belt**
+- 2 mm pitch
+- vald packvariant: `3 × 2GT pulleys`
+- fri frakt
+- eBay visade **`Includes import fees`**
+- listat leveransfönster vid köp: **17 sep – 7 okt 2026**
+- faktisk debitering: **72 kr**
 
-Samma listning visar **Warenpost International Premium 7,56 €**. En aktuell DMW-listnings detaljerade fraktsektion anger **`Versand nach: Amerika, Europa`** och lagerort Sindelfingen. Detta är säljar-specifik evidens, inte bara en generell eBay-policy.
+Detta stängde den enda svårfunna mekanikraden. DMW hade tekniskt rätt variant men bara två exemplar kvar när köp skulle göras. eBay gav i stället ett komplett trepack till låg landad kostnad med importhanteringen inbakad.
 
-eBay-listningen visar dessutom **`Als Gast kaufen`**. Ingen eBay-registrering behöver därför göras bara för att prova svensk checkout. Fyll Sverige som leveransadress och köp endast om checkout accepterar adressen.
+Lärdom: den tidigare sökningen överviktade EU-butik som proxy för låg friktion. För commodity-delar ska eBay sökas tidigt med hela variantspecen och faktisk checkout/importtext som gate.
 
-Detta ersätter HomeDIYer helt och håller mekanikens webborders inom EU.
+## DMW Industrietechnik — INACTIVE / REPLACED
+
+DMW Industrietechnik i Tyskland, eBay item `124891176610`, hade tekniskt korrekt `Synchronriemenscheibe / 10mm / 5mm / Z 16`. Vid faktisk köpgenomgång återstod dock endast **2** av den exakta varianten, medan bygget kräver 3.
+
+Spåret ersattes av det genomförda POWGE/eBay-köpet. Köp inget från DMW för denna rad nu.
 
 ## Roboter-Bausatz — BLOCKED
 
@@ -98,11 +103,12 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 
 ## Inte aktiva sourcingvägar
 
+- DMW Industrietechnik — tekniskt rätt 16T, men bara två exakta exemplar kvar vid köp; ersatt av köpt POWGE/eBay-trepack.
 - Roboter-Bausatz — svensk checkout blockerar leverans.
 - Allegro `4Makers_pl` / `ABC-RC_pl` — faktisk seller-checkout blockerar Sverige.
-- HomeDIYer — tekniskt användbar men icke-EU och onödig när DMW Tyskland har exakt variant.
-- Hellas Digital 16T — exakt komponent finns, men svensk leverans är inte explicit verifierad; fallback research, inte aktiv väg.
-- Amazon-indexerade 16T-alternativ — Sverigeleverans/spec inte tillräckligt verifierad; inte aktiv väg.
+- HomeDIYer — tekniskt användbar men onödig efter eBay/POWGE-köpet.
+- Hellas Digital 16T — exakt komponent finns, men behövs inte efter köpet.
+- Amazon-indexerade 16T-alternativ — inte längre relevanta.
 - Technobots GT2 — endast historisk fallback.
 - separat KEDU/CEM-specialorder — inte baseline.
 - Sorotec — deferred tills verkligt fräsbehov.
