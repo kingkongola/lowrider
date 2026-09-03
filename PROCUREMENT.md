@@ -36,11 +36,13 @@ Köp exakt:
 | GT2 10 mm fiberglass belt, 1 m listing, `GT210WS1M` | 5 m | 13,00 PLN/m | 65,00 PLN |
 | GT2 drive pulley 16T / 5 mm shaft / 10 mm belt | 3 | 6,90 PLN | 20,70 PLN |
 | flexible aluminium coupling 5×8 mm, `SPE5X8` | 2 | 6,25 PLN | 12,50 PLN |
-| standard brass Tr8×8 nut, `NAKMOS8LSC` | 1 | 4,29 PLN | 4,29 PLN |
+| standard brass Tr8×8 nut, **4-hole**, `NAKMOS8L` | 1 | 4,29 PLN | 4,29 PLN |
 
 **4Makers goods subtotal: 150,43 PLN.**
 
 Remannonsen säger uttryckligen att flera köpta meter levereras som **ett sammanhängande stycke**; qty 5 ska därför ge 5 m i ett stycke. Det är idealiskt för våra segment **999 / 1705 / 1705 mm**.
+
+Använd den vanliga 4-hålsmuttern `NAKMOS8L`, inte den avkapade 2-hålsvarianten `NAKMOS8LSC`.
 
 #### Säljare B: `Zadar-Sklep`
 
