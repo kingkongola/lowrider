@@ -1,6 +1,6 @@
 # Sourcing evidence
 
-**Snapshot 2026-09-03.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför de aktiva köpvägarna är valda och ska inte skapa alternativa BOM-rader.
+**Snapshot 2026-09-03.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför de aktiva köpvägarna är valda och ska inte skapa alternativa BOM-rader. Faktisk kostnad finns i `COSTS.md`.
 
 ## Roboter-Bausatz
 
@@ -31,11 +31,15 @@ DigiKey Sverige anger 0 kr frakt från 615 kr och 170 kr under gränsen. Full pl
 
 Aktiv motorväg: Germany warehouse, fempack `5-17HS19-2004S1`. Verifierat 2026-09-03: 38,13 €, 200 i lager. Frakt till Sverige är checkout-gated.
 
-## Controller
+## Controller — CLOSED
 
-Aktiv väg: Elecrow `CQA240812C2` Jackpot3. Verifierat 2026-09-03: $76,99, `In stock`, 300 g.
+**Elecrow Jackpot3 `CQA240812C2` köpt 2026-09-03.**
+- controller efter rabatt: 69,44 €
+- DDP Economy: 14,11 €
+- checkout: 83,55 €
+- faktiskt debiterat: **937 kr**
 
-V1E Jackpot2 är fortfarande tekniskt tillräcklig för routerbygget, men V1E:s butikstatus är motsägelsefull. Därför får controllerköpet inte blockeras på Jackpot2. Se D015.
+Jackpot2 var ett tidigare tekniskt router-first-alternativ men är nu endast historik. Controller-sourcing ska inte återöppnas.
 
 ## VEVOR
 
@@ -62,3 +66,4 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 - Sorotec — deferred tills verkligt fräsbehov
 - SUNLU 6 kg — borttaget; behovet är 3 kg
 - 3D Prima PLA — ersatt av billigare komplett landad 3DJake-baseline
+- Jackpot2 — historiskt controlleralternativ; Jackpot3 är redan köpt
