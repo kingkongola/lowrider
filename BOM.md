@@ -27,6 +27,15 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**, set-screw retention
 
+## Redan köpt — LaskaKit
+
+**Betald 2026-09-03: faktiskt debiterat 444 kr. Checkout 39,68 € inklusive 8,93 € GLS Sweden. T8×8-mässingsmuttrarna var slut och ingår inte.**
+
+- [x] 6 × smooth GT2 idler, 5 mm hål/bearing, för 10 mm rem — `LA190008E`
+- [x] 1 × T8×8 400 mm, 4-start / 8 mm lead — `LA190032A`
+- [x] 2 × flexible coupler 5→8 mm — `LA190031`
+- [x] 1 × 5 m GT2/2 mm, 10 mm, glasfiberförstärkt — `LA190013C`
+
 ## Redan ägt
 
 - [x] Bambu Lab P1S
@@ -49,11 +58,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — mekanik
 
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
-- [ ] 6 × smooth GT2 idler, 5 mm hål/bearing, för 10 mm rem; aktiv LaskaKit `LA190008E`
-- [ ] 1 × T8×8 400 mm, 4-start / 8 mm lead; aktiv LaskaKit `LA190032A`
-- [ ] 2 × T8×8 brass nut; aktiv LaskaKit `LA190033A`
-- [ ] 2 × flexible coupler 5→8 mm; aktiv LaskaKit `LA190031`
-- [ ] 1 × 5 m GT2/2 mm, 10 mm, glasfiberförstärkt; aktiv LaskaKit `LA190013C`; kapa senare till 999 / 1705 / 1705 mm
+- [ ] 2 × T8×8 brass nut, 4-start / 8 mm lead; LaskaKit `LA190033A` var slut vid köp och dessa måste därför köpas separat
 - [ ] 16 × exact 608-2RS 8×22×7 mm; 14 installeras + 2 reserv
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
