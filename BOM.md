@@ -88,7 +88,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 ## Kvar — motorer/styrning/lågspänning
 
 - [x] Elecrow Jackpot3 `CQA240812C2`
-- [ ] 1 × StepperOnline fempack `5-17HS19-2004S1`
+- [ ] 5 × NEMA17 i `17HS19-2004S1`-klass: 59 Ncm / 84 oz-in, 2 A, 42×42×48 mm, Ø5 mm D-axel; exakt StepperOnline 5-pack är fortfarande referensspec men leverantör ej låst
 - [x] Mean Well `HDR-60-24`
 - [x] 10 × Omron `SS-3GL13PT`
 - [x] 3 m Tensility `30-00416`, 2×20 AWG
@@ -107,7 +107,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 ## 230 V / NVR
 
-Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `VEVOR -> DeWalt tool socket` om DeWalt-typskylten bekräftar rätt funktion.
+Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `router -> DeWalt tool socket` om DeWalt-typskylten bekräftar rätt funktion.
 
 - [ ] KJD12-familj NVR, 230 V, minst lämplig märkström; Clas Ohlson 50-2929 230 V/10 A är aktiv enkel kandidat
 - [ ] kapsling först efter fysisk NVR/HDR dry-fit
@@ -116,8 +116,9 @@ Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `VEVOR -> DeWalt tool soc
 
 ## Router / första skär
 
-- [ ] VEVOR 0700C, SKU `YXKXBJ710W65AH7WLV2`, 220–240 V, 800 W, 65 mm
-- [ ] provpassa Elaire-collet och kontrollera säte/runout
+- [ ] 230 V router i Makita RT0700/RT0702-kompatibel 65 mm formfaktor; ny leverantör/modell ska låsas efter live sourcing
+- [ ] **Köp inte VEVOR `0700C`**: live VEVOR-sida visade discontinued och officiell UK produktsäkerhetsrapport för modell `0700C` klassade elchockrisken som allvarlig p.g.a. bristande isolation/elektrisk hållfasthet
+- [ ] provpassa redan köpt Elaire/Makita-style 1/8"-collet och kontrollera säte/runout mot den router som faktiskt köps
 - [ ] commissioning-fräs `L1S.M.0317` eller motsvarande 3,175 mm single-flute upcut först när första fräsjobbet närmar sig; separat Sorotec-order är fortfarande uppskjuten
 - [ ] lång 3,175 mm plywoodfräs först vid verkligt 18–19 mm jobb
 
