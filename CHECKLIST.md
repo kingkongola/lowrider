@@ -2,8 +2,9 @@
 
 ## 1. Beställningar — nu
 
-- [ ] Allegro / `4Makers_pl`: 6× smooth idler `KSG1020T`, 5×1 m fiberglass GT2 `GT210WS1M`, 3× 16T/5mm/10mm drive pulley, 2× `SPE5X8`, 1× `NAKMOS8LSC`; verifiera Sverige + faktisk frakt
-- [ ] Allegro / `Zadar-Sklep`: 1× T8×8 400 mm + mutter, offer `8954932033`; verifiera Sverige + faktisk frakt
+- [ ] Allegro / `4Makers_pl`: 6× smooth idler `KSG1020T`, 5×1 m fiberglass GT2 `GT210WS1M`, 3× 16T/5mm/10mm drive pulley, 2× `SPE5X8`, 1× standard Tr8×8 brass nut `NAKMOS8L`; verifiera Sverige + faktisk frakt
+- [ ] **ta bort** 4Makers `TR8X2 400MM` ur korgen: fel 2 mm lead och dessutom märkt ny med defekt
+- [ ] Allegro / `ABC-RC_pl`: 1× `THSL-400-8D`, T8×8 400 mm + bronsmutter, offer `17625893658`; verifiera Sverige + faktisk frakt
 - [ ] innan betalning på Allegro: kontrollera att remraden är qty 5 och fortfarande säger sammanhängande stycke; kontrollera att det bara ligger **1 extra mutter** från 4Makers
 - [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
 - [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
