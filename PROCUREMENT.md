@@ -2,7 +2,7 @@
 
 **Live snapshot: 2026-09-03.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
-## Redan betalt
+## Redan betalt / beställt
 
 ### HaWiWe — CLOSED / SHIPPED
 
@@ -75,53 +75,40 @@ Checkout:
 - Incoterms: **DDP, tull betalas av DigiKey**
 - beräknad transporttid: **4 dagar**
 
-DigiKey-order är därmed stängd. Ingen separat kabel-/kontaktorder behövs för baseline-endstops eller 24 V-matning.
+### Amazon.se — motorer — CLOSED / ORDERED
 
-## Beställ nu / aktiv sourcing
-
-### 1. Motorer — Amazon.se är nu aktiv kandidat
-
-Låst motorprestanda/formfaktor:
-- 5 × NEMA17
-- cirka **59 Ncm / 84 oz-in**
-- **2,0 A**
-- 42×42×48 mm
-- **Ø5 mm D-axel**
-- 4 ledare
-- helst ~1 m kabel
-
-Aktuell Amazon.se-träff från användarens live-checkout:
-- brand: **STEPPERONLINE**
-- exakt modell: **`17HS19-2004S1`**
-- pack of 5
+Beställt 2026-09-03 från användarens live Amazon-sida:
+- **5 × STEPPERONLINE `17HS19-2004S1`**
 - 59 Ncm / 84 oz-in
-- 2 A
+- 2,0 A
 - 42×42×48 mm
+- Ø5 mm D-axel
 - 1 m kabel med kontakt
-- **608,37 kr**
+- pack of 5
+- visat pris vid köp: **608,37 kr**
 - Prime / fri frakt
-- visad leverans 7 september
+- visad leverans: **7 september**
 
-Detta är exakt referensmodellen och är för närvarande det starkaste live-köpet. Köp först när Amazon fortfarande visar samma 5-pack/SKU/pris i checkout.
+Detta stänger motorsourcingen utan avvikelse från den tidigare referensspecen.
 
-### 2. Router — NY SOURCING KRÄVS
+### Amazon.se — KATSU router — CLOSED / ORDERED
 
-Tidigare VEVOR `0700C` är **inte längre ett köpval**.
+Beställt 2026-09-03:
+- **KATSU `101750`**
+- 220–240 V
+- 710 W
+- variabelt varvtal
+- cirka **64,8/65 mm** motorhus, Makita RT0700-familjens formfaktor
+- såld av AIM Tools Ltd, skickas från Amazon enligt live-sidan
+- visat pris vid köp: **620,00 kr**
+- Prime / fri frakt
+- visad leverans: **7 september**
 
-Krav som kvarstår:
-- 230 V
-- Makita RT0700/RT0702-kompatibel **65 mm** kropp/formfaktor
-- variabelt varvtal lämpligt för CNC
-- kompatibilitet med redan köpt Elaire/Makita-style 1/8" / 3,175 mm collet måste verifieras
+KATSU 101750 ersätter den tidigare VEVOR-planen. Vid leverans ska den redan köpta Elaire/Makita-style 1/8"-hylsan provpassas och runout kontrolleras före riktig fräsning.
 
-Aktuell säker fallback:
-- **Makita RT0702C**, originalmaskin
-- live svenska prisjämförelser 2026-09-03 visar cirka **1 599–1 657 kr inklusive frakt** från lagerhållande svenska/EU-handlare
-- 710 W, 230 V, variabelt varvtal, 65 mm Makita-familj
+## Beställ nu
 
-Detta är dyrare än den gamla VEVOR-planen men är den nu verifierade säkra referensen. Fortsatt sourcing får gärna hitta en billigare EU-klon, men den måste vara live-köpbar, 65 mm och collet-kompatibel; inga gamla indexerade produktsidor räcker.
-
-### 3. 3DJake Sverige — PLA
+### 1. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -144,7 +131,7 @@ Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 - StepperOnline-direktens tidigare Germany 5-pack såg först attraktivt ut vid **38,13 €**, men svensk checkout lade på cirka **20 € frakt**.
 - Flera eBay-listningar med exakt 5-pack visade sig vara **out of stock** eller inte leverera till Sverige.
-- Amazon.se-spåret ovan ersätter därför StepperOnline-direkt som aktiv köpväg; motorspecen ändras inte.
+- Amazon.se löste i stället exakt `17HS19-2004S1` 5-pack för **608,37 kr med Prime/fri frakt**. Ingen fortsatt motorsourcing behövs.
 
 ### VEVOR `0700C` router — BLACKLISTED 2026-09-03
 
@@ -152,6 +139,7 @@ Köp inte 6 kg; behovet är cirka 2,7 kg.
 - dessutom finns en officiell UK Product Safety Report för **VEVOR Electric Router model `0700C`, 110/220V 50/60Hz 800W Class II** där risknivån anges som **Serious** för electric shock.
 - rapporten beskriver underkänd electrical strength, otillräcklig insulation och bristande build quality; den berörda importen avvisades och förstördes.
 - därför: **köp inte VEVOR 0700C**, inte heller restlager/begagnat enbart för att priset är lågt.
+- KATSU `101750` är nu köpt ersättare.
 
 ### VEVOR NEMA17 59 Ncm 5-pack — INACTIVE 2026-09-03
 
@@ -200,17 +188,22 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 ## Orderarkitektur nu
 
-Kvarvarande huvudköp:
-1. Amazon.se — exakt StepperOnline 5-pack, om live checkout fortfarande visar 608,37 kr/Prime
-2. router — ny 65 mm Makita-kompatibel sourcing; original Makita RT0702C är säker fallback
-3. 3DJake — 3 kg PLA
+Kvarvarande huvudorder:
+1. **3DJake — 3 kg PLA**
 
-Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
+Plus:
+- fysisk Motonet-rörkontroll/köp
+- begagnat bord + deck/spoilboard
+- lokal NVR/kapsling/elmaterial efter fysisk dry-fit
+- commissioning-fräs när första skär närmar sig
+
+Motorer, router, controller, PSU, endstops, lager, GT2-delar och Z-drivning är nu beställda.
 
 ## Checkout-gates
 
-1. Amazon.se motorer → verifiera exakt `17HS19-2004S1`, 5-pack och slutpris innan betalning.
-2. Router → ingen klon köps utan live-lager, 65 mm formfaktor och collet-kompatibilitet.
-3. 3DJake PLA har ett offentligt landat baselinepris: **559 kr**.
+1. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
+2. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
+3. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
+4. Stepperkablar — dry-fit innan eventuella extensioner köps.
 
 Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
