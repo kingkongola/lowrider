@@ -20,11 +20,22 @@
 
 Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
 
+### eBay / POWGE — CLOSED / ORDERED
+
+- säljare: **POWGE Synchronous Belts and Pulleys**
+- 3 × **2GT/GT2 drive pulley, 16T, 5 mm bore, för 10 mm belt, 2 mm pitch**
+- vald packvariant: **3 × 2GT pulleys**
+- listningen visade **fri frakt** och **`Includes import fees`**
+- listat leveransfönster vid köp: **17 sep – 7 okt 2026**
+- faktiskt debiterat: **72 kr**
+
+Den tidigare DMW-vägen behövs inte längre. eBay-spåret löste den svåraste mekanikraden billigare genom en Kina-säljare där eBay hanterade importavgifterna i köpet.
+
 ## Beställ nu
 
 ### 1. LaskaKit, Tjeckien — mekanikkärna
 
-Roboter-Bausatz och Allegro är blockerade för svensk leverans i faktisk checkout. Aktiv EU-direktbutik för fem av sex mekanikrader är nu LaskaKit.
+Roboter-Bausatz och Allegro är blockerade för svensk leverans i faktisk checkout. Aktiv EU-direktbutik för de återstående mekanikraderna är LaskaKit.
 
 Köp exakt:
 
@@ -40,30 +51,7 @@ LaskaKits aktuella kategoriindex visar `LA190013C` **i lager (18 st)**. Den äld
 
 Med 5 m-rullen är aktuell varubaseline cirka **33,4 €**. LaskaKits egen aktuella fraktsida listar uttryckligen **GLS Sweden 8,93 €**, alltså ungefär **42,3 € landat baseline** före eventuell destinationsmoms-/checkoutjustering. Faktisk svensk adress i checkout är ändå sista gate.
 
-### 2. DMW Industrietechnik, Tyskland — 3 × exakt 16T drive pulley
-
-LaskaKit har ingen 16T-variant för 10 mm rem; deras 16T är för 6 mm och ska inte användas.
-
-Aktiv EU-källa:
-- säljare: **DMW Industrietechnik**, Sindelfingen, Tyskland
-- plattform: eBay.de
-- item: **`124891176610`**
-- välj `Typ = Synchronriemenscheibe`
-- välj `Riemenbreite = 10mm`
-- välj `Bohrung Ø = 5mm`
-- välj `Zähne = Z 16`
-- antal: **3**
-- GT2 / 2 mm pitch
-- aluminium
-- aktuell indexerad listning: **>10 tillgängliga**, cirka **4,02 €/st inkl tysk moms** före variant-/checkoutjustering
-
-DMW:s listning visar **Warenpost International Premium 7,56 €**, lagerort **Sindelfingen, Deutschland**. En aktuell DMW-listnings fraktsektion anger säljarens scope som **"Versand nach: Amerika, Europa"** och gratis extra frakt för ytterligare artiklar med samma fraktvillkor. Sverige ligger i Europa, men efter Roboter/Allegro-felen är faktisk svensk adress i checkout fortfarande facit.
-
-eBay-listningen erbjuder **`Als Gast kaufen`**, så inget eBay-konto behöver skapas. Klicka gästköp, fyll svensk adress och avbryt om Sverige inte accepteras eller om specifik frakt avviker orimligt.
-
-Grovt baseline med listat grundpris: 3 × 4,02 € + 7,56 € ≈ **19,62 €**. Faktisk variantkorg vinner.
-
-### 3. DigiKey — elektronik + lager + kablage
+### 2. DigiKey — elektronik + lager + kablage
 
 Köp exakt:
 - 1 × Mean Well `HDR-60-24` / `1866-2249-ND`
@@ -86,7 +74,7 @@ Livefakta:
 
 Exakt full korgsumma ska läsas i DigiKey-korgen eftersom flera mängdrabatter och lokaliserade priser är dynamiska. **Ingen filler. Ingen Marketplace-rad.** Välj förbetald UPS/FedEx om checkout erbjuder det och DDP-villkoret visas; DigiKey anger DDP för förbetald UPS/FedEx och CPT för DHL.
 
-### 4. StepperOnline Germany — motorer
+### 3. StepperOnline Germany — motorer
 
 Köp:
 - 1 × fempack `5-17HS19-2004S1`
@@ -102,7 +90,7 @@ Snapshot:
 
 Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
 
-### 5. VEVOR EU — router
+### 4. VEVOR EU — router
 
 Köp exakt:
 - `0700C`
@@ -116,7 +104,7 @@ Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 
 
 Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
 
-### 6. 3DJake Sverige — PLA
+### 5. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -136,6 +124,10 @@ Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ## Blockerade / ej aktiva sourcingvägar
 
+### DMW Industrietechnik — INACTIVE / REPLACED
+
+DMW/eBay.de hade tekniskt korrekt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, men bara två exemplar visade sig finnas kvar när köpet skulle göras. Spåret ersattes av POWGE/eBay-köpet med ett färdigt trepack. Köp inte DMW-remhjul nu.
+
 ### Roboter-Bausatz — BLOCKED 2026-09-03
 
 Butikens fraktsida publicerade Sverige/14,99 €, men faktisk checkout saknade Sverige i landlistan. Amazon Pay accepterade svensk adress, men handlarens checkout svarade **"Leveranser till den valda leveransadressen är inte möjliga."**
@@ -146,7 +138,7 @@ Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och fa
 
 ### HomeDIYer — INACTIVE
 
-Tekniskt korrekt 16T-variant identifierades, men källan är inte EU och behövs inte. DMW i Tyskland ersätter den helt.
+Tekniskt korrekt 16T-variant identifierades, men den behövs inte efter POWGE/eBay-köpet.
 
 ## Lokalt / separat
 
@@ -177,23 +169,19 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 Kvarvarande huvudorder:
 1. LaskaKit, Tjeckien — mekanikkärna
-2. DMW Industrietechnik, Tyskland — 3 × 16T/5mm/10mm drive pulley
-3. DigiKey
-4. StepperOnline Germany
-5. VEVOR EU
-6. 3DJake
+2. DigiKey
+3. StepperOnline Germany
+4. VEVOR EU
+5. 3DJake
 
-Elecrow är redan köpt. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
-
-**Mekanikens två webborders är nu båda EU-baserade.** Grov baseline för LaskaKit + DMW är cirka **62 € totalt inklusive publicerade frakter**, innan faktisk svensk checkout/variantpris.
+Redan köpt: HaWiWe, Elecrow och eBay/POWGE-remhjulen. Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
 ## Checkout-gates — enda kvarvarande prisosäkerheterna
 
 1. LaskaKit → faktisk svensk checkout ska acceptera adressen; publicerad GLS Sweden är 8,93 €; kontrollera att `LA190013C` faktiskt kan läggas i korgen.
-2. DMW/eBay.de → välj exakt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, qty 3 och kör **gästcheckout** med svensk adress; säljarens fraktscope anger Europa men adressen är facit.
-3. StepperOnline Germany → Sverige-frakt.
-4. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
-5. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+2. StepperOnline Germany → Sverige-frakt.
+3. DigiKey → full korgsumma, 0 kr frakt, ingen Marketplace-rad.
+4. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
 
 3DJake PLA har ett komplett offentligt landat baselinepris: **559 kr**.
 
