@@ -18,8 +18,6 @@
 - checkout total: **83,55 €**
 - faktiskt debiterat: **937 kr**
 
-Controllerköpet är stängt. Ingen Jackpot2-fallback ska längre jämföras.
-
 ### eBay / POWGE — CLOSED / ORDERED
 
 - säljare: **POWGE Synchronous Belts and Pulleys**
@@ -79,37 +77,49 @@ Checkout:
 
 DigiKey-order är därmed stängd. Ingen separat kabel-/kontaktorder behövs för baseline-endstops eller 24 V-matning.
 
-## Beställ nu
+## Beställ nu / aktiv sourcing
 
-### 1. StepperOnline Germany — motorer
+### 1. Motorer — Amazon.se är nu aktiv kandidat
 
-Köp:
-- 1 × fempack `5-17HS19-2004S1`
+Låst motorprestanda/formfaktor:
+- 5 × NEMA17
+- cirka **59 Ncm / 84 oz-in**
+- **2,0 A**
+- 42×42×48 mm
+- **Ø5 mm D-axel**
+- 4 ledare
+- helst ~1 m kabel
 
-Snapshot:
-- **38,13 €**
-- **200 i lager**
-- 59 Ncm / 2 A
-- 5 mm D-axel / 24 mm axel
-- 1 m kabel
-- brutto 2,10 kg
-- välj **Germany warehouse**
+Aktuell Amazon.se-träff från användarens live-checkout:
+- brand: **STEPPERONLINE**
+- exakt modell: **`17HS19-2004S1`**
+- pack of 5
+- 59 Ncm / 84 oz-in
+- 2 A
+- 42×42×48 mm
+- 1 m kabel med kontakt
+- **608,37 kr**
+- Prime / fri frakt
+- visad leverans 7 september
 
-Exakt Sverige-frakt visas först i checkout. Germany warehouse är EU-spåret och ska användas om checkout håller.
+Detta är exakt referensmodellen och är för närvarande det starkaste live-köpet. Köp först när Amazon fortfarande visar samma 5-pack/SKU/pris i checkout.
 
-### 2. VEVOR EU — router
+### 2. Router — NY SOURCING KRÄVS
 
-Köp exakt:
-- `0700C`
-- SKU `YXKXBJ710W65AH7WLV2`
-- product ID `010235793217`
-- 220–240 V / 50 Hz
-- 800 W
-- 65 mm kropp
+Tidigare VEVOR `0700C` är **inte längre ett köpval**.
 
-Exakt modell/SKU är köpbar på VEVOR:s EU-spår. Tysk storefront visade 63,99 € i dagens kontroll, men VEVOR justerar moms efter destinationsland och den svenska/EU-sidan är dynamisk. **Svensk checkout är facit.** VEVOR:s EU-fraktpolicy anger för närvarande fri frakt för normala produkter till Sverige.
+Krav som kvarstår:
+- 230 V
+- Makita RT0700/RT0702-kompatibel **65 mm** kropp/formfaktor
+- variabelt varvtal lämpligt för CNC
+- kompatibilitet med redan köpt Elaire/Makita-style 1/8" / 3,175 mm collet måste verifieras
 
-Efter leverans: provpassa den redan köpta Elaire/Makita-style 1/8"-hylsan och kontrollera runout före riktig fräsning.
+Aktuell säker fallback:
+- **Makita RT0702C**, originalmaskin
+- live svenska prisjämförelser 2026-09-03 visar cirka **1 599–1 657 kr inklusive frakt** från lagerhållande svenska/EU-handlare
+- 710 W, 230 V, variabelt varvtal, 65 mm Makita-familj
+
+Detta är dyrare än den gamla VEVOR-planen men är den nu verifierade säkra referensen. Fortsatt sourcing får gärna hitta en billigare EU-klon, men den måste vara live-köpbar, 65 mm och collet-kompatibel; inga gamla indexerade produktsidor räcker.
 
 ### 3. 3DJake Sverige — PLA
 
@@ -129,6 +139,24 @@ Live 2026-09-03:
 Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ## Blockerade / ej aktiva sourcingvägar
+
+### StepperOnline direkt / eBay 5-pack — INACTIVE 2026-09-03
+
+- StepperOnline-direktens tidigare Germany 5-pack såg först attraktivt ut vid **38,13 €**, men svensk checkout lade på cirka **20 € frakt**.
+- Flera eBay-listningar med exakt 5-pack visade sig vara **out of stock** eller inte leverera till Sverige.
+- Amazon.se-spåret ovan ersätter därför StepperOnline-direkt som aktiv köpväg; motorspecen ändras inte.
+
+### VEVOR `0700C` router — BLACKLISTED 2026-09-03
+
+- användarens live VEVOR-sida visar produkten som **discontinued**; de indexerade produktsidor som fortfarande gick att hitta var stale och ska inte användas som lagerbevis.
+- dessutom finns en officiell UK Product Safety Report för **VEVOR Electric Router model `0700C`, 110/220V 50/60Hz 800W Class II** där risknivån anges som **Serious** för electric shock.
+- rapporten beskriver underkänd electrical strength, otillräcklig insulation och bristande build quality; den berörda importen avvisades och förstördes.
+- därför: **köp inte VEVOR 0700C**, inte heller restlager/begagnat enbart för att priset är lågt.
+
+### VEVOR NEMA17 59 Ncm 5-pack — INACTIVE 2026-09-03
+
+- tekniskt såg databladet korrekt ut: ritningen visade Ø5 mm D-axel (4,5 mm var flatmåttet), men användarens live-sida visar motorpaketet som **discontinued**.
+- gamla indexerade VEVOR-sidor ska inte behandlas som köpbara.
 
 ### DMW Industrietechnik — INACTIVE / REPLACED
 
@@ -172,20 +200,17 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 ## Orderarkitektur nu
 
-Kvarvarande huvudorder:
-1. StepperOnline Germany
-2. VEVOR EU
-3. 3DJake
-
-Redan köpt: HaWiWe, Elecrow, eBay/POWGE-remhjulen, LaskaKit-mekanikkärnan, eBay/HKGY01 T8×8-muttrarna och hela DigiKey-korgen.
+Kvarvarande huvudköp:
+1. Amazon.se — exakt StepperOnline 5-pack, om live checkout fortfarande visar 608,37 kr/Prime
+2. router — ny 65 mm Makita-kompatibel sourcing; original Makita RT0702C är säker fallback
+3. 3DJake — 3 kg PLA
 
 Plus fysisk Motonet-rörkontroll och senare lokala el/bordsmaterial.
 
-## Checkout-gates — kvarvarande prisosäkerheter
+## Checkout-gates
 
-1. StepperOnline Germany → Sverige-frakt.
-2. VEVOR EU → svensk destinationsmoms/slutpris i checkout.
+1. Amazon.se motorer → verifiera exakt `17HS19-2004S1`, 5-pack och slutpris innan betalning.
+2. Router → ingen klon köps utan live-lager, 65 mm formfaktor och collet-kompatibilitet.
+3. 3DJake PLA har ett offentligt landat baselinepris: **559 kr**.
 
-3DJake PLA har ett offentligt landat baselinepris: **559 kr**.
-
-Bred sourcingresearch är avslutad utom där en konkret checkout-gate fallerar.
+Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
