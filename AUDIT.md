@@ -1,6 +1,6 @@
 # Systemaudit
 
-**Current 2026-09-03.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`.
+**Current 2026-09-03.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
 
 ## Samlad bedömning
 
@@ -9,7 +9,7 @@ Grundarkitekturen håller:
 - 650×1250 mm arbetsyta
 - Ø30×1,5 mm rails
 - StepperOnline 59 Ncm motorer
-- Jackpot-controllerfamilj
+- **köpt Elecrow Jackpot3**
 - HDR-60-24
 - Omron NC endstops
 - VEVOR 0700C
@@ -40,7 +40,8 @@ P1S 256³ är tillräcklig. Före full sats:
 
 ## Controller/elektronik
 
-Aktivt controllerköp är Elecrow Jackpot3 enligt D015. Före driven rörelse:
+**Elecrow Jackpot3 `CQA240812C2` är köpt 2026-09-03 enligt D015.** Inköpsvalet är stängt. Före driven rörelse:
+- kontrollera kortet vid leverans
 - flasha V1E:s då aktuellt testade FluidNC/LR4-config
 - kontrollera motorutgångar
 - kontrollera varje endstopstatus
@@ -100,13 +101,14 @@ HDR-60-24 är inte jordpunkt.
 ## Fysiska gates som blockerar slutgodkännande
 
 1. HaWiWe: transportskada + fyra produktgrupper + M3×10/XZ/MGN-passning.
-2. Motonet-rör: verklig OD/rakhet före kapning.
-3. Bord: racking/planhet/kantstöd.
-4. VEVOR/Elaire: collet-säte + runout.
-5. DeWalt: exakt typskylt före modellunika AUTO-data.
-6. NVR/HDR: kapslings-dry-fit + terminalschema.
-7. Full travel: alla rörliga kablar + vac-hose samtidigt.
-8. Damm: behållare + statisk jordväg.
-9. 230 V: PE/L/N/dragavlastning/NVR-test.
+2. Jackpot3: transportskada/korrekt kort vid leverans.
+3. Motonet-rör: verklig OD/rakhet före kapning.
+4. Bord: racking/planhet/kantstöd.
+5. VEVOR/Elaire: collet-säte + runout.
+6. DeWalt: exakt typskylt före modellunika AUTO-data.
+7. NVR/HDR: kapslings-dry-fit + terminalschema.
+8. Full travel: alla rörliga kablar + vac-hose samtidigt.
+9. Damm: behållare + statisk jordväg.
+10. 230 V: PE/L/N/dragavlastning/NVR-test.
 
 Checkout-gates är inte audit-gates och finns endast i `PROCUREMENT.md`.
