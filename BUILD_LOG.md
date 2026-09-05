@@ -98,6 +98,16 @@
 - eBay-säljaren **HKGY01** meddelade att de två beställda flänsade T8×8-mässingsmuttrarna var **out of stock** och bad köparen annullera.
 - Köparen skickade annulleringsbegäran 2026-09-05.
 - eBay visar **`The cancellation is pending`**.
-- Ordern räknas inte längre som aktiv sourcing; **2 × T8×8 / 2 mm pitch / 4-start / 8 mm lead** är åter ett öppet inköpsbehov.
+- Ordern räknas inte längre som aktiv sourcing; **2 × T8×8 / 2 mm pitch / 4-start / 8 mm lead** blev åter ett öppet inköpsbehov.
 - De tidigare debiterade **67 kr** ligger kvar i kostnadsloggen tills återbetalningen faktiskt är verifierad.
-- `PROCUREMENT.md`, `BOM.md`, `CHECKLIST.md` och `COSTS.md` reconcilerades mot detta läge.
+
+## 2026-09-05 — T8×8-muttrar ersättningsköpta via Amazon
+
+- Amazon.se-listning från **euroharry** verifierades från användarens live produktsida.
+- Spec: Ø8 mm Tr8, **2 mm pitch**, **4-start**, alltså **8 mm lead**, flänsad mässingsmutter.
+- Pack: **4 st**; LR4 behöver 2, så 2 blir reserv.
+- Visat orderpris: **101,76 kr**.
+- Prime.
+- Ordern lades 2026-09-05 och stänger sourcingbehovet för Z-muttrarna.
+- HKGY01-annullering/återbetalning är fortfarande separat väntande och bokförs först när återbetalningen faktiskt syns.
+- `PROCUREMENT.md`, `BOM.md`, `CHECKLIST.md`, `COSTS.md` och `SOURCING.md` reconcilerades mot det nya läget.
