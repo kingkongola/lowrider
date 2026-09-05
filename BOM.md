@@ -36,11 +36,11 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [x] 2 × flexible coupler 5→8 mm — `LA190031`
 - [x] 1 × 5 m GT2/2 mm, 10 mm, glasfiberförstärkt — `LA190013C`
 
-## Redan köpt — eBay / HKGY01
+## eBay / HKGY01 — annullering väntar
 
-**Betald 2026-09-03: faktiskt debiterat 67 kr. Annonsen visade `Includes import fees`.**
+**Ordern från 2026-09-03 på 2 × T8×8-mässingsmuttrar är inte längre ett aktivt köp. Säljaren uppgav 2026-09-05 att varan var slut och bad köparen annullera. eBay visar `The cancellation is pending`.**
 
-- [x] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead**, vald variant `T8 × 8 mm`, 2-pack
+- [ ] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead** — ersättningsköp krävs
 
 ## Redan köpt — DigiKey
 
@@ -85,6 +85,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 ## Kvar — mekanik
 
+- [ ] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead** — HKGY01-order annulleras p.g.a. out of stock; nytt köp krävs
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
