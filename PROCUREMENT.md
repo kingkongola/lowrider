@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-03.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-05.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -40,17 +40,6 @@ Checkout:
 - GLS Sweden: **8,93 €**
 - total: **39,68 €**
 - faktiskt debiterat: **444 kr**
-
-### eBay / HKGY01 — CLOSED / ORDERED
-
-Köpt 2026-09-03:
-- **2 × flänsad T8×8 brass nut**
-- vald variant: `T8 × 8 mm`
-- 2 mm pitch / 4-start / 8 mm lead
-- pack: **2 Pcs**, quantity 1
-- annonsen visade **`Includes import fees`**
-- listat leveransfönster: **9 okt – 9 nov 2026**
-- faktiskt debiterat: **67 kr**
 
 ### DigiKey — CLOSED / ORDERED
 
@@ -106,9 +95,20 @@ Beställt 2026-09-03:
 
 KATSU 101750 ersätter den tidigare VEVOR-planen. Vid leverans ska den redan köpta Elaire/Makita-style 1/8"-hylsan provpassas och runout kontrolleras före riktig fräsning.
 
-## Beställ nu
+## Måste ersättningsköpas
 
-### 1. 3DJake Sverige — PLA
+### 1. 2 × flänsad T8×8 brass nut
+
+Kravet är oförändrat:
+- **2 × flänsad T8×8 brass nut**
+- **2 mm pitch / 4-start / 8 mm lead**
+- högergängad standardvariant
+
+Tidigare eBay-order från **HKGY01** köptes 2026-09-03 för **67 kr**, men säljaren meddelade 2026-09-05 att varan var **out of stock** och bad köparen annullera. Köparen skickade annulleringsbegäran; eBay visar **`The cancellation is pending`**. Ordern räknas därför inte längre som aktiv sourcing. Återbetalningen är ännu inte verifierad i `COSTS.md`.
+
+Nästa köp ska vara ett nytt exakt 2-pack eller två separata muttrar. Bekräfta uttryckligen **T8×8 / 4-start / 8 mm lead** före köp; blanda inte ihop med T8×2 eller T8×4.
+
+### 2. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -126,6 +126,14 @@ Live 2026-09-03:
 Köp inte 6 kg; behovet är cirka 2,7 kg.
 
 ## Blockerade / ej aktiva sourcingvägar
+
+### eBay / HKGY01 T8×8-muttrar — CANCELLATION PENDING / OUT OF STOCK 2026-09-05
+
+- ordern gällde 2 × flänsad T8×8-mässingsmutter, vald variant `T8 × 8 mm`, 2-pack
+- faktiskt debiterat: **67 kr**
+- säljaren kontaktade köparen och uppgav **out of stock** samt bad köparen annullera
+- annulleringsbegäran skickades 2026-09-05; eBay visar **`The cancellation is pending`**
+- behandla inte ordern som levererande eller som stängd förrän annullering + återbetalning är bekräftade
 
 ### StepperOnline direkt / eBay 5-pack — INACTIVE 2026-09-03
 
@@ -189,7 +197,8 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. **3DJake — 3 kg PLA**
+1. **2 × flänsad T8×8 brass nut, 4-start / 8 mm lead — ersättningsköp krävs**
+2. **3DJake — 3 kg PLA**
 
 Plus:
 - fysisk Motonet-rörkontroll/köp
@@ -197,13 +206,14 @@ Plus:
 - lokal NVR/kapsling/elmaterial efter fysisk dry-fit
 - commissioning-fräs när första skär närmar sig
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar och Z-drivning är nu beställda.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv och kopplingar är beställda. **Z-muttrarna är inte längre beställda efter HKGY01-annulleringen.**
 
 ## Checkout-gates
 
-1. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
-2. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
-3. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
-4. Stepperkablar — dry-fit innan eventuella extensioner köps.
+1. T8×8-muttrar — verifiera uttryckligen 2 mm pitch / 4-start / 8 mm lead och svensk leverans före köp.
+2. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
+3. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
+4. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
+5. Stepperkablar — dry-fit innan eventuella extensioner köps.
 
 Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
