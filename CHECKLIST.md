@@ -3,15 +3,15 @@
 ## 1. Beställningar — nu
 
 - [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190031`, 1× `LA190013C`; GLS Sweden ingick
-- [ ] 2 × **T8×8 brass nut, 4-start / 8 mm lead** — köp separat; LaskaKit `LA190033A` var slut och ingick inte i 444-kronorsordern
+- [ ] 2 × **T8×8 brass nut, 4-start / 8 mm lead** — ersättningsköp krävs; HKGY01-order annulleras efter säljarens out-of-stock-besked och eBay visar `The cancellation is pending`
 - [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — köpt via eBay/POWGE 2026-09-03, **72 kr faktiskt debiterat**, fri frakt och importavgifter inkluderade
-- [ ] DigiKey-korg exakt enligt `PROCUREMENT.md`; kontrollera 0 kr frakt och ingen Marketplace-rad
-- [ ] StepperOnline `5-17HS19-2004S1` fempack från Germany warehouse; läs Sverige-frakt i checkout
+- [x] DigiKey — köpt 2026-09-03 för **986,98 kr faktiskt debiterat**: PSU, endstops, 608-lager, Wago, glands, Faston, kablage och board-pigtails
+- [x] 5 × STEPPERONLINE `17HS19-2004S1` — köpt via Amazon.se 2026-09-03, **608,37 kr visat orderpris**, Prime/fri frakt
 - [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
-- [ ] VEVOR EU 0700C `YXKXBJ710W65AH7WLV2`; välj Sverige som destination och läs slutpris
+- [x] KATSU `101750` router — köpt via Amazon.se 2026-09-03, **620,00 kr visat orderpris**, Prime/fri frakt
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
-**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av det redan genomförda eBay/POWGE-köpet. LaskaKit är nu stängd för allt utom de två mässingsmuttrarna som inte gick att köpa där.**
+**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av eBay/POWGE. VEVOR-routerspåret är stängt; KATSU 101750 är köpt. HKGY01-muttrarna är inte längre ett aktivt köp.**
 
 ## 2. Lokalt / fysiskt
 
@@ -54,7 +54,7 @@
 - [ ] kontrollera lätt Z-rörelse utan binding
 - [ ] kapa 5 m-remmen först när routing verifierats; målsegment 999 / 1705 / 1705 mm
 - [ ] montera 16T/rem/idlers
-- [ ] montera VEVOR i 65 mm mount
+- [ ] montera KATSU `101750` i Makita/65 mm mount
 - [ ] provpassa Elaire-collet
 - [ ] kontrollera runout
 - [ ] kontrollera fri manuell rörelse över hela slaget
@@ -92,7 +92,7 @@
 - [ ] dry-fit NVR + HDR innan kapsling/håltagning låses
 - [ ] placera stoppet direkt nåbart
 - [ ] dry-fit 3 m 24 V-rutt
-- [ ] dry-fit VEVOR-kabel
+- [ ] dry-fit KATSU-kabel
 - [ ] dry-fit motor/endstop
 - [ ] montera vac-hose samtidigt
 - [ ] kör manuellt alla fyra hörn + Z-extremer
@@ -108,7 +108,7 @@
 - [ ] kontinuitetstesta PE
 - [ ] verifiera ingen L/N→PE-kortslutning
 - [ ] verifiera NVR/no-restart med router frånkopplad
-- [ ] första samtidiga DeWalt + VEVOR: kontrollera att 10 A-gruppen håller; utred bara om den faktiskt löser
+- [ ] första samtidiga DeWalt + KATSU: kontrollera att 10 A-gruppen håller; utred bara om den faktiskt löser
 
 ## 11. Driftsättning
 
