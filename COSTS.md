@@ -25,7 +25,6 @@ Praktiskt mål för detta bygge: håll färdig standardnära LR4 nära **9 000 k
 
 - **67 kr — eBay / HKGY01.** Säljaren uppgav 2026-09-05 att T8×8-muttrarna var slut och bad köparen annullera. Annulleringsbegäran är skickad och eBay visar `The cancellation is pending`. Återbetalningen är ännu inte verifierad.
 - Tills återbetalningen är bekräftad ligger 67 kr kvar i brutto faktiskt debiterat ovan.
-- **Aktiv committed kostnad exklusive denna annullerade order: 5 521,35 kr.**
 
 ## Lagda order — faktisk kortdebitering ännu ej verifierad
 
@@ -35,10 +34,13 @@ Amazon kan debitera först när varan skickas. Dessa order är lagda och ingår 
 |---|---|---|---:|
 | 2026-09-03 | Amazon.se | 5 × STEPPERONLINE `17HS19-2004S1`, 59 Ncm / 84 oz-in, 2 A | **608,37 kr**, Prime/fri frakt |
 | 2026-09-03 | Amazon.se / AIM Tools Ltd | KATSU `101750`, 220–240 V, 710 W, ~65 mm Makita-formfaktor | **620,00 kr**, Prime/fri frakt |
+| 2026-09-05 | Amazon.se / euroharry | 4 × flänsad T8-mässingsmutter, Ø8 mm / 2 mm pitch / 4-start / 8 mm lead; 2 används + 2 reserv | **101,76 kr**, Prime |
 
-**Lagda Amazon-order: 1 228,37 kr.**
+**Lagda Amazon-order: 1 330,13 kr.**
 
-**Brutto committed project cost före HKGY01-återbetalning: 5 588,35 kr.**
+**Brutto committed project cost före HKGY01-återbetalning: 5 690,11 kr.**
+
+**Aktiv committed project cost exklusive HKGY01-order som annulleras: 5 623,11 kr.**
 
 Elecrow-avstämning: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €.
 
@@ -46,7 +48,9 @@ eBay-remhjul: faktisk SEK-debitering **72 kr** är facit oavsett listningens vis
 
 LaskaKit-avstämning: varor **30,75 €** + GLS Sweden **8,93 €** = **39,68 €**. De två T8×8-mässingsmuttrarna var otillgängliga och ingår därför inte i ordern eller kostnaden.
 
-eBay T8×8-muttrar: vald variant **T8 × 8 mm**, **2 Pcs**, quantity 1. Faktisk debitering **67 kr**. Ordern är nu på väg att annulleras på säljarens begäran p.g.a. out of stock; bokför inte någon återbetalning förrän den faktiskt är verifierad.
+eBay T8×8-muttrar: vald variant **T8 × 8 mm**, **2 Pcs**, quantity 1. Faktisk debitering **67 kr**. Ordern är på väg att annulleras på säljarens begäran p.g.a. out of stock; bokför inte någon återbetalning förrän den faktiskt är verifierad.
+
+Amazon/euroharry T8-muttrar: 4-pack beställt 2026-09-05 för **101,76 kr visat orderpris**. Live produktspec visade Ø8 mm, 2 mm pitch och 4-start, vilket ger 8 mm lead. Faktisk kortdebitering ska ersätta orderpriset när den syns.
 
 DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40 kr**, total **986,98 kr**. Fraktmetod: **UPS Worldwide Saver, DDP**, 4 dagar enligt checkout.
 
@@ -54,7 +58,7 @@ DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40
 
 Aktuella estimat finns endast i `PROCUREMENT.md` och ska inte blandas ihop med faktisk kostnad. När en order läggs flyttas dess verkliga SEK-debitering hit eller till pending-sektionen ovan tills kortdebiteringen är verifierad.
 
-De två T8×8-mässingsmuttrarna behöver nu ersättningsköpas.
+T8×8-muttrarna är nu ersättningsbeställda; inget ytterligare mutterköp behövs för basbygget.
 
 ## Kostnadsdisciplin
 
