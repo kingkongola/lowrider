@@ -3,7 +3,7 @@
 ## 1. Beställningar — nu
 
 - [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190031`, 1× `LA190013C`; GLS Sweden ingick
-- [ ] 2 × **T8×8 brass nut, 4-start / 8 mm lead** — ersättningsköp krävs; HKGY01-order annulleras efter säljarens out-of-stock-besked och eBay visar `The cancellation is pending`
+- [x] 4 × **T8×8 brass nut, 2 mm pitch / 4-start / 8 mm lead** — beställt via Amazon.se/euroharry 2026-09-05 för **101,76 kr visat orderpris**, Prime; 2 används + 2 reserv
 - [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — köpt via eBay/POWGE 2026-09-03, **72 kr faktiskt debiterat**, fri frakt och importavgifter inkluderade
 - [x] DigiKey — köpt 2026-09-03 för **986,98 kr faktiskt debiterat**: PSU, endstops, 608-lager, Wago, glands, Faston, kablage och board-pigtails
 - [x] 5 × STEPPERONLINE `17HS19-2004S1` — köpt via Amazon.se 2026-09-03, **608,37 kr visat orderpris**, Prime/fri frakt
@@ -11,7 +11,7 @@
 - [x] KATSU `101750` router — köpt via Amazon.se 2026-09-03, **620,00 kr visat orderpris**, Prime/fri frakt
 - [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
 
-**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av eBay/POWGE. VEVOR-routerspåret är stängt; KATSU 101750 är köpt. HKGY01-muttrarna är inte längre ett aktivt köp.**
+**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av eBay/POWGE. VEVOR-routerspåret är stängt; KATSU 101750 är köpt. HKGY01-muttrarna annulleras efter out-of-stock; ersättningsmuttrarna är beställda från Amazon.**
 
 ## 2. Lokalt / fysiskt
 
