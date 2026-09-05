@@ -95,20 +95,24 @@ Beställt 2026-09-03:
 
 KATSU 101750 ersätter den tidigare VEVOR-planen. Vid leverans ska den redan köpta Elaire/Makita-style 1/8"-hylsan provpassas och runout kontrolleras före riktig fräsning.
 
-## Måste ersättningsköpas
+### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / ORDERED
 
-### 1. 2 × flänsad T8×8 brass nut
+Beställt 2026-09-05 från användarens live Amazon-sida:
+- **4 × flänsad T8-mässingsmutter**
+- för Ø8 mm Tr8-spindel
+- **2 mm pitch**
+- **4-start**
+- därmed **8 mm lead**
+- mässing
+- 4-pack
+- visat orderpris: **101,76 kr**
+- Prime
 
-Kravet är oförändrat:
-- **2 × flänsad T8×8 brass nut**
-- **2 mm pitch / 4-start / 8 mm lead**
-- högergängad standardvariant
+Två muttrar behövs i LR4 och två blir reserv. Detta ersätter den annullerade HKGY01-vägen och stänger sourcingbehovet för Z-muttrarna. Faktisk kortdebitering verifieras separat i `COSTS.md`.
 
-Tidigare eBay-order från **HKGY01** köptes 2026-09-03 för **67 kr**, men säljaren meddelade 2026-09-05 att varan var **out of stock** och bad köparen annullera. Köparen skickade annulleringsbegäran; eBay visar **`The cancellation is pending`**. Ordern räknas därför inte längre som aktiv sourcing. Återbetalningen är ännu inte verifierad i `COSTS.md`.
+## Beställ nu
 
-Nästa köp ska vara ett nytt exakt 2-pack eller två separata muttrar. Bekräfta uttryckligen **T8×8 / 4-start / 8 mm lead** före köp; blanda inte ihop med T8×2 eller T8×4.
-
-### 2. 3DJake Sverige — PLA
+### 1. 3DJake Sverige — PLA
 
 Köp exakt:
 - **3 × eSUN PLA Basic Black**
@@ -133,7 +137,8 @@ Köp inte 6 kg; behovet är cirka 2,7 kg.
 - faktiskt debiterat: **67 kr**
 - säljaren kontaktade köparen och uppgav **out of stock** samt bad köparen annullera
 - annulleringsbegäran skickades 2026-09-05; eBay visar **`The cancellation is pending`**
-- behandla inte ordern som levererande eller som stängd förrän annullering + återbetalning är bekräftade
+- ersättningsköpet är nu gjort via Amazon.se/euroharry
+- återbetalningen bokförs först när den faktiskt är verifierad
 
 ### StepperOnline direkt / eBay 5-pack — INACTIVE 2026-09-03
 
@@ -197,8 +202,7 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 ## Orderarkitektur nu
 
 Kvarvarande huvudorder:
-1. **2 × flänsad T8×8 brass nut, 4-start / 8 mm lead — ersättningsköp krävs**
-2. **3DJake — 3 kg PLA**
+1. **3DJake — 3 kg PLA**
 
 Plus:
 - fysisk Motonet-rörkontroll/köp
@@ -206,14 +210,13 @@ Plus:
 - lokal NVR/kapsling/elmaterial efter fysisk dry-fit
 - commissioning-fräs när första skär närmar sig
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv och kopplingar är beställda. **Z-muttrarna är inte längre beställda efter HKGY01-annulleringen.**
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar och Z-muttrar är beställda.
 
 ## Checkout-gates
 
-1. T8×8-muttrar — verifiera uttryckligen 2 mm pitch / 4-start / 8 mm lead och svensk leverans före köp.
-2. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
-3. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
-4. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
-5. Stepperkablar — dry-fit innan eventuella extensioner köps.
+1. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
+2. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
+3. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
+4. Stepperkablar — dry-fit innan eventuella extensioner köps.
 
 Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
