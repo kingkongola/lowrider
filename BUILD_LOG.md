@@ -92,3 +92,12 @@
 - DMW och övriga 16T-fallbacks stängdes därmed.
 - Faktiskt spenderad projektsumma efter köpet: **2 862 kr**.
 - Sourcinglärdom: för billiga variantkänsliga commodity-delar ska eBay sökas tidigt. EU-ursprung är inte målet i sig; rätt spec + låg total landad kostnad + tydlig importhantering är bättre beslutsvariabler.
+
+## 2026-09-05 — HKGY01 T8×8-muttrar annulleras
+
+- eBay-säljaren **HKGY01** meddelade att de två beställda flänsade T8×8-mässingsmuttrarna var **out of stock** och bad köparen annullera.
+- Köparen skickade annulleringsbegäran 2026-09-05.
+- eBay visar **`The cancellation is pending`**.
+- Ordern räknas inte längre som aktiv sourcing; **2 × T8×8 / 2 mm pitch / 4-start / 8 mm lead** är åter ett öppet inköpsbehov.
+- De tidigare debiterade **67 kr** ligger kvar i kostnadsloggen tills återbetalningen faktiskt är verifierad.
+- `PROCUREMENT.md`, `BOM.md`, `CHECKLIST.md` och `COSTS.md` reconcilerades mot detta läge.
