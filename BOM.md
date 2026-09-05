@@ -40,7 +40,11 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 **Ordern från 2026-09-03 på 2 × T8×8-mässingsmuttrar är inte längre ett aktivt köp. Säljaren uppgav 2026-09-05 att varan var slut och bad köparen annullera. eBay visar `The cancellation is pending`.**
 
-- [ ] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead** — ersättningsköp krävs
+## Redan beställt — Amazon.se / euroharry
+
+**Beställt 2026-09-05 för visat orderpris 101,76 kr, Prime. Faktisk kortdebitering verifieras separat i `COSTS.md`.**
+
+- [x] 4 × flänsad T8 brass nut, **Ø8 mm / 2 mm pitch / 4-start / 8 mm lead**; 2 används + 2 reserv
 
 ## Redan köpt — DigiKey
 
@@ -85,7 +89,6 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 ## Kvar — mekanik
 
-- [ ] 2 × flänsad T8×8 brass nut, **2 mm pitch / 4-start / 8 mm lead** — HKGY01-order annulleras p.g.a. out of stock; nytt köp krävs
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
