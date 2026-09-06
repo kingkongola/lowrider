@@ -1,6 +1,6 @@
 # Sourcing evidence
 
-**Snapshot 2026-09-05.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför köpvägar valdes eller stängdes och ska inte skapa alternativa BOM-rader. Faktisk kostnad finns i `COSTS.md`.
+**Snapshot 2026-09-06.** `PROCUREMENT.md` är den kanoniska ordermatrisen. Den här filen dokumenterar varför köpvägar valdes eller stängdes och ska inte skapa alternativa BOM-rader. Faktisk kostnad finns i `COSTS.md`.
 
 ## Checkout-regel efter falska positiva
 
@@ -136,15 +136,11 @@ Vid leverans ska Elaire/Makita-style 1/8"-hylsan provpassas och runout kontrolle
 
 VEVOR-spåret är stängt. Användarens live-sida visade produkten som discontinued, och en officiell UK Product Safety Report för modell `0700C` klassade elchockrisken som allvarlig på grund av bristande isolation/elektrisk hållfasthet. KATSU `101750` är köpt ersättare.
 
-## PLA — ACTIVE
+## PLA — CLOSED / ORDERED
 
-Aktiv baseline från 2026-09-03: 3DJake Sverige, **eSUN PLA Basic Black 1,75 mm / 1 kg**.
-- 148 kr/st i snapshot
-- tre spolar = 444 kr
-- svensk standardfrakt 115 kr under 1 099 kr
-- baseline landat **559 kr**
+**3 kg PLA 1,75 mm köpt från PrintOnion 2026-09-06 för 426 kr.**
 
-Före köp ska dagens landade pris jämföras mot Amazon/andra Prime-alternativ. Behovet är cirka 2,7 kg; köp 3 kg, inte 6 kg.
+Behovet för LR4 är cirka 2,7 kg, så 3 kg täcker basbyggets utskrifter. Den tidigare 3DJake-baseline på 559 kr landat är ersatt och ska inte återaktiveras för basbygget.
 
 ## Motonet — ACTIVE fysisk kontroll
 
@@ -168,5 +164,6 @@ KJD12-familjen är kravmässigt tillräcklig om exakt levererad variant är 230 
 - separat KEDU/CEM-specialorder — inte baseline.
 - Sorotec — deferred tills verkligt fräsbehov.
 - SUNLU 6 kg — borttaget; behovet är 3 kg.
-- 3D Prima PLA — ersatt av billigare komplett landad 3DJake-baseline.
+- 3D Prima PLA — ersatt av PrintOnion-köpet.
+- 3DJake PLA — tidigare baseline 559 kr landat; ersatt av PrintOnion 426 kr.
 - Jackpot2 — historiskt controlleralternativ; Jackpot3 är redan köpt.
