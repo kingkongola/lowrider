@@ -9,9 +9,9 @@
 - [x] 5 × STEPPERONLINE `17HS19-2004S1` — köpt via Amazon.se 2026-09-03, **608,37 kr visat orderpris**, Prime/fri frakt
 - [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
 - [x] KATSU `101750` router — köpt via Amazon.se 2026-09-03, **620,00 kr visat orderpris**, Prime/fri frakt
-- [ ] 3 × eSUN PLA Basic Black 1,75 mm / 1 kg från 3DJake; baseline 559 kr inkl standardfrakt
+- [x] **3 kg PLA 1,75 mm från PrintOnion** — köpt 2026-09-06 för **426 kr**; täcker cirka 2,7 kg LR4-printbehov
 
-**Roboter-Bausatz och Allegro är blockerade av faktisk svensk checkout. DMW-spåret är ersatt av eBay/POWGE. VEVOR-routerspåret är stängt; KATSU 101750 är köpt. HKGY01-muttrarna annulleras efter out-of-stock; ersättningsmuttrarna är beställda från Amazon.**
+**Kärnmekanik, elektronik, router och filament är nu beställda. HKGY01-muttrarna annulleras efter out-of-stock; ersättningsmuttrarna är beställda från Amazon.**
 
 ## 2. Lokalt / fysiskt
 
