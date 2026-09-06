@@ -78,8 +78,6 @@ Beställt 2026-09-03 från användarens live Amazon-sida:
 - Prime / fri frakt
 - visad leverans: **7 september**
 
-Detta stänger motorsourcingen utan avvikelse från den tidigare referensspecen.
-
 ### Amazon.se — KATSU router — CLOSED / ORDERED
 
 Beställt 2026-09-03:
@@ -88,27 +86,19 @@ Beställt 2026-09-03:
 - 710 W
 - variabelt varvtal
 - cirka **64,8/65 mm** motorhus, Makita RT0700-familjens formfaktor
-- såld av AIM Tools Ltd, skickas från Amazon enligt live-sidan
 - visat pris vid köp: **620,00 kr**
 - Prime / fri frakt
-- visad leverans: **7 september**
-
-KATSU 101750 ersätter den tidigare VEVOR-planen. Vid leverans ska den redan köpta Elaire/Makita-style 1/8"-hylsan provpassas och runout kontrolleras före riktig fräsning.
 
 ### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / ORDERED
 
-Beställt 2026-09-05 från användarens live Amazon-sida:
+Beställt 2026-09-05:
 - **4 × flänsad T8-mässingsmutter**
-- för Ø8 mm Tr8-spindel
-- **2 mm pitch**
-- **4-start**
-- därmed **8 mm lead**
-- mässing
-- 4-pack
+- Ø8 mm Tr8
+- **2 mm pitch / 4-start / 8 mm lead**
 - visat orderpris: **101,76 kr**
 - Prime
 
-Två muttrar behövs i LR4 och två blir reserv. Detta ersätter den annullerade HKGY01-vägen och stänger sourcingbehovet för Z-muttrarna. Faktisk kortdebitering verifieras separat i `COSTS.md`.
+Två används i LR4 och två blir reserv.
 
 ### PrintOnion — PLA — CLOSED / ORDERED
 
@@ -117,55 +107,27 @@ Köpt 2026-09-06:
 - vanlig styv PLA för LR4-printarna
 - faktiskt betalt: **426 kr**
 
-Behovet är cirka 2,7 kg, så 3 kg täcker basbyggets utskrifter. Den tidigare 3DJake-baseline på 559 kr är ersatt och ska inte längre användas som köporder.
+Behovet är cirka 2,7 kg, så 3 kg täcker basbyggets utskrifter.
 
 ## Blockerade / ej aktiva sourcingvägar
 
-### eBay / HKGY01 T8×8-muttrar — CANCELLATION PENDING / OUT OF STOCK 2026-09-05
+### eBay / HKGY01 T8×8-muttrar — CANCELLATION PENDING / OUT OF STOCK
 
-- ordern gällde 2 × flänsad T8×8-mässingsmutter, vald variant `T8 × 8 mm`, 2-pack
+- tidigare order: 2 × T8×8 brass nut
 - faktiskt debiterat: **67 kr**
-- säljaren kontaktade köparen och uppgav **out of stock** samt bad köparen annullera
-- annulleringsbegäran skickades 2026-09-05; eBay visar **`The cancellation is pending`**
-- ersättningsköpet är nu gjort via Amazon.se/euroharry
+- säljaren uppgav out of stock och bad köparen annullera
+- ersättningsköpet är gjort via Amazon.se/euroharry
 - återbetalningen bokförs först när den faktiskt är verifierad
 
-### StepperOnline direkt / eBay 5-pack — INACTIVE 2026-09-03
+### StepperOnline direkt / eBay 5-pack — INACTIVE
 
-- StepperOnline-direktens tidigare Germany 5-pack såg först attraktivt ut vid **38,13 €**, men svensk checkout lade på cirka **20 € frakt**.
-- Flera eBay-listningar med exakt 5-pack visade sig vara **out of stock** eller inte leverera till Sverige.
-- Amazon.se löste i stället exakt `17HS19-2004S1` 5-pack för **608,37 kr med Prime/fri frakt**. Ingen fortsatt motorsourcing behövs.
+Amazon.se löste exakt `17HS19-2004S1` 5-pack för **608,37 kr med Prime/fri frakt**. Ingen fortsatt motorsourcing behövs.
 
-### VEVOR `0700C` router — BLACKLISTED 2026-09-03
+### VEVOR `0700C` router — BLACKLISTED
 
-- användarens live VEVOR-sida visar produkten som **discontinued**; de indexerade produktsidor som fortfarande gick att hitta var stale och ska inte användas som lagerbevis.
-- dessutom finns en officiell UK Product Safety Report för **VEVOR Electric Router model `0700C`, 110/220V 50/60Hz 800W Class II** där risknivån anges som **Serious** för electric shock.
-- rapporten beskriver underkänd electrical strength, otillräcklig insulation och bristande build quality; den berörda importen avvisades och förstördes.
-- därför: **köp inte VEVOR 0700C**, inte heller restlager/begagnat enbart för att priset är lågt.
-- KATSU `101750` är nu köpt ersättare.
+Köp inte VEVOR `0700C`. KATSU `101750` är köpt ersättare.
 
-### VEVOR NEMA17 59 Ncm 5-pack — INACTIVE 2026-09-03
-
-- tekniskt såg databladet korrekt ut: ritningen visade Ø5 mm D-axel (4,5 mm var flatmåttet), men användarens live-sida visar motorpaketet som **discontinued**.
-- gamla indexerade VEVOR-sidor ska inte behandlas som köpbara.
-
-### DMW Industrietechnik — INACTIVE / REPLACED
-
-DMW/eBay.de hade tekniskt korrekt `Synchronriemenscheibe / 10mm / 5mm / Z 16`, men bara två exemplar visade sig finnas kvar när köpet skulle göras. Spåret ersattes av POWGE/eBay-köpet med ett färdigt trepack.
-
-### Roboter-Bausatz — BLOCKED 2026-09-03
-
-Butikens fraktsida publicerade Sverige/14,99 €, men faktisk checkout saknade Sverige i landlistan. Amazon Pay accepterade svensk adress, men handlarens checkout svarade **"Leveranser till den valda leveransadressen är inte möjliga."**
-
-### Allegro / `4Makers_pl` + `ABC-RC_pl` — BLOCKED 2026-09-03
-
-Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och faktisk svensk leveransadress gick varken `4Makers_pl` eller `ABC-RC_pl` att leverera till Sverige. **Korg-/plattformfrakt är inte leveransbevis.**
-
-### HomeDIYer — INACTIVE
-
-Tekniskt korrekt 16T-variant identifierades, men den behövs inte efter POWGE/eBay-köpet.
-
-### 3DJake PLA — INACTIVE / REPLACED 2026-09-06
+### 3DJake PLA — INACTIVE / REPLACED
 
 Den tidigare baslinjen var 3 × eSUN PLA Basic Black för 559 kr landat. Den är ersatt av faktiskt PrintOnion-köp: 3 kg PLA för 426 kr.
 
@@ -173,9 +135,26 @@ Den tidigare baslinjen var 3 × eSUN PLA Basic Black för 559 kr landat. Den är
 
 ### Motonet — rör
 
-- 2 × `88-7123`, Ø30×1,5×2000 mm.
-- köp **inte blint online**: fysisk OD/rakhet är en gate.
-- kapa först efter kontroll: 1505 / 816 / 816 mm.
+- 2 × `88-7123`, Ø30×1,5×2000 mm
+- köp **inte blint online**: fysisk OD/rakhet är gate
+- kapa först efter kontroll: 1505 / 816 / 816 mm
+
+### Bord / spoilboard
+
+Ny baseline 2026-09-06:
+- köp ett **styvt begagnat 180×90 cm bord**, helst ≤700 kr; 180×100 cm är jackpot
+- använd den befintliga bordsskivan direkt som strukturell maskinbas
+- vår minimumfootprint är 941×1563 mm, så 900 mm djup saknar bara cirka **41 mm totalt**
+- lös detta med smal lokal kantbreddning/rail-support efter fysisk dry-fit
+- **köp ingen full ~1000×1620 OSB/ply-deck som baseline**
+- köp senare ~12 mm löstagbar MDF-spoilboard över arbetsområdet
+
+Separat deck/torsionsbox återinförs endast om det verkliga bordet visar konkret behov p.g.a. skevhet, vek skiva eller olämplig infästning.
+
+### Permanenta struts
+
+- 5–6 mm MDF/hardboard, max 6,35 mm
+- köp när första bootstrap-/strutfräsningen närmar sig; en mindre skiva räcker normalt
 
 ### NVR/maskinstopp
 
@@ -199,19 +178,23 @@ Inga fler huvudorder för kärnmekanik/elektronik/prints är öppna.
 
 Kvar att anskaffa eller ordna:
 1. **2 × Motonet-rör** efter fysisk kontroll.
-2. **Styvt bord + deck/spoilboard**.
-3. **Material till permanenta struts**.
-4. **NVR + kapsling/elmaterial** efter fysisk dry-fit.
-5. **Commissioning-fräs** när första skär närmar sig.
-6. **Dammbehållare/slangupphängning** när maskinen byggs.
+2. **Styvt begagnat 180×90-bord**; ingen full deck som baseline.
+3. **~12 mm MDF-spoilboard** när bordet finns.
+4. **Smal lokal kantbreddning/rail-support** för den cirka 41 mm totala breddbristen på 90 cm bord.
+5. **Material till permanenta struts**.
+6. **NVR + kapsling/elmaterial** efter fysisk dry-fit.
+7. **Commissioning-fräs** när första skär närmar sig.
+8. **Dammbehållare/slangupphängning** när maskinen byggs.
 
 Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar och 3 kg PLA är köpta/beställda.
 
 ## Checkout-gates
 
 1. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
-2. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
-3. Stepperkablar — dry-fit innan eventuella extensioner köps.
-4. NVR/kapsling — fysisk/layoutmässig dry-fit innan boxstorlek och kabelrutter låses.
+2. Bord — rackingtest + faktisk L×D×H; 180×90 är huvudmål.
+3. 90 cm bord — fysisk rail/belt-layout innan kantbreddning dimensioneras.
+4. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
+5. Stepperkablar — dry-fit innan eventuella extensioner köps.
+6. NVR/kapsling — fysisk/layoutmässig dry-fit innan boxstorlek och kabelrutter låses.
 
 Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
