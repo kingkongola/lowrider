@@ -18,8 +18,9 @@ Praktiskt mål för detta bygge: håll färdig standardnära LR4 nära **9 000 k
 | 2026-09-03 | LaskaKit | 6 × smooth GT2-idler + T8×8 400 mm + 2 × 5→8-koppling + 5 m GT2 10 mm glasfiber; **mässingsmuttrar ingår inte** | 39,68 € inkl 8,93 € GLS Sweden | **444 kr** |
 | 2026-09-03 | eBay / HKGY01 | 2 × flänsad T8×8 mässingsmutter, 2 mm pitch / 4-start / 8 mm lead — **annullering väntar efter out-of-stock-besked** | listning visade US$4.34 + US$1.00 frakt, `Includes import fees` | **67 kr** |
 | 2026-09-03 | DigiKey | HDR-60-24 + 10 Omron endstops + 16×608-2RS + Wago + kabelgenomföringar + TE Faston + 13 m kablage + 3× Molex 2-poliga pigtails | 789,58 kr varor + 197,40 kr moms, fri UPS DDP | **986,98 kr** |
+| 2026-09-06 | PrintOnion | 3 kg PLA 1,75 mm för LR4-printarna | SEK | **426 kr** |
 
-**Verifierat faktiskt debiterat hittills: 4 359,98 kr.**
+**Verifierat faktiskt debiterat hittills: 4 785,98 kr.**
 
 ## Väntande återbetalning
 
@@ -38,9 +39,9 @@ Amazon kan debitera först när varan skickas. Dessa order är lagda och ingår 
 
 **Lagda Amazon-order: 1 330,13 kr.**
 
-**Brutto committed project cost före HKGY01-återbetalning: 5 690,11 kr.**
+**Brutto committed project cost före HKGY01-återbetalning: 6 116,11 kr.**
 
-**Aktiv committed project cost exklusive HKGY01-order som annulleras: 5 623,11 kr.**
+**Aktiv committed project cost exklusive HKGY01-order som annulleras: 6 049,11 kr.**
 
 Elecrow-avstämning: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €.
 
@@ -52,13 +53,13 @@ eBay T8×8-muttrar: vald variant **T8 × 8 mm**, **2 Pcs**, quantity 1. Faktisk 
 
 Amazon/euroharry T8-muttrar: 4-pack beställt 2026-09-05 för **101,76 kr visat orderpris**. Live produktspec visade Ø8 mm, 2 mm pitch och 4-start, vilket ger 8 mm lead. Faktisk kortdebitering ska ersätta orderpriset när den syns.
 
+PrintOnion PLA: **3 kg för 426 kr**, köpt 2026-09-06. Detta ersätter den tidigare 3DJake-baseline på 559 kr landat.
+
 DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40 kr**, total **986,98 kr**. Fraktmetod: **UPS Worldwide Saver, DDP**, 4 dagar enligt checkout.
 
 ## Kvarvarande köp — ej spenderat ännu
 
-Aktuella estimat finns endast i `PROCUREMENT.md` och ska inte blandas ihop med faktisk kostnad. När en order läggs flyttas dess verkliga SEK-debitering hit eller till pending-sektionen ovan tills kortdebiteringen är verifierad.
-
-T8×8-muttrarna är nu ersättningsbeställda; inget ytterligare mutterköp behövs för basbygget.
+Aktuella estimat finns i `PROCUREMENT.md`. Kärnmekanik, elektronik, router och PLA är nu köpta/beställda. Kvar är främst lokala/materialberoende delar: rör, bord/deck/spoilboard, strutmaterial, senare NVR/kapsling/elmaterial, commissioning-fräs och dammhantering.
 
 ## Kostnadsdisciplin
 
