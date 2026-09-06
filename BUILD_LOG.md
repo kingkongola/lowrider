@@ -111,3 +111,10 @@
 - Ordern lades 2026-09-05 och stänger sourcingbehovet för Z-muttrarna.
 - HKGY01-annullering/återbetalning är fortfarande separat väntande och bokförs först när återbetalningen faktiskt syns.
 - `PROCUREMENT.md`, `BOM.md`, `CHECKLIST.md`, `COSTS.md` och `SOURCING.md` reconcilerades mot det nya läget.
+
+## 2026-09-06 — 3 kg PLA köpt från PrintOnion
+
+- **3 kg PLA 1,75 mm** köpt från PrintOnion för **426 kr**.
+- Behovet för LR4-printarna är cirka 2,7 kg, så filamentbehovet för basbygget är stängt.
+- Den tidigare 3DJake-baseline på 559 kr landat ersattes av det billigare faktiska köpet.
+- Kärnmekanik, elektronik, router och filament är därmed beställda; kvarvarande anskaffning är främst rör, bord/deck/spoilboard, strutmaterial och senare NVR/el/fräs/dammhantering.
