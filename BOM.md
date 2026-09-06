@@ -68,6 +68,12 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [x] 5 × STEPPERONLINE `17HS19-2004S1`, **59 Ncm / 84 oz-in, 2,0 A, 42×42×48 mm, Ø5 mm D-axel, 1 m kabel med kontakt**
 - [x] KATSU `101750`, 220–240 V, 710 W, variabelt varvtal, cirka 64,8/65 mm motorhus; Makita RT0700-familjens formfaktor
 
+## Redan köpt — PrintOnion
+
+**Köpt 2026-09-06: 3 kg PLA, 1,75 mm, totalt 426 kr.**
+
+- [x] 3 kg vanlig styv PLA för LR4-printarna; behov cirka 2,7 kg
+
 ## Redan ägt
 
 - [x] Bambu Lab P1S
@@ -92,7 +98,6 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [ ] 2 × Motonet `88-7123`, Ø30×1,5×2000 mm stålrör; fysisk OD/rakhet före kapning
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
-- [ ] cirka 2,7 kg vanlig styv PLA; köp **3 kg**, inte 6 kg
 - [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
 - [ ] rail/belt/table-infästning enligt faktisk deck
 
