@@ -7,62 +7,63 @@ Bordet är en del av maskinen, men ska inte överbyggas före första fungerande
 Byggmål: **650 × 1250 mm användbar arbetsyta** med köpta 6,0 mm HaWiWe XZ-plattor.
 
 Aktuell V1E-kalkyl ger:
-- minimum bord: **941 × 1563 mm**
-- praktisk CNC-top/deck: cirka **1000 × 1620 mm**
+- minimum ytterfootprint: **941 × 1563 mm**
 - strut-input: **819 mm**
 - rör: **816 / 816 / 1505 mm**
 - GT2 totalt: **4409 mm**, så 5 m räcker
 
 Se `research/2026-08-29-geometry-650x1250.md`.
 
-## Huvudstrategi: begagnat styvt bord + avtagbar CNC-deck
+## Huvudstrategi: rejält begagnat bord, ingen full extra deck som baseline
 
-**180 cm längd är inte ett krav.** Det verkliga kravet kommer från minimum 1563 mm bordslängd och vår praktiska ~1620 mm deck.
+**Ett styvt begagnat bord med frisk skiva används direkt som maskinens strukturella bas.** En separat ~1000×1620 OSB/ply-deck är inte längre baseline och ska inte köpas automatiskt.
 
-Prioritera därför:
-- **160×90 cm — fungerar**, om edge-support-testet nedan passerar
-- **170×90 cm — mycket bra**
-- **180×90 cm — mycket bra och vanligt fyndmått**
-- **160–180 × 90–100 cm — huvudspann**
-- 85–105 cm djup kan fungera om underredet/decken ger korrekt kantstöd
+Detta ligger i linje med praktisk V1E-community-praxis: en vanlig robust bordsskiva/workbench kan vara själva underlaget och en spoilboard läggs ovanpå arbetsområdet. En separat torsionsbox/deck är en premiumlösning när bordet i sig inte är tillräckligt plant/styvt eller när särskild geometri krävs.
 
-På 90 cm djup sticker ~1000 mm CNC-decken ut cirka 50 mm per långsida. Det är geometriskt okej men **inte bara kosmetiskt överhäng**: V1E:s Y-rail/belt clips använder ytterkanten som referens och maskinen belastar samma kantzon.
+Prioritera:
+- **180×90 cm — huvudmål och vanligt fyndmått**
+- **180×100 cm — ännu enklare eftersom full bredd ryms direkt**
+- **160–180 × 90–100 cm — fungerar om längd och kantzon löses**
+
+### Viktig detalj för 180×90
+
+Vår kalkylerade minimum-bredd är **941 mm**. Ett 900 mm djupt bord saknar alltså cirka **41 mm totalt** i bredd, inte 100 mm.
+
+Lös detta med **smal lokal kantbreddning/rail-support**, ungefär 20–25 mm per långsida om symmetrisk layout passar, eller asymmetriskt efter faktisk LR4-layout. Det ska göras först när bordet och maskindelarna finns fysiskt.
 
 ```text
 LR4 rail / wheels / belt clips
         |
-removable ~1000 x 1620 CNC deck
+smal lokal kantbreddning där 900 mm bord inte räcker
         |
-existing used tabletop + local edge support as needed
+befintlig styv bordsskiva = strukturell maskinbas
         |
-existing stiff table underframe
+löstagbar MDF-spoilboard endast över arbetszonen
 ```
 
-Bordets befintliga skiva gör huvuddelen av styvhetsjobbet. CNC-decken skapar rätt geometri och ett reversibelt maskinlager.
+Poängen är att **inte** lägga en hel extra OSB-skiva ovanpå ett redan bra bord bara för att vinna 41 mm bredd.
 
-## Fysisk regel för 90 cm-bord
+## Spoilboard
 
-Om ett 1000 mm deck överhänger ett 900 mm bord ungefär 50 mm per långsida:
+Separat löstagbar ~12 mm MDF används som spoilboard över arbetszonen.
 
-- rail-/wheel-/belt-clip-zonen får inte ligga på en lös fjädrande OSB-kant
-- tryck hårt nedåt i hela maskinens långkantsspår: ingen synlig lokal flex som ändrar rail/wheel-höjd
-- belt/Y-clips måste få säker infästning; 11 mm OSB ensam i fri kant ska inte antas räcka för upprepad belastning
-- lägg vid behov underliggande trälist/blockning, bredare stöd eller genomgående bultning mot den befintliga bordsskivan/underredet
-- gör den slutliga kantdetaljen först när det faktiska begagnade bordet finns
+Spoilboarden:
+- skyddar bordsskivan när fräsen går igenom materialet
+- kan planfräsas och bytas när den är utsliten
+- behöver inte täcka hela bordsskivan
+- ska inte bära LR4:s rail/belt-struktur
 
-Detta gör **180×90 fortfarande till ett mycket bra köp**; vi tar bara bort antagandet att 50 mm överhäng automatiskt är strukturellt färdigt.
+## När behövs ändå separat deck?
 
-### Deck
+Inför endast separat deck/torsionsbox om det verkliga bordet visar sig:
+- ha för vek eller skev skiva
+- sakna säker infästning för rail/belt-zoner
+- vara olämpligt att modifiera
+- behöva en avtagbar maskinmodul av andra praktiska skäl
 
-Om befintlig top är strukturellt bra:
-- **11 mm OSB** är billig förstahandslösning
-- ~12 mm konstruktionsplywood är premiumalternativ
+Det är då en lösning på ett verifierat problem, inte ett standardköp.
 
-Deck ska **skruvas/bultas, inte limmas**.
-
-Separat löstagbar ~12 mm MDF används som spoilboard över arbetszonen. Spoilboard ska inte bära rail/belt-strukturen.
-
-## Prisregler
+## Prisregler för bord
 
 - **0–400 kr:** köp snabbt om mått + rackingtest passerar
 - **400–700 kr:** normal Pareto-zon
@@ -72,12 +73,12 @@ Separat löstagbar ~12 mm MDF används som spoilboard över arbetszonen. Spoilbo
 ## Vad vi söker
 
 Prioritera:
-- rektangulärt **160–180 cm långt**
-- helst **90–100 cm djupt**
+- rektangulärt **180×90 cm** i första hand
+- 180×100 cm är jackpot
 - ~70–76 cm högt
 - fyra ben + ordentlig sarg/tvärstag, eller kommersiellt T-ben med långsgående balk
 - strukturellt frisk top; kosmetiskt slitage är irrelevant
-- enkel undersida att skruva/bulta CNC-deck och eventuell kantblockning/hylla i
+- enkel undersida för lokal kantbreddning, kabel/slang och eventuell hylla
 
 Undvik:
 - glasskiva
@@ -94,15 +95,15 @@ Undvik:
 3. Sikta längs skivan — liten båge okej, grov twist dålig.
 4. Kontrollera beninfästning/sarg/tvärbalk.
 5. Mät faktisk L×D×H.
-6. Kontrollera undersidan för deck- och kantstödsinfästning.
+6. Kontrollera undersidan för lokal rail-/kantstödsinfästning.
 7. Ignorera repor och ful färg.
 
 ## Efter köp — innan rail/belt clips monteras
 
-1. Lägg/provskruva decken.
-2. Markera V1E:s exakta 941 × 1563 mm ytterfootprint på decken.
-3. Kontrollera att båda långsidornas rail/wheel/belt-zoner har fast stöd.
-4. Lägg lokal blockning om decken fjädrar eller skruvinfästningen annars bara hamnar i tunn fri kant.
+1. Markera V1E:s exakta **941 × 1563 mm** ytterfootprint relativt bordsskivan.
+2. Kontrollera var rail/wheel/belt-zonerna hamnar på det faktiska bordet.
+3. På 900 mm djup: bygg bara den lokala breddning som behövs för att nå korrekt och styvt stöd.
+4. Montera spoilboard över arbetszonen.
 5. Kontrollera att KJD12-box, DeWalt/cyklon och kabel-/slangväg kan placeras utan att maskinens rörelseområde blockeras.
 
 ## Mobilitet
@@ -127,9 +128,7 @@ Bordet ska ge:
 
 ## Nuvarande riktning
 
-**Köp ett stabilt begagnat 160–180 × helst 90–100 cm bord för helst ≤700 kr. Behåll dess befintliga skiva. Skruva en avtagbar ~1000×1620 OSB/ply CNC-deck ovanpå, med lokal kantblockning där verklig konstruktion kräver det, och använd separat löstagbar ~12 mm MDF-spoilboard.**
-
-180×90/100 är fortfarande ett mycket bra fynd, men inte ett artificiellt sökkrav.
+**Köp ett rejält begagnat 180×90 cm bord för helst ≤700 kr och använd dess befintliga skiva direkt som maskinbas. Lös endast den cirka 41 mm totala breddbristen med smal lokal kantbreddning efter dry-fit. Lägg en separat löstagbar ~12 mm MDF-spoilboard över arbetsområdet. Köp ingen hel OSB/ply-deck om det inte uppstår ett konkret behov.**
 
 Referenser:
 - `AUDIT.md`
@@ -137,3 +136,4 @@ Referenser:
 - `research/2026-08-29-table-live-candidates.md`
 - `research/2026-08-29-global-cart-optimization.md`
 - https://docs.v1e.com/lowrider/
+- V1E forum: LowRider V4 bootstrapping/table discussions
