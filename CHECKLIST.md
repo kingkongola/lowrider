@@ -17,9 +17,9 @@
 
 - [ ] Motonet: inspektera 2 × `88-7123` Ø30×1,5×2000; köp bara om OD/rakhet håller
 - [ ] kapa rör först därefter: 1505 / 816 / 816
-- [ ] hitta styvt begagnat bord 160–180 × helst 90–100 cm, helst ≤700 kr
+- [ ] hitta styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
 - [ ] femminuters rackingtest + mät höjd/underrede
-- [ ] planera lokal kantblockning om 1000 mm deck överhänger 90 cm bord
+- [ ] markera 941×1563 mm footprint och planera smal lokal kantbreddning eftersom 900 mm bord är cirka 41 mm för smalt totalt
 
 ## 3. När HaWiWe anländer
 
@@ -39,12 +39,12 @@
 - [ ] printa bootstrap temp-struts
 - [ ] generera permanenta struts `819`, `front_wing_size=30`
 
-## 5. Bord/deck
+## 5. Bord / spoilboard
 
-- [ ] bygg avtagbar ~1000×1620 structural deck
-- [ ] skruva/bulta, inte permanentlimma mot bordet
-- [ ] stöd LR4:s rail/wheel/belt-clip-zon vid överhäng
-- [ ] montera löstagbar ~12 mm MDF-spoilboard
+- [ ] använd den befintliga styva bordsskivan direkt som strukturell maskinbas
+- [ ] köp **inte** hel OSB/ply-deck om inte verkligt behov uppstår
+- [ ] bygg bara smal lokal kantbreddning/rail-support för 90 cm bord efter dry-fit
+- [ ] montera löstagbar ~12 mm MDF-spoilboard över arbetszonen
 - [ ] inget T-track före faktiskt behov
 
 ## 6. Mekanik
@@ -123,6 +123,7 @@
 
 ## Senare — inte nu
 
+- [ ] hel deck/torsionsbox endast om det faktiska bordet visar att det behövs
 - [ ] Sorotec/extra fräsorder när första verkliga fräsbehoven är kända
 - [ ] router-/stepperförlängning endast om dry-fit kräver
 - [ ] T-track/insert-grid/vacuum-table efter erfarenhet
