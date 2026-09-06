@@ -90,8 +90,8 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - Ø30×1,5 mm
 - strut-input 819 mm, `front_wing_size=30`
 - GT2 999 + 1705 + 1705 = 4409 mm
-- minimum bord 941 × 1563 mm
-- deck cirka 1000×1620 mm
+- minimum ytterfootprint 941 × 1563 mm
+- huvudmål bord: **1800 × 900 mm**, med lokal breddning eftersom 900 mm är cirka 41 mm smalare än minimumfootprint
 
 ## Kvar — mekanik
 
@@ -99,7 +99,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
 - [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
-- [ ] rail/belt/table-infästning enligt faktisk deck
+- [ ] rail/belt/table-infästning och smal lokal kantbreddning enligt faktisk 180×90-bordsskiva
 
 ## Kvar — motorer/styrning/lågspänning
 
@@ -138,12 +138,12 @@ Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `router -> DeWalt tool so
 - [ ] commissioning-fräs `L1S.M.0317` eller motsvarande 3,175 mm single-flute upcut först när första fräsjobbet närmar sig; separat Sorotec-order är fortfarande uppskjuten
 - [ ] lång 3,175 mm plywoodfräs först vid verkligt 18–19 mm jobb
 
-## Bord/deck
+## Bord / spoilboard
 
-- [ ] styvt begagnat bord 160–180 × helst 90–100 cm, helst ≤700 kr
-- [ ] avtagbar ~1000×1620 deck, 11 mm OSB value default eller ~12 mm konstruktionsplywood
-- [ ] ~12 mm löstagbar MDF-spoilboard
-- [ ] lokal kantblockning/infästning om 90 cm bord ger ~50 mm överhäng
+- [ ] styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
+- [ ] använd bordets befintliga skiva direkt som strukturell maskinbas — **ingen full extra OSB/ply-deck som baseline**
+- [ ] bygg endast smal lokal kantbreddning/rail-support för den cirka 41 mm totala breddbristen på 90 cm bord
+- [ ] ~12 mm löstagbar MDF-spoilboard över arbetszonen
 
 ## Damm
 
@@ -157,6 +157,7 @@ Baseline: `vägg -> NVR -> [HDR-60-24 + DeWalt AUTO]`, `router -> DeWalt tool so
 
 ## Köp inte ännu
 
+- hel OSB/ply-deck om inte det verkliga bordet visar konkret behov
 - T-track/vacuum-table
 - routerförlängning
 - stepperextensioner
