@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-05.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-06.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -110,24 +110,14 @@ Beställt 2026-09-05 från användarens live Amazon-sida:
 
 Två muttrar behövs i LR4 och två blir reserv. Detta ersätter den annullerade HKGY01-vägen och stänger sourcingbehovet för Z-muttrarna. Faktisk kortdebitering verifieras separat i `COSTS.md`.
 
-## Beställ nu
+### PrintOnion — PLA — CLOSED / ORDERED
 
-### 1. 3DJake Sverige — PLA
+Köpt 2026-09-06:
+- **3 kg PLA, 1,75 mm**
+- vanlig styv PLA för LR4-printarna
+- faktiskt betalt: **426 kr**
 
-Köp exakt:
-- **3 × eSUN PLA Basic Black**
-- 1,75 mm
-- 1 kg/spole
-- tillverkar-EAN `6922572210929`
-
-Live 2026-09-03:
-- **148 kr/st inklusive moms**
-- varor: **444 kr**
-- svensk standardfrakt under 1 099 kr: **115 kr**
-- **landad baseline: 559 kr**
-- EU-intern leverans, ingen importtull
-
-Köp inte 6 kg; behovet är cirka 2,7 kg.
+Behovet är cirka 2,7 kg, så 3 kg täcker basbyggets utskrifter. Den tidigare 3DJake-baseline på 559 kr är ersatt och ska inte längre användas som köporder.
 
 ## Blockerade / ej aktiva sourcingvägar
 
@@ -175,6 +165,10 @@ Allegro-korgen kunde visa varor och beräknad frakt, men efter inloggning och fa
 
 Tekniskt korrekt 16T-variant identifierades, men den behövs inte efter POWGE/eBay-köpet.
 
+### 3DJake PLA — INACTIVE / REPLACED 2026-09-06
+
+Den tidigare baslinjen var 3 × eSUN PLA Basic Black för 559 kr landat. Den är ersatt av faktiskt PrintOnion-köp: 3 kg PLA för 426 kr.
+
 ## Lokalt / separat
 
 ### Motonet — rör
@@ -201,22 +195,23 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 
 ## Orderarkitektur nu
 
-Kvarvarande huvudorder:
-1. **3DJake — 3 kg PLA**
+Inga fler huvudorder för kärnmekanik/elektronik/prints är öppna.
 
-Plus:
-- fysisk Motonet-rörkontroll/köp
-- begagnat bord + deck/spoilboard
-- lokal NVR/kapsling/elmaterial efter fysisk dry-fit
-- commissioning-fräs när första skär närmar sig
+Kvar att anskaffa eller ordna:
+1. **2 × Motonet-rör** efter fysisk kontroll.
+2. **Styvt bord + deck/spoilboard**.
+3. **Material till permanenta struts**.
+4. **NVR + kapsling/elmaterial** efter fysisk dry-fit.
+5. **Commissioning-fräs** när första skär närmar sig.
+6. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar och Z-muttrar är beställda.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar och 3 kg PLA är köpta/beställda.
 
 ## Checkout-gates
 
-1. 3DJake PLA — verifiera att 3 × eSUN PLA Basic Black fortfarande ger rimligt landat pris mot Amazon/andra Prime-alternativ innan köp; gammal 559 kr-baseline är snapshot, inte automatisk köporder.
-2. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
-3. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
-4. Stepperkablar — dry-fit innan eventuella extensioner köps.
+1. Motonet-rör — fysisk Ø30 mm/rakhetskontroll före köp/kapning.
+2. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
+3. Stepperkablar — dry-fit innan eventuella extensioner köps.
+4. NVR/kapsling — fysisk/layoutmässig dry-fit innan boxstorlek och kabelrutter låses.
 
 Sourcingdata från användarens live checkout/skärmbild vinner över gamla indexerade webbsidor.
