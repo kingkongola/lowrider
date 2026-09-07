@@ -19,8 +19,9 @@ Praktiskt mål för detta bygge: håll färdig standardnära LR4 nära **9 000 k
 | 2026-09-03 | eBay / HKGY01 | 2 × flänsad T8×8 mässingsmutter, 2 mm pitch / 4-start / 8 mm lead — **annullering väntar efter out-of-stock-besked** | listning visade US$4.34 + US$1.00 frakt, `Includes import fees` | **67 kr** |
 | 2026-09-03 | DigiKey | HDR-60-24 + 10 Omron endstops + 16×608-2RS + Wago + kabelgenomföringar + TE Faston + 13 m kablage + 3× Molex 2-poliga pigtails | 789,58 kr varor + 197,40 kr moms, fri UPS DDP | **986,98 kr** |
 | 2026-09-06 | PrintOnion | 3 kg PLA 1,75 mm för LR4-printarna | SEK | **426 kr** |
+| 2026-09-07 | Motonet | 2 × stålrör för LR4, planerad spec Ø30×1,5×2000 mm | SEK | **340 kr** |
 
-**Verifierat faktiskt debiterat hittills: 4 785,98 kr.**
+**Verifierat faktiskt debiterat hittills: 5 125,98 kr.**
 
 ## Väntande återbetalning
 
@@ -39,9 +40,9 @@ Amazon kan debitera först när varan skickas. Dessa order är lagda och ingår 
 
 **Lagda Amazon-order: 1 330,13 kr.**
 
-**Brutto committed project cost före HKGY01-återbetalning: 6 116,11 kr.**
+**Brutto committed project cost före HKGY01-återbetalning: 6 456,11 kr.**
 
-**Aktiv committed project cost exklusive HKGY01-order som annulleras: 6 049,11 kr.**
+**Aktiv committed project cost exklusive HKGY01-order som annulleras: 6 389,11 kr.**
 
 Elecrow-avstämning: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €.
 
@@ -55,11 +56,13 @@ Amazon/euroharry T8-muttrar: 4-pack beställt 2026-09-05 för **101,76 kr visat 
 
 PrintOnion PLA: **3 kg för 426 kr**, köpt 2026-09-06. Detta ersätter den tidigare 3DJake-baseline på 559 kr landat.
 
+Motonet-rör: **2 st för totalt 340 kr**, köpta 2026-09-07. Planerad spec är Ø30×1,5×2000 mm; kapa först efter fysisk kontroll/mätning.
+
 DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40 kr**, total **986,98 kr**. Fraktmetod: **UPS Worldwide Saver, DDP**, 4 dagar enligt checkout.
 
 ## Kvarvarande köp — ej spenderat ännu
 
-Aktuella estimat finns i `PROCUREMENT.md`. Kärnmekanik, elektronik, router och PLA är nu köpta/beställda. Kvar är främst lokala/materialberoende delar: rör, bord/deck/spoilboard, strutmaterial, senare NVR/kapsling/elmaterial, commissioning-fräs och dammhantering.
+Aktuella estimat finns i `PROCUREMENT.md`. Kärnmekanik, elektronik, router, PLA och rör är nu köpta/beställda. Kvar är främst bord/spoilboard, strutmaterial, senare NVR/kapsling/elmaterial, commissioning-fräs och dammhantering.
 
 ## Kostnadsdisciplin
 
