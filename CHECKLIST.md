@@ -2,20 +2,21 @@
 
 ## 1. Beställningar — nu
 
-- [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**: 6× `LA190008E`, 1× `LA190032A`, 2× `LA190031`, 1× `LA190013C`; GLS Sweden ingick
-- [x] 4 × **T8×8 brass nut, 2 mm pitch / 4-start / 8 mm lead** — beställt via Amazon.se/euroharry 2026-09-05 för **101,76 kr visat orderpris**, Prime; 2 används + 2 reserv
-- [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — köpt via eBay/POWGE 2026-09-03, **72 kr faktiskt debiterat**, fri frakt och importavgifter inkluderade
-- [x] DigiKey — köpt 2026-09-03 för **986,98 kr faktiskt debiterat**: PSU, endstops, 608-lager, Wago, glands, Faston, kablage och board-pigtails
-- [x] 5 × STEPPERONLINE `17HS19-2004S1` — köpt via Amazon.se 2026-09-03, **608,37 kr visat orderpris**, Prime/fri frakt
-- [x] Elecrow Jackpot3 `CQA240812C2` — köpt 2026-09-03, **937 kr faktiskt debiterat**, DDP Economy
-- [x] KATSU `101750` router — köpt via Amazon.se 2026-09-03, **620,00 kr visat orderpris**, Prime/fri frakt
-- [x] **3 kg PLA 1,75 mm från PrintOnion** — köpt 2026-09-06 för **426 kr**; täcker cirka 2,7 kg LR4-printbehov
+- [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**
+- [x] 4 × **T8×8 brass nut, 2 mm pitch / 4-start / 8 mm lead** — Amazon.se/euroharry, **101,76 kr visat orderpris**
+- [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — eBay/POWGE, **72 kr**
+- [x] DigiKey — PSU, endstops, 608-lager, Wago, glands, Faston, kablage och pigtails, **986,98 kr**
+- [x] 5 × STEPPERONLINE `17HS19-2004S1` — Amazon.se, **608,37 kr visat orderpris**
+- [x] Elecrow Jackpot3 `CQA240812C2` — **937 kr**
+- [x] KATSU `101750` router — Amazon.se, **620,00 kr visat orderpris**
+- [x] **3 kg PLA 1,75 mm från PrintOnion** — **426 kr**
+- [x] **2 × Motonet-rör** — köpt 2026-09-07 för **340 kr totalt**; planerad spec Ø30×1,5×2000 mm
 
-**Kärnmekanik, elektronik, router och filament är nu beställda. HKGY01-muttrarna annulleras efter out-of-stock; ersättningsmuttrarna är beställda från Amazon.**
+**Kärnmekanik, elektronik, router, filament och rör är nu köpta/beställda.**
 
 ## 2. Lokalt / fysiskt
 
-- [ ] Motonet: inspektera 2 × `88-7123` Ø30×1,5×2000; köp bara om OD/rakhet håller
+- [ ] verifiera de köpta Motonet-rörens faktiska OD/rakhet/längd före kapning
 - [ ] kapa rör först därefter: 1505 / 816 / 816
 - [ ] hitta styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
 - [ ] femminuters rackingtest + mät höjd/underrede
@@ -78,13 +79,11 @@
 - [ ] inventera FAT32 microSD >2 GB
 - [ ] när Jackpot3 anländer: kontrollera transportskada/korrekt kort
 - [ ] montera Jackpot3 luftigt på rörlig beam/YZ_Min-sida
-- [ ] kablar bredvid, inte över kort/antenn
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
 - [ ] första jogg 1 mm
 - [ ] koppla 5 endstops NC via COM+NC
 - [ ] verifiera varje endstopstatus
-- [ ] kom ihåg: home/auto-square, inte runtime hard limits
 
 ## 9. NVR/elbox + full travel
 
@@ -96,7 +95,6 @@
 - [ ] dry-fit motor/endstop
 - [ ] montera vac-hose samtidigt
 - [ ] kör manuellt alla fyra hörn + Z-extremer
-- [ ] inga sträckta ledningar/snagg/kink/kontaktlast
 - [ ] slutlig dragavlastning först efter godkänt full-travel-test
 
 ## 10. 230 V verifiering
@@ -108,7 +106,6 @@
 - [ ] kontinuitetstesta PE
 - [ ] verifiera ingen L/N→PE-kortslutning
 - [ ] verifiera NVR/no-restart med router frånkopplad
-- [ ] första samtidiga DeWalt + KATSU: kontrollera att 10 A-gruppen håller; utred bara om den faktiskt löser
 
 ## 11. Driftsättning
 
