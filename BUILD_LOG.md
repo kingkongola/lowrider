@@ -69,3 +69,10 @@
 - Rörsourcingen är stängd; **kapa inte ännu**.
 - Före kapning ska faktisk OD, rakhet och längd verifieras. Därefter målkapning: **1505 / 816 / 816 mm**.
 - Verifierat faktiskt debiterat projektbelopp är nu **5 125,98 kr**; aktiv committed cost exklusive HKGY01-annulleringen är **6 389,11 kr**.
+
+## 2026-09-09 — DigiKey-paket mottaget
+
+- DigiKey-paketet hämtat/mottaget.
+- Ordern innehåller PSU, endstops, 608-lager, Wago, glands, Faston, lågspänningskablage och board-pigtails enligt BOM.
+- Leveransstatus ändrad till **RECEIVED**.
+- Nästa gate är att räkna av innehållet mot BOM före montering; mottaget betyder ännu inte att varje del är fysisk-verifierad.
