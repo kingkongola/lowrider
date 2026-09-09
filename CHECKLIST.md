@@ -5,7 +5,7 @@
 - [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**
 - [x] 4 × **T8×8 brass nut, 2 mm pitch / 4-start / 8 mm lead** — Amazon.se/euroharry, **101,76 kr visat orderpris**
 - [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — eBay/POWGE, **72 kr**
-- [x] DigiKey — PSU, endstops, 608-lager, Wago, glands, Faston, kablage och pigtails, **986,98 kr**
+- [x] DigiKey — PSU, endstops, 608-lager, Wago, glands, Faston, kablage och pigtails, **986,98 kr**; **mottaget/hämtat 2026-09-09**
 - [x] 5 × STEPPERONLINE `17HS19-2004S1` — Amazon.se, **608,37 kr visat orderpris**
 - [x] Elecrow Jackpot3 `CQA240812C2` — **937 kr**
 - [x] KATSU `101750` router — Amazon.se, **620,00 kr visat orderpris**
@@ -16,6 +16,7 @@
 
 ## 2. Lokalt / fysiskt
 
+- [ ] räkna av DigiKey-paketets innehåll mot BOM före montering
 - [ ] verifiera de köpta Motonet-rörens faktiska OD/rakhet/längd före kapning
 - [ ] kapa rör först därefter: 1505 / 816 / 816
 - [ ] hitta styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
