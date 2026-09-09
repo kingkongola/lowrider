@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-07.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-09.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -32,10 +32,11 @@ Köpt 2026-09-03:
 - 1 × `LA190013C` GT2 5 m × 10 mm fiberglass belt
 - faktiskt debiterat: **444 kr**
 
-### DigiKey — CLOSED / ORDERED
+### DigiKey — CLOSED / RECEIVED
 
-Köpt 2026-09-03: PSU, endstops, lager, Wago, glands, Faston, kablage och board-pigtails.
+Köpt 2026-09-03, hämtat/mottaget 2026-09-09: PSU, endstops, lager, Wago, glands, Faston, kablage och board-pigtails.
 - faktiskt debiterat: **986,98 kr**
+- innehållet ska fortfarande räknas av mot BOM innan montering
 
 ### Amazon.se — motorer — CLOSED / ORDERED
 
@@ -126,7 +127,7 @@ Kvar att anskaffa eller ordna:
 6. **Commissioning-fräs** när första skär närmar sig.
 7. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda. DigiKey-paketet är mottaget.
 
 ## Checkout-gates
 
