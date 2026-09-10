@@ -68,7 +68,7 @@
 - Planerad spec är `88-7123`, Ø30×1,5×2000 mm.
 - Rörsourcingen är stängd; **kapa inte ännu**.
 - Före kapning ska faktisk OD, rakhet och längd verifieras. Därefter målkapning: **1505 / 816 / 816 mm**.
-- Verifierat faktiskt debiterat projektbelopp är nu **5 125,98 kr**; aktiv committed cost exklusive HKGY01-annulleringen är **6 389,11 kr**.
+- Verifierat faktiskt debiterat projektbelopp var då **5 125,98 kr**; aktiv committed cost exklusive HKGY01-annulleringen **6 389,11 kr**.
 
 ## 2026-09-09 — DigiKey-paket mottaget
 
@@ -82,4 +82,12 @@
 - Amazon.se/euroharry-paketet med **4 × flänsad T8-mässingsmutter** mottaget i postlådan.
 - Spec enligt beställningen: Ø8 mm, 2 mm pitch, 4-start, 8 mm lead.
 - 2 används i LR4 och 2 blir reserv.
-- Leveransstatus ändrad till **RECEIVED**; ingen kostnadsändring eftersom faktisk kortdebitering fortfarande hanteras separat i `COSTS.md`.
+- Leveransstatus ändrad till **RECEIVED**.
+
+## 2026-09-10 — alla hittills lagda köp debiterade
+
+- Användaren bekräftade att **samtliga hittills lagda inköp är debiterade**.
+- Amazon-orderna flyttades därför från väntande/committed till faktiskt betalt i `COSTS.md`.
+- Debiterade Amazon-belopp enligt tidigare dokumenterade SEK-orderbelopp: motorer **608,37 kr**, KATSU **620,00 kr**, euroharry T8-muttrar **101,76 kr**.
+- **Brutto faktiskt debiterat hittills: 6 456,11 kr.**
+- **Aktiv faktisk projektkostnad exklusive HKGY01-order som väntar återbetalning: 6 389,11 kr.**
