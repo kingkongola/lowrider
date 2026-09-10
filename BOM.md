@@ -34,7 +34,9 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/euroharry.
 
-## Redan beställt — Amazon.se / euroharry
+## Redan mottaget — Amazon.se / euroharry
+
+**Mottaget 2026-09-10.**
 
 - [x] 4 × flänsad T8 brass nut, **Ø8 mm / 2 mm pitch / 4-start / 8 mm lead**; 2 används + 2 reserv
 
