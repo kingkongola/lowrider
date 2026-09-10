@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-09.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-10.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -12,7 +12,7 @@
 
 ### Elecrow — CLOSED / ORDERED
 
-- 1 × **Jackpot3 CNC Controller `CQA240812C2`**
+- 1 × Jackpot3 CNC Controller `CQA240812C2`
 - controller efter rabatt: **69,44 €**
 - DDP Economy: **14,11 €**
 - checkout total: **83,55 €**
@@ -48,10 +48,12 @@ Köpt 2026-09-03, hämtat/mottaget 2026-09-09: PSU, endstops, lager, Wago, gland
 - **KATSU `101750`**, 220–240 V, 710 W, ~65 mm
 - visat pris: **620,00 kr**, Prime/fri frakt
 
-### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / ORDERED
+### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / RECEIVED
 
+Beställt 2026-09-05, mottaget 2026-09-10:
 - 4 × flänsad T8-mässingsmutter, Ø8 mm, 2 mm pitch, 4-start, 8 mm lead
 - visat pris: **101,76 kr**, Prime
+- 2 används i LR4 + 2 reserv
 
 ### PrintOnion — PLA — CLOSED / ORDERED
 
@@ -127,7 +129,7 @@ Kvar att anskaffa eller ordna:
 6. **Commissioning-fräs** när första skär närmar sig.
 7. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda. DigiKey-paketet är mottaget.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda. DigiKey-paketet och Z-muttrarna är mottagna.
 
 ## Checkout-gates
 
