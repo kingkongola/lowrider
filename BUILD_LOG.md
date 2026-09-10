@@ -76,3 +76,10 @@
 - Ordern innehåller PSU, endstops, 608-lager, Wago, glands, Faston, lågspänningskablage och board-pigtails enligt BOM.
 - Leveransstatus ändrad till **RECEIVED**.
 - Nästa gate är att räkna av innehållet mot BOM före montering; mottaget betyder ännu inte att varje del är fysisk-verifierad.
+
+## 2026-09-10 — T8×8-mässingsmuttrar mottagna
+
+- Amazon.se/euroharry-paketet med **4 × flänsad T8-mässingsmutter** mottaget i postlådan.
+- Spec enligt beställningen: Ø8 mm, 2 mm pitch, 4-start, 8 mm lead.
+- 2 används i LR4 och 2 blir reserv.
+- Leveransstatus ändrad till **RECEIVED**; ingen kostnadsändring eftersom faktisk kortdebitering fortfarande hanteras separat i `COSTS.md`.
