@@ -38,21 +38,21 @@ Köpt 2026-09-03, hämtat/mottaget 2026-09-09: PSU, endstops, lager, Wago, gland
 - faktiskt debiterat: **986,98 kr**
 - innehållet ska fortfarande räknas av mot BOM innan montering
 
-### Amazon.se — motorer — CLOSED / ORDERED
+### Amazon.se — motorer — CLOSED / ORDERED / DEBITED
 
 - **5 × STEPPERONLINE `17HS19-2004S1`**
-- visat pris: **608,37 kr**, Prime/fri frakt
+- faktiskt debiterat enligt bekräftelse 2026-09-10: **608,37 kr**, Prime/fri frakt
 
-### Amazon.se — KATSU router — CLOSED / ORDERED
+### Amazon.se — KATSU router — CLOSED / ORDERED / DEBITED
 
 - **KATSU `101750`**, 220–240 V, 710 W, ~65 mm
-- visat pris: **620,00 kr**, Prime/fri frakt
+- faktiskt debiterat enligt bekräftelse 2026-09-10: **620,00 kr**, Prime/fri frakt
 
-### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / RECEIVED
+### Amazon.se / euroharry — T8×8 brass nuts — CLOSED / RECEIVED / DEBITED
 
 Beställt 2026-09-05, mottaget 2026-09-10:
 - 4 × flänsad T8-mässingsmutter, Ø8 mm, 2 mm pitch, 4-start, 8 mm lead
-- visat pris: **101,76 kr**, Prime
+- faktiskt debiterat enligt bekräftelse 2026-09-10: **101,76 kr**, Prime
 - 2 används i LR4 + 2 reserv
 
 ### PrintOnion — PLA — CLOSED / ORDERED
@@ -129,7 +129,7 @@ Kvar att anskaffa eller ordna:
 6. **Commissioning-fräs** när första skär närmar sig.
 7. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda. DigiKey-paketet och Z-muttrarna är mottagna.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet och Z-muttrarna är mottagna.
 
 ## Checkout-gates
 
