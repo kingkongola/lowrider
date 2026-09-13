@@ -23,7 +23,9 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**
 
-## Redan köpt — LaskaKit
+## Redan mottaget — LaskaKit
+
+**Mottaget och inventerat komplett 2026-09-13.**
 
 - [x] 6 × smooth GT2 idler, 5 mm hål/bearing, för 10 mm rem — `LA190008E`
 - [x] 1 × T8×8 400 mm, 4-start / 8 mm lead — `LA190032A`
