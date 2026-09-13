@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-10.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-13.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -23,9 +23,9 @@
 - 3 × **2GT/GT2 drive pulley, 16T, 5 mm bore, för 10 mm belt, 2 mm pitch**
 - faktiskt debiterat: **72 kr**
 
-### LaskaKit, Tjeckien — CLOSED / ORDERED
+### LaskaKit, Tjeckien — CLOSED / RECEIVED
 
-Köpt 2026-09-03:
+Köpt 2026-09-03, mottaget och inventerat komplett 2026-09-13:
 - 6 × `LA190008E` smooth GT2 idler, 5 mm bearing, 10 mm belt
 - 1 × `LA190032A` T8×8 400 mm, 4-start / 8 mm lead
 - 2 × `LA190031` flexible coupling 5→8 mm
@@ -129,7 +129,7 @@ Kvar att anskaffa eller ordna:
 6. **Commissioning-fräs** när första skär närmar sig.
 7. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet och Z-muttrarna är mottagna.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet, LaskaKit-paketet och Z-muttrarna är mottagna.
 
 ## Checkout-gates
 
