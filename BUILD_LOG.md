@@ -91,3 +91,8 @@
 - Debiterade Amazon-belopp enligt tidigare dokumenterade SEK-orderbelopp: motorer **608,37 kr**, KATSU **620,00 kr**, euroharry T8-muttrar **101,76 kr**.
 - **Brutto faktiskt debiterat hittills: 6 456,11 kr.**
 - **Aktiv faktisk projektkostnad exklusive HKGY01-order som väntar återbetalning: 6 389,11 kr.**
+
+## 2026-09-18 — Jackpot3 mottagen
+
+- Elecrow Jackpot3 `CQA240812C2` har kommit fram och är fysiskt mottagen.
+- Leveransstatus ändrad till **RECEIVED**.
