@@ -15,7 +15,9 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
   - 10 × M2.5×12
 - [x] Makita/Elaire 1/8" / 3,175 mm collet
 
-## Redan köpt — Elecrow
+## Redan mottaget — Elecrow
+
+**Mottaget 2026-09-18.**
 
 - [x] Jackpot3 CNC Controller `CQA240812C2`
 
