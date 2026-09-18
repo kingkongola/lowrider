@@ -8,7 +8,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Arbetsyta: **650 × 1250 mm**.
 - Geometri: rör **816 / 816 / 1505 mm**, Ø30×1,5 mm; strut-input **819 mm**; GT2 **999 / 1705 / 1705 mm**; minimum bord **941 × 1563 mm**; praktisk deck cirka **1000 × 1620 mm**.
 - HaWiWe-order: **betald 1 853 kr och skickad**. Ordervaluta 165,50 € inkl frakt. Innehåll: 6,0 mm XZ-plattor, 4 × MGN12H 150 mm, LR4 screw set och Makita/Elaire 1/8" collet.
-- Controller: **Elecrow Jackpot3 `CQA240812C2` är köpt**, faktisk debitering **937 kr** inklusive DDP Economy.
+- Controller: **Elecrow Jackpot3 `CQA240812C2` är mottagen**, faktisk debitering **937 kr** inklusive DDP Economy.
 - Drive pulleys: **3 × GT2/2GT 16T / 5 mm bore / 10 mm belt är köpta via eBay/POWGE**, faktisk debitering **72 kr**, fri frakt och importavgifter inkluderade i eBay-köpet.
 - LaskaKit-mekanikkärna: **köpt för 444 kr** inklusive GLS Sweden. Innehåll: 6 smooth idlers, T8×8 400 mm, 2 × 5→8-koppling och 5 m GT2 10 mm glasfiber. **De två T8×8-mässingsmuttrarna var slut och återstår separat.**
 - Faktiskt betalt hittills: **3 306 kr**. Se `COSTS.md`.
