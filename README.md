@@ -2,7 +2,7 @@
 
 Det här repot är single source of truth för den LowRider V4 som faktiskt byggs.
 
-## Aktuellt läge — 2026-09-03
+## Aktuellt läge — 2026-09-19
 
 - Maskin: **LowRider V4**. PrintNC/IndyMill är inte aktiva alternativ.
 - Arbetsyta: **650 × 1250 mm**.
@@ -16,9 +16,12 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Printer: **Bambu Lab P1S**; alla diameterberoende LR4-printar ska vara **30 mm-variant**, tool mount **Makita/65 mm**.
 - Router: **VEVOR 0700C**, 800 W, 65 mm.
 - Filament: **3 × 1 kg eSUN PLA Basic Black 1,75 mm från 3DJake** är aktuell pris-/lagerbaseline: 444 kr varor + 115 kr svensk standardfrakt = **559 kr**.
-- Bord: styvt begagnat **160–180 × helst 90–100 cm**, helst ≤700 kr, med avtagbar ~1000×1620 deck.
+- Bord: **180×100 cm bordsskiva köpt för 300 kr**; ingen planerad 90 cm-kantbreddning, kontrollera underrede. Löstagbar ~12 mm MDF-spoilboard köps senare.
 - Garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet elproblem om säkringen faktiskt håller.
 - Dammhantering är del av grundbygget.
+- Prints: **platta 10 av 14 pågår** enligt användaren 2026-09-19.
+- 3 × 16T-remhjul från eBay/POWGE är **köpta men ännu inte mottagna** 2026-09-19 (senaste LMC-skanning 12 sep).
+- Projektkostnad inklusive köpt bordsskiva: **6 756,11 kr brutto**, **6 689,11 kr** exklusive annullerad eBay-order på 67 kr som väntar återbetalning.
 
 ## Kanoniska filer
 
@@ -35,14 +38,11 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Aktuell arbetsordning
 
-1. Köp de **2 × T8×8-mässingsmuttrarna** separat med exakt 4-start / 8 mm lead; eBay är förstakontroll.
-2. Lägg resterande huvudorder: DigiKey, StepperOnline Germany, VEVOR EU och 3DJake PLA. **Jackpot3, 16T-remhjulen och LaskaKit-mekaniken är redan köpta.**
-3. Köp Motonet-rör först efter fysisk OD-/rakhetskontroll.
-4. Hitta begagnat bord och gör rackingtest.
-5. När HaWiWe kommer: kontrollera transportskada + fyra produktgrupper och provpassa M3×10 mot XZ/MGN.
-6. Provprinta `Z_Stub` + `Z_Nut`, verifiera 30 mm/65 mm-varianter och printa full LR4-sats.
-7. Bygg deck/spoilboard och montera mekanik.
-8. Dry-fit elbox och kör full-travel kabel/slang-test innan slutlig kabelinfästning.
-9. Flasha/configurera Jackpot3, jogga 1 mm i taget, home/square och gör första testfräsningen.
+1. Fortsätt printa resterande LR4-plattor; verifiera 30 mm-rördelar, Makita/65 mm tool mount samt **4 × temporära struts (15 % infill)**.
+2. Kontrollera köpta 180×100-skivans underrede/styvhet och provlägg rail/belt-layout. Mät/kapa rör efter OD-/rakhetskontroll.
+3. Inventera HaWiWe, DigiKey och el-/kabeldelar mot BOM. Avvakta leverans av redan köpta 16T-remhjul (köp inte dubbelt).
+4. Köp/ordna ~12 mm MDF-spoilboard, 5–6 mm strutmaterial, första 3,175 mm-fräs samt NVR/kapsling efter fysisk dry-fit.
+5. Montera maskinen med temporära struts, konfigurera Jackpot3, torrkör och fräs permanenta struts (`819`, `front_wing_size=30`) med maskinen själv.
+6. Byt till permanenta struts, gör full-travel-test för kablar/slang, färdigställ dammhantering och planfräs offerskivan.
 
 Bred komponentresearch ska inte återöppnas utan ett konkret pris-, lager-, kompatibilitets- eller integrationsproblem.
