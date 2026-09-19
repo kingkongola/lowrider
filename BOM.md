@@ -23,7 +23,7 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 ## Redan köpt — eBay / POWGE
 
-- [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch**
+- [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch** — köpta, **ännu ej mottagna 2026-09-19**; spårning: importklarering 11 sep, LMC-skanning 12 sep
 
 ## Redan mottaget — LaskaKit
 
@@ -90,14 +90,14 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - strut-input 819 mm, `front_wing_size=30`
 - GT2 999 + 1705 + 1705 = 4409 mm
 - minimum ytterfootprint 941 × 1563 mm
-- huvudmål bord: **1800 × 900 mm**, med lokal breddning eftersom 900 mm är cirka 41 mm smalare än minimumfootprint
+- faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.
 
 ## Kvar — mekanik
 
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] Makita/65 mm tool mount
 - [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
-- [ ] rail/belt/table-infästning och smal lokal kantbreddning enligt faktisk 180×90-bordsskiva
+- [ ] rail/belt/table-infästning på köpt 180×100-bordsskiva; kontrollera underrede och verklig layout före håltagning
 
 ## Kvar — motorer/styrning/lågspänning
 
@@ -125,9 +125,9 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 ## Bord / spoilboard
 
-- [ ] styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
-- [ ] använd bordets befintliga skiva direkt som strukturell maskinbas
-- [ ] bygg endast smal lokal kantbreddning/rail-support för den cirka 41 mm totala breddbristen på 90 cm bord
+- [x] **180×100 cm bordsskiva köpt för 300 kr** (rapporterat 2026-09-19)
+- [ ] kontrollera att underredet är styvt och att bordsskivan kan bära LR4
+- [ ] fäst rail/belt/table enligt faktisk layout; **ingen 90 cm-kantbreddning behövs**
 - [ ] ~12 mm löstagbar MDF-spoilboard över arbetszonen
 
 ## Damm
