@@ -12,16 +12,17 @@
 - [x] **3 kg PLA 1,75 mm från PrintOnion** — **426 kr**
 - [x] **2 × Motonet-rör** — köpt 2026-09-07 för **340 kr totalt**; planerad spec Ø30×1,5×2000 mm
 
-**Kärnmekanik, elektronik, router, filament och rör är nu köpta/beställda.**
+**Kärnmekanik, elektronik, router, filament och rör är köpta/beställda. 3 × 16T-remhjul återstår att få levererade (2026-09-19); köp inte om.**
 
 ## 2. Lokalt / fysiskt
 
 - [ ] räkna av DigiKey-paketets innehåll mot BOM före montering
 - [ ] verifiera de köpta Motonet-rörens faktiska OD/rakhet/längd före kapning
 - [ ] kapa rör först därefter: 1505 / 816 / 816
-- [ ] hitta styvt begagnat **180×90 cm** bord, helst ≤700 kr; 180×100 cm är jackpot
-- [ ] femminuters rackingtest + mät höjd/underrede
-- [ ] markera 941×1563 mm footprint och planera smal lokal kantbreddning eftersom 900 mm bord är cirka 41 mm för smalt totalt
+- [x] **180×100 cm bordsskiva köpt för 300 kr**, rapporterat 2026-09-19
+- [ ] kontrollera underredets styvhet, höjd och infästning; ordna eventuell förstärkning bara vid behov
+- [ ] markera 941×1563 mm footprint på den köpta skivan och kontrollera rail/belt-zoner; **ingen 90 cm-kantbreddning behövs**
+- [ ] kontrollera leverans av 3 × 16T-remhjul från eBay/POWGE (senaste spårning 12 sep, ännu ej mottagna 19 sep)
 
 ## 3. När HaWiWe anländer
 
@@ -37,15 +38,15 @@
 - [ ] provprinta `Z_Stub` + `Z_Nut`
 - [ ] kontrollera passning
 - [ ] granska slicer bridges/unsupported geometry
-- [ ] printa komplett LR4-sats + rätt Jackpot3 board box
-- [ ] printa bootstrap temp-struts
-- [ ] generera permanenta struts `819`, `front_wing_size=30`
+- [ ] printa komplett LR4-sats + rätt Jackpot3 board box (2026-09-19: **platta 10/14 pågår**)
+- [ ] printa **4 × temporära struts, 15 % infill** för första monteringen
+- [ ] generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=30` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
 
 ## 5. Bord / spoilboard
 
-- [ ] använd den befintliga styva bordsskivan direkt som strukturell maskinbas
+- [ ] använd den köpta **180×100 cm** bordsskivan direkt som strukturell maskinbas, förutsatt godkänt underrede
 - [ ] köp **inte** hel OSB/ply-deck om inte verkligt behov uppstår
-- [ ] bygg bara smal lokal kantbreddning/rail-support för 90 cm bord efter dry-fit
+- [ ] planera rail/belt-infästning på 180×100-skivan, utan tidigare planerad 90 cm-kantbreddning
 - [ ] montera löstagbar ~12 mm MDF-spoilboard över arbetszonen
 - [ ] inget T-track före faktiskt behov
 
