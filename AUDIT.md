@@ -1,6 +1,6 @@
 # Systemaudit
 
-**Current 2026-09-03.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
+**Current 2026-09-19.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
 
 ## Samlad bedömning
 
@@ -12,7 +12,7 @@ Grundarkitekturen håller:
 - **köpt Elecrow Jackpot3**
 - HDR-60-24
 - Omron NC endstops
-- VEVOR 0700C
+- KATSU 101750
 - fast NVR/HDR-box + rörlig controller
 
 Ingen audit kräver ändrad maskingeometri.
@@ -23,7 +23,7 @@ Ingen audit kräver ändrad maskingeometri.
 - Y-rör 1505 mm
 - strut 819, `front_wing_size=30`
 - GT2 999 / 1705 / 1705 = 4409 mm
-- 3 × GT2 16T, 5 mm bore, 10 mm belt
+- 3 × GT2 16T, 5 mm bore, 10 mm belt — köpta, ej mottagna 2026-09-19
 - 6 × smooth idler, 5 mm hole, 10 mm belt
 - 14 × 608-2RS installeras + 2 reserv
 - T8×8, 4-start, 8 mm lead
@@ -77,11 +77,11 @@ Inget får sträckas, kinka, bära kontaktlast eller falla in i rörelsezonen.
 - verifiera no-restart med router frånkopplad.
 - kapsling väljs efter fysisk dry-fit, inte på katalogmått.
 
-Garagegruppen 10 A är inte en blockerande gate. Gör sanity-check vid första samtidiga DeWalt + VEVOR-körningen. Utred först om säkringen faktiskt löser. Uppsäkra inte som workaround.
+Garagegruppen 10 A är inte en blockerande gate. Gör sanity-check vid första samtidiga DeWalt + KATSU-körningen. Utred först om säkringen faktiskt löser. Uppsäkra inte som workaround.
 
 ## Router
 
-VEVOR 0700C är 220–240 V / 800 W. Marknadsföringstexten “6.5 A” används inte som EU-märkström.
+KATSU 101750, 220–240 V / 710 W, är köpt router. Den äldre VEVOR 0700C är ersatt och ska inte köpas.
 
 Fysisk gate:
 - provpassa köpt Elaire/Makita-style 1/8" collet
@@ -103,8 +103,8 @@ HDR-60-24 är inte jordpunkt.
 1. HaWiWe: transportskada + fyra produktgrupper + M3×10/XZ/MGN-passning.
 2. Jackpot3: transportskada/korrekt kort vid leverans.
 3. Motonet-rör: verklig OD/rakhet före kapning.
-4. Bord: racking/planhet/kantstöd.
-5. VEVOR/Elaire: collet-säte + runout.
+4. Köpt 180×100-bordsskiva: racking/planhet/underrede och rail-/belt-layout; ingen 90 cm-kantbreddning.
+5. KATSU/Elaire: collet-säte + runout.
 6. DeWalt: exakt typskylt före modellunika AUTO-data.
 7. NVR/HDR: kapslings-dry-fit + terminalschema.
 8. Full travel: alla rörliga kablar + vac-hose samtidigt.
