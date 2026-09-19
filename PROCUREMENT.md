@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-13.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-19.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -22,6 +22,7 @@
 
 - 3 × **2GT/GT2 drive pulley, 16T, 5 mm bore, för 10 mm belt, 2 mm pitch**
 - faktiskt debiterat: **72 kr**
+- **ej mottagna per 2026-09-19**. eBay-spårning: importklarering 11 sep, "RECEIVED BY LMC" (DEFRAA) 12 sep; väntar slutleverans. Angivet leveransfönster vid köp: 17 sep–7 okt.
 
 ### LaskaKit, Tjeckien — CLOSED / RECEIVED
 
@@ -89,17 +90,16 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 
 ### Bord / spoilboard
 
-- köp ett **styvt begagnat 180×90 cm bord**, helst ≤700 kr; 180×100 cm är jackpot
-- använd bordsskivan direkt som strukturell maskinbas
-- minimumfootprint är 941×1563 mm, så 900 mm djup saknar cirka **41 mm totalt**
-- lös detta med smal lokal kantbreddning/rail-support efter fysisk dry-fit
-- köp ingen full OSB/ply-deck som baseline
+- **180×100 cm begagnad bordsskiva köpt för 300 kr** (rapporterat 2026-09-19); ingen ytterligare skiva ska köpas för grundbygget
+- kontrollera att underredet är lämpligt/styvt; eventuellt underredesmaterial först om faktiskt behov finns
+- minimumfootprint är 941×1563 mm: den köpta skivan rymmer detta utan den äldre 90 cm-breddningen
+- använd köpt skiva direkt som strukturell maskinbas; köp ingen full OSB/ply-deck som baseline
 - köp senare ~12 mm löstagbar MDF-spoilboard över arbetsområdet
 
 ### Permanenta struts
 
 - 5–6 mm MDF/hardboard, max 6,35 mm
-- köp när bootstrap-/strutfräsningen närmar sig
+- printa 4 temporära struts (15 % infill), bygg/driftsätt LR4 och fräs sedan egna permanenta front-/bottenplattor med maskinen. Köp material när första skäret närmar sig; strut-generator: `strut_length=819`, `front_wing_size=30`.
 
 ### NVR/maskinstopp
 
@@ -121,21 +121,22 @@ Kapsling, donor 3G1,5 och lokal elsmåvara först efter fysisk dry-fit av NVR + 
 Inga fler huvudorder för kärnmekanik/elektronik/prints/rör är öppna.
 
 Kvar att anskaffa eller ordna:
-1. **Styvt begagnat 180×90-bord**; ingen full deck som baseline.
-2. **~12 mm MDF-spoilboard** när bordet finns.
-3. **Smal lokal kantbreddning/rail-support** för 90 cm bord.
-4. **Material till permanenta struts**.
-5. **NVR + kapsling/elmaterial** efter fysisk dry-fit.
-6. **Commissioning-fräs** när första skär närmar sig.
-7. **Dammbehållare/slangupphängning** när maskinen byggs.
+1. **Kontrollera underredet** till redan köpta 180×100-skivan; ordna först om något saknas.
+2. **~12 mm MDF-spoilboard** över arbetsområdet.
+3. **5–6 mm MDF/hardboard för permanenta struts**, fräses med LR4 efter montering med 4 printade tillfälliga struts.
+4. **NVR + kapsling/elmaterial** efter fysisk dry-fit.
+5. **Commissioning-fräs** till första skär och struts.
+6. **Dammbehållare/slangupphängning** när maskinen byggs.
+
+**Obs:** De köpta 3 × 16T-remhjulen har ännu inte levererats per 2026-09-19; följ spårningen, köp inte dubbelt.
 
 Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet, LaskaKit-paketet och Z-muttrarna är mottagna.
 
 ## Checkout-gates
 
 1. Motonet-rör — kontrollera fysisk OD/rakhet/längd före kapning.
-2. Bord — rackingtest + faktisk L×D×H; 180×90 är huvudmål.
-3. 90 cm bord — fysisk rail/belt-layout innan kantbreddning dimensioneras.
+2. Köpt 180×100-bordsskiva — verifiera mått, underrede/styvhet och planerad maskinplacering.
+3. Markera rail/belt-layout på 180×100-skivan innan infästning; någon planerad kantbreddning för 90 cm behövs inte.
 4. KATSU vid leverans — provpassa Elaire 1/8"-collet och kontrollera runout.
 5. Stepperkablar — dry-fit innan eventuella extensioner köps.
 6. NVR/kapsling — fysisk/layoutmässig dry-fit innan boxstorlek och kabelrutter låses.
