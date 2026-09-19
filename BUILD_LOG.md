@@ -96,3 +96,11 @@
 
 - Elecrow Jackpot3 `CQA240812C2` har kommit fram och är fysiskt mottagen.
 - Leveransstatus ändrad till **RECEIVED**.
+
+## 2026-09-19 — Bordsköp, remhjulsspårning och utskriftsläge
+
+- Användaren rapporterade att begagnad **180×100 cm bordsskiva köpts för 300 kr**. Underredets skick/styvhet är ännu inte dokumenterat; ingen 90 cm-kantbreddning ska planeras.
+- eBay/POWGE **3 × 16T-remhjul, redan köpta för 72 kr, är ännu inte mottagna**. eBay: importklarering 11 sep; senaste visade händelse `RECEIVED BY LMC / DEFRAA` 12 sep. Avvakta leverans och köp inte igen.
+- Användaren printar **platta 10 av 14**.
+- Permanent strut-plan enligt V1E: 4 printade temporära struts (15 % infill) vid montering; LR4 fräser sedan egna front-/bottenstruts ur 5–6 mm MDF/hardboard (max 6,35 mm). Generatorinställningar `strut_length=819`, `front_wing_size=30`.
+- Betald brutto inklusive bordsskivan: **6 756,11 kr**. Aktiv kostnad exklusive annullerad eBay-order (67 kr) som väntar återbetalning: **6 689,11 kr**.
