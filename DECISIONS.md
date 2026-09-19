@@ -28,9 +28,9 @@ Få standardmaskinen körklar innan modifieringar. Uppgraderingar kräver ett vi
 ## D004 — Begagnat styvt bord som direkt maskinbas
 **Status:** låst
 
-Styvt begagnat bord, helst **180×90 cm** och helst ≤700 kr; 180×100 cm är ännu bättre. Befintlig bordsskiva används direkt som strukturell maskinbas.
+**Uppdaterat 2026-09-19:** begagnad **180×100 cm bordsskiva köpt för 300 kr**. Den används direkt som strukturell maskinbas om underredet är styvt. Kontrollera underredet före montering och bygg/förstärk endast om behov finns.
 
-På ett 900 mm djupt bord är LR4:s minimum footprint cirka 41 mm bredare totalt. Lös detta med smal lokal kantbreddning/rail-support först efter fysisk dry-fit. Köp inte en hel OSB/ply-deck om inte verkligt behov uppstår.
+Den köpta skivan rymmer 941×1563 mm minimumfootprint utan den tidigare planerade kantbreddningen för ett 90 cm-bord. Köp inte hel extra OSB/ply-deck utan verifierat behov.
 
 Separat löstagbar ~12 mm MDF används som spoilboard över arbetszonen.
 
