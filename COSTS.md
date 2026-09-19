@@ -23,8 +23,9 @@ Praktiskt mål för detta bygge: håll färdig standardnära LR4 nära **9 000 k
 | 2026-09-05 | Amazon.se / euroharry | 4 × flänsad T8-mässingsmutter, Ø8 mm / 2 mm pitch / 4-start / 8 mm lead; 2 används + 2 reserv | SEK | **101,76 kr** |
 | 2026-09-06 | PrintOnion | 3 kg PLA 1,75 mm för LR4-printarna | SEK | **426 kr** |
 | 2026-09-07 | Motonet | 2 × stålrör för LR4, planerad spec Ø30×1,5×2000 mm | SEK | **340 kr** |
+| Rapporterat 2026-09-19 | Begagnat, säljare ej angiven | Bordsskiva 180×100 cm | SEK | **300 kr** |
 
-**Verifierat faktiskt debiterat hittills: 6 456,11 kr.**
+**Rapporterad betald totalsumma hittills: 6 756,11 kr.** Inkluderar begagnad bordsskiva 300 kr rapporterad 2026-09-19.
 
 Användaren bekräftade 2026-09-10 att **samtliga hittills lagda inköp är debiterade**. För Amazon-orderna används de redan dokumenterade SEK-orderbeloppen ovan eftersom inga avvikande debiteringsbelopp har rapporterats.
 
@@ -33,7 +34,7 @@ Användaren bekräftade 2026-09-10 att **samtliga hittills lagda inköp är debi
 - **67 kr — eBay / HKGY01.** Säljaren uppgav 2026-09-05 att T8×8-muttrarna var slut och bad köparen annullera. Annulleringsbegäran är skickad och återbetalningen är ännu inte verifierad.
 - Tills återbetalningen är bekräftad ligger 67 kr kvar i brutto faktiskt debiterat ovan.
 
-**Aktiv faktisk projektkostnad exklusive HKGY01-order som annulleras: 6 389,11 kr.**
+**Aktiv projektkostnad exklusive HKGY01-order som annulleras: 6 689,11 kr.**
 
 Elecrow-avstämning: controller 69,44 € efter rabatt + DDP Economy 14,11 € = 83,55 €.
 
@@ -53,7 +54,7 @@ DigiKey-avstämning: delsumma **789,58 kr**, frakt **0 kr**, svensk VAT **197,40
 
 ## Kvarvarande köp — ej spenderat ännu
 
-Aktuella estimat finns i `PROCUREMENT.md`. Kärnmekanik, elektronik, router, PLA och rör är nu köpta/beställda och debiterade. Kvar är främst bord/spoilboard, strutmaterial, senare NVR/kapsling/elmaterial, commissioning-fräs och dammhantering.
+Aktuella estimat finns i `PROCUREMENT.md`. Kärnmekanik, elektronik, router, PLA och rör är nu köpta/beställda och debiterade. 180×100-bordsskivan är köpt för 300 kr. Kvar är kontroll/ev. ordnande av underrede, MDF-spoilboard, strutmaterial, senare NVR/kapsling/elmaterial, commissioning-fräs och dammhantering. De köpta 16T-remhjulen är ännu ej mottagna (2026-09-19).
 
 ## Kostnadsdisciplin
 
