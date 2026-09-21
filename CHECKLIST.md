@@ -74,7 +74,7 @@
 - [ ] printa cyklon
 - [ ] ordna 15–30 l styv behållare
 - [ ] vakuumtesta behållare/lock kontrollerat
-- [ ] **köp ny längre sugslang** – användaren har verifierat att befintlig DeWalt-slang är för kort. Utgångspunkt 38 mm innerdiameter och cirka 4–5 m, alternativt 50 mm efter kontroll av verklig DeWalt-anslutning; 32 mm är mindre lämpligt som lång huvudslang. Mät anslutningen på dammsugaren, planera printad adapter till Makita dust shoe och kontrollera slangens följsamhet, räckvidd och eventuell statisk jordning. Inget köp bekräftat.
+- [ ] **testa redan ägd 38 mm poolslang före köp**: DeWalt-slangen är för kort, men användaren har poolslang hemma. Mät längd/inner- och ytterdiameter, provkör mot dammsugaren (kontrollera kollaps och flöde), printa eventuella adaptrar och testa X/Y/Z med upphängning/dragavlastning. Poolslang är normalt inte antistatisk. Köp längre sugslang endast om poolslangen inte fungerar.
 - [ ] bygg slangavlastning
 - [ ] lös statisk jordväg före XPS/reguljär MDF/trä-drift
 
