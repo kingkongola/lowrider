@@ -115,10 +115,11 @@ function saveCurrentWork(){
 el("workOpen").onclick=showWork;
 el("manualOpen").onclick=()=>showManual();
 el("workFilter").onchange=renderWorkList;
+const initialRoute=location.hash;
 fetch("work-orders.json").then(resp=>{if(!resp.ok)throw Error("HTTP "+resp.status);return resp.json()}).then(data=>{
  if(!Array.isArray(data.orders)||!data.orders.length)throw Error("Arbetsordrar saknas");
  workOrders=data.orders;
- if(location.hash==="#ordrar"||location.hash.startsWith("#LR-")){if(location.hash.startsWith("#LR-"))workSelected=location.hash.slice(1);showWork();}
+ if(initialRoute==="#ordrar"||initialRoute.startsWith("#LR-")){if(initialRoute.startsWith("#LR-"))workSelected=initialRoute.slice(1);showWork();}
 }).catch(e=>{
  el("workList").innerHTML='<p>Arbetsordrarna kunde inte läsas in ('+esc(e.message)+'). Kontrollera att docs/work-orders.json finns publicerad.</p>';
 });
