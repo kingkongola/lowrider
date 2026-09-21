@@ -34,6 +34,10 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - `SOURCING.md` — daterad sourcing-evidens och länkar; ska inte duplicera en alternativ BOM.
 - `TABLE.md` — bord/deck.
 - `BUILD_LOG.md` — historik; gamla val får finnas här som historik men är inte current state.
+
+## Monteringsguide
+
+- [`docs/MONTERING_SV.md`](docs/MONTERING_SV.md) — svensk, utökad monteringsguide för den faktiska LR4-konfigurationen med **Jackpot3**. Läs tillsammans med V1E:s originalbilder; guiden ersätter inte kanoniska beslut eller checklistan.
 - `research/` — historisk evidens. Top-level-filerna ovan supersederar research vid konflikt.
 
 ## Aktuell arbetsordning
