@@ -34,10 +34,12 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - `SOURCING.md` — daterad sourcing-evidens och länkar; ska inte duplicera en alternativ BOM.
 - `TABLE.md` — bord/deck.
 - `BUILD_LOG.md` — historik; gamla val får finnas här som historik men är inte current state.
+- `WORK_ORDERS.md` — arbetskort om cirka en timme, med beroenden och återrapportering; lokal webbsidestatus är inte SSOT.
 
 ## Monteringsguide
 
 - [`docs/MONTERING_SV.md`](docs/MONTERING_SV.md) — svensk, utökad monteringsguide för den faktiska LR4-konfigurationen med **Jackpot3**. Läs tillsammans med V1E:s originalbilder; guiden ersätter inte kanoniska beslut eller checklistan.
+- [Publicerad guide och arbetsordrar](https://kingkongola.github.io/lowrider/) — originalbilder inline, 30 entimmespass och kopierbar återrapport. Lokal status på webbplatsen synkas inte automatiskt med repot.
 - `research/` — historisk evidens. Top-level-filerna ovan supersederar research vid konflikt.
 
 ## Aktuell arbetsordning
