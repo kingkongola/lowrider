@@ -54,7 +54,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [x] 10 × TE `3-350820-2`
 - [x] 1 × Amphenol `AIO-CSM12`, M12 / 3–6,5 mm
 - [x] 3 m Tensility `30-00416`, 2×20 AWG
-- [x] 10 m Tensility `30-00377`, 3×26 AWG
+- [x] 10 m Tensility `30-00377`, 3×26 AWG, cirka Ø4 mm svart mantel. **PASSNINGSFEL: användaren har verifierat att manteln INTE går i Cores kabeltunnel.** Ingen extrabeställning ännu: bedöm lokal avmantling endast i tunneln (två individuellt isolerade ledare, avlastning/skavskydd) eller tunnare flexibel tvåledarkabel/yttre kabelväg; kontrollera YZ-kanaler också.
 - [x] 3 × Molex KK 2,54 mm 2-polig 150 mm cable assembly `2177961021`
 
 ## Redan köpt — Amazon.se
