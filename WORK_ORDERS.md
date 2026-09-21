@@ -1,6 +1,6 @@
 # Arbetsordrar — LowRider 4
 
-**Version 2026-09-21.** Delbara kvällspass på cirka 45–60 minuter. Nya Core är omprintad utan den tidigare 0,20 mm-förskjutningen. Kablarna måttas enligt [CABLE_ROUTING.md](CABLE_ROUTING.md) före kapning i LR-16B. Ordning och beroenden är vägledning; välj ett pass vars förutsättningar finns. **Status i denna fil är inte automatisk:** allt är initialt *ej verifierat*, även om användaren kan ha börjat med något. Rapportera faktisk status innan vi markerar en order klar. Remhjulen är mottagna 2026-09-21; de ska ändå kontrolleras fysiskt i LR-02.
+**Version 2026-09-21.** Delbara kvällspass på cirka 45–60 minuter. Nya Core är omprintad utan den tidigare 0,20 mm-förskjutningen. Kablarna måttas enligt [CABLE_ROUTING.md](CABLE_ROUTING.md) före kapning i LR-16. Ordning och beroenden är vägledning; välj ett pass vars förutsättningar finns. **Status i denna fil är inte automatisk:** allt är initialt *ej verifierat*, även om användaren kan ha börjat med något. Rapportera faktisk status innan vi markerar en order klar. Remhjulen är mottagna 2026-09-21; de ska ändå kontrolleras fysiskt i LR-02.
 
 **Så använder vi systemet:** välj `LR-xx`, utför arbetet, skicka tillbaka ID + `klar | delvis | blockerad` + faktiska mått/foton/avvikelser. Jag granskar och uppdaterar `WORK_ORDERS.md`, `CHECKLIST.md` och `BUILD_LOG.md` vid behov efter din rapport. Webbsidans lokala markeringar skickas inte automatiskt hit. Tider är uppskattningar, inte tidskrav. Om det behövs mer tid, avbryt vid ett säkert mellanläge och dela upp arbetet.
 
@@ -29,11 +29,10 @@
 | LR-14 | Slutplacera remhållare och Y-skena | 60 min | LR-05, LR-13 | Ej verifierad |
 | LR-15 | Trä och spänn tre remmar | 60 min | LR-14 | Ej verifierad |
 | LR-16 | Planera kablar, slang och elplacering | 60 min | LR-13 | Ej verifierad |
-| LR-16B | Mät kablarna och fastställ kapmåtten | 60 min | LR-16 | Ej verifierad |
 | LR-17 | Bygg dammskons mekaniska del | 60 min | LR-01 | Ej verifierad |
 | LR-18 | Planera cyklon och uppsamlingskärl | 60 min | Inga | Ej verifierad |
 | LR-19 | Jackpot3: installation och konfiguration | 60 min | LR-02 | Ej verifierad |
-| LR-20 | Koppla och prova fem brytare | 60 min | LR-19, LR-16B | Ej verifierad |
+| LR-20 | Koppla och prova fem brytare | 60 min | LR-19, LR-16 | Ej verifierad |
 | LR-21 | Första försiktiga motorprov | 60 min | LR-15, LR-19, LR-20 | Ej verifierad |
 | LR-22 | Kontrollera 230 V-upplägg och maskinstopp | 60 min | LR-16 | Ej verifierad |
 | LR-23 | Torrkör hela rörelseområdet | 60 min | LR-21, LR-22, LR-16 | Ej verifierad |
@@ -189,14 +188,14 @@
 
 **Ta fram:** Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, kabel från Tensility 10 m 3×26 AWG-rulle, idlers och skruvar. Öppna CABLE_ROUTING.md.
 
-1. För X-brytarens ledning ur 10 m 3×26 AWG-rullen genom Cores avsedda tunnel enligt V1E:s bilder. Märk X direkt på kabeln. **Kapa inte till slutlängd eller färdigkrimpa kortet**; kabeln måste senare nå Jackpot3 på YZ_Min när Core står i X_Max, med avlastad rörelseslinga. En eventuell touchplate är en separat kabel (V1E: minst 140 mm fri ledning på Core).
+1. Kapa **250 cm** från din 10 m-rulle 3×26 AWG för X-brytaren och märk båda ändar X. För ena änden genom Cores tunnel enligt V1E:s bilder `co.jpg`–`cq.jpg`; koppla brytaren med **COM + NC** och isolera oanvänd tredje ledare. Behåll resten av den långa biten obruten för rörlig slinga via balkens mitt till Jackpot3 på YZ_Min. **Kapa inte bort överlängd vid Core.** Eventuell touchplate har separat kabel; V1E anger där minst 140 mm fri kabel, inte för X-brytaren.
 2. Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.
 3. Montera motorn och förbered X-remmen utan att kapa på chans.
 4. Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln.
 
-**Godkänt när:** Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt utan slutkapning, idlers fria, remhjul i linje, motorns 1 m kabel intakt.
+**Godkänt när:** Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt och grovkapad till 250 cm, utan ytterligare nedkortning vid Core, idlers fria, remhjul i linje, motorns 1 m kabel intakt.
 
-**Återrapportera:** Foton på X-remhjul och X-brytare, kvarvarande obruten X-brytarkabel, samt status för 1 m motorkabel och eventuellt behov av förlängning (slutlängd mäts i LR-16B).
+**Återrapportera:** Foton på X-remhjul och X-brytare, X-brytarkabelns 250 cm och kvarvarande överlängd, samt status för 1 m motorkabel och eventuellt behov av förlängning (räckvidd kontrolleras i LR-16).
 
 **Bildguide:** [Svenska manualen, kapitel 2](https://kingkongola.github.io/lowrider/#1).
 
@@ -327,29 +326,12 @@
 
 1. Prova placeringen av Jackpot3 på balkens YZ_Min-sida.
 2. Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.
-3. Provlägg X/Y0/Y1/Z0/Z1-motorkablar (var och en 1 m) och alla fem brytarledningar från totalt 10 m 3×26 AWG. Bedöm vilka motorer som behöver förlängning. Lägg ut fräskabel, HDR:s tänkta matning och dammsugarslang samtidigt. **Kapa ingenting; se CABLE_ROUTING.md.**
-4. Rör maskinen för hand till X_Min/X_Max, Z:s två ytterlägen och Y:s fyra hörn; fotografera möjliga kabelkonflikter och bestäm dragavlastade fixpunkter. Låt överlängd ligga säkert tills LR-16B.
+3. Dra X-brytarens förkapade 250 cm och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.
+4. Flytta maskinen för hand till X_Min/X_Max, Y_Min/Y_Max och båda Z-ytterlägena. Kontrollera räckvidd och dragavlastning, notera bara vilken kabel som eventuellt är för kort. Fäst överlängd säkert; exakt nedklippning behövs inte och ingår inte som separat timjobb.
 
 **Godkänt när:** Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.
 
-**Återrapportera:** Foton på kabelvägar/fixpunkter vid ytterlägen, noterade motorförlängningar, resultat för slang och fräskabel; inga slutmått förutsätts.
-
-**Bildguide:** [Svenska manualen, kapitel 7](https://kingkongola.github.io/lowrider/#6).
-
-### LR-16B — Mät kablarna och fastställ kapmåtten
-
-**Tid:** cirka 60 min · **Fas:** El och damm · **Beroenden:** LR-16 · **Status:** ej verifierad
-
-**Ta fram:** Fysiskt uppställd LowRider, Jackpot3 på YZ_Min, de fem fabrikskablarna på 1 m, kvarvarande 10 m 3×26 AWG, måttband/mjuk mätsnöre, märktejp och CABLE_ROUTING.md.
-
-1. Börja med **X motorn och X-brytaren**: för Core genom X_Min/X_Max och mät var och en av deras verkliga sträckor via avlastad slingväg och balken till Jackpot3. Ta med en mjuk service-/rörelsemarginal. Låt kontakterna vara dragavlastade. Anteckna om originalmotorkabeln på 1 m räcker.
-2. Mät **Y0/Z0** samt **Y1/Z1**, motor och NC-brytare var för sig. Prova samtidigt båda Z-sidornas fulla rörelse. Dokumentera faktisk längd och behov av kompatibla motorförlängningar, särskilt från YZ_Max; kapa inte motorernas 1 m originalkablar.
-3. Summera planerad åtgång för **fem brytarkablar ur totalt 10 m 3×26 AWG** innan något kapas. Kontrollera kontakttyper mot ditt faktiska Jackpot3 och de tre köpta 150 mm Molex-pigtails; fem brytare kräver fem verifierade anslutningar. Om rullen eller kontakterna inte räcker: rapportera exakt underskott, köp inte blint.
-4. Dokumentera slutliga kapmått och kabelvägar i CABLE_ROUTING.md och rapportera dem. Gör full-travel-provet för hand med fräskabel och dammsugarslang i verklig position. **Kapa och terminera bara de längder som är faktiskt mätta och godkända. Ingen 230 V-inkoppling i detta pass.**
-
-**Godkänt när:** För varje av fem motorer och fem NC-brytare finns start/slut, mätt längd med verklig rörelsemarginal och verifierad kontakt/förlängningsstatus. Total åtgång av 10 m-kabel är kontrollerad före kapning.
-
-**Återrapportera:** Skicka en rad per X/Y0/Y1/Z0/Z1 med motorns befintliga 1 m räcker ja/nej, eventuell förlängning (mm), brytarkabelns längd (mm); kvarvarande rulle (m), foton på slingan och eventuella kontaktbrister.
+**Återrapportera:** Foton på kabelvägar/fixpunkter vid ytterlägen. Ange om X-kabelns 250 cm räcker, om någon annan ledning är för kort, samt om 1 m motorledning kräver förlängning. Ingen nätspänningssättning.
 
 **Bildguide:** [Svenska manualen, kapitel 7](https://kingkongola.github.io/lowrider/#6).
 
@@ -406,11 +388,11 @@
 
 ### LR-20 — Koppla och prova fem brytare
 
-**Tid:** cirka 60 min · **Fas:** Styrning · **Beroenden:** LR-19, LR-16B · **Status:** ej verifierad
+**Tid:** cirka 60 min · **Fas:** Styrning · **Beroenden:** LR-19, LR-16 · **Status:** ej verifierad
 
-**Ta fram:** 5 × Omron SS-3GL13PT, lågspänningskablar och aktuell Jackpot3/LR4-kopplingsbild. Kabelmåtten och kontakter ska vara verifierade i LR-16B.
+**Ta fram:** 5 × Omron SS-3GL13PT, lågspänningskablar och aktuell Jackpot3/LR4-kopplingsbild. Räckvidd och kontakter ska vara kontrollerade i LR-16.
 
-1. Ta fram de fem uppmätta och korrekt terminerade brytarkablarna från LR-16B. Anslut COM + NC enligt rätt Jackpot3-schema; verifiera faktisk kontaktstiftordning och antal (BOM har bara 3 × 150 mm 2-poliga pigtails). Gissa inte att alla fem redan är anslutningsklara.
+1. Ta fram de fem uppmätta och korrekt terminerade brytarkablarna från LR-16. Anslut COM + NC enligt rätt Jackpot3-schema; verifiera faktisk kontaktstiftordning och antal (BOM har bara 3 × 150 mm 2-poliga pigtails). Gissa inte att alla fem redan är anslutningsklara.
 2. Märk X, Y0, Y1, Z0, Z1 tydligt och kontrollera kabeldragningen.
 3. Med fräsen frånkopplad: använd FluidNC:s statusfunktion och aktivera en brytare åt gången.
 4. Dokumentera vilken status som ändras; felsök innan någon homing om signalerna är fel.
