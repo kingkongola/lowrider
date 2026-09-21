@@ -98,7 +98,7 @@ Originalbilder: [Main Assembly](https://docs.v1e.com/lowrider/#main-assembly).
 Originalbilder: [Belts](https://docs.v1e.com/lowrider/#belts).
 
 1. Kontrollera bordets underrede en gång till. Lägg ut maskinen på den köpta **1800 × 1000 mm**-skivan och provmarkera den kalkylerade yttre rem-/styrningslayouten **941 × 1563 mm**. Lägg inte till någon gammal 90 cm-kantbreddning.
-2. Sätt första Y-skenan som rak referens, parallellt med vald bordskant. Y-remhållare och `Y_Clip` använder samma yttre referens. Förborra så att plastdelarna ligger plant. Avstånd mellan Y-clips: **högst 300 mm centrum–centrum**.
+2. Montera **den enda Y-styrskenan** som rak referens, parallellt med vald bordskant. Den andra sidan har Y-rem men ingen andra styrskena. Y-remhållare och `Y_Clip` använder samma yttre referens. Förborra så att plastdelarna ligger plant. Avstånd mellan Y-clips: **högst 300 mm centrum–centrum**.
 3. Börja med de två Y_Max-hållarna och de första/sista clipsen, fördela övriga clips jämnt, montera Y_Min-hållare och deras justerskruvar. Kontrollera att brytararmarna möter Y-min-stoppskruvarna **innan** mekaniskt stopp.
 4. Lägg rem runt M3-låsskruvar, genom remhjul och idlers. Dra båda Y-remmarna lagom sträckta. V1E anger omkring **7 lbf ≈ 31 N** som riktvärde; det ska inte kännas som en gitarrsträng. Börja hellre för löst än för hårt.
 5. Montera X-remmen på motsvarande sätt. Flytta Core **långsamt för hand** och kontrollera att remmen ligger rätt hela vägen.
