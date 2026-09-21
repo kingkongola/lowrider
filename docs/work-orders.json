@@ -1,7 +1,24 @@
 {
   "version": "2026-09-21",
-  "notice": "Arbetsordrarna är en plan. Lokala markeringar uppdaterar inte privat SSOT. Tre 16T-remhjul mottagna 2026-09-21; kontrollera fysiska mått i LR-02.",
+  "notice": "Arbetsordrarna är en plan. Lokala markeringar uppdaterar inte privat SSOT. Tre 16T-remhjul mottagna 2026-09-21. Separat Makita/65 mm-verktygsfäste ingår INTE verifierat bland 14 grundplattor; kontrollera och vid behov printa i LR-00 före LR-07.",
   "orders": [
+    {
+      "id": "LR-00",
+      "title": "Kontrollera och skriv ut KATSU-verktygsfästet",
+      "minutes": 60,
+      "phase": "Förberedelser",
+      "deps": [],
+      "needs": "De 14 utskriftsplattornas delar; KATSU 101750 (urkopplad), skjutmått; Bambu P1S och PLA om fästet saknas. V1E:s separata Makita 701 Tool Mount and Dust Shoe: https://www.printables.com/model/1033926-makita-701-tool-mount-and-dust-shoe-for-the-lowrid.",
+      "steps": [
+        "Inventera samtliga utskrivna delar och leta uttryckligen efter de två halvorna/delarna till rätt 65 mm-fräsfäste enligt V1E:s modell. Förväxla inte 1/8-tumshylsan (metall) med det printade motorhusfästet. Notera om Jackpot3-boxen också finns.",
+        "Öppna V1E:s separat länkade Makita 701 Tool Mount and Dust Shoe; välj den aktuella delversionen och endast de monteringsdelar som krävs för KATSU 101750:s cirka 65 mm motorhus. Jämför modellens uppmätta klämdiameter med fräsens verkliga ytterdiameter; kontrollera version, orientering och instruktioner innan slicning.",
+        "Om fästet inte redan finns: slic:a delarna enligt modellens instruktioner. V1E:s LR4-deltabell anger 30 % infill för detta mount-set. Starta utskriften; om den tar längre än kvällspasset rapporterar du 'delvis' och slutför senare. Om fästet redan finns behöver du inte skriva ut igen.",
+        "Kontrollera det utskrivna fästets hål, sprickor och faktisk passning mot urkopplad KATSU och Core. Dokumentera samtliga delar och bilder; markera LR-00 klar först när rätt fäste faktiskt är färdigt och provpassat."
+      ],
+      "accept": "Rätt komplett, separat Makita/65 mm-mount för KATSU 101750 är fysiskt utskrivet och provpassat (eller återfunnet och provpassat). Jackpot3-boxens separata utskriftsstatus är noterad; inga antaganden baserat på platta 14/14.",
+      "report": "Ange fäste fanns/saknades, exakt fil/variant, vilken PLA och utskriftsstatus, uppmätt KATSU-diameter, foton och om Jackpot3-boxen hittades.",
+      "manual": 0
+    },
     {
       "id": "LR-01",
       "title": "Sortera 3D-utskrifterna",
@@ -11,12 +28,12 @@
       "needs": "De utskrivna delarna från samtliga plattor, manualen, märkpenna och lådor.",
       "steps": [
         "Lägg ut utskrifterna och sortera i Core, YZ_Min, YZ_Max, balk, bord/remmar, damm och Jackpot3-box.",
-        "Kontrollera mot manualens deltabell att rätt 30 mm-rörvarianter och Makita/65 mm-fäste finns.",
+        "Kontrollera mot V1E:s separata printlista om rätt 30 mm-rörvarianter, de fyra Temp Strut, Makita/65 mm-verktygsfäste och Jackpot3-box faktiskt finns. **Om fästet inte är utskrivet: notera det som saknat och gör LR-00**, inte anta att det ingår i 14 plattor.",
         "Räkna fyra temporära stag (Temp Strut, avsett 15 % infill); bedöm hål, bryggor och delarna från den förskjutna utskriften.",
         "Fotografera grupperna och skriv en kort lista över saknade eller tveksamma delar."
       ],
       "accept": "Delarna är identifierade; alla osäkra delar är noterade, inte förutsatta godkända.",
-      "report": "Antal Temp Strut, saknade/tveksamma delar och foton.",
+      "report": "Antal Temp Strut; status fäste (finns/saknas), Jackpot3-box (finns/saknas), övriga saknade/tveksamma delar och foton.",
       "manual": 0
     },
     {
@@ -114,14 +131,15 @@
       "minutes": 60,
       "phase": "Mekanik",
       "deps": [
+        "LR-00",
         "LR-01",
         "LR-02"
       ],
-      "needs": "1 × printad Core; **8 × 608-2RS (DigiKey)**; **8 × M8×40 sexkantsskruvar + 8 × M8 nyloc (HaWiWe)**; 4 × M5 nyloc + 4 tillhörande M5-fästskruvar ur HaWiWe (M5×30 finns i satsen, provpassa mot verkligt fäste); 4 korta bitar PLA-filament; rätt printat Makita/65 mm-fäste; lämplig nyckel för M8 samt skruvverktyg.",
+      "needs": "1 × printad Core; **8 × 608-2RS (DigiKey)**; **8 × M8×40 sexkantsskruvar + 8 × M8 nyloc (HaWiWe)**; 4 × M5 nyloc + 4 tillhörande M5-fästskruvar ur HaWiWe (M5×30 finns i satsen, provpassa mot verkligt fäste); 4 korta bitar PLA-filament; rätt printat och verifierat Makita/65 mm-fäste (LR-00); lämplig nyckel för M8 samt skruvverktyg.",
       "steps": [
         "Sortera ut de 8 lagren (inte alla 16 köpta), 8 M8×40 och 8 M8 nyloc. Lägg fram i fyra par om 2. Kontrollera att varje 608-lager rullar fritt före montering. V1E-bilder: `ca.jpg`, `cb.jpg`, `cc.jpg`, `cd.jpg`.",
         "Montera först **6 lager med 6 M8×40 + 6 M8 nyloc** i tre par enligt `ca`–`cc`; för varje skruv genom lagrets innerhål åt exakt den riktning bilden visar, och dra bara an utan att klämma lagret. Montera sista **2 lager + 2 M8×40 + 2 M8 nyloc** enligt `cd`; lämna just dessa två övre spännskruvar lösa tills Core sitter på rören.",
-        "Ta fram **4 M5 nyloc, 4 korta filamentbitar och 4 fästskruvar M5** ur HaWiWe-satsen. Sätt muttrarna med nylondelen åt rätt håll enligt `cf`–`ch`, lås med filament och klipp jäms. Montera printat Makita/65 mm-fäste enligt `ci`–`cj`; provpassa skruvlängden (M5×30 finns i satsen, exakt längd visas inte uttryckligen i originaltexten) och dra jämnt utan att spräcka plasten.",
+        "Ta fram **4 M5 nyloc, 4 korta filamentbitar och 4 fästskruvar M5** ur HaWiWe-satsen. Sätt muttrarna med nylondelen åt rätt håll enligt `cf`–`ch`, lås med filament och klipp jäms. Montera först **efter godkänd LR-00** det separat printade Makita/65 mm-fästet enligt `ci`–`cj`; provpassa skruvlängden (M5×30 finns i satsen, exakt längd visas inte uttryckligen i originaltexten) och dra jämnt utan att spräcka plasten.",
         "Slutkontroll: räkna 8 monterade lager + 8 M8×40 + 8 M8-låsmuttrar, och 4 infångade M5-låsmuttrar med korrekt fäste. De första 6 lageraxlarna ska sitta an, de sista 2 vara lösa; alla lager ska snurra utan nyper. Fotografera Core från båda håll."
       ],
       "accept": "Exakt 8 lager, 8 M8×40, 8 M8 nyloc, 4 M5 nyloc och rätt Makita/65 mm-fäste monterade. Sex lageraxlar endast åtdragna till anliggning; två övre spännskruvar kvar lösa. Lager snurrar fritt och fästskruvar har kontrollerad längd.",
