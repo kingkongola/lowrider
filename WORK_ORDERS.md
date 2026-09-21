@@ -149,16 +149,16 @@
 
 **Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-01, LR-02 · **Status:** ej verifierad
 
-**Ta fram:** Core, 608-lager, skruvsats, filament och Makita/65 mm-fäste.
+**Ta fram:** 1 × printad Core; **8 × 608-2RS (DigiKey)**; **8 × M8×40 sexkantsskruvar + 8 × M8 nyloc (HaWiWe)**; 4 × M5 nyloc + 4 tillhörande M5-fästskruvar ur HaWiWe (M5×30 finns i satsen, provpassa mot verkligt fäste); 4 korta bitar PLA-filament; rätt printat Makita/65 mm-fäste; lämplig nyckel för M8 samt skruvverktyg.
 
-1. Montera Core-lagren enligt rätt bilder och dra bara an axelskruvarna.
-2. Lämna Core-delens två övre spännskruvar lösa för senare justering.
-3. Montera de fyra nylocmuttrarna med filamentlåsning, sedan Makita/65 mm-fästet.
-4. Kontrollera att lagren roterar fritt och att plasten inte deformeras.
+1. Sortera ut de 8 lagren (inte alla 16 köpta), 8 M8×40 och 8 M8 nyloc. Lägg fram i fyra par om 2. Kontrollera att varje 608-lager rullar fritt före montering. V1E-bilder: `ca.jpg`, `cb.jpg`, `cc.jpg`, `cd.jpg`.
+2. Montera först **6 lager med 6 M8×40 + 6 M8 nyloc** i tre par enligt `ca`–`cc`; för varje skruv genom lagrets innerhål åt exakt den riktning bilden visar, och dra bara an utan att klämma lagret. Montera sista **2 lager + 2 M8×40 + 2 M8 nyloc** enligt `cd`; lämna just dessa två övre spännskruvar lösa tills Core sitter på rören.
+3. Ta fram **4 M5 nyloc, 4 korta filamentbitar och 4 fästskruvar M5** ur HaWiWe-satsen. Sätt muttrarna med nylondelen åt rätt håll enligt `cf`–`ch`, lås med filament och klipp jäms. Montera printat Makita/65 mm-fäste enligt `ci`–`cj`; provpassa skruvlängden (M5×30 finns i satsen, exakt längd visas inte uttryckligen i originaltexten) och dra jämnt utan att spräcka plasten.
+4. Slutkontroll: räkna 8 monterade lager + 8 M8×40 + 8 M8-låsmuttrar, och 4 infångade M5-låsmuttrar med korrekt fäste. De första 6 lageraxlarna ska sitta an, de sista 2 vara lösa; alla lager ska snurra utan nyper. Fotografera Core från båda håll.
 
-**Godkänt när:** Core med fria lager och korrekt monterat verktygsfäste.
+**Godkänt när:** Exakt 8 lager, 8 M8×40, 8 M8 nyloc, 4 M5 nyloc och rätt Makita/65 mm-fäste monterade. Sex lageraxlar endast åtdragna till anliggning; två övre spännskruvar kvar lösa. Lager snurrar fritt och fästskruvar har kontrollerad längd.
 
-**Återrapportera:** Foton fram/bak, lagerfrigång och eventuellt dåliga hål.
+**Återrapportera:** Bekräfta antal 8/8/8 + 4 M5 och verklig skruvlängd till verktygsfästet. Skicka två foton på Core, gärna ett av `cd`-paret. Ange om någon ficka, passning eller lagerrörelse är tveksam.
 
 **Bildguide:** [Svenska manualen, kapitel 2](https://kingkongola.github.io/lowrider/#1).
 
