@@ -122,3 +122,9 @@
 - Användaren bekräftar att **hela Core är omprintad** och att nya utskriften **inte har den tidigare cirka 0,20 mm förskjutningen**. Gamla defekten är historik, inte ett aktivt fel; nya delen ska fortfarande vanlig passningskontrolleras.
 - Arbetsordrarna saknade kaplängder för fem NC-brytare och motorförlängningar. Infört mätprotokoll `CABLE_ROUTING.md`: V1E har inget generellt exakt kapmått för vårt 650×1250-bygge. Mät respektive sträcka efter provmontering med X/Z/Y i rörelseextremer, dokumentera och kapa först då. Explicit V1E-mått för eventuell touchplate är minst 140 mm fri ledning vid Core.
 - Köpta lager/motorer/kablar oförändrade, inga nya köp antagna.
+
+## 2026-09-21 — Rättelse: X-brytarens 250 cm var inte verifierat
+
+- Efter att kapmåttet 250 cm skrivits in i arbetsordrar och illustrerad guide granskades V1E:s originaltext. Originalet specificerar **ingen exakt längd för X-brytarens kabel** för vår maskinstorlek; endast minst 140 mm för *valfri touchplate* vid Core.
+- **250 cm har dragits tillbaka som bindande kapinstruktion.** Mata kabeln från befintlig 10 m-rulle genom Core vid LR-08, prova hela X-slaget med avlastad kabelväg till Jackpot3 vid LR-16 och kapa först när faktisk längd är känd. Om användaren redan har kapat 250 cm, behåll biten och kontrollera räckvidden.
+- Ändring synkad till `docs/MONTERING_SV.md`, `docs/index.html`, `docs/work-orders.json`, `WORK_ORDERS.md`, `CABLE_ROUTING.md`, `CHECKLIST.md` och `AUDIT.md`. Ingen fysisk kapning eller mätning är bekräftad.
