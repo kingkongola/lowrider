@@ -19,7 +19,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Bord: **180×100 cm bordsskiva köpt för 300 kr**; ingen planerad 90 cm-kantbreddning, kontrollera underrede. Löstagbar ~12 mm MDF-spoilboard köps senare.
 - Garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet elproblem om säkringen faktiskt håller.
 - Dammhantering är del av grundbygget.
-- Prints: **platta 10 av 14 pågår** enligt användaren 2026-09-19.
+- Prints: användaren har därefter rapporterat utskrift av **platta 14/14**. **Det är inte bekräftat att det separata Makita/65 mm-verktygsfästet (eller Jackpot3-boxen) ingick i dessa plattor.** Se LR-00 och inventera utskrifterna före Core-montage.
 - 3 × 16T-remhjul från eBay/POWGE: **mottagna 2026-09-21** enligt användaren; antal och tekniska mått kontrolleras under nästa inventering.
 - Projektkostnad inklusive köpt bordsskiva: **6 756,11 kr brutto**, **6 689,11 kr** exklusive annullerad eBay-order på 67 kr som väntar återbetalning.
 
@@ -44,7 +44,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Aktuell arbetsordning
 
-1. Fortsätt printa resterande LR4-plattor; verifiera 30 mm-rördelar, Makita/65 mm tool mount samt **4 × temporära struts (15 % infill)**.
+1. Inventera utskrivna LR4-delar. **Kontrollera explicit om det separat nedladdade Makita 701/65 mm-verktygsfästet finns; vid frånvaro skriv ut det enligt LR-00.** Verifiera även 30 mm-varianter, rätt Jackpot3-box och **4 × temporära struts (15 % infill)**. Platta 14/14 innebär inte att separat mount-set automatiskt ingick.
 2. Kontrollera köpta 180×100-skivans underrede/styvhet och provlägg rail/belt-layout. Mät/kapa rör efter OD-/rakhetskontroll.
 3. Inventera HaWiWe, DigiKey, remhjul och el-/kabeldelar mot BOM. Alla tre beställda 16T-remhjul är mottagna; kontrollera tänder/hål/rembredd före montering.
 4. Köp/ordna ~12 mm MDF-spoilboard, 5–6 mm strutmaterial, första 3,175 mm-fräs samt NVR/kapsling efter fysisk dry-fit.
