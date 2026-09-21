@@ -137,7 +137,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [ ] TPU-bristles om befintlig TPU är lämplig
 - [ ] printad cyklon först
 - [ ] styv 15–30 l behållare och kontrollerat vakuumtest
-- [ ] **Återanvänd befintlig 38 mm poolslang om den fungerar:** användaren har redan en 38 mm poolslang hemma; DeWalt-originalslangen är för kort. Mät poolslangens totala längd (mål ungefär 4–5 m men bestäms av dragning) och verklig inner-/ytterdiameter/anslutningar. Provkör mot DeWalt: kontrollera att slangen inte kollapsar eller täpps igen under verkligt undertryck och att dammsugarens luftflöde räcker; testa hela X/Y/Z-rörelsen och ordna upphängning/dragavlastning. Printad adapter mellan poolslang, DeWalt och Makita dust shoe vid behov. Poolslang är normalt inte antistatisk; eventuell säker statisk avledning utreds separat, improviserad tråd är inte likvärdig med antistatisk slang. **Ingen ny slang beställd; köp bara om poolslangen inte fungerar.**
+- [x] **Befintlig poolslang 38 mm, 4 meter** – redan ägd; användaren har tidigare kopplat den till DeWalt för rengöring av FTX-kanalerna. DeWalt-originalslangen är för kort. **Inget nytt slanginköp planeras.** Återstår: kontrollera faktisk ID/OD och följsamhet/räckvidd genom full X/Y/Z-rörelse, skapa adapter till Makita-dammsko (och eventuellt DeWalt om behövs), upphängning/dragavlastning. Poolslang är normalt inte antistatisk; utred säker statisk hantering vid användning med trä/MDF, utan att likställa utvändig tråd med antistatisk slang.
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
