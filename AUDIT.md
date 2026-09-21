@@ -1,6 +1,6 @@
 # Systemaudit
 
-**Current 2026-09-19.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
+**Current 2026-09-21.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
 
 ## Samlad bedömning
 
@@ -23,7 +23,7 @@ Ingen audit kräver ändrad maskingeometri.
 - Y-rör 1505 mm
 - strut 819, `front_wing_size=30`
 - GT2 999 / 1705 / 1705 = 4409 mm
-- 3 × GT2 16T, 5 mm bore, 10 mm belt — köpta, ej mottagna 2026-09-19
+- 3 × GT2 16T, beställd spec 5 mm hål och 10 mm rem — **mottagna 2026-09-21**. Fysisk variant/passning ska fortfarande mätas före montering.
 - 6 × smooth idler, 5 mm hole, 10 mm belt
 - 14 × 608-2RS installeras + 2 reserv
 - T8×8, 4-start, 8 mm lead
