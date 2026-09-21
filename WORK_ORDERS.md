@@ -205,7 +205,7 @@
 
 **Ta fram:** YZ_Min, tillhörande XZ-platta, två MGN12, Y-/Z-motor, brytare och hjul.
 
-1. Märk Y0- och Z0-kablar enligt maskinens faktiska orientering. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16B.
+1. Märk Y0- och Z0-kablar enligt maskinens faktiska orientering. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.
 2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna.
 3. Montera Y-brytare med rätt armriktning; skydda armen mot bänkkanten.
 4. Rengör rälsbäddarna, montera skenor och XZ-platta löst och prova glidningen under stegvis åtdragning.
@@ -222,7 +222,7 @@
 
 **Ta fram:** YZ_Max, motsvarande XZ-platta, två MGN12, motorer, brytare och hjul.
 
-1. Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16B.
+1. Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.
 2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare.
 3. Rensa skenbäddar; montera skenor och XZ-platta, dra stegvis och provför över hela rörelsen.
 4. Notera eventuella delar som återstår innan båda sidornas Z-mekanik kan slutföras.
