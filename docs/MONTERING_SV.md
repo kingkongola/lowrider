@@ -18,12 +18,12 @@ Källor: [V1E LR4](https://docs.v1e.com/lowrider/) · [V1E Jackpot3](https://doc
 | Remmar | GT2 10 mm; planerat **999 / 1705 / 1705 mm**, **kapa först efter provdragning** |
 | Motorer | 5 × STEPPERONLINE `17HS19-2004S1` |
 | Styrenhet | **Elecrow Jackpot3 `CQA240812C2`**, mottagen; rätt Jackpot3-låda |
-| Matning | Mean Well `HDR-60-24`, 24 V; **fast** elbox |
+| Matning | Mean Well `HDR-60-24`, 24 V; planerat **på rörlig balk** tillsammans med Jackpot3, efter skydds- och infästningskontroll |
 | Gränslägesbrytare | 5 × Omron `SS-3GL13PT`, normalt slutna (NC), anslut COM + NC |
 | Handöverfräs | KATSU `101750`, 710 W, cirka 65 mm; Makita/65 mm-fäste |
 | Fräsfäste/verktyg | Makita/Elaire 1/8-tumshylsa; provpassa före start |
 
-**Viktiga avvikelser från V1E:s typbygge:** Nätspänningsbox och 24 V-aggregat är fasta på bordet; endast Jackpot3 följer med balken. V1E:s exempel där strömförsörjningen placeras på den rörliga balken gäller inte oss. Köp inte alternativa komponenter för att ett exempel i manualen visar något annat.
+**Placering efter omprövning (D016):** NVR/maskinstopp är fast och lättåtkomligt på bordet; Jackpot3 och vårt Mean Well HDR-60-24 planeras på balken enligt V1E:s princip. Vårt DIN-aggregat är inte automatiskt lämpligt för oskyddad balkmontering. Kontrollera beröringsskydd för nätplintar, jordning, kapsling, infästning och dragavlastning före anslutning. Köp inte alternativa komponenter bara för att V1E:s bilder visar en annan aggregatmodell.
 
 **Läge vid upprättandet:** SSOT är daterad 19 september: remhjulen (3 × 16T) var ännu inte levererade då. Användaren har därefter rapporterat utskrift av platta 14/14. Varken leverans, komplett utskriftsinventering, slutlig rör-OD eller bordets styvhet är här markerade som fysiskt verifierade.
 
@@ -111,11 +111,11 @@ Originalbilder: [Belts](https://docs.v1e.com/lowrider/#belts).
 Originalbilder: [Wire Routing](https://docs.v1e.com/lowrider/#wire-routing) och [Jackpot3 Wiring](https://docs.v1e.com/electronics/jackpot3/#wiring).
 
 - **Rörligt:** Jackpot3 i rätt printad låda på balkens YZ_Min-sida. Lämna fri luft runt kort och antenn. Dra ledare bredvid, inte ovanpå, kortet. Dragavlasta allt innan kablarna lämnar lådan.
-- **Fast:** Mean Well HDR-60-24 och 230 V NVR/maskinstopp i separat kapsling på bordet. **Följ inte V1E-bilden där 24 V-aggregatet sitter på balken.**
-- **Mellan fast och rörligt:** vår 3 m 2×20 AWG 24 V-kabel är längdmarginal, inte ett bevisat kabelkedjematerial. Gör mjuk slinga och kapa till slutlängd **först efter** kontroll av hela rörelseområdet.
+- **Fast:** 230 V NVR/maskinstopp placeras lättåtkomligt på bordet. **Rörligt:** Jackpot3 och, efter lämplig kapslings-/infästningskontroll, Mean Well HDR-60-24 på balken. Kontrollera att inga nätspänningsförande plintar är åtkomliga.
+- **Mellan fast och rörligt:** nätmatningen till HDR-60-24 och fräsens kabel behöver säker rörlig dragning och dragavlastning. Anslut Jackpot3 till HDR med kort 24 V-kabel på balken. Den redan köpta 3 m 2×20 AWG-kabeln är reserv; dra inte en lång 24 V-slinga utan behov.
 - **Balk/Core:** märk varje motor-/brytarkabel, fäst förlängningsskarvar utan draglast och låt Core kunna nå både X-ändar. Låt dammsugarslangens upphängning ta slangens vikt, inte Z-vagnen.
 
-**Full-travel-kontroll innan permanenta buntband:** prova samma montage samtidigt med 24 V-slinga, motor-/brytarkablar, fräsens nätkabel och dammsugarslang. Kör för hand till alla fyra hörn och Z:s båda ytterlägen. Inget får sträckas, vikas hårt, falla i remmarna eller dra i en kontakt.
+**Full-travel-kontroll innan permanenta buntband:** prova samma montage samtidigt med HDR:s nätmatning, kort 24 V-förbindelse, motor-/brytarkablar, fräsens nätkabel och dammsugarslang. Kör för hand till alla fyra hörn och Z:s båda ytterlägen. Inget får sträckas, vikas hårt, falla i remmarna eller dra i en kontakt.
 
 ## 7. Jackpot3: lågspänning och programvara
 
@@ -137,7 +137,7 @@ Original: [Jackpot3 – Initial Setup, Tests och Firmware](https://docs.v1e.com/
 
 Se [AUDIT](../AUDIT.md) och [CHECKLIST](../CHECKLIST.md). Detta är vår projektspecifika elarkitektur; inte en del av V1E:s standardschema.
 
-- **NVR är ännu en vald funktionsprincip, inte verifierad inkoppling.** Välj faktisk 230 V-enhet efter dess terminalschema och märkström. Placera stoppet direkt nåbart. Kapsling, genomföringar och dragavlastning dimensioneras efter de verkliga delarna.
+- **NVR är ännu en vald funktionsprincip, inte verifierad inkoppling.** Välj faktisk 230 V-enhet efter dess terminalschema och märkström. Placera stoppet direkt nåbart. Skydda aggregatets nätspänningsplintar även på balken; kapsling, genomföringar, infästning och dragavlastning dimensioneras efter de verkliga delarna.
 - Skyddsjord (PE) ska vara obruten och inte gå genom NVR-brytaren. Kontrollera PE-kontinuitet och att ingen kortslutning finns mellan L/N och PE före spänningssättning. Låt en elkunnig fackperson kontrollera nätspänningsinkopplingen om du inte kan verifiera koppling och mätningar själv.
 - Prova NVR:s *no-restart*-funktion **med fräsen frånkopplad**: efter avbrott får återkommen nätspänning inte starta lasten automatiskt. Kalla inte lösningen ett säkerhetsklassat nödstopp.
 - Provpassa KATSU-hylsan och kontrollera synlig excentricitet/mät runout innan skärande körning. Dra ur kontakten vid fräsbyte.
