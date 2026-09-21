@@ -25,7 +25,7 @@ Källor: [V1E LR4](https://docs.v1e.com/lowrider/) · [V1E Jackpot3](https://doc
 
 **Placering efter omprövning (D016):** NVR/maskinstopp är fast och lättåtkomligt på bordet; Jackpot3 och vårt Mean Well HDR-60-24 planeras på balken enligt V1E:s princip. Vårt DIN-aggregat är inte automatiskt lämpligt för oskyddad balkmontering. Kontrollera beröringsskydd för nätplintar, jordning, kapsling, infästning och dragavlastning före anslutning. Köp inte alternativa komponenter bara för att V1E:s bilder visar en annan aggregatmodell.
 
-**Läge vid upprättandet:** SSOT är daterad 19 september: remhjulen (3 × 16T) var ännu inte levererade då. Användaren har därefter rapporterat utskrift av platta 14/14. Varken leverans, komplett utskriftsinventering, slutlig rör-OD eller bordets styvhet är här markerade som fysiskt verifierade.
+**Läge 2026-09-21:** Alla tre 16T-remhjul har kommit fram enligt användaren; kontroll av deras tekniska mått kvarstår. Användaren har rapporterat utskrift av platta 14/14. Komplett utskriftsinventering, slutlig rör-OD och bordets styvhet är ännu inte markerade som fysiskt verifierade.
 
 ## 0. Förbered arbetsplatsen – före första skruven
 
@@ -161,6 +161,10 @@ Original: [Initial Calibration](https://docs.v1e.com/lowrider/#initial-calibrati
 9. Montera löstagbar **cirka 12 mm MDF-offerskiva** på arbetszonen och planfräs den *först nu*, med den färdiga balken. Kontrollera därefter X/Y-mått, Z-djup och ett enkelt kalibreringsprov. Spara den fungerande `config.yaml` utanför kortet.
 
 **Kontroll G – färdig maskin:** kalibreringsprovet håller avsedda mått, Z går fritt, båda remmarna ligger rätt, fräsens kabel och slangen fungerar över hela arbetsytan, och offerskivan är planfräst. Maskinen är inte godkänd enbart för att den går att jogga.
+
+## Arbetsordrar för kvällspass
+
+Välj ett cirka en timme långt pass i [arbetsordersystemet](https://kingkongola.github.io/lowrider/#ordrar) eller [WORK_ORDERS.md](../WORK_ORDERS.md). Varje order har eget ID, beroenden och rapportmall. Lokal status på webbsidan uppdaterar inte SSOT förrän användaren rapporterat resultatet.
 
 ## Snabb felsökning vid montering
 
