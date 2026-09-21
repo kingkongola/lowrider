@@ -128,3 +128,9 @@
 - Efter att kapmåttet 250 cm skrivits in i arbetsordrar och illustrerad guide granskades V1E:s originaltext. Originalet specificerar **ingen exakt längd för X-brytarens kabel** för vår maskinstorlek; endast minst 140 mm för *valfri touchplate* vid Core.
 - **250 cm har dragits tillbaka som bindande kapinstruktion.** Mata kabeln från befintlig 10 m-rulle genom Core vid LR-08, prova hela X-slaget med avlastad kabelväg till Jackpot3 vid LR-16 och kapa först när faktisk längd är känd. Om användaren redan har kapat 250 cm, behåll biten och kontrollera räckvidden.
 - Ändring synkad till `docs/MONTERING_SV.md`, `docs/index.html`, `docs/work-orders.json`, `WORK_ORDERS.md`, `CABLE_ROUTING.md`, `CHECKLIST.md` och `AUDIT.md`. Ingen fysisk kapning eller mätning är bekräftad.
+
+## 2026-09-21 — Bekräftat mekaniskt passningsfel: X-brytarkabel
+
+- Användaren har faktiskt provat den levererade **Tensility 30-00377, 3×26 AWG med cirka 4 mm svart mantel**: **den går inte genom Cores kabeltunnel**. Detta är inte längre en hypotetisk kontroll. Vårt kabelval var dåligt avstämt mot Core.
+- Inget har kapats enligt användaren. Praktisk åtgärd att prova utan nytt inköp: avlägsna den svarta ytterkappan **bara över den korta trånga kanalens faktiska längd**, låt två individuellt isolerade ledare passera om de går fritt, behåll svart mantel på den yttre rörliga delen, ge mantelavslutningen dragavlastning och skydd mot skav. Ingen skadad ledarisolering får användas. Om detta inte fungerar skyddat: tunnare flexibel tvåledarkabel eller säker alternativ extern rutt.
+- Kontrollera att den mantlade kabeln inte heller kolliderar med YZ-kanalerna innan någon kompletteringsorder görs. Endstopens slutliga längder och kontaktdon återstår att verifiera.
