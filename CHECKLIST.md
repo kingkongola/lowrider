@@ -81,6 +81,7 @@
 - [ ] inventera FAT32 microSD >2 GB
 - [ ] när Jackpot3 anländer: kontrollera transportskada/korrekt kort
 - [ ] montera Jackpot3 luftigt på rörlig beam/YZ_Min-sida
+- [ ] provplacera även HDR-60-24 på balken; verifiera skyddad 230 V-anslutning, PE, kapsling, mekanisk infästning och dragavlastning innan anslutning
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
 - [ ] första jogg 1 mm
@@ -90,9 +91,10 @@
 ## 9. NVR/elbox + full travel
 
 - [ ] välj NVR efter faktisk variant/schema; Clas Ohlson KJD12 230 V/10 A är aktiv kandidat
-- [ ] dry-fit NVR + HDR innan kapsling/håltagning låses
+- [ ] dry-fit fast NVR och balkmonterat HDR-60-24 med separat beröringsskydd; bestäm kapsling och håltagning först efter fysisk kontroll
 - [ ] placera stoppet direkt nåbart
-- [ ] dry-fit 3 m 24 V-rutt
+- [ ] dry-fit kort 24 V-rutt mellan balkmonterat HDR-60-24 och Jackpot3; den köpta 3 m-kabeln är reserv, inte obligatorisk rörlig slinga
+- [ ] dry-fit säker nätmatning till balkmonterat HDR-60-24
 - [ ] dry-fit KATSU-kabel
 - [ ] dry-fit motor/endstop
 - [ ] montera vac-hose samtidigt
