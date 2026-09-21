@@ -1,6 +1,6 @@
 {
   "version": "2026-09-21",
-  "notice": "Arbetsordrarna är en plan; lokal status uppdaterar inte SSOT. Tre 16T-remhjul mottagna 2026-09-21. Nya Core är omprintad utan tidigare 0,20 mm-förskjutning. Motorkablar är 1 m vardera; X-brytarens exakta kapmått är inte verifierat; dra från rullen utan kapning vid LR-08 och verifiera längden i LR-16. Separat Makita/65 mm-fäste kontrolleras i LR-00.",
+  "notice": "Arbetsordrarna är en plan; lokal status uppdaterar inte SSOT. Tre 16T-remhjul mottagna 2026-09-21. Nya Core är omprintad utan tidigare 0,20 mm-förskjutning. Motorkablar är 1 m vardera; X-brytarens exakta kapmått är inte verifierat; dra från rullen utan kapning vid LR-08 och verifiera längden i LR-16. Separat Makita/65 mm-fäste kontrolleras i LR-00. Bekräftat av användaren: köpta cirka 4 mm mantlade endstop-kabeln går INTE igenom Core-tunneln; LR-08 måste kontrollera lokal avmantling/avlastning eller alternativ ledningsdragning.",
   "orders": [
     {
       "id": "LR-00",
@@ -154,15 +154,15 @@
       "deps": [
         "LR-07"
       ],
-      "needs": "Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, kabel från Tensility 10 m 3×26 AWG-rulle (låt rullen vara hel), idlers och skruvar. Öppna CABLE_ROUTING.md.",
+      "needs": "Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, Tensility 10 m 3×26 AWG med cirka 4 mm ytterhölje (bekräftat för tjockt för Cores tunnel), liten kabelskalare, isolering och avlastning. Alternativt tunnare flexibel tvåledarkabel eller skyddad yttre rutt., idlers och skruvar. Öppna CABLE_ROUTING.md.",
       "steps": [
-        "Mata en fri ände av **10 m-rullen 3×26 AWG** genom Cores kabeltunnel, märk den `X` och montera X-brytaren enligt V1E:s bilder `co.jpg`–`cq.jpg`. Använd **COM + NC** efter att kontakterna verifierats. **Kapa inte nu.** Kabeln ska senare löpa i en mjuk slinga via balkens mitt till Jackpot3 på YZ_Min och räcka även när Core står i X_Max. Den tidigare siffran **250 cm är en obekräftad uppskattning**: har du redan kapat 250 cm, behåll biten och verifiera den vid LR-16. V1E:s 140 mm avser en eventuell touchplate, inte X-brytaren.",
+        "**OBS: köpta mantlade kabeln (cirka 4 mm) får inte plats i Core-tunneln.** Mata INTE in den med våld och kapa inte på chans. Prova att enbart två individuellt isolerade innerledare ryms i den korta, fasta tunneln: skala försiktigt bort ytterhöljet **endast den sträcka som faktiskt behövs**, utan att skada ledarisoleringen, så att manteln slutar vid ett avlastat läge strax utanför Core. Kontrollera skavskydd och rörlig frigång. Om det inte går skyddat: använd tunnare flexibel tvåledarkabel eller säker yttre kabelväg. Märk X; brytaren använder COM + NC efter verifierad terminalmärkning, tredje ledaren isoleras. Kapa inte hela kabeln till slutlängd före LR-16; 250 cm var en obekräftad uppskattning.",
         "Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.",
         "Montera motorn och förbered X-remmen utan att kapa på chans.",
         "Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln."
       ],
-      "accept": "Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt, utan att en obekräftad kaplängd används, idlers fria, remhjul i linje, motorns 1 m kabel intakt.",
-      "report": "Foton på X-remhjul och X-brytare, om X-brytarkabeln fortfarande sitter på rullen eller redan är kapad, samt status för 1 m motorkabel och eventuellt behov av förlängning (räckvidd kontrolleras i LR-16).",
+      "accept": "X-brytarens ledning dragen och säkert skyddad genom Core eller verifierad yttre kabelväg, ingen ledarisolering skadad, kabeln avlastad utanför tunneln, motor/idlers/riktning enligt guide. Inga kaplängder antagna.",
+      "report": "Foto på för trång 4 mm-kanal och vald lösning (delvis skalad mantel eller tunnare kabel/yttre rutt); ange eventuell skada på ledare, brytarkontakt och status övrig Core.",
       "manual": 1
     },
     {
@@ -317,7 +317,7 @@
       "steps": [
         "Prova placeringen av Jackpot3 på balkens YZ_Min-sida.",
         "Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.",
-        "Dra X-brytarens obrutna kabel från rullen (eller redan kapade 250 cm, om den kapats) och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.",
+        "Dra X-brytarens kabel via den passade och skyddade Core-övergången (eventuell tunnare kabel/yttre rutt) och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.",
         "Flytta maskinen för hand till X_Min/X_Max, Y_Min/Y_Max och båda Z-ytterlägena. Kontrollera räckvidd och dragavlastning, notera bara vilken kabel som eventuellt är för kort. Fäst överlängd säkert; exakt nedklippning behövs inte och ingår inte som separat timjobb."
       ],
       "accept": "Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.",
