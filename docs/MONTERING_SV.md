@@ -34,7 +34,7 @@ Original: [utskrifter, geometri och montering](https://docs.v1e.com/lowrider/).
 - [ ] Sortera HaWiWe: två 6 mm XZ-plattor, **4 × MGN12H 150 mm**, skruvsats och 1/8-tumshylsa. Provpassa M3×10 i skena/lagerblock/platta: ingenting ska bottna eller kärva.
 - [ ] Inventera DigiKey-paketet mot [BOM](../BOM.md). Kontrollera 608-2RS-lager, mikrobrytare, kablar och anslutningar.
 - [ ] Kontrollera utskrifterna: **30 mm-varianter**, Makita/65 mm-verktygsfäste, Jackpot3-låda, samtliga fyra temporära stag. Särskilt `Z_Stub`, `Z_Nut`, YZ-delarnas bryggor och Dust Skirt: inga skadade hål eller allvarliga överhängsfel.
-- [ ] Kontrollera att 16T-remhjulen verkligen har kommit innan remdrivningen påbörjas; de är redan köpta.
+- [ ] De tre 16T-remhjulen är mottagna 2026-09-21. Kontrollera tandantal, 5 mm axelhål och passning för 10 mm GT2-rem innan montering.
 - [ ] Ordna handverktyg, skjutmått, rätvinkel, måttband, liten rak linjal, märkpenna och märkningstejp. Använd handverktyg för skruvförbanden; dra inte sönder printarna med skruvdragare.
 - [ ] Kontrollera bordets underrede för glapp och vridning. Markera **941 × 1563 mm** minsta footprint, samt utrymme för två Y-remmar och kabelslinga. Skruva inte i skivan innan layouter och rörelsezoner stämmer.
 - [ ] Mät verklig ytterdiameter, rakhet och användbar längd hos Motonet-rören **före kapning**. Kapa först efter kontroll till 816 + 816 + 1505 mm och grada ändarna.
