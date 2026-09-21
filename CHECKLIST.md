@@ -88,7 +88,7 @@
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
 - [ ] första jogg 1 mm
-- [ ] mät och dokumentera slutliga kabellängder för X/Y0/Y1/Z0/Z1 (motor och NC-brytare var för sig) på färdigmonterad balk före kapning; använd mätprotokoll i `CABLE_ROUTING.md`
+- [ ] **LR-08:** kapa X-brytarens kabel till **250 cm** från totalt 10 m 3×26 AWG; märk X och trä genom Core. Behåll eventuell överlängd på balken. **LR-16:** prova rörelsefrigång och anslutningar för övriga motor-/brytarkablar och dokumentera endast verkliga underskott enligt `CABLE_ROUTING.md`.
 - [ ] koppla 5 endstops NC via COM+NC
 - [ ] verifiera varje endstopstatus
 
