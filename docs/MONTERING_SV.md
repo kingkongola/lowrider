@@ -39,7 +39,7 @@ Original: [utskrifter, geometri och montering](https://docs.v1e.com/lowrider/).
 - [ ] Kontrollera bordets underrede för glapp och vridning. Markera **941 × 1563 mm** minsta footprint, samt utrymme för två Y-remmar och kabelslinga. Skruva inte i skivan innan layouter och rörelsezoner stämmer.
 - [ ] Mät verklig ytterdiameter, rakhet och användbar längd hos Motonet-rören **före kapning**. Kapa först efter kontroll till 816 + 816 + 1505 mm och grada ändarna.
 
-**Stoppregel:** Om en rördel är fel diameter, om printade passningar är skadade eller om en skena binder utan belastning: rätta detta innan du bygger in felet. Den tidigare observerade cirka 0,20 mm utskriftsförskjutningen är inte i sig ett bevis för felaktig funktion; provmontera och kontrollera berörda hål/passningar.
+**Stoppregel:** Om en rördel är fel diameter, om printade passningar är skadade eller om en skena binder utan belastning: rätta detta innan du bygger in felet. **Core är omprintad utan den tidigare rapporterade cirka 0,20 mm förskjutningen**; använd den nya delen och kontrollera dess vanliga lager- och fästpassningar.
 
 ## 1. Montera Core (X-vagnen)
 
@@ -49,11 +49,11 @@ Originalbilder: [Core Assembly](https://docs.v1e.com/lowrider/#core-assembly).
 2. **Sista paret, bild `cd.jpg`:** montera resterande **2 lager + 2 M8×40 + 2 M8 nyloc** i bildens övre justerlägen. Dessa två är också lageraxlar, men fungerar dessutom som **Core-spännskruvar** mot X-rören. **Lämna båda lösa** tills Core har satts på balken; ingen slutlig spänning nu. Totalt i Core: **8 lager, 8 M8×40 och 8 M8 nyloc**. De återstående sex 608-lagren av V1E:s totalt 14 monteras senare i YZ-hjulen; två av dina 16 inköpta är reserv.
 3. **Verktygsfästets muttrar, bilder `ce.jpg`–`ch.jpg`:** ta fram **4 × M5 nyloc** från HaWiWe och fyra korta PLA-filamentbitar. Tryck i en mutter per hål med nylondelen åt det håll `cf.jpg` visar. För in filamentet genom låshålen så att muttern hålls kvar; på motsatt sida vinklas filamentänden åt andra hållet (`cg.jpg`). Klipp alla fyra filamentbitar **jäms med Core**.
 4. **Verktygsfästet, bilder `ci.jpg`–`cj.jpg`:** **STOPP om det separata Makita/65 mm-fästet saknas; gör LR-00 först.** Placera det faktiskt utskrivna och provpassade **Makita/65 mm-fästet** plant mot Core och använd de **4 M5-fästskruvarna från HaWiWe-satsen** (satsen innehåller M5×30). Kontrollera faktisk gängingrepp och att skruvarna inte bottnar; originaltexten anger fyra skruvar, men specificerar inte uttryckligen deras längd för varje verktygsfäste. Starta alla fyra för hand utan att knuffa ut muttrarna, och dra sedan jämnt utan att spräcka plasten. **Köp inga andra skruvar innan dessa provpassats.**
-5. Dra X-brytarens kabel och eventuell framtida probkabel genom avsedda tunnlar. Märk **X** på själva kabeln, inte bara på kontakten.
+5. **X-brytarens kabel:** använd lågspänningskabel ur **10 m Tensility 3×26 AWG** (COM + NC, två aktiva ledare). För den genom Cores tunnel enligt `cl.jpg`–`co.jpg` och märk **X** på kabeln. **Kapa inte till slutlängd nu:** kabeln ska senare gå med Core genom hela X-slaget till Jackpot3 på YZ_Min. Lägg undan tillräcklig obruten kabellängd, alternativt märk vilken förlängning som behövs; måtta enligt [CABLE_ROUTING](../CABLE_ROUTING.md). En eventuell touchplate är separat; V1E anger då **minst 140 mm fri touchplate-ledning vid Core**, vilket inte är kapmått för X-brytaren.
 6. Rikta X-motorns 16T-remhjul med den inbyggda mätguiden på Core. Dra först stoppskruven mot motoraxelns plana sida, sedan den andra. Använd gänglåsning enligt V1E. Montera motorn och lägg i X-remmen när manualen anger det.
 7. Montera löphjulen (*idlers*). Deras skruvar ska nå låsmuttern men **inte klämma lagren**.
 
-**Kontroll A – godkänd Core:** alla lager roterar fritt; rätt fäste sitter plant; X-brytarkabeln är skyddad; de två övre spännskruvarna är fortfarande lösa; remhjul sitter i linje. Använd inte Core för att bedöma den observerade utskriftsförskjutningen förrän den rullar på riktiga rör.
+**Kontroll A – godkänd Core:** använd den nya omprintade Core. Alla lager roterar fritt; rätt fäste sitter plant; X-brytarkabeln är skyddad; de två övre spännskruvarna är fortfarande lösa; remhjul sitter i linje. **Inget aktivt fel om utskriftsförskjutning kvarstår.**
 
 ## 2. Montera YZ_Min och YZ_Max (balkens två ändar)
 
@@ -109,12 +109,12 @@ Originalbilder: [Belts](https://docs.v1e.com/lowrider/#belts).
 
 ## 6. Kabeldragning – vår placering skiljer sig från originalet
 
-Originalbilder: [Wire Routing](https://docs.v1e.com/lowrider/#wire-routing) och [Jackpot3 Wiring](https://docs.v1e.com/electronics/jackpot3/#wiring).
+Originalbilder: [Wire Routing](https://docs.v1e.com/lowrider/#wire-routing) och [Jackpot3 Wiring](https://docs.v1e.com/electronics/jackpot3/#wiring). **Kap- och mätprotokoll för vårt bygge:** [CABLE_ROUTING.md](../CABLE_ROUTING.md).
 
 - **Rörligt:** Jackpot3 i rätt printad låda på balkens YZ_Min-sida. Lämna fri luft runt kort och antenn. Dra ledare bredvid, inte ovanpå, kortet. Dragavlasta allt innan kablarna lämnar lådan.
 - **Fast:** 230 V NVR/maskinstopp placeras lättåtkomligt på bordet. **Rörligt:** Jackpot3 och, efter lämplig kapslings-/infästningskontroll, Mean Well HDR-60-24 på balken. Kontrollera att inga nätspänningsförande plintar är åtkomliga.
 - **Mellan fast och rörligt:** nätmatningen till HDR-60-24 och fräsens kabel behöver säker rörlig dragning och dragavlastning. Anslut Jackpot3 till HDR med kort 24 V-kabel på balken. Den redan köpta 3 m 2×20 AWG-kabeln är reserv; dra inte en lång 24 V-slinga utan behov.
-- **Balk/Core:** märk varje motor-/brytarkabel, fäst förlängningsskarvar utan draglast och låt Core kunna nå både X-ändar. Låt dammsugarslangens upphängning ta slangens vikt, inte Z-vagnen.
+- **Balk/Core:** varje köpt stegmotor har **1 m fast kabel**. V1E anger förlängningar från **Core och YZ_Max**, men inte exakta längder för vår 650×1250-maskin. Prova först Y0/Z0:s befintliga kablar; planera för eventuell motorförlängning till X/Y1/Z1. Fem brytare ska var och en måttas för sin egen väg ur totalt **10 m 3×26 AWG**. Märk respektive motor-/brytarkabel, fäst skarvar dragavlastat och låt Core nå båda X-ändar och Z:s hela slag. Låt dammsugarslangens upphängning ta slangens vikt, inte Z-vagnen. **Kapa inte kablar före full-travel-provet; dokumentera först slutliga längder i CABLE_ROUTING.md.**
 
 **Full-travel-kontroll innan permanenta buntband:** prova samma montage samtidigt med HDR:s nätmatning, kort 24 V-förbindelse, motor-/brytarkablar, fräsens nätkabel och dammsugarslang. Kör för hand till alla fyra hörn och Z:s båda ytterlägen. Inget får sträckas, vikas hårt, falla i remmarna eller dra i en kontakt.
 
