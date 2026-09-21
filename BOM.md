@@ -137,7 +137,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [ ] TPU-bristles om befintlig TPU är lämplig
 - [ ] printad cyklon först
 - [ ] styv 15–30 l behållare och kontrollerat vakuumtest
-- [ ] **dammsugarslang för rörlig LowRider:** prova först befintlig DeWalt-slang. V1E:s Makita 701 LR4 dust shoe är avsedd för **högst 70 mm slangytterdiameter**, inte en obligatorisk 70 mm-slang. Om befintlig slang är för kort/styv, välj lätt flexibel slang och printa måttanpassad adapter efter mätning av slangens faktiska OD, DeWalt-anslutningen och dust-shoe-ingången. Längd/diameter/inköp ej verifierade, inget ännu beställt.
+- [ ] **NY dammsugarslang behövs:** användaren har bekräftat att befintlig DeWalt-slang **är för kort**. Utred lätt/flexibel **cirka 38 mm innerdiameter, 4–5 m** (alternativt 50 mm ID om dammsugarens verkliga anslutning/luftflöde motiverar det); **32 mm ID inte förstahandsval** för lång CNC-slang på grund av större tryckfall. Kontrollera längd med full X/Y/Z-rörelse, DeWalt-anslutning, dammskons faktiska anslutning (V1E: upp till cirka 70 mm ytterdiameter), eventuell printad adapter och antistatisk konstruktion/jordning. **Ingen ny slang beställd ännu; diameter/längd ännu inte slutligt låsta.**
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
