@@ -76,9 +76,14 @@ En eventuell modulär plasmavariant är ett separat framtida projekt, tidigast n
 Alla diameterberoende printar = 30 mm. Permanenta struts: `strut_length=819`, `front_wing_size=30`.
 
 ## D012 — Fast elbox + rörlig controller
-**Status:** låst
+**Status:** superseded av D016
 
-NVR + HDR sitter fast på bordet. Jackpot sitter på rörlig beam/YZ_Min-sida. Köp 3 m 20 AWG 2-core som längdmarginal; kapa efter full-travel dry-fit. Routerkabel, 24 V, motor/endstop och vac-hose provas samtidigt i alla rörelseextremer.
+Tidigare plan: NVR + HDR fasta på bordet, Jackpot3 på rörlig balk och lång rörlig 24 V-kabel. Omprövat eftersom V1E:s balkmonterade aggregat ger kortare 24 V-rutt utan att eliminera rörlig 230 V-kabel till fräsen.
+
+## D016 — Tillbaka till V1E:s placering av 24 V-aggregatet
+**Status:** beslutad plan; fysisk och elsäker monteringskontroll återstår
+
+NVR/maskinstopp sitter fast och åtkomligt på bordet. Jackpot3 samt Mean Well HDR-60-24 planeras på rörlig balk enligt V1E:s princip. Mean Well-aggregatet är inte identiskt med V1E:s exempel: verifiera lämplig kapsling/beröringsskydd, infästning, skyddsjord och dragavlastning innan 230 V ansluts. Ingen oskyddad nätspänningsplint på balken. Använd inte den långa 24 V-slingan från det gamla förslaget utan ett konkret monteringsbehov. Kontrollera fräskabel, aggregatets matning, motor/endstop och dammsugarslang samtidigt genom hela rörelseområdet. Den redan köpta 3 m 20 AWG-kabeln finns i BOM, men behöver inte användas i denna rutt.
 
 ## D013 — NVR/maskinstopp
 **Status:** låst
