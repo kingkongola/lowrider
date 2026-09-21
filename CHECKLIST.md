@@ -12,7 +12,7 @@
 - [x] **3 kg PLA 1,75 mm från PrintOnion** — **426 kr**
 - [x] **2 × Motonet-rör** — köpt 2026-09-07 för **340 kr totalt**; planerad spec Ø30×1,5×2000 mm
 
-**Kärnmekanik, elektronik, router, filament och rör är köpta/beställda. 3 × 16T-remhjul återstår att få levererade (2026-09-19); köp inte om.**
+**Kärnmekanik, elektronik, router, filament och rör är köpta/beställda. Alla 3 × 16T-remhjul är mottagna 2026-09-21; kontrollera fysisk specifikation vid inventering.**
 
 ## 2. Lokalt / fysiskt
 
@@ -22,7 +22,8 @@
 - [x] **180×100 cm bordsskiva köpt för 300 kr**, rapporterat 2026-09-19
 - [ ] kontrollera underredets styvhet, höjd och infästning; ordna eventuell förstärkning bara vid behov
 - [ ] markera 941×1563 mm footprint på den köpta skivan och kontrollera rail/belt-zoner; **ingen 90 cm-kantbreddning behövs**
-- [ ] kontrollera leverans av 3 × 16T-remhjul från eBay/POWGE (senaste spårning 12 sep, ännu ej mottagna 19 sep)
+- [x] 3 × 16T-remhjul från eBay/POWGE mottagna 2026-09-21
+- [ ] kontrollera 16T, 5 mm hål och kompatibilitet med 10 mm GT2-rem före montering
 
 ## 3. När HaWiWe anländer
 
