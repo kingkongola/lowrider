@@ -59,7 +59,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 ## Redan köpt — Amazon.se
 
-- [x] 5 × STEPPERONLINE `17HS19-2004S1`, **59 Ncm / 84 oz-in, 2,0 A, 42×42×48 mm, Ø5 mm D-axel, 1 m kabel**
+- [x] 5 × STEPPERONLINE `17HS19-2004S1`, **59 Ncm / 84 oz-in, 2,0 A, 42×42×48 mm, Ø5 mm D-axel, 1 m kabel**. YZ_Max och Core förväntas kräva förlängningar; exakt längd efter full-travel dry-fit, se `CABLE_ROUTING.md`.
 - [x] KATSU `101750`, 220–240 V, 710 W, variabelt varvtal, cirka 64,8/65 mm motorhus
 
 ## Redan köpt — PrintOnion
