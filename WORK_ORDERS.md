@@ -6,17 +6,20 @@
 
 **Säkerhet:** använd originalmanualen för rätt monteringsriktning. 230 V-planen måste verifieras av kompetent person före anslutning; gör ingen nätspänningsinstallation bara utifrån en arbetsorder. Fräsen ska vara urkopplad vid mekanik- och motorprov. Dokumentet ersätter inte [BOM](BOM.md), [DECISIONS](DECISIONS.md) eller [AUDIT](AUDIT.md). [Illustrerad guide](https://kingkongola.github.io/lowrider/) · [V1E original](https://docs.v1e.com/lowrider/).
 
+**Verktygsfäste:** V1E:s Makita 701/65 mm Tool Mount and Dust Shoe är en separat utskrift. Fästets faktiska utskriftsstatus är inte verifierad efter grundplatta 14/14. LR-00 krävs före LR-07; om det redan finns, inventera och provpassa i LR-00 i stället för att skriva ut igen.
+
 ## Översikt
 
 | ID | Arbetsorder | Tid | Förutsättningar | Status i SSOT |
 |---|---|---:|---|---|
+| LR-00 | Kontrollera och skriv ut KATSU-verktygsfästet | 60 min | Inga | Ej verifierad |
 | LR-01 | Sortera 3D-utskrifterna | 60 min | Inga | Ej verifierad |
 | LR-02 | Inventera alla mekanikpaket | 60 min | Inga | Ej verifierad |
 | LR-03 | Mät rören – kapa inte än | 45 min | Inga | Ej verifierad |
 | LR-04 | Kontrollera bordets styvhet | 60 min | Inga | Ej verifierad |
 | LR-05 | Provlägg maskinen på bordet | 60 min | LR-04 | Ej verifierad |
 | LR-06 | Kapa och grada stålrören | 60 min | LR-03 | Ej verifierad |
-| LR-07 | Core: lager och verktygsfäste | 60 min | LR-01, LR-02 | Ej verifierad |
+| LR-07 | Core: lager och verktygsfäste | 60 min | LR-00, LR-01, LR-02 | Ej verifierad |
 | LR-08 | Core: motor, brytare och idlers | 60 min | LR-07 | Ej verifierad |
 | LR-09 | Montera YZ_Min | 60 min | LR-01, LR-02 | Ej verifierad |
 | LR-10 | Montera YZ_Max | 60 min | LR-01, LR-02 | Ej verifierad |
@@ -43,6 +46,23 @@
 
 ## Arbetskort
 
+### LR-00 — Kontrollera och skriv ut KATSU-verktygsfästet
+
+**Tid:** cirka 60 min · **Fas:** Förberedelser · **Beroenden:** Inga · **Status:** ej verifierad
+
+**Ta fram:** De 14 utskriftsplattornas delar; KATSU 101750 (urkopplad), skjutmått; Bambu P1S och PLA om fästet saknas. V1E:s separata Makita 701 Tool Mount and Dust Shoe: https://www.printables.com/model/1033926-makita-701-tool-mount-and-dust-shoe-for-the-lowrid.
+
+1. Inventera samtliga utskrivna delar och leta uttryckligen efter de två halvorna/delarna till rätt 65 mm-fräsfäste enligt V1E:s modell. Förväxla inte 1/8-tumshylsan (metall) med det printade motorhusfästet. Notera om Jackpot3-boxen också finns.
+2. Öppna V1E:s separat länkade Makita 701 Tool Mount and Dust Shoe; välj den aktuella delversionen och endast de monteringsdelar som krävs för KATSU 101750:s cirka 65 mm motorhus. Jämför modellens uppmätta klämdiameter med fräsens verkliga ytterdiameter; kontrollera version, orientering och instruktioner innan slicning.
+3. Om fästet inte redan finns: slic:a delarna enligt modellens instruktioner. V1E:s LR4-deltabell anger 30 % infill för detta mount-set. Starta utskriften; om den tar längre än kvällspasset rapporterar du 'delvis' och slutför senare. Om fästet redan finns behöver du inte skriva ut igen.
+4. Kontrollera det utskrivna fästets hål, sprickor och faktisk passning mot urkopplad KATSU och Core. Dokumentera samtliga delar och bilder; markera LR-00 klar först när rätt fäste faktiskt är färdigt och provpassat.
+
+**Godkänt när:** Rätt komplett, separat Makita/65 mm-mount för KATSU 101750 är fysiskt utskrivet och provpassat (eller återfunnet och provpassat). Jackpot3-boxens separata utskriftsstatus är noterad; inga antaganden baserat på platta 14/14.
+
+**Återrapportera:** Ange fäste fanns/saknades, exakt fil/variant, vilken PLA och utskriftsstatus, uppmätt KATSU-diameter, foton och om Jackpot3-boxen hittades.
+
+**Bildguide:** [Svenska manualen, kapitel 1](https://kingkongola.github.io/lowrider/#0).
+
 ### LR-01 — Sortera 3D-utskrifterna
 
 **Tid:** cirka 60 min · **Fas:** Förberedelser · **Beroenden:** Inga · **Status:** ej verifierad
@@ -50,13 +70,13 @@
 **Ta fram:** De utskrivna delarna från samtliga plattor, manualen, märkpenna och lådor.
 
 1. Lägg ut utskrifterna och sortera i Core, YZ_Min, YZ_Max, balk, bord/remmar, damm och Jackpot3-box.
-2. Kontrollera mot manualens deltabell att rätt 30 mm-rörvarianter och Makita/65 mm-fäste finns.
+2. Kontrollera mot V1E:s separata printlista om rätt 30 mm-rörvarianter, de fyra Temp Strut, Makita/65 mm-verktygsfäste och Jackpot3-box faktiskt finns. **Om fästet inte är utskrivet: notera det som saknat och gör LR-00**, inte anta att det ingår i 14 plattor.
 3. Räkna fyra temporära stag (Temp Strut, avsett 15 % infill); bedöm hål, bryggor och delarna från den förskjutna utskriften.
 4. Fotografera grupperna och skriv en kort lista över saknade eller tveksamma delar.
 
 **Godkänt när:** Delarna är identifierade; alla osäkra delar är noterade, inte förutsatta godkända.
 
-**Återrapportera:** Antal Temp Strut, saknade/tveksamma delar och foton.
+**Återrapportera:** Antal Temp Strut; status fäste (finns/saknas), Jackpot3-box (finns/saknas), övriga saknade/tveksamma delar och foton.
 
 **Bildguide:** [Svenska manualen, kapitel 1](https://kingkongola.github.io/lowrider/#0).
 
@@ -147,13 +167,13 @@
 
 ### LR-07 — Core: lager och verktygsfäste
 
-**Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-01, LR-02 · **Status:** ej verifierad
+**Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-00, LR-01, LR-02 · **Status:** ej verifierad
 
-**Ta fram:** 1 × printad Core; **8 × 608-2RS (DigiKey)**; **8 × M8×40 sexkantsskruvar + 8 × M8 nyloc (HaWiWe)**; 4 × M5 nyloc + 4 tillhörande M5-fästskruvar ur HaWiWe (M5×30 finns i satsen, provpassa mot verkligt fäste); 4 korta bitar PLA-filament; rätt printat Makita/65 mm-fäste; lämplig nyckel för M8 samt skruvverktyg.
+**Ta fram:** 1 × printad Core; **8 × 608-2RS (DigiKey)**; **8 × M8×40 sexkantsskruvar + 8 × M8 nyloc (HaWiWe)**; 4 × M5 nyloc + 4 tillhörande M5-fästskruvar ur HaWiWe (M5×30 finns i satsen, provpassa mot verkligt fäste); 4 korta bitar PLA-filament; rätt printat och verifierat Makita/65 mm-fäste (LR-00); lämplig nyckel för M8 samt skruvverktyg.
 
 1. Sortera ut de 8 lagren (inte alla 16 köpta), 8 M8×40 och 8 M8 nyloc. Lägg fram i fyra par om 2. Kontrollera att varje 608-lager rullar fritt före montering. V1E-bilder: `ca.jpg`, `cb.jpg`, `cc.jpg`, `cd.jpg`.
 2. Montera först **6 lager med 6 M8×40 + 6 M8 nyloc** i tre par enligt `ca`–`cc`; för varje skruv genom lagrets innerhål åt exakt den riktning bilden visar, och dra bara an utan att klämma lagret. Montera sista **2 lager + 2 M8×40 + 2 M8 nyloc** enligt `cd`; lämna just dessa två övre spännskruvar lösa tills Core sitter på rören.
-3. Ta fram **4 M5 nyloc, 4 korta filamentbitar och 4 fästskruvar M5** ur HaWiWe-satsen. Sätt muttrarna med nylondelen åt rätt håll enligt `cf`–`ch`, lås med filament och klipp jäms. Montera printat Makita/65 mm-fäste enligt `ci`–`cj`; provpassa skruvlängden (M5×30 finns i satsen, exakt längd visas inte uttryckligen i originaltexten) och dra jämnt utan att spräcka plasten.
+3. Ta fram **4 M5 nyloc, 4 korta filamentbitar och 4 fästskruvar M5** ur HaWiWe-satsen. Sätt muttrarna med nylondelen åt rätt håll enligt `cf`–`ch`, lås med filament och klipp jäms. Montera först **efter godkänd LR-00** det separat printade Makita/65 mm-fästet enligt `ci`–`cj`; provpassa skruvlängden (M5×30 finns i satsen, exakt längd visas inte uttryckligen i originaltexten) och dra jämnt utan att spräcka plasten.
 4. Slutkontroll: räkna 8 monterade lager + 8 M8×40 + 8 M8-låsmuttrar, och 4 infångade M5-låsmuttrar med korrekt fäste. De första 6 lageraxlarna ska sitta an, de sista 2 vara lösa; alla lager ska snurra utan nyper. Fotografera Core från båda håll.
 
 **Godkänt när:** Exakt 8 lager, 8 M8×40, 8 M8 nyloc, 4 M5 nyloc och rätt Makita/65 mm-fäste monterade. Sex lageraxlar endast åtdragna till anliggning; två övre spännskruvar kvar lösa. Lager snurrar fritt och fästskruvar har kontrollerad längd.
