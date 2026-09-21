@@ -186,16 +186,16 @@
 
 **Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-07 · **Status:** ej verifierad
 
-**Ta fram:** Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, kabel från Tensility 10 m 3×26 AWG-rulle, idlers och skruvar. Öppna CABLE_ROUTING.md.
+**Ta fram:** Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, kabel från Tensility 10 m 3×26 AWG-rulle (låt rullen vara hel), idlers och skruvar. Öppna CABLE_ROUTING.md.
 
-1. Kapa **250 cm** från din 10 m-rulle 3×26 AWG för X-brytaren och märk båda ändar X. För ena änden genom Cores tunnel enligt V1E:s bilder `co.jpg`–`cq.jpg`; koppla brytaren med **COM + NC** och isolera oanvänd tredje ledare. Behåll resten av den långa biten obruten för rörlig slinga via balkens mitt till Jackpot3 på YZ_Min. **Kapa inte bort överlängd vid Core.** Eventuell touchplate har separat kabel; V1E anger där minst 140 mm fri kabel, inte för X-brytaren.
+1. Mata en fri ände av **10 m-rullen 3×26 AWG** genom Cores kabeltunnel, märk den `X` och montera X-brytaren enligt V1E:s bilder `co.jpg`–`cq.jpg`. Använd **COM + NC** efter att kontakterna verifierats. **Kapa inte nu.** Kabeln ska senare löpa i en mjuk slinga via balkens mitt till Jackpot3 på YZ_Min och räcka även när Core står i X_Max. Den tidigare siffran **250 cm är en obekräftad uppskattning**: har du redan kapat 250 cm, behåll biten och verifiera den vid LR-16. V1E:s 140 mm avser en eventuell touchplate, inte X-brytaren.
 2. Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.
 3. Montera motorn och förbered X-remmen utan att kapa på chans.
 4. Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln.
 
-**Godkänt när:** Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt och grovkapad till 250 cm, utan ytterligare nedkortning vid Core, idlers fria, remhjul i linje, motorns 1 m kabel intakt.
+**Godkänt när:** Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt, utan att en obekräftad kaplängd används, idlers fria, remhjul i linje, motorns 1 m kabel intakt.
 
-**Återrapportera:** Foton på X-remhjul och X-brytare, X-brytarkabelns 250 cm och kvarvarande överlängd, samt status för 1 m motorkabel och eventuellt behov av förlängning (räckvidd kontrolleras i LR-16).
+**Återrapportera:** Foton på X-remhjul och X-brytare, om X-brytarkabeln fortfarande sitter på rullen eller redan är kapad, samt status för 1 m motorkabel och eventuellt behov av förlängning (räckvidd kontrolleras i LR-16).
 
 **Bildguide:** [Svenska manualen, kapitel 2](https://kingkongola.github.io/lowrider/#1).
 
@@ -326,12 +326,12 @@
 
 1. Prova placeringen av Jackpot3 på balkens YZ_Min-sida.
 2. Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.
-3. Dra X-brytarens förkapade 250 cm och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.
+3. Dra X-brytarens obrutna kabel från rullen (eller redan kapade 250 cm, om den kapats) och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.
 4. Flytta maskinen för hand till X_Min/X_Max, Y_Min/Y_Max och båda Z-ytterlägena. Kontrollera räckvidd och dragavlastning, notera bara vilken kabel som eventuellt är för kort. Fäst överlängd säkert; exakt nedklippning behövs inte och ingår inte som separat timjobb.
 
 **Godkänt när:** Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.
 
-**Återrapportera:** Foton på kabelvägar/fixpunkter vid ytterlägen. Ange om X-kabelns 250 cm räcker, om någon annan ledning är för kort, samt om 1 m motorledning kräver förlängning. Ingen nätspänningssättning.
+**Återrapportera:** Foton på kabelvägar/fixpunkter vid ytterlägen. Ange om X-kabeln når hela rörelsevägen, om någon annan ledning är för kort, samt om 1 m motorledning kräver förlängning. Ingen nätspänningssättning.
 
 **Bildguide:** [Svenska manualen, kapitel 7](https://kingkongola.github.io/lowrider/#6).
 
