@@ -1,0 +1,582 @@
+{
+  "version": "2026-09-21",
+  "notice": "Arbetsordrarna är en plan. Lokala markeringar uppdaterar inte privat SSOT. Tre 16T-remhjul mottagna 2026-09-21; kontrollera fysiska mått i LR-02.",
+  "orders": [
+    {
+      "id": "LR-01",
+      "title": "Sortera 3D-utskrifterna",
+      "minutes": 60,
+      "phase": "Förberedelser",
+      "deps": [],
+      "needs": "De utskrivna delarna från samtliga plattor, manualen, märkpenna och lådor.",
+      "steps": [
+        "Lägg ut utskrifterna och sortera i Core, YZ_Min, YZ_Max, balk, bord/remmar, damm och Jackpot3-box.",
+        "Kontrollera mot manualens deltabell att rätt 30 mm-rörvarianter och Makita/65 mm-fäste finns.",
+        "Räkna fyra temporära stag (Temp Strut, avsett 15 % infill); bedöm hål, bryggor och delarna från den förskjutna utskriften.",
+        "Fotografera grupperna och skriv en kort lista över saknade eller tveksamma delar."
+      ],
+      "accept": "Delarna är identifierade; alla osäkra delar är noterade, inte förutsatta godkända.",
+      "report": "Antal Temp Strut, saknade/tveksamma delar och foton.",
+      "manual": 0
+    },
+    {
+      "id": "LR-02",
+      "title": "Inventera alla mekanikpaket",
+      "minutes": 60,
+      "phase": "Förberedelser",
+      "deps": [],
+      "needs": "HaWiWe, LaskaKit, DigiKey, eBay-remhjul och BOM.",
+      "steps": [
+        "Kontrollera HaWiWe: två XZ-plattor, fyra MGN12H 150 mm, skruvsats och Elaire-hylsa.",
+        "Räkna 608-lager (16 köpta), sex idlers, fem motorer och T8 400 mm med kopplingar och mässingsmuttrar.",
+        "Kontrollera de tre mottagna 16T-remhjulen: 16 tänder, 5 mm hål, passning för 10 mm GT2-rem. Fotografera närbild och märkning.",
+        "Inventera Omron-brytare, Jackpot3, HDR-60-24 och kabeldelar; skriv en avvikelselista utan att köpa dubbelt."
+      ],
+      "accept": "En fysisk avprickning mot BOM. Oklara mått och antal står som ej verifierade.",
+      "report": "Foton på remhjul, uppmätt hål/tandantal samt avvikelser från BOM.",
+      "manual": 0
+    },
+    {
+      "id": "LR-03",
+      "title": "Mät rören – kapa inte än",
+      "minutes": 45,
+      "phase": "Förberedelser",
+      "deps": [],
+      "needs": "Båda Motonet-rören, skjutmått, måttband, rak kant och märkpenna.",
+      "steps": [
+        "Mät ytterdiameter på flera ställen i två riktningar per rör.",
+        "Kontrollera synlig krokighet genom att rulla mot plant underlag och granska ytan.",
+        "Mät faktisk användbar längd och markera hypotetiska kap på 1505 respektive 816 + 816 mm.",
+        "Rapportera måtten och vänta med kapning vid osäker passning eller rakhet."
+      ],
+      "accept": "OD, rakhet, verkliga längder och kapplan dokumenterade.",
+      "report": "OD-intervall, uppmätt längd, rakhet och foto på kapmarkeringar.",
+      "manual": 0
+    },
+    {
+      "id": "LR-04",
+      "title": "Kontrollera bordets styvhet",
+      "minutes": 60,
+      "phase": "Förberedelser",
+      "deps": [],
+      "needs": "Köpt bordsskiva 180 × 100 cm, befintligt underrede, måttband och rätkant.",
+      "steps": [
+        "Kontrollera ben, sarg, tvärstag och infästningar. Tryck på varje hörn och notera eventuell vridning eller glapp.",
+        "Mät bordshöjd och planhet i flera riktningar; dokumentera den största observerade avvikelsen.",
+        "Fotografera undersidan och visa var Y-styrskena och remhållare kan skruvas.",
+        "Om underredet är instabilt: identifiera exakt vad som behöver åtgärdas innan du bygger om."
+      ],
+      "accept": "Antingen godkänt för provlayout eller blockerat med en konkret åtgärdslista.",
+      "report": "Bilder, bordshöjd, planhetsavvikelse och eventuellt glapp.",
+      "manual": 0
+    },
+    {
+      "id": "LR-05",
+      "title": "Provlägg maskinen på bordet",
+      "minutes": 60,
+      "phase": "Förberedelser",
+      "deps": [
+        "LR-04"
+      ],
+      "needs": "Bord, tejp, måttband och Y-styrskenans/remhållarnas printade delar.",
+      "steps": [
+        "Markera preliminär ytterfootprint 941 × 1563 mm på 1000 × 1800 mm-skivan.",
+        "Välj sida för maskinens enda Y-styrskena; märk båda remsträckorna och Y_Min/Y_Max.",
+        "Provlägg clips och remhållare; kontrollera kantmarginaler och underredets skruvzoner.",
+        "Fotografera layout och notera faktiska marginaler. Borra inte förrän monterad maskin provpassats."
+      ],
+      "accept": "Dokumenterad och mätbar provlayout utan permanenta hål.",
+      "report": "Översiktsfoto, fyra kantmarginaler och eventuella konflikter.",
+      "manual": 5
+    },
+    {
+      "id": "LR-06",
+      "title": "Kapa och grada stålrören",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-03"
+      ],
+      "needs": "Verifierade rör, kapverktyg, gradare/fil, måttband och skyddsglasögon.",
+      "steps": [
+        "Kontrollmät samtliga kapmarkeringar och spänn röret utan att deformera det.",
+        "Kapa 1505 mm samt två längder 816 mm enligt verifierad kapplan.",
+        "Grada utsida och insida och avlägsna metallspån.",
+        "Mät färdiga längder och kontrollera rakheten igen."
+      ],
+      "accept": "Tre raka rör med dokumenterade faktiska längder och släta ändar.",
+      "report": "Slutmått för alla tre rör och foto på ändarna.",
+      "manual": 3
+    },
+    {
+      "id": "LR-07",
+      "title": "Core: lager och verktygsfäste",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-01",
+        "LR-02"
+      ],
+      "needs": "Core, 608-lager, skruvsats, filament och Makita/65 mm-fäste.",
+      "steps": [
+        "Montera Core-lagren enligt rätt bilder och dra bara an axelskruvarna.",
+        "Lämna Core-delens två övre spännskruvar lösa för senare justering.",
+        "Montera de fyra nylocmuttrarna med filamentlåsning, sedan Makita/65 mm-fästet.",
+        "Kontrollera att lagren roterar fritt och att plasten inte deformeras."
+      ],
+      "accept": "Core med fria lager och korrekt monterat verktygsfäste.",
+      "report": "Foton fram/bak, lagerfrigång och eventuellt dåliga hål.",
+      "manual": 1
+    },
+    {
+      "id": "LR-08",
+      "title": "Core: motor, brytare och idlers",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-07"
+      ],
+      "needs": "X-motor, ett verifierat 16T-remhjul, X-brytare, kabel, idlers och skruvar.",
+      "steps": [
+        "Dra och märk X-brytarkabeln enligt originalbilderna; montera brytaren försiktigt.",
+        "Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.",
+        "Montera motorn och förbered X-remmen utan att kapa på chans.",
+        "Montera idlers så att de roterar mycket fritt; fotografera monteringen."
+      ],
+      "accept": "Core komplett nog för balken; remhjul i linje och brytarkabel märkt.",
+      "report": "Foton på remhjul och brytare; fria idlers; kvarvarande avvikelser.",
+      "manual": 1
+    },
+    {
+      "id": "LR-09",
+      "title": "Montera YZ_Min",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-01",
+        "LR-02"
+      ],
+      "needs": "YZ_Min, tillhörande XZ-platta, två MGN12, Y-/Z-motor, brytare och hjul.",
+      "steps": [
+        "Märk Y0- och Z0-kablar enligt maskinens faktiska orientering.",
+        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna.",
+        "Montera Y-brytare med rätt armriktning; skydda armen mot bänkkanten.",
+        "Rengör rälsbäddarna, montera skenor och XZ-platta löst och prova glidningen under stegvis åtdragning."
+      ],
+      "accept": "Min-sidans skenor och vagn rör sig lätt; eventuellt kvarvarande Z-/bakhjulsarbete tydligt noterat.",
+      "report": "Foton på orientering, fri rörelse och vad som inte hanns med.",
+      "manual": 2
+    },
+    {
+      "id": "LR-10",
+      "title": "Montera YZ_Max",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-01",
+        "LR-02"
+      ],
+      "needs": "YZ_Max, motsvarande XZ-platta, två MGN12, motorer, brytare och hjul.",
+      "steps": [
+        "Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen.",
+        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare.",
+        "Rensa skenbäddar; montera skenor och XZ-platta, dra stegvis och provför över hela rörelsen.",
+        "Notera eventuella delar som återstår innan båda sidornas Z-mekanik kan slutföras."
+      ],
+      "accept": "Max-sidans skenor och vagn rör sig lätt; fel eller oavslutade moment dokumenterade.",
+      "report": "Foton på orientering, fri rörelse och avvikelser.",
+      "manual": 2
+    },
+    {
+      "id": "LR-11",
+      "title": "Färdigställ Z och bakhjulen",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-09",
+        "LR-10"
+      ],
+      "needs": "Båda YZ-sidor, Z_Stub, Z_Nut, T8-spindel, 5→8-kopplingar och bakhjul.",
+      "steps": [
+        "Montera Z-motorernas kopplingar och T8-mutter enligt originalbilderna.",
+        "Montera båda bakhjulen; kontrollera plan anliggning och att plasten inte kläms.",
+        "Montera Z_Stub vinkelrätt mot skruven; vrid Z för hand och kontrollera att det inte kärvar.",
+        "Ställ Z-brytarna så att de utlöser före mekaniskt ändläge. Mät därefter fysisk längd för varje T8-del; kapa bara efter verifierad frigång."
+      ],
+      "accept": "Båda Z-sidor går utan bindning och brytarna når sina lägen; spindellängder dokumenterade.",
+      "report": "Bilder, brytarmarginal, uppmätta T8-längder och eventuell bindning.",
+      "manual": 2
+    },
+    {
+      "id": "LR-12",
+      "title": "Bygg balk med temporära stag",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-01",
+        "LR-06"
+      ],
+      "needs": "Två 816 mm-rör, Brace-delar, X-remspännare och fyra Temp Strut.",
+      "steps": [
+        "Fördela änd-Brace och övriga Brace på två X-rör enligt manualen.",
+        "Montera X-remspännarens mutter och kontrollera riktningen.",
+        "Montera fyra temporära stag i rätt orientering, två fram och två undertill.",
+        "Dra försiktigt och kontrollera rakhet och att inga rör sticker ut ur ändklämmorna."
+      ],
+      "accept": "Rak temporär balk med rätt stag och ingen skadad print.",
+      "report": "Översiktsfoto, rörändar och notering om stagpassning.",
+      "manual": 3
+    },
+    {
+      "id": "LR-13",
+      "title": "Förena balk, Core och YZ",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-08",
+        "LR-11",
+        "LR-12"
+      ],
+      "needs": "Färdig Core, temporär balk, två YZ-enheter, vinkel och måttband.",
+      "steps": [
+        "Montera YZ_Max i balken, skjut försiktigt på Core och avsluta med YZ_Min.",
+        "Känn efter glapp i Core och justera spännskruvarna minimalt endast vid behov.",
+        "Kontrollera att nedre X-röret inte vidrör XZ-plattorna.",
+        "Grovnivellera Z; mät bredd på YZ-plattorna fram och bak (heel–toe) och justera till lika mått."
+      ],
+      "accept": "Core rullar fritt över hela X och båda sidor har dokumenterade fram-/bakmått.",
+      "report": "Foto hel maskin, mätta fram-/bakmått, eventuell kontakt/bindning.",
+      "manual": 4
+    },
+    {
+      "id": "LR-14",
+      "title": "Slutplacera remhållare och Y-skena",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-05",
+        "LR-13"
+      ],
+      "needs": "Bord, sammanbyggd maskin, skena, Y-clips/remhållare och skruvar.",
+      "steps": [
+        "Ställ maskinen på bordet och kontrollera de preliminära 941 × 1563 mm-markeringarna mot faktisk geometri.",
+        "Kontrollera att enda Y-styrskenan blir rak och parallell med vald bordskant.",
+        "Markera, förborra och montera Y-styrskenans clips och remhållarna enligt V1E. Max 300 mm mellan clipsens centrum.",
+        "Kontrollera att stoppskruvarna möter respektive brytararm före mekaniskt stopp."
+      ],
+      "accept": "Fasta styr-/remreferenser på bordet utan kollisioner eller brytararm som kan passera stopp.",
+      "report": "Översiktsfoto, kontroll av rälsens rakhet och stoppskruvar.",
+      "manual": 5
+    },
+    {
+      "id": "LR-15",
+      "title": "Trä och spänn tre remmar",
+      "minutes": 60,
+      "phase": "Mekanik",
+      "deps": [
+        "LR-14"
+      ],
+      "needs": "3 verifierade 16T-remhjul, idlers, 5 m GT2/10 mm-rem, Y-/X-remfästen.",
+      "steps": [
+        "Kontrollera att samtliga remhjul och idlers sitter i linje innan remmen kapas.",
+        "Trä två Y-remmar och X-remmen enligt respektive bild; verifiera verklig längd innan definitiv kapning.",
+        "Fäst remändarna och spänn försiktigt enligt originalets riktvärde, inte hårdare.",
+        "För X och Y sakta för hand och kontrollera remspårning och frigång."
+      ],
+      "accept": "Tre remmar i korrekt läge; inga idlers nyper och ingen rem vandrar.",
+      "report": "Verkliga kaplängder, foto på alla remvägar och eventuell avvikelse.",
+      "manual": 5
+    },
+    {
+      "id": "LR-16",
+      "title": "Planera kablar, slang och elplacering",
+      "minutes": 60,
+      "phase": "El och damm",
+      "deps": [
+        "LR-13"
+      ],
+      "needs": "Jackpot3, HDR-60-24, KATSU, befintlig DeWalt-slang och rörlig balk.",
+      "steps": [
+        "Prova placeringen av Jackpot3 på balkens YZ_Min-sida.",
+        "Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.",
+        "Lägg ut fräskabel, tänkt matning till HDR, motor-/brytarkablar och dammsugarslang samtidigt.",
+        "Flytta maskinen för hand till rörelseextremerna. Fotografera där kablar/slang riskerar att sträckas eller fastna."
+      ],
+      "accept": "En fysisk kabelplan och en lista över osäkerheter; inga exponerade 230 V-plintar planeras.",
+      "report": "Foton från fyra hörn och eventuella konflikter. Ingen spänningssättning.",
+      "manual": 6
+    },
+    {
+      "id": "LR-17",
+      "title": "Bygg dammskons mekaniska del",
+      "minutes": 60,
+      "phase": "El och damm",
+      "deps": [
+        "LR-01"
+      ],
+      "needs": "Dust shoe-utskrifter, befintlig TPU, KATSU-fästet, slang och måttband.",
+      "steps": [
+        "Inventera delarna till dust shoe och prova sammanpassning utan fräs igång.",
+        "Bedöm om befintlig TPU har lämplig böjlighet för borstlisten; provprinta vid behov.",
+        "Prova slangens passform och rörelsefrigång vid KATSU-fästet.",
+        "Fotografera passning och notera om någon adapter behövs; köp inte ny slang innan detta test."
+      ],
+      "accept": "Dust shoe provmonterad eller tydlig lista på verkligt saknade delar.",
+      "report": "Foton på infästning, TPU-resultat och slangens dimension.",
+      "manual": 6
+    },
+    {
+      "id": "LR-18",
+      "title": "Planera cyklon och uppsamlingskärl",
+      "minutes": 60,
+      "phase": "El och damm",
+      "deps": [],
+      "needs": "Befintlig DeWalt, cyklonmodell/utskrift, föreslagen 15–30 l behållare och slang.",
+      "steps": [
+        "Läs av DeWalt-modellens typskylt och fotografera den.",
+        "Kontrollera cyklondelarnas passning och anslutningsdiameter mot slangen.",
+        "Kontrollera kandidat till uppsamlingskärl och lock; säkerställ att behållaren är avsedd att tåla undertrycket.",
+        "Skissa eller provlägg slangvägen och vilka delar som faktiskt behöver köpas eller skrivas ut."
+      ],
+      "accept": "Kända anslutningsmått, behållarstatus och konkret åtgärdslista.",
+      "report": "Typskylt, slangmått, foton och uppgift om behållaren.",
+      "manual": 6
+    },
+    {
+      "id": "LR-19",
+      "title": "Jackpot3: installation och konfiguration",
+      "minutes": 60,
+      "phase": "Styrning",
+      "deps": [
+        "LR-02"
+      ],
+      "needs": "Jackpot3, data-USB-C, FAT32-microSD, dator och aktuell V1E-konfiguration.",
+      "steps": [
+        "Kontrollera kretskortets modell CQA240812C2 och eventuella transportsynliga skador.",
+        "Inventera dataförande USB-C och microSD; notera om något saknas.",
+        "Jämför V1E:s aktuella testade FluidNC-version och LR4/Jackpot3-konfiguration; säkerhetskopiera eventuell befintlig config.",
+        "Utför endast tillverkarens avsedda flash-/konfigurationssteg med frånkopplade motorer och fräs; dokumentera uppstartsmeddelanden."
+      ],
+      "accept": "Versioner och config dokumenterade; enheten startar utan kända konfigurationsfel, eller specifikt fel rapporterat.",
+      "report": "Firmware/WebUI-version, status för config, eventuella felmeddelanden. Inga hemliga nätverksuppgifter.",
+      "manual": 7
+    },
+    {
+      "id": "LR-20",
+      "title": "Koppla och prova fem brytare",
+      "minutes": 60,
+      "phase": "Styrning",
+      "deps": [
+        "LR-19",
+        "LR-16"
+      ],
+      "needs": "5 × Omron SS-3GL13PT, lågspänningskablar och aktuell Jackpot3/LR4-kopplingsbild.",
+      "steps": [
+        "Anslut COM + NC för varje brytare enligt rätt Jackpot3-schema; verifiera pinout på levererat kort.",
+        "Märk X, Y0, Y1, Z0, Z1 tydligt och kontrollera kabeldragningen.",
+        "Med fräsen frånkopplad: använd FluidNC:s statusfunktion och aktivera en brytare åt gången.",
+        "Dokumentera vilken status som ändras; felsök innan någon homing om signalerna är fel."
+      ],
+      "accept": "Fem brytare reagerar var för sig i rätt ingång; kontakter är dragavlastade.",
+      "report": "Tabell X/Y0/Y1/Z0/Z1 med utslag ja/nej och eventuella fel.",
+      "manual": 7
+    },
+    {
+      "id": "LR-21",
+      "title": "Första försiktiga motorprov",
+      "minutes": 60,
+      "phase": "Styrning",
+      "deps": [
+        "LR-15",
+        "LR-19",
+        "LR-20"
+      ],
+      "needs": "Fem motorer, avlastade kablar, fri maskin och möjlighet att direkt bryta styrningen.",
+      "steps": [
+        "Kontrollera att fräsen är urkopplad, verktyget borttaget och rörelsevägen fri.",
+        "Verifiera motoranslutningar enligt Jackpot3-konfigurationen; justera inte motorledningarna med matning inkopplad.",
+        "Jogg 1 mm i taget och kontrollera X+, Y+ och Z+ var för sig.",
+        "Om riktningen stämmer, prova korta rörelser och därefter homing under uppsikt med fungerande brytare."
+      ],
+      "accept": "Riktningar, motorpar och homing antingen verifierade eller blockering dokumenterad. Ingen skärning.",
+      "report": "Status per axel och brytare, ljud/bindning och eventuella fel.",
+      "manual": 7
+    },
+    {
+      "id": "LR-22",
+      "title": "Kontrollera 230 V-upplägg och maskinstopp",
+      "minutes": 60,
+      "phase": "Elsäkerhet",
+      "deps": [
+        "LR-16"
+      ],
+      "needs": "Verklig NVR-enhet om köpt, HDR-60-24, tillhörande tillverkardokumentation och kapsling.",
+      "steps": [
+        "Dokumentera NVR-modell och märkning eller att enheten ännu inte är köpt.",
+        "Verifiera att lösningen ger beröringsskydd för HDR:s nätplintar samt mekaniskt säker infästning på balken.",
+        "Gå igenom skyddsjord, kabeltyp, kabelgenomföring och dragavlastning med en elkunnig person.",
+        "Låt behörig/kompetent person utföra och verifiera faktisk 230 V-koppling. Testa återstartsskydd med fräsen frånkopplad när anläggningen är färdig."
+      ],
+      "accept": "Antingen verifierad säker installation med dokumenterat maskinstopp eller spärrad elinstallation med exakt åtgärd.",
+      "report": "Modell, kapslingsfoto, verifieringsstatus och eventuella öppna säkerhetsfrågor.",
+      "manual": 8
+    },
+    {
+      "id": "LR-23",
+      "title": "Torrkör hela rörelseområdet",
+      "minutes": 60,
+      "phase": "Driftsättning",
+      "deps": [
+        "LR-21",
+        "LR-22",
+        "LR-16"
+      ],
+      "needs": "Monterad maskin, kabeldragning, slang, fungerande stopp och tydlig fri yta.",
+      "steps": [
+        "Med fräsen urkopplad, börja från homad maskin och testa små rörelser.",
+        "Kör stegvis X/Y över tillgängligt område och Z genom avsett område; kontrollera slang och samtliga kablar.",
+        "Notera remvandring, mekaniskt kärvande, hinder och utrymme vid alla fyra hörn.",
+        "Avbryt vid konflikt och dokumentera exakt position före åtgärd."
+      ],
+      "accept": "Alla rörelseextremer prövade utan drag i kablar, slang eller mekaniska hinder.",
+      "report": "Resultat för varje hörn och Z-extremer, foton vid eventuella problem.",
+      "manual": 9
+    },
+    {
+      "id": "LR-24",
+      "title": "Gör CAM för första provskärningen",
+      "minutes": 60,
+      "phase": "Fräsning",
+      "deps": [
+        "LR-23",
+        "LR-17"
+      ],
+      "needs": "3,175 mm-fräs, fungerande dammuppsamling, billig trä-/skummaterialbit och CAM.",
+      "steps": [
+        "Välj ett enkelt litet provjobb. Kontrollera fräshylsans passning och verktygets uppspänning med fräsen urkopplad.",
+        "Välj material och försiktiga skärdata enligt verktygets rekommendationer; skriv ut eller visa förhandsgranskad verktygsbana.",
+        "Säkerställ att klämmor, skruvar och nollpunkt ligger utanför banan.",
+        "Gör en simulering och luftkörning med fräsen avstängd. Börja inte skära om NVR/damm/infästning saknas."
+      ],
+      "accept": "Förhandsgranskad och luftkörd liten verktygsbana, färdig för skärning.",
+      "report": "Filnamn, verktyg/material, beräknat djup och notering om nollpunkt.",
+      "manual": 9
+    },
+    {
+      "id": "LR-25",
+      "title": "Första lilla skärprovet",
+      "minutes": 60,
+      "phase": "Fräsning",
+      "deps": [
+        "LR-24",
+        "LR-18"
+      ],
+      "needs": "Godkänd CAM, fräs, material, inspänning, NVR och fungerande dammhantering.",
+      "steps": [
+        "Kontrollera arbetsstyckets infästning, verktyg och kablar en sista gång.",
+        "Starta dammhantering och gör ett kort skärprov under ständig uppsikt.",
+        "Mät enkel detalj samt verkligt Z-djup efter körningen.",
+        "Dokumentera eventuella avvikelser innan någon större fräsning."
+      ],
+      "accept": "Litet fräsprov och mått dokumenterade; inga kollisioner.",
+      "report": "Foto på skärningen, verktyg, material, X/Y/Z-avvikelse.",
+      "manual": 9
+    },
+    {
+      "id": "LR-26",
+      "title": "Generera permanenta stagplattor",
+      "minutes": 60,
+      "phase": "Fräsning",
+      "deps": [
+        "LR-25"
+      ],
+      "needs": "V1E:s strutgenerator, CAD/CAM, 5–6 mm MDF/hårdboard och uppmätta balkmått.",
+      "steps": [
+        "Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar.",
+        "Generera främre och undre stagplatta; spara fil och skärmlägg måtten.",
+        "Importera i millimeter och kontrollera riktning, materialtjocklek, hålbild och passform.",
+        "Planera hål före ytterkontur, hållflikar och säker fastspänning. Kör simulering utan att skära."
+      ],
+      "accept": "Två verifierade CAM-jobb som matchar verklig balk och material.",
+      "report": "Generatorvärden, materialtjocklek, CAD-skärmdump och filnamn.",
+      "manual": 9
+    },
+    {
+      "id": "LR-27",
+      "title": "Fräs permanenta stagplattor",
+      "minutes": 60,
+      "phase": "Fräsning",
+      "deps": [
+        "LR-26"
+      ],
+      "needs": "Verifierat CAM, skivmaterial, fungerande dammhantering och maskinstopp.",
+      "steps": [
+        "Fäst materialet utan skruvar i verktygsbanan.",
+        "Fräs hål och ytterkontur för första plattan under uppsikt; kontrollera passformen utan tvång.",
+        "Om passformen stämmer, fräs andra plattan. Om tiden inte räcker: rapportera en platta klar, en återstår.",
+        "Märk fram/undersida och dokumentera slutmått."
+      ],
+      "accept": "Båda permanenta stagplattor färdiga och passningen verifierad, annars delvis klar.",
+      "report": "Foton, slutmått och eventuell återstående platta.",
+      "manual": 9
+    },
+    {
+      "id": "LR-28",
+      "title": "Byt till permanenta stag",
+      "minutes": 60,
+      "phase": "Slutkontroll",
+      "deps": [
+        "LR-27"
+      ],
+      "needs": "Två färdiga plattor, maskinen med temporära stag och V1E:s bytesbilder.",
+      "steps": [
+        "Ta av och samla X/Y-remmarna så att de inte fastnar.",
+        "Byt ut de fyra temporära stagen mot främre och undre permanenta plattan i manualens ordning.",
+        "Återmontera Core och dra förband jämnt utan att klämma ihop Brace-delarna.",
+        "Kontrollera heel–toe fram/bak och Z:s fria rörelse. Om tiden tar slut: låt maskinen strömlös och rapportera läget."
+      ],
+      "accept": "Permanenta plattor på plats, men kalibrering och återtest återstår i separat order.",
+      "report": "Foton på de två plattorna, heel–toe-mått och mekanisk status.",
+      "manual": 9
+    },
+    {
+      "id": "LR-29",
+      "title": "Planfräs offerskivan",
+      "minutes": 60,
+      "phase": "Slutkontroll",
+      "deps": [
+        "LR-28"
+      ],
+      "needs": "Cirka 12 mm MDF-offerskiva, fräsverktyg, dammhantering och planfräsningsjobb.",
+      "steps": [
+        "Fäst den löstagbara offerskivan och verifiera mekaniken efter stagbytet.",
+        "Kontrollera att hela verktygsbanan ryms och att spännelement är utanför banan.",
+        "Planfräs i kontrollerade pass under uppsikt utan att skära i bordet.",
+        "Mät eller kontrollera resultatets jämnhet och fotografera. Om jobbet tar mer än en timme, dela återstående yta i nästa pass."
+      ],
+      "accept": "Offerskivan planfräst i avsett arbetsområde eller tydligt återstående område dokumenterat.",
+      "report": "Avverkat djup, täckt yta, foton och eventuell kvarvarande yta.",
+      "manual": 9
+    },
+    {
+      "id": "LR-30",
+      "title": "Slutkalibrera och säkerhetskopiera",
+      "minutes": 60,
+      "phase": "Slutkontroll",
+      "deps": [
+        "LR-28",
+        "LR-29"
+      ],
+      "needs": "Mätverktyg, fungerande maskin, originalets kalibreringssteg och config-backup.",
+      "steps": [
+        "Mät en känd X/Y-förflyttning och justera steps_per_mm endast utifrån faktiska mätningar.",
+        "Mät båda diagonalerna i en markerad rektangel och korrigera Y-homing/pull-off vid behov.",
+        "Jämför Z-nivå mellan sidorna, prova ett enkelt kalibreringsprov och dokumentera resultatet.",
+        "Spara fungerande config.yaml utanför styrenheten och notera aktuellt maskintillstånd."
+      ],
+      "accept": "X/Y, diagonaler och Z dokumenterade; config säkerhetskopierad.",
+      "report": "Kommenderad/uppmätt sträcka, två diagonaler, Z-avvikelse och backupstatus.",
+      "manual": 9
+    }
+  ]
+}
