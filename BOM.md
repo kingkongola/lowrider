@@ -137,7 +137,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [ ] TPU-bristles om befintlig TPU är lämplig
 - [ ] printad cyklon först
 - [ ] styv 15–30 l behållare och kontrollerat vakuumtest
-- [ ] **NY dammsugarslang behövs:** användaren har bekräftat att befintlig DeWalt-slang **är för kort**. Utred lätt/flexibel **cirka 38 mm innerdiameter, 4–5 m** (alternativt 50 mm ID om dammsugarens verkliga anslutning/luftflöde motiverar det); **32 mm ID inte förstahandsval** för lång CNC-slang på grund av större tryckfall. Kontrollera längd med full X/Y/Z-rörelse, DeWalt-anslutning, dammskons faktiska anslutning (V1E: upp till cirka 70 mm ytterdiameter), eventuell printad adapter och antistatisk konstruktion/jordning. **Ingen ny slang beställd ännu; diameter/längd ännu inte slutligt låsta.**
+- [ ] **Återanvänd befintlig 38 mm poolslang om den fungerar:** användaren har redan en 38 mm poolslang hemma; DeWalt-originalslangen är för kort. Mät poolslangens totala längd (mål ungefär 4–5 m men bestäms av dragning) och verklig inner-/ytterdiameter/anslutningar. Provkör mot DeWalt: kontrollera att slangen inte kollapsar eller täpps igen under verkligt undertryck och att dammsugarens luftflöde räcker; testa hela X/Y/Z-rörelsen och ordna upphängning/dragavlastning. Printad adapter mellan poolslang, DeWalt och Makita dust shoe vid behov. Poolslang är normalt inte antistatisk; eventuell säker statisk avledning utreds separat, improviserad tråd är inte likvärdig med antistatisk slang. **Ingen ny slang beställd; köp bara om poolslangen inte fungerar.**
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
