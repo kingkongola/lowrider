@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-19.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Live snapshot: 2026-09-21.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Redan betalt / beställt
 
@@ -18,11 +18,11 @@
 - checkout total: **83,55 €**
 - faktiskt debiterat: **937 kr**
 
-### eBay / POWGE — CLOSED / ORDERED
+### eBay / POWGE — CLOSED / RECEIVED
 
 - 3 × **2GT/GT2 drive pulley, 16T, 5 mm bore, för 10 mm belt, 2 mm pitch**
 - faktiskt debiterat: **72 kr**
-- **ej mottagna per 2026-09-19**. eBay-spårning: importklarering 11 sep, "RECEIVED BY LMC" (DEFRAA) 12 sep; väntar slutleverans. Angivet leveransfönster vid köp: 17 sep–7 okt.
+- **Mottagna 2026-09-21** enligt användaren. Kontroll av faktisk håldiameter, tandantal och passning återstår.
 
 ### LaskaKit, Tjeckien — CLOSED / RECEIVED
 
@@ -128,7 +128,7 @@ Kvar att anskaffa eller ordna:
 5. **Commissioning-fräs** till första skär och struts.
 6. **Dammbehållare/slangupphängning** när maskinen byggs.
 
-**Obs:** De köpta 3 × 16T-remhjulen har ännu inte levererats per 2026-09-19; följ spårningen, köp inte dubbelt.
+**Obs:** Alla tre köpta 16T-remhjul är mottagna 2026-09-21. Kontrollera dem vid inventering; köp inte dubbelt.
 
 Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet, LaskaKit-paketet och Z-muttrarna är mottagna.
 
