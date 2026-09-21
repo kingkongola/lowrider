@@ -110,3 +110,9 @@
 - Användaren bekräftar att **samtliga 3 × eBay/POWGE-remhjul** har kommit fram.
 - Tidigare leveransblockerare för X/Y-remdrivning är därmed undanröjd. Verifiera fysisk variant: 16 tänder, 5 mm motoraxelhål och passning för 10 mm GT2-rem.
 - Ingen ytterligare kostnad: **72 kr är redan bokförda** i `COSTS.md`. Denna leverans innebär inte att montering eller dimensionkontroll är utförd.
+
+## 2026-09-21 — Verktygsfästet saknar bekräftad utskrift
+
+- Användaren påpekade att den tidigare 14-plåtsplanen inte uttryckligen uppmanade till utskrift av ett Makita/65 mm-verktygsfäste.
+- V1E:s separata Makita 701 Tool Mount and Dust Shoe är listad utanför huvuddelarna. **Vi vet inte om fästet fysiskt finns eller saknas; ingen fullständig inventering har återrapporterats.**
+- Ny arbetsorder LR-00 kontrollerar rätt variant för KATSU 101750 (cirka 65 mm), startar separat utskrift vid behov och godkänner passning. LR-07 får inte förutsätta att fästet redan finns. Ingen ytterligare inköpskostnad är bekräftad.
