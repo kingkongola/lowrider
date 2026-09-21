@@ -52,7 +52,7 @@ Endstops är home/auto-square och **inte runtime hard limits**.
 
 ## 24 V och kabelrörelse
 
-**Längdgaten:** se `CABLE_ROUTING.md`. Fem motorkablar är 1 m var. Det finns 10 m 3×26 AWG för fem NC-brytare (total rulle), 3 m 2×20 AWG som reserv/24 V och 3 × 150 mm 2-poliga pigtails. Mät X, Y0, Y1, Z0, Z1 var för sig med Core/Z/Y i ytterlägen; verifiera även rätt kontaktbestånd och dynamisk kabeltyp. Inga slutliga kaplängder har fastställts.
+**Längdgaten:** se `CABLE_ROUTING.md`. X-brytaren förkapas **250 cm** från 10 m 3×26 AWG vid LR-08 (projektmått, inte verifierat slutmått). Fem motorkablar är 1 m var. Återstår då 7,5 m av brytarkabeln; det finns även 3 m 2×20 AWG för eventuell kort 24 V-matning samt 3 × 150 mm 2-poliga pigtails. Prova alla rörliga X/Z/Y-lägen i LR-16 och verifiera rätt antal kontakter och lämplig dynamisk kabel innan ytterligare slutkapning.
 
 Aktuell plan enligt D016: HDR-60-24 och Jackpot3 följer balken, med kort 24 V-matning mellan dem. Den tidigare långa rörliga 24 V-rutten är inte längre grundlösningen.
 - verifiera balkens infästning, beröringsskydd/kapsling av 230 V-plintar, skyddsjordning och dragavlastning för vårt specifika DIN-aggregat
