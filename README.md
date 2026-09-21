@@ -2,7 +2,7 @@
 
 Det här repot är single source of truth för den LowRider V4 som faktiskt byggs.
 
-## Aktuellt läge — 2026-09-19
+## Aktuellt läge — 2026-09-21
 
 - Maskin: **LowRider V4**. PrintNC/IndyMill är inte aktiva alternativ.
 - Arbetsyta: **650 × 1250 mm**.
@@ -12,7 +12,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Drive pulleys: **3 × GT2/2GT 16T / 5 mm bore / 10 mm belt är köpta via eBay/POWGE**, faktisk debitering **72 kr**, fri frakt och importavgifter inkluderade i eBay-köpet.
 - LaskaKit-mekanikkärna: **mottagen**, 444 kr. Innehåll: 6 smooth idlers, T8×8 400 mm, 2 × 5→8-koppling och 5 m GT2 10 mm glasfiber. **4 × ersättnings-T8×8-mässingsmuttrar från Amazon är mottagna** (2 används + 2 reserv).
 - Faktiskt betalt inklusive bordsskivan: **6 756,11 kr brutto**; **6 689,11 kr** exklusive 67 kr annullerad eBay-order som väntar återbetalning. Se `COSTS.md`.
-- Mekanikinköp: grundmekaniken är köpt. **Endast 3 × eBay/POWGE 16T-remhjul väntar fysisk leverans** (2026-09-19). Köp inte T8-muttrar igen.
+- Mekanikinköp: grundmekaniken inklusive **3 × eBay/POWGE 16T-remhjul är mottagen**. Verifiera fysisk passning och antal mot beställningsspec innan montering. Köp inte T8-muttrar igen.
 - Printer: **Bambu Lab P1S**; alla diameterberoende LR4-printar ska vara **30 mm-variant**, tool mount **Makita/65 mm**.
 - Router: **KATSU 101750**, 710 W, cirka 65 mm; köpt.
 - Filament: **3 kg PLA från PrintOnion** för 426 kr; utskrifterna är igång.
@@ -20,7 +20,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet elproblem om säkringen faktiskt håller.
 - Dammhantering är del av grundbygget.
 - Prints: **platta 10 av 14 pågår** enligt användaren 2026-09-19.
-- 3 × 16T-remhjul från eBay/POWGE är **köpta men ännu inte mottagna** 2026-09-19 (senaste LMC-skanning 12 sep).
+- 3 × 16T-remhjul från eBay/POWGE: **mottagna 2026-09-21** enligt användaren; antal och tekniska mått kontrolleras under nästa inventering.
 - Projektkostnad inklusive köpt bordsskiva: **6 756,11 kr brutto**, **6 689,11 kr** exklusive annullerad eBay-order på 67 kr som väntar återbetalning.
 
 ## Kanoniska filer
@@ -44,7 +44,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 1. Fortsätt printa resterande LR4-plattor; verifiera 30 mm-rördelar, Makita/65 mm tool mount samt **4 × temporära struts (15 % infill)**.
 2. Kontrollera köpta 180×100-skivans underrede/styvhet och provlägg rail/belt-layout. Mät/kapa rör efter OD-/rakhetskontroll.
-3. Inventera HaWiWe, DigiKey och el-/kabeldelar mot BOM. Avvakta leverans av redan köpta 16T-remhjul (köp inte dubbelt).
+3. Inventera HaWiWe, DigiKey, remhjul och el-/kabeldelar mot BOM. Alla tre beställda 16T-remhjul är mottagna; kontrollera tänder/hål/rembredd före montering.
 4. Köp/ordna ~12 mm MDF-spoilboard, 5–6 mm strutmaterial, första 3,175 mm-fräs samt NVR/kapsling efter fysisk dry-fit.
 5. Montera maskinen med temporära struts, konfigurera Jackpot3, torrkör och fräs permanenta struts (`819`, `front_wing_size=30`) med maskinen själv.
 6. Byt till permanenta struts, gör full-travel-test för kablar/slang, färdigställ dammhantering och planfräs offerskivan.
