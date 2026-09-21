@@ -104,3 +104,9 @@
 - Användaren printar **platta 10 av 14**.
 - Permanent strut-plan enligt V1E: 4 printade temporära struts (15 % infill) vid montering; LR4 fräser sedan egna front-/bottenstruts ur 5–6 mm MDF/hardboard (max 6,35 mm). Generatorinställningar `strut_length=819`, `front_wing_size=30`.
 - Betald brutto inklusive bordsskivan: **6 756,11 kr**. Aktiv kostnad exklusive annullerad eBay-order (67 kr) som väntar återbetalning: **6 689,11 kr**.
+
+## 2026-09-21 — Tre 16T-remhjul mottagna
+
+- Användaren bekräftar att **samtliga 3 × eBay/POWGE-remhjul** har kommit fram.
+- Tidigare leveransblockerare för X/Y-remdrivning är därmed undanröjd. Verifiera fysisk variant: 16 tänder, 5 mm motoraxelhål och passning för 10 mm GT2-rem.
+- Ingen ytterligare kostnad: **72 kr är redan bokförda** i `COSTS.md`. Denna leverans innebär inte att montering eller dimensionkontroll är utförd.
