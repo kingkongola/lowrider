@@ -116,3 +116,9 @@
 - Användaren påpekade att den tidigare 14-plåtsplanen inte uttryckligen uppmanade till utskrift av ett Makita/65 mm-verktygsfäste.
 - V1E:s separata Makita 701 Tool Mount and Dust Shoe är listad utanför huvuddelarna. **Vi vet inte om fästet fysiskt finns eller saknas; ingen fullständig inventering har återrapporterats.**
 - Ny arbetsorder LR-00 kontrollerar rätt variant för KATSU 101750 (cirka 65 mm), startar separat utskrift vid behov och godkänner passning. LR-07 får inte förutsätta att fästet redan finns. Ingen ytterligare inköpskostnad är bekräftad.
+
+## 2026-09-21 — Core omprintad; kabelmått saknades i arbetsordrar
+
+- Användaren bekräftar att **hela Core är omprintad** och att nya utskriften **inte har den tidigare cirka 0,20 mm förskjutningen**. Gamla defekten är historik, inte ett aktivt fel; nya delen ska fortfarande vanlig passningskontrolleras.
+- Arbetsordrarna saknade kaplängder för fem NC-brytare och motorförlängningar. Infört mätprotokoll `CABLE_ROUTING.md`: V1E har inget generellt exakt kapmått för vårt 650×1250-bygge. Mät respektive sträcka efter provmontering med X/Z/Y i rörelseextremer, dokumentera och kapa först då. Explicit V1E-mått för eventuell touchplate är minst 140 mm fri ledning vid Core.
+- Köpta lager/motorer/kablar oförändrade, inga nya köp antagna.
