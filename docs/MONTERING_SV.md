@@ -67,7 +67,8 @@ Originalbilder: [YZ Plate Assemblies](https://docs.v1e.com/lowrider/#yz-plate-as
 6. Dra Z-motorkabeln genom plattan. Montera Z-motor och 5→8 mm-koppling enligt måttguiden; axelns plana sida får första stoppskruven.
 7. Rensa skenornas printade bäddar från små plastklumpar. Skruva dit MGN12-skenorna löst; fäst XZ-plattan i vagnarna; dra sedan skenorna stegvis. **För XZ-plattan genom hela rörelsen efter varje åtdragning**. Lossa och dra om vagnarnas skruvar om det hjälper rörelsen.
 8. Montera T8-skruv och T8×8-mässingsmutter enligt bilderna. Kontrollera full frigång och lägg på en liten mängd lämplig lätt smörjning. Montera Z_Stub – dessa ska vara vinkelräta mot gängspindeln. Lämna tvärspännskruvarna ute enligt originalet om de inte behövs.
-9. **Kapa inte 400 mm T8-spindeln i två lika delar av slentrian.** Mät nödvändig frigång och fästlängd i den fysiska uppbyggnaden; cirka 150–160 mm per sida är vårt arbetsmål, inte verifierat kapmått.
+9. Montera de bakre hjulen på båda YZ-sidorna enligt originalbilderna. Kontrollera att hjuldelarnas ytterytor ligger i plan; dra skruvarna utan att deformera plasten. Justera sedan Z-brytarna så att de utlöses **innan** vagnarna når sina mekaniska övre stopp.
+10. **Kapa inte 400 mm T8-spindeln i två lika delar av slentrian.** Mät nödvändig frigång och fästlängd i den fysiska uppbyggnaden; cirka 150–160 mm per sida är vårt arbetsmål, inte verifierat kapmått.
 
 **Kontroll B – båda sidor:** när gängspindeln vrids för hand ska XZ-plattan gå jämnt utan punkt där den nyper; två sidors montage är spegelriktiga, inte två identiska kopior; alla fem brytarkablar kan identifieras. Om Z nyper: undersök skenans bädd, parallellitet, vagnarnas skruvar och Z_Stub före hårdare åtdragning.
 
