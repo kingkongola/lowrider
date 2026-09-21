@@ -35,6 +35,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - `TABLE.md` — bord/deck.
 - `BUILD_LOG.md` — historik; gamla val får finnas här som historik men är inte current state.
 - `WORK_ORDERS.md` — arbetskort om cirka en timme, med beroenden och återrapportering; lokal webbsidestatus är inte SSOT.
+- `CABLE_ROUTING.md` — kabellager, routing, mätprotokoll och verifierade kapmått (ännu tomma innan fysisk full-travel-kontroll).
 
 ## Monteringsguide
 
