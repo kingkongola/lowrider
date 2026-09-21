@@ -52,7 +52,7 @@ Endstops är home/auto-square och **inte runtime hard limits**.
 
 ## 24 V och kabelrörelse
 
-**Längdgaten:** se `CABLE_ROUTING.md`. X-brytarens exakta kaplängd är **inte verifierad**; det tidigare uppskattade 250 cm-måttet har dragits tillbaka. Mata från 10 m 3×26 AWG-rullen vid LR-08, prova verklig kabelväg vid monterad maskin i LR-16 och kapa först därefter. Fem motorkablar är 1 m var; därutöver finns 3 m 2×20 AWG för eventuell kort 24 V-matning och 3 × 150 mm 2-poliga pigtails. Kontrollera även kontaktantal och lämplig dynamisk kabel.
+**Kabelpassning och längd:** se `CABLE_ROUTING.md`. **Användaren har konstaterat att Tensility 3×26 AWG-kabelns cirka 4 mm mantel inte går genom Core-tunneln.** Passningsfel är aktivt; prova lokal avmantling med isolerade innerledare och skavskydd/avlastning eller tunnare flexibel tvåledarkabel/yttre säker rutt. Kontrollera också YZ-kanaler innan inköp. X-brytarens kaplängd är inte verifierad; tidigare 250 cm har dragits tillbaka. Full rörelseprov i LR-16 före kapning. Fem motorkablar är 1 m var; övrigt: 3 m 2×20 AWG för eventuell kort 24 V-matning, 3 × 150 mm 2-poliga pigtails. Kontrollera kontaktantal och kabelns dynamiska lämplighet.
 
 Aktuell plan enligt D016: HDR-60-24 och Jackpot3 följer balken, med kort 24 V-matning mellan dem. Den tidigare långa rörliga 24 V-rutten är inte längre grundlösningen.
 - verifiera balkens infästning, beröringsskydd/kapsling av 230 V-plintar, skyddsjordning och dragavlastning för vårt specifika DIN-aggregat
