@@ -35,11 +35,13 @@
 
 - [ ] hämta senaste LR4-filer
 - [ ] verifiera **30 mm** på alla railberoende delar
-- [ ] verifiera **Makita/65 mm** tool mount
+- [ ] **kontrollera om Makita/65 mm-verktygsfäste verkligen är utskrivet**. Det ingår inte bekräftat i våra 14 MakerWorld-plattor; V1E listar det som separat [Makita 701 Tool Mount and Dust Shoe](https://www.printables.com/model/1033926-makita-701-tool-mount-and-dust-shoe-for-the-lowrid).
+- [ ] om fästet saknas: välj rätt 65 mm-variant för KATSU 101750; slic:a och skriv ut enligt modellbeskrivningen (V1E:s deltabell anger 30 % infill); kontrollera passning före Core LR-07. Se arbetsorder LR-00.
+- [ ] kontrollera separat om **Jackpot3 board box** är utskriven (V1E länkar till en separat modell); anta inte att den följer med grundplattorna.
 - [ ] provprinta `Z_Stub` + `Z_Nut`
 - [ ] kontrollera passning
 - [ ] granska slicer bridges/unsupported geometry
-- [ ] printa komplett LR4-sats + rätt Jackpot3 board box (2026-09-19: **platta 10/14 pågår**)
+- [ ] inventera utskrifterna efter att användaren rapporterat platta 14/14: grundplattornas status, separat tool mount, Jackpot3-box och temporära struts verifieras var för sig.
 - [ ] printa **4 × temporära struts, 15 % infill** för första monteringen
 - [ ] generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=30` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
 
