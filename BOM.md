@@ -95,7 +95,8 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 ## Kvar — mekanik
 
 - [ ] senaste LR4-printar i 30 mm-variant
-- [ ] Makita/65 mm tool mount
+- [ ] **Separat printat Makita/65 mm-verktygsfäste för KATSU 101750**, [V1E:s Makita 701 Tool Mount and Dust Shoe](https://www.printables.com/model/1033926-makita-701-tool-mount-and-dust-shoe-for-the-lowrid); **utskriftsstatus okänd**, inte bekräftat bland 14 plattor. Kontrollera rätt del/variant och passning; V1E anger 30 % infill i huvudtabellen. Ej samma sak som köpta 1/8-tumshylsan.
+- [ ] **Separat Jackpot3 board box**, [V1E-modell](https://www.printables.com/model/1434650-jackpot3-box); utskriftsstatus okänd, inventera.
 - [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
 - [ ] rail/belt/table-infästning på köpt 180×100-bordsskiva; kontrollera underrede och verklig layout före håltagning
 
