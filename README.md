@@ -19,7 +19,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Bord: **180×100 cm bordsskiva köpt för 300 kr**; ingen planerad 90 cm-kantbreddning, kontrollera underrede. Löstagbar ~12 mm MDF-spoilboard köps senare.
 - Garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet elproblem om säkringen faktiskt håller.
 - Dammhantering är del av grundbygget.
-- Prints: användaren har därefter rapporterat utskrift av **platta 14/14**. **Det är inte bekräftat att det separata Makita/65 mm-verktygsfästet (eller Jackpot3-boxen) ingick i dessa plattor.** Se LR-00 och inventera utskrifterna före Core-montage.
+- Prints: användaren har rapporterat utskrift av **platta 14/14** samt att **hela Core är omprintad utan tidigare 0,20 mm förskjutning**. Den tidigare defekta Core används inte. **Det är inte bekräftat att det separata Makita/65 mm-verktygsfästet (eller Jackpot3-boxen) ingick i dessa plattor.** Se LR-00 och inventera utskrifterna före Core-montage.
 - 3 × 16T-remhjul från eBay/POWGE: **mottagna 2026-09-21** enligt användaren; antal och tekniska mått kontrolleras under nästa inventering.
 - Projektkostnad inklusive köpt bordsskiva: **6 756,11 kr brutto**, **6 689,11 kr** exklusive annullerad eBay-order på 67 kr som väntar återbetalning.
 
