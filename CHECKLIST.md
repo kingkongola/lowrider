@@ -88,7 +88,7 @@
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
 - [ ] första jogg 1 mm
-- [ ] **LR-08:** mata X-brytarens 3×26 AWG-kabel från 10 m-rullen genom Core utan att kapa den. **250 cm är inte verifierat kapmått.** **LR-16:** dra till Jackpot3, prova fullt rörelseområde och kapa först efter verklig längdkontroll enligt `CABLE_ROUTING.md`; kontrollera även övriga kabelvägar och eventuella underskott.
+- [ ] **LR-08: BEKRÄFTAT PASSNINGSFEL:** köpta 3×26 AWG-kabelns cirka Ø4 mm mantel går inte genom Core. **Tvinga inte in den.** Prova individuellt isolerade innerledare enbart genom tunneln med oskadad isolering, avlastad mantel utanför och skavskydd; alternativt tunnare flexibel tvåledarkabel/skyddad yttre dragning. Kontrollera även YZ-kanalernas passning. Mata från 10 m-rullen utan slutkapning. **250 cm är inte verifierat kapmått.** LR-16: kontrollera full rörelse och kapa först efter faktisk dragning.
 - [ ] koppla 5 endstops NC via COM+NC
 - [ ] verifiera varje endstopstatus
 
