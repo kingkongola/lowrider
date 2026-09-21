@@ -74,7 +74,7 @@
 - [ ] printa cyklon
 - [ ] ordna 15–30 l styv behållare
 - [ ] vakuumtesta behållare/lock kontrollerat
-- [ ] testa befintlig DeWalt-slang innan ny slang köps
+- [ ] **inventera dammsugarslang:** mät befintlig DeWalt-slangs inner-/ytterdiameter och anslutning, prova om den är lång och följsam nog med hela X/Y/Z-rörelsen. V1E Makita 701 dust shoe accepterar högst 70 mm slang-OD. Om den inte passar: välj lättare flexibel slang och skriv ut adapter utifrån uppmätta mått; ingen ny slang är beställd.
 - [ ] bygg slangavlastning
 - [ ] lös statisk jordväg före XPS/reguljär MDF/trä-drift
 
