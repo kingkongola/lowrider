@@ -1,6 +1,6 @@
 {
   "version": "2026-09-21",
-  "notice": "Arbetsordrarna är en plan. Lokala markeringar uppdaterar inte privat SSOT. Tre 16T-remhjul mottagna 2026-09-21. Separat Makita/65 mm-verktygsfäste ingår INTE verifierat bland 14 grundplattor; kontrollera och vid behov printa i LR-00 före LR-07.",
+  "notice": "Arbetsordrarna är en plan; lokal status uppdaterar inte SSOT. Tre 16T-remhjul mottagna 2026-09-21. Nya Core är omprintad utan tidigare 0,20 mm-förskjutning. Motorkablar är 1 m vardera; kabelkapmått ska mätas enligt CABLE_ROUTING.md i LR-16B. Separat Makita/65 mm-fäste kontrolleras i LR-00.",
   "orders": [
     {
       "id": "LR-00",
@@ -29,11 +29,11 @@
       "steps": [
         "Lägg ut utskrifterna och sortera i Core, YZ_Min, YZ_Max, balk, bord/remmar, damm och Jackpot3-box.",
         "Kontrollera mot V1E:s separata printlista om rätt 30 mm-rörvarianter, de fyra Temp Strut, Makita/65 mm-verktygsfäste och Jackpot3-box faktiskt finns. **Om fästet inte är utskrivet: notera det som saknat och gör LR-00**, inte anta att det ingår i 14 plattor.",
-        "Räkna fyra temporära stag (Temp Strut, avsett 15 % infill); bedöm hål, bryggor och delarna från den förskjutna utskriften.",
+        "Räkna fyra temporära stag (Temp Strut, avsett 15 % infill), granska hål och bryggor samt inventera den **nya helt omprintade Core**. Den gamla Core hade en rapporterad cirka 0,20 mm förskjutning; det felet gäller inte den nya delen.",
         "Fotografera grupperna och skriv en kort lista över saknade eller tveksamma delar."
       ],
       "accept": "Delarna är identifierade; alla osäkra delar är noterade, inte förutsatta godkända.",
-      "report": "Antal Temp Strut; status fäste (finns/saknas), Jackpot3-box (finns/saknas), övriga saknade/tveksamma delar och foton.",
+      "report": "Antal Temp Strut, status för nya omprintade Core, fäste (finns/saknas), Jackpot3-box (finns/saknas), övriga saknade/tveksamma delar och foton.",
       "manual": 0
     },
     {
@@ -154,15 +154,15 @@
       "deps": [
         "LR-07"
       ],
-      "needs": "X-motor, ett verifierat 16T-remhjul, X-brytare, kabel, idlers och skruvar.",
+      "needs": "Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, kabel från Tensility 10 m 3×26 AWG-rulle, idlers och skruvar. Öppna CABLE_ROUTING.md.",
       "steps": [
-        "Dra och märk X-brytarkabeln enligt originalbilderna; montera brytaren försiktigt.",
+        "För X-brytarens ledning ur 10 m 3×26 AWG-rullen genom Cores avsedda tunnel enligt V1E:s bilder. Märk X direkt på kabeln. **Kapa inte till slutlängd eller färdigkrimpa kortet**; kabeln måste senare nå Jackpot3 på YZ_Min när Core står i X_Max, med avlastad rörelseslinga. En eventuell touchplate är en separat kabel (V1E: minst 140 mm fri ledning på Core).",
         "Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.",
         "Montera motorn och förbered X-remmen utan att kapa på chans.",
-        "Montera idlers så att de roterar mycket fritt; fotografera monteringen."
+        "Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln."
       ],
-      "accept": "Core komplett nog för balken; remhjul i linje och brytarkabel märkt.",
-      "report": "Foton på remhjul och brytare; fria idlers; kvarvarande avvikelser.",
+      "accept": "Ny Core korrekt monterad, X-brytarkabel dragen genom Core och märkt utan slutkapning, idlers fria, remhjul i linje, motorns 1 m kabel intakt.",
+      "report": "Foton på X-remhjul och X-brytare, kvarvarande obruten X-brytarkabel, samt status för 1 m motorkabel och eventuellt behov av förlängning (slutlängd mäts i LR-16B).",
       "manual": 1
     },
     {
@@ -176,13 +176,13 @@
       ],
       "needs": "YZ_Min, tillhörande XZ-platta, två MGN12, Y-/Z-motor, brytare och hjul.",
       "steps": [
-        "Märk Y0- och Z0-kablar enligt maskinens faktiska orientering.",
+        "Märk Y0- och Z0-kablar enligt maskinens faktiska orientering. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16B.",
         "Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna.",
         "Montera Y-brytare med rätt armriktning; skydda armen mot bänkkanten.",
         "Rengör rälsbäddarna, montera skenor och XZ-platta löst och prova glidningen under stegvis åtdragning."
       ],
       "accept": "Min-sidans skenor och vagn rör sig lätt; eventuellt kvarvarande Z-/bakhjulsarbete tydligt noterat.",
-      "report": "Foton på orientering, fri rörelse och vad som inte hanns med.",
+      "report": "Foton på orientering, fri rörelse och vad som inte hanns med. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.",
       "manual": 2
     },
     {
@@ -196,13 +196,13 @@
       ],
       "needs": "YZ_Max, motsvarande XZ-platta, två MGN12, motorer, brytare och hjul.",
       "steps": [
-        "Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen.",
+        "Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16B.",
         "Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare.",
         "Rensa skenbäddar; montera skenor och XZ-platta, dra stegvis och provför över hela rörelsen.",
         "Notera eventuella delar som återstår innan båda sidornas Z-mekanik kan slutföras."
       ],
       "accept": "Max-sidans skenor och vagn rör sig lätt; fel eller oavslutade moment dokumenterade.",
-      "report": "Foton på orientering, fri rörelse och avvikelser.",
+      "report": "Foton på orientering, fri rörelse och avvikelser. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.",
       "manual": 2
     },
     {
@@ -317,11 +317,30 @@
       "steps": [
         "Prova placeringen av Jackpot3 på balkens YZ_Min-sida.",
         "Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.",
-        "Lägg ut fräskabel, tänkt matning till HDR, motor-/brytarkablar och dammsugarslang samtidigt.",
-        "Flytta maskinen för hand till rörelseextremerna. Fotografera där kablar/slang riskerar att sträckas eller fastna."
+        "Provlägg X/Y0/Y1/Z0/Z1-motorkablar (var och en 1 m) och alla fem brytarledningar från totalt 10 m 3×26 AWG. Bedöm vilka motorer som behöver förlängning. Lägg ut fräskabel, HDR:s tänkta matning och dammsugarslang samtidigt. **Kapa ingenting; se CABLE_ROUTING.md.**",
+        "Rör maskinen för hand till X_Min/X_Max, Z:s två ytterlägen och Y:s fyra hörn; fotografera möjliga kabelkonflikter och bestäm dragavlastade fixpunkter. Låt överlängd ligga säkert tills LR-16B."
       ],
-      "accept": "En fysisk kabelplan och en lista över osäkerheter; inga exponerade 230 V-plintar planeras.",
-      "report": "Foton från fyra hörn och eventuella konflikter. Ingen spänningssättning.",
+      "accept": "Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.",
+      "report": "Foton på kabelvägar/fixpunkter vid ytterlägen, noterade motorförlängningar, resultat för slang och fräskabel; inga slutmått förutsätts.",
+      "manual": 6
+    },
+    {
+      "id": "LR-16B",
+      "title": "Mät kablarna och fastställ kapmåtten",
+      "minutes": 60,
+      "phase": "El och damm",
+      "deps": [
+        "LR-16"
+      ],
+      "needs": "Fysiskt uppställd LowRider, Jackpot3 på YZ_Min, de fem fabrikskablarna på 1 m, kvarvarande 10 m 3×26 AWG, måttband/mjuk mätsnöre, märktejp och CABLE_ROUTING.md.",
+      "steps": [
+        "Börja med **X motorn och X-brytaren**: för Core genom X_Min/X_Max och mät var och en av deras verkliga sträckor via avlastad slingväg och balken till Jackpot3. Ta med en mjuk service-/rörelsemarginal. Låt kontakterna vara dragavlastade. Anteckna om originalmotorkabeln på 1 m räcker.",
+        "Mät **Y0/Z0** samt **Y1/Z1**, motor och NC-brytare var för sig. Prova samtidigt båda Z-sidornas fulla rörelse. Dokumentera faktisk längd och behov av kompatibla motorförlängningar, särskilt från YZ_Max; kapa inte motorernas 1 m originalkablar.",
+        "Summera planerad åtgång för **fem brytarkablar ur totalt 10 m 3×26 AWG** innan något kapas. Kontrollera kontakttyper mot ditt faktiska Jackpot3 och de tre köpta 150 mm Molex-pigtails; fem brytare kräver fem verifierade anslutningar. Om rullen eller kontakterna inte räcker: rapportera exakt underskott, köp inte blint.",
+        "Dokumentera slutliga kapmått och kabelvägar i CABLE_ROUTING.md och rapportera dem. Gör full-travel-provet för hand med fräskabel och dammsugarslang i verklig position. **Kapa och terminera bara de längder som är faktiskt mätta och godkända. Ingen 230 V-inkoppling i detta pass.**"
+      ],
+      "accept": "För varje av fem motorer och fem NC-brytare finns start/slut, mätt längd med verklig rörelsemarginal och verifierad kontakt/förlängningsstatus. Total åtgång av 10 m-kabel är kontrollerad före kapning.",
+      "report": "Skicka en rad per X/Y0/Y1/Z0/Z1 med motorns befintliga 1 m räcker ja/nej, eventuell förlängning (mm), brytarkabelns längd (mm); kvarvarande rulle (m), foton på slingan och eventuella kontaktbrister.",
       "manual": 6
     },
     {
@@ -386,11 +405,11 @@
       "phase": "Styrning",
       "deps": [
         "LR-19",
-        "LR-16"
+        "LR-16B"
       ],
-      "needs": "5 × Omron SS-3GL13PT, lågspänningskablar och aktuell Jackpot3/LR4-kopplingsbild.",
+      "needs": "5 × Omron SS-3GL13PT, lågspänningskablar och aktuell Jackpot3/LR4-kopplingsbild. Kabelmåtten och kontakter ska vara verifierade i LR-16B.",
       "steps": [
-        "Anslut COM + NC för varje brytare enligt rätt Jackpot3-schema; verifiera pinout på levererat kort.",
+        "Ta fram de fem uppmätta och korrekt terminerade brytarkablarna från LR-16B. Anslut COM + NC enligt rätt Jackpot3-schema; verifiera faktisk kontaktstiftordning och antal (BOM har bara 3 × 150 mm 2-poliga pigtails). Gissa inte att alla fem redan är anslutningsklara.",
         "Märk X, Y0, Y1, Z0, Z1 tydligt och kontrollera kabeldragningen.",
         "Med fräsen frånkopplad: använd FluidNC:s statusfunktion och aktivera en brytare åt gången.",
         "Dokumentera vilken status som ändras; felsök innan någon homing om signalerna är fel."
