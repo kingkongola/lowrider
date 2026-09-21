@@ -13,7 +13,7 @@ Grundarkitekturen håller:
 - HDR-60-24
 - Omron NC endstops
 - KATSU 101750
-- fast NVR/HDR-box + rörlig controller
+- fast NVR/maskinstopp + rörlig Jackpot3 och planerat balkmonterat HDR-60-24; korrekt kapsling och infästning återstår
 
 Ingen audit kräver ändrad maskingeometri.
 
@@ -52,15 +52,13 @@ Endstops är home/auto-square och **inte runtime hard limits**.
 
 ## 24 V och kabelrörelse
 
-HDR sitter fast, controller rör sig:
-- 3 m 20 AWG 2-core som marginal
-- kapa efter full-travel dry-fit
-- stor mjuk loop
-- UL/PVC-kabeln är inte bevisad chain-flex; byt bara om verklig routing kräver snäv repetitiv böj
-- dragavlasta före controllerkontakten
+Aktuell plan enligt D016: HDR-60-24 och Jackpot3 följer balken, med kort 24 V-matning mellan dem. Den tidigare långa rörliga 24 V-rutten är inte längre grundlösningen.
+- verifiera balkens infästning, beröringsskydd/kapsling av 230 V-plintar, skyddsjordning och dragavlastning för vårt specifika DIN-aggregat
+- förlägg nätmatningen till aggregatet säkert tillsammans med fräskabeln enligt fysisk full-travel-kontroll
+- den redan köpta 3 m 20 AWG-kabeln är reserv/längdmarginal, inte något som måste installeras
 
 Före slutliga clips/remspänning ska följande vara samtidigt monterat och testat i alla fyra hörn + Z-extremer:
-- 24 V
+- nätmatning till HDR samt kort 24 V-rutt
 - routerkabel
 - motor/endstopkablar
 - vac-hose
