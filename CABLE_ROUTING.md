@@ -1,6 +1,6 @@
 # Kabeldragning och verkliga kabellängder — LowRider 4
 
-**Status 2026-09-21: praktisk förkapning + kontroll.** För vår arbetsyta 650 × 1250 mm och Jackpot3 på YZ_Min: **kapa X-brytarens ledning till 250 cm i Core-momentet (LR-08).** Det är ett avsiktligt tilltaget projektmått, **inte ett V1E-mått och inte en verifierad exakt slutlängd**. Övriga ledningar får slutlig dragning och räckviddskontroll i LR-16; kapa inga ytterligare mått på chans.
+**Status 2026-09-21: kaplängd ej verifierad.** För vår arbetsyta 650 × 1250 mm och Jackpot3 på YZ_Min finns **inget av V1E angivet exakt X-brytarkabelmått**. Tidigare förslag 250 cm var en oprövad uppskattning och har dragits tillbaka som kapinstruktion. Mata kabel från 10 m-rullen genom Core i LR-08 och fastställ faktisk längd i LR-16; om 250 cm redan är kapat, behåll biten och prova räckvidden innan vidare kapning.
 
 ## Vad finns och vad är faktiskt känt?
 
@@ -19,7 +19,7 @@
 | Ledning | Start → slut / faktisk väg | Köpt ledning | Mätt rutt inkl. rörelsemarginal | Slutlig längd | Funktion godkänd |
 |---|---|---|---|---|---|
 | X motor | Core → med Core till X_Max → avlastad mitt på balken → Jackpot3 YZ_Min | fast 1 m + ev. förlängning | — | — | ☐ |
-| X NC | X-brytare → Cores tunnel → avlastad rörlig slinga via balkens mitt → Jackpot3 | **250 cm kapas från 10 m 3×26 AWG vid LR-08** | provrör fullt X-slag | behåll eventuell överlängd | ☐ |
+| X NC | X-brytare → Cores tunnel → avlastad rörlig slinga via balkens mitt → Jackpot3 | mata från 10 m 3×26 AWG utan kapning vid LR-08 | prova fullt X-slag | ej fastställd | ☐ |
 | Y0 motor | YZ_Min → kabelkanal → Jackpot3 | fast 1 m | — | — | ☐ |
 | Y0 NC | YZ_Min-brytare → kabelkanal → Jackpot3 | ur 10 m 3×26 AWG | — | — | ☐ |
 | Z0 motor | Z0 → YZ_Min-kanal → balk, med Z i full höjd → Jackpot3 | fast 1 m | — | — | ☐ |
@@ -35,13 +35,13 @@
 
 **Praktisk ruttkontroll (projektmetod, inte V1E:s kapmått):**
 
-1. **Vid LR-08 (Core):** kapa **250 cm** av rullen 3×26 AWG; märk `X` i båda ändarna. För den genom tunneln, montera X-brytaren med **COM + NC**, och isolera den oanvända tredje ledaren. **Kapa inte av överlängden nära Core och anslut inte kortänden innan stiftordningen är verifierad.** Låt hela återstående längden följa den kommande mjuka Core-slingan till Jackpot3. Valfri touchplate är en separat kabel med V1E:s minst 140 mm fri längd nära Core.
+1. **Vid LR-08 (Core):** mata en fri ände från rullen 3×26 AWG genom tunneln och märk `X`. Montera X-brytaren med **COM + NC** efter kontroll av faktisk kontakt och isolera oanvänd tredje ledare. **Kapa inte kabeln vid Core.** Låt den följa den kommande mjuka slingan till Jackpot3 på balken. Om 250 cm redan har kapats, behåll den biten och verifiera räckvidden. Valfri touchplate har en separat kabel med V1E:s minst 140 mm fri längd nära Core.
 2. **Vid LR-09/10 (YZ):** dra Y- och Z-brytarkablarna genom avsedda kanaler innan hjul och skenor blockerar åtkomsten; märk `Y0/Z0` respektive `Y1/Z1`. Behåll sammanhängande längd/reserv. Prova Z genom hela slaget innan du fixerar ledningarna.
 3. **Vid LR-13/16 (full maskin):** placera Jackpot3 på YZ_Min; lägg kablar längs riktig väg. Flytta Core till **X_Min och X_Max**, båda Z-sidorna till sina ytterlägen och balken genom **hela Y-slaget**. Lägg med fräskabel och slang i samma prov, och identifiera avlastade fixpunkter. Kabel ska vara fri även när maskinen går mot hörnen. V1E visar att X-ledningar går via Core och fästs ungefär mitt på balken.
 4. **Mät och dokumentera varje ledning separat.** Lämna en mjuk service-/rörelsemarginal vid anslutningar och kopplingar – **cirka 10–15 cm kan vara en praktisk startpunkt, men är inte ett fast V1E-mått och måste anpassas efter rutt och böjradie.** För kort kabel eller stum förbindelse är inte godkänt. Fäst ledningar med avlastning före kontakt/skarv; motorförlängningar får inte bära draglast. Kablar som upprepat böjs måste vara avsedda för det.
-5. **Övriga kablar:** X-brytarens 250 cm förkapas redan vid Core. Innan andra brytarkablar kapas: jämför deras planerade längder mot den **återstående 7,5 m-rullen**, dra dem längs verklig väg och kontrollera rörelsefrigång. Överlängd kan förvaras dragavlastad på balken; det krävs inte en exakt millimeterkapning. Komplettera BOM endast vid faktiskt underskott.
+5. **Kapning:** mät den faktiska kabelvägen vid monterad maskin, inklusive mjuk rörelseslinga och dragavlastning, **innan** X-brytarens ledning lossas från 10 m-rullen. Fördela sedan återstående kabel mellan de andra brytarna efter verklig routing, inte en antagen 7,5 m-rest. Överlängd kan förvaras dragavlastad på balken. Komplettera BOM endast vid faktiskt underskott.
 6. **230 V:** bara planera mekanisk kabelväg i detta steg. Kabeltyp, PE, kapsling, dragavlastning, NVR och anslutning ska kontrolleras separat av elkunnig person. Den köpta lågspänningskabeln används inte för 230 V.
 
 ## Återrapport från LR-16
 
-Skicka bilder på Jackpot3:s placering och kabelvägarna. Ange **om de förkapade 250 cm till X-brytaren räcker** genom fullt X-slag och om någon annan ledning är för kort eller behöver förlängning. Överlängd får ligga dragavlastad: det behövs ingen särskild entimmesorder för att finmäta varje centimeter.
+Skicka bilder på Jackpot3:s placering och kabelvägarna. Ange **vilken X-kabellängd som faktiskt räcker** genom fullt X-slag och om någon annan ledning är för kort eller behöver förlängning. Om 250 cm redan har kapats, ange om den biten fungerar. Överlängd får ligga dragavlastad.
