@@ -21,9 +21,9 @@ Den här filen innehåller endast delar för den LowRider V4 som faktiskt byggs.
 
 - [x] Jackpot3 CNC Controller `CQA240812C2`
 
-## Redan köpt — eBay / POWGE
+## Redan mottaget — eBay / POWGE
 
-- [x] 3 × GT2/2GT drive pulley, **16T / 5 mm bore / för 10 mm belt / 2 mm pitch** — köpta, **ännu ej mottagna 2026-09-19**; spårning: importklarering 11 sep, LMC-skanning 12 sep
+- [x] 3 × GT2/2GT drive pulley, **beställd specifikation 16T / 5 mm bore / för 10 mm belt / 2 mm pitch** — **mottagna 2026-09-21** enligt användaren. Kontroll av fysisk variant/passning återstår.
 
 ## Redan mottaget — LaskaKit
 
