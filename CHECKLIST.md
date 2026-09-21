@@ -39,7 +39,7 @@
 - [ ] om fästet saknas: välj rätt 65 mm-variant för KATSU 101750; slic:a och skriv ut enligt modellbeskrivningen (V1E:s deltabell anger 30 % infill); kontrollera passning före Core LR-07. Se arbetsorder LR-00.
 - [ ] kontrollera separat om **Jackpot3 board box** är utskriven (V1E länkar till en separat modell); anta inte att den följer med grundplattorna.
 - [ ] provprinta `Z_Stub` + `Z_Nut`
-- [ ] kontrollera passning
+- [ ] kontrollera passning; **Core är helt omprintad utan den rapporterade 0,20 mm förskjutningen** — denna felanmärkning gäller inte den nya Core
 - [ ] granska slicer bridges/unsupported geometry
 - [ ] inventera utskrifterna efter att användaren rapporterat platta 14/14: grundplattornas status, separat tool mount, Jackpot3-box och temporära struts verifieras var för sig.
 - [ ] printa **4 × temporära struts, 15 % infill** för första monteringen
@@ -88,6 +88,7 @@
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
 - [ ] första jogg 1 mm
+- [ ] mät och dokumentera slutliga kabellängder för X/Y0/Y1/Z0/Z1 (motor och NC-brytare var för sig) på färdigmonterad balk före kapning; använd mätprotokoll i `CABLE_ROUTING.md`
 - [ ] koppla 5 endstops NC via COM+NC
 - [ ] verifiera varje endstopstatus
 
