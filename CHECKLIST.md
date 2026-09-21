@@ -74,7 +74,8 @@
 - [ ] printa cyklon
 - [ ] ordna 15–30 l styv behållare
 - [ ] vakuumtesta behållare/lock kontrollerat
-- [ ] **testa redan ägd 38 mm poolslang före köp**: DeWalt-slangen är för kort, men användaren har poolslang hemma. Mät längd/inner- och ytterdiameter, provkör mot dammsugaren (kontrollera kollaps och flöde), printa eventuella adaptrar och testa X/Y/Z med upphängning/dragavlastning. Poolslang är normalt inte antistatisk. Köp längre sugslang endast om poolslangen inte fungerar.
+- [x] **Slang finns redan:** 4 meter 38 mm poolslang; användaren har använt den med DeWalt för att rengöra FTX-kanalerna. Inget nytt slanginköp behövs i nuläget. DeWalt-originalslang är för kort.
+- [ ] **Anpassa och verifiera sugslang på LowRider:** mät faktiska slangmått, printa adapter till Makita-dammskon, ordna upphängning/dragavlastning och prova full X/Y/Z-rörelse. Beakta att vanlig poolslang normalt inte är antistatisk.
 - [ ] bygg slangavlastning
 - [ ] lös statisk jordväg före XPS/reguljär MDF/trä-drift
 
