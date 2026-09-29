@@ -83,7 +83,7 @@ Tidigare plan: NVR + HDR fasta på bordet, Jackpot3 på rörlig balk och lång r
 ## D016 — Tillbaka till V1E:s placering av 24 V-aggregatet
 **Status:** beslutad plan; fysisk och elsäker monteringskontroll återstår
 
-NVR/maskinstopp sitter fast och åtkomligt på bordet. Jackpot3 samt Mean Well HDR-60-24 planeras på rörlig balk enligt V1E:s princip. Mean Well-aggregatet är inte identiskt med V1E:s exempel: verifiera lämplig kapsling/beröringsskydd, infästning, skyddsjord och dragavlastning innan 230 V ansluts. Ingen oskyddad nätspänningsplint på balken. Använd inte den långa 24 V-slingan från det gamla förslaget utan ett konkret monteringsbehov. Kontrollera fräskabel, aggregatets matning, motor/endstop och dammsugarslang samtidigt genom hela rörelseområdet. Den redan köpta 3 m 20 AWG-kabeln finns i BOM, men behöver inte användas i denna rutt.
+NVR/maskinstopp sitter fast och åtkomligt på bordet. Jackpot3 samt Mean Well HDR-60-24 planeras på rörlig balk enligt V1E:s princip. Mean Well-aggregatet är inte identiskt med V1E:s exempel: verifiera lämplig kapsling/beröringsskydd, DIN-infästning, ventilation och dragavlastning innan 230 V ansluts. HDR är klass II utan PE-plint; eventuell skyddsjord i övrig installation och slangjord hanteras separat. Ingen oskyddad nätspänningsplint på balken. Använd inte den långa 24 V-slingan från det gamla förslaget utan ett konkret monteringsbehov. Kontrollera fräskabel, aggregatets matning, motor/endstop och dammsugarslang samtidigt genom hela rörelseområdet. Den redan köpta 3 m 20 AWG-kabeln finns i BOM, men behöver inte användas i denna rutt.
 
 ## D013 — NVR/maskinstopp
 **Status:** låst
@@ -93,7 +93,7 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 ## D014 — Commissioning-dependencies
 **Status:** låst
 
-Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. Endstops är home/auto-square, inte runtime hard limits.
+Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
 ## D015 — Jackpot3 från Elecrow
 **Status:** **köpt 2026-09-03**

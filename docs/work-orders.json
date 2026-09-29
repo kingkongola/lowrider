@@ -1,6 +1,6 @@
 {
-  "version": "2026-09-21",
-  "notice": "Arbetsordrarna är en plan; lokal status uppdaterar inte SSOT. Tre 16T-remhjul mottagna 2026-09-21. Nya Core är omprintad utan tidigare 0,20 mm-förskjutning. Motorkablar är 1 m vardera; X-brytarens exakta kapmått är inte verifierat; dra från rullen utan kapning vid LR-08 och verifiera längden i LR-16. Separat Makita/65 mm-fäste kontrolleras i LR-00. Bekräftat av användaren: köpta cirka 4 mm mantlade endstop-kabeln går INTE igenom Core-tunneln; LR-08 måste kontrollera lokal avmantling/avlastning eller alternativ ledningsdragning.",
+  "version": "2026-09-29",
+  "notice": "Källgranskad 2026-09-29; fysiska kontroller återstår. T8 kräver provpassning före kap. Brytarkablar mäts en i taget i LR-16; använd dragtrådar vid tidigt montage. LR-16 före remspänning; LR-22 före motorprov. Läs om ändrade arbetskort även om de tidigare markerats klara lokalt.",
   "orders": [
     {
       "id": "LR-00",
@@ -156,12 +156,12 @@
       ],
       "needs": "Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, Tensility 10 m 3×26 AWG med cirka 4 mm ytterhölje (bekräftat för tjockt för Cores tunnel), liten kabelskalare, isolering och avlastning. Alternativt tunnare flexibel tvåledarkabel eller skyddad yttre rutt., idlers och skruvar. Öppna CABLE_ROUTING.md.",
       "steps": [
-        "**OBS: köpta mantlade kabeln (cirka 4 mm) får inte plats i Core-tunneln.** Mata INTE in den med våld och kapa inte på chans. Prova att enbart två individuellt isolerade innerledare ryms i den korta, fasta tunneln: skala försiktigt bort ytterhöljet **endast den sträcka som faktiskt behövs**, utan att skada ledarisoleringen, så att manteln slutar vid ett avlastat läge strax utanför Core. Kontrollera skavskydd och rörlig frigång. Om det inte går skyddat: använd tunnare flexibel tvåledarkabel eller säker yttre kabelväg. Märk X; brytaren använder COM + NC efter verifierad terminalmärkning, tredje ledaren isoleras. Kapa inte hela kabeln till slutlängd före LR-16; 250 cm var en obekräftad uppskattning.",
+        "**OBS: köpta mantlade kabeln (cirka 4 mm) får inte plats i Core-tunneln.** Mata INTE in den med våld och kapa inte på chans. Prova att enbart två individuellt isolerade innerledare ryms i den korta, fasta tunneln: skala försiktigt bort ytterhöljet **endast den sträcka som faktiskt behövs**, utan att skada ledarisoleringen, så att manteln slutar vid ett avlastat läge strax utanför Core. Kontrollera skavskydd och rörlig frigång. Om det inte går skyddat: använd tunnare flexibel tvåledarkabel eller säker yttre kabelväg. Märk X; brytaren använder COM + NC efter verifierad terminalmärkning, tredje ledaren isoleras. Kapa inte hela kabeln till slutlängd före LR-16; 250 cm var en obekräftad uppskattning. Om slutlig kabelväg inte kan mätas nu: lämna märkt dragtråd i tunneln och anslut kabeln vid LR-16. Kanalen ska förbli åtkomlig. En eventuell touchplate får egen ledning.",
         "Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.",
-        "Montera motorn och förbered X-remmen utan att kapa på chans.",
+        "Montera motorn och lägg i X-remmen redan nu: grovkap minst 1029 mm enligt kapplanen i manualens kapitel 0. Markera först även två Y-bitar à minst 1735 mm på hela rullen; om fördelningen inte ryms, stoppa före första klippet.",
         "Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln."
       ],
-      "accept": "X-brytarens ledning dragen och säkert skyddad genom Core eller verifierad yttre kabelväg, ingen ledarisolering skadad, kabeln avlastad utanför tunneln, motor/idlers/riktning enligt guide. Inga kaplängder antagna.",
+      "accept": "Core-kabelns passning och avlastning verifierad; märkt dragtråd får ersätta ej uppmätt kabel fram till LR-16. X-rem trädd, motor och idlers rätt monterade. Ingen okontrollerad kapning.",
       "report": "Foto på för trång 4 mm-kanal och vald lösning (delvis skalad mantel eller tunnare kabel/yttre rutt); ange eventuell skada på ledare, brytarkontakt och status övrig Core.",
       "manual": 1
     },
@@ -176,13 +176,13 @@
       ],
       "needs": "YZ_Min, tillhörande XZ-platta, två MGN12, Y-/Z-motor, brytare och hjul.",
       "steps": [
-        "Märk Y0- och Z0-kablar enligt maskinens faktiska orientering. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.",
-        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna.",
+        "Märk Y0/Z0 enligt faktisk orientering. Motorernas fasta kablar är 1 m. Prova brytarkabelns kanalpassning och lämna en märkt dragtråd per brytare i kanaler som senare blir oåtkomliga. Separata brytarkablar mäts och kapas en i taget vid LR-16; fem kablar kan inte sitta kvar på en enda rulle.",
+        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna. Trä sidans Y-rem runt remhjul och idlers nu, grovkap minst 1735 mm enligt kapitel 0. Kontrollera hela rullens fördelning innan något klipps; redan kapade och märkta bitar kapas inte igen.",
         "Montera Y-brytare med rätt armriktning; skydda armen mot bänkkanten.",
         "Rengör rälsbäddarna, montera skenor och XZ-platta löst och prova glidningen under stegvis åtdragning."
       ],
       "accept": "Min-sidans skenor och vagn rör sig lätt; eventuellt kvarvarande Z-/bakhjulsarbete tydligt noterat.",
-      "report": "Foton på orientering, fri rörelse och vad som inte hanns med. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.",
+      "report": "Foton på orientering och fri rörelse; märkning Y0/Z0, dragtrådar/kabelpassning och faktisk Y-remlängd. Ange vad som återstår.",
       "manual": 2
     },
     {
@@ -196,13 +196,13 @@
       ],
       "needs": "YZ_Max, motsvarande XZ-platta, två MGN12, motorer, brytare och hjul.",
       "steps": [
-        "Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.",
-        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare.",
+        "Märk Y1/Z1 enligt faktisk orientering. Motorernas fasta kablar är 1 m. Prova brytarkabelns kanalpassning och lämna en märkt dragtråd per brytare i kanaler som senare blir oåtkomliga. Separata brytarkablar mäts och kapas en i taget vid LR-16; fem kablar kan inte sitta kvar på en enda rulle.",
+        "Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare. Trä sidans Y-rem runt remhjul och idlers nu, grovkap minst 1735 mm enligt kapitel 0. Kontrollera hela rullens fördelning innan något klipps; redan kapade och märkta bitar kapas inte igen.",
         "Rensa skenbäddar; montera skenor och XZ-platta, dra stegvis och provför över hela rörelsen.",
         "Notera eventuella delar som återstår innan båda sidornas Z-mekanik kan slutföras."
       ],
       "accept": "Max-sidans skenor och vagn rör sig lätt; fel eller oavslutade moment dokumenterade.",
-      "report": "Foton på orientering, fri rörelse och avvikelser. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.",
+      "report": "Foton på orientering och fri rörelse; märkning Y1/Z1, dragtrådar/kabelpassning och faktisk Y-remlängd. Ange vad som återstår.",
       "manual": 2
     },
     {
@@ -216,10 +216,10 @@
       ],
       "needs": "Båda YZ-sidor, Z_Stub, Z_Nut, T8-spindel, 5→8-kopplingar och bakhjul.",
       "steps": [
-        "Montera Z-motorernas kopplingar och T8-mutter enligt originalbilderna.",
-        "Montera båda bakhjulen; kontrollera plan anliggning och att plasten inte kläms.",
-        "Montera Z_Stub vinkelrätt mot skruven; vrid Z för hand och kontrollera att det inte kärvar.",
-        "Ställ Z-brytarna så att de utlöser före mekaniskt ändläge. Mät därefter fysisk längd för varje T8-del; kapa bara efter verifierad frigång."
+        "Montera Z-motorernas kopplingar och förbered Z_Nut/Z_Stub. Provpassa den okapade T8-stången på en sida i taget, strömlöst på bänken med fri plats ovanför, enligt kapitel 0. Prova 150 mm-markeringen; kontrollera fullt mutteringrepp, Z-slag, brytarutlösning och frigång på båda sidor.",
+        "Dokumentera godkända längder innan kapning. Ta ur stången, mät från fabriksändarna och lägg sågspåren i mittresten. Kapa/avgrada enligt kapitel 0; 150 mm är inte godkänt förrän provpassningen är klar.",
+        "Slutmontera spindlar, muttrar och Z_Stub enligt bilderna. Vrid genom slaget för hand och kontrollera att inget kärvar. Montera bakhjulen med plan anliggning utan att klämma plasten.",
+        "Kontrollera på nytt att båda Z-brytarna utlöser före mekaniska stopp och att muttrarna har fullt gängingrepp genom avsett slag."
       ],
       "accept": "Båda Z-sidor går utan bindning och brytarna når sina lägen; spindellängder dokumenterade.",
       "report": "Bilder, brytarmarginal, uppmätta T8-längder och eventuell bindning.",
@@ -292,14 +292,15 @@
       "minutes": 60,
       "phase": "Mekanik",
       "deps": [
-        "LR-14"
+        "LR-14",
+        "LR-16"
       ],
-      "needs": "3 verifierade 16T-remhjul, idlers, 5 m GT2/10 mm-rem, Y-/X-remfästen.",
+      "needs": "De tre redan grovkapade och trädda GT2/10 mm-remmarna, Y-/X-remfästen och godkänd kabel-/slangdragning från LR-16.",
       "steps": [
-        "Kontrollera att samtliga remhjul och idlers sitter i linje innan remmen kapas.",
-        "Trä två Y-remmar och X-remmen enligt respektive bild; verifiera verklig längd innan definitiv kapning.",
-        "Fäst remändarna och spänn försiktigt enligt originalets riktvärde, inte hårdare.",
-        "För X och Y sakta för hand och kontrollera remspårning och frigång."
+        "Kontrollera att samtliga remhjul och idlers sitter i linje. Remmarna är redan trädda i LR-08/09/10; kapa inte tre nya bitar.",
+        "Fäst remändar och spännare enligt bilderna. Behåll överlängd utanför låsen under provningen.",
+        "Spänn försiktigt; V1E:s cirka 31 N gäller längsgående remkraft, inte en vikt hängd mitt på remmen. Låsöglorna runt M3 görs enligt originalet.",
+        "För X/Y sakta genom hela området och kontrollera remspårning, kablar och frigång. Putsa bara remsvansar utanför låsningen efter godkänt prov; lämna tänder och justermån."
       ],
       "accept": "Tre remmar i korrekt läge; inga idlers nyper och ingen rem vandrar.",
       "report": "Verkliga kaplängder, foto på alla remvägar och eventuell avvikelse.",
@@ -307,7 +308,7 @@
     },
     {
       "id": "LR-16",
-      "title": "Planera kablar, slang och elplacering",
+      "title": "Mät och färdigställ kablar, slang och elplacering",
       "minutes": 60,
       "phase": "El och damm",
       "deps": [
@@ -316,12 +317,12 @@
       "needs": "Jackpot3, HDR-60-24, KATSU, befintlig DeWalt-slang och rörlig balk.",
       "steps": [
         "Prova placeringen av Jackpot3 på balkens YZ_Min-sida.",
-        "Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.",
-        "Dra X-brytarens kabel via den passade och skyddade Core-övergången (eventuell tunnare kabel/yttre rutt) och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.",
-        "Flytta maskinen för hand till X_Min/X_Max, Y_Min/Y_Max och båda Z-ytterlägena. Kontrollera räckvidd och dragavlastning, notera bara vilken kabel som eventuellt är för kort. Fäst överlängd säkert; exakt nedklippning behövs inte och ingår inte som separat timjobb."
+        "Prova mekanisk placering av HDR-60-24 utan nätspänning. Följ dess DIN-infästning och ventilationskrav; aggregatet är klass II utan PE-plint och är ingen slangjordpunkt. Nätinstallationen verifieras i LR-22.",
+        "Mät först alla fem brytarrutter med snöre och kontrollera totalen mot återstående 10 m-rulle. Prova också motorernas 1 m-kablar. Lägg med fräskabel, HDR-matning och slang i slutliga avlastade lägen. Använd dragtrådarna och arbeta med en brytarkabel i taget.",
+        "Prova alla fyra hörn och Z-ytterlägen utan spänning. För varje brytarkabel: märk kap vid Jackpot3 inklusive anslutning/arbetsmån, kontrollera motsatt läge och kapa först därefter. Anteckna verklig längd i CABLE_ROUTING.md, isolera tredje ledaren och färdigställ alla fem passande kontakter. Förläng motorledningar endast vid uppmätt behov och kontrollera ledarordningen."
       ],
-      "accept": "Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.",
-      "report": "Foton på kabelvägar/fixpunkter vid ytterlägen. Ange om X-kabeln når hela rörelsevägen, om någon annan ledning är för kort, samt om 1 m motorledning kräver förlängning. Ingen nätspänningssättning.",
+      "accept": "Fem separat uppmätta brytarkablar med verifierade anslutningar och avlastning, motorernas räckvidd löst och slang/kablar fria genom hela rörelsen. Eventuella brister blockerar LR-15/20. Ingen nätspänningssättning.",
+      "report": "Foton vid ytterlägen; de fem kaplängderna, återstående kabel, kontaktlösning för alla fem brytare och eventuella motorförlängningar. Ingen nätspänningssättning.",
       "manual": 6
     },
     {
@@ -372,7 +373,7 @@
       "steps": [
         "Kontrollera kretskortets modell CQA240812C2 och eventuella transportsynliga skador.",
         "Inventera dataförande USB-C och microSD; notera om något saknas.",
-        "Jämför V1E:s aktuella testade FluidNC-version och LR4/Jackpot3-konfiguration; säkerhetskopiera eventuell befintlig config.",
+        "Jämför V1E:s aktuella testade FluidNC-version och LR4/Jackpot3-konfiguration; säkerhetskopiera eventuell befintlig config. Kontrollera även rörelse-/homingsträckor mot vårt 650 × 1250-bygge och faktiskt Z-slag; standardfilens maskinstorlek är inte automatiskt rätt.",
         "Utför endast tillverkarens avsedda flash-/konfigurationssteg med frånkopplade motorer och fräs; dokumentera uppstartsmeddelanden."
       ],
       "accept": "Versioner och config dokumenterade; enheten startar utan kända konfigurationsfel, eller specifikt fel rapporterat.",
@@ -407,7 +408,8 @@
       "deps": [
         "LR-15",
         "LR-19",
-        "LR-20"
+        "LR-20",
+        "LR-22"
       ],
       "needs": "Fem motorer, avlastade kablar, fri maskin och möjlighet att direkt bryta styrningen.",
       "steps": [
@@ -416,7 +418,7 @@
         "Jogg 1 mm i taget och kontrollera X+, Y+ och Z+ var för sig.",
         "Om riktningen stämmer, prova korta rörelser och därefter homing under uppsikt med fungerande brytare."
       ],
-      "accept": "Riktningar, motorpar och homing antingen verifierade eller blockering dokumenterad. Ingen skärning.",
+      "accept": "Motorpar, riktningar och homing faktiskt verifierade utan bindning. Ett dokumenterat fel innebär blockerad order, inte godkänd. Ingen skärning.",
       "report": "Status per axel och brytare, ljud/bindning och eventuella fel.",
       "manual": 7
     },
@@ -431,11 +433,11 @@
       "needs": "Verklig NVR-enhet om köpt, HDR-60-24, tillhörande tillverkardokumentation och kapsling.",
       "steps": [
         "Dokumentera NVR-modell och märkning eller att enheten ännu inte är köpt.",
-        "Verifiera att lösningen ger beröringsskydd för HDR:s nätplintar samt mekaniskt säker infästning på balken.",
+        "Verifiera att lösningen ger beröringsskydd för HDR:s nätplintar samt mekaniskt säker infästning på balken. Följ Mean Wells installationsmanual; HDR har ingen PE-plint. Kontrollera 24 V och polaritet utan Jackpot3 inkopplat; bryt innan anslutning.",
         "Gå igenom skyddsjord, kabeltyp, kabelgenomföring och dragavlastning med en elkunnig person.",
         "Låt behörig/kompetent person utföra och verifiera faktisk 230 V-koppling. Testa återstartsskydd med fräsen frånkopplad när anläggningen är färdig."
       ],
-      "accept": "Antingen verifierad säker installation med dokumenterat maskinstopp eller spärrad elinstallation med exakt åtgärd.",
+      "accept": "Verifierad säker nätinstallation med dokumenterad kontroll och fungerande maskinstopp/återstartsskydd. Öppen brist betyder blockerad; HDR får inte spänningssättas.",
       "report": "Modell, kapslingsfoto, verifieringsstatus och eventuella öppna säkerhetsfrågor.",
       "manual": 8
     },
@@ -473,7 +475,7 @@
       "steps": [
         "Välj ett enkelt litet provjobb. Kontrollera fräshylsans passning och verktygets uppspänning med fräsen urkopplad.",
         "Välj material och försiktiga skärdata enligt verktygets rekommendationer; skriv ut eller visa förhandsgranskad verktygsbana.",
-        "Säkerställ att klämmor, skruvar och nollpunkt ligger utanför banan.",
+        "Kontrollera millimeter, arbetsnollpunkt, säker Z, maxdjup och klämmornas/skruvarnas lägen. Lägg offermaterial under genomskärning redan nu. KATSU startas/stoppas manuellt; M3/M5 garanterar ingen styrning av den.",
         "Gör en simulering och luftkörning med fräsen avstängd. Börja inte skära om NVR/damm/infästning saknas."
       ],
       "accept": "Förhandsgranskad och luftkörd liten verktygsbana, färdig för skärning.",
@@ -510,7 +512,7 @@
       ],
       "needs": "V1E:s strutgenerator, CAD/CAM, 5–6 mm MDF/hårdboard och uppmätta balkmått.",
       "steps": [
-        "Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar.",
+        "Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar. Generatorns cirka 0,5 mm underlängd är avsiktlig. Lägg långsidan längs Y: cirka 819 mm ryms inte i X=650 mm. Kontrollera hela verktygsbanan inom uppmätt rörelseområde.",
         "Generera främre och undre stagplatta; spara fil och skärmlägg måtten.",
         "Importera i millimeter och kontrollera riktning, materialtjocklek, hålbild och passform.",
         "Planera hål före ytterkontur, hållflikar och säker fastspänning. Kör simulering utan att skära."

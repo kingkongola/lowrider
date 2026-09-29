@@ -134,3 +134,10 @@
 - Användaren har faktiskt provat den levererade **Tensility 30-00377, 3×26 AWG med cirka 4 mm svart mantel**: **den går inte genom Cores kabeltunnel**. Detta är inte längre en hypotetisk kontroll. Vårt kabelval var dåligt avstämt mot Core.
 - Inget har kapats enligt användaren. Praktisk åtgärd att prova utan nytt inköp: avlägsna den svarta ytterkappan **bara över den korta trånga kanalens faktiska längd**, låt två individuellt isolerade ledare passera om de går fritt, behåll svart mantel på den yttre rörliga delen, ge mantelavslutningen dragavlastning och skydd mot skav. Ingen skadad ledarisolering får användas. Om detta inte fungerar skyddat: tunnare flexibel tvåledarkabel eller säker alternativ extern rutt.
 - Kontrollera att den mantlade kabeln inte heller kolliderar med YZ-kanalerna innan någon kompletteringsorder görs. Endstopens slutliga längder och kontaktdon återstår att verifiera.
+
+
+## 2026-09-29 – dokumentgranskning inför kapning och bygge
+
+Svenska manualen och webbtexten har granskats mot V1E:s aktuella LR4-kalkylator, monteringsmanual, Jackpot3-dokumentation och Mean Wells HDR-underlag. Rörgeometrin bekräftad i kalkylatorkoden. Ovillkorlig T8-kapning till 150 mm återtagen till fysisk provpassning enligt D014; remmarginal och sågspår förtydligade. Kabelrullens fördelning och arbetsordningen rättad, inklusive LR-16 före LR-15 och LR-22 före LR-21. Separat granskningsprotokoll: [AUDIT_2026-09-29.md](AUDIT_2026-09-29.md).
+
+Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontroller, inköp eller leveranser har bockats av. Ändringarna är ännu inte publicerade på GitHub Pages.

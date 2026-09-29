@@ -1,6 +1,6 @@
 # Systemaudit
 
-**Current 2026-09-21.** Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
+**Current 2026-09-29.** Dokumentgranskning: [AUDIT_2026-09-29.md](AUDIT_2026-09-29.md). Ingen fysisk gate har godkänts genom textgranskningen. Den här filen innehåller stabila system-/fysiska gates. Flyktiga priser och lager hör hemma i `PROCUREMENT.md`/`SOURCING.md`; faktisk kostnad i `COSTS.md`.
 
 ## Samlad bedömning
 
@@ -17,19 +17,19 @@ Grundarkitekturen håller:
 
 Ingen audit kräver ändrad maskingeometri.
 
-## Mekanik — verifierat
+## Mekanik — källkontrollerade specifikationer, fysisk kontroll återstår
 
 - X-rör 816 mm ×2
 - Y-rör 1505 mm
 - strut 819, `front_wing_size=30`
-- GT2 999 / 1705 / 1705 = 4409 mm
+- GT2 beräknat 999 / 1705 / 1705 = 4409 mm. Projektets grovkapning med extra marginal: minst 1029 / 1735 / 1735 mm; kontrollera hela rullen före första klippet
 - 3 × GT2 16T, beställd spec 5 mm hål och 10 mm rem — **mottagna 2026-09-21**. Fysisk variant/passning ska fortfarande mätas före montering.
 - 6 × smooth idler, 5 mm hole, 10 mm belt
 - 14 × 608-2RS installeras + 2 reserv
 - T8×8, 4-start, 8 mm lead
 - T8 400 mm kapas efter assembly-check; ~150–160 mm ×2 praktiskt mål
 
-## Print — verifierat
+## Print — krav att verifiera på delarna
 
 P1S 256³ är tillräcklig. Före full sats:
 - senaste LR4-filer
@@ -52,10 +52,10 @@ Endstops är home/auto-square och **inte runtime hard limits**.
 
 ## 24 V och kabelrörelse
 
-**Kabelpassning och längd:** se `CABLE_ROUTING.md`. **Användaren har konstaterat att Tensility 3×26 AWG-kabelns cirka 4 mm mantel inte går genom Core-tunneln.** Passningsfel är aktivt; prova lokal avmantling med isolerade innerledare och skavskydd/avlastning eller tunnare flexibel tvåledarkabel/yttre säker rutt. Kontrollera också YZ-kanaler innan inköp. X-brytarens kaplängd är inte verifierad; tidigare 250 cm har dragits tillbaka. Full rörelseprov i LR-16 före kapning. Fem motorkablar är 1 m var; övrigt: 3 m 2×20 AWG för eventuell kort 24 V-matning, 3 × 150 mm 2-poliga pigtails. Kontrollera kontaktantal och kabelns dynamiska lämplighet.
+**Kabelpassning och längd:** se `CABLE_ROUTING.md`. **Användaren har konstaterat att Tensility 3×26 AWG-kabelns cirka 4 mm mantel inte går genom Core-tunneln.** Passningsfel är aktivt; prova lokal avmantling med isolerade innerledare och skavskydd/avlastning eller tunnare flexibel tvåledarkabel/yttre säker rutt. Kontrollera också YZ-kanaler innan inköp. X-brytarens kaplängd är inte verifierad; tidigare 250 cm har dragits tillbaka. Förbered kanaler med dragtråd; mät först fem rutter och färdigställ en kabel i taget i LR-16 efter full rörelseprov. Fem motorkablar är 1 m var; övrigt: 3 m 2×20 AWG för eventuell kort 24 V-matning, 3 × 150 mm 2-poliga pigtails. Kontrollera kontaktantal och kabelns dynamiska lämplighet.
 
 Aktuell plan enligt D016: HDR-60-24 och Jackpot3 följer balken, med kort 24 V-matning mellan dem. Den tidigare långa rörliga 24 V-rutten är inte längre grundlösningen.
-- verifiera balkens infästning, beröringsskydd/kapsling av 230 V-plintar, skyddsjordning och dragavlastning för vårt specifika DIN-aggregat
+- verifiera balkens DIN-infästning, beröringsskydd/kapsling av 230 V-plintar, ventilation och dragavlastning för vårt specifika aggregat; HDR är klass II utan PE-plint
 - förlägg nätmatningen till aggregatet säkert tillsammans med fräskabeln enligt fysisk full-travel-kontroll
 - den redan köpta 3 m 20 AWG-kabeln är reserv/längdmarginal, inte något som måste installeras
 
@@ -68,6 +68,8 @@ Före slutliga clips/remspänning ska följande vara samtidigt monterat och test
 Inget får sträckas, kinka, bära kontaktlast eller falla in i rörelsezonen.
 
 ## 230 V
+
+LR-22 ska vara godkänd innan HDR används, även före första motorprovet. HDR-60-24 saknar PE-plint; skyddsjord och slangjord får inte improviseras via dess DC-minus. Följ [Mean Wells installationsmanual](https://www.meanwell.com/Upload/PDF/HDR%20DIN%20rail%20power%20supply.pdf).
 
 - NVR/maskinstopp ska vara direkt nåbar.
 - exakt terminalschema för levererad NVR ska följas.

@@ -39,6 +39,8 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 ## Monteringsguide
 
+**Granskning 2026-09-29:** [resultat och öppna byggkontroller](AUDIT_2026-09-29.md). Rörgeometrin är omkontrollerad; T8 kräver provpassning före kap, kablar mäts en i taget och LR-22 ska godkännas före motorprov. Beräknade remlängder nedan skiljs från extra grovkapmarginal i manualen.
+
 - [`docs/MONTERING_SV.md`](docs/MONTERING_SV.md) — svensk, utökad monteringsguide för den faktiska LR4-konfigurationen med **Jackpot3**. Läs tillsammans med V1E:s originalbilder; guiden ersätter inte kanoniska beslut eller checklistan.
 - [Publicerad guide och arbetsordrar](https://kingkongola.github.io/lowrider/) — originalbilder inline, 30 entimmespass och kopierbar återrapport. Lokal status på webbplatsen synkas inte automatiskt med repot.
 - `research/` — historisk evidens. Top-level-filerna ovan supersederar research vid konflikt.

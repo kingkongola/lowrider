@@ -56,9 +56,9 @@
 ## 6. Mekanik
 
 - [ ] montera gantry/Y/Z
-- [ ] kapa T8 efter verklig assembly-check, cirka 150–160 mm ×2
+- [ ] provpassa T8 på båda YZ-sidorna före kapning enligt manualens kapitel 0; 150 mm är provmått, D014:s 150–160 mm är inte automatiskt godkänt
 - [ ] kontrollera lätt Z-rörelse utan binding
-- [ ] kapa 5 m-remmen först när routing verifierats; målsegment 999 / 1705 / 1705 mm
+- [ ] kontrollera hela 5 m-rullens fördelning före första klippet: V1E beräknat 999 / 1705 / 1705 mm; vår extra grovkapmarginal ger minst 1029 / 1735 / 1735 mm. Trä remmar i LR-08/09/10; slutspänn efter LR-16
 - [ ] montera 16T/rem/idlers
 - [ ] montera KATSU `101750` i Makita/65 mm mount
 - [ ] provpassa Elaire-collet
@@ -85,11 +85,11 @@
 - [ ] inventera FAT32 microSD >2 GB
 - [ ] när Jackpot3 anländer: kontrollera transportskada/korrekt kort
 - [ ] montera Jackpot3 luftigt på rörlig beam/YZ_Min-sida
-- [ ] provplacera även HDR-60-24 på balken; verifiera skyddad 230 V-anslutning, PE, kapsling, mekanisk infästning och dragavlastning innan anslutning
+- [ ] provplacera även HDR-60-24 på balken; verifiera skyddad 230 V-anslutning, kapsling, DIN-infästning, ventilation och dragavlastning innan anslutning; HDR är klass II utan PE-plint
 - [ ] flasha V1E:s då aktuellt testade FluidNC + rätt LR4-config
 - [ ] koppla motorer
-- [ ] första jogg 1 mm
-- [ ] **LR-08: BEKRÄFTAT PASSNINGSFEL:** köpta 3×26 AWG-kabelns cirka Ø4 mm mantel går inte genom Core. **Tvinga inte in den.** Prova individuellt isolerade innerledare enbart genom tunneln med oskadad isolering, avlastad mantel utanför och skavskydd; alternativt tunnare flexibel tvåledarkabel/skyddad yttre dragning. Kontrollera även YZ-kanalernas passning. Mata från 10 m-rullen utan slutkapning. **250 cm är inte verifierat kapmått.** LR-16: kontrollera full rörelse och kapa först efter faktisk dragning.
+- [ ] första jogg 1 mm först efter godkänd nätmatning/stopp (LR-22), kabeldragning och brytarprov
+- [ ] **LR-08: BEKRÄFTAT PASSNINGSFEL:** köpta 3×26 AWG-kabelns cirka Ø4 mm mantel går inte genom Core. **Tvinga inte in den.** Prova individuellt isolerade innerledare enbart genom tunneln med oskadad isolering, avlastad mantel utanför och skavskydd; alternativt tunnare flexibel tvåledarkabel/skyddad yttre dragning. Kontrollera även YZ-kanalernas passning. Förbered med märkt dragtråd om kabelvägen ännu inte är mätbar; vid LR-16 mäts och kapas en brytarkabel i taget från rullen. **250 cm är inte verifierat kapmått.** LR-16: kontrollera full rörelse och kapa först efter faktisk dragning.
 - [ ] koppla 5 endstops NC via COM+NC
 - [ ] verifiera varje endstopstatus
 

@@ -1,6 +1,6 @@
 # Arbetsordrar — LowRider 4
 
-**Version 2026-09-21.** Delbara kvällspass på cirka 45–60 minuter. Nya Core är omprintad utan den tidigare 0,20 mm-förskjutningen. Kablarna måttas enligt [CABLE_ROUTING.md](CABLE_ROUTING.md) före kapning i LR-16. Ordning och beroenden är vägledning; välj ett pass vars förutsättningar finns. **Status i denna fil är inte automatisk:** allt är initialt *ej verifierat*, även om användaren kan ha börjat med något. Rapportera faktisk status innan vi markerar en order klar. Remhjulen är mottagna 2026-09-21; de ska ändå kontrolleras fysiskt i LR-02.
+**Version 2026-09-29.** Delbara kvällspass på cirka 45–60 minuter. Nya Core är omprintad utan den tidigare 0,20 mm-förskjutningen. Kablarna måttas enligt [CABLE_ROUTING.md](CABLE_ROUTING.md) före kapning i LR-16. Välj ett pass vars förutsättningar är uppfyllda. Gör LR-16 före LR-15 och godkänn LR-22 före motorprov. Ett dokumenterat fel räknas som blockering, inte som godkänt resultat. Läs om ändrade arbetskort även om de tidigare markerats klara lokalt. **Status i denna fil är inte automatisk:** allt är initialt *ej verifierat*, även om användaren kan ha börjat med något. Rapportera faktisk status innan vi markerar en order klar. Remhjulen är mottagna 2026-09-21; de ska ändå kontrolleras fysiskt i LR-02.
 
 **Så använder vi systemet:** välj `LR-xx`, utför arbetet, skicka tillbaka ID + `klar | delvis | blockerad` + faktiska mått/foton/avvikelser. Jag granskar och uppdaterar `WORK_ORDERS.md`, `CHECKLIST.md` och `BUILD_LOG.md` vid behov efter din rapport. Webbsidans lokala markeringar skickas inte automatiskt hit. Tider är uppskattningar, inte tidskrav. Om det behövs mer tid, avbryt vid ett säkert mellanläge och dela upp arbetet.
 
@@ -27,13 +27,13 @@
 | LR-12 | Bygg balk med temporära stag | 60 min | LR-01, LR-06 | Ej verifierad |
 | LR-13 | Förena balk, Core och YZ | 60 min | LR-08, LR-11, LR-12 | Ej verifierad |
 | LR-14 | Slutplacera remhållare och Y-skena | 60 min | LR-05, LR-13 | Ej verifierad |
-| LR-15 | Trä och spänn tre remmar | 60 min | LR-14 | Ej verifierad |
-| LR-16 | Planera kablar, slang och elplacering | 60 min | LR-13 | Ej verifierad |
+| LR-15 | Trä och spänn tre remmar | 60 min | LR-14, LR-16 | Ej verifierad |
+| LR-16 | Mät och färdigställ kablar, slang och elplacering | 60 min | LR-13 | Ej verifierad |
 | LR-17 | Bygg dammskons mekaniska del | 60 min | LR-01 | Ej verifierad |
 | LR-18 | Planera cyklon och uppsamlingskärl | 60 min | Inga | Ej verifierad |
 | LR-19 | Jackpot3: installation och konfiguration | 60 min | LR-02 | Ej verifierad |
 | LR-20 | Koppla och prova fem brytare | 60 min | LR-19, LR-16 | Ej verifierad |
-| LR-21 | Första försiktiga motorprov | 60 min | LR-15, LR-19, LR-20 | Ej verifierad |
+| LR-21 | Första försiktiga motorprov | 60 min | LR-15, LR-19, LR-20, LR-22 | Ej verifierad |
 | LR-22 | Kontrollera 230 V-upplägg och maskinstopp | 60 min | LR-16 | Ej verifierad |
 | LR-23 | Torrkör hela rörelseområdet | 60 min | LR-21, LR-22, LR-16 | Ej verifierad |
 | LR-24 | Gör CAM för första provskärningen | 60 min | LR-23, LR-17 | Ej verifierad |
@@ -188,12 +188,12 @@
 
 **Ta fram:** Ny omprintad Core, X-motor med fast 1 m kabel, ett verifierat 16T-remhjul, X-brytare, Tensility 10 m 3×26 AWG med cirka 4 mm ytterhölje (bekräftat för tjockt för Cores tunnel), liten kabelskalare, isolering och avlastning. Alternativt tunnare flexibel tvåledarkabel eller skyddad yttre rutt., idlers och skruvar. Öppna CABLE_ROUTING.md.
 
-1. **OBS: köpta mantlade kabeln (cirka 4 mm) får inte plats i Core-tunneln.** Mata INTE in den med våld och kapa inte på chans. Prova att enbart två individuellt isolerade innerledare ryms i den korta, fasta tunneln: skala försiktigt bort ytterhöljet **endast den sträcka som faktiskt behövs**, utan att skada ledarisoleringen, så att manteln slutar vid ett avlastat läge strax utanför Core. Kontrollera skavskydd och rörlig frigång. Om det inte går skyddat: använd tunnare flexibel tvåledarkabel eller säker yttre kabelväg. Märk X; brytaren använder COM + NC efter verifierad terminalmärkning, tredje ledaren isoleras. Kapa inte hela kabeln till slutlängd före LR-16; 250 cm var en obekräftad uppskattning.
+1. **OBS: köpta mantlade kabeln (cirka 4 mm) får inte plats i Core-tunneln.** Mata INTE in den med våld och kapa inte på chans. Prova att enbart två individuellt isolerade innerledare ryms i den korta, fasta tunneln: skala försiktigt bort ytterhöljet **endast den sträcka som faktiskt behövs**, utan att skada ledarisoleringen, så att manteln slutar vid ett avlastat läge strax utanför Core. Kontrollera skavskydd och rörlig frigång. Om det inte går skyddat: använd tunnare flexibel tvåledarkabel eller säker yttre kabelväg. Märk X; brytaren använder COM + NC efter verifierad terminalmärkning, tredje ledaren isoleras. Kapa inte hela kabeln till slutlängd före LR-16; 250 cm var en obekräftad uppskattning. Om slutlig kabelväg inte kan mätas nu: lämna märkt dragtråd i tunneln och anslut kabeln vid LR-16. Kanalen ska förbli åtkomlig. En eventuell touchplate får egen ledning.
 2. Rikta 16T-remhjulet med Cores inbyggda guide. Dra stoppskruven mot axelns plana sida först.
-3. Montera motorn och förbered X-remmen utan att kapa på chans.
+3. Montera motorn och lägg i X-remmen redan nu: grovkap minst 1029 mm enligt kapplanen i manualens kapitel 0. Markera först även två Y-bitar à minst 1735 mm på hela rullen; om fördelningen inte ryms, stoppa före första klippet.
 4. Montera idlers så att de roterar mycket fritt; fotografera Core. Notera att X-motorns kabel redan är 1 m. **Om det inte räcker i provdragningen efter LR-13 ska en kompatibel förlängning måttas enligt CABLE_ROUTING.md** – korta inte originalkabeln.
 
-**Godkänt när:** X-brytarens ledning dragen och säkert skyddad genom Core eller verifierad yttre kabelväg, ingen ledarisolering skadad, kabeln avlastad utanför tunneln, motor/idlers/riktning enligt guide. Inga kaplängder antagna.
+**Godkänt när:** Core-kabelns passning och avlastning verifierad; märkt dragtråd får ersätta ej uppmätt kabel fram till LR-16. X-rem trädd, motor och idlers rätt monterade. Ingen okontrollerad kapning.
 
 **Återrapportera:** Foto på för trång 4 mm-kanal och vald lösning (delvis skalad mantel eller tunnare kabel/yttre rutt); ange eventuell skada på ledare, brytarkontakt och status övrig Core.
 
@@ -205,14 +205,14 @@
 
 **Ta fram:** YZ_Min, tillhörande XZ-platta, två MGN12, Y-/Z-motor, brytare och hjul.
 
-1. Märk Y0- och Z0-kablar enligt maskinens faktiska orientering. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.
-2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna.
+1. Märk Y0/Z0 enligt faktisk orientering. Motorernas fasta kablar är 1 m. Prova brytarkabelns kanalpassning och lämna en märkt dragtråd per brytare i kanaler som senare blir oåtkomliga. Separata brytarkablar mäts och kapas en i taget vid LR-16; fem kablar kan inte sitta kvar på en enda rulle.
+2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul och främre hjul enligt bilderna. Trä sidans Y-rem runt remhjul och idlers nu, grovkap minst 1735 mm enligt kapitel 0. Kontrollera hela rullens fördelning innan något klipps; redan kapade och märkta bitar kapas inte igen.
 3. Montera Y-brytare med rätt armriktning; skydda armen mot bänkkanten.
 4. Rengör rälsbäddarna, montera skenor och XZ-platta löst och prova glidningen under stegvis åtdragning.
 
 **Godkänt när:** Min-sidans skenor och vagn rör sig lätt; eventuellt kvarvarande Z-/bakhjulsarbete tydligt noterat.
 
-**Återrapportera:** Foton på orientering, fri rörelse och vad som inte hanns med. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.
+**Återrapportera:** Foton på orientering och fri rörelse; märkning Y0/Z0, dragtrådar/kabelpassning och faktisk Y-remlängd. Ange vad som återstår.
 
 **Bildguide:** [Svenska manualen, kapitel 3](https://kingkongola.github.io/lowrider/#2).
 
@@ -222,14 +222,14 @@
 
 **Ta fram:** YZ_Max, motsvarande XZ-platta, två MGN12, motorer, brytare och hjul.
 
-1. Märk Y1- och Z1-kablar och verifiera spegelvänd orientering mot manualen. Båda motorernas fabriksanslutna kablar är **1 m vardera**. Använd separat ledning för respektive NC-brytare ur den totalt 10 m långa 3×26 AWG-rullen; märk båda ändarna och **kapa inte till slutlängd ännu**. Dra dem genom sidoplattans kanaler, kontrollera fri Z-rörelse och gör slutlig längdmätning i LR-16.
-2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare.
+1. Märk Y1/Z1 enligt faktisk orientering. Motorernas fasta kablar är 1 m. Prova brytarkabelns kanalpassning och lämna en märkt dragtråd per brytare i kanaler som senare blir oåtkomliga. Separata brytarkablar mäts och kapas en i taget vid LR-16; fem kablar kan inte sitta kvar på en enda rulle.
+2. Montera Z-brytare, Y-motor med verifierat 16T-remhjul, framhjul och Y-brytare. Trä sidans Y-rem runt remhjul och idlers nu, grovkap minst 1735 mm enligt kapitel 0. Kontrollera hela rullens fördelning innan något klipps; redan kapade och märkta bitar kapas inte igen.
 3. Rensa skenbäddar; montera skenor och XZ-platta, dra stegvis och provför över hela rörelsen.
 4. Notera eventuella delar som återstår innan båda sidornas Z-mekanik kan slutföras.
 
 **Godkänt när:** Max-sidans skenor och vagn rör sig lätt; fel eller oavslutade moment dokumenterade.
 
-**Återrapportera:** Foton på orientering, fri rörelse och avvikelser. Ange kabelväg och status för 1 m Y-/Z-motorkablar; brytarkablar ännu inte kapade.
+**Återrapportera:** Foton på orientering och fri rörelse; märkning Y1/Z1, dragtrådar/kabelpassning och faktisk Y-remlängd. Ange vad som återstår.
 
 **Bildguide:** [Svenska manualen, kapitel 3](https://kingkongola.github.io/lowrider/#2).
 
@@ -239,10 +239,10 @@
 
 **Ta fram:** Båda YZ-sidor, Z_Stub, Z_Nut, T8-spindel, 5→8-kopplingar och bakhjul.
 
-1. Montera Z-motorernas kopplingar och T8-mutter enligt originalbilderna.
-2. Montera båda bakhjulen; kontrollera plan anliggning och att plasten inte kläms.
-3. Montera Z_Stub vinkelrätt mot skruven; vrid Z för hand och kontrollera att det inte kärvar.
-4. Ställ Z-brytarna så att de utlöser före mekaniskt ändläge. Mät därefter fysisk längd för varje T8-del; kapa bara efter verifierad frigång.
+1. Montera Z-motorernas kopplingar och förbered Z_Nut/Z_Stub. Provpassa den okapade T8-stången på en sida i taget, strömlöst på bänken med fri plats ovanför, enligt kapitel 0. Prova 150 mm-markeringen; kontrollera fullt mutteringrepp, Z-slag, brytarutlösning och frigång på båda sidor.
+2. Dokumentera godkända längder innan kapning. Ta ur stången, mät från fabriksändarna och lägg sågspåren i mittresten. Kapa/avgrada enligt kapitel 0; 150 mm är inte godkänt förrän provpassningen är klar.
+3. Slutmontera spindlar, muttrar och Z_Stub enligt bilderna. Vrid genom slaget för hand och kontrollera att inget kärvar. Montera bakhjulen med plan anliggning utan att klämma plasten.
+4. Kontrollera på nytt att båda Z-brytarna utlöser före mekaniska stopp och att muttrarna har fullt gängingrepp genom avsett slag.
 
 **Godkänt när:** Båda Z-sidor går utan bindning och brytarna når sina lägen; spindellängder dokumenterade.
 
@@ -303,14 +303,14 @@
 
 ### LR-15 — Trä och spänn tre remmar
 
-**Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-14 · **Status:** ej verifierad
+**Tid:** cirka 60 min · **Fas:** Mekanik · **Beroenden:** LR-14, LR-16 · **Status:** ej verifierad
 
-**Ta fram:** 3 verifierade 16T-remhjul, idlers, 5 m GT2/10 mm-rem, Y-/X-remfästen.
+**Ta fram:** De tre redan grovkapade och trädda GT2/10 mm-remmarna, Y-/X-remfästen och godkänd kabel-/slangdragning från LR-16.
 
-1. Kontrollera att samtliga remhjul och idlers sitter i linje innan remmen kapas.
-2. Trä två Y-remmar och X-remmen enligt respektive bild; verifiera verklig längd innan definitiv kapning.
-3. Fäst remändarna och spänn försiktigt enligt originalets riktvärde, inte hårdare.
-4. För X och Y sakta för hand och kontrollera remspårning och frigång.
+1. Kontrollera att samtliga remhjul och idlers sitter i linje. Remmarna är redan trädda i LR-08/09/10; kapa inte tre nya bitar.
+2. Fäst remändar och spännare enligt bilderna. Behåll överlängd utanför låsen under provningen.
+3. Spänn försiktigt; V1E:s cirka 31 N gäller längsgående remkraft, inte en vikt hängd mitt på remmen. Låsöglorna runt M3 görs enligt originalet.
+4. För X/Y sakta genom hela området och kontrollera remspårning, kablar och frigång. Putsa bara remsvansar utanför låsningen efter godkänt prov; lämna tänder och justermån.
 
 **Godkänt när:** Tre remmar i korrekt läge; inga idlers nyper och ingen rem vandrar.
 
@@ -318,20 +318,20 @@
 
 **Bildguide:** [Svenska manualen, kapitel 6](https://kingkongola.github.io/lowrider/#5).
 
-### LR-16 — Planera kablar, slang och elplacering
+### LR-16 — Mät och färdigställ kablar, slang och elplacering
 
 **Tid:** cirka 60 min · **Fas:** El och damm · **Beroenden:** LR-13 · **Status:** ej verifierad
 
 **Ta fram:** Jackpot3, HDR-60-24, KATSU, befintlig DeWalt-slang och rörlig balk.
 
 1. Prova placeringen av Jackpot3 på balkens YZ_Min-sida.
-2. Prova möjlig placering av HDR-60-24 på balken, utan nätspänningsinkoppling. Identifiera behov av kapsling, PE och dragavlastning.
-3. Dra X-brytarens kabel via den passade och skyddade Core-övergången (eventuell tunnare kabel/yttre rutt) och övriga brytarkablar enligt verkliga kanaler. Prova alla fem motorkablar (1 m från fabrik). Lägg samtidigt fräskabel, tänkt nätmatning till HDR och dammsugarslang; dra allt till sin slutliga avlastade placering utan att ansluta 230 V.
-4. Flytta maskinen för hand till X_Min/X_Max, Y_Min/Y_Max och båda Z-ytterlägena. Kontrollera räckvidd och dragavlastning, notera bara vilken kabel som eventuellt är för kort. Fäst överlängd säkert; exakt nedklippning behövs inte och ingår inte som separat timjobb.
+2. Prova mekanisk placering av HDR-60-24 utan nätspänning. Följ dess DIN-infästning och ventilationskrav; aggregatet är klass II utan PE-plint och är ingen slangjordpunkt. Nätinstallationen verifieras i LR-22.
+3. Mät först alla fem brytarrutter med snöre och kontrollera totalen mot återstående 10 m-rulle. Prova också motorernas 1 m-kablar. Lägg med fräskabel, HDR-matning och slang i slutliga avlastade lägen. Använd dragtrådarna och arbeta med en brytarkabel i taget.
+4. Prova alla fyra hörn och Z-ytterlägen utan spänning. För varje brytarkabel: märk kap vid Jackpot3 inklusive anslutning/arbetsmån, kontrollera motsatt läge och kapa först därefter. Anteckna verklig längd i CABLE_ROUTING.md, isolera tredje ledaren och färdigställ alla fem passande kontakter. Förläng motorledningar endast vid uppmätt behov och kontrollera ledarordningen.
 
-**Godkänt när:** Säker fysisk kabelplan med avlastade fästpunkter och konfliktlista. Inga ledningar är slutkapade eller nätspänningssatta.
+**Godkänt när:** Fem separat uppmätta brytarkablar med verifierade anslutningar och avlastning, motorernas räckvidd löst och slang/kablar fria genom hela rörelsen. Eventuella brister blockerar LR-15/20. Ingen nätspänningssättning.
 
-**Återrapportera:** Foton på kabelvägar/fixpunkter vid ytterlägen. Ange om X-kabeln når hela rörelsevägen, om någon annan ledning är för kort, samt om 1 m motorledning kräver förlängning. Ingen nätspänningssättning.
+**Återrapportera:** Foton vid ytterlägen; de fem kaplängderna, återstående kabel, kontaktlösning för alla fem brytare och eventuella motorförlängningar. Ingen nätspänningssättning.
 
 **Bildguide:** [Svenska manualen, kapitel 7](https://kingkongola.github.io/lowrider/#6).
 
@@ -377,7 +377,7 @@
 
 1. Kontrollera kretskortets modell CQA240812C2 och eventuella transportsynliga skador.
 2. Inventera dataförande USB-C och microSD; notera om något saknas.
-3. Jämför V1E:s aktuella testade FluidNC-version och LR4/Jackpot3-konfiguration; säkerhetskopiera eventuell befintlig config.
+3. Jämför V1E:s aktuella testade FluidNC-version och LR4/Jackpot3-konfiguration; säkerhetskopiera eventuell befintlig config. Kontrollera även rörelse-/homingsträckor mot vårt 650 × 1250-bygge och faktiskt Z-slag; standardfilens maskinstorlek är inte automatiskt rätt.
 4. Utför endast tillverkarens avsedda flash-/konfigurationssteg med frånkopplade motorer och fräs; dokumentera uppstartsmeddelanden.
 
 **Godkänt när:** Versioner och config dokumenterade; enheten startar utan kända konfigurationsfel, eller specifikt fel rapporterat.
@@ -405,7 +405,7 @@
 
 ### LR-21 — Första försiktiga motorprov
 
-**Tid:** cirka 60 min · **Fas:** Styrning · **Beroenden:** LR-15, LR-19, LR-20 · **Status:** ej verifierad
+**Tid:** cirka 60 min · **Fas:** Styrning · **Beroenden:** LR-15, LR-19, LR-20, LR-22 · **Status:** ej verifierad
 
 **Ta fram:** Fem motorer, avlastade kablar, fri maskin och möjlighet att direkt bryta styrningen.
 
@@ -414,7 +414,7 @@
 3. Jogg 1 mm i taget och kontrollera X+, Y+ och Z+ var för sig.
 4. Om riktningen stämmer, prova korta rörelser och därefter homing under uppsikt med fungerande brytare.
 
-**Godkänt när:** Riktningar, motorpar och homing antingen verifierade eller blockering dokumenterad. Ingen skärning.
+**Godkänt när:** Motorpar, riktningar och homing faktiskt verifierade utan bindning. Ett dokumenterat fel innebär blockerad order, inte godkänd. Ingen skärning.
 
 **Återrapportera:** Status per axel och brytare, ljud/bindning och eventuella fel.
 
@@ -427,11 +427,11 @@
 **Ta fram:** Verklig NVR-enhet om köpt, HDR-60-24, tillhörande tillverkardokumentation och kapsling.
 
 1. Dokumentera NVR-modell och märkning eller att enheten ännu inte är köpt.
-2. Verifiera att lösningen ger beröringsskydd för HDR:s nätplintar samt mekaniskt säker infästning på balken.
+2. Verifiera att lösningen ger beröringsskydd för HDR:s nätplintar samt mekaniskt säker infästning på balken. Följ Mean Wells installationsmanual; HDR har ingen PE-plint. Kontrollera 24 V och polaritet utan Jackpot3 inkopplat; bryt innan anslutning.
 3. Gå igenom skyddsjord, kabeltyp, kabelgenomföring och dragavlastning med en elkunnig person.
 4. Låt behörig/kompetent person utföra och verifiera faktisk 230 V-koppling. Testa återstartsskydd med fräsen frånkopplad när anläggningen är färdig.
 
-**Godkänt när:** Antingen verifierad säker installation med dokumenterat maskinstopp eller spärrad elinstallation med exakt åtgärd.
+**Godkänt när:** Verifierad säker nätinstallation med dokumenterad kontroll och fungerande maskinstopp/återstartsskydd. Öppen brist betyder blockerad; HDR får inte spänningssättas.
 
 **Återrapportera:** Modell, kapslingsfoto, verifieringsstatus och eventuella öppna säkerhetsfrågor.
 
@@ -462,7 +462,7 @@
 
 1. Välj ett enkelt litet provjobb. Kontrollera fräshylsans passning och verktygets uppspänning med fräsen urkopplad.
 2. Välj material och försiktiga skärdata enligt verktygets rekommendationer; skriv ut eller visa förhandsgranskad verktygsbana.
-3. Säkerställ att klämmor, skruvar och nollpunkt ligger utanför banan.
+3. Kontrollera millimeter, arbetsnollpunkt, säker Z, maxdjup och klämmornas/skruvarnas lägen. Lägg offermaterial under genomskärning redan nu. KATSU startas/stoppas manuellt; M3/M5 garanterar ingen styrning av den.
 4. Gör en simulering och luftkörning med fräsen avstängd. Börja inte skära om NVR/damm/infästning saknas.
 
 **Godkänt när:** Förhandsgranskad och luftkörd liten verktygsbana, färdig för skärning.
@@ -494,7 +494,7 @@
 
 **Ta fram:** V1E:s strutgenerator, CAD/CAM, 5–6 mm MDF/hårdboard och uppmätta balkmått.
 
-1. Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar.
+1. Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar. Generatorns cirka 0,5 mm underlängd är avsiktlig. Lägg långsidan längs Y: cirka 819 mm ryms inte i X=650 mm. Kontrollera hela verktygsbanan inom uppmätt rörelseområde.
 2. Generera främre och undre stagplatta; spara fil och skärmlägg måtten.
 3. Importera i millimeter och kontrollera riktning, materialtjocklek, hålbild och passform.
 4. Planera hål före ytterkontur, hållflikar och säker fastspänning. Kör simulering utan att skära.
