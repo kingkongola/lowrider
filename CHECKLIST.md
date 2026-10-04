@@ -120,6 +120,8 @@
 
 - [ ] torrkör utan fräs
 - [ ] verifiera full driven travel
+- [x] kalibrering steg 1 (steps/mm) och 2 (squaring) enligt CALIBRATION.md, 2026-10-04
+- [ ] kalibrering steg 3 (Z-nivå) efter permanenta struts + planfräst offerskiva; gör om squaring då
 - [ ] plana spoilboard
 - [ ] kontrollera X/Y-mått + diagonaler
 - [ ] kontrollera Z-djup

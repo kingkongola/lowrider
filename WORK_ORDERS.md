@@ -562,6 +562,8 @@
 
 **Ta fram:** Mätverktyg, fungerande maskin, originalets kalibreringssteg och config-backup.
 
+Protokoll och mätlogg: [CALIBRATION.md](CALIBRATION.md). Delresultat 2026-10-04: steg 1 (steps/mm) och 2 (squaring) gjorda före permanenta struts; steg 3 (Z-nivå) uppskjutet. Orderns status förblir *ej verifierad* tills slutkalibreringen är gjord.
+
 1. Mät en känd X/Y-förflyttning och justera steps_per_mm endast utifrån faktiska mätningar.
 2. Mät båda diagonalerna i en markerad rektangel och korrigera Y-homing/pull-off vid behov.
 3. Jämför Z-nivå mellan sidorna, prova ett enkelt kalibreringsprov och dokumentera resultatet.

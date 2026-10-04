@@ -141,3 +141,9 @@
 Svenska manualen och webbtexten har granskats mot V1E:s aktuella LR4-kalkylator, monteringsmanual, Jackpot3-dokumentation och Mean Wells HDR-underlag. Rörgeometrin bekräftad i kalkylatorkoden. Ovillkorlig T8-kapning till 150 mm återtagen till fysisk provpassning enligt D014; remmarginal och sågspår förtydligade. Kabelrullens fördelning och arbetsordningen rättad, inklusive LR-16 före LR-15 och LR-22 före LR-21. Separat granskningsprotokoll: [AUDIT_2026-09-29.md](AUDIT_2026-09-29.md).
 
 Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontroller, inköp eller leveranser har bockats av. Ändringarna är ännu inte publicerade på GitHub Pages.
+
+## 2026-10-04 — kalibrering inleds
+
+- Maskinen styrs över Wi-Fi (192.168.50.184, FluidNC 3.9.9). Hard limits på för alla fem brytare, soft limits X/Y/Z, travel 642/1240/98 mm, homad (användarens rapport 2026-10-03, bekräftad via config).
+- Config-baslinje sparad i `machine/`. Kalibreringsprotokoll och logg i `CALIBRATION.md`; ordning steps/mm → squaring → Z-nivå.
+- Kalibrering utförd (detaljer i `CALIBRATION.md`): X 50,0835 och Y 50,2054 steps/mm verifierade mot mätning; X-homing `mpos_mm` 2,99 (avrundning gav 2,995 mm); Y motor0 pulloff 6,2 / motor1 4,0 → diagonalskillnad 4,0 → 1,6 mm; Z-nivå uppskjuten. Controllern föll en gång tillbaka på Default-profil under sessionen (orsak ej fastställd; omstart räckte).

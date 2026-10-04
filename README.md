@@ -19,6 +19,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - Bord: **180×100 cm bordsskiva köpt för 300 kr**; ingen planerad 90 cm-kantbreddning, kontrollera underrede. Löstagbar ~12 mm MDF-spoilboard köps senare.
 - Garagegrupp: **10 A**, praktiskt beprövad med svets; CNC är inte ett öppet elproblem om säkringen faktiskt håller.
 - Dammhantering är del av grundbygget.
+- **Maskinen körd 2026-10-04:** Jackpot3 (FluidNC 3.9.9, 192.168.50.184) styr maskinen; limits och homing fungerar. Kalibrering steg 1 (steps/mm **X 50,0835 / Y 50,2054**) och steg 2 (squaring, diagonalskillnad 1,6 mm; Y motor0 pulloff 6,2) är klara; steg 3 (Z-nivå) är uppskjutet till efter permanenta struts och planfräst offerskiva. Protokoll, mått och config-backuper: `CALIBRATION.md`, `machine/`. Squaring/Z-nivå görs om efter permanenta struts.
 - Prints: användaren har rapporterat utskrift av **platta 14/14** samt att **hela Core är omprintad utan tidigare 0,20 mm förskjutning**. Den tidigare defekta Core används inte. **Det är inte bekräftat att det separata Makita/65 mm-verktygsfästet (eller Jackpot3-boxen) ingick i dessa plattor.** Se LR-00 och inventera utskrifterna före Core-montage.
 - 3 × 16T-remhjul från eBay/POWGE: **mottagna 2026-09-21** enligt användaren; antal och tekniska mått kontrolleras under nästa inventering.
 - Projektkostnad inklusive köpt bordsskiva: **6 756,11 kr brutto**, **6 689,11 kr** exklusive annullerad eBay-order på 67 kr som väntar återbetalning.
@@ -35,6 +36,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - `TABLE.md` — bord/deck.
 - `BUILD_LOG.md` — historik; gamla val får finnas här som historik men är inte current state.
 - `WORK_ORDERS.md` — arbetskort om cirka en timme, med beroenden och återrapportering; lokal webbsidestatus är inte SSOT.
+- `CALIBRATION.md` — kalibreringsprotokoll (steps/mm, squaring, Z-nivå) och enda mätloggen; baslinje-config i `machine/`.
 - `CABLE_ROUTING.md` — kabellager, routing, mätprotokoll och verifierade kapmått (ännu tomma innan fysisk full-travel-kontroll).
 
 ## Monteringsguide
