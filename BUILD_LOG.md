@@ -153,3 +153,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren rapporterar att **offerskivan är fastskruvad** på bordet. Material, tjocklek och kostnad ej rapporterade. Inte planfräst.
 - **Fräsar har kommit med posten.** Typ, skaftdiameter, leverantör och kostnad ej rapporterade; bokförs i `COSTS.md` först när beloppet är känt.
 - Ordning framåt oförändrad: litet skärprov (LR-24/25) → permanenta struts (LR-26/27/28) → planfräs offerskivan (LR-29) → Z-nivå och ny squaring (LR-30). Planfräsning före stagbytet görs inte, eftersom bytet ändrar balkens läge.
+
+## 2026-10-07 — front_wing_size rättad
+
+- `front_wing_size` är flikens utstick per sida på den främre stagplattan (plattan blir 67,5 + 2 × värdet mm hög), inte rördiametern. Generatorns kommentar: 8,0 för 32 mm-rör, **10,8 för 30 mm-rör**, 11,5 för 29,5 mm-rör. Tidigare `30` (ovan, 2026-08/09) var fel och är ersatt med **10,8** i alla aktuella filer. Bottenplattan har fast 5,5 i generatorn; dogbone 3,5 för 1/8"-fräs.
+- Användaren rapporterar att **6,00 mm MDF är fastskruvad ovanpå offerskivan** inför stagplattorna. Fräsning ej utförd.

@@ -21,7 +21,7 @@ Ingen audit kräver ändrad maskingeometri.
 
 - X-rör 816 mm ×2
 - Y-rör 1505 mm
-- strut 819, `front_wing_size=30`
+- strut 819, `front_wing_size=10.8`
 - GT2 beräknat 999 / 1705 / 1705 = 4409 mm. Projektets grovkapning med extra marginal: minst 1029 / 1735 / 1735 mm; kontrollera hela rullen före första klippet
 - 3 × GT2 16T, beställd spec 5 mm hål och 10 mm rem — **mottagna 2026-09-21**. Fysisk variant/passning ska fortfarande mätas före montering.
 - 6 × smooth idler, 5 mm hole, 10 mm belt

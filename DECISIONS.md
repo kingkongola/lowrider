@@ -15,7 +15,7 @@ Geometri:
 - Y-rör 1505 mm
 - Ø30×1,5 mm
 - strut-input 819 mm
-- `front_wing_size=30`
+- `front_wing_size=10.8`
 - GT2 999 / 1705 / 1705 mm = 4409 mm
 - minimum bord 941 × 1563 mm
 - praktisk maskinbredd runt 941 mm minimum
@@ -73,7 +73,7 @@ En eventuell modulär plasmavariant är ett separat framtida projekt, tidigast n
 ## D011 — Ø30 mm rails
 **Status:** låst
 
-Alla diameterberoende printar = 30 mm. Permanenta struts: `strut_length=819`, `front_wing_size=30`.
+Alla diameterberoende printar = 30 mm. Permanenta struts: `strut_length=819`, `front_wing_size=10.8`.
 
 ## D012 — Fast elbox + rörlig controller
 **Status:** superseded av D016

@@ -87,7 +87,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - X-rör 816 mm ×2
 - Y-rör 1505 mm
 - Ø30×1,5 mm
-- strut-input 819 mm, `front_wing_size=30`
+- strut-input 819 mm, `front_wing_size=10.8`
 - GT2 999 + 1705 + 1705 = 4409 mm
 - minimum ytterfootprint 941 × 1563 mm
 - faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.

@@ -99,7 +99,7 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 ### Permanenta struts
 
 - 5–6 mm MDF/hardboard, max 6,35 mm
-- printa 4 temporära struts (15 % infill), bygg/driftsätt LR4 och fräs sedan egna permanenta front-/bottenplattor med maskinen. Köp material när första skäret närmar sig; strut-generator: `strut_length=819`, `front_wing_size=30`.
+- printa 4 temporära struts (15 % infill), bygg/driftsätt LR4 och fräs sedan egna permanenta front-/bottenplattor med maskinen. Köp material när första skäret närmar sig; strut-generator: `strut_length=819`, `front_wing_size=10.8`.
 
 ### NVR/maskinstopp
 

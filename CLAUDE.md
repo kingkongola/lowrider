@@ -22,7 +22,7 @@ Top-level files supersede `research/` on any conflict. Each top-level file owns 
 - `BUILD_LOG.md` — history only; old choices may live here but are not current state.
 - `README.md` — current-status summary and work order; it repeats headline facts (geometry, costs, order status), so keep it in sync when those change.
 
-Geometry numbers (tubes 816/816/1505, strut input 819, `front_wing_size=30`, GT2 999/1705/1705, minimum table 941 × 1563) appear in several files; change them everywhere or nowhere.
+Geometry numbers (tubes 816/816/1505, strut input 819, `front_wing_size=10.8`, GT2 999/1705/1705, minimum table 941 × 1563) appear in several files; change them everywhere or nowhere.
 
 ## Work orders (three synced representations)
 

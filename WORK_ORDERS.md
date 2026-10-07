@@ -494,7 +494,7 @@
 
 **Ta fram:** V1E:s strutgenerator, CAD/CAM, 5–6 mm MDF/hårdboard och uppmätta balkmått.
 
-1. Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=30 endast om de fortfarande matchar. Generatorns cirka 0,5 mm underlängd är avsiktlig. Lägg långsidan längs Y: cirka 819 mm ryms inte i X=650 mm. Kontrollera hela verktygsbanan inom uppmätt rörelseområde.
+1. Kontrollera våra mått mot verklig balk. Använd strut_length=819 och front_wing_size=10.8 endast om de fortfarande matchar. Generatorns cirka 0,5 mm underlängd är avsiktlig. Lägg långsidan längs Y: cirka 819 mm ryms inte i X=650 mm. Kontrollera hela verktygsbanan inom uppmätt rörelseområde.
 2. Generera främre och undre stagplatta; spara fil och skärmlägg måtten.
 3. Importera i millimeter och kontrollera riktning, materialtjocklek, hålbild och passform.
 4. Planera hål före ytterkontur, hållflikar och säker fastspänning. Kör simulering utan att skära.

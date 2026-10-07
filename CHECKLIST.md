@@ -43,7 +43,7 @@
 - [ ] granska slicer bridges/unsupported geometry
 - [ ] inventera utskrifterna efter att användaren rapporterat platta 14/14: grundplattornas status, separat tool mount, Jackpot3-box och temporära struts verifieras var för sig.
 - [ ] printa **4 × temporära struts, 15 % infill** för första monteringen
-- [ ] generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=30` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
+- [ ] generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=10.8` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
 
 ## 5. Bord / spoilboard
 
