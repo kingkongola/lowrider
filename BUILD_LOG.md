@@ -147,3 +147,9 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Maskinen styrs över Wi-Fi (192.168.50.184, FluidNC 3.9.9). Hard limits på för alla fem brytare, soft limits X/Y/Z, travel 642/1240/98 mm, homad (användarens rapport 2026-10-03, bekräftad via config).
 - Config-baslinje sparad i `machine/`. Kalibreringsprotokoll och logg i `CALIBRATION.md`; ordning steps/mm → squaring → Z-nivå.
 - Kalibrering utförd (detaljer i `CALIBRATION.md`): X 50,0835 och Y 50,2054 steps/mm verifierade mot mätning; X-homing `mpos_mm` 2,99 (avrundning gav 2,995 mm); Y motor0 pulloff 6,2 / motor1 4,0 → diagonalskillnad 4,0 → 1,6 mm; Z-nivå uppskjuten. Controllern föll en gång tillbaka på Default-profil under sessionen (orsak ej fastställd; omstart räckte).
+
+## 2026-10-07 — Offerskiva fastskruvad, fräsar mottagna
+
+- Användaren rapporterar att **offerskivan är fastskruvad** på bordet. Material, tjocklek och kostnad ej rapporterade. Inte planfräst.
+- **Fräsar har kommit med posten.** Typ, skaftdiameter, leverantör och kostnad ej rapporterade; bokförs i `COSTS.md` först när beloppet är känt.
+- Ordning framåt oförändrad: litet skärprov (LR-24/25) → permanenta struts (LR-26/27/28) → planfräs offerskivan (LR-29) → Z-nivå och ny squaring (LR-30). Planfräsning före stagbytet görs inte, eftersom bytet ändrar balkens läge.

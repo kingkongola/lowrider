@@ -50,7 +50,7 @@
 - [ ] använd den köpta **180×100 cm** bordsskivan direkt som strukturell maskinbas, förutsatt godkänt underrede
 - [ ] köp **inte** hel OSB/ply-deck om inte verkligt behov uppstår
 - [ ] planera rail/belt-infästning på 180×100-skivan, utan tidigare planerad 90 cm-kantbreddning
-- [ ] montera löstagbar ~12 mm MDF-spoilboard över arbetszonen
+- [x] offerskiva fastskruvad, rapporterat 2026-10-07 (material/tjocklek ej rapporterat; inte planfräst)
 - [ ] inget T-track före faktiskt behov
 
 ## 6. Mekanik
