@@ -171,3 +171,5 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - Användaren rapporterar att planfräsningen inte nådde en yta ungefär stor som A4 på offerskivan. Trolig orsak enligt användaren: bordet är ojämnt (se CALIBRATION.md 2026-10-04, "bordet är inte plant") och offerskivan följer det. Gropens djup och läge ej uppmätt.
 - Z-nivå (steg 3) ej gjord. Före tillverkning: mät gropen, välj djupare planfräsning eller shims under offerskivan, planfräs om, sedan Z-nivå och ny squaring.
+- Användaren rapporterar att **de permanenta stagen (front/botten) är monterade** och att **dammsugningen är monterad**. Full X/Y/Z-rörelse med slangen ej verifierad; cyklonens status ej rapporterad.
+- Plan: planfräs offerskivan ytterligare **0,7 mm** så att gropen tas, sedan Z-nivå (steg 3) och ny squaring. Planfilen görs om med `cnc plana` (filen `Planfras_offer_075` från 2026-10-15 är byggd före nuvarande postprocessor).

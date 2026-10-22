@@ -43,7 +43,7 @@
 - [ ] granska slicer bridges/unsupported geometry
 - [ ] inventera utskrifterna efter att användaren rapporterat platta 14/14: grundplattornas status, separat tool mount, Jackpot3-box och temporära struts verifieras var för sig.
 - [ ] printa **4 × temporära struts, 15 % infill** för första monteringen
-- [ ] generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=10.8` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
+- [x] **monterade 2026-10-22 enligt användaren.** generera permanenta front-/bottenstruts med `strut_length=819`, `front_wing_size=10.8` (5–6 mm MDF/hardboard, max 6,35 mm); fräs med färdigmonterad LR4 och byt sedan ut temp-struts
 
 ## 5. Bord / spoilboard
 
@@ -69,13 +69,13 @@
 ## 7. Damm
 
 - [ ] bekräfta DeWalt-typskylt
-- [ ] printa LR4 dust shoe
+- [x] printa LR4 dust shoe (dammsugning monterad 2026-10-22 enligt användaren)
 - [ ] prova befintlig TPU till bristles
 - [ ] printa cyklon: **eifelbiker "Cyklonseparator med undertrycksventil"** (MakerWorld, `Zyklon.3mf`), P1S-profil, PLA, 3–4 väggar, ~18,7 h; TPU-packningar (separat profil, 1,7 h); egna 46 mm-stosar mot slangen; ventilens fjäder 0,5×6×20 mm + M3x25/M4x35 + mutterinsatser M3/M5 behövs. Utskrift påbörjad 2026-10-16 (användarens rapport); ej verifierad klar.
 - [ ] ordna 15–30 l styv behållare
 - [ ] vakuumtesta behållare/lock kontrollerat
 - [x] **Slang finns redan:** 4 meter poolslang, ID 46 mm (uppmätt 2026-10-14); användaren har använt den med DeWalt för att rengöra FTX-kanalerna. Inget nytt slanginköp behövs i nuläget. DeWalt-originalslang är för kort.
-- [ ] **Anpassa och verifiera sugslang på LowRider:** slangmått mätt (ID 46 mm) och adapter till Makita-dammskon printad (`slangadapter_46mm`, cnc-repot); kvar: ordna upphängning/dragavlastning och prova full X/Y/Z-rörelse. Beakta att vanlig poolslang normalt inte är antistatisk.
+- [ ] **Anpassa och verifiera sugslang på LowRider:** dammsugaren monterad 2026-10-22 enligt användaren; slangmått mätt (ID 46 mm) och adapter till Makita-dammskon printad (`slangadapter_46mm`, cnc-repot); kvar: ordna upphängning/dragavlastning och prova full X/Y/Z-rörelse. Beakta att vanlig poolslang normalt inte är antistatisk.
 - [ ] bygg slangavlastning
 - [ ] lös statisk jordväg före XPS/reguljär MDF/trä-drift
 
@@ -121,7 +121,7 @@
 - [ ] torrkör utan fräs
 - [ ] verifiera full driven travel
 - [x] kalibrering steg 1 (steps/mm) och 2 (squaring) enligt CALIBRATION.md, 2026-10-04
-- [ ] kalibrering steg 3 (Z-nivå) efter permanenta struts + planfräst offerskiva; gör om squaring då
+- [ ] kalibrering steg 3 (Z-nivå) efter permanenta struts (klart 2026-10-22) + planfräst offerskiva; gör om squaring då
 - [ ] plana spoilboard
 - [ ] kontrollera X/Y-mått + diagonaler
 - [ ] kontrollera Z-djup
