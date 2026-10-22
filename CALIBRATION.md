@@ -55,3 +55,9 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - Steg 2 squaring: **klart för tillfället** (diagonalskillnad 1,6 mm); görs om efter permanenta struts.
 - Steg 3 Z-nivå: **uppskjutet** (se ovan).
 - Aktuell config på maskinen: `machine/config-2026-10-04-step2a.yaml` (Y motor0 pulloff 6,2; X homing mpos_mm 2,99).
+
+## 2026-10-22 — X-rörelsen kortare än config
+
+- `max_travel_mm: 642` i X (soft limit MPos 645) är **för långt**: körning mot MPos 644,8 fick remmen att hoppa över kuggar (två gånger, först tolkat som ett kärvande buntband). Larmet Hard Limit uppstod sedan på vägen tillbaka, eftersom X-positionen tappats.
+- Efter homing joggade användaren till **MPos X 613,0** och bedömde läget som okej (fritt). Verkligt ändläge ligger mellan 613 och ~645; användaren joggar vidare för hand.
+- Åtgärd (poka-yoke): sätt `max_travel_mm` i X så att soft limit ligger några mm före det verkliga ändläget; då vägrar FluidNC alla program som går längre. `cnc`:s `MASKIN_X`/`MASKIN_GRANS` följer samma värde.
