@@ -173,3 +173,4 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Z-nivå (steg 3) ej gjord. Före tillverkning: mät gropen, välj djupare planfräsning eller shims under offerskivan, planfräs om, sedan Z-nivå och ny squaring.
 - Användaren rapporterar att **de permanenta stagen (front/botten) är monterade** och att **dammsugningen är monterad**. Full X/Y/Z-rörelse med slangen ej verifierad; cyklonens status ej rapporterad.
 - Plan: planfräs offerskivan ytterligare **0,7 mm** så att gropen tas, sedan Z-nivå (steg 3) och ny squaring. Planfilen görs om med `cnc plana` (filen `Planfras_offer_075` från 2026-10-15 är byggd före nuvarande postprocessor).
+- Offerskivan var 9 mm MDF från början och har planats två gånger tidigare (0,5 mm per gång eller ~2 mm totalt, osäkert), plus 0,7 mm i dag (`plan07`). **Verklig tjocklek okänd: mät kanten med skjutmått efter planfräsningen.** Viktigt för styrhålen vid vändning (6 mm ner i offerskivan, beslut 0023 i cnc).
