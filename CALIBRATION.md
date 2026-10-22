@@ -59,5 +59,5 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 ## 2026-10-22 — X-rörelsen kortare än config
 
 - `max_travel_mm: 642` i X (soft limit MPos 645) är **för långt**: körning mot MPos 644,8 fick remmen att hoppa över kuggar (två gånger, först tolkat som ett kärvande buntband). Larmet Hard Limit uppstod sedan på vägen tillbaka, eftersom X-positionen tappats.
-- Efter homing joggade användaren till **MPos X 613,0** , **MPos X 640,0** och **MPos X 642,0**, alla fria. **Vid MPos X 643,0 tar något i** (okänt vad). Förslag: soft limit MPos 640 (`max_travel_mm: 637`), 3 mm marginal.
+- Efter homing joggade användaren till **MPos X 613,0** , **MPos X 640,0** och **MPos X 642,0**, alla fria. **Vid MPos X 643,0 tar något i** (okänt vad). **Infört:** soft limit MPos 640 (`max_travel_mm: 637`), 3 mm marginal; `config-2026-10-22-x637.yaml` uppladdad, verifierad med `$I` efter omstart. Backup: `config-2026-10-22-fore.yaml`. `cnc` (MASKIN_GRANS) följer samma gräns.
 - Åtgärd (poka-yoke): sätt `max_travel_mm` i X så att soft limit ligger några mm före det verkliga ändläget; då vägrar FluidNC alla program som går längre. `cnc`:s `MASKIN_X`/`MASKIN_GRANS` följer samma värde.
