@@ -169,8 +169,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 ## 2026-10-22 — Offerskivan har en ofräst grop
 
-- Användaren rapporterar att planfräsningen inte nådde en yta ungefär stor som A4 på offerskivan. Trolig orsak enligt användaren: bordet är ojämnt (se CALIBRATION.md 2026-10-04, "bordet är inte plant") och offerskivan följer det. Gropens djup och läge ej uppmätt.
+- Användaren rapporterar att planfräsningen inte nådde en yta ungefär stor som A4 på offerskivan. **Rättat samma dag: det var en kulle, max ~0,25 mm, inte en grop**; 0,7 mm planfräsning (`plan07`) tar den. Trolig orsak enligt användaren: bordet är ojämnt (se CALIBRATION.md 2026-10-04, "bordet är inte plant") och offerskivan följer det. Gropens djup och läge ej uppmätt.
 - Z-nivå (steg 3) ej gjord. Före tillverkning: mät gropen, välj djupare planfräsning eller shims under offerskivan, planfräs om, sedan Z-nivå och ny squaring.
 - Användaren rapporterar att **de permanenta stagen (front/botten) är monterade** och att **dammsugningen är monterad**. Full X/Y/Z-rörelse med slangen ej verifierad; cyklonens status ej rapporterad.
 - Plan: planfräs offerskivan ytterligare **0,7 mm** så att gropen tas, sedan Z-nivå (steg 3) och ny squaring. Planfilen görs om med `cnc plana` (filen `Planfras_offer_075` från 2026-10-15 är byggd före nuvarande postprocessor).
-- Offerskivan var 9 mm MDF från början och har planats två gånger tidigare (0,5 mm per gång eller ~2 mm totalt, osäkert), plus 0,7 mm i dag (`plan07`). **Verklig tjocklek okänd: mät kanten med skjutmått efter planfräsningen.** Viktigt för styrhålen vid vändning (6 mm ner i offerskivan, beslut 0023 i cnc).
+- Offerskivan var 9 mm MDF från början och har planats två gånger tidigare (0,5 mm per gång eller ~2 mm totalt, osäkert), plus 0,7 mm i dag (`plan07`). **Verklig tjocklek okänd och går inte att mäta vid kanten** (en ofräst ram runt den planade ytan). Användaren: styrhålen får gå så djupt fräsen räcker, även igenom offerskivan.
