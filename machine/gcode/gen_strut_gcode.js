@@ -58,7 +58,7 @@ function simplify(p, tol) {                           // ta bort nästan kollinj
 
 // ---- g-kod ----
 const f = v => (Math.round(v * 1000) / 1000).toString();
-function build(zOff, title) {
+function build(zOff, title, skipHoles = false) {
   const L = [];
   const z = v => f(v + zOff);
   L.push(`; ${title}`);
@@ -73,7 +73,7 @@ function build(zOff, title) {
   // hål
   const Rh = HOLE_D / 2 - R;
   L.push('; --- 24 hål Ø5,3 (spiral, CW = medfräs) ---');
-  holes.forEach(([cx, cy], i) => {
+  (skipHoles ? [] : holes).forEach(([cx, cy], i) => {
     L.push(`; hål ${i + 1}`);
     L.push(`G0 X${f(cx + Rh)} Y${f(cy)}`);
     L.push(`G0 Z${z(1)}`);
@@ -106,7 +106,9 @@ function build(zOff, title) {
   L.push(`G0 Z${z(SAFE_Z)}`);
   L.push('G0 X0 Y0');
   L.push('M2');
-  return L.join('\n') + '\n';
+  // FluidNC klarar inte långa rader: kommentarer blir ASCII och högst 60 tecken
+  const ascii = s => s.replace(/[åä]/g, 'a').replace(/[ÅÄ]/g, 'A').replace(/ö/g, 'o').replace(/Ö/g, 'O').replace(/Ø/g, 'D').replace(/[^\x20-\x7e]/g, '');
+  return L.map(s => s.startsWith(';') ? ascii(s).slice(0, 60) : s).join('\n') + '\n';
 }
 
 // tabs: väljer N_TABS långa raka kanter jämnt fördelade, tab i mitten
@@ -152,6 +154,8 @@ function emitLoop(L, p, tabs, zp, z) {
 // ---- skriv ut ----
 fs.writeFileSync(`${OUT}/strut_plates.nc`, build(0, 'STRUTPLATTOR - SKARP KORNING'));
 fs.writeFileSync(`${OUT}/strut_plates_AIR.nc`, build(20, 'STRUTPLATTOR - LUFTKORNING (Z +20 mm)'));
+fs.writeFileSync(`${OUT}/strut_konturer.nc`, build(0, 'STRUTPLATTOR - ENDAST KONTURER (hal redan borrade)', true));
+fs.writeFileSync(`${OUT}/strut_konturer_AIR.nc`, build(20, 'KONTURER - LUFTKORNING (Z +20 mm)', true));
 
 // kontroll
 const allp = outers.map(offsetOuter).flat();

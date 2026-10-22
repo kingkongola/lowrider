@@ -71,11 +71,11 @@
 - [ ] bekräfta DeWalt-typskylt
 - [ ] printa LR4 dust shoe
 - [ ] prova befintlig TPU till bristles
-- [ ] printa cyklon
+- [ ] printa cyklon: **eifelbiker "Cyklonseparator med undertrycksventil"** (MakerWorld, `Zyklon.3mf`), P1S-profil, PLA, 3–4 väggar, ~18,7 h; TPU-packningar (separat profil, 1,7 h); egna 46 mm-stosar mot slangen; ventilens fjäder 0,5×6×20 mm + M3x25/M4x35 + mutterinsatser M3/M5 behövs. Utskrift påbörjad 2026-10-16 (användarens rapport); ej verifierad klar.
 - [ ] ordna 15–30 l styv behållare
 - [ ] vakuumtesta behållare/lock kontrollerat
-- [x] **Slang finns redan:** 4 meter 38 mm poolslang; användaren har använt den med DeWalt för att rengöra FTX-kanalerna. Inget nytt slanginköp behövs i nuläget. DeWalt-originalslang är för kort.
-- [ ] **Anpassa och verifiera sugslang på LowRider:** mät faktiska slangmått, printa adapter till Makita-dammskon, ordna upphängning/dragavlastning och prova full X/Y/Z-rörelse. Beakta att vanlig poolslang normalt inte är antistatisk.
+- [x] **Slang finns redan:** 4 meter poolslang, ID 46 mm (uppmätt 2026-10-14); användaren har använt den med DeWalt för att rengöra FTX-kanalerna. Inget nytt slanginköp behövs i nuläget. DeWalt-originalslang är för kort.
+- [ ] **Anpassa och verifiera sugslang på LowRider:** slangmått mätt (ID 46 mm) och adapter till Makita-dammskon printad (`slangadapter_46mm`, cnc-repot); kvar: ordna upphängning/dragavlastning och prova full X/Y/Z-rörelse. Beakta att vanlig poolslang normalt inte är antistatisk.
 - [ ] bygg slangavlastning
 - [ ] lös statisk jordväg före XPS/reguljär MDF/trä-drift
 

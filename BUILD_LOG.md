@@ -158,3 +158,11 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - `front_wing_size` är flikens utstick per sida på den främre stagplattan (plattan blir 67,5 + 2 × värdet mm hög), inte rördiametern. Generatorns kommentar: 8,0 för 32 mm-rör, **10,8 för 30 mm-rör**, 11,5 för 29,5 mm-rör. Tidigare `30` (ovan, 2026-08/09) var fel och är ersatt med **10,8** i alla aktuella filer. Bottenplattan har fast 5,5 i generatorn; dogbone 3,5 för 1/8"-fräs.
 - Användaren rapporterar att **6,00 mm MDF är fastskruvad ovanpå offerskivan** inför stagplattorna. Fräsning ej utförd.
+
+## 2026-10-16 — cyklon vald och utskrift påbörjad
+
+- Jämförda modeller (MakerWorld): White Ghost kompakt (11 h, 5,0/85), VSC HF (23,4 h, 0,6 mm-nozzle, ingen ventil), Nanodesigner tvåstegs (50,9 h) och **eifelbiker med undertrycksventil** (18,7 h, 5,0/37, TPU-packningsprofil 1,7 h).
+- **Vald: eifelbiker.** Skäl: inbyggd justerbar undertrycksventil löser kollapsrisken i uppsamlingskärlet (se `research/2026-08-29-cyclone-collection-container.md`), färdig TPU-packningsprofil, passar 30 l lockfat. Licens: MakerWorld Exclusive (personligt bruk).
+- Användaren rapporterar att utskriften är påbörjad. Inte verifierad klar.
+- Slangens ID är mätt till **46 mm** (rättat från 38 mm i BOM/CHECKLIST); dammskoadaptern `slangadapter_46mm` är printad (cnc-repot). Egna 46 mm-stosar till cyklonens portar återstår.
+- Kvar: behållare (material, lockdiameter), slangens ytterdiameter, kontroll av insatser/skruvar/fjäder, vakuumtest av behållare och ventilinställning, statisk jordväg.

@@ -1,0 +1,8 @@
+G54 före ny nollning, 2026-10-13 (maskinkoordinater, $#):
+G54: X 2.995  Y 3.008  Z -71.400
+Z0 sattes med planfräs Ø22 vid X40 Y600 (WPos), 0,1 mm över skivan (A4-papper).
+Återställ med: G10 L2 P1 X2.995 Y3.008 Z-71.4
+
+2026-10-13 14:00 NY Z0: fräsen (planfräs Ø22) nuddar skivan vid hörnet X2.995 Y3.008.
+MPos Z -71.700  ->  G54 Z -71.700 (G10 L20 P1 Z0)
+Återställ med: G10 L2 P1 X2.995 Y3.008 Z-71.7

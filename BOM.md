@@ -135,9 +135,9 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 - [ ] LR4 dust shoe för Makita/65 mm
 - [ ] TPU-bristles om befintlig TPU är lämplig
-- [ ] printad cyklon först
+- [ ] printad cyklon först: vald modell eifelbiker (med inbyggd undertrycksventil), 30 l lockfat som behållare; mutterinsatser M3x4/M5x5,8, skruvar M3x25/M5x12/M5x25/M4x35 och fjäder 0,5×6×20 mm ska kontrolleras mot lager
 - [ ] styv 15–30 l behållare och kontrollerat vakuumtest
-- [x] **Befintlig poolslang 38 mm, 4 meter** – redan ägd; användaren har tidigare kopplat den till DeWalt för rengöring av FTX-kanalerna. DeWalt-originalslangen är för kort. **Inget nytt slanginköp planeras.** Återstår: kontrollera faktisk ID/OD och följsamhet/räckvidd genom full X/Y/Z-rörelse, skapa adapter till Makita-dammsko (och eventuellt DeWalt om behövs), upphängning/dragavlastning. Poolslang är normalt inte antistatisk; utred säker statisk hantering vid användning med trä/MDF, utan att likställa utvändig tråd med antistatisk slang.
+- [x] **Befintlig poolslang 4 meter, ID 46 mm (uppmätt 2026-10-14)** – redan ägd; användaren har tidigare kopplat den till DeWalt för rengöring av FTX-kanalerna. DeWalt-originalslangen är för kort. **Inget nytt slanginköp planeras.** Återstår: kontrollera faktisk ID/OD och följsamhet/räckvidd genom full X/Y/Z-rörelse, skapa adapter till Makita-dammsko (och eventuellt DeWalt om behövs), upphängning/dragavlastning. Poolslang är normalt inte antistatisk; utred säker statisk hantering vid användning med trä/MDF, utan att likställa utvändig tråd med antistatisk slang.
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
