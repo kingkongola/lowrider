@@ -51,6 +51,7 @@
 - [ ] köp **inte** hel OSB/ply-deck om inte verkligt behov uppstår
 - [ ] planera rail/belt-infästning på 180×100-skivan, utan tidigare planerad 90 cm-kantbreddning
 - [x] offerskiva fastskruvad, rapporterat 2026-10-07 (material/tjocklek ej rapporterat; inte planfräst)
+- [x] offerskivan planfräst (`plan07`, 0,7 mm), rapporterad plan 2026-10-22
 - [ ] inget T-track före faktiskt behov
 
 ## 6. Mekanik

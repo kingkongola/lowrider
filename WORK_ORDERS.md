@@ -41,7 +41,7 @@
 | LR-26 | Generera permanenta stagplattor | 60 min | LR-25 | Ej verifierad |
 | LR-27 | Fräs permanenta stagplattor | 60 min | LR-26 | Ej verifierad |
 | LR-28 | Byt till permanenta stag | 60 min | LR-27 | Ej verifierad |
-| LR-29 | Planfräs offerskivan | 60 min | LR-28 | Ej verifierad |
+| LR-29 | Planfräs offerskivan | 60 min | LR-28 | Klar 2026-10-22 (rapporterad plan) |
 | LR-30 | Slutkalibrera och säkerhetskopiera | 60 min | LR-28, LR-29 | Ej verifierad |
 
 ## Arbetskort
