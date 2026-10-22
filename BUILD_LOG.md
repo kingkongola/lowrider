@@ -166,3 +166,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren rapporterar att utskriften är påbörjad. Inte verifierad klar.
 - Slangens ID är mätt till **46 mm** (rättat från 38 mm i BOM/CHECKLIST); dammskoadaptern `slangadapter_46mm` är printad (cnc-repot). Egna 46 mm-stosar till cyklonens portar återstår.
 - Kvar: behållare (material, lockdiameter), slangens ytterdiameter, kontroll av insatser/skruvar/fjäder, vakuumtest av behållare och ventilinställning, statisk jordväg.
+
+## 2026-10-22 — Offerskivan har en ofräst grop
+
+- Användaren rapporterar att planfräsningen inte nådde en yta ungefär stor som A4 på offerskivan. Trolig orsak enligt användaren: bordet är ojämnt (se CALIBRATION.md 2026-10-04, "bordet är inte plant") och offerskivan följer det. Gropens djup och läge ej uppmätt.
+- Z-nivå (steg 3) ej gjord. Före tillverkning: mät gropen, välj djupare planfräsning eller shims under offerskivan, planfräs om, sedan Z-nivå och ny squaring.
