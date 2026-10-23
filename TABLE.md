@@ -28,3 +28,7 @@
 Planera utrymme för befintlig DeWalt-dammsugare, printad cyklon, 15–30 l uppsamlingskärl samt slangavlastning. NVR/maskinstopp placeras fast och åtkomligt; Jackpot3 och, efter kontrollerat beröringsskydd/kapsling, HDR-60-24 planeras på rörlig balk enligt D016. Testa hela rörelseområdet för kablar och slang innan slutlig infästning.
 
 Äldre 180 × 90-bordstrategi med ~41 mm breddbrist är **historik, inte aktiv köp-/byggplan**.
+
+## Offerskivan
+
+Hål (styrhål) och skruvar i offerskivan, i maskinkoordinater: `OFFERSKIVA.md`.
