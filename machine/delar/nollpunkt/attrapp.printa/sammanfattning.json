@@ -1,0 +1,62 @@
+{
+ "jobb": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp.json",
+ "namn": "prob_attrapp",
+ "process": "standard",
+ "material": "pla",
+ "platta": "Textured PEI Plate",
+ "tid_h": 0.37,
+ "gram": 9.4,
+ "stod_andel": 0.025,
+ "delar": [
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp_kropp.stl",
+   "mm": [
+    32.98,
+    57.99,
+    47.0
+   ],
+   "volym_cm3": 19.77,
+   "kontakt_mm2": 824,
+   "overhang_mm2": 209,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 209 mm² (lägst 2.5 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  },
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp_skaft.stl",
+   "mm": [
+    6.0,
+    6.0,
+    29.5
+   ],
+   "volym_cm3": 0.83,
+   "kontakt_mm2": 28,
+   "overhang_mm2": 0,
+   "kontroller": [
+    {
+     "niva": "varning",
+     "text": "liten kontaktyta mot bädden (28 mm²); vänd delen eller lägg till en platt sida"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 1,
+    "info": 0
+   }
+  }
+ ],
+ "filer": {
+  "3mf": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp.printa/prob_attrapp.3mf",
+  "gcode": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp.printa/plate_1.gcode",
+  "bild": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp.printa/forhandsvisning.png",
+  "skal": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/attrapp.printa/profiler/skal.json"
+ }
+}

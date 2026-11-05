@@ -1,0 +1,2 @@
+{"namn":"fallarm_C","process":"styrka","material":"pla","stod":true,
+ "delar":[{"fil":"print_C_faste.stl","antal":1},{"fil":"print_C_arm.stl","antal":1},{"fil":"print_C_kapa.stl","antal":1}],"andringar":{}}

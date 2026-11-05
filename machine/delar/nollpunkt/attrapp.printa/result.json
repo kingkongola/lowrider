@@ -1,0 +1,80 @@
+{
+    "error_string": "Success.",
+    "export_time": 291,
+    "layer_height": 0.20000000298023224,
+    "plate_index": 0,
+    "prepare_time": 14,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 33.214622497558594,
+                "Bridge": 37.884796142578125,
+                "Brim": 9.594122886657715,
+                "Custom": 35.269813537597656,
+                "Gap infill": 1.771586298942566,
+                "Inner wall": 193.51119995117188,
+                "Internal solid infill": 170.2228240966797,
+                "Outer wall": 276.93243408203125,
+                "Overhang wall": 16.84925079345703,
+                "Sparse infill": 281.7301940917969,
+                "Support": 48.927974700927734,
+                "Support interface": 7.72166633605957,
+                "Top surface": 24.745094299316406,
+                "Travel": 208.2495880126953,
+                "Undefined": 192.83285522460938
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFA00",
+                    "id": 1,
+                    "main_used_g": 9.10811710357666,
+                    "total_used_g": 9.379673957824707
+                }
+            ],
+            "generate_support_material_time": 65,
+            "id": 1,
+            "infill_time": 51,
+            "layer_filament_change": 0,
+            "main_predication": 1311.3798828125,
+            "make_perimeters_time": 46,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 57.994876861572266,
+                        "height": 47.0,
+                        "width": 32.97948455810547,
+                        "x": 122.91476440429688,
+                        "y": 99.00442504882813,
+                        "z": 0.0
+                    },
+                    "id": 38,
+                    "name": "attrapp_kropp.stl",
+                    "triangle_count": 2872
+                },
+                {
+                    "bbox": {
+                        "depth": 5.998129367828369,
+                        "height": 29.5,
+                        "width": 5.9962687492370605,
+                        "x": 100.10575103759766,
+                        "y": 142.43267822265625,
+                        "z": 0.0
+                    },
+                    "id": 49,
+                    "name": "attrapp_skaft.stl",
+                    "triangle_count": 248
+                }
+            ],
+            "sliced_time": 336,
+            "sliced_time_with_cache": 152,
+            "total_predication": 1331.202392578125,
+            "triangle_count": 3120,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "wall_loops": 2
+}

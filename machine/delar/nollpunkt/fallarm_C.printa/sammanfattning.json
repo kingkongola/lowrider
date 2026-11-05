@@ -1,0 +1,84 @@
+{
+ "jobb": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/fallarm_C.json",
+ "namn": "fallarm_C",
+ "process": "styrka",
+ "material": "pla",
+ "platta": "Textured PEI Plate",
+ "tid_h": 3.32,
+ "gram": 73.9,
+ "stod_andel": 0.067,
+ "delar": [
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/print_C_faste.stl",
+   "mm": [
+    79.3,
+    113.0,
+    60.5
+   ],
+   "volym_cm3": 33.38,
+   "kontakt_mm2": 124,
+   "overhang_mm2": 3483,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 3483 mm² (lägst 0.0 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  },
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/print_C_arm.stl",
+   "mm": [
+    33.99,
+    43.89,
+    21.49
+   ],
+   "volym_cm3": 6.64,
+   "kontakt_mm2": 716,
+   "overhang_mm2": 153,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 153 mm² (lägst 5.8 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  },
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/print_C_kapa.stl",
+   "mm": [
+    79.75,
+    42.0,
+    40.0
+   ],
+   "volym_cm3": 15.8,
+   "kontakt_mm2": 348,
+   "overhang_mm2": 1481,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 1481 mm² (lägst 5.2 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  }
+ ],
+ "filer": {
+  "3mf": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/fallarm_C.printa/fallarm_C.3mf",
+  "gcode": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/fallarm_C.printa/plate_1.gcode",
+  "bild": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/fallarm_C.printa/forhandsvisning.png",
+  "skal": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/fallarm_C.printa/profiler/skal.json"
+ }
+}

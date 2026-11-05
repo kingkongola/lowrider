@@ -1,0 +1,10 @@
+{
+ "wall_loops": "process 0.20mm Strength @BBL X1C: styrkan i en print sitter i väggarna, inte i infill",
+ "sparse_infill_density": "process 0.20mm Strength @BBL X1C: tillräckligt för att väggarna inte ska bucklas vid tryck",
+ "sparse_infill_pattern": "process 0.20mm Strength @BBL X1C: gyroid är ungefär lika stark åt alla håll",
+ "enable_support": "process 0.20mm Strength @BBL X1C: slås av per jobb med \"stod\": false när kontrollen visar att inget överhäng behöver det",
+ "support_type": "process 0.20mm Strength @BBL X1C: trädstöd rör bara överhängen och bryts lätt loss",
+ "support_on_build_plate_only": "process 0.20mm Strength @BBL X1C: stöd får stå på delen (t.ex. under en fläns ovanför en annan yta)",
+ "brim_type": "process 0.20mm Strength @BBL X1C: brätte bara där slicern bedömer att en hög eller smal del kan lossna",
+ "curr_bed_type": "byggplatta för petg: segt och fjädrande, tål stötar och snäppfästen; fäster för hårt på slät PEI, använd texturerad"
+}

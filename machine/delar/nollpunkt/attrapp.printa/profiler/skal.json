@@ -1,0 +1,5 @@
+{
+ "enable_support": "process 0.20mm Standard @BBL X1C: slås av per jobb med \"stod\": false",
+ "support_type": "process 0.20mm Standard @BBL X1C: trädstöd rör bara överhängen och bryts lätt loss",
+ "curr_bed_type": "byggplatta för pla: styvt och lättskrivet men sprött; bra för provbitar och jiggar, dåligt för snäpp och stötar"
+}

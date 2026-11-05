@@ -1,0 +1,93 @@
+{
+    "error_string": "Success.",
+    "export_time": 792,
+    "layer_height": 0.20000000298023224,
+    "plate_index": 0,
+    "prepare_time": 32,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 21.610143661499023,
+                "Bridge": 242.6951446533203,
+                "Brim": 48.414031982421875,
+                "Custom": 35.27540588378906,
+                "Gap infill": 242.78732299804688,
+                "Inner wall": 2091.092041015625,
+                "Internal solid infill": 448.8045349121094,
+                "Outer wall": 2155.565185546875,
+                "Overhang wall": 487.2383728027344,
+                "Sparse infill": 774.49658203125,
+                "Support": 2457.029052734375,
+                "Support interface": 176.57044982910156,
+                "Top surface": 208.60438537597656,
+                "Travel": 2573.20654296875,
+                "Undefined": 2557.790771484375
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFA00",
+                    "id": 1,
+                    "main_used_g": 59.8670768737793,
+                    "total_used_g": 73.88616180419922
+                }
+            ],
+            "generate_support_material_time": 1837,
+            "id": 1,
+            "infill_time": 110,
+            "layer_filament_change": 0,
+            "main_predication": 11928.47265625,
+            "make_perimeters_time": 188,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 113.0,
+                        "height": 60.5,
+                        "width": 79.30000305175781,
+                        "x": 121.3499984741211,
+                        "y": 85.79109954833984,
+                        "z": 0.0
+                    },
+                    "id": 57,
+                    "name": "print_C_faste.stl",
+                    "triangle_count": 11462
+                },
+                {
+                    "bbox": {
+                        "depth": 79.74627685546875,
+                        "height": 40.0,
+                        "width": 42.0,
+                        "x": 55.34999084472656,
+                        "y": 119.04483795166016,
+                        "z": 0.0
+                    },
+                    "id": 79,
+                    "name": "print_C_kapa.stl",
+                    "triangle_count": 6558
+                },
+                {
+                    "bbox": {
+                        "depth": 46.423763275146484,
+                        "height": 21.48910140991211,
+                        "width": 52.56705856323242,
+                        "x": 72.91043090820313,
+                        "y": 58.17335510253906,
+                        "z": 0.0
+                    },
+                    "id": 68,
+                    "name": "print_C_arm.stl",
+                    "triangle_count": 2268
+                }
+            ],
+            "sliced_time": 3105,
+            "sliced_time_with_cache": 804,
+            "total_predication": 11948.3017578125,
+            "triangle_count": 20288,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 30.0,
+    "wall_loops": 5
+}

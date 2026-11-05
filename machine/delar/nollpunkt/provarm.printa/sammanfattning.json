@@ -1,0 +1,62 @@
+{
+ "jobb": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/provarm.json",
+ "namn": "provarm",
+ "process": "styrka",
+ "material": "petg",
+ "platta": "Textured PEI Plate",
+ "tid_h": 1.59,
+ "gram": 31.1,
+ "stod_andel": 0.075,
+ "delar": [
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/print_faste.stl",
+   "mm": [
+    113.0,
+    36.0,
+    44.3
+   ],
+   "volym_cm3": 21.31,
+   "kontakt_mm2": 1019,
+   "overhang_mm2": 1889,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 1889 mm² (lägst 5.0 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  },
+  {
+   "fil": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/print_arm.stl",
+   "mm": [
+    60.3,
+    17.0,
+    6.0
+   ],
+   "volym_cm3": 3.77,
+   "kontakt_mm2": 644,
+   "overhang_mm2": 37,
+   "kontroller": [
+    {
+     "niva": "info",
+     "text": "överhäng brantare än 45°: 37 mm² (lägst 3.9 mm över bädden); stöd byggs"
+    }
+   ],
+   "antal": {
+    "fel": 0,
+    "varning": 0,
+    "info": 1
+   }
+  }
+ ],
+ "filer": {
+  "3mf": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/provarm.printa/provarm.3mf",
+  "gcode": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/provarm.printa/plate_1.gcode",
+  "bild": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/provarm.printa/forhandsvisning.png",
+  "skal": "/Users/bemca/dev/lowrider/machine/delar/nollpunkt/provarm.printa/profiler/skal.json"
+ }
+}

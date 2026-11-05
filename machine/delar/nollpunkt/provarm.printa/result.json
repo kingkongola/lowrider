@@ -1,0 +1,79 @@
+{
+    "error_string": "Success.",
+    "export_time": 498,
+    "layer_height": 0.20000000298023224,
+    "plate_index": 0,
+    "prepare_time": 19,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 37.32712936401367,
+                "Bridge": 172.07647705078125,
+                "Custom": 35.32343292236328,
+                "Gap infill": 179.85528564453125,
+                "Inner wall": 1274.2406005859375,
+                "Internal solid infill": 232.82936096191406,
+                "Outer wall": 909.712890625,
+                "Overhang wall": 148.73876953125,
+                "Sparse infill": 361.230712890625,
+                "Support": 1002.7819213867188,
+                "Support interface": 80.14434051513672,
+                "Top surface": 114.26570892333984,
+                "Travel": 1193.850341796875,
+                "Undefined": 1178.386962890625
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG00",
+                    "id": 1,
+                    "main_used_g": 24.7685546875,
+                    "total_used_g": 31.141000747680664
+                }
+            ],
+            "generate_support_material_time": 910,
+            "id": 1,
+            "infill_time": 60,
+            "layer_filament_change": 0,
+            "main_predication": 5707.5,
+            "make_perimeters_time": 142,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 40.03061294555664,
+                        "height": 44.29999923706055,
+                        "width": 114.21873474121094,
+                        "x": 71.2785873413086,
+                        "y": 127.74486541748047,
+                        "z": 0.0
+                    },
+                    "id": 38,
+                    "name": "print_faste.stl",
+                    "triangle_count": 3356
+                },
+                {
+                    "bbox": {
+                        "depth": 20.111927032470703,
+                        "height": 6.0,
+                        "width": 61.09981155395508,
+                        "x": 96.9666519165039,
+                        "y": 89.14375305175781,
+                        "z": 0.0
+                    },
+                    "id": 49,
+                    "name": "print_arm.stl",
+                    "triangle_count": 1936
+                }
+            ],
+            "sliced_time": 1587,
+            "sliced_time_with_cache": 360,
+            "total_predication": 5727.32958984375,
+            "triangle_count": 5292,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 30.0,
+    "wall_loops": 5
+}
