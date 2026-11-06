@@ -47,6 +47,10 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - [Publicerad guide och arbetsordrar](https://kingkongola.github.io/lowrider/) — originalbilder inline, 30 entimmespass och kopierbar återrapport. Lokal status på webbplatsen synkas inte automatiskt med repot.
 - `research/` — historisk evidens. Top-level-filerna ovan supersederar research vid konflikt.
 
+## Pågående experiment och automationsidéer
+
+- [Automatisering och kamera – idéer 2026-11-06](docs/AUTOMATISERING_OCH_KAMERA_2026-11-06.md): krav på kamerasystemet, Tapo/Coral, BLTouch på servoarm, vakuumfastspänning, Genie-frammatning/indexering, billig verktygsväxling och manuell tvåsidig registrering. **Forsknings- och provplan, inga låsta konstruktionsbeslut.**
+
 ## Aktuell arbetsordning
 
 1. Inventera utskrivna LR4-delar. **Kontrollera explicit om det separat nedladdade Makita 701/65 mm-verktygsfästet finns; vid frånvaro skriv ut det enligt LR-00.** Verifiera även 30 mm-varianter, rätt Jackpot3-box och **4 × temporära struts (15 % infill)**. Platta 14/14 innebär inte att separat mount-set automatiskt ingick.
