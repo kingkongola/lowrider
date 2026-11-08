@@ -53,6 +53,10 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
 5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
 
+## Möjlig flatbäddsskanning – endast fysisk hänsyn (idé 2026-11-08)
+
+Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ovansidan** av relativt låga föremål, dvs en **2,5D-skanner**. Detta innebär inga nya CAD-fästen nu, men monteringens framtida **optiska synfält, Z-arbetsavstånd, stiftets fria rörelse, undersidesfrigång och svep kring objektkanter** bör inte blockera den möjligheten. Stora eller höga föremål kan inte automatiskt nås bara för att XY-arbetsområdet är stort. Se [mjukvaruflödet](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md). **Ingen fysisk skanning eller säker kollisionstolerans verifierad.**
+
 ## Fysiska nästa steg
 
 1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
