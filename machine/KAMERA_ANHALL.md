@@ -57,6 +57,10 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 
 Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ovansidan** av relativt låga föremål, dvs en **2,5D-skanner**. Detta innebär inga nya CAD-fästen nu, men monteringens framtida **optiska synfält, Z-arbetsavstånd, stiftets fria rörelse, undersidesfrigång och svep kring objektkanter** bör inte blockera den möjligheten. Stora eller höga föremål kan inte automatiskt nås bara för att XY-arbetsområdet är stort. Se [mjukvaruflödet](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md). **Ingen fysisk skanning eller säker kollisionstolerans verifierad.**
 
+### Designnotering 2026-11-08: tidigare skanningsmetod ”bergsklättring”
+
+Användaren har redan diskuterat en probskanningsstrategi kallad **”bergsklättring”** för att hantera okända uppstickande ytor. **Algoritmens exakta regler återfanns inte** i denna eller CNC-repots aktuella SSOT, trots tidigare diskussion. Återvinn källan innan den återskapas; **konstruera inte Core-fästet som om ett fast höjdraster eller konstant låg frihöjd vore beslutat**. Den mekaniska uppgiften för denna repo är att ge BLTouch/servoarm reell frigång och tillräckligt Z-rörelseutrymme för den återfunna strategin, med senare fysisk kollisionsverifiering. [CNC:s skannings- och statusunderlag](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md).
+
 ## Fysiska nästa steg
 
 1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
