@@ -68,6 +68,12 @@ Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ova
 - Metodens tidigare informella beteckning var **inte faktiskt ”bergsklättring”**, enligt användaren. Dokumentera uppmätta offset, faktisk probmodell och godkända kollisionsfall senare, inte som antagna sanningar.
 - [CNC:s kanoniska rörelse-/skanningsunderlag](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md) äger algoritm och verifiering; denna fil äger fysisk geometri.
 
+## Möjligt 3D-printat tillbehör – markörkrage vid skruv (2026-11-08)
+
+**Användaridé:** standardisera skruvarna som fäster arbetsstycket med **lättigenkännliga optiska markörkragar/brickor**; samma nedåtriktade Core-kamera kan då läsa varje skruvs XY-koordinat med klassisk bildanalys, utan att först träna allmän skruvigenkänning. Exempelprototyp: cirka Ø20 mm, starkt färgad, definierat kontrasterande mönster och känt centrum. Slutliga dimensioner, material, skruvtyp och färg är **inte valda**.
+
+**Konstruktionskrav:** Om markören är 3D-printad ska **skruvens verkliga klämkraft helst tas av metallbricka/fastspänning**, inte PETG/PLA som kan deformeras/krypa. Märkringen får **inte kunna lossna** under bearbetning, får inte skymma skruvcentrum, skymmas av verktyg/kamerafäste eller störa dammsko/probe. Markörens **hela diameter och höjd** är hinder för verktygsbanor och ska räknas in i `keepout`; verifiera på prov före skarp körning. Man kan även prova märkning på befintliga metallbrickor för mindre komplexitet. Att kameran känner igen markerade skruvar gör inte andra dolda/omarkerade skruvar säkra. Se [kameraflödet](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md).
+
 ## Fysiska nästa steg
 
 1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
