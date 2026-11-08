@@ -63,4 +63,4 @@ V1E dokumenterar **sju dedikerade skyddade ingångar** på Jackpot3. Med fem bef
 
 **Status:** logisk resurssammanställning gjord; **ingen** fysisk pinout verifierad och **ingen** spänningssatt mätning eller kabeldragning gjord. Fortsätt med ren mjukvarusimulering och besluta om fysisk IO-topologi innan CAD-fästet tillverkas.
 
-Se [projektjournalen](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md) för motiv, beslut och nästa steg.
+Se [projektjournalen](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md) för motiv och beslut, och [fysisk provgrind](INKOPPLING_OCH_PROV.md) för nästa konkreta steg utan att ändra aktiv firmware.
