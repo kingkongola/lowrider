@@ -50,6 +50,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 ## Sensorutbyggnad 2026-11-08
 
 - [**Gemensam projektjournal**](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md) — historik, beslut, motiv, antaganden och nästa steg. Håll ingen kopia här.
+- [Sensorarm: inkopplings- och provgrind](machine/delar/nollpunkt/INKOPPLING_OCH_PROV.md) — dokumenterad kontroll före **eventuell** inkoppling; inga steg fysiskt verifierade.
 Enligt användaren är kamera, mikrofoner, accelerometer och BLTouch nu **beställda, ej mottagna**. [Orderstatus och obekräftade exakta orderrader](PROCUREMENT.md); [mjukvaruarkitektur och kodstart i cnc](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md). Sensorfunktionerna är inte monterade eller driftsatta.
 
 ## Pågående experiment och automationsidéer
