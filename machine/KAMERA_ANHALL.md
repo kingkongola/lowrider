@@ -20,16 +20,16 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 
 ## Kalibreringsfixtur – vald första metod, ej fysisk kalibrering
 
-- **Första iterationen är en plan 2D-homografi vid en definierad kamerahöjd och materialyta**, inte fullständig 3D-kameramodell. Testa mot olika Z-höjder innan höjdkompensation eller avancerad kalibrering byggs. BLTouch är senare en möjlig källa till uppmätt material-Z men löser inte kamerans perspektiv automatiskt.
-
-- Ett plant **utskrivet A4 ChArUco-mönster**, i faktisk 100 % skala och kontrollerat med skjutmått i **båda** riktningar, fastsatt på MDF eller annat plant underlag. Papprets placering måste också vara **geometriskt relaterad till maskinens XY**, t.ex. via oberoende kända maskinmarkeringar eller en inmätt fixtur. Bara A4 utan relation till verktygsaxeln räcker inte för verktygsoffset.
-- Ta bilder från flera kända maskin-XY/Z med stillastående Core och definierad fokusposition. Kontrollera kamerans verkliga fokusavstånd och bildfält när den levererats, särskilt vid låg Z. Autofokus får inte tyst ändra optiken under en kalibrerad mätserie.
-- Kamera och fäste måste vara mekaniskt stela i förhållande till Core; fri passage från verktygsfästet, dammsko, probe/servoarm, kabelkedjor, anhåll och material vid högt/lågt Z. Ingen CAD-/kollisionsanalys eller realvärde för offset rapporteras som verifierad.
-- Dokumentera mätta offset, kalibrerings-ID och fysisk montering när de finns. För noggrannhet krävs verifierat maskinläge; den befintliga *kontrollhomingen* upptäcker vissa tappade steg **efter etapp**, den är **inte encoderstyrning**.
+- **Valt för första iterationen: 2D-bildanalys med Z-kompensation.** Ta bilder av ett plant kalibreringsmönster vid flera kända **kamera–materialavstånd**. Utgå inte från en enda 2D-homografi som antas giltig vid alla Z. Kalibreringen ska ge metrisk pixel→XY för ett **känt arbetsplan på aktuell höjd**, med uppmätt osäkerhet.
+- Ett plant **utskrivet A4 ChArUco-mönster**, utskrivet utan skalning och kontrollerat med skjutmått i **båda** riktningar, fästs på MDF eller annat plant underlag. Knyt tavlans XY till verifierade maskinkoordinater via oberoende referens/fixtur; ett godtyckligt placerat papper räcker inte för fräscentrums koordinater.
+- Ta bilder från flera **kända MPos X/Y/Z** med stillastående Core. Kontrollera kamera/objektivets verkliga avstånd, bildfält och fokusområde vid leverans. Håll fokus definierat/låst per kalibrerad serie; förändrad fokusposition kan kräva ny kalibrering eller verifierad profil.
+- **BLTouch avses ge materialytans Z** när prob, servoarm, elektrisk anslutning, offset och precision fysiskt är verifierade. Kamerans relativa höjd över materialet bestäms av Core-Z och det uppmätta ytplanet. Innan dess kan känd Z för provskivan användas. BLTouch mäter inte av sig själv full 3D-yta och kompenserar inte för optiskt perspektiv utan kalibreringen ovan.
+- Kamerafästet ska vara styvt relativt Core, med säker frigång för dammsko, fräs, Y-anhåll, probe och kablar i hela relevant X/Y/Z. Fysiska offset/plan och verifierad modell finns ännu inte.
+- Kontrollhoming är inte en kontinuerlig encoder; verifierad maskinposition för bildtagning får inte antas om steg kan ha tappats.
 
 ## Fysiska nästa steg
 
 1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
 2. Provmontera kartongattrapp/3D-printat tillfälligt fäste och mät kameras möjliga avstånd till materialplan samt full verktygs-/dammsko-/probe-kollision.
 3. Provpassa låg Y-list och trimreserve utan att låsa MPos eller skruvposition; granska överhäng/säker stödning för 2,4 m lång skiva.
-4. Provframställ en plan A4-kalibreringstavla med uppmätt X/Y och registrering mot verktygsaxeln; samla stillbilder på ett känt plan och verifiera precisionen. Bygg inte full 3D-modell före mätbehov.
+4. Provframställ kontrollmätt, maskinregistrerad A4-kalibreringstavla; samla bilder vid **flera kända Z-avstånd** och verifiera Z-kompenserad XY-mätning innan användning. Ingen full 3D-skanning.
