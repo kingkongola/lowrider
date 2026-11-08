@@ -1,5 +1,7 @@
 # Pågående idéarbete: självmatande LowRider, vakuum, prob och maskinseende
 
+**Uppdatering 2026-11-08:** användaren har nu beställt sensorerna. Äldre kandidatpris, lagersaldo och uppmaningen att inte köpa ny Core-kamera är **historisk undersökning**, inte aktuellt inköpsläge. [Kanonisk orderstatus](../PROCUREMENT.md) och [mjukvarukontrakt](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md) gäller. Montering, korrekt modell och elspecifikation är ännu inte verifierade.
+
 **Datum:** 2026-11-06  
 **Status:** koncept / provplan. Inga lösningar är beslutade, monterade eller driftsatta genom detta dokument.  
 **Ekonomi:** låga merkostnader prioriteras; tidigare uttalat tak **1 500 kr för automatisk verktygsväxling**, *inte* en verifierad totalbudget för alla uppgraderingar.  
