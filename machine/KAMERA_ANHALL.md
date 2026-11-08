@@ -27,6 +27,12 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 - Kamerafästet ska vara styvt relativt Core, med säker frigång för dammsko, fräs, Y-anhåll, probe och kablar i hela relevant X/Y/Z. Fysiska offset/plan och verifierad modell finns ännu inte.
 - Kontrollhoming är inte en kontinuerlig encoder; verifierad maskinposition för bildtagning får inte antas om steg kan ha tappats.
 
+## Kamerariktning vald 2026-11-08
+
+**Core-kamerans optiska axel ska nominellt peka rakt ned, vinkelrätt mot ett normalt plant arbetsstycke**, inte avsiktligt mot fräsens ingrepp. Den äger optisk registrering, oregelbundna skivkonturer, indexering och resultatkontroll; **Tapo C200** är separat fast överblickskamera. **INMP441 + ADXL345** jämförs mot förväntat fräsingrepp som passiv övervakning. Undvik att ändra kameravinkel för att kunna se verktyget genom dammskon.
+
+**CAD-krav:** kamera i styvt, kalibreringsstabilt fäste på gemensamma Core-basen, med lodrät optisk riktning som nominell parameter. Välj faktisk X/Y-offset, objektivavstånd, fri sikt, dammskofrigång och rörliga Z-gränser efter CAD-kollisionsprov och fysisk verifiering. Optiken kompenseras i Z och kalibreras; rak montering gör inte pixel→XY automatiskt exakt. Servoarmens lägen och kabelväg får inte skymma kameran i planerade bildlägen.
+
 ## Återfunna CAD-modeller som underlag för gemensam Core-enhet (2026-11-08)
 
 **Ursprung:** befintliga CAD-filer checkades in i commit [59efbec6](https://github.com/kingkongola/lowrider/commit/59efbec6c1a6) **2026-11-05**. Användaren vill kombinera dessa med Core-kamera, accelerometer och mikrofon, servoarm, BLTouch-stift, två armändlägen och kablage på **befintliga Core-skruvar/fästen**. Detta är en konstruktionsinriktning, **inte** färdig CAD eller beslut om montering.
