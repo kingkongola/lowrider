@@ -1,5 +1,7 @@
 # Ändlägesgivare till BLTouch-fällarm (designbeslut 2026-11-08)
 
+[Gemensam projektjournal för sensorutbyggnaden](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md).
+
 ## Vald princip – ännu ej fysisk verifierad
 
 Använd **två mikrobrytare** på servoarmens mekaniska ändlägen:
