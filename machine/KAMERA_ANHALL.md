@@ -57,9 +57,16 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 
 Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ovansidan** av relativt låga föremål, dvs en **2,5D-skanner**. Detta innebär inga nya CAD-fästen nu, men monteringens framtida **optiska synfält, Z-arbetsavstånd, stiftets fria rörelse, undersidesfrigång och svep kring objektkanter** bör inte blockera den möjligheten. Stora eller höga föremål kan inte automatiskt nås bara för att XY-arbetsområdet är stort. Se [mjukvaruflödet](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md). **Ingen fysisk skanning eller säker kollisionstolerans verifierad.**
 
-### Designnotering 2026-11-08: tidigare skanningsmetod ”bergsklättring”
+### Skanning med framförliggande BLTouch – fysisk princip (preciserad 2026-11-08)
 
-Användaren har redan diskuterat en probskanningsstrategi kallad **”bergsklättring”** för att hantera okända uppstickande ytor. **Algoritmens exakta regler återfanns inte** i denna eller CNC-repots aktuella SSOT, trots tidigare diskussion. Återvinn källan innan den återskapas; **konstruera inte Core-fästet som om ett fast höjdraster eller konstant låg frihöjd vore beslutat**. Den mekaniska uppgiften för denna repo är att ge BLTouch/servoarm reell frigång och tillräckligt Z-rörelseutrymme för den återfunna strategin, med senare fysisk kollisionsverifiering. [CNC:s skannings- och statusunderlag](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md).
+**Användarens metod, utan fast namn:** BLTouch-stiftet är **XY-förskjutet** från frässtålet; välj skanningsriktning så att **stiftet leder**. I utfällt läge ska stiftets lägsta mätpunkt vara **någon centimeter lägre** i Z än lägsta riskutsatta verktygsdel (arbetsidé, inte valda mått). Efter mätt upphöjning kan maskinen **höja Core innan verktyget följer**. Vid återgång/radbyte krävs retraktion till en **verifierat säker höjd**, eftersom proben annars kommer bakom verktyget.
+
+**Konsekvens för CAD:**
+- Fäste och servoaxel väljs så att BLTouch kan placeras med **användbart försprång i en bestämd skanningsriktning** och tillräcklig Z-offset, men fortfarande kan fällas bort för normal fräsning.
+- Modellera **alla delar som kan slå i terrängen**: fräs, mutter, dammsko, probehus, stift, arm, kablar och Core. Minsta verkliga vertikala och horisontella frigång måste prövas i hela svinget och över kända Z-gränser.
+- BLTouch mäter **nedåt i Z**, inte horisontella väggar. Försprång **ensamt garanterar inte** kollisionsfrihet mot branta eller okända hinder. Dimensionera mekanik och planering tillsammans: maximal steglängd/höjdskillnad, återgångshöjd, riskzoner och möjlighet att avvisa objekt som inte är åtkomliga.
+- Metodens tidigare informella beteckning var **inte faktiskt ”bergsklättring”**, enligt användaren. Dokumentera uppmätta offset, faktisk probmodell och godkända kollisionsfall senare, inte som antagna sanningar.
+- [CNC:s kanoniska rörelse-/skanningsunderlag](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md) äger algoritm och verifiering; denna fil äger fysisk geometri.
 
 ## Fysiska nästa steg
 
