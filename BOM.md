@@ -92,6 +92,11 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - minimum ytterfootprint 941 × 1563 mm
 - faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.
 
+## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
+
+- [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Användaren uppger **extra brytare kvar**, men **antal oanvända är inte räknat**. Ingen ny beställning.
+- [ ] Använd två brytare för servoarmens **infällda och utfällda** lägen. **Ej monterade**. Kabel och GPIO/pin-konfiguration okända; se [mekanisk princip](machine/delar/nollpunkt/ANDLAGEN.md). Kontakt IP40, skydda mot spån.
+
 ## Kvar — mekanik
 
 - [ ] senaste LR4-printar i 30 mm-variant
