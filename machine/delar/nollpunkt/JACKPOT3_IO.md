@@ -37,6 +37,14 @@ V1E dokumenterar **sju dedikerade skyddade ingångar** på Jackpot3. Med fem bef
 4. V1E anger att de dedikerade switch-ingångarna är aktiva lågt med **10 kΩ pull-up**. Den planerade COM–NO-logiken kan därför provas som en logisk kandidat, men slutligt val kräver fysisk kabel-/kortkontroll och en fungerande felmodell för öppna/fastnade kontakter.
 5. Befintlig `probe.pin = gpio.36:low` kan inte godtyckligt användas som två separata samtidiga probsignaler. Vi måste verifiera stöd för en dedikerad `toolsetter_pin` i **installerad FluidNC 3.9.9** före inkoppling.
 
+## FluidNC-funktioner som måste styra konstruktionen
+
+**Läsbart men inte safety-I/O:** [FluidNC user_inputs](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/user_inputs.md) stöder `digital0..7` och att läsa dem med G-kod **`M66 P<n>`**. Detta är en möjlig avläsningsväg för båda ändlägeskontakterna, **inte** automatiskt realtidsövervakade spärrar eller säkerhetsklassad interlock. Exakt anslutning, M66-läsning i användarens FluidNC 3.9.9, latens och felbeteende måste verifieras utan rörelse.
+
+**Viktig skillnad för två prober:** [FluidNC probe-dokumentation](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/probe.md) anger att `probe.pin` och `probe.toolsetter_pin` behandlas av **samma G38-logik**. Man kan **inte** selektivt adressera bara den ena med G38. Båda visas separat i status för felsökning, men aktivering av endera kan avsluta en probning. Därför krävs **mekaniskt/elektriskt entydiga vilolägen och programkontroll** innan både BLTouch och verktygslängdsknapp får vara inkopplade. Välj inte mux, extra elektronik eller maskinsekvens innan användaren har godkänt behov och metod.
+
+**Servots uppstartsfara:** [FluidNC rc_servo](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/rc_servo.md) dokumenterar att RC-servoaxeln kan röra sig mot maskinposition noll vid aktivering och att beräknad axelposition inte bevisar att servot nått sitt fysiska läge. De två valda Omron-brytarna är därför viktiga oavsett framtida servokonfiguration. Ingen `rc_servo`-axel får läggas till och aktiveras på maskinen före kollisions-, uppstarts- och strömbortfallsprov.
+
 ## Princip att låsa när vi har full pinout
 
 - **Inget nytt kort som reflex:** undersök först dokumenterade expansions-/modulporten på redan köpt Jackpot3.
