@@ -47,6 +47,10 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - [Publicerad guide och arbetsordrar](https://kingkongola.github.io/lowrider/) — originalbilder inline, 30 entimmespass och kopierbar återrapport. Lokal status på webbplatsen synkas inte automatiskt med repot.
 - `research/` — historisk evidens. Top-level-filerna ovan supersederar research vid konflikt.
 
+## Sensorutbyggnad 2026-11-08
+
+Enligt användaren är kamera, mikrofoner, accelerometer och BLTouch nu **beställda, ej mottagna**. [Orderstatus och obekräftade exakta orderrader](PROCUREMENT.md); [mjukvaruarkitektur och kodstart i cnc](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md). Sensorfunktionerna är inte monterade eller driftsatta.
+
 ## Pågående experiment och automationsidéer
 
 - [Automatisering och kamera – idéer 2026-11-06](docs/AUTOMATISERING_OCH_KAMERA_2026-11-06.md): krav på kamerasystemet, Tapo/Coral, BLTouch på servoarm, vakuumfastspänning, Genie-frammatning/indexering, billig verktygsväxling och manuell tvåsidig registrering. **Forsknings- och provplan, inga låsta konstruktionsbeslut.**
