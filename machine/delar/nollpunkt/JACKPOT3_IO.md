@@ -45,6 +45,15 @@ V1E dokumenterar **sju dedikerade skyddade ingångar** på Jackpot3. Med fem bef
 
 **Servots uppstartsfara:** [FluidNC rc_servo](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/rc_servo.md) dokumenterar att RC-servoaxeln kan röra sig mot maskinposition noll vid aktivering och att beräknad axelposition inte bevisar att servot nått sitt fysiska läge. De två valda Omron-brytarna är därför viktiga oavsett framtida servokonfiguration. Ingen `rc_servo`-axel får läggas till och aktiveras på maskinen före kollisions-, uppstarts- och strömbortfallsprov.
 
+## Beslut om probvilolägen (2026-11-08)
+
+**Användaren valde mekaniskt åtskilda vilolägen (alternativ 1), utan elektrisk omkopplare/mux i grundutförandet.** Detta är *inte* en lösning på I/O-portbristen för två armändlägen eller två separata probsignaler.
+
+- BLTouch-mätning: arm utfälld med båda ändlägenas sekvenskontroll, stift i mätläge, fasta verktygsknappen opåverkad.
+- Verktygslängdsmätning: arm infälld och stift indraget, fasta knappen aktiveras bara vid beröring av fräs.
+- Båda probsignaler ska vara inaktiva före G38. [Mjukvarans virtuella förkontroll](https://github.com/kingkongola/cnc/blob/main/src/cnc/probval.py) är **inte** bevis för att den inaktiva signalen förblir inaktiv medan maskinen rör sig.
+- Om BLTouch-larm, kabelstörning eller den fasta knappen kan utlösa oavsiktlig G38-kontakt i ett verkligt prov måste konstruktionen stoppas och **elektrisk separering omprövas**. Inga nya GPIO och ingen koppling har godkänts.
+
 ## Princip att låsa när vi har full pinout
 
 - **Inget nytt kort som reflex:** undersök först dokumenterade expansions-/modulporten på redan köpt Jackpot3.
