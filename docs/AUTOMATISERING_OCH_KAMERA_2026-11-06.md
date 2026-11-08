@@ -58,7 +58,7 @@ Komponenterna är utbytbara. Kamera, BLTouch, fysisk Z-knapp, drivskruv och vaku
 
 **Viktig koordinatregel:** Homografi från en enda bild gäller ett bestämt plan. Ändrad materialtjocklek/Z-höjd ger perspektivfel om man inte korrigerar med känd höjd, per-höjd-kalibrering eller rätt kameramodell. Kamera på Z-vagnen har dessutom dynamiskt avstånd till materialet. Skilj *detektion* från *metrologi*.
 
-### Kameraalternativ, ännu ej inköpsbeslut
+### Kameraalternativ — historisk jämförelse före beställningen 2026-11-08
 
 - **Tapo C200:** redan ägd; bra första överblickskamera/ljud, men fast fokus, optisk närgräns okänd och PTZ måste låsas vid kalibrering.
 - **Raspberry Pi Camera Module 3 standard**: 12 MP, IMX708, motorfokus cirka 10 cm till oändligheten, kontroll över fokus och 66° horisontellt fält. Finns i Sverige (Electrokit hade listat 339 kr 2026-11-06). Kräver Raspberry Pi, CSI-adapterkabel för Zero/Zero 2 och ström; **Pi Zero 2 W var slut hos Electrokit** vid kontrollen. Normallins, inte Wide/NoIR, är förstaval *om* Pi-plattform väljs.
@@ -66,7 +66,7 @@ Komponenterna är utbytbara. Kamera, BLTouch, fysisk Z-knapp, drivskruv och vaku
 - **Waveshare ESP32-S3 + OV5640**: potentiellt färre komponenter och Wi-Fi direkt på Core; begränsad mjukvaru-/bildkontroll och oklar närgräns för **den levererade linsen**. Avfärda inte, men köp inte enbart på 5 MP/specifikation.
 - **Lös OV5647 till Raspberry Pi** (CSI, ofta fokus 1 m till oändlighet) eller en generisk kamera med okänd lins är inte lämpliga förstahandsval för närbilder.
 
-Valmetod: först pröva Tapo med testmönster/skruv på arbetsstycket. Om den inte uppfyller behoven, pröva en **styvt monterad närbildskamera**. Välj sedan USB om det ger lägst total komplexitet, eller Pi Camera 3 standard om CSI/wifi ger tydlig fördel. **Raspberry Pi, ESP32 och USB är transport-/värdval, inte primärt kamerans optiska kvalitet.**
+Valmetod för verifiering: pröva Tapo med testmönster/skruv på arbetsstycket. Prova därefter den **beställda närbildskameran** när den levererats och kollisionskontrollerats. Välj sedan USB om det ger lägst total komplexitet, eller Pi Camera 3 standard om CSI/wifi ger tydlig fördel. **Raspberry Pi, ESP32 och USB är transport-/värdval, inte primärt kamerans optiska kvalitet.**
 
 ### Bildanalys på garderobsservern
 
