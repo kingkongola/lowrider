@@ -2,6 +2,23 @@
 
 **Live snapshot: 2026-09-21.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
+## Sensorbeställning 2026-11-08 — BESTÄLLD, INTE MOTTAGEN
+
+Användaren bekräftar att Electrokit-köpet är lagt och att projektet har köpt **mikrofoner, accelerometer, kamera och BLTouch**. Det är en utbyggnad av den redan fungerande LowRider V4, inte en del av ursprunglig kärnmekanik. **Inget är ännu mottaget, monterat, elektriskt kontrollerat eller kalibrerat.**
+
+| Del/funktion | Uppgift och sannolik artikel enligt föregående korgplan | Status |
+| --- | --- | --- |
+| Närbildskamera | Raspberry Pi Camera Module 3 **Standard**, tidigare vald Electrokit-artikel `41020240` | Beställd kamera, exakt orderrad kontrolleras vid leverans |
+| Accelerometer | ADXL345 (föreslagen modell) | Beställd accelerometer; modell, brytkort och antal verifieras vid leverans |
+| Mikrofoner | INMP441 (tidigare nämnd I2S-typ) | Köpta/beställda, antal och om de ingick i **denna** Electrokit-order okänt |
+| Fysisk prob | BLTouch/BLTouch-kompatibel (exakt variant ännu okänd) | Köpt/beställd enligt senaste uppgiften; tidigare plan att låna från granne är ersatt, faktisk leverantör okänd |
+| Kamera-värddator | Raspberry Pi Zero 2 WH, tidigare vald Electrokit-artikel `41022617` | Fanns på den planerade inköpslistan; **faktisk orderrad behöver bekräftas** |
+| Kamerakabel | CSI 200 mm 22–15 pin, tidigare vald Electrokit-artikel `41020808` | Fanns på den planerade inköpslistan; **faktisk orderrad behöver bekräftas** |
+
+Ordernummer, verkligt betalda belopp, antal samt eventuella övriga tillbehör saknas. **Bokför inget belopp i `COSTS.md` förrän faktiskt debiterat totalbelopp har bekräftats**; tidigare varukorgspriser är inte kvitto. CH343, DS18B20, boost och nivåomvandlare var diskuterade tillbehör, inte verifierade orderrader här.
+
+**Ägarskap:** fysisk monterings-/kollisionskontroll, kraftmatning, probens riktiga elektriska nivåer och maskinens konfiguration hör hit. [`cnc/docs/sensorarkitektur.md`](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md) äger mjukvarukontrakt och analys. BLTouch är en kontaktsensor, **inte** ett verifierat säkerhetsstopp; en trådlös Pi/ESP32 får inte vara i realtidsvägen för probing. Kalibrering och rörelsegodkännande krävs efter leverans.
+
 ## Redan betalt / beställt
 
 ### HaWiWe — CLOSED / SHIPPED
