@@ -1,6 +1,6 @@
 # Ändlägesgivare till BLTouch-fällarm (designbeslut 2026-11-08)
 
-[Gemensam projektjournal för sensorutbyggnaden](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md).
+[Gemensam projektjournal för sensorutbyggnaden](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md). [I/O-kartläggning och resurskonflikter](JACKPOT3_IO.md).
 
 ## Vald princip – ännu ej fysisk verifierad
 
