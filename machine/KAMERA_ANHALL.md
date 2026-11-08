@@ -18,7 +18,9 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 - Två grunda koncentriska gravyrspår runt samma **mekaniska styrhål på arbetsstycket**. Lägg i spill där det är säkert och återanvänd befintlig fräs/operation om möjligt. Exempeldiametrar på spårens centrumlinjer Ø12/Ø20 mm runt Ø6/Ø8 mm indexeringshål, ej fysiskt testade.
 - Vid skivförflyttning: mekaniska pinnar bibehålls först; kamera jämför optisk förflyttning i passiv shadow mode. Ringen måste vara åtkomlig för kamera både före och efter förflyttningen. **En markör mäter inte oberoende vridning**; listans raka anliggning måste verifieras eller minst två åtskilda referenser användas.
 
-## Kalibreringsfixtur – förslag, inte byggbeslut
+## Kalibreringsfixtur – vald första metod, ej fysisk kalibrering
+
+- **Första iterationen är en plan 2D-homografi vid en definierad kamerahöjd och materialyta**, inte fullständig 3D-kameramodell. Testa mot olika Z-höjder innan höjdkompensation eller avancerad kalibrering byggs. BLTouch är senare en möjlig källa till uppmätt material-Z men löser inte kamerans perspektiv automatiskt.
 
 - Ett plant **utskrivet A4 ChArUco-mönster**, i faktisk 100 % skala och kontrollerat med skjutmått i **båda** riktningar, fastsatt på MDF eller annat plant underlag. Papprets placering måste också vara **geometriskt relaterad till maskinens XY**, t.ex. via oberoende kända maskinmarkeringar eller en inmätt fixtur. Bara A4 utan relation till verktygsaxeln räcker inte för verktygsoffset.
 - Ta bilder från flera kända maskin-XY/Z med stillastående Core och definierad fokusposition. Kontrollera kamerans verkliga fokusavstånd och bildfält när den levererats, särskilt vid låg Z. Autofokus får inte tyst ändra optiken under en kalibrerad mätserie.
@@ -30,4 +32,4 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
 2. Provmontera kartongattrapp/3D-printat tillfälligt fäste och mät kameras möjliga avstånd till materialplan samt full verktygs-/dammsko-/probe-kollision.
 3. Provpassa låg Y-list och trimreserve utan att låsa MPos eller skruvposition; granska överhäng/säker stödning för 2,4 m lång skiva.
-4. Välj A4-/fräsmarkörfixtur, kontrollera verklig dimension och bindning till verktygsaxel efter att användaren avgjort kalibreringsvalet.
+4. Provframställ en plan A4-kalibreringstavla med uppmätt X/Y och registrering mot verktygsaxeln; samla stillbilder på ett känt plan och verifiera precisionen. Bygg inte full 3D-modell före mätbehov.
