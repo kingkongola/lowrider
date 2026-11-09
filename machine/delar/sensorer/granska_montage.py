@@ -22,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 from core_enhet import delar, Param, C, k, cz, KW11_HALLARE_POS
+from kw11_faste import kw11_atrapper, KW11_MALL
 
 
 def positionerade(d: Param = Param()):
@@ -199,6 +200,7 @@ def granska(ut:Path):
             work[name]=perref
     result={"schema":1,"status":"KONSTRUKTIONSGRANSKNING_EJ_SAKERT_FOR_PRINT_MONTERING",
             "interna_kollisioner":intrusion,
+            "kw11_ritningsunderlag":{"modell":KW11_MALL,"status":"bildbaserad referensattrapp, ej måttverifierad"},
             "servoprob_rorelsesvep":sweep,
             "referenser":list(referenser.keys()),
             "externa_narhetsvarningar":work,
@@ -258,6 +260,21 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
                                     +(22 if name=="pi_lock" else 0)])
         mesh.visual.face_colors=color
         scene.add_geometry(mesh,geom_name="MODUL_"+name,node_name="MODUL_"+name)
+    # Köpta KW11 visas som separata, neutralt färgade referenser i GLB.
+    # Aldrig en del av STL-/STEP-exporten för 3D-printing.
+    for switch_name, xyz in KW11_HALLARE_POS.items():
+        for ref_name, solid in kw11_atrapper().items():
+            preview=Pos(*xyz)*solid
+            vertices, triangles=preview.tessellate(0.15)
+            mesh=trimesh.Trimesh(
+                vertices=[v.to_tuple() for v in vertices],
+                faces=triangles,process=False)
+            if ref_name=="hus": color=(40,42,48,245)
+            elif ref_name=="rulle": color=(196,55,47,230)
+            else: color=(191,197,205,230)
+            mesh.visual.face_colors=color
+            label="EJ_PRINT_KW11_REFERENS_"+switch_name+"_"+ref_name
+            scene.add_geometry(mesh,geom_name=label,node_name=label)
     output.parent.mkdir(parents=True,exist_ok=True)
     scene.export(output)
     return output.stat().st_size
