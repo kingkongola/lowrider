@@ -59,7 +59,15 @@ Fixtur, referensmönster, fokusläge och fotografier på **flera Z-höjder** ing
 4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
 5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
 
-## Första parametriska Core-prototypen incheckad 2026-11-09 (test-CAD, inte färdig montering)
+## Gällande sensorenhet – build123d, modularitet och CAD-verifiering 2026-11-09
+
+**Core betyder här befintlig V1E-del; den NYA konstruktionen heter sensorenheten.** Nuvarande [build123d-konstruktion](delar/sensorer/core_enhet.py), [modul-/utskriftskontrakt](delar/sensorer/README.md) och [kopplingsutkast](delar/sensorer/KOPPLING_CORE_V0.md) supersederar **OpenSCAD-studien nedan**. 10 separata moduler: bärplatta på samma två befintliga M5 som tidigare C-servofäste, öppningsbar kabelkåpa, servicebar SPMS664-kassett, lös BLTouch-arm, separat kamera, Pi-kapsling+lock+docka, rigid ADXL345-bricka och egen INMP441-pod på Pi-kapslingen. **Kamera/Pi behöver inte tas loss när servot byts.**
+
+**[Grön CAD/3D-montage-CI](https://github.com/kingkongola/lowrider/actions/runs/42609388224)**: 10 STL och 10 STEP genereras av samma build123d-källa. Alla 10 STL är vattentäta med en komponent. Exakta BRep-test ger **inga korsningar mellan modulerna**, inklusive armen + förenklat BLTouch-hus i 7 vinklar från 0° till −90° mot våra övriga moduler och ritad servo. [Genererad GLB-översikt](https://github.com/kingkongola/lowrider/actions/runs/42609388224/artifacts/13669886409) innehåller den verkliga Core-referensmeshen, tool mounts, dammsko/kjol och separata nya moduler; den är **inte bevisad verklig passning**.
+
+**Kvar P0 före arm-/maskinmontage:** 2 fysiska Omron + hårda anslag ännu inte integrerade i den nya mekaniken, servo-METALLHORN, flexible BLTouch-kabel och all X/Y/Z/kjol-frigång under fysisk drift. BLTouch använder 45,7 mm till utfällt stift enligt tillverkarritning som **utkast**, bekräfta faktiskt exemplar. Core-/dammsko-STL kontrolleras endast med **samplad yt-närhet**, inte en exakt kollisionsalgoritm. Fästskruvar, faktiskt servo, befintlig kåpa/verktygsfäste och dimensioner behöver fysisk jämförelse. **Endast bänktest/provprint av fristående kapslingar/kåpor är aktuellt, inte automatisk probning.**
+
+## Första parametriska Core-prototypen incheckad 2026-11-09 (arkiverad OpenSCAD-studie) (test-CAD, inte färdig montering)
 
 **Kod + provprintfiler:** [machine/delar/sensorer/core_sensorer_v0.scad](delar/sensorer/core_sensorer_v0.scad) och [README](delar/sensorer/README.md). Fem separata CAD-delar: `pi_bas`, `pi_lock`, `kamera`, `bltouch_mattjigg`, `bltouch_arm`. Ger **fysiskt provbara** kamerahållare och Pi Zero 2 WH-kapsling, samt BLTouch-arm som **endast är ett geometriskt utkast** utifrån direktdriven servoarm C. **Ingen fläkt** i denna passiva Pi-kapsling (temperatur ska mätas under verklig belastning). Alternativet bordsmonterad lång ljusarm är inte inbyggt; LED kan vid behov eftermonteras efter ljusprov.
 
