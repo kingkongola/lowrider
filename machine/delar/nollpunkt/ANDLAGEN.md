@@ -42,6 +42,12 @@ Första observationen ska bekräfta **infälld aktiv, utfälld inaktiv**. Före 
 
 Läsningar ska vara avstudsade och tidsgränser ska finnas i den framtida **hårdvaruadaptern**. Kärnan modellerar bara redan kvalificerade observationer. Vid uppstart efter strömavbrott är läget *okänt* tills en korrekt läsning görs. Testa med lossad brytarkabel och simulerad kortslutning.
 
+### CAD-fynd 2026-11-09 – öppet mekaniskt blockerande fel
+
+**Mätt i modeller, inte på maskinen:** den nuvarande 3D-monteringen av två justerbara KW11-hållare når **inte** servoarmen: rullens minsta CAD-avstånd är **18,98 mm för infälld** respektive **12,00 mm för utfälld** över 0..−90° i 15°-steg. Testet använder nominell KW11-attrapp och arm utan metallhorn. Både fästenas placering och aktiverande arm-/kamgeometri måste revideras. **Detta är INTE godkända, fungerande lägesgivare**, oavsett att STL/STEP-filerna är topologiskt godkända.
+
+För fortsatt mekanikarbete: placera rullarna nära den rörliga armens **ytterradie**, inte vid servoaxeln där rullen riskerar ligga nära konstant. Definiera först två distinkta ändlägeskontakter med aktivering före respektive hårdstopp och friläge vid motsatt stopp; kontrollera mot riktig servo/dammsko och varning vid kabelbrott. Omron reserveras till original-LowRider enligt köpbeslutet.
+
 ### Nästa fysiska kontroll
 
 1. När Amazon-paketet kommer **2026-11-14 (beräknat)**: mät och prova två nya `KW11-3Z-N` med multimeter (COM–NO/NC, spakväg och tillslag). **Rör inte Omron-reserven.**
