@@ -59,6 +59,14 @@ Fixtur, referensmönster, fokusläge och fotografier på **flera Z-höjder** ing
 4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
 5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
 
+## Första parametriska Core-prototypen incheckad 2026-11-09 (test-CAD, inte färdig montering)
+
+**Kod + provprintfiler:** [machine/delar/sensorer/core_sensorer_v0.scad](delar/sensorer/core_sensorer_v0.scad) och [README](delar/sensorer/README.md). Fem separata CAD-delar: `pi_bas`, `pi_lock`, `kamera`, `bltouch_mattjigg`, `bltouch_arm`. Ger **fysiskt provbara** kamerahållare och Pi Zero 2 WH-kapsling, samt BLTouch-arm som **endast är ett geometriskt utkast** utifrån direktdriven servoarm C. **Ingen fläkt** i denna passiva Pi-kapsling (temperatur ska mätas under verklig belastning). Alternativet bordsmonterad lång ljusarm är inte inbyggt; LED kan vid behov eftermonteras efter ljusprov.
+
+**[Automatiskt CAD-prov på GitHub](https://github.com/kingkongola/lowrider/actions/runs/42599158774) grönt:** fem STL exporteras från incheckad OpenSCAD-källa och verifieras som vattentäta, enkelkomponents mesher med giltig positiv volym. Detta bevisar **inte** mekanisk passning, servohorn, skruvhål eller krockfrihet i riktig LowRider. [Kopplingsutkast](delar/sensorer/KOPPLING_CORE_V0.md) markerar alla oallokerade GPIO, regulator/strömskydd och kabelvägar.
+
+**P0 före fysisk armmontering:** original-Core-mesh/STEP eller verifierade infästningspunkter, faktiskt BLTouch-hålmönster och stiftavstånd samt passning mot befintliga `fallarm_C_faste` och `fallarm_C_kapa`. Den gamla kåpan och basplattan är **inte omgjorda eller bevisat kompatibla** med den nya armen. Varje tänkt säker mätsekvens kräver dessutom elektrisk I/O-verifiering och fysisk rörelsegrind.
+
 ## 2,5D-flatbäddsskanning – historisk idé, inte mekaniskt krav
 
 Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtriktad prob med lägre Z än fräsens riskutsatta delar föreslogs för att undvika hinder. **Denna funktion är parkerad.** Den får **inte** styra servoarmens geometri, monteringsvinkel, stiftets försprång eller inköp i aktuell Core-design.
