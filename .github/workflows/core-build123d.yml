@@ -81,8 +81,6 @@ jobs:
             ("kabellock", (.65,.68,.70), None),
             ("servokassett", (.87,.34,.14), None),
             ("bltouch_arm", (.95,.55,.15), None),
-            ("kw11_in_faste", (.75,.60,.25), None),
-            ("kw11_ut_faste", (.70,.47,.20), None),
             ("kw11_infalld", (.83,.50,.24), KW11_HALLARE_POS["kw11_infalld"]),
             ("kw11_utfalld", (.90,.64,.34), KW11_HALLARE_POS["kw11_utfalld"]),
             ("kamerakassett", (.12,.55,.72), None),
