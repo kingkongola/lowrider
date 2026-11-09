@@ -39,20 +39,6 @@ SENSOR_BULTAR = {
     "accel": ((42.0, 91.0), (42.0, 105.0)),
 }
 KLIPP_SKRUVAR = ((48.2, 80.0), (48.2, 153.0))
-
-# KW11-3Z-N: två nya, separata, utbytbara brytarplattor.
-# M3-positioner är nya HÅL I VÅR servokassett, INTE i V1E Core.
-# Två ankare per platta förhindrar att hållaren vrider sig.
-KW11_ANKARE = {
-    "in": ((61.0, 51.5), (61.0, 59.0)),   # (X,Z) på servoramens Y+ ansikte
-    "ut": ((61.0, 33.0), (61.0, 40.5)),
-}
-# Nominellt 9 mm hålcentrum på brytaren. Levererad QUARKZMAN 8.5–9.5 mm
-# har ännu inte mätts: rektangulära hål för M2 skruv + justering.
-KW11_MONTERING = {
-    "in": ((75.0, 59.0), (84.0, 59.0)),
-    "ut": ((75.0, 28.0), (84.0, 28.0)),
-}
 # Nya brytare – två IDENTISKA, separata hållare, samma fästskena på
 # den löstagbara servokassetten. x/y/z i maskinens M-ram (inte original-Core).
 KW11_HALLARE_POS = {
@@ -184,42 +170,6 @@ def servokassett():
     for z in (pz-4.7,pz+4.7):
         for x in (px-33.3,px+14):
             s -= k((x-1.7,x+1.7),(42.3,50.3),(z-1.7,z+1.7))
-    # Två löstagbara KW11-plattor skruvas på befintlig servokassett.
-    # Inga skruvar till maskin-Core eller annan sensor berörs.
-    for anchors in KW11_ANKARE.values():
-        for x, z in anchors:
-            s -= cy(42.5, 50.2, x, z, 3.1)
-    return s
-
-
-def kw11_faste(lage: str):
-    """Justerbar kassett för KW11-3Z-N. En utskriven del per ändläge.
-
-    Fästs med egna två M3 genom SERVOKASSETTEN (Y-led), inte på Core.
-    Separata M2-slitsar håller själva KW11 och tillåter 8,5–9,5 mm c/c.
-    Lämnar plats åt brytarens stift och elkablar, men rullens
-    exakta aktiveringsväg och de HÅRDA stoppunkterna är INTE verifierade.
-    """
-    if lage not in KW11_ANKARE:
-        raise ValueError(lage)
-    # Framsida Y+ på servokassettens ram slutar vid Y=49,3.
-    # Plattorna ligger Y=49,7..53,5 (0,4 mm monteringsspalt).
-    # Inre fästplattor är skruvade, aldrig fastgjutna i servoramen.
-    if lage == "in":
-        kontur=[(56.0,48.5),(91.5,48.5),(95,52),
-                (95,67.5),(91.5,71),(56,71)]
-    else:
-        kontur=[(56,19),(91.5,19),(95,22.5),
-                (95,43.8),(91.5,46.5),(56,46.5)]
-    s=prisma_xz(kontur, 49.7, 53.5)
-    # Två M3 för att skruva fast denna kassett mot servo-ramsfönstret.
-    for x,z in KW11_ANKARE[lage]:
-        s-=cy(49.3,53.9,x,z,3.4)
-    # M2-bossar ger utrymme under brytaren för de tre terminalerna.
-    # Justerslits 3,6x2,5mm i X/Z: fångar variation 8,5–9,5 mm.
-    for x,z in KW11_MONTERING[lage]:
-        s+=cy(52.9,56.0,x,z,5.6)
-        s-=k((x-1.8,x+1.8),(49.1,56.6),(z-1.25,z+1.25))
     return s
 
 
@@ -363,8 +313,6 @@ def delar(d: Param=Param()):
     return {
         "rygg":rygg(d),"kabellock":kabellock(d),
         "servokassett":servokassett(),"bltouch_arm":bltouch_arm(d),
-        "kw11_in_faste":kw11_faste("in"),
-        "kw11_ut_faste":kw11_faste("ut"),
         "kw11_hallare":kw11_hallare(), # 1 geometrifil, 2 fysiska printar
         "kamerakassett":kamerakassett(d),
         "pi_lada":pi_lada(),"pi_lock":pi_lock(),"pi_dock":pi_dock(),
@@ -379,10 +327,6 @@ def rapport(d: Param=Param()):
     out={"schema":1,"status":"konstruktionsstudie, ej fysisk krockverifiering",
          "ankare_m5_yz_mm":CORE_SKRUVAR,"moduldockar_m3_yz_mm":DOCKAR,
          "sensor_dockar_m2_5_yz_mm":SENSOR_BULTAR,
-         "kw11_fasten_m3_xz_mm":KW11_ANKARE,
-         "kw11_brytarmontering_m2_xz_mm":KW11_MONTERING,
-         "kw11_info":"Nominell 20x10x6.4 mm switch, 8.5–9.5 mm hålavstånd; "
-                     "aktivering och stoppytor EJ godkända",
          "mikrofonpod_pibox_yplus_xz_mm":[[70,149],[80,149]],
          "kw11_antal":2,
          "kw11_hallare_pos_mram":KW11_HALLARE_POS,
