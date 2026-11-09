@@ -9,7 +9,7 @@
 | X limit | `gpio.25` | X-ändläge |
 | Y motor0 / motor1 limits | `gpio.33` / `gpio.35` | Y-autosquare |
 | Z motor0 / motor1 limits | `gpio.32` / `gpio.34` | Z-autosquare |
-| `probe.pin` | `gpio.36:low` | Dagens prob/touchplate |
+| `probe.pin` | `gpio.36:low` | Konfigurerad probe-ingång; touchplattan (spaden) övergavs enligt beslut 0007, faktiskt ansluten givare ej verifierad |
 | `probe.toolsetter_pin` | `NO_PIN` | Ännu inte konfigurerad |
 | `user_inputs.digital0..7` | `NO_PIN` | Ingen extra användaringång konfigurerad |
 | `user_outputs.digital0..3` | `gpio.26 / 27 / 0 / 2` | Reserverade i YAML, faktisk användning inte genomgången |
@@ -35,7 +35,7 @@ V1E dokumenterar **sju dedikerade skyddade ingångar** på Jackpot3. Med fem bef
 2. Kortet har fyra väljbara **5 V/24 V-utgångar**; full PWM anges i 5 V-läge och enklare PWM i 24 V-läge. Detta är **inte** bevis att samtliga kan styra både BLTouch och SPMS664 med lämpliga pulser och ström. **`gpio.26` kan pulsera vid uppstart** enligt V1E; märk som olämplig kandidat för ett rörligt servo eller probe-stift tills uppstartsrisken är eliminerad.
 3. `gpio.0` och `gpio.2` finns i befintlig utgångskonfiguration. Ändra dem inte förrän uppstart, elektriska anslutningar och aktuella användningar har utretts.
 4. V1E anger att de dedikerade switch-ingångarna är aktiva lågt med **10 kΩ pull-up**. Den planerade COM–NO-logiken kan därför provas som en logisk kandidat, men slutligt val kräver fysisk kabel-/kortkontroll och en fungerande felmodell för öppna/fastnade kontakter.
-5. Befintlig `probe.pin = gpio.36:low` kan inte godtyckligt användas som två separata samtidiga probsignaler. Vi måste verifiera stöd för en dedikerad `toolsetter_pin` i **installerad FluidNC 3.9.9** före inkoppling.
+5. Konfigurerad `probe.pin = gpio.36:low` har historiskt framdraget kablage, men ingen verifierad monterad touchplatta; den kan inte godtyckligt användas som två separata samtidiga probsignaler. Vi måste verifiera stöd för en dedikerad `toolsetter_pin` i **installerad FluidNC 3.9.9** före inkoppling.
 
 ## FluidNC-funktioner som måste styra konstruktionen
 
