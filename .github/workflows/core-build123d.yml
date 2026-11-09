@@ -39,7 +39,11 @@ jobs:
               assert s["valid"] and s["solider"] == 1, (name,s)
               f=Path("export/stl")/(name+".stl")
               mesh=trimesh.load(f,force="mesh")
-              assert mesh.is_watertight and len(mesh.split())==1 and mesh.volume>0, (name,len(mesh.faces))
+              parts=mesh.split(only_watertight=False)
+              print(name, "triangles",len(mesh.faces),"watertight",mesh.is_watertight,
+                    "mesh_components",len(parts),"components_volumes",
+                    [round(p.volume,1) for p in parts], flush=True)
+              assert mesh.is_watertight and len(parts)==1 and mesh.volume>0, (name,len(mesh.faces))
               assert (Path("export/step")/(name+".step")).stat().st_size>200
               print(name, s["volym_cm3"], "cm3", "watertight")
           PY
