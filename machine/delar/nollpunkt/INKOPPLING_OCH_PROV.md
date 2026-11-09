@@ -16,7 +16,7 @@ Utgångspunkt: [I/O-inventering](JACKPOT3_IO.md), [armens två ändlägen](ANDLA
 
 | Funktion | Konfiguration idag | Möjlig kandidat att utreda | Blockerande verifiering |
 | --- | --- | --- | --- |
-| Yttre prob / befintlig touchplate | `probe.pin=gpio.36:low` | Behåll befintlig för prov tills ny BLTouch-strategi är klar | Spänning/utgångsläge på faktisk BLTouch, konflikter med befintlig platta |
+| Yttre prob / befintlig touchplate | `probe.pin=gpio.36:low` | **Kablar framdragna, ingen monterad touchplatta verifierad** enligt `cnc/docs/beslut/0007-hardvara-pa-sikt.md` | Verifiera vad som faktiskt är kopplat till gpio.36; den planerade fasta verktygsknappen är en annan del |
 | Fast verktygslängdsknapp | `toolsetter_pin=NO_PIN` | `gpio.39` är nämnd som input-only / sjunde skyddad port | Tillgänglig kontakt, revision och faktiskt fritt stift |
 | Omron infälld/utfälld | `user_inputs.digital*=NO_PIN` | Modulport `gpio.13`/`gpio.14` om RJ11 ska kunna reserveras för pendant | Elektrisk skyddsnivå, verklig mappning och konfigurerad M66-läsning |
 | Armservo SPMS664 | Ingen servo/PWM konfigurerad | Någon *verifierad* 5 V PWM-kapabel utgång | Tillgänglighet, 50 Hz, pulsområde, separat servomatning och **bootrörelse** |
@@ -38,7 +38,7 @@ V1E listar **7 dedikerade ingångar, fyra utgångar, RJ11 och modulport**, samt 
 - [ ] Med var **och en** ingång individuellt och säkert inkopplad: avläs **rått** läge. Verifiera polaritet, öppen kontakt, sluten kontakt, ledningsbrott och båda Omron-kontakter samtidigt. Inga M66-test kan utföras innan nya `user_inputs` konfigurerats i en **separat testkonfiguration**.
 - [ ] Kontrollera faktiskt stöd för `user_inputs.digital0..7` via [FluidNC `M66`](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/user_inputs.md), och för `probe.toolsetter_pin` via [?]-status och [probe-dokumentationen](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/probe.md). Detta är läsning av signal, **inte en säkerhetsfunktion**.
 - [ ] Verifiera läge och pulstålighet för **SPMS664** och **BLTouch** separat med korrekt matning och utan mekanisk last. Särskilt på-/avslag, omstart och eventuell ofrivillig rörelse. [FluidNC RC-servo](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/rc_servo.md) beskriver att servot kan gå till startposition vid aktivering.
-- [ ] Observera att `probe.check_mode_start` enligt [aktuell FluidNC-dokumentation](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/probe.md) handlar om **Check Mode**, inte en garanterad fysisk förkontroll vid riktig G38.
+- [ ] Verifiera på **installerad FluidNC 3.9.9** att `probe.check_mode_start: true` ger **ALARM:4 om en probe är aktiv innan G38 startar**. Detta är funktionen enligt [FluidNC-dokumentationen](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/probe.md); det är **inte** ett bevis för att rätt probe träffade eller att den inaktiva proben inte triggas under rörelsen.
 - [ ] Mät eller belägg faktisk signalkvalitet, kontaktstuds och timeout; först därefter bestäm `stabil_ms` och tidsfrister i programadapter.
 
 ## Grind C – isolerad fysisk mätning, uttryckligt godkännande krävs
