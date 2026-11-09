@@ -99,6 +99,8 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Elektronik och kablar i utkastet:** tornet är ihåligt bakom en enda sidopanel mot X max-sidan, med sex plana skruvar. Pi Zero 2 WH och ADXL345 sitter på innerväggen. CSI-kabeln går i ett inre rum från Pi:ns kortsida till kamerakortet. LED-ledningarna går i inre kanaler. Servokabeln går upp ovanför servot, BLTouch-kabeln i ett spår på armens sida mot servot och genom skenan över servot. All kabel lämnar tornet bakåt, in i gapet mot Core. Kablarnas böjar är inte simulerade.
 
+**Servokåpa:** tornet omsluter servots bakre del i samma plan som sidopanelen, och servot skjuts in framifrån genom ramen. Servopaketet är flyttat 2 mm längs balken för att väggen ska rymmas; tornet slutar 0,5 mm före Core-änden.
+
 **Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål och väggtjocklek runt Pi-rummet.
 
 **Kvar:** kamerans startspärr i `kingkongola/cnc`, BLTouchens vikt, kabelvägen från tornets baksida längs Core, 24→5 V-regulatorns fäste (plats finns i rummet under Pi:n). Servohorn, kortets hålbild, FFC-kontaktens riktning och servomått ska mätas mot levererade delar.

@@ -24,7 +24,7 @@ from build123d import (Box, Color, Compound, Cylinder, Plane, Polygon, Pos, Rot,
                        export_step, export_stl, extrude, fillet, Axis)
 
 # Tornets gränser: inte förbi Core-änden längs balken, inte förbi dammskon utåt.
-Y0, Y1 = 48.5, 72.0
+Y0, Y1 = 48.5, 72.5
 X_DAMMSKO = 107.6
 
 # Kamera: linsens spets. Långsidan (66 grader) ut från balken.
@@ -46,11 +46,16 @@ ACC_HAL = [(26.0, 104.0), (41.0, 104.0)]   # nominellt, kontrolleras mot leverer
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
 PARK = -165.0               # utfällt 0, parkerat förbi lodlinjen: tyngden håller armen mot stoppet
-ARM_Y = (21.5, 25.5)
-BLT = (61.0, 34.0)
+SERVO_DY = -2.0             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
+ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
+BLT = (61.0, 34.0 + SERVO_DY)
+FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
 FLANS_Z = 6.4
-HUB_D = 18.0
-ARM_W = (9.0, 6.0)         # halv bredd vid navet och vid plattan
+HUB_D = 15.0
+ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
+
+KAPA_Y = Y1
+KAPA_T = 1.4
 
 # Hårda stopp: armens två sidor slår mot var sitt fast block på 7-15 mm radie.
 STOPP_T = (7.0, 15.0)       # längs armen från navet
@@ -123,6 +128,19 @@ def stopp_block(blt_x, sida, w0, w1):
     return [vrid(p, PARK) for p in pts] if sida > 0 else pts
 
 
+def servokapa():
+    """Yttre form runt servots bakdel; samma hörnradie som tornet."""
+    k = box((12.6, FRAM_Y[0] + 1, 29.6), (57.4, KAPA_Y, 70.0))
+    return fillet(k.edges().filter_by(Axis.Y), 4.0)
+
+
+def servo_attrapp():
+    d = SERVO_DY
+    kropp = box((14.8, 32.6 + d, 33.6), (55.2, 73 + d, 53.6))
+    oron = box((5.1, 40.8 + d, 33.6), (64.9, 43.3 + d, 53.6))
+    return kropp + oron + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0)
+
+
 def torn(blt_x=BLT[0]):
     b = BUK
     prof = [(8, 56), (52, 56), (LINS[0] - 8, b), (XEND, b), (XEND, b + 15.4), (84, b + 29.4), (8, b + 29.4)]
@@ -136,16 +154,21 @@ def torn(blt_x=BLT[0]):
         s -= cyl_x(43.95, z, -9, 10, 5.4)
     # Servoram med fönster för kroppen, och skena upp till fästplattan.
     xa, xb = 7.0, 67.0      # fästöronen sitter vid x 11,7 och 59
-    s += box((xa, 43.3, 27.6), (xb, 49.3, 58.5)) - box((PX - 30.2, 42, 33.4), (PX + 10.2, 51, 53.8))
-    s += box((8, 43.3, 53.8), (xb, 52, 58.5))
+    ram = box((xa, FRAM_Y[0], 27.6), (xb, FRAM_Y[1], 58.5))
+    s += fillet(ram.edges().filter_by(Axis.Y), 3.0)
+    # Kåpa runt servots bakre del, i samma plan som sidopanelen.
+    s += servokapa()
+    s -= box((PX - 30.2, FRAM_Y[0] - 1, 33.4), (PX + 10.2, FRAM_Y[1] + 2, 53.8))
+    s -= box((PX - 30.4, FRAM_Y[1], 33.2), (PX + 10.4, KAPA_Y - KAPA_T, 54.0))
+    s += box((8, FRAM_Y[0], 53.8), (xb - 3, 52, 58.5))
     for x in (PX - 33.3, PX + 14):
         for z in (PZ - 4.7, PZ + 4.7):
-            s -= cyl_y(x, z, 42.3, 50.3, 3.4)
+            s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     s += prisma_y(stopp_block(blt_x, -1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
-    s += box((33, ARM_Y[1] + 1.0, 27.6), (45, 43.5, 33.2))
+    s += box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2))
     s += prisma_y(stopp_block(blt_x, 1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
-    s += box((31, ARM_Y[1] + 1.0, 54.0), (47, 43.5, 58.5))
+    s += box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5))
     s += box((30.5, ARM_Y[0], 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
@@ -168,20 +191,20 @@ def med_elektronik(s):
     """Elektronikrum bakom en enda sidopanel, och alla kablar dolda inuti tornet."""
     b = BUK
     x0, x1, z0, z1 = PI_RUM
-    s -= prisma_y(inset(sidoprofil(), 4.0), 51, 70.1)
-    s -= prisma_y(inset(sidoprofil(), 2.0), 70, 73)
+    s -= prisma_y(inset(sidoprofil(), 4.0), 51, Y1 - 1.9)
+    s -= prisma_y(inset(sidoprofil(), 2.0), Y1 - 2, Y1 + 1)
     # Tvärribba som styvar väggarna; fönster för kablar.
-    s += box((48, 50.5, 59.5), (51, 69.9, 122)) - box((47, 52, 62), (52, 62, 74))
+    s += box((48, 50.5, 59.5), (51, Y1 - 2.1, 122)) - box((47, 52, 62), (52, 62, 74))
     # Pi (hålbild 58 x 23) och accelerometer på tornets innervägg.
     for x, z in PI_HAL + ACC_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
         s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.2)
     for x, z in PANEL_HAL[:4]:
-        s += cyl_y(x, z, 64.5, 70.0, 7.0)
+        s += cyl_y(x, z, 64.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL[4:]:
-        s += cyl_y(x, z, 50.5, 70.0, 7.0)
+        s += cyl_y(x, z, 50.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL:
-        s -= cyl_y(x, z, 62.0, 70.5, 2.5)
+        s -= cyl_y(x, z, 62.0, Y1 - 1.5, 2.5)
     # CSI: från Pi:ns kortsida över till kameran, öppning ner till kortets kant.
     s -= box((x1 - 0.5, 60.5, b + 3.5), (LINS[0] + 6.5, 70, b + 13.4))
     s -= box((x1 - 0.5, 52, b + 3.5), (82.2, 60.6, b + 13.4))    # plats för flatkabeln vid Pi-kortets kant
@@ -189,8 +212,8 @@ def med_elektronik(s):
     # LED-ledningen från den främre listen går i en kanal in i CSI-rummet.
     s -= box((LINS[0] - 7.5, 35.5, b + 3.6), (LINS[0] - 5.5, 61, b + 5.6))
     # Servokabeln upp ovanför servot; BLTouch-kabeln genom skenan över servot.
-    s -= box((25, 52, 55), (43, 62, 61))
-    s -= box((37, 26, 55), (43, 52.5, 57.5))
+    s -= box((25, 52, 53.5), (43, 62, 61))
+    s -= box((37, ARM_Y[1] + 0.5, 55), (43, 52.5, 57.5))
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
     for y in (54, 62):                                      # buntbandsbryggor före utgången
@@ -200,12 +223,12 @@ def med_elektronik(s):
 
 def sidopanel():
     """Tornets hela sida som en enda panel, plan mot X max-sidan."""
-    p = prisma_y(inset(sidoprofil(), 2.15), 70, 72)
+    p = prisma_y(inset(sidoprofil(), 2.15), Y1 - 2, Y1)
     for x, z in PANEL_HAL:
-        p -= cyl_y(x, z, 69, 73, 3.4)
-        p -= cyl_y(x, z, 71, 73, 6.2)
+        p -= cyl_y(x, z, Y1 - 3, Y1 + 1, 3.4)
+        p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
     for z in (127, 132, 137, 142, 147, 152):
-        p -= box((28, 69, z - 0.9), (62, 73, z + 0.9))
+        p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
     return p
 
 
@@ -217,12 +240,12 @@ def arm(blt_x=BLT[0]):
     a = prisma_y([(PX + n[0] * w0, PZ + n[1] * w0), (bx + n[0] * w1, bz + n[1] * w1),
                   (bx - n[0] * w1, bz - n[1] * w1), (PX - n[0] * w0, PZ - n[1] * w0)], y0, y1)
     a += cyl_y(PX, PZ, y0, y1, HUB_D)
-    a += box((blt_x - 13, y0, FLANS_Z), (blt_x + 13, 40, FLANS_Z + 4.5))
+    a += box((blt_x - 13, y0, FLANS_Z), (blt_x + 13, BLT[1] + 6, FLANS_Z + 4.5))
     # Dolt spår för BLTouch-kabeln, på armens sida mot servot.
     a -= prisma_y([(PX + u[0] * 12 + n[0] * 1.75, PZ + u[1] * 12 + n[1] * 1.75),
                    (bx + n[0] * 1.75, bz + n[1] * 1.75), (bx - n[0] * 1.75, bz - n[1] * 1.75),
                    (PX + u[0] * 12 - n[0] * 1.75, PZ + u[1] * 12 - n[1] * 1.75)], y1 - 2, y1 + .1)
-    a -= box((blt_x - 1.75, y1 - .5, FLANS_Z + 3), (blt_x + 1.75, 29.5, FLANS_Z + 5))
+    a -= box((blt_x - 1.75, y1 - .5, FLANS_Z + 3), (blt_x + 1.75, BLT[1] - 4.5, FLANS_Z + 5))
     for x in (blt_x - 9, blt_x + 9):
         a -= Pos(x, BLT[1], FLANS_Z + 2) * Cylinder(1.7, 10)
     a -= Pos(blt_x, BLT[1], FLANS_Z + 2) * Cylinder(5, 10)
@@ -261,6 +284,7 @@ def main():
     cx, cy, cz = LINS
     delar = [
         namn(t, "Sidotorn", (.16, .18, .2)),
+        namn(servo_attrapp(), "Servo_SPMS664_ATTRAPP", (.1, .1, .12)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
         namn(bl, "BLTouch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),

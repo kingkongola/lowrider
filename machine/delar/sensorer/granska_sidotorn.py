@@ -14,9 +14,11 @@ from scipy.spatial import cKDTree
 p = argparse.ArgumentParser()
 p.add_argument("--ut", required=True, type=Path)
 p.add_argument("--ref", required=True, type=Path)
+p.add_argument("--servo-dy", type=float, default=-2.0)
 a = p.parse_args()
 L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
+ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 torn, arm, bl, lock = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel"))
 P = np.load(a.ref / "scan_pts_plan.npy")
 PIV, PARK = np.array([45.0, 0, 43.6]), -165
@@ -58,7 +60,7 @@ servo, nx = ref["SPMS664_referens"], lambda o, d, m: (stralar(o, d, m) or [None]
 print("--- passningsytor")
 for x in (11.7, 59.0):
     for z in (38.9, 48.3):
-        print(f"servoöra x{x} z{z}: avstånd till öra {nx([x + 2.5, 43.3, z], [0, -1, 0], servo)}, skruvhål fritt {nx([x, 43.0, z], [0, 1, 0], torn) is None}")
+        print(f"servoöra x{x} z{z}: avstånd till öra {nx([x + 2.5, 43.3 + a.servo_dy, z], [0, -1, 0], servo)}, skruvhål fritt {nx([x, 43.0 + a.servo_dy, z], [0, 1, 0], torn) is None}")
 q = sm(arm, 20000)
 t = cKDTree(sm(torn, 400000))
 for g_ in (0, -1, PARK + 1, PARK):
