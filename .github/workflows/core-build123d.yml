@@ -43,6 +43,13 @@ jobs:
               print(name, "triangles",len(mesh.faces),"watertight",mesh.is_watertight,
                     "mesh_components",len(parts),"components_volumes",
                     [round(p.volume,1) for p in parts], flush=True)
+              if not mesh.is_watertight:
+                  import numpy as np
+                  ed, counts=np.unique(mesh.edges_sorted,axis=0,return_counts=True)
+                  dangling=ed[counts!=2]
+                  mids=mesh.vertices[dangling].mean(axis=1)
+                  print("BROKEN_EDGES", name,len(dangling),"coords first 30",
+                        np.round(mids[:30],2).tolist(),flush=True)
               assert mesh.is_watertight and len(parts)==1 and mesh.volume>0, (name,len(mesh.faces))
               assert (Path("export/step")/(name+".step")).stat().st_size>200
               print(name, s["volym_cm3"], "cm3", "watertight")
@@ -94,6 +101,7 @@ jobs:
           fig.savefig("export/core-koncept.png",dpi=145)
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: core-build123d-moduler-prov
           path: |
