@@ -205,7 +205,7 @@ def kamerakassett(d: Param = Param()):
 
 
 def pi_lada():
-    """Pi Zero 2 WH utan fläkt, stängd mot spån och med servislock."""
+    """Pi Zero 2 WH utan fläkt, med servicelock och kabelöppning – EJ spåntät."""
     w,h=80,46
     s=_fasad_xy(-w/2,w/2,-h/2,h/2,0,22,fas=5)
     # Håligheten måste ligga INNANFÖR de 5 mm fasade hörnen.
