@@ -56,7 +56,7 @@ PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
 PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
 PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
-ACC_HAL = [(23.0, 118.5), (38.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
+ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
 # Två LM2596-moduler 43 x 21 mm sida vid sida: A 5,1 V till Pi och BLTouch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
 REG_X0 = {"A": 12.5, "B": 34.5}
 REG_Z0 = 66.5
@@ -288,6 +288,8 @@ def med_elektronik(s):
     for x, z in PI_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
         s += cyl_y(x, z, PI_Y - .5, PI_Y + 1.9, 2.4)
+    # ADXL345 mäter fräsningens vibrationer: den sitter på en massiv platta som går direkt in i fästblocket vid övre M5.
+    s += box((12, 50.5, 111), (38, 53.5, 126))
     for x, z in ACC_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
         s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.6)
@@ -318,8 +320,8 @@ def med_elektronik(s):
     s -= box((37, ARM_Y[1] + 0.5, 55), (43, 52.5, 57.5))
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
-    for y in (54, 62):                                      # buntbandsbryggor före utgången
-        s += box((11, y, 119.5), (20, y + 2, 123.5))
+    for y in (60, 65):                                      # buntbandsbryggor före utgången, ovanför ADXL-kortet
+        s += box((11, y, 112.5), (20, y + 2, 116.5))
     return s
 
 
@@ -465,7 +467,7 @@ def main():
     (a.ut / "elektronik.json").write_text(json.dumps({
         "Pi": [[PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15], [PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15]],
         **{f"LM2596_{k}": [[x0, PI_Y, REG_Z0], [x0 + 21, PI_Y + 14, REG_Z0 + 43]] for k, x0 in REG_X0.items()},
-        "ADXL": [[20.5, PI_Y, 110.7], [40.5, PI_Y + 3, 126.3]],
+        "ADXL": [[ACC_HAL[0][0] - 2.5, PI_Y, ACC_HAL[0][1] - 7.8], [ACC_HAL[1][0] + 2.5, PI_Y + 3, ACC_HAL[0][1] + 7.8]],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "magnet": [*magnet_lage(BLT[0]), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS,

@@ -41,7 +41,7 @@ flowchart LR
 | BLTouch-signal | Probe-input | `gpio.36`, D021, ej inkopplad | Polaritet provas med `?` före G38, V3.1 är open drain som standard |
 | Fällarm infälld/utfälld | 2 × KW11 SPDT som separata ingångar | `gpio.13/14` kandidater via expansionsport | Verifierad PCB-port, COM/NO, debounce, M66 och skydd |
 | Fast verktygslängdsknapp | `toolsetter_pin` | `gpio.39`, D021, ej inkopplad | Knappens status okänd |
-| ADXL345 (senare) | Till Pi lokalt via 3,3 V I²C eller SPI med exakt breakout-pinout | Beställd, ännu ingen användning | Verklig modul/spänningskrav, monteringsposition |
+| ADXL345 | Till Pi lokalt via 3,3 V, SPI för hög samplingsfrekvens | Beställd. Används till processövervakning under fräsning, stillastående före bild och slag, se `cnc/docs/verktygsovervakning.md` | Verklig modul/spänningskrav |
 | INMP441 (senare) | Digital I²S till lämplig mikrofonvärd | Inte del av v0 | Signal-/kabel- och störningsprov |
 | Fläkt | **Ingen i v0** | Ej vald | Temperaturbevis först |
 
