@@ -43,7 +43,9 @@ def brep_intersektioner(parts: dict) -> list[dict]:
             continue
         try:
             result=a.intersect(b)
-            if isinstance(result,list):
+            if result is None: # build123d returnerar None för tom BRep-skärning
+                volume=0.0
+            elif isinstance(result,list):
                 volume = sum(float(s.volume) for s in result)
             else:
                 volume=float(result.volume)
@@ -70,6 +72,9 @@ def referens_stl():
         file=source/filename
         if file.exists():
             o[key]=trimesh.load(file,force="mesh")
+    servomodell=source/"nollpunkt"/"fallarm_C_servo_bild.stl"
+    if servomodell.exists():
+        o["SPMS664_referens"]=trimesh.load(servomodell,force="mesh")
     archive=source/"nollpunkt"/"nollpunkt-overlamning-codex.zip"
     if archive.exists():
         with zipfile.ZipFile(archive) as f:
@@ -150,5 +155,5 @@ if __name__=="__main__":
     result=granska(Path(sys.argv[1]))
     # Intersektionerna är kvalitetsavvikelser och ska inte döljas i rapporten,
     # men rapport genereras även vid fynd för konstruktionsiteration.
-    if any(x["status"]=="intrang" for x in result["interna_kollisioner"]):
-        raise SystemExit("CAD: oplanerade överlapp, granska rapporten före utskrift")
+    if result["interna_kollisioner"]:
+        raise SystemExit("CAD: överlapp eller okontrollerade BRep-par; granska rapporten före utskrift")
