@@ -87,3 +87,7 @@ for k, m in ref.items():
     if (hi > lo).all():
         q = np.random.default_rng(1).uniform(lo, hi, (800000, 3))
         print(f"intrång torn mot {k}: {float((torn.contains(q) & m.contains(q)).mean() * np.prod(hi - lo)):.2f} mm3")
+
+# LM2596 (43 x 21 x 14 mm, ovanför pelarna) ska få plats i rummet utan att ta i panelen.
+b = np.array(np.meshgrid(np.linspace(21.5, 41.5, 21), np.linspace(55.2, 69.0, 8), np.linspace(61.5, 103.5, 41), indexing="ij")).reshape(3, -1).T
+print("punkter av regulatorn inne i tornet:", int(torn.contains(b).sum()), "av", len(b))

@@ -40,8 +40,9 @@ PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 139.5)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
 PANEL_X = 84.0                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (77.0, 132.0), (15.0, 155.0), (77.0, 155.0), (15.0, 64.5), (44.0, 64.5)]
-ACC_HAL = [(26.0, 104.0), (41.0, 104.0)]   # nominellt, kontrolleras mot levererad ADXL345
+PANEL_HAL = [(15.0, 125.5), (77.0, 132.0), (15.0, 155.0), (77.0, 155.0), (15.0, 64.5), (45.5, 64.5)]
+ACC_HAL = [(23.0, 115.0), (38.0, 115.0)]   # nominellt, kontrolleras mot levererad ADXL345
+REG_HAL = [(23.5, 67.5), (39.5, 97.5)]     # LM2596-modul 43 x 21 mm, hålbild nominell, kontrolleras mot modulen
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
@@ -56,13 +57,13 @@ MAGNET = (6.2, 3.2)         # urtag för Ø6 x 3 mm neodymmagnet (Vinabo, finns 
 BULA_T = 11.0               # armens bula för M3-skruvens stålhuvud, mm längs armen
 ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
 
-BULA_Y = (ARM_Y[0] - 1.0, ARM_Y[1])   # armen är tjockare där M2,5-skruvens huvud möter magneten
+BULA_Y = (ARM_Y[0] - 2.0, ARM_Y[1])   # armen är tjockare där M3-skruvens huvud möter magneten
 KAPA_Y = Y1
 KAPA_T = 1.4
 
 # Hårda stopp: armens två sidor slår mot var sitt fast block på 7-15 mm radie.
 STOPP_T = (7.0, 15.0)       # längs armen från navet
-STOPP_TJOCK = 5.0
+STOPP_TJOCK = 4.0
 
 
 def box(a, b):
@@ -215,14 +216,14 @@ def torn(blt_x=BLT[0]):
             s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     def stopp(sida):
-        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 1.0, ARM_Y[1] + 1.2)
+        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 0.5, ARM_Y[1] + 1.2)
         p = prisma_y(stopp_block(blt_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
         return fillet(p.edges().filter_by(Axis.Y), 0.8)
     s += stopp(-1)
     s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
     s += stopp(1)
     s += fillet(box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
-    s += box((30.5, ARM_Y[0] + 2.0, 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
+    s += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
     s -= magnet_urtag(blt_x)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
@@ -254,6 +255,9 @@ def med_elektronik(s):
     for x, z in PI_HAL + ACC_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
         s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.2)
+    for x, z in REG_HAL:
+        s += cyl_y(x, z, 50.5, PI_Y, 6.5)
+        s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.6)
     for x, z in PANEL_HAL[:4]:
         s += cyl_y(x, z, 64.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL[4:]:
@@ -272,7 +276,7 @@ def med_elektronik(s):
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
     for y in (54, 62):                                      # buntbandsbryggor före utgången
-        s += box((11, y, 102), (22, y + 2, 106))
+        s += box((11, y, 100), (20, y + 2, 104))
     return s
 
 
@@ -284,6 +288,8 @@ def sidopanel():
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
     for z in (127, 132, 137, 142, 147, 152):
         p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
+    for z in (72, 77, 82, 87, 92):                           # luft in under regulatorn, ut vid Pi:n
+        p -= box((22, Y1 - 3, z - 0.9), (41, Y1 + 1, z + 0.9))
     return p
 
 
@@ -319,11 +325,12 @@ def arm(blt_x=BLT[0]):
     # Bula för skruvhuvudet som fäster mot magneten.
     t = BULA_T
     w = w0 + (w1 - w0) * t / L
-    bula = Pos(PX + u[0] * t + n[0] * (w - 3), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(2.5, 6.0)
+    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.0, 7.0)
     a += bula
     s_p = (PX + u[0] * t + n[0] * w, PZ + u[1] * t + n[1] * w)
-    a -= Pos(s_p[0] - n[0] * .15, sum(BULA_Y) / 2, s_p[1] - n[1] * .15) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(2.3, 0.3)
-    a -= Pos(PX + u[0] * t + n[0] * (w - 4), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 4)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(1.0, 8)
+    rot = Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0)
+    a -= Pos(s_p[0] - n[0] * 1.65, sum(BULA_Y) / 2, s_p[1] - n[1] * 1.65) * rot * Cylinder(2.95, 3.3)   # M3-huvud, skruvdjupet ställer hållkraften
+    a -= Pos(s_p[0] - n[0] * 7, sum(BULA_Y) / 2, s_p[1] - n[1] * 7) * rot * Cylinder(1.3, 9)
     # Dolt spår för BLTouch-kabeln, på armens sida mot servot.
     a -= prisma_y([sid_p for sid_p in ((PX + u[0] * 18 + n[0] * 1.75, PZ + u[1] * 18 + n[1] * 1.75),
                    (bx + n[0] * 1.75, bz + n[1] * 1.75), (bx - n[0] * 1.75, bz - n[1] * 1.75),
@@ -377,6 +384,7 @@ def main():
         namn(Pos(cx, cy, cz + 1.5) * Cylinder(5.5, 3), "Lins_ATTRAPP", (.05, .05, .05)),
         namn(box((PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15), (PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15)), "Pi_Zero_2_ATTRAPP", (.15, .55, .3)),
         namn(l, "Sidopanel", (.16, .18, .2)),
+        namn(box((21, PI_Y, 61), (42, PI_Y + 14, 104)), "LM2596_ATTRAPP", (.1, .25, .6)),
     ]
     for y, e in ((cy - 15.5, "LED_1_ATTRAPP"), (cy + 15.5, "LED_2_ATTRAPP")):
         delar.append(namn(box((cx - 10, y - 2.5, BUK), (cx + 10, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
