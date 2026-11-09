@@ -95,6 +95,15 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch
+**Status:** valt 2026-11-09 på användarens uppdrag; ej inkopplat, `machine/AKTIV` och FluidNC är oförändrade
+
+**Fällservots signal på `gpio.27`, BLTouch-styrning på `gpio.26`, BLTouch-signal på `gpio.36` (probe-porten).** Fast verktygslängdsknapp flyttas till `gpio.39` som `toolsetter_pin`. Utgångarna ställs på 5 V, inte 24 V, med bygeln på kortet. Armen och proben styrs alltså från Jackpot, inte via Wi-Fi från Pi:n.
+
+**Varför:** de fyra utgångsportarna (`gpio.26/27/0/2`) är de enda med full PWM på 5 V-läget. `gpio.0/2` är startpinnar på ESP32, så de undviks. `gpio.26` kan ge en kort puls vid start enligt V1 Engineering; den går till BLTouch, där en puls inte flyttar armen, och den rena `gpio.27` till servot. `gpio.36` är den port probe redan använder.
+
+**Inför inkoppling:** bygeln kontrolleras med multimeter, utgångens signalnivå mäts, och BLTouch-signalens polaritet provas med `?`-rapporten före G38. Konfigändringen står i `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
+
 ## D020 — Inga armbrytare: hårda stopp, tyngdkraft och kamerakontroll
 **Status:** beslutat 2026-11-09; ersätter brytardelen av D019. CAD-utkast `machine/delar/sensorer/sidotorn.py`, ej printat, ej verifierat
 
@@ -102,7 +111,7 @@ Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer läg
 
 **Varför:** sökning i CAD hittade ingen plats för brytaren i utfällt läge utan extra bärande del. Utan brytare försvinner hållare, tapp, lödning och två Jackpot-ingångar.
 
-**Prov före drift:** att servot orkar dra armen från magneten och att magneten håller armen med servot strömlöst när maskinen körs. De 10 köpta KW11 behålls som reservdelar. Spärrens programvara finns inte än och hör till `kingkongola/cnc`.
+**Magneten** sätts in bakifrån i stoppet mot 0,6 mm plast och låses med en droppe superlim på baksidan; skruvhuvudet slår aldrig på magneten. Servot är original från Arrma Quake och orkar dra loss armen. **Prov före drift:** att magneten håller armen med servot strömlöst när maskinen körs. De 10 köpta KW11 behålls som reservdelar. Spärrens programvara hör till `kingkongola/cnc`.
 
 ## D019 — Separata KW11-brytare på servokassetten, spara Omron
 **Status:** inköp bekräftat 2026-11-09; CAD-fäste granskat, verklig passning ej verifierad

@@ -72,7 +72,8 @@ print("BLTouch-fläns mot armplatta:", round(float(arm.bounds[0, 2] - bl.bounds[
 for z, o, nm in ((64.25, ref["tool_mount_b"], "undre"), (125.25, ref["tool_mount_t"], "övre")):
     print(f"M5 {nm}: boss mot fäste {[nx([-5, 43.95 + r * np.cos(v), z + r * np.sin(v)], [-1, 0, 0], o) for r, v in ((4.5, 0), (4.5, 1.57), (4.5, 3.14), (4.5, 4.71))]}, hål fritt {nx([-5, 43.95, z], [-1, 0, 0], o) is None}")
 print("kamerakortet: distans mot kortets baksida, ring runt hålet:", [nx([x + 1.5, y, E["kort_bak"] - .2], [0, 0, 1], torn) for x, y in E["kort_hal"]])
-print("kamerakortet: skruvhålets djup från kortets baksida:", [nx([x, y, E["kort_bak"] - .2], [0, 0, 1], torn) for x, y in E["kort_hal"]])
+print("kamerakortet: tapp i hålet:", [bool(torn.contains([[x, y, E["kort_bak"] - .5]])[0]) for x, y in E["kort_hal"]])
+print("kamerakortet: M3-hålets djup över kortets framsida (minst 10):", [nx([x, y, E["kort_fram"] + .05], [0, 0, 1], torn) for x, y in E["klammor"]])
 for nm, o, d in (("botten", [30, 66, 60.5], [0, 0, -1]), ("ramp", [65, 66, 100], [0, 0, -1]), ("tak", [45, 60, E["topp"] - 4.5], [0, 0, 1]), ("front", [45, 51.4, 140], [0, -1, 0]), ("rygg", [12.5, 60, 90], [-1, 0, 0]), ("CSI-golv", [90, 67, 136.5], [0, 0, -1])):
     h = stralar(o, d, torn)
     print(f"väggtjocklek {nm}: {round(h[1] - h[0], 2) if len(h) > 1 else None}")
@@ -99,8 +100,8 @@ for nm in ("Pi", "LM2596_A", "LM2596_B", "ADXL", "Kort", "Flatkontakt"):
     fritt = [int((~torn.ray.intersects_any(g, np.tile(d, (len(g), 1)))).sum()) for d in ([0, 0, -1], [0, 0, 1], [-1, 0, 0], [1, 0, 0])]
     kant = g[(np.isclose(g[:, 0], lo[0]) | np.isclose(g[:, 0], hi[0]) | np.isclose(g[:, 2], lo[2]) | np.isclose(g[:, 2], hi[2]))]
     print(f"{nm}: punkter i väggen {i_vagg} av {len(g)}, punkter utanför formen (fri stråle ned/upp/bak/fram) {fritt}, minsta spel kant-vägg {torn.nearest.on_surface(kant)[1].min():.2f} mm")
-for x, z in E["pi_hal"]:
-    print(f"Pi-hål ({x:.0f}, {z:.1f}): pelare träffar från kortet {nx([x, E['Pi'][0][1] + .3, z], [0, -1, 0], torn)}, väggspel kring pelaren {min(nx([x, 53, z], d, torn) or 99 for d in ([0, 0, -1], [0, 0, 1], [-1, 0, 0], [1, 0, 0])):.1f}")
+print("Pi: tappar i hålen:", [bool(torn.contains([[x, E["Pi"][0][1] + .7, z]])[0]) for x, z in E["pi_hal"]])
+print("panel mot torn, punkter av panelens fingrar inne i tornet:", (lambda q: int(torn.contains(q[q[:, 1] < 70]).sum()))(lock.sample(40000)))
 for x, z in E["panel_hal"]:
     v = np.linspace(0, 6.28, 16, endpoint=False)
     p = np.c_[x + 4.2 * np.cos(v), np.full(16, torn.bounds[1, 1] + 5), z + 4.2 * np.sin(v)]
@@ -109,7 +110,7 @@ for x, z in E["panel_hal"]:
 # Flatkabeln som ark, 16 mm bred, från kamerakontakten via två 45-gradersvikningar till Pi-kortets kortsida.
 B = E["ffc_b"] / 2
 z_k = E["kort_bak"] + 1.3
-cx, z_pi, x_pi, y_pi, y_k, y_a = 94.0, (E["Pi"][0][2] + E["Pi"][1][2]) / 2, E["Pi"][1][0], E["Pi"][1][1] + .8, E["Kort"][1][1] - 1.0, 67.0
+cx, z_pi, x_pi, y_pi, y_k, y_a = E["lins"][0], (E["Pi"][0][2] + E["Pi"][1][2]) / 2, E["Pi"][1][0], E["Pi"][1][1] + .8, E["Kort"][1][1] - 1.0, 67.0
 def ark(pts):
     """pts: mittlinjens punkter (x, y, z) med breddriktning (bx, by, bz); arkets punkter returneras."""
     ut = []
@@ -123,8 +124,14 @@ ex, ez = (1, 0, 0), (0, 0, 1)
 d45 = (.7071, 0, .7071)
 d = 6.0
 P1, P2 = (cx, y_a, z_pi - d), (cx - d, y_a, z_pi)
-bana = [((cx, y_k, z_k), ex), ((cx, y_a - 2.0, z_k + .3), ex), ((cx, y_a, z_k + 3.0), ex), (P1, ex), (P1, d45), (P2, d45), (P2, ez), ((86.0, y_a, z_pi), ez), ((82.75, (y_a + y_pi) / 2, z_pi), ez), ((x_pi + .5, y_pi, z_pi), ez)]
+bana = [((cx, y_k, z_k), ex), ((cx, y_a - 2.0, z_k + .3), ex), ((cx, y_a, z_k + 3.0), ex), (P1, ex), (P1, d45), (P2, d45), (P2, ez), ((cx - 8.0, y_a, z_pi), ez), (((cx - 8.0 + x_pi) / 2, (y_a + y_pi) / 2, z_pi), ez), ((x_pi + .5, y_pi, z_pi), ez)]
 q = ark(bana)
 print(f"flatkabel som ark, {E['ffc_b']:.0f} mm: punkter i tornet {int(torn.contains(q).sum())} av {len(q)}, punkter utanför formen {int((~torn.ray.intersects_any(q, np.tile([0, 0, 1], (len(q), 1)))).sum())}, minsta spel {torn.nearest.on_surface(q)[1].min():.2f} mm")
 for y in (45, 55, 60):
-    print(f"kamerafickans yttervägg vid y {y}:", [nx([106.65, y, z], [1, 0, 0], torn) for z in (134, 136, 138, 140)])
+    print(f"kamerafickans yttervägg vid y {y}:", [nx([E["lins"][0] + 12.65, y, z], [1, 0, 0], torn) for z in (134, 136, 138, 140)])
+
+mx, mz, mv, my = E["magnet"]
+ut = np.array([np.cos(np.radians(mv)), 0, np.sin(np.radians(mv))])
+start = np.array([mx, my, mz]) + ut * 3
+h = stralar(start, -ut, torn)
+print(f"magnetens hud mot armen: {round(h[1] - h[0], 2) if len(h) > 1 else None} mm; hålet öppet bakåt: {len(stralar(start, ut, torn)) == 0}")

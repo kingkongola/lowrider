@@ -29,34 +29,38 @@ Y0, Y1 = 48.5, 72.5
 X_DAMMSKO = 107.6
 
 # Kamera: linsens spets. Långsidan (66 grader) ut från balken.
-LINS = (94.0, 53.0, 130.0)
+LINS = (93.0, 53.0, 130.0)
 # Camera Module 3 Standard, mått ur Raspberry Pi:s STEP RP-008154 och ritning RP-008153.
 # Linsen sitter inte mitt på kortet: 14,4 mm till kanten bort från kontakten, 9,46 mm till kontaktkanten.
 KORT_B, KORT_D = 25.0, 23.862
 KORT_Y = (LINS[1] - 14.4, LINS[1] + 9.462)   # kontaktkanten vänd mot X max-sidan
 KORT_HAL = [(LINS[0] + dx, KORT_Y[0] + dy) for dx in (-10.5, 10.5) for dy in (2.0, 14.5)]
+# Korthålen är Ø2,2: M3 går inte igenom. Tappar i hålen ger läget, två M3 x 10 strax utanför kortet klämmer kanten med huvudet.
+KLAMMOR = [(LINS[0] - 10.6, KORT_Y[0] - 1.9), (LINS[0] + 10.4, KORT_Y[1] + 1.9)]
+LED_X = ((LINS[0] - 7.6, LINS[0] + 10.0), (LINS[0] - 10.0, LINS[0] + 7.9))   # listerna kortade där skruvhuvudena sitter
 KORT_FRAM = LINS[2] + 6.91  # kortets framsida; linsens spets sitter 6,91 mm framför den
 KORT_BAK = KORT_FRAM + 0.75
 KONTAKT_TOPP = KORT_BAK + 2.6    # flatkontakten på kortets baksida
 KORT_TAK = KONTAKT_TOPP + 0.35   # kamerafickans tak
 FFC_B = 16.0                # flatkabelns bredd i kameraänden (15-polig, 1 mm delning)
 LED_Y = (LINS[1] - 17.5, LINS[1] + 15.5)     # kortet sticker längre åt fräsen, därför 2 mm från symmetri
+HUD = 0.6                   # plast mellan magneten och M3-huvudet, så att stålet aldrig slår på magneten
 BUK = LINS[2] + 2.6         # tornets plana undersida vid kameran
 TOPP = 171.0                # tornets ovansida; bestäms av Pi-kortet som måste gå fritt över den svepande undersidan
-XEND = LINS[0] + 13.5
+XEND = 107.5               # tornets yttersta punkt, innanför dammskon
 
 # Pi Zero 2 WH: kortet i XZ-planet, komponenterna mot locket.
-PI_RUM = (12.0, 79.8)                    # x0, x1
+PI_RUM = (12.0, 78.2)                    # x0, x1
 PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
-PANEL_X = 84.0                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (15.0, 164.5), (77.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
+PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
+PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
 ACC_HAL = [(23.0, 118.5), (38.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
 # Två LM2596-moduler 43 x 21 mm sida vid sida: A 5,1 V till Pi och BLTouch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
 REG_X0 = {"A": 12.5, "B": 34.5}
 REG_Z0 = 66.5
-REG_HAL = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((2.5, 6.5), (18.5, 36.5))]   # hålbild nominell, kontrolleras mot modulen
+REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3.0, 3.5), (18.0, 39.5))]   # panelens fingrar pressar modulens hörn
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
@@ -168,15 +172,22 @@ def stopp_block(blt_x, sida, w0, w1):
     return [vrid(p, PARK) for p in pts] if sida > 0 else pts
 
 
-def magnet_urtag(blt_x):
-    """Ø6 magnet i parkeringsstoppet, axeln vinkelrät mot armens sida."""
+def magnet_lage(blt_x):
+    """Punkten där M3-huvudet möter huden, och riktningen in i stoppet."""
     u, n, L = arm_geo(blt_x)
     w = ARM_W[0] + (ARM_W[1] - ARM_W[0]) * BULA_T / L
-    p = (PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w)
-    x, z = vrid(p, PARK)
+    x, z = vrid((PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w), PARK)
     vinkel = math.degrees(math.atan2(n[1], n[0])) - PARK    # sidnormalen efter parkering
-    mitt = (x + math.cos(math.radians(vinkel)) * MAGNET[1] / 2, z + math.sin(math.radians(vinkel)) * MAGNET[1] / 2)
-    return Pos(mitt[0], sum(BULA_Y) / 2, mitt[1]) * Rot(0, 90 - vinkel, 0) * Cylinder(MAGNET[0] / 2, MAGNET[1] + .01)
+    return x, z, vinkel
+
+
+def magnet_urtag(blt_x):
+    """Ø6 magnet i parkeringsstoppet. Hålet tas bakifrån till en tunn hud mot armen."""
+    x, z, vinkel = magnet_lage(blt_x)
+    ut = (math.cos(math.radians(vinkel)), math.sin(math.radians(vinkel)))
+    langd = STOPP_TJOCK + 2.0 - HUD
+    mitt = (x + ut[0] * (HUD + langd / 2), z + ut[1] * (HUD + langd / 2))
+    return Pos(mitt[0], sum(BULA_Y) / 2, mitt[1]) * Rot(0, 90 - vinkel, 0) * Cylinder(MAGNET[0] / 2, langd)
 
 
 def servokapa():
@@ -242,8 +253,8 @@ def torn(blt_x=BLT[0]):
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
-    prof = Plane.YZ.offset(cx - 13.5) * Polygon((30, b), (Y0 + 1, b), (Y0 + 1, b + 22), (30, b + 10), align=None)
-    nos = extrude(prof, amount=XEND - (cx - 13.5), dir=(1, 0, 0))
+    prof = Plane.YZ.offset(cx - 15.5) * Polygon((30, b), (Y0 + 1, b), (Y0 + 1, b + 22), (30, b + 14), align=None)
+    nos = extrude(prof, amount=XEND - (cx - 15.5), dir=(1, 0, 0))
     nos = fillet(nos.edges().filter_by(Axis.X), 3.5)
     s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 2.5)
     # Nosens ände går hela vägen till sidan, så att fickan för kamerakortet har en vägg runt om.
@@ -253,9 +264,12 @@ def torn(blt_x=BLT[0]):
     s -= box((cx - KORT_B / 2 - .1, KORT_Y[0] - .1, b - 1), (cx + KORT_B / 2 + .1, KORT_Y[1] + .1, KORT_TAK))
     for x, y in KORT_HAL:
         s += Pos(x, y, (KORT_BAK + KORT_TAK + .5) / 2) * Cylinder(2.2, KORT_TAK + .5 - KORT_BAK)
-        s -= Pos(x, y, KORT_BAK + 3) * Cylinder(0.85, 6.2)
-    for y in LED_Y:
-        s -= box((cx - 10, y - 2.5, b - 1), (cx + 10, y + 2.5, b + 2))
+        s += Pos(x, y, KORT_BAK - .8) * Cylinder(1.0, 1.7)      # tappen i kortets Ø2,2-hål
+    for x, y in KLAMMOR:
+        s -= Pos(x, y, (b - 1 + KORT_FRAM + .2) / 2) * Cylinder(2.85, KORT_FRAM + .2 - b + 1)   # plats för M3-huvudet
+        s -= Pos(x, y, KORT_FRAM + 5.35) * Cylinder(1.3, 10.7)
+    for y, (x0, x1) in zip(LED_Y, LED_X):
+        s -= box((x0, y - 2.5, b - 1), (x1, y + 2.5, b + 2))
         s -= Pos(cx - 6.5, y, b + 6) * Cylinder(1.5, 12) if y < cy else Pos(cx - 6.5, y, b + 3) * Cylinder(1.5, 6)
     s = med_elektronik(s)
     return s
@@ -270,12 +284,22 @@ def med_elektronik(s):
     # Tvärribba som styvar väggarna; fönster för kablar.
     s += box((48, 50.5, 110.5), (51, Y1 - 2.1, 135))
     # Pi (hålbild 58 x 23) och accelerometer på tornets innervägg.
-    for x, z in PI_HAL + ACC_HAL:
+    # Pi:n ligger på fyra pelare med tappar i hålen (Ø2,75) och hålls på plats av panelens fingrar.
+    for x, z in PI_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
-        s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.2)
-    for x, z in REG_HAL:
-        s += cyl_y(x, z, 50.5, PI_Y, 6.5)
+        s += cyl_y(x, z, PI_Y - .5, PI_Y + 1.9, 2.4)
+    for x, z in ACC_HAL:
+        s += cyl_y(x, z, 50.5, PI_Y, 6.0)
         s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.6)
+    # LM2596: läget ges av modulens ytterkant, så hålbilden spelar ingen roll. Panelens fingrar håller den.
+    for x0 in REG_X0.values():
+        s += box((x0 - 1.2, 50.5, REG_Z0 - 1.2), (x0 + 22.2, PI_Y + 2.0, REG_Z0 + 44.2))
+    for x0 in REG_X0.values():
+        s -= box((x0 - .15, PI_Y, REG_Z0 - .15), (x0 + 21.15, PI_Y + 3, REG_Z0 + 43.15))
+        s -= box((x0 + .5, 51.0, REG_Z0 + .5), (x0 + 20.5, PI_Y + .5, REG_Z0 + 42.5))
+    for x0 in REG_X0.values():
+        for dx, dz in ((0, 0), (18, 0), (0, 40), (18, 40)):
+            s += box((x0 + dx, 50.5, REG_Z0 + dz), (x0 + dx + 3, PI_Y, REG_Z0 + dz + 3))
     for x, z in PANEL_HAL[:4]:
         s += cyl_y(x, z, 64.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL[4:]:
@@ -283,10 +307,10 @@ def med_elektronik(s):
     for x, z in PANEL_HAL:
         s -= cyl_y(x, z, 62.0, Y1 - 1.5, 2.5)
     # CSI-rummet: flatkabeln lämnar kamerakortets kontakt, reser sig och viks två gånger 45 grader mot Pi:ns kortsida.
-    rum = [(x1 - .5, b + 3.5), (103.0, b + 3.5), (103.0, 149.5), (92.0, 160.5), (x1 - .5, 160.5)]
+    rum = [(x1 - .5, b + 3.5), (LINS[0] + 8.6, b + 3.5), (LINS[0] + 8.6, 149.5), (LINS[0] - 2.0, 160.5), (x1 - .5, 160.5)]
     s -= prisma_y(rum, 60.5, 68.5)
     s -= prisma_y([(83.0, b + 3.5), *rum[1:4], (83.0, 160.5)], 68.4, 70.0)        # mot panelens anläggning lämnas mer gods
-    s -= box((x1 - 0.5, 54.5, KORT_TAK + 1.5), (85.5, 60.6, 160.5))  # fram till Pi-kortets kontakt
+    s -= box((x1 - 0.5, 54.5, KORT_TAK + 1.5), (LINS[0] - 8.5, 60.6, 160.5))  # fram till Pi-kortets kontakt
     # LED-ledningen från den främre listen går över kamerafickans tak in i CSI-rummet.
     s -= box((LINS[0] - 7.5, LED_Y[0] - 1.0, KORT_TAK + 1.2), (LINS[0] - 5.5, 62.5, KORT_TAK + 3.0))
     # Servokabeln upp ovanför servot; BLTouch-kabeln genom skenan över servot.
@@ -305,11 +329,21 @@ def sidopanel():
     for x, z in PANEL_HAL:
         p -= cyl_y(x, z, Y1 - 3, Y1 + 1, 3.4)
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
+    # Fingrar som pressar korten mot sina anlägg när panelen skruvas på.
+    for x, z in PI_HAL:
+        p += cyl_y(x, z, PI_Y + 1.45, Y1 - 1.9, 5.0) - cyl_y(x, z, PI_Y + 1.0, PI_Y + 2.6, 3.2)
+    for x, z in REG_FINGER:
+        p += cyl_y(x, z, PI_Y + 1.65, Y1 - 1.9, 5.0)
     for z in (139, 144, 149, 154, 159, 164):
         p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
     for z in (78, 83, 88, 93, 98):                           # luft in vid regulatorerna, ut vid Pi:n
         p -= box((15, Y1 - 3, z - 0.9), (53, Y1 + 1, z + 0.9))
     return p
+
+
+def bricka():
+    """Distansbricka under M3-huvudet på ADXL-kortet, så att M3 x 10 inte når tornets framvägg. Två stycken."""
+    return Cylinder(3.5, 3.5) - Cylinder(1.7, 4.0)
 
 
 def arm(blt_x=BLT[0]):
@@ -386,7 +420,7 @@ def main():
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.blt_x), arm(a.blt_x), bltouch(a.blt_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel())):
+    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka())):
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
@@ -407,7 +441,8 @@ def main():
         *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
     ]
     for y, e in ((LED_Y[0], "LED_1_ATTRAPP"), (LED_Y[1], "LED_2_ATTRAPP")):
-        delar.append(namn(box((cx - 10, y - 2.5, BUK), (cx + 10, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
+        x0, x1 = LED_X[0 if y < cy else 1]
+        delar.append(namn(box((x0, y - 2.5, BUK), (x1, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
     export_step(Compound(label="Sidotorn_v2", children=delar), str(a.ut / "sidotorn_v2.step"))
     # Komponenternas lägen till granskningen, så att den alltid kontrollerar det som faktiskt ritats.
     (a.ut / "elektronik.json").write_text(json.dumps({
@@ -416,7 +451,7 @@ def main():
         "ADXL": [[20.5, PI_Y, 110.7], [40.5, PI_Y + 3, 126.3]],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
-        "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "ffc_b": FFC_B,
+        "magnet": [*magnet_lage(BLT[0]), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
     print("klar")
 

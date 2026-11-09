@@ -1,6 +1,6 @@
 # Core-sensorer – elektrisk koppling v0, 2026-11-09
 
-**Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Detta dokument innehåller inga nya pinallokeringar och ändrar **inte** `machine/AKTIV` eller FluidNC.
+**Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Pinnarna är valda i D021. Dokumentet ändrar **inte** `machine/AKTIV` eller FluidNC.
 
 ## Brytare utgår 2026-11-09
 
@@ -36,16 +36,32 @@ flowchart LR
 |---|---|---|---|
 | Kamera-CSI | Module 3 Standard → 200 mm 15/22 FFC → Zero 2 WH | Beställd, inte mottagen | Kontaktriktning, böjradie, dragavlastning |
 | Pi-matning | Reglerad 5 V → Pi:s korrekta ingång | Planerad | 24→5 V-regulator, ström, säkring, EMC, fysisk jorddragning |
-| Fällservo | Verifierad servo-PWM + separat korrekt servomatning | Ingen pin vald | `gpio.26` kan pulsera vid boot; `gpio.0/2` bootstraps; mäta SPMS664 |
-| BLTouch-stift | Separat styrsignal och +5 V/GND | Ingen pin vald | Exakt revision, pulser, elkvalitet och beteende vid omstart |
-| BLTouch-kontakt | Probe-input enligt FluidNC, normalt vilande | `gpio.36` konfigurerad historiskt; fysisk givare ej verifierad | Välj prob/toolsetter, logiknivå, G38-villkor |
+| Fällservo | Signal från 5 V-utgång + egen LM2596 på 6,0 V | `gpio.27`, D021, ej inkopplad | Bygel på 5 V, signalnivå mäts, pulslängder ställs vid provning |
+| BLTouch-styrning | Signal från 5 V-utgång + 5,1 V/GND från LM2596 A | `gpio.26`, D021, ej inkopplad | Puls vid start är ofarlig här; exakt revision kontrolleras |
+| BLTouch-signal | Probe-input | `gpio.36`, D021, ej inkopplad | Polaritet provas med `?` före G38, V3.1 är open drain som standard |
 | Fällarm infälld/utfälld | 2 × KW11 SPDT som separata ingångar | `gpio.13/14` kandidater via expansionsport | Verifierad PCB-port, COM/NO, debounce, M66 och skydd |
-| Fast verktygslängdsknapp | Separat prob-/toolsetter-input | `gpio.39` kandidat, `toolsetter_pin=NO_PIN` | Ursprunglig touchplate/spade finns inte; aktuell knappstatus okänd |
+| Fast verktygslängdsknapp | `toolsetter_pin` | `gpio.39`, D021, ej inkopplad | Knappens status okänd |
 | ADXL345 (senare) | Till Pi lokalt via 3,3 V I²C eller SPI med exakt breakout-pinout | Beställd, ännu ingen användning | Verklig modul/spänningskrav, monteringsposition |
 | INMP441 (senare) | Digital I²S till lämplig mikrofonvärd | Inte del av v0 | Signal-/kabel- och störningsprov |
 | Fläkt | **Ingen i v0** | Ej vald | Temperaturbevis först |
 
 **Räknat utifrån dokumenterad aktiv config:** fem maskinändlägesingångar + `gpio.36` lämnar en dedikerad skyddad ingång (`gpio.39`) på Jackpot3. De två brytarsignalerna kan behöva modulporten, inte fler användningar av befintliga limit-pinnar. `gpio.12/15` är delade med RJ11; välj först efter verifierad revision och eventuell pendant. Servoutgång `gpio.27` är **kandidat**, inte godkänd PWM. Se [I/O-kartläggningen](../nollpunkt/JACKPOT3_IO.md).
+
+## Konfigändring vid inkoppling (görs inte förrän delarna sitter)
+
+```yaml
+user_outputs:
+  analog0_pin: gpio.27     # fällservo, flyttas från digital1
+  analog1_pin: gpio.26     # BLTouch-styrning, flyttas från digital0
+  analog0_hz: 50
+  analog1_hz: 50
+  digital0_pin: NO_PIN
+  digital1_pin: NO_PIN
+probe:
+  toolsetter_pin: gpio.39
+```
+
+Styrs med `M67 E0 Q...` och `M67 E1 Q...` i procent av 20 ms. BLTouch: ut 650 µs (3,25 %), in 1475 µs (7,375 %), kontrolleras mot manualen för exakt revision.
 
 ## Kraft, säkerhet och kabeldragning
 
