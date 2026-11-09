@@ -1,0 +1,51 @@
+# Core-sensorer – elektrisk koppling v0, 2026-11-09
+
+**Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Detta dokument innehåller inga nya pinallokeringar och ändrar **inte** `machine/AKTIV` eller FluidNC.
+
+## Avsedd uppdelning
+
+```mermaid
+flowchart LR
+  P24["Befintlig 24 V-försörjning på balken"] --> J["Jackpot3 / FluidNC 3.9.9"]
+  P24 -. "NY säkrad 24→5 V-regulator, spec ej låst" .-> V5["5 V till Pi Zero 2 WH"]
+  V5 --> PI["Pi Zero 2 WH (Core)"]
+  CAM["Camera Module 3 Standard"] -- "200 mm CSI 15↔22 pin, passning verifieras" --> PI
+  PI -- "Wi-Fi, bild + metadata; EJ säkerhetskanal" --> PC["CNC-värddator / befintlig kod"]
+  J -- "servo-PWM #1, pin EJ vald" --> S["SPMS664: fällarm"]
+  J -- "BLTouch-styrning/PWM #2, pin EJ vald" --> BL["BLTouch"]
+  BL -- "probsignal, pin EJ vald" --> J
+  OM1["Omron infälld"] -- "digital input A, pin EJ vald" --> J
+  OM2["Omron utfälld"] -- "digital input B, pin EJ vald" --> J
+  TOOL["Fast verktygslängdsknapp"] -. "separat probe/toolsetter, pin EJ vald" .-> J
+  SPWR["Servomatning enligt faktisk SPMS664-spec, med gemensam referensjord"] -.-> S
+```
+
+**Ingen elektrisk signal eller fysisk kabel är färdigprojekterad.** Pi-kameran går till Pi, **inte** direkt till Jackpot. Pi:s GPIO ska **inte** vara säkerhetsrelä för CNC eller ersätta Jackpot3:s hårdvaruprob. Kritiska maskinsignaler får inte styras via Wi-Fi.
+
+## Signaltabell – välj inga pinnar av bekvämlighet
+
+| Signal | Koppling | Nuvarande status | Blockerare |
+|---|---|---|---|
+| Kamera-CSI | Module 3 Standard → 200 mm 15/22 FFC → Zero 2 WH | Beställd, inte mottagen | Kontaktriktning, böjradie, dragavlastning |
+| Pi-matning | Reglerad 5 V → Pi:s korrekta ingång | Planerad | 24→5 V-regulator, ström, säkring, EMC, fysisk jorddragning |
+| Fällservo | Verifierad servo-PWM + separat korrekt servomatning | Ingen pin vald | `gpio.26` kan pulsera vid boot; `gpio.0/2` bootstraps; mäta SPMS664 |
+| BLTouch-stift | Separat styrsignal och +5 V/GND | Ingen pin vald | Exakt revision, pulser, elkvalitet och beteende vid omstart |
+| BLTouch-kontakt | Probe-input enligt FluidNC, normalt vilande | `gpio.36` konfigurerad historiskt; fysisk givare ej verifierad | Välj prob/toolsetter, logiknivå, G38-villkor |
+| Fällarm infälld/utfälld | 2 × Omron SPDT som separata ingångar | `gpio.13/14` kandidater via expansionsport | Verifierad PCB-port, COM/NO, debounce, M66 och skydd |
+| Fast verktygslängdsknapp | Separat prob-/toolsetter-input | `gpio.39` kandidat, `toolsetter_pin=NO_PIN` | Ursprunglig touchplate/spade finns inte; aktuell knappstatus okänd |
+| ADXL345 (senare) | Till Pi lokalt via 3,3 V I²C eller SPI med exakt breakout-pinout | Beställd, ännu ingen användning | Verklig modul/spänningskrav, monteringsposition |
+| INMP441 (senare) | Digital I²S till lämplig mikrofonvärd | Inte del av v0 | Signal-/kabel- och störningsprov |
+| Fläkt | **Ingen i v0** | Ej vald | Temperaturbevis först |
+
+**Räknat utifrån dokumenterad aktiv config:** fem maskinändlägesingångar + `gpio.36` lämnar en dedikerad skyddad ingång (`gpio.39`) på Jackpot3. De två Omron-signalerna kan behöva modulporten, inte fler användningar av befintliga limit-pinnar. `gpio.12/15` är delade med RJ11; välj först efter verifierad revision och eventuell pendant. Servoutgång `gpio.27` är **kandidat**, inte godkänd PWM. Se [I/O-kartläggningen](../nollpunkt/JACKPOT3_IO.md).
+
+## Kraft, säkerhet och kabeldragning
+
+- **5 V till Pi:** specifik buck/regulator, säkring, ledningsarea och eventuell isolering ska dimensioneras efter uppmätt ström och EMC. Anslut **aldrig 24 V** till Pi-/kameramodulen. **Koppla inte Pi:s 5 V parallellt** med en okänd 5 V-regulator på Jackpot utan verifierad skyddskrets.
+- **SPMS664:** servoströmspikar får inte sänka Pi:s matningsspänning eller orsaka återstarter av Jackpot. Korrekt gemensam signaljord/returledare krävs, men jordningsplan måste granskas innan plint ritas.
+- **BLTouch:** enligt [ANTCLABS](https://www.antclabs.com/wiring) krävs separat styr-I/O, kontakt-/probe-I/O och 5 V/GND. Se till att utgångsnivå, pinout och fysisk probrevision stämmer. Monteras lodrätt under mätning enligt [tillverkaren](https://www.antclabs.com/bltouch-v3).
+- **Två probe-ingångar:** FluidNC:s `probe.pin` och `toolsetter_pin` är **samma G38-triggerlogik**. `check_mode_start: true` ska avvisa redan aktiv probe, men skyddar inte mot kontakt från **fel** prob under rörelsen. Mät- och armsekvens måste förbli operatörsgodkänd.
+- **CSI 200 mm:** placera Pi nära kameran, inte ute på fast bord. Skydda ribbon mot skarp vikning, dammsko, kabelkedjor och vibration; testa full X/Y/Z-svep vid avstängd fräs. Pi-kapslingen fästs först efter kontroll av servofällningen.
+- **Fläkt:** Raspberry Pi kan hantera termisk throttling; stillbilder med beräkning på värddatorn talar för passiv kylning. Vår kapsling har små ventilationsöppningar men fläkt drar aktivt in spån och damm. Mät `vcgencmd measure_temp` under långvarigt verkligt kamerajobb. [Raspberry Pi:s kylguide](https://pip.raspberrypi.com/categories/685-app-notes-guides-whitepapers/documents/RP-003608-WP/Cooling-a-Raspberry-Pi-device.pdf).
+
+**Nästa fysiska grind** (inte att göra före leverans): foto av verkligt Jackpot3-revisionsnummer och kontakter, provpassning med Servo/BLTouch och mätning av 5V/3,3V-signaler. **Ingen aktiv motorstyrning, ingen inkoppling och ingen ändring av `config.yaml` följer av detta dokument.**
