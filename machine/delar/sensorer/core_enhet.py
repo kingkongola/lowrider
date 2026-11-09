@@ -290,6 +290,10 @@ def rapport(d: Param=Param()):
          "parametrar":asdict(d),
          "moduler":{}}
     for name,part in units.items():
+        if not hasattr(part, "bounding_box"):
+            raise ValueError(f"{name}: CAD-resultat {type(part).__name__}, "
+                             f"{len(part) if hasattr(part, '__len__') else '?'} "
+                             "separata/ogiltiga kroppar före export")
         bounds=part.bounding_box()
         out["moduler"][name]={"valid":bool(part.is_valid),
                 "volym_cm3":round(part.volume/1000,2),
