@@ -22,7 +22,6 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 from core_enhet import delar, Param, C, k, cz, KW11_HALLARE_POS
-from kw11_faste import KW11_MALL, kw11_atrapper
 
 
 def positionerade(d: Param = Param()):
@@ -89,12 +88,6 @@ def rorelse_svep(parts:dict, d:Param) -> dict:
     # C.servo() är endast skalenlig skiss, METALLHORNET saknas.
     fixed={n:p for n,p in parts.items() if n!="bltouch_arm"}
     fixed["SPMS664_ritad"]=C.servo()
-    # Begränsad switchmall: kropparna är fasta och får INTE skäras
-    # av armen. Rullarna är avsiktliga kontaktytor och undersöks
-    # separat när kam-/ändstopp definieras.
-    for switch_name, position in KW11_HALLARE_POS.items():
-        fixed[switch_name+"_hus_mall"]=(
-            Pos(*position)*kw11_atrapper()["hus"])
     unsafe=[]
     nearest={}
     for angle in range(-90,1,15):
@@ -207,8 +200,6 @@ def granska(ut:Path):
     result={"schema":1,"status":"KONSTRUKTIONSGRANSKNING_EJ_SAKERT_FOR_PRINT_MONTERING",
             "interna_kollisioner":intrusion,
             "servoprob_rorelsesvep":sweep,
-            "kw11_referensmatning":KW11_MALL,
-            "kw11_referensstatus":"Måttmall från Amazonbild och annan KW11-variant – inga fysiska hål/spakslag verifierade",
             "referenser":list(referenser.keys()),
             "externa_narhetsvarningar":work,
             "obekraftat":["Core- och motorfästets koordinattransform kommer från äldre kontroll_c.py",
@@ -248,8 +239,6 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "kabellock":(147,157,161,255),
         "servokassett":(190,98,48,255),
         "bltouch_arm":(225,159,74,255),
-        "kw11_in_faste":(232,182,82,255),
-        "kw11_ut_faste":(209,147,58,255),
         "kw11_infalld":(218,128,62,255),
         "kw11_utfalld":(234,157,75,255),
         "kamerakassett":(48,117,156,255),
@@ -259,16 +248,6 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "accel_bricka":(100,142,95,255),
         "mikrofon_bricka":(143,114,154,255),
     }
-    # Endast ritningsreferenser, ej printade delar:
-    # 20 x 6.4 x 10 mm KW11-3Z-N-kroppar placerade på M2-bossarna.
-    # Rullspak, kontaktdon och aktiveringsväg är INTE modellerade.
-    for lage, z0 in (("in",54.0),("ut",23.0)):
-        bbox=trimesh.creation.box(extents=[20.0,6.4,10.0])
-        bbox.apply_translation([79.5,59.2,z0+5.0])
-        bbox.visual.face_colors=(190,60,65,180)
-        scene.add_geometry(bbox,
-            geom_name="KOMPONENT_PROXY_KW11_"+lage,
-            node_name="KOMPONENT_PROXY_KW11_"+lage)
     for name,color in colors.items():
         stl_name="kw11_hallare" if name.startswith("kw11_") else name
         mesh=trimesh.load(stl_mapp/(stl_name+".stl"),force="mesh")
@@ -279,20 +258,6 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
                                     +(22 if name=="pi_lock" else 0)])
         mesh.visual.face_colors=color
         scene.add_geometry(mesh,geom_name="MODUL_"+name,node_name="MODUL_"+name)
-    # Färgneutrala referensdelar INTE med bland STL-/STEP-delarna.
-    # Varje brytare är en grupp av hus, rullspak och tre terminaler.
-    for switch_name, xyz in KW11_HALLARE_POS.items():
-        for ref_name,part in kw11_atrapper().items():
-            p=Pos(*xyz)*part
-            vert, faces=p.tessellate(0.15)
-            mesh=trimesh.Trimesh(
-                vertices=[v.to_tuple() for v in vert],faces=faces,process=False)
-            mesh.visual.face_colors=(30,35,40,220) if ref_name=="hus" else (
-                (185,190,196,225) if ref_name.startswith("terminal") or ref_name=="havararm"
-                else (180,46,40,220))
-            scene.add_geometry(mesh,
-                 geom_name="EJ_PRINT_KW11_MALL_"+switch_name+"_"+ref_name,
-                 node_name="EJ_PRINT_KW11_MALL_"+switch_name+"_"+ref_name)
     output.parent.mkdir(parents=True,exist_ok=True)
     scene.export(output)
     return output.stat().st_size
