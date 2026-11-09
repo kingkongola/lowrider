@@ -2,22 +2,29 @@
 
 **Live snapshot: 2026-09-21.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
-## Sensorbeställning 2026-11-08 — BESTÄLLD, INTE MOTTAGEN
+## Sensorbeställning 2026-11-08 — orderrader bekräftade 2026-11-09, ej mottaget
 
-Användaren bekräftar att Electrokit-köpet är lagt och att projektet har köpt **mikrofoner, accelerometer, kamera och BLTouch**. Det är en utbyggnad av den redan fungerande LowRider V4, inte en del av ursprunglig kärnmekanik. **Inget är ännu mottaget, monterat, elektriskt kontrollerat eller kalibrerat.**
+**Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Denna källa bekräftar följande **beställda** produkter och antal, **inte leverans eller faktisk debitering**.
 
-| Del/funktion | Uppgift och sannolik artikel enligt föregående korgplan | Status |
-| --- | --- | --- |
-| Närbildskamera | Raspberry Pi Camera Module 3 **Standard**, tidigare vald Electrokit-artikel `41020240` | Beställd kamera, exakt orderrad kontrolleras vid leverans |
-| Accelerometer | ADXL345 (föreslagen modell) | Beställd accelerometer; modell, brytkort och antal verifieras vid leverans |
-| Mikrofoner | INMP441 (tidigare nämnd I2S-typ) | Köpta/beställda, antal och om de ingick i **denna** Electrokit-order okänt |
-| Fysisk prob | BLTouch/BLTouch-kompatibel (exakt variant ännu okänd) | Köpt/beställd enligt senaste uppgiften; tidigare plan att låna från granne är ersatt, faktisk leverantör okänd |
-| Kamera-värddator | Raspberry Pi Zero 2 WH, tidigare vald Electrokit-artikel `41022617` | Fanns på den planerade inköpslistan; **faktisk orderrad behöver bekräftas** |
-| Kamerakabel | CSI 200 mm 22–15 pin, tidigare vald Electrokit-artikel `41020808` | Fanns på den planerade inköpslistan; **faktisk orderrad behöver bekräftas** |
+| Produkt | Electrokit art.nr | Antal | Orderrad exkl. moms | Inkl. moms |
+| --- | --- | ---: | ---: | ---: |
+| Raspberry Pi Camera Module 3 **Standard** (inte Wide) | `41020240` | 1 | 271,20 kr | 339,00 kr |
+| Raspberry Pi Zero 2 WH med header | `41022617` | 1 | 199,20 kr | 249,00 kr |
+| Raspberry CSI-kamerakabel 200 mm | `41020808` | 1 | 23,20 kr | 29,00 kr |
+| 3-axlig accelerometer ADXL345, I2C/SPI | `41016234` | 1 | 55,20 kr | 69,00 kr |
+| USB-C till UART (TTL) modul 3,3/5 V, 6-pin, flödeskontroll 6 Mbps | `41035679` | 1 | 55,20 kr | 69,00 kr |
+| Testsladdar krokodil 1 m röd + svart | `41022876` | 2 | 51,20 kr | 64,00 kr |
+| Micro-testklämmor 10-pack | `41020723` | 1 | 119,20 kr | 149,00 kr |
+| Kopplingskabel 40-pol 30 cm Dupont hona/hona | `41012685` | 1 | 44,00 kr | 55,00 kr |
+| Testsladdar med banankontakt/krokodil, 3 st | `41010187` | 1 | 31,20 kr | 39,00 kr |
 
-Ordernummer, verkligt betalda belopp, antal samt eventuella övriga tillbehör saknas. **Bokför inget belopp i `COSTS.md` förrän faktiskt debiterat totalbelopp har bekräftats**; tidigare varukorgspriser är inte kvitto. CH343, DS18B20, boost och nivåomvandlare var diskuterade tillbehör, inte verifierade orderrader här.
+**Delsumma synliga varor:** 849,60 kr exkl. moms. **Frakt:** 39,20 kr exkl. moms; **moms:** 222,20 kr. Dessa belopp motsvarar **1 111,00 kr inkl. moms** för just dessa synliga orderrader. Orderns sista summa är delvis skymd i skärmbilden; bokför därför ännu inte detta som **faktiskt debiterat** i `COSTS.md`.
 
-**Ägarskap:** fysisk monterings-/kollisionskontroll, kraftmatning, probens riktiga elektriska nivåer och maskinens konfiguration hör hit. [`cnc/docs/sensorarkitektur.md`](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md) äger mjukvarukontrakt och analys. BLTouch är en kontaktsensor, **inte** ett verifierat säkerhetsstopp; en trådlös Pi/ESP32 får inte vara i realtidsvägen för probing. Kalibrering och rörelsegodkännande krävs efter leverans.
+**Kamerasatsens tre rader:** 493,60 kr **exkl. moms** / **617,00 kr inkl. moms**, utan att allokera gemensam frakt. **Modellvalet är nu definitivt verifierat: Camera Module 3 Standard**, inte Wide; Zero 2 WH och 200 mm CSI-kabel är också verifierat beställda. Bekräfta fysisk kontakt-/pin-kompatibilitet och kabelräckvidd vid provmontering; artikeltexten i skärmbilden ensam säger inget om mekanisk frigång.
+
+**Övriga sensorer:** tidigare användaruppgift anger även beställda/köpta mikrofoner (INMP441) och BLTouch, men **de syns inte i denna orderbild**. Deras exakt antal, modell, leverantör och leveransstatus är fortfarande obekräftade. Ingen del är ännu rapporterad mottagen, monterad, elektriskt kontrollerad eller kalibrerad.
+
+**Ansvar:** fysisk monterings-/kollisionskontroll, spänningsnivåer, kraftmatning, probens verkliga signaler och maskinkonfiguration hör hit. [CNC:s kamerakod](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md) är endast offline-prototyp; ingen optisk maskinkalibrering har verifierats på riktig hårdvara.
 
 ## Redan betalt / beställt
 
