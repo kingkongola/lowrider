@@ -8,8 +8,8 @@ får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
 plats för två diffuserade LED men inget inköp före bildprov.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
-bara driver rörelsen. Parkerat ligger armen förbi lodlinjen så att tyngden håller
-den mot stoppet; kameran bekräftar läget före varje jobb (D020), inga brytare.
+bara driver rörelsen. Parkerat hålls armen av en magnet mot stoppet även utan
+servokraft; kameran bekräftar läget före varje jobb (D020), inga brytare.
 
 Kör: python sidotorn.py --ut KATALOG
 """
@@ -20,8 +20,8 @@ import copy
 import math
 from pathlib import Path
 
-from build123d import (Box, Color, Compound, Cylinder, Plane, Polygon, Pos, Rot,
-                       export_step, export_stl, extrude, fillet, Axis)
+from build123d import (Box, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
+                       ThreePointArc, Vector, Wire, export_step, export_stl, extrude, fillet, sweep, Axis)
 
 # Tornets gränser: inte förbi Core-änden längs balken, inte förbi dammskon utåt.
 Y0, Y1 = 48.5, 72.5
@@ -45,15 +45,18 @@ ACC_HAL = [(26.0, 104.0), (41.0, 104.0)]   # nominellt, kontrolleras mot leverer
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
-PARK = -165.0               # utfällt 0, parkerat förbi lodlinjen: tyngden håller armen mot stoppet
+PARK = -150.0               # utfällt 0, parkerat mot magnet och hårt stopp (D020)
 SERVO_DY = -2.0             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
 ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
 BLT = (61.0, 34.0 + SERVO_DY)
 FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
 FLANS_Z = 6.4
 HUB_D = 15.0
+MAGNET = (5.2, 2.2)         # urtag för Ø5 x 2 mm neodymmagnet i parkeringsstoppet
+BULA_T = 11.0               # armens bula för M3-skruvens stålhuvud, mm längs armen
 ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
 
+BULA_Y = (ARM_Y[0] - 1.0, ARM_Y[1])   # armen är tjockare där M2,5-skruvens huvud möter magneten
 KAPA_Y = Y1
 KAPA_T = 1.4
 
@@ -128,10 +131,32 @@ def stopp_block(blt_x, sida, w0, w1):
     return [vrid(p, PARK) for p in pts] if sida > 0 else pts
 
 
+def magnet_urtag(blt_x):
+    """Ø5 magnet i parkeringsstoppet, axeln vinkelrät mot armens sida."""
+    u, n, L = arm_geo(blt_x)
+    w = ARM_W[0] + (ARM_W[1] - ARM_W[0]) * BULA_T / L
+    p = (PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w)
+    x, z = vrid(p, PARK)
+    vinkel = math.degrees(math.atan2(n[1], n[0])) - PARK    # sidnormalen efter parkering
+    mitt = (x + math.cos(math.radians(vinkel)) * MAGNET[1] / 2, z + math.sin(math.radians(vinkel)) * MAGNET[1] / 2)
+    return Pos(mitt[0], sum(BULA_Y) / 2, mitt[1]) * Rot(0, 90 - vinkel, 0) * Cylinder(MAGNET[0] / 2, MAGNET[1] + .01)
+
+
 def servokapa():
     """Yttre form runt servots bakdel; samma hörnradie som tornet."""
     k = box((12.6, FRAM_Y[0] + 1, 29.6), (57.4, KAPA_Y, 70.0))
-    return fillet(k.edges().filter_by(Axis.Y), 4.0)
+    k = fillet(k.edges().filter_by(Axis.Y), 6.0)
+    return fillet(k.faces().sort_by(Axis.Y)[-1].edges(), 1.2)
+
+
+KABEL_VAG = [(7.0, 61.0, 113.0), (-2.0, 61.0, 128.0), (-3.0, 61.0, 165.0), (-8.0, 61.0, 205.0)]
+KABEL_D = 6.0               # samlad kabel, se tabellen i README
+
+
+def kabel():
+    """Samlad kabel från tornets baksida, upp i gapet mot Core."""
+    bana = Spline([Vector(*p) for p in KABEL_VAG])
+    return sweep(Plane(origin=bana @ 0, z_dir=bana % 0) * Circle(KABEL_D / 2), bana)
 
 
 def servo_attrapp():
@@ -145,17 +170,21 @@ def torn(blt_x=BLT[0]):
     b = BUK
     prof = [(8, 56), (52, 56), (LINS[0] - 8, b), (XEND, b), (XEND, b + 15.4), (84, b + 29.4), (8, b + 29.4)]
     s = prisma_y(prof, Y0, Y1)
-    s = fillet(s.edges().filter_by(Axis.Y), 4.0)
+    s = fillet(s.edges().filter_by(Axis.Y), 6.0)
+    fram, bak = s.faces().sort_by(Axis.Y)[0], s.faces().sort_by(Axis.Y)[-1]
+    s = fillet(fram.edges(), 3.0)
+    s = fillet(s.faces().sort_by(Axis.Y)[-1].edges(), 1.2)
     # Fästplatta mot verktygsfästet, samma två M5-lägen som V1E-skruvarna.
-    s += box((1, 39, 56), (9, Y0 + 1, 134))
-    s += box((1, Y0, 56), (14, 53, 134))      # bär över lasten från fästplattan in i tornet
+    s += fillet(box((1, 39, 56), (9, Y0 + 1, 134)).edges().filter_by(Axis.Z), 1.5)
+    s += fillet(box((1, Y0, 56), (14, 53, 134)).edges().filter_by(Axis.Z), 1.5)      # bär över lasten från fästplattan in i tornet
     for z in (64.25, 125.25):
         s += cyl_x(43.95, z, -7.3, 1.2, 9.6)
         s -= cyl_x(43.95, z, -9, 10, 5.4)
     # Servoram med fönster för kroppen, och skena upp till fästplattan.
     xa, xb = 7.0, 67.0      # fästöronen sitter vid x 11,7 och 59
     ram = box((xa, FRAM_Y[0], 27.6), (xb, FRAM_Y[1], 58.5))
-    s += fillet(ram.edges().filter_by(Axis.Y), 3.0)
+    ram = fillet(ram.edges().filter_by(Axis.Y), 3.0)
+    s += fillet(ram.faces().sort_by(Axis.Y)[0].edges(), 1.5)
     # Kåpa runt servots bakre del, i samma plan som sidopanelen.
     s += servokapa()
     s -= box((PX - 30.2, FRAM_Y[0] - 1, 33.4), (PX + 10.2, FRAM_Y[1] + 2, 53.8))
@@ -165,17 +194,23 @@ def torn(blt_x=BLT[0]):
         for z in (PZ - 4.7, PZ + 4.7):
             s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
-    s += prisma_y(stopp_block(blt_x, -1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
-    s += box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2))
-    s += prisma_y(stopp_block(blt_x, 1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
-    s += box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5))
+    def stopp(sida):
+        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 0.4, ARM_Y[1] + 1.2)
+        p = prisma_y(stopp_block(blt_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
+        return fillet(p.edges().filter_by(Axis.Y), 0.8)
+    s += stopp(-1)
+    s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
+    s += stopp(1)
+    s += fillet(box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
     s += box((30.5, ARM_Y[0], 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
+    s -= magnet_urtag(blt_x)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
     prof = Plane.YZ.offset(cx - 13.5) * Polygon((33, b), (Y0 + 1, b), (Y0 + 1, b + 22), (33, b + 8), align=None)
     nos = extrude(prof, amount=XEND - (cx - 13.5), dir=(1, 0, 0))
-    s += fillet(nos.edges().filter_by(Axis.X), 2.0)
+    nos = fillet(nos.edges().filter_by(Axis.X), 2.5)
+    s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 1.5)
     s -= box((cx - KORT_B / 2 - .1, cy - KORT_D / 2 - .1, b - 1), (cx + KORT_B / 2 + .1, cy + KORT_D / 2 + .1, b + 2.5))
     for dx in (-KORT_HAL[0] / 2, KORT_HAL[0] / 2):
         for dy in (-KORT_HAL[1] / 2, KORT_HAL[1] / 2):
@@ -233,22 +268,50 @@ def sidopanel():
 
 
 def arm(blt_x=BLT[0]):
+    """Svepande arm: navets rundning går över i en fot som bär BLTouchen."""
     y0, y1 = ARM_Y
     w0, w1 = ARM_W
     u, n, L = arm_geo(blt_x)
     bx, bz = blt_x, FLANS_Z + 3
-    a = prisma_y([(PX + n[0] * w0, PZ + n[1] * w0), (bx + n[0] * w1, bz + n[1] * w1),
-                  (bx - n[0] * w1, bz - n[1] * w1), (PX - n[0] * w0, PZ - n[1] * w0)], y0, y1)
-    a += cyl_y(PX, PZ, y0, y1, HUB_D)
-    a += box((blt_x - 13, y0, FLANS_Z), (blt_x + 13, BLT[1] + 6, FLANS_Z + 4.5))
+    F = FLANS_Z
+    def sid(t, s):
+        w = w0 + (w1 - w0) * t / L
+        return (PX + u[0] * t + s * n[0] * w, PZ + u[1] * t + s * n[1] * w)
+    rygg = (PX - u[0] * w0, PZ - u[1] * w0)
+    fot_h, fot_v = (blt_x + 11, F), (blt_x - 11, F)
+    def v(p):
+        return Vector(p[0], y0, p[1])
+    h1, v1 = sid(19, 1), sid(19, -1)
+    tr = lambda a, b: Vector(b[0] - a[0], 0, b[1] - a[1]).normalized()
+    h_sp = Spline([v(h1), v(((h1[0] + fot_h[0]) / 2 + 1.5, (h1[1] + fot_h[1]) / 2 - 1.0)), v(fot_h)],
+                  tangents=[tr(sid(10, 1), h1), Vector(1, 0, -.15).normalized()])
+    v_sp = Spline([v(fot_v), v(((v1[0] + fot_v[0]) / 2 - 1.0, (v1[1] + fot_v[1]) / 2 - 1.0)), v(v1)],
+                  tangents=[Vector(1, 0, .15).normalized(), tr(v1, sid(10, -1))])
+    trad = Wire.combine([ThreePointArc(v(sid(0, -1)), v(rygg), v(sid(0, 1))), Line(v(sid(0, 1)), v(h1)), h_sp,
+                         Line(v(fot_h), v(fot_v)), v_sp, Line(v(v1), v(sid(0, -1)))])[0]
+    a = extrude(Face(trad), amount=y1 - y0, dir=(0, 1, 0))
+    a = fillet(a.edges().filter_by(lambda e: abs(e.center().Z - F) > .01), 1.4)
+    # Foten: mjuk platta som BLTouchen skruvas under.
+    fot = box((blt_x - 13, y0, F), (blt_x + 13, BLT[1] + 6, F + 4.5))
+    fot = fillet(fot.edges().filter_by(Axis.Z), 5.0)
+    fot = fillet(fot.faces().sort_by(Axis.Z)[-1].edges(), 1.6)
+    a += fot
+    # Bula för skruvhuvudet som fäster mot magneten.
+    t = BULA_T
+    w = w0 + (w1 - w0) * t / L
+    bula = Pos(PX + u[0] * t + n[0] * (w - 3), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(2.5, 6.0)
+    a += bula
+    s_p = (PX + u[0] * t + n[0] * w, PZ + u[1] * t + n[1] * w)
+    a -= Pos(s_p[0] - n[0] * .15, sum(BULA_Y) / 2, s_p[1] - n[1] * .15) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(2.3, 0.3)
+    a -= Pos(PX + u[0] * t + n[0] * (w - 4), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 4)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(1.0, 8)
     # Dolt spår för BLTouch-kabeln, på armens sida mot servot.
-    a -= prisma_y([(PX + u[0] * 12 + n[0] * 1.75, PZ + u[1] * 12 + n[1] * 1.75),
+    a -= prisma_y([sid_p for sid_p in ((PX + u[0] * 18 + n[0] * 1.75, PZ + u[1] * 18 + n[1] * 1.75),
                    (bx + n[0] * 1.75, bz + n[1] * 1.75), (bx - n[0] * 1.75, bz - n[1] * 1.75),
-                   (PX + u[0] * 12 - n[0] * 1.75, PZ + u[1] * 12 - n[1] * 1.75)], y1 - 2, y1 + .1)
-    a -= box((blt_x - 1.75, y1 - .5, FLANS_Z + 3), (blt_x + 1.75, BLT[1] - 4.5, FLANS_Z + 5))
+                   (PX + u[0] * 18 - n[0] * 1.75, PZ + u[1] * 18 - n[1] * 1.75))], y1 - 2, y1 + .1)
+    a -= box((blt_x - 1.75, y1 - .5, F + 3), (blt_x + 1.75, BLT[1] - 4.5, F + 5))
     for x in (blt_x - 9, blt_x + 9):
-        a -= Pos(x, BLT[1], FLANS_Z + 2) * Cylinder(1.7, 10)
-    a -= Pos(blt_x, BLT[1], FLANS_Z + 2) * Cylinder(5, 10)
+        a -= Pos(x, BLT[1], F + 2) * Cylinder(1.7, 10)
+    a -= Pos(blt_x, BLT[1], F + 2) * Cylinder(5, 10)
     a -= cyl_y(PX, PZ, y0 - 1, y1 + 1, 7.5)
     return a
 
@@ -277,7 +340,7 @@ def main():
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.blt_x), arm(a.blt_x), bltouch(a.blt_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l)):
+    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel())):
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
@@ -285,6 +348,7 @@ def main():
     delar = [
         namn(t, "Sidotorn", (.16, .18, .2)),
         namn(servo_attrapp(), "Servo_SPMS664_ATTRAPP", (.1, .1, .12)),
+        namn(kabel(), "Kabel_ATTRAPP", (.1, .1, .1)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
         namn(bl, "BLTouch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),

@@ -83,7 +83,7 @@ Original V1E Core ska förbli omodifierad. Denna sensorenhet är ett löstagbart
 | Lins, rakt ned | 94 mm ut från balken, 53 mm längs balken mot X max, 130 mm över fräsens referensnivå |
 | Beräknade bilder, 8 mm överlapp | 40 på 18 mm skiva, 63 på 50 mm |
 | Dolt hörn vid X min och ena Y-gränsen | 0 mm vid 18 mm, 16 mm vid 50 mm |
-| Hårda stopp | Armens två sidor mot fasta block i tornet, utfällt 0 grader och parkerat -165 grader, förbi lodlinjen enligt D020 |
+| Hårda stopp | Armens två sidor mot fasta block i tornet, utfällt 0 grader och parkerat -150 grader med magnet enligt D020 |
 | Ljus | Två urtag för diffuserade LED runt linsen; inget köps före bildprov enligt `../../KAMERA_ANHALL.md` |
 
 **Skanningen i fräsramen:** `p_ny = R p + T` (mm) rättar 5,9 graders lutning i tidigare inpassning, så att bordet ligger plant:
@@ -99,8 +99,10 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Elektronik och kablar i utkastet:** tornet är ihåligt bakom en enda sidopanel mot X max-sidan, med sex plana skruvar. Pi Zero 2 WH och ADXL345 sitter på innerväggen. CSI-kabeln går i ett inre rum från Pi:ns kortsida till kamerakortet. LED-ledningarna går i inre kanaler. Servokabeln går upp ovanför servot, BLTouch-kabeln i ett spår på armens sida mot servot och genom skenan över servot. All kabel lämnar tornet bakåt, in i gapet mot Core. Kablarnas böjar är inte simulerade.
 
+**Samlad kabel ut från tornet (förslag, inga pinnar valda):** 24 V, GND, servosignal, BLTouch-styrning och BLTouch-signal. 5 V till Pi, servo och BLTouch tas från en regulator i rummet under Pi:n, på en plan yta med dubbelhäftande tejp tills modellen är vald. Kabeln går från tornets baksida upp i gapet mot Core och följer X-motorns väg till balkens mitt enligt `CABLE_ROUTING.md`. Längden mäts med snöre vid full rörelse.
+
 **Servokåpa:** tornet omsluter servots bakre del i samma plan som sidopanelen, och servot skjuts in framifrån genom ramen. Servopaketet är flyttat 2 mm längs balken för att väggen ska rymmas; tornet slutar 0,5 mm före Core-änden.
 
 **Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål och väggtjocklek runt Pi-rummet.
 
-**Kvar:** kamerans startspärr i `kingkongola/cnc`, BLTouchens vikt, kabelvägen från tornets baksida längs Core, 24→5 V-regulatorns fäste (plats finns i rummet under Pi:n). Servohorn, kortets hålbild, FFC-kontaktens riktning och servomått ska mätas mot levererade delar.
+**Kvar:** kamerans startspärr i `kingkongola/cnc`, val av 24→5 V-regulator. Servohorn, kortets hålbild, FFC-kontaktens riktning och servomått ska mätas mot levererade delar.

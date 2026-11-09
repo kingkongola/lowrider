@@ -19,9 +19,9 @@ a = p.parse_args()
 L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
-torn, arm, bl, lock = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel"))
+torn, arm, bl, lock, kabel = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel", "kabel"))
 P = np.load(a.ref / "scan_pts_plan.npy")
-PIV, PARK = np.array([45.0, 0, 43.6]), -165
+PIV, PARK = np.array([45.0, 0, 43.6]), -150
 sm = lambda m, n: trimesh.sample.sample_surface(m, n, seed=2)[0]
 K = {k: (cKDTree(sm(v, 90000)), v) for k, v in {**ref, "torn": torn}.items()}
 S = cKDTree(P[(P[:, 0] > -60) & (P[:, 0] < 170) & (P[:, 1] > -40) & (P[:, 1] < 120) & (P[:, 2] > -60)])
@@ -74,3 +74,9 @@ for nm, o, d in (("botten", [30, 66, 60.5], [0, 0, -1]), ("ramp", [65, 66, 100],
     h = stralar(o, d, torn)
     print(f"väggtjocklek {nm}: {round(h[1] - h[0], 2) if len(h) > 1 else None}")
 print("Y max med lock:", round(float(max(torn.bounds[1, 1], lock.bounds[1, 1])), 2))
+
+kq = sm(kabel, 12000)
+for k, (t, m) in K.items():
+    if k != "torn":
+        print(f"kabel mot {k}: {t.query(kq)[0].min():.1f} mm, inne: {int(m.contains(kq[t.query(kq)[0] < 8]).sum())}")
+print("kabel mot skanning (minsta):", round(float(S.query(kq)[0].min()), 1))
