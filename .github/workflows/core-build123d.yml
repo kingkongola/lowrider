@@ -57,7 +57,7 @@ jobs:
           PY
       - name: Kontrollera HELA modulmontaget och närhet till Core/verktygsfäste
         run: |
-          python machine/delar/sensorer/granska_montage.py export/montage-granskning.json
+          python machine/delar/sensorer/granska_montage.py export/montage-granskning.json export/sensorenhet-pa-core.glb
       - name: Exportera en bedömningsbild över moduluppdelningen
         run: |
           python - <<'PY'
@@ -113,4 +113,5 @@ jobs:
             export/step/
             export/core-koncept.png
             export/montage-granskning.json
+            export/sensorenhet-pa-core.glb
           retention-days: 30
