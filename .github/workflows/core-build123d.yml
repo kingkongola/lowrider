@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'machine/delar/sensorer/core_enhet.py'
+      - 'machine/delar/sensorer/granska_montage.py'
       - 'machine/delar/nollpunkt/fallarm.py'
       - 'machine/delar/nollpunkt/fallarm_c.py'
       - '.github/workflows/core-build123d.yml'
@@ -54,6 +55,9 @@ jobs:
               assert (Path("export/step")/(name+".step")).stat().st_size>200
               print(name, s["volym_cm3"], "cm3", "watertight")
           PY
+      - name: Kontrollera HELA modulmontaget och närhet till Core/verktygsfäste
+        run: |
+          python machine/delar/sensorer/granska_montage.py export/montage-granskning.json
       - name: Exportera en bedömningsbild över moduluppdelningen
         run: |
           python - <<'PY'
@@ -108,4 +112,5 @@ jobs:
             export/stl/
             export/step/
             export/core-koncept.png
+            export/montage-granskning.json
           retention-days: 30
