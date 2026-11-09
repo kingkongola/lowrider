@@ -85,6 +85,10 @@ def rygg(d: Param = Param()):
         (63,169), (47,169), (39,161),
     ]
     s = prisma_yz(form, d.rygg_x0, d.rygg_x1)
+    # Två V1E-inspirerade förstärkningsribbor ligger i basens solid,
+    # före borrning av alla skruv-/servicedockhål.
+    s += prisma_yz([(63,139),(70,139),(70,153),(63,161)],
+                   d.rygg_x1-1.0,d.rygg_x1+1.5)
     # Existerande M5-hål på C-modellens mätta CAD-hålbild.
     for y,z in CORE_SKRUVAR:
         s -= cx(d.rygg_x0-1,d.rygg_x1+1,y,z,5.4)
@@ -95,8 +99,8 @@ def rygg(d: Param = Param()):
         for y,z in pair:
             s -= cx(d.rygg_x0-1,d.rygg_x1+1,y,z,2.6)
     # Kabelstam 6×3mm. Alltid öppningsbar från utsidan, utan demonterat servo.
-    y0 = 53.5-d.cable_width_mm/2
-    y1 = 53.5+d.cable_width_mm/2
+    y0 = 52.8-d.cable_width_mm/2
+    y1 = 52.8+d.cable_width_mm/2
     x0 = d.rygg_x1-d.cable_depth_mm
     s -= k((x0,d.rygg_x1+1),(y0,y1),(75,165))
     # Tre korta öppna förgreningar till servicekontakter, INTE frästa i Core.
@@ -105,25 +109,21 @@ def rygg(d: Param = Param()):
     # Skruvar för löstagbart kabellock – skilda från kabelspår och M5-ankare.
     for y,z in KLIPP_SKRUVAR:
         s -= cx(3.0, d.rygg_x1+1,y,z,2.4)
-    # Två stela kantribbor för styvhet och V1E-inspirerat formspråk.
-    # Integrerade i ryggen, inga extrakomponenter.
-    s += prisma_yz([(62,139),(70,139),(70,153),(62,161)],
-                   d.rygg_x1-1.0,d.rygg_x1+1.5)
     return s
 
 
 def kabellock(d: Param = Param()):
     """Löstagbart lock över huvudkabeln, inte snäpphakar som kan lossna av vibration."""
     s = prisma_yz(
-        [(46.5,73),(59.5,73),(61.5,76),(61.5,164),
-         (59.5,167),(46.5,167)],
+        [(46.0,73),(54.2,73),(56.0,76),(56.0,164),
+         (54.2,167),(46.0,167)],
         d.rygg_x1+0.35, d.rygg_x1+2.6,
     )
     for y,z in KLIPP_SKRUVAR:
         s -= cx(d.rygg_x1, d.rygg_x1+4,y,z,2.9)
     # Avlångt utlopp på framsidan, lätt att inspektera för dragavlastning.
     for z in (95,134,164):
-        s -= k((d.rygg_x1, d.rygg_x1+4),(57,62.5),(z-2.8,z+2.8))
+        s -= k((d.rygg_x1, d.rygg_x1+4),(54.0,57.0),(z-2.8,z+2.8))
     return s
 
 
@@ -171,8 +171,10 @@ def bltouch_arm(d: Param = Param()):
     for z in (pz-7,pz+7):
         s -= cy(y0-1,y1+1,px,z,2.4)
     s -= cy(y0-1,y1+1,px,pz,7.5)
-    for yy in (y-d.bl_hole_spacing/2,y+d.bl_hole_spacing/2):
-        s -= cz(flange_z-1,flange_z+6,x,yy,3.4)
+    # Hålen vrids 90° runt BLTouch-Z för att skruvskallarna inte ska
+    # hamna under armens stag. Tillverkarens 18 mm c-c är bevarade.
+    for xx in (x-d.bl_hole_spacing/2,x+d.bl_hole_spacing/2):
+        s -= cz(flange_z-1,flange_z+15,xx,y,3.4)
     s -= cz(flange_z-1,flange_z+6,x,y,10)
     # Två fria kabelbindarplatser nära armen, men ingen okänd pinout antagen.
     for z in (flange_z+8,flange_z+13):
@@ -187,8 +189,9 @@ def kamerakassett(d: Param = Param()):
     # Två 7mm-stag, med triangulära sidoförstärkningar utan dold stödstruktur.
     s += k((14,x),(58,65),(116,123))
     s += prisma_xz([(16,107),(x-5,107),(x-5,116),(16,127)],59,62)
-    s += k((x-4,x+4),(y,65),(z+2,z+11))
-    s += prisma_yz([(y+2,z+4),(61,z+4),(61,z+15)],x-3,x+3)
+    # Stödet börjar BAKOM kamerakortets 24 mm: ingen ribba över optiken.
+    s += k((x-4,x+4),(y+14,65),(z+1,z+11))
+    s += prisma_yz([(y+18,z+3),(61,z+3),(61,z+15)],x-3,x+3)
     s += _fasad_xy(x-17,x+17,y-17,y+17,z,z+3,fas=4)
     # Camera Module 3 Standard / Module 2 skruvcentrum (21 x 12,5 mm).
     for dx in (-10.5,10.5):
@@ -240,10 +243,11 @@ def pi_dock():
     """Servicemodul mellan ryggradens PI-port och lådans två M3-öron."""
     s=_dock("pi",137,168)
     s+=prisma_xz([(15,141),(25,141),(40,133),(40,138),(15,158)],59,65)
-    s+=k((22,40),(45,64),(131,138))
-    # Provlägen för skruvar i Pi-öronen. Endast vid slutlig montering.
-    for xx in (C.PX-22, C.PX-7):
-        s-=cz(130,140,xx,47,3.4)
+    # Dockens ovansida Z=135 ligger dikt an Pi-lådans fästöron Z=135.
+    # Inget överlapp mellan de olika utskrivna modulernas solider.
+    s+=k((22,51),(42,64),(129,135))
+    for xx in (53-22,53-7):
+        s-=cz(128,136,xx,47,3.4)
     return s
 
 
@@ -283,7 +287,7 @@ def rapport(d: Param=Param()):
     out={"schema":1,"status":"konstruktionsstudie, ej fysisk krockverifiering",
          "ankare_m5_yz_mm":CORE_SKRUVAR,"moduldockar_m3_yz_mm":DOCKAR,
          "sensor_dockar_m2_5_yz_mm":SENSOR_BULTAR,
-         "cable_trunk":{"y_center_mm":53.5,"z_mm":[75,165],
+         "cable_trunk":{"y_center_mm":52.8,"z_mm":[75,165],
                         "width_mm":d.cable_width_mm,"depth_mm":d.cable_depth_mm,
                         "cover_screws_yz_mm":KLIPP_SKRUVAR,
                         "servo_service_loop":"krävs, EJ dimensionerad"},
