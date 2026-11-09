@@ -54,6 +54,14 @@ Användarens **nya Amazon-bild av exakt beställd KW11-3Z-N** anger **20 mm** l�
 
 CAD-referensen i [kw11_faste.py](kw11_faste.py) skiljer uttryckligen detta från **nominella mått hämtade från andra KW11-3Z-varianter**: kropp 20 × 6,4 × 10,2 mm och skruvhålsavstånd 9,5 mm. `kw11_hallare` har slitsar i stället för att låsa detta till en icke verifierad variant. Varken leverans, faktisk monteringshålbild eller rullens tillslagspunkt är uppmätt. Brytaren är en **lägesgivare**; hårdstopp måste konstrueras separat.
 
+## 2026-11-09 – funktionsgranskning av KW11-rullarnas lägen
+
+**Fynd efter en geometrisk falsifiering:** i [CAD-kontrollen](granska_montage.py) ligger det modellerade rullhjulet som närmast **18,98 mm från rörlig servoarm i infällt läge** och **12,00 mm i utfällt läge**, när armen sveps i 15°-steg över 0 till −90°. Modellerna är nominella för QUARKZMAN KW11-familjen, inte uppmätta exemplar. Dessa stora luckor är dock tillräckliga för att visa att **nuvarande placering inte bekräftar något ändläge utan omkonstruktion**.
+
+**Beslut:** behåll [en standardhållare i `kw11_faste.py`](kw11_faste.py) (2 × print), men **lås inte dess två placeringar på servokassetten** och kalla aldrig brytarnas funktion klar. Först placera rullhjul och lägeskammar där armen faktiskt kan aktivera dem i var sitt hårdstopp, därefter kontrollera att den andra brytaren är öppen under hela rörelsen. Hårdstoppen ska överföra lasten i print/metalldel, **inte via KW11-rullspaken**. Servoarmens metallhorn, kabel och dammsko måste ingå. Helst gemensam utbytbar cam på armen, utan något beroende till kamerafästet, men geometrin ska bestämmas av riktig kollisionskontroll och mätta brytare – **inte av ett förhandsval av koncept**.
+
+**Tillåten provprint före leverans:** 1 × separat `kw11_hallare.stl` som *hål-/skruvpassningsprov*, inte ett driftsklart ändläge. Ingen automatisk fällning eller G38 är aktiverad. CAD:s gröna STL/STEP-test är en **export-/meshgrind**, inte en funktionsgrind för rullbrytare.
+
 ## Innan leverans och första provprint
 
 **Kan granskas nu:** ladda ner senaste GitHub Actions-artefakten, öppna `sensorenhet-pa-core.glb` i en 3D-visare (moduler kan visas/döljas), eller STEP i Fusion. Kontrollera att layout, kabelkanal, kortens portåtkomst och konturer är rimliga.
