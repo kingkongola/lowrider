@@ -95,6 +95,13 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D019 — Separata KW11-brytare på servokassetten, spara Omron
+**Status:** inköp bekräftat 2026-11-09; CAD-fäste granskat, verklig passning ej verifierad
+
+Beställt **10 × QUARKZMAN KW11-3Z-N med rullspak (COM/NO/NC)** på Amazon.se för visade 92,94 kr, fri Prime-frakt, beräknad leverans lördag **2026-11-14**. De **befintliga Omron SS-3GL13PT är reserv för originalmaskinens ändlägen**; förbrukas inte på sensorenheten.
+
+En enda liten **build123d KW11-hållare printas 2 ×** och har justerbara M2-hål för 8,5–9,5 mm brytarhålbild och M3-slits för lägesjustering. Båda brytarna tillhör löstagbar servokassett; Core, kamera och Pi behöver inte ändras. [Grön CAD-körning med 11 STL + 11 STEP](https://github.com/kingkongola/lowrider/actions/runs/42616662416), inga BRep-överlapp med våra fasta moduler eller i det förenklade BLTouch-svepet. **Aktiveringskammar och två separata hårdstopp saknas fortfarande och är P0**; grön CAD betyder inte att man har verifierat rullspaksvägen. Inga GPIO/maskininställningar ändrade.
+
 ## D018 — Modulär sensorenhet i build123d, original-Core orörd
 **Status:** CAD-granskad, ej fysiskt verifierad (2026-11-09)
 
@@ -102,7 +109,7 @@ Det som tidigare i chattar kallades "Core-enheten" ska heta **sensorenheten**; *
 
 **Gällande CAD:** [build123d `core_enhet.py`](machine/delar/sensorer/core_enhet.py), [dokument](machine/delar/sensorer/README.md), [kabel-/GPIO-utkast](machine/delar/sensorer/KOPPLING_CORE_V0.md). Den tidigare OpenSCAD-prototypen (`core_sensorer_v0.scad`) är arkiverad; dess gamla STL/zip ska **inte printas för montage**. [GitHub CI 42609388224](https://github.com/kingkongola/lowrider/actions/runs/42609388224): 10 separata vattentäta STL och 10 STEP, inga BRep-kollisioner i statiskt montage eller 0–90° probarmssvep mot **egna** CAD-delar/servoskissen, färgkodad GLB. **Inget provat på riktig maskin.**
 
-**Explicit blockerande:** ingen fysisk kollisions-/passningsverifiering mot verklig Core och dammsko, servohornets metall, de två Omron SS-3GL13PT eller **separata hårda stopp**; BLTouch-brytare, verklig utfälld stiftlängd, kabelslinga och elektrisk pinmappning är inte färdiga. Ingen automatisk rörelse eller G38 ändras. En fläkt är inte basfunktion; termisk mätning först.
+**Explicit blockerande:** ingen fysisk kollisions-/passningsverifiering mot verklig Core och dammsko, servohornets metall, de två nya QUARKZMAN KW11-3Z-N:s **verkliga rullspakar** eller **separata hårda stopp**; BLTouch-brytare, verklig utfälld stiftlängd, kabelslinga och elektrisk pinmappning är inte färdiga. Ingen automatisk rörelse eller G38 ändras. En fläkt är inte basfunktion; termisk mätning först.
 
 ## D017 — Core-kamera och mätarm: minsta fysiska prototyp
 **Status:** test-CAD och kopplingsunderlag framtagna 2026-11-09; **inte godkända för drift**
