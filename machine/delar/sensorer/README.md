@@ -71,3 +71,30 @@ CAD-referensen i [kw11_faste.py](kw11_faste.py) skiljer uttryckligen detta från
 **Fläkt:** inte med i v0. Pi ska bara fotografera; datorn sköter tyngre OpenCV. Mät Pi-temp och verklig termisk throttling under kamerajobb först, och bygg om kapsling/ventilation endast vid observerat behov.
 
 Original V1E Core ska förbli omodifierad. Denna sensorenhet är ett löstagbart tillbehör och får inte skapa driftberoende till maskinens grundfunktion.
+
+## Sidotorn v2 (utkast 2026-11-09, ej printat, ej verifierat)
+
+`sidotorn.py` ritar torn, arm och BLTouch-attrapp i build123d, `granska_sidotorn.py` kontrollerar dem mot V1E-delar och skanning. Tornet ersätter inte `core_enhet.py` innan det är godkänt.
+
+**Krav från användaren:** bilderna sys ihop, så varje punkt ska synas i någon bild. Servo och dammsko får synas och maskas bort. Täckning ända ut till gränserna gäller upp till ca 50 mm material; tjockare kantfall görs manuellt.
+
+| Sak | Utkast |
+|---|---|
+| Lins, rakt ned | 94 mm ut från balken, 53 mm längs balken mot X max, 130 mm över fräsens referensnivå |
+| Beräknade bilder, 8 mm överlapp | 40 på 18 mm skiva, 63 på 50 mm |
+| Dolt hörn vid X min och ena Y-gränsen | 0 mm vid 18 mm, 16 mm vid 50 mm |
+| Hårda stopp | Armens två sidor mot fasta block i tornet, utfällt 0 grader och parkerat -140 grader |
+| Ljus | Två urtag för diffuserade LED runt linsen; inget köps före bildprov enligt `../../KAMERA_ANHALL.md` |
+
+**Skanningen i fräsramen:** `p_ny = R p + T` (mm) rättar 5,9 graders lutning i tidigare inpassning, så att bordet ligger plant:
+
+```text
+R = [[ 0.99453476, -0.02082188, -0.10230862],
+     [ 0.02132634,  0.99976520,  0.00383939],
+     [ 0.10220465, -0.00600027,  0.99474530]]
+T = [5.9986, -1.4491, -3.7767]
+```
+
+**Mätt i skanningen, homad:** offerskivan ligger z = -87,5 mm (±2 mm), alltså 111,5 mm under CAD-kjolens underkant.
+
+**Kvar:** KW11-brytare, Pi-kapsling och kabelväg, verklig servohorn och fästskruvar. Brytarlägen, kortets hålbild och servomått ska mätas mot levererade delar.
