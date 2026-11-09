@@ -21,7 +21,7 @@ L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 E = json.loads((a.ut / "elektronik.json").read_text())
-torn, arm, bl, lock, kabel = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel", "kabel"))
+torn, arm, bl, lock, kabel, kapa = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel", "kabel", "kapa"))
 P = np.load(a.ref / "scan_pts_plan.npy")
 PIV, PARK = np.array([45.0, 0, 43.6]), -150
 sm = lambda m, n: trimesh.sample.sample_surface(m, n, seed=2)[0]
@@ -31,7 +31,7 @@ print("torn bbox", torn.bounds.round(1).tolist(), "tät", torn.is_watertight)
 sk = P[((P > torn.bounds[0]) & (P < torn.bounds[1])).all(1)]
 print("skanpunkter i tornet x>12:", int((sk[torn.contains(sk)][:, 0] > 12).sum()))
 T = lambda g: trimesh.transformations.rotation_matrix(np.radians(g), [0, 1, 0], PIV)
-for nm, o in (("arm", arm), ("BLTouch", bl)):
+for nm, o in (("arm", arm), ("BLTouch", bl), ("hylsan", kapa)):
     q0 = sm(o, 9000)
     b = {}
     for g in range(PARK, 1, 5):
@@ -135,3 +135,7 @@ ut = np.array([np.cos(np.radians(mv)), 0, np.sin(np.radians(mv))])
 start = np.array([mx, my, mz]) + ut * 3
 h = stralar(start, -ut, torn)
 print(f"magnetens hud mot armen: {round(h[1] - h[0], 2) if len(h) > 1 else None} mm; hålet öppet bakåt: {len(stralar(start, ut, torn)) == 0}")
+
+q = sm(bl, 30000)
+print(f"hylsan: tät {kapa.is_watertight}, BLTouch inne i hylsans gods {int(kapa.contains(q).sum())}, minsta spel mot kroppen {kapa.nearest.on_surface(q[q[:, 2] < 3.5])[1].min():.2f} mm, örats anliggning mot flänsen {float(bl.bounds[0, 2] * 0 + 3.9 - kapa.bounds[1, 2]):.2f} mm")
+print("hylsan mot armens fot:", round(float(arm.bounds[0, 2] - kapa.bounds[1, 2]), 2), "mm; hylsans ände under BLTouchens kropp:", round(-29.9 - float(kapa.bounds[0, 2]), 2), "mm")

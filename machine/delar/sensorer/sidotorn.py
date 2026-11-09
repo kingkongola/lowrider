@@ -390,7 +390,7 @@ def arm(blt_x=BLT[0]):
                    (PX + u[0] * 18 - n[0] * 1.75, PZ + u[1] * 18 - n[1] * 1.75))], y1 - 2, y1 + .1)
     a -= box((blt_x - 1.75, y1 - .5, F + 3), (blt_x + 1.75, BLT[1] - 4.5, F + 5))
     for x in (blt_x - 9, blt_x + 9):
-        a -= Pos(x, BLT[1], F + 2) * Cylinder(1.7, 10)
+        a -= Pos(x, BLT[1], F + 2) * Cylinder(1.3, 10)     # M3 x 10 gängar direkt i foten, genom hylsans och BLTouchens öron
     a -= Pos(blt_x, BLT[1], F + 2) * Cylinder(5, 10)
     a -= cyl_y(PX, PZ, y0 - 1, y1 + 1, 7.5)
     return a
@@ -400,6 +400,21 @@ def bltouch(blt_x=BLT[0]):
     x, y, f = blt_x, BLT[1], FLANS_Z
     return box((x - 13, y - 5.75, f - 2.5), (x + 13, y + 5.75, f)) + box(
         (x - 6.5, y - 6.5, f - 36.3), (x + 6.5, y + 6.5, f - 2.5)) + (Pos(x, y, f - 41) * Cylinder(1, 9.4))
+
+
+def bltouch_kapa(blt_x=BLT[0]):
+    """Tunn hylsa runt BLTouchens kropp. Följer med armen, skyddar kroppen i alla lägen och ändrar inte mätläget."""
+    x, y, f = blt_x, BLT[1], FLANS_Z
+    t = f - 2.5                     # BLTouchens fläns underkant: hylsans öron ligger an här
+    b = f - 36.8                    # 0,5 mm under kroppen, stiftet går fritt genom den öppna änden
+    k = fillet(box((x - 8.5, y - 8.5, b), (x + 8.5, y + 8.5, t)).edges().filter_by(Axis.Z), 4.0)
+    k = fillet(k.faces().sort_by(Axis.Z)[0].edges(), 1.0)
+    oron = fillet(box((x - 14.5, y - 6.5, t - 2.0), (x + 14.5, y + 6.5, t)).edges().filter_by(Axis.Z), 4.0)
+    k += fillet(oron.faces().sort_by(Axis.Z)[0].edges(), 0.8)
+    k -= box((x - 6.9, y - 6.9, b - 1), (x + 6.9, y + 6.9, t + 1))
+    for hx in (x - 9, x + 9):
+        k -= Pos(hx, y, t - 1) * Cylinder(1.7, 4)
+    return k
 
 
 def parkera(o):
@@ -420,7 +435,7 @@ def main():
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.blt_x), arm(a.blt_x), bltouch(a.blt_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka())):
+    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", bltouch_kapa())):
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
@@ -433,6 +448,8 @@ def main():
         namn(bl, "BLTouch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
         namn(parkera(copy.deepcopy(bl)), "BLTouch_parkerad_ATTRAPP", (.85, .2, .15)),
+        namn(bltouch_kapa(), "BLTouch_hylsa_utfalld", (.9, .62, .29)),
+        namn(parkera(bltouch_kapa()), "BLTouch_hylsa_parkerad", (.9, .62, .29)),
         namn(box((cx - KORT_B / 2, KORT_Y[0], KORT_FRAM), (cx + KORT_B / 2, KORT_Y[1], KORT_BAK)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
         namn(box((cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK), (cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP)), "Flatkontakt_ATTRAPP", (.85, .8, .6)),
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
