@@ -16,12 +16,12 @@ from pathlib import Path
 
 import numpy as np
 import trimesh
-from build123d import Pos
+from build123d import Pos, Rot
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
-from core_enhet import delar, Param
+from core_enhet import delar, Param, C, k, cz
 
 
 def positionerade(d: Param = Param()):
@@ -57,6 +57,65 @@ def brep_intersektioner(parts: dict) -> list[dict]:
                           "overlapp_mm3":round(volume,3),
                           "bbox_intersektion_mm":np.round(overlap,2).tolist()})
     return sorted(found,key=lambda v:-v.get("overlapp_mm3",0))
+
+
+def _gemensam_volym(a,b) -> float:
+    r=a.intersect(b)
+    if r is None:
+        return 0.0
+    if isinstance(r,list):
+        return sum(float(s.volume) for s in r)
+    return float(r.volume)
+
+
+def rorelse_svep(parts:dict, d:Param) -> dict:
+    """Grov mätplansmodell: servorörelse 0..-90 grader, ingen rörelse i CNC.
+
+    BlTouch-fästets kroppslängd är från datablad; connector, kabel,
+    servohorn av metall och toleranser är EJ CAD-mätta.
+    """
+    # Smal BLTouch-kropp 11.5 x 5.8 mm och helt utfällt stift.
+    # Att den rör vid undersidan av monteringsflänsen är avsiktligt.
+    z_flans=d.bl_tip_z+d.bl_tip_from_flange
+    body=k((C.XC-5.75,C.XC+5.75),(C.YC-2.9,C.YC+2.9),
+           (z_flans-36.3,z_flans))
+    pin=cz(d.bl_tip_z,z_flans-36.3,C.XC,C.YC,2.4)
+    probe=body+pin
+    # C.servo() är endast skalenlig skiss, METALLHORNET saknas.
+    fixed={n:p for n,p in parts.items() if n!="bltouch_arm"}
+    fixed["SPMS664_ritad"]=C.servo()
+    unsafe=[]
+    nearest={}
+    for angle in range(-90,1,15):
+        transform=(Pos(C.PX,0,C.PZ)*Rot(0,angle,0)
+                   *Pos(-C.PX,0,-C.PZ))
+        for moving_name,moving in [
+            ("BLTouch_arm",transform*parts["bltouch_arm"]),
+            ("BLTouch_kropp_mall",transform*probe)
+        ]:
+            mb=moving.bounding_box()
+            for fixed_name,p in fixed.items():
+                fb=p.bounding_box()
+                lo=np.maximum(np.asarray(tuple(mb.min)),np.asarray(tuple(fb.min)))
+                hi=np.minimum(np.asarray(tuple(mb.max)),np.asarray(tuple(fb.max)))
+                sep=np.maximum(0,lo-hi)
+                dist=float(np.linalg.norm(sep))
+                key=moving_name+"--"+fixed_name
+                nearest[key]=min(nearest.get(key,float("inf")),dist)
+                if dist>0:
+                    continue
+                try:
+                    vol=_gemensam_volym(moving,p)
+                    if vol>0.05:
+                        unsafe.append({"angle_deg":angle,"moving":moving_name,
+                                       "fixed":fixed_name,"overlap_mm3":round(vol,2)})
+                except Exception as e:
+                    unsafe.append({"angle_deg":angle,"moving":moving_name,
+                                   "fixed":fixed_name,"unverified":str(e)[:100]})
+    return {"poses_deg":list(range(-90,1,15)),
+            "CAD_collisions":unsafe,
+            "min_bbox_separation_mm":{k:round(v,2) for k,v in nearest.items()},
+            "BEGRANSNING":"Bara fast CAD och approx BLTouch kropp; inga servohorn, Omron-hävarmar, kablar, riktiga toleranser eller full Core-mesh som BRep" }
 
 
 def referens_stl():
@@ -100,6 +159,7 @@ def granska(ut:Path):
     d=Param()
     parts=positionerade(d)
     intrusion=brep_intersektioner(parts)
+    sweep=rorelse_svep(parts,d)
     referenser=referens_stl()
     sampled_refs={}
     for name,m in referenser.items():
@@ -135,6 +195,7 @@ def granska(ut:Path):
             work[name]=perref
     result={"schema":1,"status":"KONSTRUKTIONSGRANSKNING_EJ_SAKERT_FOR_PRINT_MONTERING",
             "interna_kollisioner":intrusion,
+            "servoprob_rorelsesvep":sweep,
             "referenser":list(referenser.keys()),
             "externa_narhetsvarningar":work,
             "obekraftat":["Core- och motorfästets koordinattransform kommer från äldre kontroll_c.py",
@@ -155,5 +216,5 @@ if __name__=="__main__":
     result=granska(Path(sys.argv[1]))
     # Intersektionerna är kvalitetsavvikelser och ska inte döljas i rapporten,
     # men rapport genereras även vid fynd för konstruktionsiteration.
-    if result["interna_kollisioner"]:
-        raise SystemExit("CAD: överlapp eller okontrollerade BRep-par; granska rapporten före utskrift")
+    if result["interna_kollisioner"] or result["servoprob_rorelsesvep"]["CAD_collisions"]:
+        raise SystemExit("CAD: överlapp i moduler eller servo-svep; granska rapporten före utskrift")
