@@ -34,8 +34,8 @@ DOCKAR = {
     "pi": ((62.0, 145.0), (62.0, 160.0)),
 }
 SENSOR_BULTAR = {
-    "accel": ((43.5, 91.0), (43.5, 105.0)),
-    "mikrofon": ((43.5, 144.0), (43.5, 158.0)),
+    # Accelerometern sitter mekaniskt styvt mot ryggen.
+    "accel": ((42.0, 91.0), (42.0, 105.0)),
 }
 KLIPP_SKRUVAR = ((48.2, 80.0), (48.2, 153.0))
 
@@ -88,7 +88,7 @@ def rygg(d: Param = Param()):
     # Två V1E-inspirerade förstärkningsribbor ligger i basens solid,
     # före borrning av alla skruv-/servicedockhål.
     s += prisma_yz([(63,139),(70,139),(70,153),(63,161)],
-                   d.rygg_x1-1.0,d.rygg_x1+1.5)
+                   d.rygg_x1-1.0,d.rygg_x1+0.4)
     # Existerande M5-hål på C-modellens mätta CAD-hålbild.
     for y,z in CORE_SKRUVAR:
         s -= cx(d.rygg_x0-1,d.rygg_x1+1,y,z,5.4)
@@ -228,6 +228,10 @@ def pi_lada():
         s-=cz(-1,5,xx,27,3.4)
     # Ett kabelgenomföringsfönster mot Core, kan dammtätas med mjuk grommet.
     s-=k((-25,-3),(21,24),(8,16))
+    # Två M2.5-genomgångar i lådans y+ yttervägg för separat mikrofonpod.
+    # Skruva loss pod utan att öppna kameran eller demontera Pi-docken.
+    for xx in (17,27):
+        s-=cy(17,24,xx,14,2.7)
     return s
 
 
@@ -256,23 +260,36 @@ def pi_dock():
 
 
 def sensorbricka(typ: str):
-    """Två utbytbara M2.5-fästen; inga okända PCB-hål föreskrivs."""
-    if typ not in SENSOR_BULTAR:
-        raise ValueError(typ)
-    z = 98 if typ=="accel" else 151
-    s=prisma_yz([(36,z-11),(50,z-11),(53,z-8),
-                  (53,z+8),(50,z+11),(36,z+11)],10,14)
-    for y,z0 in SENSOR_BULTAR[typ]:
-        s-=cx(9,16,y,z0,2.7)
-    if typ=="mikrofon":
-        # Akustiskt hål i utbytbar kåpa, plats för servicemembran.
-        s-=cx(9,16,47,z,3.0)
-    else:
-        # Klämfickor för liten ADXL-breakout (kortmått kontrolleras vid leverans).
-        for zz in (z-5,z+5):
-            s-=k((10.5,15),(47,50),(zz-1.3,zz+1.3))
-    return s
+    """Accelerometer styvt mot Core-adapter; mikrofon egen pod på Pi-sida.
 
+    Mikrofonen följer Pi-kapslingen vid ett eventuellt byte av HELA lådan,
+    men podden är självständigt lossbar via två M2.5 från insidan.
+    """
+    if typ=="mikrofon":
+        # I M-koordinater; Pi-låda lokalt x=53, y=20, z=135.
+        # Lådans y+ sida är y=43, locket slutar där vid z=157.
+        # Podden ligger bortom locket och bort från arm/kamerafäste.
+        s=k((66,87),(44.5,48.5),(139,157))
+        for xx in (70,80):
+            s+=cy(43.05,45.6,xx,149,5.2)
+        for xx in (70,80):
+            s-=cy(42,50,xx,149,2.7)
+        s-=cy(43,50,75,153.5,3.2) # akustiskt hål, IP-klass ej påstådd
+        return s
+    if typ!="accel":
+        raise ValueError(typ)
+    z=98
+    # 1,2 mm fritt mellan kabelkåpan (x<=11,6) och brickans kropp.
+    # Två integrerade standoffs bär M2.5-skruvarna in mot ryggen.
+    s=prisma_yz([(36,z-11),(50,z-11),(53,z-8),
+                  (53,z+8),(50,z+11),(36,z+11)],12.8,17)
+    for y,z0 in SENSOR_BULTAR["accel"]:
+        s+=cx(9.5,13.6,y,z0,5.0)
+        s-=cx(9,18,y,z0,2.7)
+    # Ett öppet kabel-/clipfönster i den friliggande modulen.
+    for zz in (z-5,z+5):
+        s-=k((14.0,18),(47,50),(zz-1.3,zz+1.3))
+    return s
 
 def delar(d: Param=Param()):
     return {
@@ -291,6 +308,7 @@ def rapport(d: Param=Param()):
     out={"schema":1,"status":"konstruktionsstudie, ej fysisk krockverifiering",
          "ankare_m5_yz_mm":CORE_SKRUVAR,"moduldockar_m3_yz_mm":DOCKAR,
          "sensor_dockar_m2_5_yz_mm":SENSOR_BULTAR,
+         "mikrofonpod_pibox_yplus_xz_mm":[[70,149],[80,149]],
          "cable_trunk":{"y_center_mm":52.8,"z_mm":[75,165],
                         "width_mm":d.cable_width_mm,"depth_mm":d.cable_depth_mm,
                         "cover_screws_yz_mm":KLIPP_SKRUVAR,
