@@ -321,7 +321,7 @@ def med_elektronik(s):
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
     for y in (60, 65):                                      # buntbandsbryggor strax ovanför utgången, utanför ADXL-kortet
-        s += box((11, y, 118.5), (20, y + 2, 122.0))
+        s += box((11, y, 118.5), (20, y + 2, 121.5))
     return s
 
 
