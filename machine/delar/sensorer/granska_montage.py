@@ -22,7 +22,6 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 from core_enhet import delar, Param, C, k, cz, KW11_HALLARE_POS
-from kw11_faste import kw11_atrapper
 from kw11_faste import kw11_atrapper, KW11_MALL
 
 
@@ -197,6 +196,12 @@ def granska(ut:Path):
     intrusion=brep_intersektioner(parts)
     sweep=rorelse_svep(parts,d)
     kw11_prov=kw11_rulle_mot_arm(parts)
+    # Screening: en fysisk brytare kan inte aktiveras över ett
+    # tvåsiffrigt millimetergap; rullens verkliga slag är okänt.
+    kw11_geometri_blockerad=any(
+        v["min_gap_mm"] is None or v["min_gap_mm"] > 5.0 or v["distance_errors"]
+        for v in kw11_prov.values()
+    )
     referenser=referens_stl()
     sampled_refs={}
     for name,m in referenser.items():
@@ -235,10 +240,14 @@ def granska(ut:Path):
             "kw11_ritningsunderlag":{"modell":KW11_MALL,"status":"bildbaserad referensattrapp, ej måttverifierad"},
             "servoprob_rorelsesvep":sweep,
             "kw11_aktiveringsavstand_ej_godkant":kw11_prov,
+            "kw11_aktiveringsstatus":(
+                "BLOCKERAD: rullarna nar inte armen, fasterna maste konstrueras om"
+                if kw11_geometri_blockerad else
+                "AVSTANDSRIMLIGT men mekanisk aktivering fortfarande ej verifierad"),
             "referenser":list(referenser.keys()),
             "externa_narhetsvarningar":work,
             "obekraftat":["Core- och motorfästets koordinattransform kommer från äldre kontroll_c.py",
-                          "marginaler till servohornets METALL och 2 Omron-brytare",
+                          "marginaler till servohornets METALL och 2 KW11-3Z-N-rullar",
                           "full rörelsebana 0..90 grader för BLTouch-probe och flexkabel",
                           "verklig dammsko, portpassning, skruvskallar, belysning",
                           "elektriska ledningsnivåer, kabelkrokningar, serviceloop"],
@@ -283,19 +292,6 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "accel_bricka":(100,142,95,255),
         "mikrofon_bricka":(143,114,154,255),
     }
-    # Levererad brytare ännu inte mätt: måttattrapper för visuell
-    # komponent-/kabelgranskning, ALDRIG med i print-STL.
-    for lage,pos in KW11_HALLARE_POS.items():
-        for typ,shape in kw11_atrapper().items():
-            placed=Pos(*pos)*shape
-            vertices, faces=placed.tessellate(0.2)
-            mesh=trimesh.Trimesh(
-                vertices=[v.to_tuple() for v in vertices],
-                faces=faces,process=False)
-            mesh.visual.face_colors=(45,45,48,210) if typ=="hus" else (207,70,58,225)
-            scene.add_geometry(mesh,
-                geom_name="ATTRAPP_KW11_"+lage+"_"+typ,
-                node_name="ATTRAPP_KW11_"+lage+"_"+typ)
     for name,color in colors.items():
         stl_name="kw11_hallare" if name.startswith("kw11_") else name
         mesh=trimesh.load(stl_mapp/(stl_name+".stl"),force="mesh")
