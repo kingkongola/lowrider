@@ -102,15 +102,15 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 - [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[ ] Mottagning, kabelfrigång och fysisk provpassning återstår.**
 - [x] Beställt: **1 × ADXL345** (`41016234`); ingen bestämd fysisk monteringsplats. **[ ] Mottagning återstår.**
-- [x] **10 modulära sensorenhetsdelar i build123d**: [källa, separata STEP/STL, montage-GLB och grön CI](machine/delar/sensorer/README.md). BRep-kontroll av statiska delintersektioner och 7-läges servoarm/BLTouch-probattrapp godkänd 2026-11-09. **[ ] Fysiskt provprintad/monterad, servohorn/Omron/stopplägen och riktigt Core-/kjol-avstånd är EJ verifierade.** Äldre OpenSCAD-prototyp är arkiverad.
+- [x] **11 unika CAD-delar, 12 utskrifter inklusive 2 × KW11-hållare, i build123d**: [källa, separata STEP/STL, montage-GLB och grön CI](machine/delar/sensorer/README.md). BRep-kontroll av statiska delintersektioner och 7-läges servoarm/BLTouch-probattrapp godkänd 2026-11-09. **[ ] Fysiskt provprintad/monterad, servohorn/KW11-rullspak/hårdstopp och riktigt Core-/kjol-avstånd är EJ verifierade.** Äldre OpenSCAD-prototyp är arkiverad.
 - [ ] Pi:s verkliga **5 V kraftmatning**: regulator, skydd och kabel väljs efter spännings-/last- och EMC-granskning; **inget antaget att detta redan finns**. Se [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md).
 - **Ingen fläkt beställd eller kravsatt** för Pi: börja med passiv kylning och mät temperatur under stillbildsarbete. Uteslut inte framtida kylning om mätningar visar behov.
 - **BLTouch** och **SPMS664** har separat tidigare inköps-/designhistorik. Exakt probrevision och mått måste verifieras mot levererad del; inga pinnar är nya tilldelade.
 
 ## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
 
-- [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Användaren uppger **extra brytare kvar**, men **antal oanvända är inte räknat**. Ingen ny beställning.
-- [ ] Använd två brytare för servoarmens **infällda och utfällda** lägen. **Ej monterade**. Kabel och GPIO/pin-konfiguration okända; se [mekanisk princip](machine/delar/nollpunkt/ANDLAGEN.md). Kontakt IP40, skydda mot spån.
+- [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Originalmaskinen har använt Omron; **kvarvarande Omron ska behållas som LowRider-reserv** och inte förbrukas på sensorenheten. Inventera bara vid behov.
+- [ ] Använd **två av de nya QUARKZMAN KW11-3Z-N** för servoarmens infällda och utfällda lägen. **11-dels build123d CAD inklusive två likadana hållare är grön**, men brytarkropp, rullspak och två mekaniska hårdstopp är ännu inte verifierade. Kabel/GPIO öppna; se [ANDLAGEN.md](machine/delar/nollpunkt/ANDLAGEN.md). Skydda från spån och vibration.
 
 ## Kvar — mekanik
 
