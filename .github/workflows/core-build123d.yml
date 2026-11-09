@@ -74,7 +74,11 @@ jobs:
               elif gap>5:
                   print(f"::warning title={name}::Brytarrullen är {gap:.2f} mm från armen; "
                         "brytarläge och hårdstopp är INTE konstruktionsgodkända")
-          assert "BLOCKERAD" in result["kw11_aktiveringsstatus"] or not result["kw11_aktiveringsavstand_ej_godkant"]
+          assert set(result["kw11_aktiveringsavstand_ej_godkant"]) == {
+              "kw11_infalld", "kw11_utfalld"
+          }
+          assert all(v["min_gap_mm"] is not None
+                     for v in result["kw11_aktiveringsavstand_ej_godkant"].values())
           PY
       - name: Exportera en bedömningsbild över moduluppdelningen
         run: |
