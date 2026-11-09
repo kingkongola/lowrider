@@ -4,6 +4,13 @@ Gäller LR-30 / manualens "Initial Calibration" ([docs.v1e.com/lowrider](https:/
 
 Ändra aldrig annat i config än det steget kräver. Spara config-backup (`machine/`) före och efter varje ändring.
 
+## Aktuell status 2026-11-09 – källfil kontra fysisk mätning
+
+- **Konfiguration i Git** enligt `machine/AKTIV` → `config-2026-11-05-z800.yaml`: **X max_travel 637 mm**, Y 1240 mm, Z **max_travel 98 mm**; Z **max_rate 800 mm/min**. Den äldre tabellen nedan är uttryckligen **baslinjen från 2026-10-04** (X 642 och Z max_rate 900), inte gällande värden. Z 800 avser matningshastighet, **inte** axelns rörelseområde eller Z-nivå.
+- **Fysisk squaring:** kontrollmätt **efter struts 2026-10-13**, diagonalskillnad **0,5 mm** och då godkänd; se loggraden nedan. `BUILD_LOG.md` 2026-10-22 begär senare ny kontroll efter ytterligare arbete med offerskivan; någon sådan **ytterligare kontrollmätning är inte loggad**.
+- **Z-nivå (steg 3):** fortfarande **inte loggad som uppmätt/godkänd**. Planfräsning `plan07` klar 2026-10-22 enligt `BUILD_LOG.md`; detta bevisar inte att balken nivellerats.
+- **Maskinens faktiskt laddade config just nu:** inte liveavläst i denna granskning. `machine/AKTIV` är repots avsedda version, inte verifierad mätning från kortet.
+
 ## Baslinje 2026-10-04 (`machine/config-2026-10-04.yaml`, hämtad från 192.168.50.184)
 
 FluidNC 3.9.9, Jackpot3 TMC2226. Homing negativ för X/Y (mpos 3), positiv för Z (mpos 3, toppen). Hard limits på för alla fem brytare, soft limits på X/Y/Z.
