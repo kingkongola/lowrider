@@ -6,7 +6,7 @@ Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](h
 
 ## Beslut och tänkt funktion
 
-- Kameran för arbetsstyckesregistrering, indexering och framtida oregelbunden nesting är **Raspberry Pi Camera Module 3 på den rörliga Core**. Hårdvaran är enligt användaren beställd (exakt variant och mottagning bekräftas i `PROCUREMENT.md`). Ingen Tapo krävs för dessa arbetsflöden.
+- Kameran för arbetsstyckesregistrering, indexering och framtida oregelbunden nesting är **Raspberry Pi Camera Module 3 på den rörliga Core**. Hårdvaran är **beställd och exakt variant bekräftad via orderbild 2026-11-09: Raspberry Pi Camera Module 3 Standard**, Electrokit art. `41020240`. Raspberry Pi Zero 2 WH (`41022617`) och CSI-kabel 200 mm (`41020808`) finns i samma order. **Mottagning är inte bekräftad.** Ingen Tapo krävs för dessa arbetsflöden.
 - Även vid en full geometrisk kamerakalibrering behöver en **känt mätt materialyta/plan** finnas för metrisk pixel-till-XY. Befintlig/planerad **BLTouch** kan efter fysisk verifiering användas för ytplanets Z eller trepunktsplan – kameran blir inte därmed en full 3D-skanner.
 - **Y-anhållet:** användaren vill skjuta fram mycket långa skivor, t.ex. 2,4 m, mot en list **längs maskinens Y** utan obligatoriskt kortsidesanslag. En låg skruvad list kan monteras ungefär parallellt och rätas med befintligt `cnc anslag trimma`. Färdigtrimmad arbetskant ska ligga **så nära minsta verkligt användbara X** som möjligt; om listen står längre i negativ X skapas onödigt materialspill, i positiv X försvinner fräsbredd. **Exakt läge är EJ valt**.
 - Skruvhuvuden måste vara försänkta och fria från fräsbanor; förlägg skruvarna på listens yttersida, aldrig i skärsvängen. Mät verkligt minsta Core-/dammsko-/kameraunderrede-X, fräsradie och motsvarande höjd/Z-svep före borrning. En lista vid X-min kan ändå kollidera med dammskon på tunna ämnen.
@@ -86,7 +86,7 @@ Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ova
 
 ## Fysiska nästa steg
 
-1. Inventera Camera Module 3-standard eller Wide samt vilket beräkningskort och kabeldragning som ska användas (inget ytterligare inköp är här beslutat).
+1. Inventera den **beställda Camera Module 3 Standard**, Raspberry Pi Zero 2 WH och CSI-kabel 200 mm, verifiera fysisk kontakt, räckvidd och dragavlastning före montering (inget ytterligare inköp är här beslutat).
 2. Provmontera kartongattrapp/3D-printat tillfälligt fäste och mät kameras möjliga avstånd till materialplan samt full verktygs-/dammsko-/probe-kollision.
 3. Provpassa låg Y-list och trimreserve utan att låsa MPos eller skruvposition; granska överhäng/säker stödning för 2,4 m lång skiva.
 4. Provframställ kontrollmätt, maskinregistrerad A4-kalibreringstavla; samla bilder vid **flera kända Z-avstånd** och verifiera Z-kompenserad XY-mätning innan användning. Ingen full 3D-skanning.
