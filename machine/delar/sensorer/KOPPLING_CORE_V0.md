@@ -2,6 +2,10 @@
 
 **Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Detta dokument innehåller inga nya pinallokeringar och ändrar **inte** `machine/AKTIV` eller FluidNC.
 
+## Brytare utgår 2026-11-09
+
+**Ersatt av [D020](../../../DECISIONS.md):** inga KW11 på armen, och de två brytarraderna och ingångarna nedan gäller inte längre. Texten nedan är historik.
+
 ## Brytare uppdaterade 2026-11-09
 
 **Två nya QUARKZMAN KW11-3Z-N (rullspak, COM/NO/NC) är beställda för armen, beräknad leverans 2026-11-14.** Dina Omron SS-3GL13PT hålls i reserv för V1E:s befintliga maskin. Den elektriska principen är fortfarande två oberoende signalledningar till Jackpot och COM/NO mot verifierad pull-up. Inga GPIO valda. **Hårdstoppen är andra mekaniska delar än brytarna.** Kabeln ansluts med avlastning, i separata kanaler där möjligt; produktens annons säger inget säkert om IP-klass.

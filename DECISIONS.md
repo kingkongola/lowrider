@@ -95,6 +95,15 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D020 — Inga armbrytare: hårda stopp, tyngdkraft och kamerakontroll
+**Status:** beslutat 2026-11-09; ersätter brytardelen av D019. CAD-utkast `machine/delar/sensorer/sidotorn.py`, ej printat, ej verifierat
+
+Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer lägena. **Parkerat ligger armen vid -165 grader, förbi lodlinjen, så att tyngden håller den mot stoppet även utan servokraft.** Kameran bekräftar parkerat läge som **startspärr före varje jobb**: inget svar eller oklar bild ger ingen start. Spärren är ingen säkerhetsfunktion och stoppar inte pågående rörelse, enligt `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
+
+**Varför:** sökning i CAD hittade ingen plats för brytaren i utfällt läge utan extra bärande del. Utan brytare försvinner hållare, tapp, lödning och två Jackpot-ingångar.
+
+**Mät före utskrift:** BLTouchens vikt, eftersom marginalen förbi lodlinjen bara är cirka 3 grader med antagna 10 g. De 10 köpta KW11 behålls som reservdelar. Spärrens programvara finns inte än och hör till `kingkongola/cnc`.
+
 ## D019 — Separata KW11-brytare på servokassetten, spara Omron
 **Status:** inköp bekräftat 2026-11-09; CAD-fäste granskat, verklig passning ej verifierad
 

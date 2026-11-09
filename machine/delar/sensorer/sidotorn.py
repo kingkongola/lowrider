@@ -8,7 +8,8 @@ får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
 plats för två diffuserade LED men inget inköp före bildprov.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
-bara driver rörelsen. Brytare och Pi-kapsling är inte ritade än.
+bara driver rörelsen. Parkerat ligger armen förbi lodlinjen så att tyngden håller
+den mot stoppet; kameran bekräftar läget före varje jobb (D020), inga brytare.
 
 Kör: python sidotorn.py --ut KATALOG
 """
@@ -33,9 +34,17 @@ KORT_HAL = (21.0, 12.5)     # nominellt, kontrolleras mot levererat kort
 BUK = LINS[2] + 2.6         # tornets plana undersida vid kameran
 XEND = LINS[0] + 13.5
 
+# Pi Zero 2 WH: kortet i XZ-planet, komponenterna mot locket.
+PI_RUM = (12.0, 79.8, 123.0, 156.5)      # x0, x1, z0, z1
+PI_Y = 55.0                              # kortets undersida
+PI_CENTER = (45.0, 139.5)
+PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
+LOCK = (10.5, 80.5, 122.0, 158.5)        # x0, x1, z0, z1
+LOCK_HAL = [(13.5, 124.5), (77.5, 124.5), (13.5, 154.5), (77.5, 154.5)]
+
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
-PARK = -140.0               # utfällt 0 grader, parkerat -140 grader
+PARK = -165.0               # utfällt 0, parkerat förbi lodlinjen: tyngden håller armen mot stoppet
 ARM_Y = (21.5, 25.5)
 BLT = (61.0, 34.0)
 FLANS_Z = 6.4
@@ -100,14 +109,18 @@ def torn(blt_x=BLT[0]):
         s += cyl_x(43.95, z, -7.3, 1.2, 9.6)
         s -= cyl_x(43.95, z, -9, 10, 5.4)
     # Servoram med fönster för kroppen, och skena upp till fästplattan.
-    xa, xb = PX - 31.5, PX + 16.5
+    xa, xb = 7.0, 67.0      # fästöronen sitter vid x 11,7 och 59
     s += box((xa, 43.3, 27.6), (xb, 49.3, 58.5)) - box((PX - 30.2, 42, 33.4), (PX + 10.2, 51, 53.8))
     s += box((8, 43.3, 53.8), (xb, 52, 58.5))
+    for x in (PX - 33.3, PX + 14):
+        for z in (PZ - 4.7, PZ + 4.7):
+            s -= cyl_y(x, z, 42.3, 50.3, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     s += prisma_y(stopp_block(blt_x, -1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
     s += box((33, ARM_Y[1] + 1.0, 27.6), (45, 43.5, 33.2))
     s += prisma_y(stopp_block(blt_x, 1, ARM_W[0], ARM_W[1]), ARM_Y[0], ARM_Y[1] + 1.2)
     s += box((31, ARM_Y[1] + 1.0, 54.0), (47, 43.5, 58.5))
+    s += box((30.5, ARM_Y[0], 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     s += box((cx - 13.5, 33, b), (XEND, Y0 + 1, b + 10))
@@ -116,8 +129,45 @@ def torn(blt_x=BLT[0]):
         for dy in (-KORT_HAL[1] / 2, KORT_HAL[1] / 2):
             s -= Pos(cx + dx, cy + dy, b + 4) * Cylinder(0.85, 6)
     for y in (cy - 15.5, cy + 15.5):
-        s -= box((cx - 10, y - 2.5, b - 1), (cx + 10, y + 2.5, b + 3))
+        s -= box((cx - 10, y - 2.5, b - 1), (cx + 10, y + 2.5, b + 2))
+        s -= Pos(cx - 6.5, y, b + 3) * Cylinder(1.5, 6)
+    s = med_elektronik(s)
     return s
+
+
+def med_elektronik(s):
+    """Pi-rum med lock mot X max-sidan, CSI-väg till kameran och kabelvägar."""
+    b = BUK
+    x0, x1, z0, z1 = PI_RUM
+    # Rummet och lockets urtag, öppet mot +y så att locket går att ta av utan att lossa tornet.
+    s -= box((x0, 51, z0), (x1, 70.1, z1))
+    s -= box((LOCK[0], 70, LOCK[2]), (LOCK[1], 73, LOCK[3]))
+    # Fyra pelare för Pi (hålbild 58 x 23), fyra för lockets skruvar.
+    for x, z in PI_HAL:
+        s += cyl_y(x, z, 50.5, PI_Y, 6.0)
+        s -= cyl_y(x, z, 49.9, PI_Y + 1, 2.2)
+    for x, z in LOCK_HAL:
+        s += cyl_y(x, z, 64.5, 70.0, 7.0)
+        s -= cyl_y(x, z, 64.0, 70.5, 2.5)
+    # CSI: från Pi:ns kortsida över till kameran, öppning ner till kortets kant.
+    s -= box((x1 - 0.5, 60.5, b + 3.5), (LINS[0] + 6.5, 70, b + 13.4))
+    s -= box((x1 - 0.5, 52, b + 3.5), (82.2, 60.6, b + 13.4))    # plats för flatkabeln vid Pi-kortets kant
+    s -= box((LINS[0] - 6.5, LINS[1] + 9, b + 2.4), (LINS[0] + 6.5, LINS[1] + 13.5, b + 4))
+    # LED-ledningen från den främre listen går i en kanal in i CSI-rummet.
+    s -= box((LINS[0] - 7.5, 35.5, b + 3.6), (LINS[0] - 5.5, 61, b + 5.6))
+    # Kablar in från servo, BLTouch och brytare, och samlad utgång uppåt.
+    s -= box((20, 46, 126), (42, 52, 134))
+    s -= box((18, 57, z1 - 1), (34, 66, 164))
+    return s
+
+
+def lock():
+    l = box((LOCK[0] + .15, 70, LOCK[2] + .15), (LOCK[1] - .15, 72, LOCK[3] - .15))
+    for x, z in LOCK_HAL:
+        l -= cyl_y(x, z, 69, 73, 3.4)
+    for z in (127, 133, 139, 145, 151):
+        l -= box((28, 69, z - 1), (62, 73, z + 1))
+    return l
 
 
 def arm(blt_x=BLT[0]):
@@ -159,7 +209,8 @@ def main():
     a = p.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.blt_x), arm(a.blt_x), bltouch(a.blt_x)
-    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl)):
+    l = lock()
+    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("lock", l)):
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
@@ -172,7 +223,8 @@ def main():
         namn(parkera(copy.deepcopy(bl)), "BLTouch_parkerad_ATTRAPP", (.85, .2, .15)),
         namn(box((cx - KORT_B / 2, cy - KORT_D / 2, BUK + .5), (cx + KORT_B / 2, cy + KORT_D / 2, BUK + 2.5)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
         namn(Pos(cx, cy, cz + 1.5) * Cylinder(5.5, 3), "Lins_ATTRAPP", (.05, .05, .05)),
-        namn(box((14, 52, 120), (79, 66, 146)), "Pi_Zero_utrymme_ATTRAPP", (.15, .55, .3)),
+        namn(box((PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15), (PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15)), "Pi_Zero_2_ATTRAPP", (.15, .55, .3)),
+        namn(l, "Pi_lock", (.3, .33, .36)),
     ]
     for y, e in ((cy - 15.5, "LED_1_ATTRAPP"), (cy + 15.5, "LED_2_ATTRAPP")):
         delar.append(namn(box((cx - 10, y - 2.5, BUK), (cx + 10, y + 2.5, BUK + 2)), e, (.95, .95, .8)))

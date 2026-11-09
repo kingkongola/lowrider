@@ -83,7 +83,7 @@ Original V1E Core ska förbli omodifierad. Denna sensorenhet är ett löstagbart
 | Lins, rakt ned | 94 mm ut från balken, 53 mm längs balken mot X max, 130 mm över fräsens referensnivå |
 | Beräknade bilder, 8 mm överlapp | 40 på 18 mm skiva, 63 på 50 mm |
 | Dolt hörn vid X min och ena Y-gränsen | 0 mm vid 18 mm, 16 mm vid 50 mm |
-| Hårda stopp | Armens två sidor mot fasta block i tornet, utfällt 0 grader och parkerat -140 grader |
+| Hårda stopp | Armens två sidor mot fasta block i tornet, utfällt 0 grader och parkerat -165 grader, förbi lodlinjen enligt D020 |
 | Ljus | Två urtag för diffuserade LED runt linsen; inget köps före bildprov enligt `../../KAMERA_ANHALL.md` |
 
 **Skanningen i fräsramen:** `p_ny = R p + T` (mm) rättar 5,9 graders lutning i tidigare inpassning, så att bordet ligger plant:
@@ -97,4 +97,8 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Mätt i skanningen, homad:** offerskivan ligger z = -87,5 mm (±2 mm), alltså 111,5 mm under CAD-kjolens underkant.
 
-**Kvar:** KW11-brytare, Pi-kapsling och kabelväg, verklig servohorn och fästskruvar. Brytarlägen, kortets hålbild och servomått ska mätas mot levererade delar.
+**Elektronik och kablar i utkastet:** Pi Zero 2 WH ligger i ett rum i tornet med lock mot X max-sidan. 200 mm CSI-kabeln går från Pi:ns kortsida genom ett inre rum till kortets kant; överlängden viks i rummet. Ledningar från servo, BLTouch och LED går in i rummet, och en samlad kabel lämnar tornet uppåt. Kablarnas böjar är inte simulerade.
+
+**Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål och väggtjocklek runt Pi-rummet.
+
+**Kvar:** kamerans startspärr i `kingkongola/cnc`, BLTouchens vikt, dragavlastning och kabelbana utanför tornet, 24→5 V-regulatorns plats, ADXL345-fäste. Servohorn, kortets hålbild, FFC-kontaktens riktning och servomått ska mätas mot levererade delar.

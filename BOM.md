@@ -110,7 +110,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 ## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
 
 - [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Originalmaskinen har använt Omron; **kvarvarande Omron ska behållas som LowRider-reserv** och inte förbrukas på sensorenheten. Inventera bara vid behov.
-- [ ] Använd **två av de nya QUARKZMAN KW11-3Z-N** för servoarmens infällda och utfällda lägen. **11-dels build123d CAD inklusive två likadana hållare är grön**, men brytarkropp, rullspak och två mekaniska hårdstopp är ännu inte verifierade. Kabel/GPIO öppna; se [ANDLAGEN.md](machine/delar/nollpunkt/ANDLAGEN.md). Skydda från spån och vibration.
+- Servoarmen använder **inga brytare** enligt [D020](DECISIONS.md): hårda stopp, parkering förbi lodlinjen och kamerakontroll. De 10 köpta QUARKZMAN KW11-3Z-N är reservdelar.
 
 ## Kvar — mekanik
 
