@@ -92,6 +92,12 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - minimum ytterfootprint 941 × 1563 mm
 - faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.
 
+## Sensorenhet: ändlägesbrytare (köpta 2026-11-09)
+
+- [x] **10 × QUARKZMAN KW11-3Z-N, rullspak, COM/NO/NC**, Amazon.se, **92,94 kr visat för hela paketet**, Prime-frakt 0 kr. **Beräknad leverans lördag 2026-11-14; inte mottagna ännu.**
+- [ ] **2 ×** installeras som separata lägesgivare för infälld och utfälld BLTouch-arm, med **separata mekaniska hårdstopp**. Hålavstånd/spakväg kräver verklig passningskontroll; monteringen är ännu inte godkänd.
+- **Omron SS-3GL13PT från DigiKey reserveras som reservdelar till originalmaskinen**, inte till den nya sensorarmen. Se [ANDLAGEN.md](machine/delar/nollpunkt/ANDLAGEN.md) och [inköp](PROCUREMENT.md).
+
 ## Core-sensorer – beställt, ej mottaget (2026-11-08)
 
 - [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[ ] Mottagning, kabelfrigång och fysisk provpassning återstår.**
