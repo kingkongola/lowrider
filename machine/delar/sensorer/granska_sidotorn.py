@@ -80,3 +80,10 @@ for k, (t, m) in K.items():
     if k != "torn":
         print(f"kabel mot {k}: {t.query(kq)[0].min():.1f} mm, inne: {int(m.contains(kq[t.query(kq)[0] < 8]).sum())}")
 print("kabel mot skanning (minsta):", round(float(S.query(kq)[0].min()), 1))
+
+# Intrång i fasta delar; M5-distansernas planläge x = -7,3 ska ligga an och räknas bort.
+for k, m in ref.items():
+    lo, hi = np.maximum(m.bounds[0], [-7.2, *torn.bounds[0][1:]]), np.minimum(m.bounds[1], torn.bounds[1])
+    if (hi > lo).all():
+        q = np.random.default_rng(1).uniform(lo, hi, (800000, 3))
+        print(f"intrång torn mot {k}: {float((torn.contains(q) & m.contains(q)).mean() * np.prod(hi - lo)):.2f} mm3")

@@ -40,7 +40,7 @@ PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 139.5)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
 PANEL_X = 84.0                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (77.0, 125.5), (15.0, 155.0), (77.0, 155.0), (15.0, 64.5), (44.0, 64.5)]
+PANEL_HAL = [(15.0, 125.5), (77.0, 132.0), (15.0, 155.0), (77.0, 155.0), (15.0, 64.5), (44.0, 64.5)]
 ACC_HAL = [(26.0, 104.0), (41.0, 104.0)]   # nominellt, kontrolleras mot levererad ADXL345
 
 # Servo (SPMS664, befintligt läge) och arm.
@@ -52,7 +52,7 @@ BLT = (61.0, 34.0 + SERVO_DY)
 FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
 FLANS_Z = 6.4
 HUB_D = 15.0
-MAGNET = (5.2, 2.2)         # urtag för Ø5 x 2 mm neodymmagnet i parkeringsstoppet
+MAGNET = (6.2, 3.2)         # urtag för Ø6 x 3 mm neodymmagnet (Vinabo, finns hemma) i parkeringsstoppet
 BULA_T = 11.0               # armens bula för M3-skruvens stålhuvud, mm längs armen
 ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
 
@@ -99,11 +99,33 @@ def inset(pts, d):
     return ut
 
 
+def V(x, z):
+    return Vector(x, Y0, z)
+
+
+def undersida():
+    """Svepet från servokåpan upp till kamerans plana buk."""
+    return Spline([V(44, 56), V(86, BUK)], tangents=[V(1, 0) - V(0, 0), V(1, 0) - V(0, 0)])
+
+
+def silhuett():
+    """Tornets sida som en sammanhängande kurva, utan raka facetter mot framkanten."""
+    b, top = BUK, BUK + 29.4
+    nos = Spline([V(103, b), V(107.5, b + 6)], tangents=[Vector(1, 0, 0), Vector(0, 0, 1)])
+    rygg = Spline([V(107.5, b + 6), V(105, 148), V(95, 157.5), V(70, top)],
+                  tangents=[Vector(0, 0, 1), Vector(-1, 0, 0)])
+    return Wire.combine([Line(V(8, 56), V(44, 56)), undersida(), Line(V(86, b), V(103, b)), nos, rygg,
+                         Line(V(70, top), V(8, top)), Line(V(8, top), V(8, 56))])[0]
+
+
 def sidoprofil():
-    """Tornets sida bakom panelen, från rygg till kamerablocket."""
-    b = BUK
-    rz = 56 + (PANEL_X - 52) * (b - 56) / (LINS[0] - 8 - 52)
-    return [(8, 56), (52, 56), (PANEL_X, rz), (PANEL_X, b + 29.4), (8, b + 29.4)]
+    """Tornets sida bakom panelen, följer svepet på undersidan."""
+    u = undersida()
+    pts = [u.position_at(t) for t in [i / 48 for i in range(49)]]
+    kurva = [(p.X, p.Z) for p in pts if p.X < PANEL_X]
+    p0, p1 = next(((pts[i], pts[i + 1]) for i in range(48) if pts[i].X < PANEL_X <= pts[i + 1].X))
+    z = p0.Z + (p1.Z - p0.Z) * (PANEL_X - p0.X) / (p1.X - p0.X)
+    return [(8, 56)] + kurva + [(PANEL_X, z), (PANEL_X, BUK + 29.4), (8, BUK + 29.4)]
 
 
 def arm_geo(blt_x):
@@ -132,7 +154,7 @@ def stopp_block(blt_x, sida, w0, w1):
 
 
 def magnet_urtag(blt_x):
-    """Ø5 magnet i parkeringsstoppet, axeln vinkelrät mot armens sida."""
+    """Ø6 magnet i parkeringsstoppet, axeln vinkelrät mot armens sida."""
     u, n, L = arm_geo(blt_x)
     w = ARM_W[0] + (ARM_W[1] - ARM_W[0]) * BULA_T / L
     p = (PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w)
@@ -168,11 +190,9 @@ def servo_attrapp():
 
 def torn(blt_x=BLT[0]):
     b = BUK
-    prof = [(8, 56), (52, 56), (LINS[0] - 8, b), (XEND, b), (XEND, b + 15.4), (84, b + 29.4), (8, b + 29.4)]
-    s = prisma_y(prof, Y0, Y1)
-    s = fillet(s.edges().filter_by(Axis.Y), 6.0)
-    fram, bak = s.faces().sort_by(Axis.Y)[0], s.faces().sort_by(Axis.Y)[-1]
-    s = fillet(fram.edges(), 3.0)
+    s = extrude(Face(silhuett()), amount=Y1 - Y0, dir=(0, 1, 0))
+    s = fillet(s.edges().filter_by(Axis.Y).filter_by(lambda e: e.center().X < 9), 7.0)
+    s = fillet(s.faces().sort_by(Axis.Y)[0].edges(), 5.0)
     s = fillet(s.faces().sort_by(Axis.Y)[-1].edges(), 1.2)
     # Fästplatta mot verktygsfästet, samma två M5-lägen som V1E-skruvarna.
     s += fillet(box((1, 39, 56), (9, Y0 + 1, 134)).edges().filter_by(Axis.Z), 1.5)
@@ -183,8 +203,8 @@ def torn(blt_x=BLT[0]):
     # Servoram med fönster för kroppen, och skena upp till fästplattan.
     xa, xb = 7.0, 67.0      # fästöronen sitter vid x 11,7 och 59
     ram = box((xa, FRAM_Y[0], 27.6), (xb, FRAM_Y[1], 58.5))
-    ram = fillet(ram.edges().filter_by(Axis.Y), 3.0)
-    s += fillet(ram.faces().sort_by(Axis.Y)[0].edges(), 1.5)
+    ram = fillet(ram.edges().filter_by(Axis.Y), 9.0)
+    s += fillet(ram.faces().sort_by(Axis.Y)[0].edges(), 2.0)
     # Kåpa runt servots bakre del, i samma plan som sidopanelen.
     s += servokapa()
     s -= box((PX - 30.2, FRAM_Y[0] - 1, 33.4), (PX + 10.2, FRAM_Y[1] + 2, 53.8))
@@ -195,22 +215,22 @@ def torn(blt_x=BLT[0]):
             s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     def stopp(sida):
-        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 0.4, ARM_Y[1] + 1.2)
+        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 1.0, ARM_Y[1] + 1.2)
         p = prisma_y(stopp_block(blt_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
         return fillet(p.edges().filter_by(Axis.Y), 0.8)
     s += stopp(-1)
     s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
     s += stopp(1)
     s += fillet(box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
-    s += box((30.5, ARM_Y[0], 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
+    s += box((30.5, ARM_Y[0] + 2.0, 54.0), (33.5, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
     s -= magnet_urtag(blt_x)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
     prof = Plane.YZ.offset(cx - 13.5) * Polygon((33, b), (Y0 + 1, b), (Y0 + 1, b + 22), (33, b + 8), align=None)
     nos = extrude(prof, amount=XEND - (cx - 13.5), dir=(1, 0, 0))
-    nos = fillet(nos.edges().filter_by(Axis.X), 2.5)
-    s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 1.5)
+    nos = fillet(nos.edges().filter_by(Axis.X), 3.5)
+    s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 2.5)
     s -= box((cx - KORT_B / 2 - .1, cy - KORT_D / 2 - .1, b - 1), (cx + KORT_B / 2 + .1, cy + KORT_D / 2 + .1, b + 2.5))
     for dx in (-KORT_HAL[0] / 2, KORT_HAL[0] / 2):
         for dy in (-KORT_HAL[1] / 2, KORT_HAL[1] / 2):

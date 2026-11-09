@@ -111,7 +111,8 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 - [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Originalmaskinen har använt Omron; **kvarvarande Omron ska behållas som LowRider-reserv** och inte förbrukas på sensorenheten. Inventera bara vid behov.
 - Servoarmen använder **inga brytare** enligt [D020](DECISIONS.md): hårda stopp, magnet i parkerat läge och kamerakontroll. De 10 köpta QUARKZMAN KW11-3Z-N är reservdelar.
-- [ ] **1 × neodymmagnet Ø5 x 2 mm** och **1 × M2,5-skruv av stål** till armens parkeringsstopp, ej beställt.
+- [x] **Neodymmagneter Ø6 x 3 mm** (Vinabo, 60 st, köpta 2026-10-27 enligt användaren) till armens parkeringsstopp.
+- [ ] **1 × M2,5-skruv av stål** till armens parkeringsstopp.
 
 ## Kvar — mekanik
 

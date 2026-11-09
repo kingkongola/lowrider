@@ -101,6 +101,8 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Samlad kabel ut från tornet (förslag, inga pinnar valda):** 24 V, GND, servosignal, BLTouch-styrning och BLTouch-signal. 5 V till Pi, servo och BLTouch tas från en regulator i rummet under Pi:n, på en plan yta med dubbelhäftande tejp tills modellen är vald. Kabeln går från tornets baksida upp i gapet mot Core och följer X-motorns väg till balkens mitt enligt `CABLE_ROUTING.md`. Längden mäts med snöre vid full rörelse.
 
+**Form:** tornets sida är en sammanhängande svepande kurva, med runda ytterkanter och samma radier på kåpa, ram och nos. Magneten Ø6 x 3 mm sitter i parkeringsstoppet och M2,5-skruvens huvud i armen; skruvdjupet ställer in hållkraften.
+
 **Servokåpa:** tornet omsluter servots bakre del i samma plan som sidopanelen, och servot skjuts in framifrån genom ramen. Servopaketet är flyttat 2 mm längs balken för att väggen ska rymmas; tornet slutar 0,5 mm före Core-änden.
 
 **Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål och väggtjocklek runt Pi-rummet.

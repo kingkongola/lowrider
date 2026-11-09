@@ -98,7 +98,7 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 ## D020 — Inga armbrytare: hårda stopp, tyngdkraft och kamerakontroll
 **Status:** beslutat 2026-11-09; ersätter brytardelen av D019. CAD-utkast `machine/delar/sensorer/sidotorn.py`, ej printat, ej verifierat
 
-Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer lägena. **Parkerat ligger armen vid -150 grader och hålls av en Ø5 x 2 mm neodymmagnet i stoppet mot ett M2,5-skruvhuvud i armen, så att den inte faller vid strömavbrott.** Kameran bekräftar parkerat läge som **startspärr före varje jobb**: inget svar eller oklar bild ger ingen start. Spärren är ingen säkerhetsfunktion och stoppar inte pågående rörelse, enligt `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
+Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer lägena. **Parkerat ligger armen vid -150 grader och hålls av en Ø6 x 3 mm neodymmagnet i stoppet mot ett M2,5-skruvhuvud i armen, så att den inte faller vid strömavbrott.** Kameran bekräftar parkerat läge som **startspärr före varje jobb**: inget svar eller oklar bild ger ingen start. Spärren är ingen säkerhetsfunktion och stoppar inte pågående rörelse, enligt `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
 
 **Varför:** sökning i CAD hittade ingen plats för brytaren i utfällt läge utan extra bärande del. Utan brytare försvinner hållare, tapp, lödning och två Jackpot-ingångar.
 
