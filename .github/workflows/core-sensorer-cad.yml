@@ -28,7 +28,7 @@ jobs:
           done
       - name: Kontrollera STL-komponenter och geometri
         run: |
-          python3 -m pip install 'trimesh>=4' 'numpy>=2'
+          python3 -m pip install 'trimesh>=4' 'numpy>=2' 'networkx>=3'
           python3 - <<'PY'
           from pathlib import Path
           import numpy as np
