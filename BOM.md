@@ -92,6 +92,15 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - minimum ytterfootprint 941 × 1563 mm
 - faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.
 
+## Core-sensorer – beställt, ej mottaget (2026-11-08)
+
+- [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[ ] Mottagning, kabelfrigång och fysisk provpassning återstår.**
+- [x] Beställt: **1 × ADXL345** (`41016234`); ingen bestämd fysisk monteringsplats. **[ ] Mottagning återstår.**
+- [ ] **CAD för provpassning** av Pi-kapsling, lock, kamerahållare och BLTouch-måttjigg: [Core-sensorer v0](machine/delar/sensorer/README.md). STL framtagna, **inget fysiskt printat eller verifierat**. Provisorisk BLTouch-arm **inte driftsäker/kollisionskontrollerad**.
+- [ ] Pi:s verkliga **5 V kraftmatning**: regulator, skydd och kabel väljs efter spännings-/last- och EMC-granskning; **inget antaget att detta redan finns**. Se [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md).
+- **Ingen fläkt beställd eller kravsatt** för Pi: börja med passiv kylning och mät temperatur under stillbildsarbete. Uteslut inte framtida kylning om mätningar visar behov.
+- **BLTouch** och **SPMS664** har separat tidigare inköps-/designhistorik. Exakt probrevision och mått måste verifieras mot levererad del; inga pinnar är nya tilldelade.
+
 ## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
 
 - [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Användaren uppger **extra brytare kvar**, men **antal oanvända är inte räknat**. Ingen ny beställning.
