@@ -239,6 +239,8 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "kabellock":(147,157,161,255),
         "servokassett":(190,98,48,255),
         "bltouch_arm":(225,159,74,255),
+        "kw11_in_faste":(232,182,82,255),
+        "kw11_ut_faste":(209,147,58,255),
         "kw11_infalld":(218,128,62,255),
         "kw11_utfalld":(234,157,75,255),
         "kamerakassett":(48,117,156,255),
@@ -248,6 +250,16 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "accel_bricka":(100,142,95,255),
         "mikrofon_bricka":(143,114,154,255),
     }
+    # Endast ritningsreferenser, ej printade delar:
+    # 20 x 6.4 x 10 mm KW11-3Z-N-kroppar placerade på M2-bossarna.
+    # Rullspak, kontaktdon och aktiveringsväg är INTE modellerade.
+    for lage, z0 in (("in",54.0),("ut",23.0)):
+        bbox=trimesh.creation.box(extents=[20.0,6.4,10.0])
+        bbox.apply_translation([79.5,59.2,z0+5.0])
+        bbox.visual.face_colors=(190,60,65,180)
+        scene.add_geometry(bbox,
+            geom_name="KOMPONENT_PROXY_KW11_"+lage,
+            node_name="KOMPONENT_PROXY_KW11_"+lage)
     for name,color in colors.items():
         stl_name="kw11_hallare" if name.startswith("kw11_") else name
         mesh=trimesh.load(stl_mapp/(stl_name+".stl"),force="mesh")
