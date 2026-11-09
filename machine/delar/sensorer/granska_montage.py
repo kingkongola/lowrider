@@ -21,11 +21,15 @@ from build123d import Pos, Rot
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
-from core_enhet import delar, Param, C, k, cz
+from core_enhet import delar, Param, C, k, cz, KW11_HALLARE_POS
 
 
 def positionerade(d: Param = Param()):
     parts = delar(d)
+    # 1 CAD-fil för samma KW11-fäste, två separat lossbara fysiska exemplar.
+    holder=parts.pop("kw11_hallare")
+    for name,(x,y,z) in KW11_HALLARE_POS.items():
+        parts[name]=Pos(x,y,z)*holder
     parts["pi_lada"] = Pos(d.pi_x, d.pi_y, d.pi_z) * parts["pi_lada"]
     parts["pi_lock"] = Pos(d.pi_x, d.pi_y, d.pi_z + 22.0) * parts["pi_lock"]
     return parts
@@ -235,6 +239,8 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "kabellock":(147,157,161,255),
         "servokassett":(190,98,48,255),
         "bltouch_arm":(225,159,74,255),
+        "kw11_infalld":(218,128,62,255),
+        "kw11_utfalld":(234,157,75,255),
         "kamerakassett":(48,117,156,255),
         "pi_lada":(51,86,103,255),
         "pi_lock":(95,128,143,240),
@@ -243,7 +249,10 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "mikrofon_bricka":(143,114,154,255),
     }
     for name,color in colors.items():
-        mesh=trimesh.load(stl_mapp/(name+".stl"),force="mesh")
+        stl_name="kw11_hallare" if name.startswith("kw11_") else name
+        mesh=trimesh.load(stl_mapp/(stl_name+".stl"),force="mesh")
+        if name in KW11_HALLARE_POS:
+            mesh.apply_translation(KW11_HALLARE_POS[name])
         if name in ("pi_lada","pi_lock"):
             mesh.apply_translation([d.pi_x,d.pi_y,d.pi_z
                                     +(22 if name=="pi_lock" else 0)])
