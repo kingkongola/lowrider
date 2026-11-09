@@ -95,6 +95,15 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D017 — Core-kamera och mätarm: minsta fysiska prototyp
+**Status:** test-CAD och kopplingsunderlag framtagna 2026-11-09; **inte godkända för drift**
+
+Camera Module 3 **Standard** och Pi Zero 2 WH är beställda, ej mottagna. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Befintlig belysning provas före eventuella nya LED.
+
+Servoarm **C** används som mekaniskt referens-CAD. Ny BLTouch-anpassning utgår från samma servoaxel, men kroppens korta stift, horisontella frigång, kabel och lodrätt mätläge **är ännu inte verifierade**. Den äldre cylindriska klämman ersätts i *prototypstudien*, inte på den levande CNC:n. Skannerförsprång och 2,5D är **parkerade**, får inte skapa nya CAD-krav.
+
+S-09 (två mekaniskt åtskilda vilolägen, utan mux i basplanen) ligger kanoniskt i [cnc:s sensorarkitektur](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md). Ingen ny GPIO är reserverad: se [JACKPOT3_IO.md](machine/delar/nollpunkt/JACKPOT3_IO.md) och [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md). Ingen maskinkonfiguration eller motor-rörelse får ändras av detta beslut.
+
 ## D015 — Jackpot3 från Elecrow
 **Status:** **köpt 2026-09-03**
 
