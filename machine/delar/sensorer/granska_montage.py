@@ -36,8 +36,8 @@ def brep_intersektioner(parts: dict) -> list[dict]:
     found = []
     for (name1,a),(name2,b) in combinations(parts.items(),2):
         ab,bb = a.bounding_box(), b.bounding_box()
-        lower = np.maximum(np.asarray(ab.min,dtype=float),np.asarray(bb.min,dtype=float))
-        upper = np.minimum(np.asarray(ab.max,dtype=float),np.asarray(bb.max,dtype=float))
+        lower = np.maximum(np.asarray(tuple(ab.min),dtype=float),np.asarray(tuple(bb.min),dtype=float))
+        upper = np.minimum(np.asarray(tuple(ab.max),dtype=float),np.asarray(tuple(bb.max),dtype=float))
         overlap = upper-lower
         if (overlap <= 0.05).any():
             continue
@@ -103,7 +103,7 @@ def granska(ut:Path):
             sampled_refs[name]=cKDTree(pts)
     work={}
     for name,part in parts.items():
-        vertices=np.asarray(part.bounding_box().min,dtype=float),np.asarray(part.bounding_box().max,dtype=float)
+        vertices=np.asarray(tuple(part.bounding_box().min),dtype=float),np.asarray(tuple(part.bounding_box().max),dtype=float)
         lo,hi=vertices
         # Dyrt att provköra hela BRep-intersektionen mot tessellerade original.
         # Tätt sampling av våra STL gör detta till ett grovt varnande mått.
