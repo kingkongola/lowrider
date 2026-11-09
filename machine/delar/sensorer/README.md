@@ -48,6 +48,12 @@
 - **CAD-grind:** [grön GitHub Actions-körning](https://github.com/kingkongola/lowrider/actions/runs/42616662416) gav 11 separata STL + 11 STEP och BRep utan modellöverlapp för de 2 hållarna, övriga moduler och förenklat BLTouch-svep. Detta testar **inte** brytarnas faktiska hus, rullspak, klickväg, ledaranslutningar eller de ännu saknade hårdstoppen. De nya fästena är **mått-/passningsprototyper**, inte driftsklara ändlägen.
 - **Provrutin efter leverans:** mät kropp, hålavstånd, pinnarnas läge och spakens verkliga tillslags-/återgångsväg. Skruva fast en lös brytare i en lös printad hållare först. Ta reda på hur två åtskilda mekaniska stopp ska byggas så att brytarna bara läser läget; använd aldrig brytarspaken som stopp.
 
+### KW11-mått från den köpta QUARKZMAN-listningen (9 november)
+
+Användarens **nya Amazon-bild av exakt beställd KW11-3Z-N** anger **20 mm** längd, **20 mm** rullspak, **Ø5 mm** rulle och **4 mm** utstick på tre stift märkta `NC` (vänster), `NO` (mitten), `C` (höger) sett från bildsidan. Den visar även en vertikal pil märkt **16 mm**, men illustrationen är inte skalenlig och anger **inget c-c-avstånd mellan skruvhålen**. Siffrorna är alltså säljarens uppgifter, inte verifierade toleranser.
+
+CAD-referensen i [kw11_faste.py](kw11_faste.py) skiljer uttryckligen detta från **nominella mått hämtade från andra KW11-3Z-varianter**: kropp 20 × 6,4 × 10,2 mm och skruvhålsavstånd 9,5 mm. `kw11_hallare` har slitsar i stället för att låsa detta till en icke verifierad variant. Varken leverans, faktisk monteringshålbild eller rullens tillslagspunkt är uppmätt. Brytaren är en **lägesgivare**; hårdstopp måste konstrueras separat.
+
 ## Innan leverans och första provprint
 
 **Kan granskas nu:** ladda ner senaste GitHub Actions-artefakten, öppna `sensorenhet-pa-core.glb` i en 3D-visare (moduler kan visas/döljas), eller STEP i Fusion. Kontrollera att layout, kabelkanal, kortens portåtkomst och konturer är rimliga.
