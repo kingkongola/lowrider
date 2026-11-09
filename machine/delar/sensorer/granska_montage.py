@@ -210,10 +210,58 @@ def granska(ut:Path):
     return result
 
 
+def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
+    """Färgkodad 3D-översikt med riktiga Core-/dammsko-STL som bakgrund.
+
+    Mesh är olika utbytbara delar, inte en förenad STL-klump.
+    """
+    scene=trimesh.Scene()
+    refs=referens_stl()
+    ref_colors={
+        "befintlig_core":(86,96,105,105),
+        "tool_mount_t":(155,161,165,130),
+        "tool_mount_b":(155,161,165,130),
+        "dammsko":(115,116,117,115),
+        "kjol":(100,105,105,100),
+        "SPMS664_referens":(100,100,110,230),
+    }
+    for name,mesh in refs.items():
+        v=mesh.copy()
+        v.visual.face_colors=ref_colors.get(name,(120,120,120,170))
+        scene.add_geometry(v,geom_name="REFERENS_"+name,
+                           node_name="REFERENS_"+name)
+    colors={
+        "rygg":(44,56,64,255),
+        "kabellock":(147,157,161,255),
+        "servokassett":(190,98,48,255),
+        "bltouch_arm":(225,159,74,255),
+        "kamerakassett":(48,117,156,255),
+        "pi_lada":(51,86,103,255),
+        "pi_lock":(95,128,143,240),
+        "pi_dock":(72,107,120,255),
+        "accel_bricka":(100,142,95,255),
+        "mikrofon_bricka":(143,114,154,255),
+    }
+    for name,color in colors.items():
+        mesh=trimesh.load(stl_mapp/(name+".stl"),force="mesh")
+        if name in ("pi_lada","pi_lock"):
+            mesh.apply_translation([d.pi_x,d.pi_y,d.pi_z
+                                    +(22 if name=="pi_lock" else 0)])
+        mesh.visual.face_colors=color
+        scene.add_geometry(mesh,geom_name="MODUL_"+name,node_name="MODUL_"+name)
+    output.parent.mkdir(parents=True,exist_ok=True)
+    scene.export(output)
+    return output.stat().st_size
+
+
 if __name__=="__main__":
-    if len(sys.argv)!=2:
-        raise SystemExit("usage: granska_montage.py output.json")
+    if len(sys.argv) not in (2,3):
+        raise SystemExit("usage: granska_montage.py output.json [montage.glb]")
     result=granska(Path(sys.argv[1]))
+    if len(sys.argv)==3:
+        glb=Path(sys.argv[2])
+        print("Montage-GLB (mm, separata noder):", glb,
+              exportera_montage_glb(Path(sys.argv[1]).parent/"stl",glb),"bytes")
     # Intersektionerna är kvalitetsavvikelser och ska inte döljas i rapporten,
     # men rapport genereras även vid fynd för konstruktionsiteration.
     if result["interna_kollisioner"] or result["servoprob_rorelsesvep"]["CAD_collisions"]:
