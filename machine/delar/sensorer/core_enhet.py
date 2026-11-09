@@ -25,6 +25,7 @@ NOLL = HERE.parent / "nollpunkt"
 sys.path.insert(0, str(NOLL))
 import fallarm_c as C
 from fallarm import cy, cx, cz, k, staf, prisma_yz, prisma_xz
+from kw11_faste import kw11_hallare
 
 # Alla punkter är medvetet dokumenterade. V1E / verktygsfästet:
 CORE_SKRUVAR = ((43.95, 64.25), (43.95, 125.25))  # (Y,Z), M5 i X-led
@@ -38,6 +39,14 @@ SENSOR_BULTAR = {
     "accel": ((42.0, 91.0), (42.0, 105.0)),
 }
 KLIPP_SKRUVAR = ((48.2, 80.0), (48.2, 153.0))
+# Nya brytare – två IDENTISKA, separata hållare, samma fästskena på
+# den löstagbara servokassetten. x/y/z i maskinens M-ram (inte original-Core).
+KW11_HALLARE_POS = {
+    "kw11_infalld": (35.5, 32.2, 48.0),
+    "kw11_utfalld": (35.5, 32.2, 23.0),
+}
+KW11_RAIL_HOLES = ((65.5, 29.0), (65.5, 40.0),
+                   (65.5, 54.0), (65.5, 65.0)) # (x,z) M3 genom +Y
 
 @dataclass(frozen=True)
 class Param:
@@ -149,6 +158,15 @@ def servokassett():
     ram = k((10,67),(43.3,49.3),(27.6,61.6))
     ram -= k((14.8,55.2),(42.3,50.3),(33.4,53.8))
     s += ram
+    # Två separata, avfasade, stationära KW11-dockar. De växer endast ur
+    # denna löstagbara servokassett, aldrig ur V1E:s befintliga Core.
+    # Kort stöd på +X-sidan för att inte gå genom servokroppen x <=55.
+    for z0,z1 in ((25.0,46.0),(50.0,69.0)):
+        s += prisma_xz([(61,z0),(71,z0),(74,z0+3),
+                        (74,z1-3),(71,z1),(61,z1)],36.2,44.3)
+    # M3-genomhål för två utbytbara hållare, med justerslits i hållaren.
+    for x,z in KW11_RAIL_HOLES:
+        s -= cy(31.0,51.0,x,z,3.4)
     for z in (pz-4.7,pz+4.7):
         for x in (px-33.3,px+14):
             s -= k((x-1.7,x+1.7),(42.3,50.3),(z-1.7,z+1.7))
@@ -295,6 +313,7 @@ def delar(d: Param=Param()):
     return {
         "rygg":rygg(d),"kabellock":kabellock(d),
         "servokassett":servokassett(),"bltouch_arm":bltouch_arm(d),
+        "kw11_hallare":kw11_hallare(), # 1 geometrifil, 2 fysiska printar
         "kamerakassett":kamerakassett(d),
         "pi_lada":pi_lada(),"pi_lock":pi_lock(),"pi_dock":pi_dock(),
         "accel_bricka":sensorbricka("accel"),
@@ -309,6 +328,11 @@ def rapport(d: Param=Param()):
          "ankare_m5_yz_mm":CORE_SKRUVAR,"moduldockar_m3_yz_mm":DOCKAR,
          "sensor_dockar_m2_5_yz_mm":SENSOR_BULTAR,
          "mikrofonpod_pibox_yplus_xz_mm":[[70,149],[80,149]],
+         "kw11_antal":2,
+         "kw11_hallare_pos_mram":KW11_HALLARE_POS,
+         "kw11_skena_m3_xz_mm":KW11_RAIL_HOLES,
+         "kw11_actual_switch_stroke":"EJ VERIFIERAD; leverans 2026-11-14",
+         "omron_reserverade_till_original_lowrider":True,
          "cable_trunk":{"y_center_mm":52.8,"z_mm":[75,165],
                         "width_mm":d.cable_width_mm,"depth_mm":d.cable_depth_mm,
                         "cover_screws_yz_mm":KLIPP_SKRUVAR,
