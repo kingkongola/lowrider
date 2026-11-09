@@ -2,6 +2,10 @@
 
 **Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Detta dokument innehåller inga nya pinallokeringar och ändrar **inte** `machine/AKTIV` eller FluidNC.
 
+## Brytare uppdaterade 2026-11-09
+
+**Två nya QUARKZMAN KW11-3Z-N (rullspak, COM/NO/NC) är beställda för armen, beräknad leverans 2026-11-14.** Dina Omron SS-3GL13PT hålls i reserv för V1E:s befintliga maskin. Den elektriska principen är fortfarande två oberoende signalledningar till Jackpot och COM/NO mot verifierad pull-up. Inga GPIO valda. **Hårdstoppen är andra mekaniska delar än brytarna.** Kabeln ansluts med avlastning, i separata kanaler där möjligt; produktens annons säger inget säkert om IP-klass.
+
 ## Avsedd uppdelning
 
 ```mermaid
@@ -14,8 +18,8 @@ flowchart LR
   J -- "servo-PWM #1, pin EJ vald" --> S["SPMS664: fällarm"]
   J -- "BLTouch-styrning/PWM #2, pin EJ vald" --> BL["BLTouch"]
   BL -- "probsignal, pin EJ vald" --> J
-  OM1["Omron infälld"] -- "digital input A, pin EJ vald" --> J
-  OM2["Omron utfälld"] -- "digital input B, pin EJ vald" --> J
+  OM1["KW11 infälld"] -- "digital input A, pin EJ vald" --> J
+  OM2["KW11 utfälld"] -- "digital input B, pin EJ vald" --> J
   TOOL["Fast verktygslängdsknapp"] -. "separat probe/toolsetter, pin EJ vald" .-> J
   SPWR["Servomatning enligt faktisk SPMS664-spec, med gemensam referensjord"] -.-> S
 ```
@@ -31,13 +35,13 @@ flowchart LR
 | Fällservo | Verifierad servo-PWM + separat korrekt servomatning | Ingen pin vald | `gpio.26` kan pulsera vid boot; `gpio.0/2` bootstraps; mäta SPMS664 |
 | BLTouch-stift | Separat styrsignal och +5 V/GND | Ingen pin vald | Exakt revision, pulser, elkvalitet och beteende vid omstart |
 | BLTouch-kontakt | Probe-input enligt FluidNC, normalt vilande | `gpio.36` konfigurerad historiskt; fysisk givare ej verifierad | Välj prob/toolsetter, logiknivå, G38-villkor |
-| Fällarm infälld/utfälld | 2 × Omron SPDT som separata ingångar | `gpio.13/14` kandidater via expansionsport | Verifierad PCB-port, COM/NO, debounce, M66 och skydd |
+| Fällarm infälld/utfälld | 2 × KW11 SPDT som separata ingångar | `gpio.13/14` kandidater via expansionsport | Verifierad PCB-port, COM/NO, debounce, M66 och skydd |
 | Fast verktygslängdsknapp | Separat prob-/toolsetter-input | `gpio.39` kandidat, `toolsetter_pin=NO_PIN` | Ursprunglig touchplate/spade finns inte; aktuell knappstatus okänd |
 | ADXL345 (senare) | Till Pi lokalt via 3,3 V I²C eller SPI med exakt breakout-pinout | Beställd, ännu ingen användning | Verklig modul/spänningskrav, monteringsposition |
 | INMP441 (senare) | Digital I²S till lämplig mikrofonvärd | Inte del av v0 | Signal-/kabel- och störningsprov |
 | Fläkt | **Ingen i v0** | Ej vald | Temperaturbevis först |
 
-**Räknat utifrån dokumenterad aktiv config:** fem maskinändlägesingångar + `gpio.36` lämnar en dedikerad skyddad ingång (`gpio.39`) på Jackpot3. De två Omron-signalerna kan behöva modulporten, inte fler användningar av befintliga limit-pinnar. `gpio.12/15` är delade med RJ11; välj först efter verifierad revision och eventuell pendant. Servoutgång `gpio.27` är **kandidat**, inte godkänd PWM. Se [I/O-kartläggningen](../nollpunkt/JACKPOT3_IO.md).
+**Räknat utifrån dokumenterad aktiv config:** fem maskinändlägesingångar + `gpio.36` lämnar en dedikerad skyddad ingång (`gpio.39`) på Jackpot3. De två brytarsignalerna kan behöva modulporten, inte fler användningar av befintliga limit-pinnar. `gpio.12/15` är delade med RJ11; välj först efter verifierad revision och eventuell pendant. Servoutgång `gpio.27` är **kandidat**, inte godkänd PWM. Se [I/O-kartläggningen](../nollpunkt/JACKPOT3_IO.md).
 
 ## Kraft, säkerhet och kabeldragning
 
