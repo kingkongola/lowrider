@@ -59,6 +59,12 @@ Fixtur, referensmönster, fokusläge och fotografier på **flera Z-höjder** ing
 4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
 5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
 
+## Komplettering 2026-11-09: KW11-rullbrytare beställda och CAD-fästen integrerade
+
+**Beställt och inte levererat:** 10 × QUARKZMAN `KW11-3Z-N` (rullspak, 1NO/1NC, 92,94 kr, fri Prime-frakt, beräknad ankomst **2026-11-14**). Omron från original-LowRidern sparas som reserv. **Gällande CAD har nu 11 unika STL/STEP-delar**, eftersom en ny universalhållare `kw11_hallare` printas **2 ×** och skruvas på varsitt kort integrerat fästöra på servokassetten. Kod [kw11_faste.py](delar/sensorer/kw11_faste.py), komplett montage [core_enhet.py](delar/sensorer/core_enhet.py), [grön CI](https://github.com/kingkongola/lowrider/actions/runs/42616662416). Ingen original-Core modifieras; kamera och Pi rörs inte vid servobyte.
+
+**Avsiktligt ej godkänt:** KW11-rullspakarnas verkliga slag och aktivering av rörlig arm, separat hårdstopp i båda lägena, kabelanslutning och fysisk damm-/servohornfrigång. Den gröna CI-körningen bevisar **endast** intern CAD-mesh och att delarna inte överlappar modellens övriga solider. M2-hålbild för 8,5–9,5 mm är ett justerbart utkast tills de köpta exemplarens mått kan kontrolleras vid leverans.
+
 ## Gällande sensorenhet – build123d, modularitet och CAD-verifiering 2026-11-09
 
 **Core betyder här befintlig V1E-del; den NYA konstruktionen heter sensorenheten.** Nuvarande [build123d-konstruktion](delar/sensorer/core_enhet.py), [modul-/utskriftskontrakt](delar/sensorer/README.md) och [kopplingsutkast](delar/sensorer/KOPPLING_CORE_V0.md) supersederar **OpenSCAD-studien nedan**. 10 separata moduler: bärplatta på samma två befintliga M5 som tidigare C-servofäste, öppningsbar kabelkåpa, servicebar SPMS664-kassett, lös BLTouch-arm, separat kamera, Pi-kapsling+lock+docka, rigid ADXL345-bricka och egen INMP441-pod på Pi-kapslingen. **Kamera/Pi behöver inte tas loss när servot byts.**
