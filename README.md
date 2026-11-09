@@ -2,6 +2,8 @@
 
 Det här repot är single source of truth för den LowRider V4 som faktiskt byggs.
 
+> **Läs detta först (2026-11-09):** De första avsnitten nedan är en **historisk bygg-/inköpssnapshot från september**, inte uppdaterad maskinstatus. LowRidern är **byggd och har fräst**, offerskivan planades senast 2026-10-22 och den permanent monterade mekaniken beskrivs i `BUILD_LOG.md`. Gällande **repo-konfiguration** pekas ut av `machine/AKTIV`; fysisk mätstatus finns i `CALIBRATION.md`, sensorbeställningar i `PROCUREMENT.md` och sensorernas design-/teststatus i `cnc/docs/PROJEKTJOURNAL_SENSORER.md`. **Z-nivå ännu inte verifierat färdig**, men squaring godkändes efter struts den 13 oktober (0,5 mm diagonalskillnad). Läs inte den äldre monteringsordningen som återstående arbete.
+
 ## Aktuellt läge — 2026-09-21
 
 - Maskin: **LowRider V4**. PrintNC/IndyMill är inte aktiva alternativ.
