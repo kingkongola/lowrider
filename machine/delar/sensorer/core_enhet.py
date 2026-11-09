@@ -50,7 +50,7 @@ class Param:
     kamera_y: float = 14.0
     kamera_z: float = 110.0  # plattans UNDERSIDA, lins i -Z
     bl_hole_spacing: float = 18.0  # BLTouch-tillverkar-/leveranskontroll
-    bl_tip_from_flange: float = 36.3  # endast konceptmått
+    bl_tip_from_flange: float = 45.7  # utfälld spets enligt ANTCLABS-ritning, kontrollmät före drift
     bl_tip_z: float = -39.3  # tidigare C-designmål, ej fysisk verifiering
     cable_width_mm: float = 6.0
     cable_depth_mm: float = 3.0
@@ -187,7 +187,7 @@ def kamerakassett(d: Param = Param()):
     # Två 7mm-stag, med triangulära sidoförstärkningar utan dold stödstruktur.
     s += k((14,x),(58,65),(116,123))
     s += prisma_xz([(16,107),(x-5,107),(x-5,116),(16,127)],59,62)
-    s += k((x-4,x+4),(y,65),(z+4,z+11))
+    s += k((x-4,x+4),(y,65),(z+2,z+11))
     s += prisma_yz([(y+2,z+4),(61,z+4),(61,z+15)],x-3,x+3)
     s += _fasad_xy(x-17,x+17,y-17,y+17,z,z+3,fas=4)
     # Camera Module 3 Standard / Module 2 skruvcentrum (21 x 12,5 mm).
