@@ -61,6 +61,21 @@ jobs:
       - name: Kontrollera HELA modulmontaget och närhet till Core/verktygsfäste
         run: |
           python machine/delar/sensorer/granska_montage.py export/montage-granskning.json export/sensorenhet-pa-core.glb
+      - name: Rapportera öppna funktionsgrindar för KW11 (grön export är inte godkänd aktivering)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("export/montage-granskning.json").read_text())
+          for name,v in result["kw11_aktiveringsavstand_ej_godkant"].items():
+              gap=v["min_gap_mm"]
+              if gap is None:
+                  print(f"::warning title={name}::Avstånd till servoarm kunde inte mätas")
+              elif gap>5:
+                  print(f"::warning title={name}::Brytarrullen är {gap:.2f} mm från armen; "
+                        "brytarläge och hårdstopp är INTE konstruktionsgodkända")
+          assert "BLOCKERAD" in result["kw11_aktiveringsstatus"] or not result["kw11_aktiveringsavstand_ej_godkant"]
+          PY
       - name: Exportera en bedömningsbild över moduluppdelningen
         run: |
           python - <<'PY'
