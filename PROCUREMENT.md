@@ -2,6 +2,14 @@
 
 **Live snapshot: 2026-09-21.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
+## Mikrobrytare för sensorenhet – beställda 2026-11-09
+
+**Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **beräknad leverans lördag 2026-11-14**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Ännu ej mottagna och faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.
+
+**Ändamål:** två brytare indikerar BLTouch-servoarmens infällda respektive utfällda läge. Befintliga **Omron SS-3GL13PT behålls som reservdelar till LowRidern**; de ska inte förbrukas på sensorenheten.
+
+**CAD-styrande osäkerhet:** KW11-3Z-varianter säljs med olika uppgivet hålavstånd (**8,5–9,5 mm**) och spakmått. Endast den beställda modellens artikeltext/bild är bekräftad; dimensionera en **utbytbar fästkassett med justerbar hålbild**, verifiera fysisk måttbild, COM/NO/NC och aktiverings-/återgångsväg vid mottagning. Rullspaken ska aldrig utgöra hårdstopp. **IP-klass, kontaktkvalitet och Prime-leveransdatum ska inte behandlas som testade egenskaper.**
+
 ## Sensorbeställning 2026-11-08 — orderrader bekräftade 2026-11-09, ej mottaget
 
 **Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Denna källa bekräftar följande **beställda** produkter och antal, **inte leverans eller faktisk debitering**.
