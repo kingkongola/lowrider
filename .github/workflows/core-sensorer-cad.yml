@@ -1,0 +1,48 @@
+name: Bygg utskrivbara Core-sensorer (CAD v0)
+
+on:
+  push:
+    paths:
+      - 'machine/delar/sensorer/core_sensorer_v0.scad'
+      - '.github/workflows/core-sensorer-cad.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mesh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installera OpenSCAD
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq openscad
+      - name: Exportera fem parametriska provdelar
+        run: |
+          set -euo pipefail
+          mkdir -p export
+          for part in pi_bas pi_lock kamera bltouch_mattjigg bltouch_arm; do
+            openscad -o "export/${part}.stl" -D "part=\"${part}\"" machine/delar/sensorer/core_sensorer_v0.scad
+            test -s "export/${part}.stl"
+          done
+      - name: Kontrollera STL-komponenter och geometri
+        run: |
+          python3 -m pip install 'trimesh>=4' 'numpy>=2'
+          python3 - <<'PY'
+          from pathlib import Path
+          import numpy as np
+          import trimesh
+          files = sorted(Path("export").glob("*.stl"))
+          assert len(files) == 5, files
+          for path in files:
+              m = trimesh.load(path, force="mesh")
+              assert m.is_watertight and len(m.split(only_watertight=False)) == 1, path
+              assert np.isfinite(m.bounds).all() and m.volume > 0, path
+              print(path.name, "trianglar", len(m.faces), "volym_mm3", round(m.volume))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-sensorer-v0-provprint
+          path: export/*.stl
+          retention-days: 30
