@@ -17,7 +17,7 @@ p.add_argument("--ref", required=True, type=Path)
 a = p.parse_args()
 L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
-torn, arm, bl, lock = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "lock"))
+torn, arm, bl, lock = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel"))
 P = np.load(a.ref / "scan_pts_plan.npy")
 PIV, PARK = np.array([45.0, 0, 43.6]), -165
 sm = lambda m, n: trimesh.sample.sample_surface(m, n, seed=2)[0]
@@ -68,7 +68,7 @@ print("BLTouch-fläns mot armplatta:", round(float(arm.bounds[0, 2] - bl.bounds[
 for z, o, nm in ((64.25, ref["tool_mount_b"], "undre"), (125.25, ref["tool_mount_t"], "övre")):
     print(f"M5 {nm}: boss mot fäste {[nx([-5, 43.95 + r * np.cos(v), z + r * np.sin(v)], [-1, 0, 0], o) for r, v in ((4.5, 0), (4.5, 1.57), (4.5, 3.14), (4.5, 4.71))]}, hål fritt {nx([-5, 43.95, z], [-1, 0, 0], o) is None}")
 print("kortets skruvhål djup:", [nx([94 + dx, 53 + dy, 134.5], [0, 0, 1], torn) for dx in (-10.5, 10.5) for dy in (-6.25, 6.25)])
-for nm, o, d in (("botten x78", [78, 60, 123.4], [0, 0, -1]), ("botten x30", [30, 60, 123.4], [0, 0, -1]), ("tak", [45, 60, 156.1], [0, 0, 1]), ("front", [45, 51.4, 140], [0, -1, 0]), ("CSI-golv", [90, 58, 136.5], [0, 0, -1])):
+for nm, o, d in (("botten", [30, 66, 60.5], [0, 0, -1]), ("ramp", [65, 66, 100], [0, 0, -1]), ("tak", [45, 60, 157.5], [0, 0, 1]), ("front", [45, 51.4, 140], [0, -1, 0]), ("rygg", [12.5, 60, 90], [-1, 0, 0]), ("CSI-golv", [90, 58, 136.5], [0, 0, -1])):
     h = stralar(o, d, torn)
     print(f"väggtjocklek {nm}: {round(h[1] - h[0], 2) if len(h) > 1 else None}")
 print("Y max med lock:", round(float(max(torn.bounds[1, 1], lock.bounds[1, 1])), 2))
