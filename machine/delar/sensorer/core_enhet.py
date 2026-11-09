@@ -212,7 +212,9 @@ def pi_lada():
     # Fyra originalmontage M2.5 (58 x 23) och separat skruvat lock.
     for xx in (-29,29):
         for yy in (-11.5,11.5):
-            s+=cz(2.5,7,xx,yy,6.0)
+            # Pelaren måste överlappa botten (0..2,5 mm), annars ger
+            # enbart tangerande kontaktyta öppen STL vid triangulering.
+            s+=cz(1.7,7,xx,yy,6.0)
             s-=cz(2.5,8,xx,yy,2.7)
     for xx in (-35.25,35.25):
         for yy in (-18.5,18.5):
