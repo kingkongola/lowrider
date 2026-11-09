@@ -22,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 from core_enhet import delar, Param, C, k, cz, KW11_HALLARE_POS
+from kw11_faste import kw11_atrapper
 from kw11_faste import kw11_atrapper, KW11_MALL
 
 
@@ -123,6 +124,36 @@ def rorelse_svep(parts:dict, d:Param) -> dict:
             "BEGRANSNING":"Bara fast CAD och approx BLTouch kropp; inga servohorn, Omron-hävarmar, kablar, riktiga toleranser eller full Core-mesh som BRep" }
 
 
+def kw11_rulle_mot_arm(parts:dict) -> dict:
+    """Rullens fria avstånd till arm-CAD i sju vinklar.
+
+    Fysisk brytare och rullens aktivering/slaglängd är EJ uppmätt.
+    Rapportera faktiskt avstånd, inte 'brytare fungerar' för att allt ryms.
+    """
+    m = kw11_atrapper()
+    results={}
+    for lage, pos in KW11_HALLARE_POS.items():
+        roller=Pos(*pos)*m["rulle"]
+        gaps=[]
+        errors=[]
+        for angle in range(-90,1,15):
+            transform=Pos(C.PX,0,C.PZ)*Rot(0,angle,0)*Pos(-C.PX,0,-C.PZ)
+            arm=transform*parts["bltouch_arm"]
+            try:
+                gap=float(arm.distance_to(roller))
+                gaps.append({"angle_deg":angle,"roller_arm_gap_mm":round(gap,2)})
+            except Exception as e:
+                errors.append({"angle_deg":angle,"error":str(e)[:110]})
+        results[lage]={
+            "roller_arm_gap_by_angle":gaps,
+            "min_gap_mm":min((v["roller_arm_gap_mm"] for v in gaps),default=None),
+            "distance_errors":errors,
+            "verified_actuation":False,
+            "reason":"Rullspakens faktiska tillslag, slag och hårdstopp ej kända",
+        }
+    return results
+
+
 def referens_stl():
     """Referenser är existerande originalfiler, inte våra framtagna ur fantasin."""
     source=ROOT/"machine"/"delar"
@@ -165,6 +196,7 @@ def granska(ut:Path):
     parts=positionerade(d)
     intrusion=brep_intersektioner(parts)
     sweep=rorelse_svep(parts,d)
+    kw11_prov=kw11_rulle_mot_arm(parts)
     referenser=referens_stl()
     sampled_refs={}
     for name,m in referenser.items():
@@ -202,6 +234,7 @@ def granska(ut:Path):
             "interna_kollisioner":intrusion,
             "kw11_ritningsunderlag":{"modell":KW11_MALL,"status":"bildbaserad referensattrapp, ej måttverifierad"},
             "servoprob_rorelsesvep":sweep,
+            "kw11_aktiveringsavstand_ej_godkant":kw11_prov,
             "referenser":list(referenser.keys()),
             "externa_narhetsvarningar":work,
             "obekraftat":["Core- och motorfästets koordinattransform kommer från äldre kontroll_c.py",
@@ -250,6 +283,19 @@ def exportera_montage_glb(stl_mapp:Path, output:Path, d:Param=Param()):
         "accel_bricka":(100,142,95,255),
         "mikrofon_bricka":(143,114,154,255),
     }
+    # Levererad brytare ännu inte mätt: måttattrapper för visuell
+    # komponent-/kabelgranskning, ALDRIG med i print-STL.
+    for lage,pos in KW11_HALLARE_POS.items():
+        for typ,shape in kw11_atrapper().items():
+            placed=Pos(*pos)*shape
+            vertices, faces=placed.tessellate(0.2)
+            mesh=trimesh.Trimesh(
+                vertices=[v.to_tuple() for v in vertices],
+                faces=faces,process=False)
+            mesh.visual.face_colors=(45,45,48,210) if typ=="hus" else (207,70,58,225)
+            scene.add_geometry(mesh,
+                geom_name="ATTRAPP_KW11_"+lage+"_"+typ,
+                node_name="ATTRAPP_KW11_"+lage+"_"+typ)
     for name,color in colors.items():
         stl_name="kw11_hallare" if name.startswith("kw11_") else name
         mesh=trimesh.load(stl_mapp/(stl_name+".stl"),force="mesh")
