@@ -91,12 +91,8 @@ for k, m in ref.items():
         q = np.random.default_rng(1).uniform(lo, hi, (800000, 3))
         print(f"intrång torn mot {k}: {float((torn.contains(q) & m.contains(q)).mean() * np.prod(hi - lo)):.2f} mm3")
 
-# LM2596 (43 x 21 x 14 mm, ovanför pelarna) ska få plats i rummet utan att ta i panelen.
-b = np.array(np.meshgrid(np.linspace(21.5, 41.5, 21), np.linspace(55.2, 69.0, 8), np.linspace(61.5, 103.5, 41), indexing="ij")).reshape(3, -1).T
-print("punkter av regulatorn inne i tornet:", int(torn.contains(b).sum()), "av", len(b))
-
 # Korten måste ligga inne i det slutna rummet: inte i väggen och inte ute i luften utanför den svepande formen.
-for nm in ("Pi", "LM2596", "Kort", "Flatkontakt"):
+for nm in ("Pi", "LM2596_A", "LM2596_B", "ADXL", "Kort", "Flatkontakt"):
     lo, hi = np.array(E[nm][0]), np.array(E[nm][1])
     g = np.array(np.meshgrid(np.linspace(lo[0], hi[0], 53), np.linspace(lo[1] + .05, hi[1] - .05, 4), np.linspace(lo[2], hi[2], 41), indexing="ij")).reshape(3, -1).T
     i_vagg = int(torn.contains(g).sum())
@@ -130,3 +126,5 @@ P1, P2 = (cx, y_a, z_pi - d), (cx - d, y_a, z_pi)
 bana = [((cx, y_k, z_k), ex), ((cx, y_a - 2.0, z_k + .3), ex), ((cx, y_a, z_k + 3.0), ex), (P1, ex), (P1, d45), (P2, d45), (P2, ez), ((86.0, y_a, z_pi), ez), ((82.75, (y_a + y_pi) / 2, z_pi), ez), ((x_pi + .5, y_pi, z_pi), ez)]
 q = ark(bana)
 print(f"flatkabel som ark, {E['ffc_b']:.0f} mm: punkter i tornet {int(torn.contains(q).sum())} av {len(q)}, punkter utanför formen {int((~torn.ray.intersects_any(q, np.tile([0, 0, 1], (len(q), 1)))).sum())}, minsta spel {torn.nearest.on_surface(q)[1].min():.2f} mm")
+for y in (45, 55, 60):
+    print(f"kamerafickans yttervägg vid y {y}:", [nx([106.65, y, z], [1, 0, 0], torn) for z in (134, 136, 138, 140)])

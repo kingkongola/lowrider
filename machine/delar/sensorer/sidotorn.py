@@ -51,9 +51,12 @@ PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
 PANEL_X = 84.0                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (15.0, 164.5), (77.0, 164.5), (15.0, 64.5), (45.5, 64.5)]
-ACC_HAL = [(23.0, 115.0), (38.0, 115.0)]   # nominellt, kontrolleras mot levererad ADXL345
-REG_HAL = [(23.5, 67.5), (39.5, 97.5)]     # LM2596-modul 43 x 21 mm, hålbild nominell, kontrolleras mot modulen
+PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (15.0, 164.5), (77.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
+ACC_HAL = [(23.0, 118.5), (38.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
+# Två LM2596-moduler 43 x 21 mm sida vid sida: A 5,1 V till Pi och BLTouch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
+REG_X0 = {"A": 12.5, "B": 34.5}
+REG_Z0 = 66.5
+REG_HAL = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((2.5, 6.5), (18.5, 36.5))]   # hålbild nominell, kontrolleras mot modulen
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
@@ -243,6 +246,9 @@ def torn(blt_x=BLT[0]):
     nos = extrude(prof, amount=XEND - (cx - 13.5), dir=(1, 0, 0))
     nos = fillet(nos.edges().filter_by(Axis.X), 3.5)
     s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 2.5)
+    # Nosens ände går hela vägen till sidan, så att fickan för kamerakortet har en vägg runt om.
+    kant = box((100, Y0, b), (XEND, Y1, b + 9))
+    s += fillet(kant.faces().sort_by(Axis.X)[-1].edges(), 2.5)
     # Ficka öppen nedåt; kortet skruvas mot fyra distanser från linssidan, kontakten ryms under taket.
     s -= box((cx - KORT_B / 2 - .1, KORT_Y[0] - .1, b - 1), (cx + KORT_B / 2 + .1, KORT_Y[1] + .1, KORT_TAK))
     for x, y in KORT_HAL:
@@ -262,7 +268,7 @@ def med_elektronik(s):
     s -= prisma_y(inset(sidoprofil(), 4.0), 51, Y1 - 1.9)
     s -= prisma_y(inset(sidoprofil(), 2.0), Y1 - 2, Y1 + 1)
     # Tvärribba som styvar väggarna; fönster för kablar.
-    s += box((48, 50.5, 59.5), (51, Y1 - 2.1, 122)) - box((47, 52, 62), (52, 62, 74))
+    s += box((48, 50.5, 110.5), (51, Y1 - 2.1, 135))
     # Pi (hålbild 58 x 23) och accelerometer på tornets innervägg.
     for x, z in PI_HAL + ACC_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
@@ -289,7 +295,7 @@ def med_elektronik(s):
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
     for y in (54, 62):                                      # buntbandsbryggor före utgången
-        s += box((11, y, 100), (20, y + 2, 104))
+        s += box((11, y, 119.5), (20, y + 2, 123.5))
     return s
 
 
@@ -301,8 +307,8 @@ def sidopanel():
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
     for z in (139, 144, 149, 154, 159, 164):
         p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
-    for z in (72, 77, 82, 87, 92):                           # luft in under regulatorn, ut vid Pi:n
-        p -= box((22, Y1 - 3, z - 0.9), (41, Y1 + 1, z + 0.9))
+    for z in (78, 83, 88, 93, 98):                           # luft in vid regulatorerna, ut vid Pi:n
+        p -= box((15, Y1 - 3, z - 0.9), (53, Y1 + 1, z + 0.9))
     return p
 
 
@@ -398,7 +404,7 @@ def main():
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
         namn(box((PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15), (PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15)), "Pi_Zero_2_ATTRAPP", (.15, .55, .3)),
         namn(l, "Sidopanel", (.16, .18, .2)),
-        namn(box((21, PI_Y, 61), (42, PI_Y + 14, 104)), "LM2596_ATTRAPP", (.1, .25, .6)),
+        *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
     ]
     for y, e in ((LED_Y[0], "LED_1_ATTRAPP"), (LED_Y[1], "LED_2_ATTRAPP")):
         delar.append(namn(box((cx - 10, y - 2.5, BUK), (cx + 10, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
@@ -406,7 +412,8 @@ def main():
     # Komponenternas lägen till granskningen, så att den alltid kontrollerar det som faktiskt ritats.
     (a.ut / "elektronik.json").write_text(json.dumps({
         "Pi": [[PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15], [PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15]],
-        "LM2596": [[21.0, PI_Y, 61.0], [42.0, PI_Y + 14, 104.0]],
+        **{f"LM2596_{k}": [[x0, PI_Y, REG_Z0], [x0 + 21, PI_Y + 14, REG_Z0 + 43]] for k, x0 in REG_X0.items()},
+        "ADXL": [[20.5, PI_Y, 110.7], [40.5, PI_Y + 3, 126.3]],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "ffc_b": FFC_B,
