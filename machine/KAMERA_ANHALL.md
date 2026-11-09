@@ -84,6 +84,17 @@ Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ova
 
 **Status:** konceptbeslut, inte CAD-modellerad, utskriven eller verifierad detalj.
 
+## Belysning – minsta möjliga lösning (bedömt 2026-11-09, inte inköp)
+
+**Kameran är en IMX708 (Raspberry Pi Camera Module 3 Standard) på Core, nominellt rakt ned.** Den har liten sensor och gynnas av stabilt ljus. **Belysning är ett mätförhållande, men inte automatiskt ytterligare en produktfunktion.**
+
+1. **Testa först befintlig arbetsbelysning och flyttbar lampa**, utan extra elektronik eller permanenta fästen. Fotografera plywood/äldre urfräsningar, synliga skruvbrickor och blankare beslag vid flera Core-positioner; kontrollera verkliga skuggor från bom, dammsko och fixturer.
+2. Om testet visar att fast garagebelysning ger positionsberoende skuggor: **liten vit diffuserad LED vid kameran på Core**, gärna två små symmetriska ljuskällor runt dess siktfält i stället för en hård sidostråle. Ger ljus som följer kameran utan att en bom skymmer ett avlägset armfäste. Minimerad vikt/servicebehov är krav; inga faktiska dimensioner, ljusstyrkor, spänning, kabeldragning eller delar beslutade.
+3. Undvik starka reflexer, skuggor och potentiellt LED-flicker; verifiera jämförbarhet med låst fokus och efter behov låst exponering/gain/vitbalans. Enbart samma lampplacering betyder **inte** färg- eller måttkonstans.
+4. **Inga inköp, extra LED-drivrutiner eller CAD-fästen före fysisk bildjämförelse.** Kontrollera från start att fästet har tillräcklig optisk fri sikt och att det går att eftermontera litet ljus utan att krocka med servoarm, BLTouch, dammsko eller kablar.
+
+**Konflikter i bilderna:** prova ett **nytt foto från annan Core-position** före separat riktad BLTouch-mätning. BLTouch behöver ett faktiskt oklart höjd/djupvärde och säker rörelseprövning; det är inte en allmän problemlösare för skuggor eller färger. Se [kameraflödets avgränsning](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md).
+
 ## Fysiska nästa steg
 
 1. Inventera den **beställda Camera Module 3 Standard**, Raspberry Pi Zero 2 WH och CSI-kabel 200 mm, verifiera fysisk kontakt, räckvidd och dragavlastning före montering (inget ytterligare inköp är här beslutat).
