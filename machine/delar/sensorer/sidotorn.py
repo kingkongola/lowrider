@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import json
 import math
 from pathlib import Path
 
@@ -29,18 +30,28 @@ X_DAMMSKO = 107.6
 
 # Kamera: linsens spets. Långsidan (66 grader) ut från balken.
 LINS = (94.0, 53.0, 130.0)
-KORT_B, KORT_D = 25.0, 23.86
-KORT_HAL = (21.0, 12.5)     # nominellt, kontrolleras mot levererat kort
+# Camera Module 3 Standard, mått ur Raspberry Pi:s STEP RP-008154 och ritning RP-008153.
+# Linsen sitter inte mitt på kortet: 14,4 mm till kanten bort från kontakten, 9,46 mm till kontaktkanten.
+KORT_B, KORT_D = 25.0, 23.862
+KORT_Y = (LINS[1] - 14.4, LINS[1] + 9.462)   # kontaktkanten vänd mot X max-sidan
+KORT_HAL = [(LINS[0] + dx, KORT_Y[0] + dy) for dx in (-10.5, 10.5) for dy in (2.0, 14.5)]
+KORT_FRAM = LINS[2] + 6.91  # kortets framsida; linsens spets sitter 6,91 mm framför den
+KORT_BAK = KORT_FRAM + 0.75
+KONTAKT_TOPP = KORT_BAK + 2.6    # flatkontakten på kortets baksida
+KORT_TAK = KONTAKT_TOPP + 0.35   # kamerafickans tak
+FFC_B = 16.0                # flatkabelns bredd i kameraänden (15-polig, 1 mm delning)
+LED_Y = (LINS[1] - 17.5, LINS[1] + 15.5)     # kortet sticker längre åt fräsen, därför 2 mm från symmetri
 BUK = LINS[2] + 2.6         # tornets plana undersida vid kameran
+TOPP = 171.0                # tornets ovansida; bestäms av Pi-kortet som måste gå fritt över den svepande undersidan
 XEND = LINS[0] + 13.5
 
 # Pi Zero 2 WH: kortet i XZ-planet, komponenterna mot locket.
-PI_RUM = (12.0, 79.8, 123.0, 156.5)      # x0, x1, z0, z1
+PI_RUM = (12.0, 79.8)                    # x0, x1
 PI_Y = 55.0                              # kortets undersida
-PI_CENTER = (45.0, 139.5)
+PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
 PANEL_X = 84.0                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (77.0, 132.0), (15.0, 155.0), (77.0, 155.0), (15.0, 64.5), (45.5, 64.5)]
+PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (15.0, 164.5), (77.0, 164.5), (15.0, 64.5), (45.5, 64.5)]
 ACC_HAL = [(23.0, 115.0), (38.0, 115.0)]   # nominellt, kontrolleras mot levererad ADXL345
 REG_HAL = [(23.5, 67.5), (39.5, 97.5)]     # LM2596-modul 43 x 21 mm, hålbild nominell, kontrolleras mot modulen
 
@@ -111,9 +122,9 @@ def undersida():
 
 def silhuett():
     """Tornets sida som en sammanhängande kurva, utan raka facetter mot framkanten."""
-    b, top = BUK, BUK + 29.4
+    b, top = BUK, TOPP
     nos = Spline([V(103, b), V(107.5, b + 6)], tangents=[Vector(1, 0, 0), Vector(0, 0, 1)])
-    rygg = Spline([V(107.5, b + 6), V(105, 148), V(95, 157.5), V(70, top)],
+    rygg = Spline([V(107.5, b + 6), V(105.5, 150), V(96, 163.5), V(70, top)],
                   tangents=[Vector(0, 0, 1), Vector(-1, 0, 0)])
     return Wire.combine([Line(V(8, 56), V(44, 56)), undersida(), Line(V(86, b), V(103, b)), nos, rygg,
                          Line(V(70, top), V(8, top)), Line(V(8, top), V(8, 56))])[0]
@@ -126,7 +137,7 @@ def sidoprofil():
     kurva = [(p.X, p.Z) for p in pts if p.X < PANEL_X]
     p0, p1 = next(((pts[i], pts[i + 1]) for i in range(48) if pts[i].X < PANEL_X <= pts[i + 1].X))
     z = p0.Z + (p1.Z - p0.Z) * (PANEL_X - p0.X) / (p1.X - p0.X)
-    return [(8, 56)] + kurva + [(PANEL_X, z), (PANEL_X, BUK + 29.4), (8, BUK + 29.4)]
+    return [(8, 56)] + kurva + [(PANEL_X, z), (PANEL_X, TOPP), (8, TOPP)]
 
 
 def arm_geo(blt_x):
@@ -228,17 +239,18 @@ def torn(blt_x=BLT[0]):
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
-    prof = Plane.YZ.offset(cx - 13.5) * Polygon((33, b), (Y0 + 1, b), (Y0 + 1, b + 22), (33, b + 8), align=None)
+    prof = Plane.YZ.offset(cx - 13.5) * Polygon((30, b), (Y0 + 1, b), (Y0 + 1, b + 22), (30, b + 10), align=None)
     nos = extrude(prof, amount=XEND - (cx - 13.5), dir=(1, 0, 0))
     nos = fillet(nos.edges().filter_by(Axis.X), 3.5)
     s += fillet(nos.faces().sort_by(Axis.X)[-1].edges(), 2.5)
-    s -= box((cx - KORT_B / 2 - .1, cy - KORT_D / 2 - .1, b - 1), (cx + KORT_B / 2 + .1, cy + KORT_D / 2 + .1, b + 2.5))
-    for dx in (-KORT_HAL[0] / 2, KORT_HAL[0] / 2):
-        for dy in (-KORT_HAL[1] / 2, KORT_HAL[1] / 2):
-            s -= Pos(cx + dx, cy + dy, b + 4) * Cylinder(0.85, 6)
-    for y in (cy - 15.5, cy + 15.5):
+    # Ficka öppen nedåt; kortet skruvas mot fyra distanser från linssidan, kontakten ryms under taket.
+    s -= box((cx - KORT_B / 2 - .1, KORT_Y[0] - .1, b - 1), (cx + KORT_B / 2 + .1, KORT_Y[1] + .1, KORT_TAK))
+    for x, y in KORT_HAL:
+        s += Pos(x, y, (KORT_BAK + KORT_TAK + .5) / 2) * Cylinder(2.2, KORT_TAK + .5 - KORT_BAK)
+        s -= Pos(x, y, KORT_BAK + 3) * Cylinder(0.85, 6.2)
+    for y in LED_Y:
         s -= box((cx - 10, y - 2.5, b - 1), (cx + 10, y + 2.5, b + 2))
-        s -= Pos(cx - 6.5, y, b + 3) * Cylinder(1.5, 6)
+        s -= Pos(cx - 6.5, y, b + 6) * Cylinder(1.5, 12) if y < cy else Pos(cx - 6.5, y, b + 3) * Cylinder(1.5, 6)
     s = med_elektronik(s)
     return s
 
@@ -246,7 +258,7 @@ def torn(blt_x=BLT[0]):
 def med_elektronik(s):
     """Elektronikrum bakom en enda sidopanel, och alla kablar dolda inuti tornet."""
     b = BUK
-    x0, x1, z0, z1 = PI_RUM
+    x0, x1 = PI_RUM
     s -= prisma_y(inset(sidoprofil(), 4.0), 51, Y1 - 1.9)
     s -= prisma_y(inset(sidoprofil(), 2.0), Y1 - 2, Y1 + 1)
     # Tvärribba som styvar väggarna; fönster för kablar.
@@ -264,12 +276,13 @@ def med_elektronik(s):
         s += cyl_y(x, z, 50.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL:
         s -= cyl_y(x, z, 62.0, Y1 - 1.5, 2.5)
-    # CSI: från Pi:ns kortsida över till kameran, öppning ner till kortets kant.
-    s -= box((x1 - 0.5, 60.5, b + 3.5), (LINS[0] + 6.5, 70, b + 13.4))
-    s -= box((x1 - 0.5, 52, b + 3.5), (82.2, 60.6, b + 13.4))    # plats för flatkabeln vid Pi-kortets kant
-    s -= box((LINS[0] - 6.5, LINS[1] + 9, b + 2.4), (LINS[0] + 6.5, LINS[1] + 13.5, b + 4))
-    # LED-ledningen från den främre listen går i en kanal in i CSI-rummet.
-    s -= box((LINS[0] - 7.5, 35.5, b + 3.6), (LINS[0] - 5.5, 61, b + 5.6))
+    # CSI-rummet: flatkabeln lämnar kamerakortets kontakt, reser sig och viks två gånger 45 grader mot Pi:ns kortsida.
+    rum = [(x1 - .5, b + 3.5), (103.0, b + 3.5), (103.0, 149.5), (92.0, 160.5), (x1 - .5, 160.5)]
+    s -= prisma_y(rum, 60.5, 68.5)
+    s -= prisma_y([(83.0, b + 3.5), *rum[1:4], (83.0, 160.5)], 68.4, 70.0)        # mot panelens anläggning lämnas mer gods
+    s -= box((x1 - 0.5, 54.5, KORT_TAK + 1.5), (85.5, 60.6, 160.5))  # fram till Pi-kortets kontakt
+    # LED-ledningen från den främre listen går över kamerafickans tak in i CSI-rummet.
+    s -= box((LINS[0] - 7.5, LED_Y[0] - 1.0, KORT_TAK + 1.2), (LINS[0] - 5.5, 62.5, KORT_TAK + 3.0))
     # Servokabeln upp ovanför servot; BLTouch-kabeln genom skenan över servot.
     s -= box((25, 52, 53.5), (43, 62, 61))
     s -= box((37, ARM_Y[1] + 0.5, 55), (43, 52.5, 57.5))
@@ -286,7 +299,7 @@ def sidopanel():
     for x, z in PANEL_HAL:
         p -= cyl_y(x, z, Y1 - 3, Y1 + 1, 3.4)
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
-    for z in (127, 132, 137, 142, 147, 152):
+    for z in (139, 144, 149, 154, 159, 164):
         p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
     for z in (72, 77, 82, 87, 92):                           # luft in under regulatorn, ut vid Pi:n
         p -= box((22, Y1 - 3, z - 0.9), (41, Y1 + 1, z + 0.9))
@@ -380,15 +393,24 @@ def main():
         namn(bl, "BLTouch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
         namn(parkera(copy.deepcopy(bl)), "BLTouch_parkerad_ATTRAPP", (.85, .2, .15)),
-        namn(box((cx - KORT_B / 2, cy - KORT_D / 2, BUK + .5), (cx + KORT_B / 2, cy + KORT_D / 2, BUK + 2.5)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
-        namn(Pos(cx, cy, cz + 1.5) * Cylinder(5.5, 3), "Lins_ATTRAPP", (.05, .05, .05)),
+        namn(box((cx - KORT_B / 2, KORT_Y[0], KORT_FRAM), (cx + KORT_B / 2, KORT_Y[1], KORT_BAK)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
+        namn(box((cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK), (cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP)), "Flatkontakt_ATTRAPP", (.85, .8, .6)),
+        namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
         namn(box((PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15), (PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15)), "Pi_Zero_2_ATTRAPP", (.15, .55, .3)),
         namn(l, "Sidopanel", (.16, .18, .2)),
         namn(box((21, PI_Y, 61), (42, PI_Y + 14, 104)), "LM2596_ATTRAPP", (.1, .25, .6)),
     ]
-    for y, e in ((cy - 15.5, "LED_1_ATTRAPP"), (cy + 15.5, "LED_2_ATTRAPP")):
+    for y, e in ((LED_Y[0], "LED_1_ATTRAPP"), (LED_Y[1], "LED_2_ATTRAPP")):
         delar.append(namn(box((cx - 10, y - 2.5, BUK), (cx + 10, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
     export_step(Compound(label="Sidotorn_v2", children=delar), str(a.ut / "sidotorn_v2.step"))
+    # Komponenternas lägen till granskningen, så att den alltid kontrollerar det som faktiskt ritats.
+    (a.ut / "elektronik.json").write_text(json.dumps({
+        "Pi": [[PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15], [PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15]],
+        "LM2596": [[21.0, PI_Y, 61.0], [42.0, PI_Y + 14, 104.0]],
+        "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
+        "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
+        "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "ffc_b": FFC_B,
+        "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
     print("klar")
 
 

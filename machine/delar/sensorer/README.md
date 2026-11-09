@@ -97,7 +97,7 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Mätt i skanningen, homad:** offerskivan ligger z = -87,5 mm (±2 mm), alltså 111,5 mm under CAD-kjolens underkant.
 
-**Elektronik och kablar i utkastet:** tornet är ihåligt bakom en enda sidopanel mot X max-sidan, med sex plana skruvar. Pi Zero 2 WH och ADXL345 sitter på innerväggen. CSI-kabeln går i ett inre rum från Pi:ns kortsida till kamerakortet. LED-ledningarna går i inre kanaler. Servokabeln går upp ovanför servot, BLTouch-kabeln i ett spår på armens sida mot servot och genom skenan över servot. All kabel lämnar tornet bakåt, in i gapet mot Core. Kablarnas böjar är inte simulerade.
+**Elektronik och kablar i utkastet:** tornet är ihåligt bakom en enda sidopanel mot X max-sidan, med sex plana skruvar. Pi Zero 2 WH och ADXL345 sitter på innerväggen. Kamerans läge, hålbild och linshöjd kommer ur Raspberry Pi:s ritning RP-008153 och STEP RP-008154: kortet skruvas med M2 x 6 mot fyra distanser i en ficka öppen nedåt, med linsens spets 130 mm över fräsnollan. CSI-kabeln (200 mm, 15 till 22 poler, 16 mm bred i kameraänden) går i ett inre rum från kamerakortets kontakt till Pi:ns kortsida och viks två gånger 45 grader; vikningen är kontrollerad som ett ark i CAD men inte provad med riktig kabel. LED-ledningarna går i inre kanaler. Servokabeln går upp ovanför servot, BLTouch-kabeln i ett spår på armens sida mot servot och genom skenan över servot. All kabel lämnar tornet bakåt, in i gapet mot Core. Kablarnas böjar är inte simulerade.
 
 **Samlad kabel ut från tornet (förslag, inga pinnar valda):** 24 V, GND, servosignal, BLTouch-styrning och BLTouch-signal. 5 V till Pi, servo och BLTouch tas från en LM2596-modul i rummet under Pi:n, ställd till 5,1 V med multimeter innan något ansluts. Servot får en kondensator på 470–1000 µF nära kontakten så att dess strömtoppar inte sänker Pi:ns matning; provas under last. Panelen har slitsar under regulatorn och vid Pi:n så att luft kan stiga genom rummet. Kabeln går från tornets baksida upp i gapet mot Core och följer X-motorns väg till balkens mitt enligt `CABLE_ROUTING.md`. Längden mäts med snöre vid full rörelse.
 
@@ -105,6 +105,6 @@ T = [5.9986, -1.4491, -3.7767]
 
 **Servokåpa:** tornet omsluter servots bakre del i samma plan som sidopanelen, och servot skjuts in framifrån genom ramen. Servopaketet är flyttat 2 mm längs balken för att väggen ska rymmas; tornet slutar 0,5 mm före Core-änden.
 
-**Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål och väggtjocklek runt Pi-rummet.
+**Kontrollerat i `granska_sidotorn.py`:** armens svep, de två stoppen, servoöron mot ram, BLTouch-fläns mot arm, M5-distanser mot verktygsfästen, kortets skruvhål, väggtjocklek runt Pi-rummet, att Pi och LM2596 ligger helt inne i tornets slutna rum, och att panelskruvarna har gods runt huvudet. Komponenternas lägen läses från `elektronik.json` som `sidotorn.py` skriver, så granskningen kan inte kontrollera ett annat läge än det ritade.
 
 **Kvar:** kamerans startspärr i `kingkongola/cnc`. Servohorn, kortets hålbild, FFC-kontaktens riktning och servomått ska mätas mot levererade delar.
