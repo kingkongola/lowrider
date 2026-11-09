@@ -21,6 +21,12 @@ Använd **två mikrobrytare** på servoarmens mekaniska ändlägen:
 - Ställbar aktiveringspunkt genom slits/håljustering i fästet, inte genom att böja hävarmen på chans.
 - Uppdatera verklig CAD från BLTouchs levererade geometri. Befintlig `fallarm_c.py` avser en **annan tidigare probmodell Ø33** och är endast koncept, **inte** en färdig BLTouch-montering.
 
+### Monterings-CAD för de inköpta KW11-brytarna
+
+[**kw11_faste.py**](../sensorer/kw11_faste.py) definierar **en** fasad brytarhållare som printas **två gånger**. Hållarna monteras på **separata öron som tillhör den utbytbara servokassetten**, inte original-Core eller kamerafästet. M2-hålen är slitsade för ett nominellt hålavstånd på **8,5–9,5 mm**, M3-dockarna har ±2 mm justering. [**Grön CAD/STEP/STL/GLB**](https://github.com/kingkongola/lowrider/actions/runs/42616662416) verifierar endast att de printade delarna inte går in i andra *modellerade* delar.
+
+**Öppet och blockerande:** Om den levererade KW11-3Z-N passar i slitsarna, verklig rullspakslängd, **kammarna som påverkar respektive spak**, de två separata hårdstoppen och de elektriska anslutningarnas avlastning. Ingen kontakt med rullspaken eller säker brytarsekvens har påståtts verifierad. Det befintliga servoarmssvepet testar inte spakens utstick.
+
 ### Elektrisk princip (beslutad logik; pinval öppet)
 
 - Kandidat: **COM–NO**, slutet endast när respektive hävarm är aktiverad i sitt ändläge. Med korrekt pull-up ger kabelbrott öppen krets = inte bekräftat ändläge. Kortslutning är fortfarande möjlig; den motverkas delvis av att sekvensen kräver **öppen → sluten** kontakt på rätt givare.
@@ -38,7 +44,7 @@ Läsningar ska vara avstudsade och tidsgränser ska finnas i den framtida **hår
 
 ### Nästa fysiska kontroll
 
-1. Inventera **minst två faktiskt oanvända** `SS-3GL13PT` och prova COM–NO med multimeter.
+1. När Amazon-paketet kommer **2026-11-14 (beräknat)**: mät och prova två nya `KW11-3Z-N` med multimeter (COM–NO/NC, spakväg och tillslag). **Rör inte Omron-reserven.**
 2. Placera dem på ett verkligt servofäste med plats för kabel och metalliska/styva stopp; mät hur långt hävarmen ska tryckas.
 3. Bestäm BLTouch-stiftets och armens frigång först när den levererade probens geometri är verifierad.
 4. Kartlägg Jackpot3:s anslutningar och FluidNC:s ingångsfunktioner. **Ingen konfigurationsändring eller rörelse före detta.**
