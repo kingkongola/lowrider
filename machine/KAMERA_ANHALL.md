@@ -59,20 +59,13 @@ Fixtur, referensmönster, fokusläge och fotografier på **flera Z-höjder** ing
 4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
 5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
 
-## Möjlig flatbäddsskanning – endast fysisk hänsyn (idé 2026-11-08)
+## 2,5D-flatbäddsskanning – historisk idé, inte mekaniskt krav
 
-Samma Core-kamera och BLTouch kan senare ge **mosaikbild + höjdraster över ovansidan** av relativt låga föremål, dvs en **2,5D-skanner**. Detta innebär inga nya CAD-fästen nu, men monteringens framtida **optiska synfält, Z-arbetsavstånd, stiftets fria rörelse, undersidesfrigång och svep kring objektkanter** bör inte blockera den möjligheten. Stora eller höga föremål kan inte automatiskt nås bara för att XY-arbetsområdet är stort. Se [mjukvaruflödet](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md). **Ingen fysisk skanning eller säker kollisionstolerans verifierad.**
+Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtriktad prob med lägre Z än fräsens riskutsatta delar föreslogs för att undvika hinder. **Denna funktion är parkerad.** Den får **inte** styra servoarmens geometri, monteringsvinkel, stiftets försprång eller inköp i aktuell Core-design.
 
-### Skanning med framförliggande BLTouch – fysisk princip (preciserad 2026-11-08)
+**Aktuellt krav:** armen måste kunna mäta valt Z-plan med frigång för verktyg, dammsko, bord och kablage i kända lägen. Minimera massa och antal delar. Återuppta skanning och säker rörelseplanering **endast om verkligt behov uppstår**.
 
-**Användarens metod, utan fast namn:** BLTouch-stiftet är **XY-förskjutet** från frässtålet; välj skanningsriktning så att **stiftet leder**. I utfällt läge ska stiftets lägsta mätpunkt vara **någon centimeter lägre** i Z än lägsta riskutsatta verktygsdel (arbetsidé, inte valda mått). Efter mätt upphöjning kan maskinen **höja Core innan verktyget följer**. Vid återgång/radbyte krävs retraktion till en **verifierat säker höjd**, eftersom proben annars kommer bakom verktyget.
-
-**Konsekvens för CAD:**
-- Fäste och servoaxel väljs så att BLTouch kan placeras med **användbart försprång i en bestämd skanningsriktning** och tillräcklig Z-offset, men fortfarande kan fällas bort för normal fräsning.
-- Modellera **alla delar som kan slå i terrängen**: fräs, mutter, dammsko, probehus, stift, arm, kablar och Core. Minsta verkliga vertikala och horisontella frigång måste prövas i hela svinget och över kända Z-gränser.
-- BLTouch mäter **nedåt i Z**, inte horisontella väggar. Försprång **ensamt garanterar inte** kollisionsfrihet mot branta eller okända hinder. Dimensionera mekanik och planering tillsammans: maximal steglängd/höjdskillnad, återgångshöjd, riskzoner och möjlighet att avvisa objekt som inte är åtkomliga.
-- Metodens tidigare informella beteckning var **inte faktiskt ”bergsklättring”**, enligt användaren. Dokumentera uppmätta offset, faktisk probmodell och godkända kollisionsfall senare, inte som antagna sanningar.
-- [CNC:s kanoniska rörelse-/skanningsunderlag](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md) äger algoritm och verifiering; denna fil äger fysisk geometri.
+**Kontroll före arm-CAD:** [beslut 0007](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0007-hardvara-pa-sikt.md) strök BLTouch 2026-10-12 på grund av dess korta stift (~8 mm enligt dåvarande antagande) och önskat verktygsavstånd (~12 mm). Senare beslut överväger annan, utfällbar mekanik men **motsägelsen är inte geometriskt löst**. Mät faktiska probmått, verktygsspets, armens stopp och höjd i båda lägena innan BLTouch-fäste låses. **Inget löfte om fysisk kollisionsfrihet.**
 
 ## Beslut 2026-11-08 – en enda rund 3D-printad skruvbricka, identisk överallt
 
