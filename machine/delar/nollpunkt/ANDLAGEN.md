@@ -10,7 +10,9 @@ Använd **två mikrobrytare** på servoarmens mekaniska ändlägen:
 
 Ändlägesbrytarna är **enbart återkoppling**. De är inte avsedda att bära upp armen eller ersätta hårda stopp, och ingen av dem är ett certifierat säkerhetsdon. En servo som beordrats till ett läge har inte därmed bekräftat det.
 
-**Tillgänglig komponent enligt köphistoriken:** 10 × Omron/Aratas `SS-3GL13PT`, beställda 2026-09-03 via DigiKey och mottagna. Användaren uppger att extra brytare finns kvar. **Exakt antal oanvända och fysisk montering är inte inventerat**. SPDT (COM/NO/NC), hävarm med simulerad rulle, snabbanslutning 2,8 mm; IP40 (inte spåntät). [Tillverkarens datablad](https://components.omron.com/eu-en/sites/components.omron.com.eu/files/datasheet_pdf/B108-E1.pdf).
+**Beslutad brytare 2026-11-09:** användaren har **köpt 10 × QUARKZMAN KW11-3Z-N med rullspak, 1NO/1NC, på Amazon.se**, visat pris 92,94 kr, Prime-frakt 0 kr, **väntad leverans lördag 2026-11-14**. Två används här; de andra är reserv till **sensorenheten**. **Omron SS-3GL13PT (10 tidigare köpta) hålls i reserv till själva LowRidern**, används inte för den nya armen.
+
+**Viktigt om CAD:** vanligt KW11-3Z-hus är cirka 20×10×6,4 mm, men hålavstånd för snarlika återförsäljarvarianter anges både **8,5 och 9,5 mm**. Därför används **justerbara separata fästen**, inte en låst hålbild för levererad QUARKZMAN. Mikrobrytarens manöverkraft, rullspaksväg, ledaranslutning, exakta höjd och elektriska kontaktklass kontrolleras vid leverans. Brytarna är **lägesindikatorer**, inte stopp eller skyddsklassade maskinsäkerhetsdon. Påstådd "waterproof" i annons är ingen verifierad IP-klass.
 
 ### Mekanisk princip
 
