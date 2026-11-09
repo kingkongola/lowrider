@@ -1,0 +1,99 @@
+name: Modulär Core-enhet (build123d CAD)
+
+on:
+  push:
+    paths:
+      - 'machine/delar/sensorer/core_enhet.py'
+      - 'machine/delar/nollpunkt/fallarm.py'
+      - 'machine/delar/nollpunkt/fallarm_c.py'
+      - '.github/workflows/core-build123d.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installera och kör samma CAD-motor som version C
+        run: python -m pip install 'build123d==0.10.0' 'trimesh>=4' 'networkx>=3' 'scipy>=1.13' 'matplotlib>=3.9'
+      - name: Bygg parametriska STL och STEP
+        run: |
+          python machine/delar/sensorer/core_enhet.py --ut export/stl
+          python machine/delar/sensorer/core_enhet.py --ut export/step --format step
+      - name: Verifiera topologi, mesh och antal delar
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import trimesh
+          m=json.loads(Path("export/stl/manifest.json").read_text())
+          assert len(m["moduler"]) == 10
+          for name, s in m["moduler"].items():
+              assert s["valid"] and s["solider"] == 1, (name,s)
+              f=Path("export/stl")/(name+".stl")
+              mesh=trimesh.load(f,force="mesh")
+              assert mesh.is_watertight and len(mesh.split())==1 and mesh.volume>0, (name,len(mesh.faces))
+              assert (Path("export/step")/(name+".step")).stat().st_size>200
+              print(name, s["volym_cm3"], "cm3", "watertight")
+          PY
+      - name: Exportera en bedömningsbild över moduluppdelningen
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          import matplotlib
+          matplotlib.use("Agg")
+          import matplotlib.pyplot as plt
+          import trimesh
+          from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+          sys.path.insert(0,"machine/delar/sensorer")
+          from core_enhet import Param
+          p=Param()
+          fig=plt.figure(figsize=(12,9))
+          ax=fig.add_subplot(111,projection="3d")
+          solids=[
+            ("rygg", (.20,.22,.25), None),
+            ("kabellock", (.65,.68,.70), None),
+            ("servokassett", (.87,.34,.14), None),
+            ("bltouch_arm", (.95,.55,.15), None),
+            ("kamerakassett", (.12,.55,.72), None),
+            ("pi_dock", (.30,.48,.56), None),
+            ("pi_lada", (.16,.36,.48), (p.pi_x,p.pi_y,p.pi_z)),
+            ("pi_lock", (.30,.42,.49), (p.pi_x,p.pi_y,p.pi_z+22)),
+            ("accel_bricka", (.38,.71,.41), None),
+            ("mikrofon_bricka", (.63,.55,.74), None),
+          ]
+          from matplotlib.patches import Patch
+          legend=[]
+          for name, col, shift in solids:
+              mesh=trimesh.load("export/stl/"+name+".stl",force="mesh")
+              if shift is not None: mesh.apply_translation(shift)
+              tri=mesh.triangles
+              if len(tri)>2500: tri=tri[::max(1,len(tri)//2500)]
+              c=Poly3DCollection(tri,facecolors=[col],alpha=.80,linewidths=0)
+              ax.add_collection3d(c)
+              legend.append(Patch(color=col,label=name))
+          ax.set(xlim=(-10,150), ylim=(-30,90), zlim=(-45,215),
+                 xlabel="X ut från Core [mm]",ylabel="Y längs balk [mm]",zlabel="Z [mm]")
+          ax.view_init(elev=27,azim=-55)
+          ax.set_box_aspect((160,120,260))
+          ax.legend(handles=legend,loc="upper left",fontsize=7)
+          fig.suptitle("Core-enhet: CAD-volymer, INTE verifierat montage")
+          fig.tight_layout()
+          fig.savefig("export/core-koncept.png",dpi=145)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-build123d-moduler-prov
+          path: |
+            export/stl/
+            export/step/
+            export/core-koncept.png
+          retention-days: 30
