@@ -1,3 +1,6 @@
+// ARKIVERAD STUDIE (2026-11-09): ersatt av core_enhet.py i build123d.
+// EJ gällande ritning, EJ printa BLTouch-armen eller använda dessa STL för montage.
+// Se machine/delar/sensorer/README.md och grön build123d-CI för gällande delar.
 // LowRider V4 test-passnings-CAD. Alla mått mm. Ingen kollisionsverifiering.
 // Extrahera STL med: openscad -o pi_bas.stl -D 'part="pi_bas"' core_sensorer_v0.scad
 // Delar: pi_bas, pi_lock, kamera, bltouch_mattjigg, bltouch_arm.
