@@ -208,7 +208,9 @@ def pi_lada():
     """Pi Zero 2 WH utan fläkt, stängd mot spån och med servislock."""
     w,h=80,46
     s=_fasad_xy(-w/2,w/2,-h/2,h/2,0,22,fas=5)
-    s-=k((-w/2+2.5,w/2-2.5),(-h/2+2.5,h/2-2.5),(2.5,23))
+    # Håligheten måste ligga INNANFÖR de 5 mm fasade hörnen.
+    # Gammalt mått +2,5 gav exakt tangerande inner/ytterhörn och öppet STL.
+    s-=k((-w/2+4,w/2-4),(-h/2+4,h/2-4),(2.5,23))
     # Fyra originalmontage M2.5 (58 x 23) och separat skruvat lock.
     for xx in (-29,29):
         for yy in (-11.5,11.5):
@@ -233,8 +235,8 @@ def pi_lock():
     w,h=80,46
     s=_fasad_xy(-w/2,w/2,-h/2,h/2,0,2.5,fas=5)
     # Lockets distanskrage för sidledsstabilitet.
-    s+=k((-w/2+3.1,w/2-3.1),(-h/2+3.1,h/2-3.1),(2.5,4.0))
-    s-=k((-w/2+5,w/2-5),(-h/2+5,h/2-5),(2.4,5))
+    s+=k((-w/2+4.5,w/2-4.5),(-h/2+4.5,h/2-4.5),(2.5,4.0))
+    s-=k((-w/2+6.5,w/2-6.5),(-h/2+6.5,h/2-6.5),(2.4,5))
     for xx in (-35.25,35.25):
         for yy in (-18.5,18.5):
             s-=cz(-1,5,xx,yy,3.0)
