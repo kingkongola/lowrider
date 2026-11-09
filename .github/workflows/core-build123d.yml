@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'machine/delar/sensorer/core_enhet.py'
+      - 'machine/delar/sensorer/kw11_faste.py'
       - 'machine/delar/sensorer/granska_montage.py'
       - 'machine/delar/nollpunkt/fallarm.py'
       - 'machine/delar/nollpunkt/fallarm_c.py'
@@ -35,7 +36,9 @@ jobs:
           from pathlib import Path
           import trimesh
           m=json.loads(Path("export/stl/manifest.json").read_text())
-          assert len(m["moduler"]) == 10
+          assert len(m["moduler"]) == 11
+          assert m["kw11_antal"] == 2
+          assert set(m["kw11_hallare_pos_mram"]) == {"kw11_infalld","kw11_utfalld"}
           for name, s in m["moduler"].items():
               assert s["valid"] and s["solider"] == 1, (name,s)
               f=Path("export/stl")/(name+".stl")
@@ -69,7 +72,7 @@ jobs:
           import trimesh
           from mpl_toolkits.mplot3d.art3d import Poly3DCollection
           sys.path.insert(0,"machine/delar/sensorer")
-          from core_enhet import Param
+          from core_enhet import Param, KW11_HALLARE_POS
           p=Param()
           fig=plt.figure(figsize=(12,9))
           ax=fig.add_subplot(111,projection="3d")
@@ -78,6 +81,8 @@ jobs:
             ("kabellock", (.65,.68,.70), None),
             ("servokassett", (.87,.34,.14), None),
             ("bltouch_arm", (.95,.55,.15), None),
+            ("kw11_infalld", (.83,.50,.24), KW11_HALLARE_POS["kw11_infalld"]),
+            ("kw11_utfalld", (.90,.64,.34), KW11_HALLARE_POS["kw11_utfalld"]),
             ("kamerakassett", (.12,.55,.72), None),
             ("pi_dock", (.30,.48,.56), None),
             ("pi_lada", (.16,.36,.48), (p.pi_x,p.pi_y,p.pi_z)),
@@ -88,7 +93,8 @@ jobs:
           from matplotlib.patches import Patch
           legend=[]
           for name, col, shift in solids:
-              mesh=trimesh.load("export/stl/"+name+".stl",force="mesh")
+              src="kw11_hallare" if name.startswith("kw11_") else name
+              mesh=trimesh.load("export/stl/"+src+".stl",force="mesh")
               if shift is not None: mesh.apply_translation(shift)
               tri=mesh.triangles
               if len(tri)>2500: tri=tri[::max(1,len(tri)//2500)]
@@ -100,7 +106,7 @@ jobs:
           ax.view_init(elev=27,azim=-55)
           ax.set_box_aspect((160,120,260))
           ax.legend(handles=legend,loc="upper left",fontsize=7)
-          fig.suptitle("Core-enhet: CAD-volymer, INTE verifierat montage")
+          fig.suptitle("Sensorenhet på V1E Core: CAD-volymer, EJ godkänd montering")
           fig.tight_layout()
           fig.savefig("export/core-koncept.png",dpi=145)
           PY
