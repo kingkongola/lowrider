@@ -8,32 +8,27 @@
 - I **projektets egen** [`strut_plate.svg`](../../../strut_plate.svg) finns två rader med M5-hål på varje platta, **56,0 mm mellan raderna** och **160,2 mm mellan brace-positioner längs X**. För den första plattformen är två närliggande rader t.ex. y=-61,75 och y=-5,75 mm (center y=-33,75 mm). Motsvarande två rader finns på den andra plattformen. Dessa är **ritningsmått**; mät mot verklig montering om något avviker.
 - CAD: X längs strutplattan, Y tvärs, Z upp, den **horisontella understrutens undersida = z=0**. Hålcentrum vid (x=0, y=±28) och borrning i z-led. M5-skruvarna är befintliga låsskruvar till **Brace**. Ingen U-klämma eller antagen lodrät 6 mm-kant används.
 
-## CAD nu – Z-intrånget är en hård budget (2026-11-10)
+## CAD nu — 35° med cirka 6,6 mm nedstick (2026-11-10)
 
-**Den förra CAD-versionen ska inte printas:** dess pelare sänkte LED-ytorna till ungefär **21 mm under understrutplattans undersida**. Det var ett oacceptabelt onödigt intrång i arbetsvolymen.
+**Aktuell parametrisk build123d-källa:** [`tre_vinklar.py`](tre_vinklar.py). Uppdaterade provvinklar är **0°/15°/35°**, fortfarande **en nedåt och två framåt**. 35° ersätter 30° efter användarens godkännande av cirka 6,6 mm för fästet. Den visuella och mekaniska lösningen är **inte fysiskt godkänd**.
 
-Den aktuella [`tre_vinklar.py`](tre_vinklar.py) är **omarbetad till en lågprofil i build123d**:
+- Strutundersidans plan definieras som **Z=0**. Fästet ligger under den horisontella plattan. **Två befintliga M5/Brace-hål 56 mm c/c**, med 1,0 mm tunn central monteringswebb och 2,2 mm lokal förstärkning vid M5. Ingen 90°-vänd klämma eller ny fästborrning.
+- **8 mm COB** limmas på **9 mm breda**, 1,6 mm tjocka hyllor med 0,5 mm marginal per sida. Små radier/fasningar används på yttre hörn; LED-ytans plana bredd och verklig tejpadhesion ska kontrolleras.
+- Längsgående **kantstag 1,2 mm** går på baksidan av de lutade 15°- och 35°-hyllorna, från nedre kanten upp mot **0,9 mm tunn överyta** i kontakt med understruten. 0°-hyllan har också överdel. Stagen ökar inte utsticket under LED-hyllans lägsta punkt i CAD, men faktisk passning och styvhet återstår.
+- **Hård CAD-gräns `max_z_intrang_mm=6.65`:** 35° med 9 mm hylla ger **6,62 mm teoretisk yttergräns**, avrundat cirka 6,6 mm. Gränsen gäller **bara fästet**. LED-remsans och tejpens tjocklek, lödpunkter, eventuellt uppstickande skruvskallar eller verkliga maskinens kollisionsvolym ingår inte. Den gamla 30°-modellen gav lokalt cirka 5,94 mm, men siffran kan **inte** återanvändas som uppmätt värde för 35°.
+- Parametrar för vinkel, hyllbredd, stag, M5 pitch, centrumavstånd, Z-gräns och modullängd är ändringsbara. En 10 mm hylla skulle vid 35° ge cirka **7,20 mm** och stoppas av gränsen.
+- Ett segment är **154 mm** och M5-stationerna är **160,2 mm** från varandra. Behov av anpassade ändmoduler och antal moduler kontrolleras på verklig maskin.
+- **Ogiltig gammal CAD:** första 90°-felet, följande ~21 mm nedhängande modell och äldre 0°/15°/25° eller 0°/15°/30° som standard. Ingen tidigare uppladdad STL/STEP ska antas motsvara aktuell källkod.
 
-- **Horisontell understrut** med undersida **Z=0**; LED-fästet och dess skruvbossar ligger enbart under detta plan.
-- **Tre LED-banor**, 8 mm list på **9 mm breda hyllor**, med **0,5 mm marginal per sida** (0,2 mm fas → cirka 0,3 mm kvar som plan kantmarginal). **En nedåt, två framåt**. Nya **provisoriska vinklar är 0°/15°/30°**; tidigare 0°/15°/25° och 0°/25°/50° är supersederade. 30° är möjlig utan extra Z genom 9 i stället för 10 mm hyllbredd. Kontrollera vidhäftning och verklig LED-remsbredd i provet.
-- **Nytt bärande stag 2026-11-10:** hyllan är fortsatt **1,6 mm tjock**, men varje lutad 15°/25°-bana får **ett sammanhängande 1,2 mm längsgående kantstag på baksidan** från den **lägre kanten** upp till en **0,9 mm tunn horisontell överdel** mot understrutplattan (Z=0). Överdelen och den lutande LED-hyllan bildar tillsammans en **triangulärt styvad profil** längs hela 154 mm-banan. Detta är mer relevant för styvhet i de långa ändarna än ett kort stag bara vid mittskruven. 0°-banan har också överdel men behöver inget högt kantstag. **LED:s nedre ljus-/limyta är helt fri.** 0,15 mm konstruktionsfrigång mot plattan gäller högsta punkt på lutad LED-hylla, medan överdelen ligger mot plattan. Inga extra fästdetaljer eller hål.
-- **Tvärwebb 1,0 mm** tjock, med **lokal 2,2 mm förstärkning** vid de två befintliga M5/Brace-hålen (56,0 mm c/c); i stället för en heltäckande 3 mm tjock bas. Det reducerar påverkan på M5:s tillgängliga skruvlängd, men mutter/grepp måste fortfarande granskas.
-- **Z-konsekvens efter förstärkning:** kantstaget ligger endast **ovanför LED-hyllans lägsta punkt** och överdelen mellan Z=-0,9 och 0. Den maximala modellen växer alltså **inte** nedåt. I lokalt CadQuery-baserat kontrollbygge av **0°/15°/30° med 9 mm hylla**: **en vattentät kropp, min Z≈-5,94 mm, max Z=0**; det validerar inte att build123d-exporten fungerar eller att en print passar. Den fysiska kontrollen måste omfatta att överdelen får plats mot understrutten längs hela X (M5/Brace-fästena är fortsatt de enda skruvade fästpunkterna).
-- Parametern `max_z_intrang_mm=6.2` är en **hård CAD-spärr**, kontrollerad innan geometri konstrueras och med verklig CAD-bounding box vid export. Det teoretiska intrånget vid `0/15/30` och **9 mm breda hyllor** är cirka **6,04 mm** under plattans undersida (lokal motsvarande CadQuery-geometri min Z≈**−5,94 mm**, en vattentät solid). **Bara fästet ingår:** LED-list, tejp och kabel/lödningar adderar sin egen verkliga tjocklek. Befintliga skruvskallars/nuts utskjutande höjd kan redan vara större, men det får **inte antas** före faktisk kontroll.
-- **30° med gamla 10 mm hyllan** hade gett teoretiskt **6,54 mm** och stoppas av kodens 6,2 mm-budget; därför används nu 9 mm hylla. **50°** är fortfarande blockerad även med 9 mm hylla. Behövs större vinklar får en annan monteringsyta prövas. En mer framåtriktad bana ska vid verkligt behov placeras på en annan yta, inte bara hänga längre ned.
-- Det finns fortfarande rundade ändhörn och diskret fasning: 1,2 mm radie på hylländar, 0,2 mm på långkanter, 0,7 mm på tvärwebb och 0,6 mm på M5-bossar. Plan LED-anliggningsyta kvarstår.
-- Parametrarna för vinkel, hyllbredd, tjocklek, M5 c/c, Z-budget, framriktning och modullängd kan ändras.
-- **Detta är prototypgeometri:** inga frigångar mot verklig brace, rör, Core/dammsko, skruvskallar eller material är ännu godkända. Förväxla inte mindre utstick med garanterad återställd användbar Z-arbetsvolym.
-
-### Exportera och kontrollera
+### Export / kontroll
 
 ```bash
 python -m pip install 'build123d==0.10.0'
 python machine/delar/led/tre_vinklar.py --ut export/led
-python machine/delar/led/tre_vinklar.py --vinklar 0 15 30 --max-z-intrang 6.2
+python machine/delar/led/tre_vinklar.py --vinklar 0 15 35 --max-z-intrang 6.65
 ```
 
-[GitHub Actions: led-tre-vinklar](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml) bygger och kontrollerar STL/STEP när körning är tillgänglig. **Lokal CadQuery-kontroll av motsvarande lågprofilmodell** gav **en sluten solid, Z-min ≈ −5,74 mm** (fasningar/radier minskar utstick något), men den är **inte samma sak som verifierad build123d-CI**. Tidigare nedladdade STL/STEP avser **fel äldre version** och får inte användas. Repet är den kanoniska CAD-källan.
+[GitHub Actions](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml) är uppdaterad med **Z-gräns 6,65 mm**, korrekt 35°/9 mm-variant och test att 10 mm vid 35° underkänns. **Ingen CI-körning har kontrollerats i detta dokument**. Vattentät/sammanhängande build123d-STL, M5-skruvlängd, plats för Brace, printbarhet, lys-/kylprov och hela XYZ-svepet återstår att verifiera.
 
 ## Kabeldragning — monteringsplan, ännu ej borrad
 
