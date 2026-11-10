@@ -1,5 +1,14 @@
 # Checklist
 
+## LED-belysning – aktuellt beslut 2026-11-10 (D022)
+
+- [x] **Valt komponent-/funktionsval:** BRIMETI COB 24 V / 4000 K / 8 mm / 320 LED/m; **G4-lampor utgår**. Rulle 5 m, uppgivet 10 W/m; 145 kr med Prime enligt användaren. Faktisk betalning/mottagning ej bekräftad.
+- [x] Rättad parametrisk **build123d-källa** i [`machine/delar/led/tre_vinklar.py`](machine/delar/led/tre_vinklar.py): horisontell understrut, 3 × LED-riktningar 0°/25°/50° som provvinklar. **Första 90°-felvända CAD:n får inte användas.**
+- [ ] Verifiera build123d-export i CI och att rätt STEP/STL ligger i aktuell artefakt; inga gamla STL/STEP.
+- [ ] Provprinta **ett** PETG-fäste; kontrollera befintliga två M5/Brace-låspunkter (56 mm c/c från SVG), skruvlängd, åtkomst och hel XYZ-frigång innan full montering.
+- [ ] Prova kort LED-sektion på PETG, 24 V och fullt ljus: yttemperatur, tejpens vidhäftning och kamerans skuggor/reflexer. **Aluminiumprofil är inte ett beslutat inköp.**
+- [ ] Verifiera befintliga aggregat och dimensionera separat matning för installerad LED-längd; Pi/övervakningen ska fortsatt fungera efter maskinstopp. El-/stoppkrav: [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md).
+
 ## 1. Beställningar — nu
 
 - [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**
