@@ -98,6 +98,8 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 ## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch
 **Status:** valt 2026-11-09 på användarens uppdrag; ej inkopplat, `machine/AKTIV` och FluidNC är oförändrade
 
+**Modelluppgift 2026-11-10:** den tillgängliga proben är CR Touch Auto Leveling Kit, se [orderlistan](PROCUREMENT.md). Beslutet nedan togs med BLTouch som antagande. Pinnvalet ligger kvar som plan, men CR Touchens elektriska kompatibilitet måste verifieras enligt [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) före anslutning. Detta är ingen konfigurationsändring.
+
 **Fällservots signal på `gpio.27`, BLTouch-styrning på `gpio.26`, BLTouch-signal på `gpio.36` (probe-porten).** Fast verktygslängdsknapp flyttas till `gpio.39` som `toolsetter_pin`. Utgångarna ställs på 5 V, inte 24 V, med bygeln på kortet. Armen och proben styrs alltså från Jackpot, inte via Wi-Fi från Pi:n.
 
 **Varför:** de fyra utgångsportarna (`gpio.26/27/0/2`) är de enda med full PWM på 5 V-läget. `gpio.0/2` är startpinnar på ESP32, så de undviks. `gpio.26` kan ge en kort puls vid start enligt V1 Engineering; den går till BLTouch, där uppstartsbeteendet behöver provas separat utan att fällarmen drivs av samma signal, och `gpio.27` till servot. `gpio.36` är den port probe redan använder.

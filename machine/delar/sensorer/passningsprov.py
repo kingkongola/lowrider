@@ -1,7 +1,8 @@
 """Små passningsprov hämtade ur aktuell sidotornsgeometri.
 
 Kameraprovet kontrollerar kortficka, styrtappar och kontaktutrymme.
-Det ersätter inte prov av tornets infästning, kabelväg eller belysning.
+--typ crtouch ger probfot och hylsa för prov av den verkliga sensorn.
+Proven ersätter inte kontroll av tornets infästning, kabelväg eller belysning.
 Kör: uv run --offline --no-project --python 3.12 --with build123d==0.13.0 \
     python machine/delar/sensorer/passningsprov.py --ut print/sensor-passning
 """
@@ -26,20 +27,31 @@ def pa_badden(del_):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--ut", type=Path, required=True)
+    ap.add_argument("--typ", choices=("kamera", "crtouch"), default="kamera")
     a = ap.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
 
     # Behåll själva kamerafickan ur tornet. Den avkapade ovansidan ligger
     # mot bädden; inga nya toleranser eller hål läggs till i provet.
-    kamera = cad.torn() & cad.box(
-        (77.5, 33.0, cad.BUK), (cad.XEND, 69.0, cad.KORT_TAK + 3.0)
-    )
-    delar = {
-        "kamera-passning.stl": pa_badden(Rot(180, 0, 0) * kamera),
-        "bricka.stl": pa_badden(cad.bricka()),
-    }
-    kallor = [Path(cad.__file__), Path(__file__)]
+    if a.typ == "kamera":
+        kamera = cad.torn() & cad.box(
+            (77.5, 33.0, cad.BUK), (cad.XEND, 69.0, cad.KORT_TAK + 3.0)
+        )
+        delar = {
+            "kamera-passning.stl": pa_badden(Rot(180, 0, 0) * kamera),
+            "bricka.stl": pa_badden(cad.bricka()),
+        }
+    else:
+        x, y = cad.PROB
+        fot = cad.arm() & cad.box((x - 16, cad.ARM_Y[0], cad.FLANS_Z),
+                                  (x + 16, y + 7, cad.FLANS_Z + 5))
+        delar = {
+            "probfaste-passning.stl": pa_badden(fot),
+            "crtouch-hylsa.stl": pa_badden(Rot(180, 0, 0) * cad.skyddshylsa()),
+        }
+    kallor = [Path(cad.__file__), Path(__file__), Path(cad.cr.__file__), cad.cr.REFERENS]
     manifest = {
+        "typ": a.typ,
         "build123d": build123d.__version__,
         "kallor_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
         "delar": {},

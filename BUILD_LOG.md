@@ -192,3 +192,16 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Ett litet passningsprov har skurits direkt ur aktuell torngeometri, med sparat källmanifest. Exporten är giltig och sammanhängande; `printa skiva` godkänner slutplattan utan kontrollfel eller varningar. Förhandsvisningen ur g-koden är granskad.
 - Plattan innehåller endast kamerafickeprovet. PLA, 0,20 mm lager och trädstöd; beräknat cirka 16 minuter och 5,4 g. [Jobb och provförfarande](print/README.md). Utskrift eller fysisk passning är inte rapporterad.
 - Granskningen visar att armens frigångshål vid servoaxeln inte är en färdig infästning i servohornet. Det återstår före armens slutprint; servots godkända rörelseomfång påverkas inte.
+
+## 2026-11-10 — Proben tillgänglig, modell korrigerad till CR Touch
+
+- Användaren uppgav att proben nu är tillgänglig och att kitet heter **CR Touch Auto Leveling Kit**. Det ersätter tidigare antagande om BLTouch hos grannen. Aktuell tillgång ägs av [PROCUREMENT.md](PROCUREMENT.md).
+- CAD och kopplingsunderlag har markerats som ännu inte verifierade för CR Touch. Ingen geometri, utskriftsfil, fysisk inkoppling eller maskinkonfiguration har ändrats genom modelluppgiften.
+
+## 2026-11-10 — CR Touch-anpassning i CAD och provplatta
+
+- Crealitys standardkit och specifikationer undersökta; källor och skillnaden mellan tillverkaruppgifter och tredjeparts-CAD sparade i [CR Touch-underlaget](research/2026-11-10-crtouch-anpassning.md).
+- Sidotornets BLTouch-låda ersatt med separat CR Touch-kropp/stift från källangiven STEP. Armfot och kabel-/kontaktutrymme ändrade, skyddshylsa omritad med åtkomst till skruvarna. Servoaxel, hålrad och nominellt parkeringsläge behållna. En liten plastöverlappning vid parkeringsstoppet rättad genom att korta magnetbulan.
+- Exakt CAD-kontroll i 2° steg visar inga nya geometriska intrång i de testade gränssnitten. Prob, hylsa och kontaktkuvert går fria från CAD-tornet även med avståndsgränsen för mellanlägen. Tredjepartsmodellens egna små skruvhuvudavvikelser lämnas uttryckligen som fysisk kontroll, inte som godkänd passning.
+- Ny [provplatta](print/crtouch-passning.json): armfot och hylsa, cirka 20 minuter och 7 g PLA, utan stöd. Printkontrollen har inga fel och en varning för små bryggytor. Förhandsvisning ur g-koden granskad. Ingen utskrift eller fysisk provpassning rapporterad.
+- Kopplingsplanen uppdaterad till CR Touch och nominellt 5,0 V till Pi/prob. Ingen fysisk anslutning, regulatorjustering eller maskinkonfiguration utförd.

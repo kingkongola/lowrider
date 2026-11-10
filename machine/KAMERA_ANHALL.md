@@ -2,6 +2,8 @@
 
 **Konsoliderad 2026-11-10.** Denna fil äger kamerans fysiska användningskrav, Y-anhållet och kalibreringsprincipen. Konstruktion/printdelar ägs av [sensorenhetens CAD-underlag](delar/sensorer/README.md), aktuell status av [CHECKLIST.md](../CHECKLIST.md), mottagning av [PROCUREMENT.md](../PROCUREMENT.md) och verkliga mått av [CALIBRATION.md](../CALIBRATION.md).
 
+**Korrigerad probmodell:** den tillgängliga proben är CR Touch Auto Leveling Kit. BLTouch nedan avser tidigare konstruktionsantagande och historik; ingen fysisk CR Touch-passning, inkoppling eller kalibrering är ännu verifierad. Uppgiften ändrar inte kamerans krav eller det redan godkända servoomfånget.
+
 Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md), [kameraindexering 0033](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0033-dubbelring-kameraindexering.md) och [kalibreringsutredning 0034](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0034-kamerakalibrering-z.md). Detta dokument äger endast fysisk konstruktion och maskinbegränsningar.
 
 ## Beslut och tänkt funktion

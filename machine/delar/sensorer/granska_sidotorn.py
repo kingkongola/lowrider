@@ -1,4 +1,4 @@
-"""Kontroll av sidotornet mot skanning och V1E-delar. Bevisar geometri, inte passning.
+"""Kontroll av sidotornet mot skanning och V1E-delar. Stickprovskontroll, inte bevis på fysisk passning.
 
 --ref ska innehålla R_*.stl (Core, fästen, sko, kjol, servo) och scan_pts_plan.npy:
 skanningens punkter i fräsramen med bordet plant (5,9 graders rättning 2026-11-09).
@@ -21,7 +21,7 @@ L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 E = json.loads((a.ut / "elektronik.json").read_text())
-torn, arm, bl, lock, kabel, kapa = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "bltouch", "sidopanel", "kabel", "kapa"))
+torn, arm, bl, lock, kabel, kapa = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "kapa"))
 P = np.load(a.ref / "scan_pts_plan.npy")
 PIV, PARK = np.array([45.0, 0, 43.6]), -150
 sm = lambda m, n: trimesh.sample.sample_surface(m, n, seed=2)[0]
@@ -31,7 +31,7 @@ print("torn bbox", torn.bounds.round(1).tolist(), "tät", torn.is_watertight)
 sk = P[((P > torn.bounds[0]) & (P < torn.bounds[1])).all(1)]
 print("skanpunkter i tornet x>12:", int((sk[torn.contains(sk)][:, 0] > 12).sum()))
 T = lambda g: trimesh.transformations.rotation_matrix(np.radians(g), [0, 1, 0], PIV)
-for nm, o in (("arm", arm), ("BLTouch", bl), ("hylsan", kapa)):
+for nm, o in (("arm", arm), ("CR Touch", bl), ("hylsan", kapa)):
     q0 = sm(o, 9000)
     b = {}
     for g in range(PARK, 1, 5):
@@ -49,7 +49,7 @@ for nm, o in (("arm", arm), ("BLTouch", bl), ("hylsan", kapa)):
         if "skanning" not in b or dm < b["skanning"][0]:
             b["skanning"] = (round(dm, 1), g)
     print(nm, "minsta avstånd (mm, vinkel), -1 = inne i:", sorted(b.items(), key=lambda kv: kv[1][0]))
-print("parkerad BLTouch bbox", trimesh.transform_points(bl.vertices, T(PARK)).min(0).round(1).tolist(), trimesh.transform_points(bl.vertices, T(PARK)).max(0).round(1).tolist())
+print("parkerad CR Touch bbox", trimesh.transform_points(bl.vertices, T(PARK)).min(0).round(1).tolist(), trimesh.transform_points(bl.vertices, T(PARK)).max(0).round(1).tolist())
 
 
 # Passningsytor: varje gränssnitt mäts, inget antas. Avstånd i mm, None = ingen träff.
@@ -68,7 +68,7 @@ t = cKDTree(sm(torn, 400000))
 for g_ in (0, -1, PARK + 1, PARK):
     w = trimesh.transform_points(q, T(g_))
     print(f"stopp vid {g_} grader: minsta avstånd {t.query(w)[0].min():.2f}")
-print("BLTouch-fläns mot armplatta:", round(float(arm.bounds[0, 2] - bl.bounds[1, 2]), 2))
+print("CR Touch-fläns mot armplatta:", round(float(arm.bounds[0, 2] - bl.bounds[1, 2]), 2))
 for z, o, nm in ((64.25, ref["tool_mount_b"], "undre"), (125.25, ref["tool_mount_t"], "övre")):
     print(f"M5 {nm}: boss mot fäste {[nx([-5, 43.95 + r * np.cos(v), z + r * np.sin(v)], [-1, 0, 0], o) for r, v in ((4.5, 0), (4.5, 1.57), (4.5, 3.14), (4.5, 4.71))]}, hål fritt {nx([-5, 43.95, z], [-1, 0, 0], o) is None}")
 print("kamerakortet: distans mot kortets baksida, ring runt hålet:", [nx([x + 1.5, y, E["kort_bak"] - .2], [0, 0, 1], torn) for x, y in E["kort_hal"]])
@@ -137,5 +137,10 @@ h = stralar(start, -ut, torn)
 print(f"magnetens hud mot armen: {round(h[1] - h[0], 2) if len(h) > 1 else None} mm; hålet öppet bakåt: {len(stralar(start, ut, torn)) == 0}")
 
 q = sm(bl, 30000)
-print(f"hylsan: tät {kapa.is_watertight}, BLTouch inne i hylsans gods {int(kapa.contains(q).sum())}, minsta spel mot kroppen {kapa.nearest.on_surface(q[q[:, 2] < 3.5])[1].min():.2f} mm, örats anliggning mot flänsen {float(bl.bounds[0, 2] * 0 + 3.9 - kapa.bounds[1, 2]):.2f} mm")
-print("hylsan mot armens fot:", round(float(arm.bounds[0, 2] - kapa.bounds[1, 2]), 2), "mm; hylsans ände under BLTouchens kropp:", round(-29.9 - float(kapa.bounds[0, 2]), 2), "mm")
+inne = q[kapa.contains(q)]
+djup = kapa.nearest.on_surface(inne)[1] if len(inne) else np.array([])
+# Detta namngivna delpar har avsiktliga anläggningsytor. STL:s float32-ytor
+# kan klassas innanför med <1e-6 mm djup trots noll CAD-volym. Redovisa dem.
+print(f"hylsan: tät {kapa.is_watertight}, CR Touch-punkter med intrångsdjup över 0,00001 mm {int((djup > .00001).sum())}, gränsytpunkter {int((djup <= .00001).sum())}, största klassade djup {float(djup.max()) if len(djup) else 0:.8f} mm")
+print("hylsans överkant mot flänsens undersida:", round(float(E["prob_montage"][2] - E["prob_flans_t"] - kapa.bounds[1, 2]), 2), "mm")
+print("hylsans botten under referenskroppen:", round(float(E["prob_montage"][2] - E["prob_kropp_djup"] - kapa.bounds[0, 2]), 2), "mm")

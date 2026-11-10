@@ -78,3 +78,10 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - **Prov:** 50 Hz; först 1500 → 1800 → 1200 → 1500 µs, därefter 1600 → 2500 → 500 µs. Användaren såg rörelse efter programrättningen och bekräftade bra gång/ljud vid de två yttersta provlägena. 500 och 2500 µs är provade kommandovärden; de är inte uppmätta mekaniska stopp.
 - **Programfel rättat:** ursprungsprogrammet begärde 16 bitars pulsupplösning, men ESP32-S3 stöder högst 14 för denna pulsgenerator. Ändrat till 14 bitar med motsvarande pulsskalning och kontroll av att `ledcAttach` lyckas. USB-seriekommunikation vid start aktiverad med `CDCOnBoot=cdc`. Den provade källkoden är sparad i [servoprov.ino](machine/servoprov/servoprov.ino), kompilerad med Arduino-ESP32 3.3.12 för `esp32:esp32:esp32s3:CDCOnBoot=cdc`.
 - **Avgränsning:** detta verifierar det lösa servots rörelseomfång. Monterade armens pulsvärden, passning och rörelse mot stoppen provas efter montage. Jackpot3/FluidNC och `machine/AKTIV` har inte ändrats.
+
+## 2026-11-10 — Erfarenhetsvärde för printade hål
+
+- **Användarens erfarenhet:** hål blir lite mindre vid utskrift. För ett önskat färdigt hål på Ø20,00 mm behövs ungefär Ø20,10–20,15 mm i modellen. Tillägget avser **hela diametern**, motsvarande 0,05–0,075 mm per sida.
+- Detta är användarens ungefärliga erfarenhetsvärde, inte ett nytt uppmätt prov. Material, hålriktning och utskriftsinställningar för exemplet är inte specificerade. Värdet används som start vid passningsberedning, inte som en generell procentuell skalning av hela delen.
+- Kontrollera befintlig spelmån före ändring, så att tillägget inte läggs på två gånger. Ett frigångshål (där skruven ska löpa fritt), ett gänghål och en ficka behöver bedömas efter sin funktion. Små hål och yttre styrtappar ska inte automatiskt få samma korrigering som exemplet med Ø20 mm.
+- Behåll funktionsmåttet och redovisa passningstillägget i CAD-underlaget. Bekräfta resultatet med provprint i avsett material och utskriftsläge innan större delar låses.

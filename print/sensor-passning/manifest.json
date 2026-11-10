@@ -1,8 +1,11 @@
 {
+  "typ": "kamera",
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "sidotorn.py": "4c829f661a8aae81b6b190df15241933809c46b7a2cd2c78f3c0b78a3afb1a1b",
-    "passningsprov.py": "39229b2f0b0b69bdcaf52bb5f503e4527138de15325e06c24a6a99107c900775"
+    "sidotorn.py": "f9667ee03a1dd9600193c92eb8526d150d19fb6861f683974f1c4e89b6adae3e",
+    "passningsprov.py": "9d7545594fd0400491df69db742cf7a587a031bfe056b27ce822e328d053db38",
+    "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
+    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470"
   },
   "delar": {
     "kamera-passning.stl": {

@@ -2,3 +2,4 @@
 *.cnc/
 *.printa/
 __pycache__/
+machine/delar/sensorer/ut/

@@ -18,12 +18,15 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import math
+
+import crtouch as cr
 from pathlib import Path
 
 from build123d import (Box, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
-                       ThreePointArc, Vector, Wire, export_step, export_stl, extrude, fillet, sweep, Axis)
+                       ThreePointArc, Vector, Wire, export_step, export_stl, extrude, fillet, sweep, Axis, RectangleRounded, loft)
 
 # Tornets gränser: inte förbi Core-änden längs balken, inte förbi dammskon utåt.
 Y0, Y1 = 48.5, 72.5
@@ -58,7 +61,7 @@ PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (
 PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
 PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
 ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
-# Två LM2596-moduler 43 x 21 mm sida vid sida: A 5,1 V till Pi och BLTouch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
+# Två LM2596-moduler 43 x 21 mm sida vid sida: A nominellt 5,0 V till Pi och CR Touch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
 REG_X0 = {"A": 12.5, "B": 34.5}
 REG_Z0 = 66.5
 REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3.0, 3.5), (18.0, 39.5))]   # panelens fingrar pressar modulens hörn
@@ -68,7 +71,7 @@ PX, PZ = 45.0, 43.6
 PARK = -150.0               # utfällt 0, parkerat mot magnet och hårt stopp (D020)
 SERVO_DY = -2.0             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
 ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
-BLT = (61.0, 34.0 + SERVO_DY)
+PROB = (61.0, 34.0 + SERVO_DY)
 FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
 FLANS_Z = 6.4
 HUB_D = 15.0
@@ -148,9 +151,9 @@ def sidoprofil():
     return [(8, 56)] + kurva + [(PANEL_X, z), (PANEL_X, TOPP), (8, TOPP)]
 
 
-def arm_geo(blt_x):
+def arm_geo(prob_x):
     """Armens riktning u och sidnormal n, längden L."""
-    bx, bz = blt_x, FLANS_Z + 3
+    bx, bz = prob_x, FLANS_Z + 3
     L = math.hypot(bx - PX, bz - PZ)
     ux, uz = (bx - PX) / L, (bz - PZ) / L
     return (ux, uz), (-uz, ux), L
@@ -163,9 +166,9 @@ def vrid(p, grader):
     return (PX + dx * math.cos(g) + dz * math.sin(g), PZ - dx * math.sin(g) + dz * math.cos(g))
 
 
-def stopp_block(blt_x, sida, w0, w1):
+def stopp_block(prob_x, sida, w0, w1):
     """Fyrhörning som ligger an mot armens sida; sida=-1 utfällt, +1 parkerat."""
-    u, n, L = arm_geo(blt_x)
+    u, n, L = arm_geo(prob_x)
     def pkt(t, ut):
         w = w0 + (w1 - w0) * t / L + ut
         return (PX + u[0] * t + sida * n[0] * w, PZ + u[1] * t + sida * n[1] * w)
@@ -173,18 +176,18 @@ def stopp_block(blt_x, sida, w0, w1):
     return [vrid(p, PARK) for p in pts] if sida > 0 else pts
 
 
-def magnet_lage(blt_x):
+def magnet_lage(prob_x):
     """Punkten där M3-huvudet möter huden, och riktningen in i stoppet."""
-    u, n, L = arm_geo(blt_x)
+    u, n, L = arm_geo(prob_x)
     w = ARM_W[0] + (ARM_W[1] - ARM_W[0]) * BULA_T / L
     x, z = vrid((PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w), PARK)
     vinkel = math.degrees(math.atan2(n[1], n[0])) - PARK    # sidnormalen efter parkering
     return x, z, vinkel
 
 
-def magnet_urtag(blt_x):
+def magnet_urtag(prob_x):
     """Ø6 magnet i parkeringsstoppet. Hålet tas bakifrån till en tunn hud mot armen."""
-    x, z, vinkel = magnet_lage(blt_x)
+    x, z, vinkel = magnet_lage(prob_x)
     ut = (math.cos(math.radians(vinkel)), math.sin(math.radians(vinkel)))
     langd = STOPP_TJOCK + 2.0 - HUD
     mitt = (x + ut[0] * (HUD + langd / 2), z + ut[1] * (HUD + langd / 2))
@@ -215,7 +218,7 @@ def servo_attrapp():
     return kropp + oron + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0)
 
 
-def torn(blt_x=BLT[0]):
+def torn(prob_x=PROB[0]):
     b = BUK
     s = extrude(Face(silhuett()), amount=Y1 - Y0, dir=(0, 1, 0))
     s = fillet(s.edges().filter_by(Axis.Y).filter_by(lambda e: e.center().X < 9), 7.0)
@@ -243,14 +246,14 @@ def torn(blt_x=BLT[0]):
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     def stopp(sida):
         y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 0.5, ARM_Y[1] + 1.2)
-        p = prisma_y(stopp_block(blt_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
+        p = prisma_y(stopp_block(prob_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
         return fillet(p.edges().filter_by(Axis.Y), 0.8)
     s += stopp(-1)
     s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
     s += stopp(1)
     s += fillet(box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
     s += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
-    s -= magnet_urtag(blt_x)
+    s -= magnet_urtag(prob_x)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
@@ -316,7 +319,7 @@ def med_elektronik(s):
     s -= box((x1 - 0.5, 54.5, KORT_TAK + 1.5), (LINS[0] - 8.5, 60.6, 160.5))  # fram till Pi-kortets kontakt
     # LED-ledningen från den främre listen går över kamerafickans tak in i CSI-rummet.
     s -= box((LINS[0] - 7.5, LED_Y[0] - 1.0, KORT_TAK + 1.2), (LINS[0] - 5.5, 62.5, KORT_TAK + 3.0))
-    # Servokabeln upp ovanför servot; BLTouch-kabeln genom skenan över servot.
+    # Servokabeln upp ovanför servot; CR Touch-kabeln genom skenan över servot.
     s -= box((25, 52, 53.5), (43, 62, 61))
     s -= box((37, ARM_Y[1] + 0.5, 55), (43, 52.5, 57.5))
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
@@ -349,18 +352,18 @@ def bricka():
     return Cylinder(3.5, 3.5) - Cylinder(1.7, 4.0)
 
 
-def arm(blt_x=BLT[0]):
-    """Svepande arm: navets rundning går över i en fot som bär BLTouchen."""
+def arm(prob_x=PROB[0]):
+    """Svepande arm: navets rundning går över i en fot som bär CR Touchen."""
     y0, y1 = ARM_Y
     w0, w1 = ARM_W
-    u, n, L = arm_geo(blt_x)
-    bx, bz = blt_x, FLANS_Z + 3
+    u, n, L = arm_geo(prob_x)
+    bx, bz = prob_x, FLANS_Z + 3
     F = FLANS_Z
     def sid(t, s):
         w = w0 + (w1 - w0) * t / L
         return (PX + u[0] * t + s * n[0] * w, PZ + u[1] * t + s * n[1] * w)
     rygg = (PX - u[0] * w0, PZ - u[1] * w0)
-    fot_h, fot_v = (blt_x + 11, F), (blt_x - 11, F)
+    fot_h, fot_v = (prob_x + 11, F), (prob_x - 11, F)
     def v(p):
         return Vector(p[0], y0, p[1])
     h1, v1 = sid(19, 1), sid(19, -1)
@@ -373,53 +376,72 @@ def arm(blt_x=BLT[0]):
                          Line(v(fot_h), v(fot_v)), v_sp, Line(v(v1), v(sid(0, -1)))])[0]
     a = extrude(Face(trad), amount=y1 - y0, dir=(0, 1, 0))
     a = fillet(a.edges().filter_by(lambda e: abs(e.center().Z - F) > .01), 1.4)
-    # Foten: mjuk platta som BLTouchen skruvas under.
-    fot = box((blt_x - 13, y0, F), (blt_x + 13, BLT[1] + 6, F + 4.5))
+    # Foten: mjuk platta som CR Touchen skruvas under.
+    fot = box((prob_x - 15, y0, F), (prob_x + 15, PROB[1] + 6, F + 4.5))
     fot = fillet(fot.edges().filter_by(Axis.Z), 5.0)
     fot = fillet(fot.faces().sort_by(Axis.Z)[-1].edges(), 1.6)
     a += fot
     # Bula för skruvhuvudet som fäster mot magneten.
     t = BULA_T
     w = w0 + (w1 - w0) * t / L
-    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.0, 7.0)
+    # Plastbula 0,25 mm innanför armens sidplan; M3-huvudet ska möta magneten, inte bulan.
+    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.0, 6.5)
     a += bula
     s_p = (PX + u[0] * t + n[0] * w, PZ + u[1] * t + n[1] * w)
     rot = Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0)
     a -= Pos(s_p[0] - n[0] * 1.65, sum(BULA_Y) / 2, s_p[1] - n[1] * 1.65) * rot * Cylinder(2.95, 3.3)   # M3-huvud, skruvdjupet ställer hållkraften
     a -= Pos(s_p[0] - n[0] * 7, sum(BULA_Y) / 2, s_p[1] - n[1] * 7) * rot * Cylinder(1.3, 9)
-    # Dolt spår för BLTouch-kabeln, på armens sida mot servot.
-    a -= prisma_y([sid_p for sid_p in ((PX + u[0] * 18 + n[0] * 1.75, PZ + u[1] * 18 + n[1] * 1.75),
-                   (bx + n[0] * 1.75, bz + n[1] * 1.75), (bx - n[0] * 1.75, bz - n[1] * 1.75),
-                   (PX + u[0] * 18 - n[0] * 1.75, PZ + u[1] * 18 - n[1] * 1.75))], y1 - 2, y1 + .1)
-    a -= box((blt_x - 1.75, y1 - .5, F + 3), (blt_x + 1.75, BLT[1] - 4.5, F + 5))
-    for x in (blt_x - 9, blt_x + 9):
-        a -= Pos(x, BLT[1], F + 2) * Cylinder(1.3, 10)     # M3 x 10 gängar direkt i foten, genom hylsans och BLTouchens öron
-    a -= Pos(blt_x, BLT[1], F + 2) * Cylinder(5, 10)
+    # Öppet kabelspår: 6 x 2,2 mm kuvert för fem ledare; 1,8 mm rygg lämnas.
+    a -= prisma_y([sid_p for sid_p in ((PX + u[0] * 18 + n[0] * 3.0, PZ + u[1] * 18 + n[1] * 3.0),
+                   (bx + n[0] * 3.0, bz + n[1] * 3.0), (bx - n[0] * 3.0, bz - n[1] * 3.0),
+                   (PX + u[0] * 18 - n[0] * 3.0, PZ + u[1] * 18 - n[1] * 3.0))], y1 - 2.2, y1 + .1)
+    a -= box((prob_x - 1.75, y1 - .5, F + 3), (prob_x + 1.75, PROB[1] - 4.5, F + 5))
+    for x in (prob_x - cr.HAL_CC / 2, prob_x + cr.HAL_CC / 2):
+        a -= Pos(x, PROB[1], F + 2) * Cylinder(cr.M3_PILOT_D / 2, 10)  # M3 x 8 genom hylsa och fläns, eller M3 x 6 utan hylsa
+    a -= Pos(prob_x, PROB[1], F + 2) * Cylinder(5, 10)
+    # Öppet framåt: kontakten kan kopplas ur utan att klämmas mellan arm och prob.
+    a -= box((prob_x - cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[0], F - 1),
+             (prob_x + cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[1], F + cr.KONTAKT_H))
     # Detta frigångshål är inte en färdig koppling till servohornet.
     # Hornets infästning och kraftöverföring måste lösas före slutprint.
     a -= cyl_y(PX, PZ, y0 - 1, y1 + 1, 7.5)
     return a
 
 
-def bltouch(blt_x=BLT[0]):
-    x, y, f = blt_x, BLT[1], FLANS_Z
-    return box((x - 13, y - 5.75, f - 2.5), (x + 13, y + 5.75, f)) + box(
-        (x - 6.5, y - 6.5, f - 36.3), (x + 6.5, y + 6.5, f - 2.5)) + (Pos(x, y, f - 41) * Cylinder(1, 9.4))
+def crtouch(prob_x=PROB[0]):
+    """Verklig separat CR Touch-referens: kropp och utfällt stift, inte printdel."""
+    return Pos(prob_x, PROB[1], FLANS_Z) * cr.referens()
 
 
-def bltouch_kapa(blt_x=BLT[0]):
-    """Tunn hylsa runt BLTouchens kropp. Följer med armen, skyddar kroppen i alla lägen och ändrar inte mätläget."""
-    x, y, f = blt_x, BLT[1], FLANS_Z
-    t = f - 2.5                     # BLTouchens fläns underkant: hylsans öron ligger an här
-    b = f - 36.8                    # 0,5 mm under kroppen, stiftet går fritt genom den öppna änden
-    k = fillet(box((x - 8.5, y - 8.5, b), (x + 8.5, y + 8.5, t)).edges().filter_by(Axis.Z), 4.0)
-    k = fillet(k.faces().sort_by(Axis.Z)[0].edges(), 1.0)
-    oron = fillet(box((x - 14.5, y - 6.5, t - 2.0), (x + 14.5, y + 6.5, t)).edges().filter_by(Axis.Z), 4.0)
-    k += fillet(oron.faces().sort_by(Axis.Z)[0].edges(), 0.8)
-    k -= box((x - 6.9, y - 6.9, b - 1), (x + 6.9, y + 6.9, t + 1))
-    for hx in (x - 9, x + 9):
-        k -= Pos(hx, y, t - 1) * Cylinder(1.7, 4)
-    return k
+def kontaktkuvert(prob_x=PROB[0]):
+    """Reserverat kontakt-/kabelutrymme, konstruktionskuvert som måste provpassas."""
+    return box((prob_x - cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[0], FLANS_Z),
+               (prob_x + cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[1], FLANS_Z + cr.KONTAKT_H))
+
+
+def skyddshylsa(prob_x=PROB[0]):
+    """Öppen CR Touch-hylsa med gemensamma M3-fästen, fri stiftände och 0,6 mm kroppsspel."""
+    x, y, f = prob_x, PROB[1], FLANS_Z
+    t, b = -cr.FLANS_T, -cr.KROPP_DJUP - .6
+    cy = cr.STIFT_Y
+    def profil(bredd, djup, z):
+        return Pos(0, cy, z) * RectangleRounded(bredd, djup, 2.0)
+    # Bred vid flänsens skuldra, smal kring kroppen; sluttningen kan printas utan dold stödhylla.
+    def svep(extra, z0, z1):
+        return loft([profil(w + 2 * extra, 18.7 + 2 * extra, z)
+                     for w, z in ((28.4, z0), (28.4, -8), (17.4, -14), (17.4, z1))], ruled=True)
+    k = svep(1.6, t, b) - svep(0, t + .2, b - .2)
+    # Två underlägg under originalflänsen, fria från kroppen och förenade med ytterringen.
+    kropp = cr.kropp_med_sidospel()
+    for hx in (-cr.HAL_CC / 2, cr.HAL_CC / 2):
+        pad = Pos(hx, 0, t - 1) * Cylinder(3.4, 2)
+        xa, xb = sorted((hx, (-1 if hx < 0 else 1) * 15.7))
+        pad += box((xa, -2.5, t - 2), (xb, 2.5, t))
+        k += pad - kropp
+        k -= Pos(hx, 0, t - 1) * Cylinder(cr.M3_FRITT_D / 2, 5)
+        # Öppning under skruvhuvudet för verktyg; hylsan får inte låsa skruven inne.
+        k -= Pos(hx, 0, (b - 1 + t - 2) / 2) * Cylinder(3.2, t - 2 - b + 1)
+    return Pos(x, y, f) * k
 
 
 def parkera(o):
@@ -435,12 +457,15 @@ def namn(o, etikett, farg):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--ut", required=True, type=Path)
-    p.add_argument("--blt-x", type=float, default=BLT[0])
+    p.add_argument("--prob-x", "--blt-x", dest="prob_x", type=float, default=PROB[0])
     a = p.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
-    t, ar, bl = torn(a.blt_x), arm(a.blt_x), bltouch(a.blt_x)
+    t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("bltouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", bltouch_kapa())):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x))):
+        forvantat = 2 if n == "crtouch" else 1
+        if not o.is_valid or len(o.solids()) != forvantat:
+            raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
@@ -450,11 +475,11 @@ def main():
         namn(servo_attrapp(), "Servo_SPMS664_ATTRAPP", (.1, .1, .12)),
         namn(kabel(), "Kabel_ATTRAPP", (.1, .1, .1)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
-        namn(bl, "BLTouch_utfalld_ATTRAPP", (.85, .2, .15)),
+        namn(bl, "CR Touch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
-        namn(parkera(copy.deepcopy(bl)), "BLTouch_parkerad_ATTRAPP", (.85, .2, .15)),
-        namn(bltouch_kapa(), "BLTouch_hylsa_utfalld", (.9, .62, .29)),
-        namn(parkera(bltouch_kapa()), "BLTouch_hylsa_parkerad", (.9, .62, .29)),
+        namn(parkera(copy.deepcopy(bl)), "CR Touch_parkerad_ATTRAPP", (.85, .2, .15)),
+        namn(skyddshylsa(a.prob_x), "CR Touch_hylsa_utfalld", (.9, .62, .29)),
+        namn(parkera(skyddshylsa(a.prob_x)), "CR Touch_hylsa_parkerad", (.9, .62, .29)),
         namn(box((cx - KORT_B / 2, KORT_Y[0], KORT_FRAM), (cx + KORT_B / 2, KORT_Y[1], KORT_BAK)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
         namn(box((cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK), (cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP)), "Flatkontakt_ATTRAPP", (.85, .8, .6)),
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
@@ -473,8 +498,16 @@ def main():
         "ADXL": [[ACC_HAL[0][0] - 2.5, PI_Y, ACC_HAL[0][1] - 7.8], [ACC_HAL[1][0] + 2.5, PI_Y + 3, ACC_HAL[0][1] + 7.8]],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
-        "magnet": [*magnet_lage(BLT[0]), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS,
+        "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
+    kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa")]
+    exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
+    (a.ut / "manifest.json").write_text(json.dumps({
+        "kallor_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
+        "exporter_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in exporter},
+        "prob_x": a.prob_x, "referenslicens": "CC BY-NC-SA 4.0, Jonathan Harper; se referenser/README.md"
+    }, ensure_ascii=False, indent=2) + "\n")
     print("klar")
 
 

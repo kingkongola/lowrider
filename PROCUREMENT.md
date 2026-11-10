@@ -30,7 +30,9 @@
 
 ## Övriga sensorleveranser
 
-- **BLTouch:** användaren uppgav 2026-11-10 att proben finns hos grannen och nog kan hämtas i dag. Hämtning till verkstaden, exakt revision och passning är ännu inte bekräftade. Den ingår inte i den visade Electrokit-orderbilden.
+- **CR Touch Auto Leveling Kit:** användaren bekräftade 2026-11-10 att proben nu är tillgänglig och att kitet heter **CR Touch Auto Leveling Kit**, inte BLTouch som tidigare antagits. Exakt revision, kitinnehåll, mått, elektrisk anslutning och funktion är inte verifierade. Ingen köp-/betalningsuppgift har lämnats. Ingår inte i Electrokit-orderbilden. Detta ersätter den tidigare uppgiften om BLTouch som ännu skulle hämtas hos grannen.
+
+**Kitinnehåll undersökt:** Crealitys standardkit beskrivs i [CR Touch-underlaget](research/2026-11-10-crtouch-anpassning.md). Dokumenterad packlista är inte fysisk kartonginventering. Sensor, kabel och monteringsskruvar kan användas i vår anpassning; inget nytt prob- eller Ender-beslagsköp behövs utifrån konstruktionsbytet.
 - **INMP441:** tidigare uppgift om beställning finns, men exakt antal, modell och leverans är fortsatt obekräftade. Den ska inte markeras mottagen genom Electrokit-leveransen.
 - **Spektrum S664 / SPMS664:** befintligt servo, använt i dagens bänkprov. Resultat ägs av [mätloggen](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk).
 

@@ -1,0 +1,30 @@
+{
+  "typ": "crtouch",
+  "build123d": "0.13.0",
+  "kallor_sha256": {
+    "sidotorn.py": "f9667ee03a1dd9600193c92eb8526d150d19fb6861f683974f1c4e89b6adae3e",
+    "passningsprov.py": "9d7545594fd0400491df69db742cf7a587a031bfe056b27ce822e328d053db38",
+    "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
+    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470"
+  },
+  "delar": {
+    "probfaste-passning.stl": {
+      "sha256": "a00b561c424261b6a3e18f9c0bdf13d41ce22af379e361531d6d28620f308fa5",
+      "mm": [
+        30.0,
+        18.5,
+        5.0
+      ],
+      "volym_mm3": 1854.333
+    },
+    "crtouch-hylsa.stl": {
+      "sha256": "d9114f5999ea48f981ceac867779044e3f64925864c79781a119e41863a6261e",
+      "mm": [
+        31.6,
+        21.9,
+        35.7
+      ],
+      "volym_mm3": 4408.145
+    }
+  }
+}

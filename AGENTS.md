@@ -28,7 +28,11 @@ Läs `README.md` och `CHECKLIST.md` först. Maskinen är byggd och har fräst; g
 
 För sensorenheten äger `machine/delar/sensorer/README.md` aktuellt CAD-spår och listan över printdelar; `KOPPLING_CORE_V0.md` äger planerad koppling. Senaste arbetsmodellen är `sidotorn.py`. Befintligt `core-build123d.yml` kontrollerar äldre `core_enhet.py`; dess gröna status får inte tillskrivas sidotornet. D020 tar bort armbrytarna, D021 väljer signalpinnar och `CALIBRATION.md` dokumenterar det godkända servoomfånget. Återöppna inte detta som obesvarat utan motsägande ny evidens.
 
+Probmodellen korrigerades 2026-11-10 till **CR Touch Auto Leveling Kit**, nu tillgängligt enligt användaren. `sidotorn.py` är anpassad via `crtouch.py` och en källangiven tredjeparts-STEP. Ny hylsa, kontaktutrymme och provplatta finns; fysisk passning och inkoppling är ännu inte verifierade. Läs `research/2026-11-10-crtouch-anpassning.md` och CAD-underlaget. Återanvänd inte gamla BLTouch-exporter eller beställ en BLTouch av gammal vana.
+
 Fysisk arbetsstatus hålls i `CHECKLIST.md`, mottagning i `PROCUREMENT.md` och mätningar i `CALIBRATION.md`. Journalen i `cnc` äger historik och mjukvarudokumenten programmets funktion; de ska hänvisa till aktuell fysisk status. Skilj ritad, digitalt kontrollerad, printberedd, printad, provpassad och fysiskt verifierad.
+
+Inför printberedning: läs erfarenhetsvärdet för printade hål i `CALIBRATION.md` (2026-11-10). Beakta redan inritad spelmån så att korrigering inte dubbleras; använd inte generell skalning av hela delen som hålkorrigering.
 
 Geometry numbers (tubes 816/816/1505, strut input 819, `front_wing_size=10.8`, GT2 999/1705/1705, minimum table 941 × 1563) appear in several files; change them everywhere or nowhere.
 
