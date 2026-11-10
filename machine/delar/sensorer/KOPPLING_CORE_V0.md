@@ -2,6 +2,10 @@
 
 **Status: ritning för granskning före beställning/inkoppling, inte kopplingsorder.** Saknade kontakter, fysisk PCB-revision och verklig BLTouch-variant är uttryckligen okända. Pinnarna är valda i D021. Dokumentet ändrar **inte** `machine/AKTIV` eller FluidNC.
 
+## Förtydligande 2026-11-10 – Pi:s oberoende matning
+
+**Kravändring för kommande elkonstruktion:** Raspberry Pi/kamera ska kunna fortsätta logga efter att KATSU och Jackpot3 har frånkopplats. Därför är diagrammets äldre `P24 → V5 → PI` (Pi från samma brytna 24 V som Jackpot) **historiskt och inte längre giltigt som matningslösning**. Använd en separat, verifierad kraftdomän utanför maskinstoppets frånkopplade gren; 20 V-laptopladdare är kandidat, inte bestämd. Servo/prob ska inte kunna bakmata avstängd Jackpot. Se [aktuell SSOT för el/LED/stopp](../../EL_BELYSNING_OCH_STOPP.md) och [cnc:s övervakningsplan](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md). **Inga aktiva pinnar eller kablar ändras här.**
+
 ## Brytare utgår 2026-11-09
 
 **Ersatt av [D020](../../../DECISIONS.md):** inga KW11 på armen, och de två brytarraderna och ingångarna nedan gäller inte längre. Texten nedan är historik.
