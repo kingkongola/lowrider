@@ -26,6 +26,14 @@ Armbrytare och deras GPIO ingår inte enligt D020. Bordets och maskinens befintl
 - Jackpot-utgångarnas spänningsbygel ska stå på **5 V**. De utgångarna är styrsignaler; servot matas från sin egen regulator. Ingen 24 V får nå Pi, kamera eller servots signal.
 - Den planerade kabelstammen från tornet innehåller 24 V, GND, servosignal, BLTouch-styrning och BLTouch-kontakt. Verkliga kaplängder mäts med hela rörelsen och loggas i [CABLE_ROUTING.md](../../../CABLE_ROUTING.md).
 
+## Belysning — förberedelse för senare montage
+
+LED-produkt och matningsspänning är ännu inte valda. Förslaget är tvåledar-LED med egen matningsgren och åtkomlig, polaritetsmärkt anslutning bakom sidopanelen. Fördra vid behov ett ledningspar från vardera LED-läget till kopplingspunkten; ledararea och kontakt väljs efter lampornas ström och verkliga kabelutrymme. Lämna förberedda ändar frånkopplade, separat isolerade och dragavlastade tills anslutningen är fastställd.
+
+Den planerade kabelstammen innehåller redan 24 V till tornet; lokal belysning behöver därför inte automatiskt en extra matningskabel längs maskinen. Delning med Pi/BLTouch-regulatorn är möjlig först när LED:s tillåtna spänning och regulatorns lastmarginal är verifierade. Koppla inte lampor direkt till Pi:s signalpinnar eller till servots 6 V-gren. Ingen extra styrelektronik behövs för första prov med kontinuerligt ljus.
+
+Eftermonteringens mekaniska krav finns i [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--förslag-diskuterat-2026-11-10-ej-färdig-konstruktion). Förslaget är ännu inte en färdig inkopplingsorder.
+
 ## Skillnad mellan bänkprov och maskininstallation
 
 Dagens prov körde servot på **en fristående ESP32-S3, GPIO 18**, med separat servomatning och gemensam jord. Resultatet och provprogrammet finns i [CALIBRATION.md](../../../CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk). Detta ändrar inte D021:s val av Jackpot-pinne eller maskinens FluidNC-konfiguration.

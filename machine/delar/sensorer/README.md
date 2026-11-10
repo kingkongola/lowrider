@@ -8,6 +8,7 @@
 - Sidotorn med integrerad servoram, kameraficka, Pi-utrymme, två regulatorfickor, kabelvägar och avtagbar sidopanel.
 - Separat BLTouch-arm och skyddshylsa. Hårda stopp och magnetparkering enligt [D020](../../../DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). Inga armbrytare eller KW11-hållare.
 - Camera Module 3 Standard riktad rakt ned. Bilder får innehålla servo/dammsko som maskas bort; överlappande bilder ska täcka materialet enligt det överenskomna kameraflödet.
+- Två förberedande LED-urtag som är öppna från undersidan, med ritade ledningsvägar till elektronik-/CSI-rummet. Ingen faktisk LED-produkt, lödanslutning, hållare eller diffusor är passningsverifierad. Eftermonteringens åtkomst ska kontrolleras före tornets print; utbytbar belysning beskrivs i [kameraunderlaget](../../KAMERA_ANHALL.md#belysning--minsta-möjliga-lösning-bedömt-2026-11-09-inte-inköp).
 - Pi Zero 2 WH tar bilder; värddatorn gör den tyngre analysen. ADXL345 sitter på massiv bärare kopplad till övre maskininfästningen för vibrationsmätning. INMP441 har ännu ingen färdig integrerad placering i sidotornet.
 - Två LM2596: en för Pi/BLTouch, en för servot. Matning och valda Jackpot-pinnar beskrivs i [kopplingsunderlaget](KOPPLING_CORE_V0.md); komponenttillgång ägs av [BOM.md](../../../BOM.md).
 
