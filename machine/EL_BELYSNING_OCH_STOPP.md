@@ -19,18 +19,15 @@
 
 ## Geometriskt krav — tre COB-remsor under X-balken
 
-**Användarens riktning:** **en remsa lodrätt nedåt, två riktade framåt** (i Y-led relativt maskinen). Denna asymmetri är avsiktlig; byt inte mot ”en fram, en bak” utan nytt beslut. Riktningen är bestämd men **exakta gradtal och fästens koordinater är inte bestämda**.
+**Korrigerat 2026-11-10:** Den första CAD-versionen, den tidigare STEP/STL-exporten och tvärsnittsbilden är **felaktiga och ej användbara**. Den utgick från en vertikal strutkant. V1E har **en vertikal frontstrut och en HORISONTELL understrut**; det är understrutens plana undersida som gäller. **Ingen gammal U-klämma ska printas eller monteras.**
 
-- Börja med testvinklar `0°`, `+25°`, `+50°` från lodlinjen, **endast för prov**, så att två främre remsor inte belyser precis samma zon. Fastställ verkliga vinklar efter prov av kamera och arbetsyta. Kontrollera att ”framåt” är entydigt i CAD-koordinaterna.
-- Maskinens X-rör är 816 mm; faktisk nyttjbar fästräcka på strut, skruvpositioner och hinder måste **mätas**, inte antas vara 816 mm. Tre remsor på exempelvis 0,8 m vardera skulle bli cirka **2,4 m/24 W**, inte hela rullens 50 W.
-- **Äldre tryckta fästen är inte 3-vägsfästen för denna geometri.** Doug Josephs skruvade klips håller platta 24 V COB-lister mot undersidan; Jonathan Jones har underbalkshållare; Jason Yeager har separat framåtvinklat kanalclips. Inga av dem är verifierade för `0°/+25°/+50°`, vår strut eller Brimeti-bredd. Kalla dem referenser, **inte printklar lösning**.
-- **Föredragen konstruktion att testa:** tre korta aluminiumprofiler/-band som leder bort LED-värme, fixerade med utbytbara 3D-printade vinkelhållare som använder befintliga strutskruvar om möjligt. Separera aluminiumets kylning från plastens bärfunktion; limma inte 10 W/m direkt mot PLA/PETG. Kontrollera materialtemperatur, diffusering, åtkomst och spånexponering.
-- **Fysiska grindar före STL för drift:** mät faktisk COB-bredd och kapsteg, strutplattans geometri/tjocklek och skruvlägen; kontrollera rör, Core/kamera, servoarm, dammsko och full X/Y/Z-rörelse. Gör en liten provbit/klips och jämför skugga/reflexer i kamerabilder innan alla fästen printas.
-- **Forumreferenser:** [Doug Josephs raka klips](https://forum.v1e.com/t/design8studios-lowrider-4-cnc-upgrading-full-size-lr3-lr4/45723/64), [Jonathan Jones LR4-hållare](https://forum.v1e.com/t/new-lr4-build-in-catalunya/48215/131), [Jason Yeagers vinklade LED-kanal](https://forum.v1e.com/t/fluidnc-led-musings/46566/135).
+**Användarens LED-krav oförändrat:** 8 mm BRIMETI, 24 V/4000 K, tre remsor: **en rakt ned och två framåt**; startvinklar 0°/25°/50° som provvärden, ändringsbara i CAD. Ingen aluminiumprofil köps innan termiskt prov har visat behov.
 
-## CAD-uppdatering 2026-11-10 — tre LED-ytor utan aluminiumprofil
+**Faktiska fästmått från vår `strut_plate.svg`:** M5-hålen i understruten sitter i två rader **56,0 mm c/c i Y** vid varje Brace och hålstationspitch **160,2 mm i X**. CAD ska utgå från dessa befintliga låsskruvar/Brace-infattningar, **inte från en 90° vriden vertikal platta eller nya skruvhål**. V1E-originalet: [Beam Assembly](https://docs.v1e.com/lowrider/#beam-assembly).
 
-Det finns nu en **parametrisk build123d-prototyp**: [`machine/delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py) med [fysiska grindar](delar/led/README.md) och [automatiserad STEP/STL-export](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml). Parametrar startar på **8 mm LED, 6 mm strut, 155 mm modullängd, pitch 160,2 mm, 0°/25°/50°**, 5 utskrifter för ca 795,8 mm balklängd. Två U-klämmor per modul använder nederkanten på original `strut_plate.svg` och M3-tryckskruv, utan nya hål och utan befintliga strutskruvar. **Ingen aluminiumprofil väljs i första provet.** En jämförbar Maxel COB (10 W/m) anges av sin tillverkare inte kräva extern kylning, vilket **inte** verifierar BRIMETI:s temperatur på PETG. Kontrollera en provmodul termiskt under maxljus, vidhäftning, faktisk tjocklek, krockar, optiska vinklar och full rörelse innan alla printas. Lokalt exporterad CadQuery-kontroll är sluten och sammanhängande, men build123d-CI och fysisk prototyp behöver bekräftas. De äldre fästenas inkompatibilitet kvarstår. **Detta är ett CAD-förslag, inte låst slutkonstruktion.**
+**Ny parametrisk prototyp**: [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py), 154 mm LED-hyllor, horisontell monteringsbas med två Ø5,4 mm hål 56 mm isär, LED-riktningar ned/fram/fram. [Läs CAD-status och fysiska blockerare](delar/led/README.md). En lokal ekvivalent CadQuery-export är kontrollmätt som sluten kropp; build123d-CI och fysisk passning mot riktig Brace är **ej verifierade**. Befintliga M5-skruvars längd/gängingrepp måste kontrolleras eftersom adapterplattan bygger 3 mm. Full täckning, ändfästen, skuggbild och kabelväg är **ännu inte fastställda**.
+
+**LED-värme:** PETG kan vara rimligt för ett prov men är inte värmespridare som aluminium. Kör temperatur- och vidhäftningsprov med en kort LED-sektion vid rätt 24 V innan full längd. Ändra vid värmeproblem. **Ingenting är därmed godkänt för skarp montering.**
 
 ## Kraftdomäner och stopp — principer, inte kopplingsorder
 
@@ -43,8 +40,8 @@ Det finns nu en **parametrisk build123d-prototyp**: [`machine/delar/led/tre_vink
 
 ## Närmast återstående arbete
 
-- Kontrollera faktisk Brimeti-profilbredd och den verkliga X-strutens underkant och skruvar.
-- **CAD-utkast finns** i [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py). Kontrollera build123d-export i CI och provprinta **en** modul; därefter belysnings-/kameratest och mekaniskt full-svep.
+- Kontrollera faktisk Brimeti-bredd, originalets HORISONTELLA understrut, befintliga två M5/Brace-låsskruvar och om 3 mm adapter kräver längre skruvar.
+- **CAD utbytt efter upptäckt 90°-fel.** Kontrollera rättad build123d-export i CI, provprinta **ett** mittfäste; därefter kontroll av skruvar/kollisionsfrihet, belysnings-/kameratest och mekaniskt full-svep.
 - Läs outputmärkning på befintlig 24 V-kandidat och 150 W-laddare; mät/bedöm effekt innan köp av boost/PSU.
 - Specificera separat övervakningsmatning, två stoppvägar, förväntat stoppbeteende, kabelskydd och återstartsspärr. Samordna med `cnc/docs/verktygsovervakning.md`; ändra inte aktiv FluidNC.
 
