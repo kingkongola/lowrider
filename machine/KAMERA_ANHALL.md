@@ -65,6 +65,8 @@ Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtri
 
 **Kameran är en IMX708 (Raspberry Pi Camera Module 3 Standard) på Core, nominellt rakt ned.** Den har liten sensor och gynnas av stabilt ljus. **Belysning är ett mätförhållande, men inte automatiskt ytterligare en produktfunktion.**
 
+**Förtydligande 2026-11-10:** vi tar stillbilder med maskinen stilla och kan därför prova längre exponeringstid i stället för att börja med maximalt ljusflöde. Vibrationer ska ha lagt sig före exponeringen; jämnt ljus och tydliga kanter i verkliga bilder avgör behovet. Inget minsta lumenantal är ännu mätt eller kravsatt. Daterad kandidatjämförelse (24 V-list, G4 och färdig 5 V-kameralampa), källor och räkneexempel finns i [belysningsutredningen](../research/2026-11-10-kamerabelysning-och-exponering.md).
+
 1. **Testa först befintlig arbetsbelysning och flyttbar lampa**, utan extra elektronik eller permanenta fästen. Fotografera plywood/äldre urfräsningar, synliga skruvbrickor och blankare beslag vid flera Core-positioner; kontrollera verkliga skuggor från bom, dammsko och fixturer.
 2. Om testet visar att fast garagebelysning ger positionsberoende skuggor: **liten vit diffuserad LED vid kameran på Core**, gärna två små symmetriska ljuskällor runt dess siktfält i stället för en hård sidostråle. Ger ljus som följer kameran utan att en bom skymmer ett avlägset armfäste. Minimerad vikt/servicebehov är krav; inga faktiska dimensioner, ljusstyrkor, spänning, kabeldragning eller delar beslutade.
 3. Undvik starka reflexer, skuggor och potentiellt LED-flicker; verifiera jämförbarhet med låst fokus och efter behov låst exponering/gain/vitbalans. Enbart samma lampplacering betyder **inte** färg- eller måttkonstans.

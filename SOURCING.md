@@ -4,6 +4,8 @@
 
 ## Checkout-regel efter falska positiva
 
+**Kamerabelysning 2026-11-10:** [daterad jämförelse av LED-list, G4 och kameralampa](research/2026-11-10-kamerabelysning-och-exponering.md). Ingen kandidat vald eller beställd; verkligt bildprov med längre exponering ska styra belysningsbehovet. Detta är evidens, inte nya orderrader.
+
 **En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk först när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
 
 För billiga standardiserade mekanikdelar ska Amazon/eBay/andra marknadsplatser kontrolleras tidigt när exakt variant kan verifieras. Ursprungsland i sig är inte ett skäl att avvisa en bättre väg; total landad kostnad, exakt spec, importfriktion och leveranstid är de relevanta beslutsvariablerna.
