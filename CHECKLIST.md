@@ -5,8 +5,10 @@
 - [x] **Valt komponent-/funktionsval:** BRIMETI COB 24 V / 4000 K / 8 mm / 320 LED/m; **G4-lampor utgår**. Rulle 5 m, uppgivet 10 W/m; 145 kr med Prime enligt användaren. Faktisk betalning/mottagning ej bekräftad.
 - [x] Rättad parametrisk **build123d-källa** i [`machine/delar/led/tre_vinklar.py`](machine/delar/led/tre_vinklar.py): horisontell understrut, 3 × LED-riktningar 0°/25°/50° som provvinklar. **Första 90°-felvända CAD:n får inte användas.**
 - [ ] Verifiera build123d-export i CI och att rätt STEP/STL ligger i aktuell artefakt; inga gamla STL/STEP.
+- [ ] Kontrollera att aktuell CAD-export från build123d innehåller **rundade hörn och 0,35 mm hyllkantfas**, inte bara den äldre kantiga modellen. Provprinta en ny export, inte tidigare uppladdad STL/STEP.
 - [ ] Provprinta **ett** PETG-fäste; kontrollera befintliga två M5/Brace-låspunkter (56 mm c/c från SVG), skruvlängd, åtkomst och hel XYZ-frigång innan full montering.
 - [ ] Prova kort LED-sektion på PETG, 24 V och fullt ljus: yttemperatur, tejpens vidhäftning och kamerans skuggor/reflexer. **Aluminiumprofil är inte ett beslutat inköp.**
+- [ ] Planera **3 × parallella lödda LED-grenar**, isolerade lödpunkter och dragavlastning, och en gemensam tvåledarmatning på balken. Prova först befintlig passage/kant; **om borrning krävs**, märk en enda genomföring efter kontroll av platta, M5/Brace, båda sidor och full XYZ, avgrada och skydda kabeln. Ingen hålposition eller diameter beslutad.
 - [ ] Verifiera befintliga aggregat och dimensionera separat matning för installerad LED-längd; Pi/övervakningen ska fortsatt fungera efter maskinstopp. El-/stoppkrav: [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md).
 
 ## 1. Beställningar — nu
