@@ -4,6 +4,10 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 
 > **Läs detta först (2026-11-09):** De första avsnitten nedan är en **historisk bygg-/inköpssnapshot från september**, inte uppdaterad maskinstatus. LowRidern är **byggd och har fräst**, offerskivan planades senast 2026-10-22 och den permanent monterade mekaniken beskrivs i `BUILD_LOG.md`. Gällande **repo-konfiguration** pekas ut av `machine/AKTIV`; fysisk mätstatus finns i `CALIBRATION.md`, sensorbeställningar i `PROCUREMENT.md` och sensorernas design-/teststatus i `cnc/docs/PROJEKTJOURNAL_SENSORER.md`. **Z-nivå ännu inte verifierat färdig**, men squaring godkändes efter struts den 13 oktober (0,5 mm diagonalskillnad). Läs inte den äldre monteringsordningen som återstående arbete.
 
+## Aktuell LED-status — beslut D022, 2026-11-10
+
+**G4-lampor är ersatta av BRIMETI 24 V COB-list**, 4000 K/8 mm/320 LED/m, 5 m för angivna 145 kr Prime (10 W/m och 100 lm/W enligt säljaren). Tre banor under **horisontell understrut**, en nedåt och två framåt. **G4 ska inte köpas eller ritas till detta bygge.** [Låst komponent-/principval](DECISIONS.md#d022--cob-list-ersätter-g4-lampor-för-lowrider-belysning), [samlad SSOT för LED/el](machine/EL_BELYSNING_OCH_STOPP.md), [parametriskt CAD-utkast och spärrar](machine/delar/led/README.md). Rättad build123d efter tidigare 90°-fel; **inget fysiskt montage, bild- eller temperaturtest godkänt**. Matning och NVR/automatisk övervakningsstopp är fortfarande öppna konstruktionsfrågor.
+
 ## Aktuellt läge — 2026-09-21
 
 - Maskin: **LowRider V4**. PrintNC/IndyMill är inte aktiva alternativ.
