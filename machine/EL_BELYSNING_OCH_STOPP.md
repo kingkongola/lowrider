@@ -25,9 +25,15 @@
 
 **Faktiska fästmått från vår `strut_plate.svg`:** M5-hålen i understruten sitter i två rader **56,0 mm c/c i Y** vid varje Brace och hålstationspitch **160,2 mm i X**. CAD ska utgå från dessa befintliga låsskruvar/Brace-infattningar, **inte från en 90° vriden vertikal platta eller nya skruvhål**. V1E-originalet: [Beam Assembly](https://docs.v1e.com/lowrider/#beam-assembly).
 
-**Ny parametrisk prototyp**: [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py), 154 mm LED-hyllor, horisontell monteringsbas med två Ø5,4 mm hål 56 mm isär, LED-riktningar ned/fram/fram. [Läs CAD-status och fysiska blockerare](delar/led/README.md). En lokal ekvivalent CadQuery-export är kontrollmätt som sluten kropp; build123d-CI och fysisk passning mot riktig Brace är **ej verifierade**. Befintliga M5-skruvars längd/gängingrepp måste kontrolleras eftersom adapterplattan bygger 3 mm. Full täckning, ändfästen, skuggbild och kabelväg är **ännu inte fastställda**.
+**Ny parametrisk prototyp**: [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py), 154 mm LED-hyllor, horisontell monteringsbas med två Ø5,4 mm hål 56 mm isär, LED-riktningar ned/fram/fram. [Läs CAD-status och fysiska blockerare](delar/led/README.md). En lokal ekvivalent CadQuery-export är kontrollmätt som sluten kropp; build123d-CI och fysisk passning mot riktig Brace är **ej verifierade**. Befintliga M5-skruvars längd/gängingrepp måste kontrolleras eftersom adapterplattan bygger 3 mm. Full täckning, ändfästen, skuggbild och **slutligt kabel-/borrläge** är **ännu inte fastställda**.
 
 **LED-värme:** PETG kan vara rimligt för ett prov men är inte värmespridare som aluminium. Kör temperatur- och vidhäftningsprov med en kort LED-sektion vid rätt 24 V innan full längd. Ändra vid värmeproblem. **Ingenting är därmed godkänt för skarp montering.**
+
+## Monteringsbeslut i arbete — kabel och utformning (2026-11-10)
+
+**Kablar:** Tre 24 V COB-remsor kopplas **parallellt**, varje remsa med lödda +24 V/GND-anslutningar och mekanisk avlastning. Förlägg en gemensam tvåledarmatning till balken. Använd **befintlig öppning eller plattkant om möjligt**; annars kan **en** kabelgenomföring borras i den horisontella understrutplattan. En annan LowRider-byggare verkar ha borrat hål, men syftet är inte verifierat. **Exakt hålposition/diameter är inte beslutade och inget har borrats**: gör torrmontering med M5/Brace och full XYZ-rörelse, markera fri plats, kontrollera båda sidor, avgrada/skydda och dragavlasta. Befintliga M5-låspunkter och bärande smala partier får inte försvagas. Dra LED-lågspänningen separat från 230 V. [Full kontroll- och kabelplan](delar/led/README.md#kabeldragning--monteringsplan-ännu-ej-borrad).
+
+**Formgivning av CAD:** Den korrekta parametriska `build123d`-källan har nu mjuka hörnradier och diskreta fasningar (bas 1,8 mm, hylländar 1,5 mm, pelare/rygg 0,8 mm, 0,35 mm hyllkantfas). M5-hålen och 8 mm plana LED-ytor påverkas inte avsiktligt. **Tidigare STL/STEP är äldre geometri**; exportera från aktuell källa och kontrollera build123d-CI innan provprint. Lokal motsvarande CadQuery-prototyp gav en giltig solid; detta bevisar inte passning eller mekanik i den verkliga LowRidern. [CAD-underlag](delar/led/README.md).
 
 ## Kraftdomäner och stopp — principer, inte kopplingsorder
 
