@@ -143,7 +143,7 @@ Det som tidigare i chattar kallades "Core-enheten" ska heta **sensorenheten**; *
 ## D017 — Core-kamera och mätarm: minsta fysiska prototyp
 **Status:** test-CAD och kopplingsunderlag framtagna 2026-11-09; **inte godkända för drift**
 
-Camera Module 3 **Standard** och Pi Zero 2 WH är beställda, ej mottagna. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Befintlig belysning provas före eventuella nya LED.
+Camera Module 3 **Standard** och Pi Zero 2 WH är beställda, ej mottagna. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Tidigare plan att prova befintlig belysning före LED-inköp **ersätts av D022 (2026-11-10)**. Nu vald huvudbelysning är BRIMETI COB under horisontell understrut; separat kamera-LED är en möjlig senare optisk komplettering.
 
 Servoarm **C** används som mekaniskt referens-CAD. Ny BLTouch-anpassning utgår från samma servoaxel, men kroppens korta stift, horisontella frigång, kabel och lodrätt mätläge **är ännu inte verifierade**. Den äldre cylindriska klämman ersätts i *prototypstudien*, inte på den levande CNC:n. Skannerförsprång och 2,5D är **parkerade**, får inte skapa nya CAD-krav.
 
