@@ -164,6 +164,14 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
+## LED och övervakningsmatning – aktuellt 2026-11-10
+
+- **Vald:** BRIMETI COB LED-list 5 m / 24 V / 4000 K / 320 LED/m, angivet 10 W/m och 100 lm/W. Användaren anger **145 kr**. **Betalning/mottagning är inte verifierad**; för inte upp som debiterad i `COSTS.md` utan bekräftelse.
+- **Befintligt:** Mean Well HDR-60-24 **24 V / 60 W** för Jackpot3/stegmotorer, 10 × LM2596 buck, möjlig 150 W-laptopladdare (utspänning obekräftad), möjlig 24 V-elsparkcykelladdare (verklig output obekräftad). Klippt Altec Lansing 17 V-kabel är inte aktuell som LED-matning.
+- **Behov, ej köpt:** verifierad och separat övervakningsmatning till Pi/kamera utanför maskinstoppets brytna matningsgren, LED-matning efter faktisk installerad längd och kylning. Inga nya boost/PSU eller Shelly-reläer beställda genom denna plan.
+- **Fästen, ej klara:** tre LED-remseriktningar under X-strut: **1 ned, 2 fram**; aluminium för värmeavledning och justerbara, utskrivbara hållare utreds. Befintliga forum-STL är inte verifierade för tre remsor/vår geometri. Ingen ny printklar STL har tagits fram.
+- **Kanoniskt kravläge, effektbudget, stoppberoenden och nästa tester:** [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md). Mjukvarans stoppolicy: [`cnc/docs/verktygsovervakning.md`](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md).
+
 ## Köp inte ännu
 
 - hel OSB/ply-deck om inte det verkliga bordet visar konkret behov
