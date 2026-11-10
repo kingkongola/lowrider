@@ -1,9 +1,10 @@
 """LowRider V4: tre LED-banor under den HORISONTELLA bottom strut plate.
 
-Parametrisk provmodell, inte verifierad på fysisk maskin.
+Parametrisk provmodell med rundade hörn och diskreta kantfasningar. Ej fysiskt verifierad.
 X = längs balken, Y = tvärs balken (framåt = +Y), Z = upp.
 Undre strutplattans undersida ligger vid z=0; dess plan är XY.
 
+Kabelgenomföring är avsiktligt INTE borrad i CAD: läge bestäms vid kabel-dry-fit.
 Fästet monteras med två BEFINTLIGA M5-skruvpositioner i den undre
 strutplattan, 56 mm centrumavstånd i Y enligt repo/strut_plate.svg.
 Konstruktionen får inte ändra låsning eller justering av original-Brace.
@@ -21,7 +22,7 @@ import argparse
 from dataclasses import dataclass
 from pathlib import Path
 
-from build123d import Box, Cylinder, Pos, Rot, export_stl, export_step
+from build123d import Axis, Box, Cylinder, Pos, Rot, chamfer, fillet, export_stl, export_step
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,12 @@ class Param:
     hyll_tjocklek: float = 2.4
     stolpe_bredd_x: float = 18.0
     stolpe_bredd_y: float = 4.0
+    # Synliga PETG-kanter; lämnar LED-ytan plan och M5-hålen måttriktiga.
+    bas_hornradie: float = 1.8
+    hylla_hornradie: float = 1.5
+    hylla_kantfas: float = 0.35
+    rygg_hornradie: float = 0.8
+    stolpe_hornradie: float = 0.8
 
 
 def bygg(p: Param):
@@ -59,9 +66,9 @@ def bygg(p: Param):
     # Den verkliga bottenstrutplattan ligger HORISONTELLT i XY.
     # Detta är en separat adapter UNDER plattan, inte en klämma
     # på den vertikala frontstrutens kant.
-    f = Pos(0, 0, -p.bas_tjocklek_z / 2) * Box(
-        p.bas_bredd_x, p.bas_langd_y, p.bas_tjocklek_z
-    )
+    f = Box(p.bas_bredd_x, p.bas_langd_y, p.bas_tjocklek_z)
+    f = fillet(f.edges().filter_by(Axis.Z), radius=p.bas_hornradie)
+    f = Pos(0, 0, -p.bas_tjocklek_z / 2) * f
 
     for y0, z0, angle in zip(p.led_ys, p.led_zs, p.led_vinklar):
         # LED med sin självhäftande rygg mot hyllans NEDRE yta.
@@ -70,9 +77,13 @@ def bygg(p: Param):
         rail = Box(p.segment_langd,
                    p.led_bredd + 2*p.led_marginal,
                    p.hyll_tjocklek)
-        rail += Pos(0, 0, 2.5) * Box(
-            p.segment_langd, p.rygg_bredd, p.rygg_hojd
-        )
+        # Rundade ändhörn och en diskret fas längs de långa kanterna.
+        # Fas på 0,35 mm lämnar hela 8 mm LED-ytan plan på en 10 mm hylla.
+        rail = fillet(rail.edges().filter_by(Axis.Z), radius=p.hylla_hornradie)
+        rail = chamfer(rail.edges().filter_by(Axis.X), length=p.hylla_kantfas)
+        rygg = Box(p.segment_langd, p.rygg_bredd, p.rygg_hojd)
+        rygg = fillet(rygg.edges().filter_by(Axis.Z), radius=p.rygg_hornradie)
+        rail += Pos(0, 0, 2.5) * rygg
         f += Pos(0, p.framat*y0, z0) * Rot(X=p.framat*angle) * rail
 
         # En kort pelare från understruten ned mot skenans rygg.
@@ -83,9 +94,9 @@ def bygg(p: Param):
         height = ztop - zbot
         if height <= 0:
             raise ValueError("LED-hyllan måste ligga under basen")
-        f += Pos(0, p.framat*y0, (ztop+zbot)/2) * Box(
-            p.stolpe_bredd_x, p.stolpe_bredd_y, height
-        )
+        stolpe = Box(p.stolpe_bredd_x, p.stolpe_bredd_y, height)
+        stolpe = fillet(stolpe.edges().filter_by(Axis.Z), radius=p.stolpe_hornradie)
+        f += Pos(0, p.framat*y0, (ztop+zbot)/2) * stolpe
 
     # Två redan existerande M5-stationer på samma Brace.
     # Undersök aktuell skruvlängd/skalle innan skruvarna lossas;
