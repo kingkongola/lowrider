@@ -8,28 +8,31 @@
 - I **projektets egen** [`strut_plate.svg`](../../../strut_plate.svg) finns två rader med M5-hål på varje platta, **56,0 mm mellan raderna** och **160,2 mm mellan brace-positioner längs X**. För den första plattformen är två närliggande rader t.ex. y=-61,75 och y=-5,75 mm (center y=-33,75 mm). Motsvarande två rader finns på den andra plattformen. Dessa är **ritningsmått**; mät mot verklig montering om något avviker.
 - CAD: X längs strutplattan, Y tvärs, Z upp, den **horisontella understrutens undersida = z=0**. Hålcentrum vid (x=0, y=±28) och borrning i z-led. M5-skruvarna är befintliga låsskruvar till **Brace**. Ingen U-klämma eller antagen lodrät 6 mm-kant används.
 
-## CAD nu
+## CAD nu – Z-intrånget är en hård budget (2026-11-10)
 
-[`tre_vinklar.py`](tre_vinklar.py) i **build123d** skapar ett provfäste som sitter **under den horisontella bottenplattan** med två befintliga M5-hål på samma brace-station.
+**Den förra CAD-versionen ska inte printas:** dess pelare sänkte LED-ytorna till ungefär **21 mm under understrutplattans undersida**. Det var ett oacceptabelt onödigt intrång i arbetsvolymen.
 
-- **Tre långa hyllor** för **8 mm COB**: en rakt ned (0°) och två framåt (25° och 50° initialt).
-- **Formgivning uppdaterad 2026-11-10:** parametriska **hörnradier** på monteringsbas (1,8 mm), LED-hyllors ändar (1,5 mm), stödribbor och pelare (0,8 mm), samt **0,35 mm fasning på de långa hyllkanterna**. LED:s självhäftande anliggningsyta förblir plan. Alla värden är startparametrar i `Param` och kan ändras. Dessa ändringar är i källkoden, **inte ännu godkänd build123d-CI/fysisk 3D-print**; tidigare nedladdade STL/STEP innehåller inte säkert de nya radierna.
-- **Ingen påhittad kabelgenomföring i CAD:** borrläge och eventuell clipskanal bestäms först vid torrmontering så att skruvförband, Brace och rör förblir fria.
-- Hyllorna är 10 mm breda och 154 mm långa med smal ryggförstyvning på den icke lysande sidan.
-- Gemensam tvärgående adapter 78 mm längs Y, 18 mm längs X och 3 mm tjock, med **två genomgående Ø5,4 mm** M5-hål (56 mm c-c).
-- Alla mått (LED-bredd, vinklar, framriktning, M5-avstånd och längd) är parametrar; `--fram-sida -1` vänder strålriktningen. Vid annan vald monteringsstation måste geometrin speglas i rätt Y-riktning.
-- Installera inte fästet genom att bara återanvända befintliga 30 mm låsskruvar utan att kontrollera **grepp-/gängingrepp**: fästets 3 mm byggmått kan kräva längre M5. Spänn inte om Brace på måfå – maskinens riktning/kalibrering kan påverkas.
-- 154 mm är ett segment, inte ett bevisat komplett montage: hålstationspitch är 160,2 mm och ändstationerna ligger nära plattans ändar. **Full täckning och eventuella kortare ändmoduler behöver dimensioneras och prova på riktiga maskinen**. Prova en mittstation först.
+Den aktuella [`tre_vinklar.py`](tre_vinklar.py) är **omarbetad till en lågprofil i build123d**:
 
-## Exportera
+- **Horisontell understrut** med undersida **Z=0**; LED-fästet och dess skruvbossar ligger enbart under detta plan.
+- **Tre LED-banor**, 8 mm list på 10 mm breda hyllor. **En nedåt, två framåt**. Nya **provisoriska vinklar är 0°/15°/25°**, i stället för äldre 0°/25°/50°, eftersom låg Z-profil väger tyngre än den ännu oprövade branta vinkeln.
+- Hyllan är bara **1,6 mm tjock**, med **0,15 mm konstruktionsfrigång** till strutens underside. Ingen lång distanspelare, ingen onödig ryggförstyvning som bygger nedåt.
+- **Tvärwebb 1,0 mm** tjock, med **lokal 2,2 mm förstärkning** vid de två befintliga M5/Brace-hålen (56,0 mm c/c); i stället för en heltäckande 3 mm tjock bas. Det reducerar påverkan på M5:s tillgängliga skruvlängd, men mutter/grepp måste fortfarande granskas.
+- Parametern `max_z_intrang_mm=6.2` är en **hård CAD-spärr**, kontrollerad innan geometri konstrueras och med verklig CAD-bounding box vid export. Det teoretiska intrånget vid `0/15/25` är cirka **5,83 mm** under plattans undersida. Befintliga skruvskallars/nuts utskjutande höjd kan redan vara större, men det får **inte antas** före faktisk kontroll.
+- Med tidigare provvinkel **50°** och samma 10 mm hylla blir intrånget teoretiskt cirka **8,84 mm**, vilket nu **stoppas av kodens 6,2 mm-budget**. En mer framåtriktad bana ska vid verkligt behov placeras på en annan yta, inte bara hänga längre ned.
+- Det finns fortfarande rundade ändhörn och diskret fasning: 1,2 mm radie på hylländar, 0,2 mm på långkanter, 0,7 mm på tvärwebb och 0,6 mm på M5-bossar. Plan LED-anliggningsyta kvarstår.
+- Parametrarna för vinkel, hyllbredd, tjocklek, M5 c/c, Z-budget, framriktning och modullängd kan ändras.
+- **Detta är prototypgeometri:** inga frigångar mot verklig brace, rör, Core/dammsko, skruvskallar eller material är ännu godkända. Förväxla inte mindre utstick med garanterad återställd användbar Z-arbetsvolym.
+
+### Exportera och kontrollera
 
 ```bash
 python -m pip install 'build123d==0.10.0'
 python machine/delar/led/tre_vinklar.py --ut export/led
-python machine/delar/led/tre_vinklar.py --vinklar 0 20 45 --led-bredd 8.2 --m5-pitch 56
+python machine/delar/led/tre_vinklar.py --vinklar 0 10 20 --max-z-intrang 6.2
 ```
 
-GitHub Actions: [led-tre-vinklar.yml](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml). Exporterar STL/STEP och kontrollerar vattentät mesh/antal solider; **CI-status för den ändrade build123d-modellen och fysisk verklig passning är inte verifierade här**. Den motsvarande lokala **CadQuery**-kontrollen med samma radier och fasningar gav en enda giltig solid, men är **inte** ett bevis på att den aktuella build123d-källan exporterar korrekt.
+[GitHub Actions: led-tre-vinklar](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml) bygger och kontrollerar STL/STEP när körning är tillgänglig. **Lokal CadQuery-kontroll av motsvarande lågprofilmodell** gav **en sluten solid, Z-min ≈ −5,74 mm** (fasningar/radier minskar utstick något), men den är **inte samma sak som verifierad build123d-CI**. Tidigare nedladdade STL/STEP avser **fel äldre version** och får inte användas. Repet är den kanoniska CAD-källan.
 
 ## Kabeldragning — monteringsplan, ännu ej borrad
 
@@ -43,7 +46,7 @@ GitHub Actions: [led-tre-vinklar.yml](https://github.com/kingkongola/lowrider/ac
 ## Spärrar före riktig montering
 
 1. Kontrollera visuellt underplattans orientering, vilka låsskruvar som är tillgängliga och om M5-skallarna kan dras åt med fästet på plats. Verifiera yttre avstånd till X-rör, Core, dammsko, motorer och full XYZ-rörelse. Glöm inte skruvarna som ställer maskinens heal/toe.
-2. Kontrollera **skruvlängd och låsning** om den 3 mm tjocka adaptern ska placeras under skruvskallarna.
+2. Kontrollera **skruvlängd och låsning** när den nya 2,2 mm tjocka lokala bossen placeras under skruvskallarna.
 3. Provprinta **ett** segment i PETG, kontrollera passning mot original-Brace och kör en kall full-svep/kollisionstest före elanslutning.
 4. Testa BRIMETI på faktisk PETG-yta med övervakad temperatur vid full 24 V/10 W/m, minst under en längre körning. Tejp direkt på PETG har sämre termisk ledning än aluminium. Vid för hög temperatur eller opålitlig tejp: ändra lösning. Ingen aluminiumprofil är ett krav för **första provet**, men termisk lämplighet är ännu inte bevisad.
 5. Kontrollera kamera/reflexer/skuggor och riktning. Vinklarna är justerbara provvärden, inte beslutade slutvinklar.
