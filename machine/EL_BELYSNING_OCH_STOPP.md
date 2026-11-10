@@ -17,23 +17,21 @@
 | Pi/kamera | Pi Zero 2 WH + Camera Module 3 Standard beställda | Pi behöver stabil reglerad ca 5,1 V med korrekt marginal; kameran matas via Pi |
 | Servo/prob | Spektrum SPMS664 ca 6,0–7,4 V; BLTouch/CR Touch-prob avses 5 V | Exakt probvariant och 5 V-/signalkoppling ska identifieras. Servot ska ha egen 6 V-regulator och inte störa Pi |
 
-## Geometriskt krav — tre COB-remsor under X-balken
+## Geometriskt krav — tre COB-remsor, minsta möjliga Z-intrång
 
-**Korrigerat 2026-11-10:** Den första CAD-versionen, den tidigare STEP/STL-exporten och tvärsnittsbilden är **felaktiga och ej användbara**. Den utgick från en vertikal strutkant. V1E har **en vertikal frontstrut och en HORISONTELL understrut**; det är understrutens plana undersida som gäller. **Ingen gammal U-klämma ska printas eller monteras.**
+**Prioritet ändrad 2026-11-10 efter användarens korrigering:** den tidigare tvåpelar-/sänkta CAD:n tog **cirka 21 mm** av utrymmet under balken och **är ogiltig**. Ljusriktning ska inte köpas med onödig förlorad Z-höjd.
 
-**Användarens LED-krav oförändrat:** 8 mm BRIMETI, 24 V/4000 K, tre remsor: **en rakt ned och två framåt**; startvinklar 0°/25°/50° som provvärden, ändringsbara i CAD. Ingen aluminiumprofil köps innan termiskt prov har visat behov.
-
-**Faktiska fästmått från vår `strut_plate.svg`:** M5-hålen i understruten sitter i två rader **56,0 mm c/c i Y** vid varje Brace och hålstationspitch **160,2 mm i X**. CAD ska utgå från dessa befintliga låsskruvar/Brace-infattningar, **inte från en 90° vriden vertikal platta eller nya skruvhål**. V1E-originalet: [Beam Assembly](https://docs.v1e.com/lowrider/#beam-assembly).
-
-**Ny parametrisk prototyp**: [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py), 154 mm LED-hyllor, horisontell monteringsbas med två Ø5,4 mm hål 56 mm isär, LED-riktningar ned/fram/fram. [Läs CAD-status och fysiska blockerare](delar/led/README.md). En lokal ekvivalent CadQuery-export är kontrollmätt som sluten kropp; build123d-CI och fysisk passning mot riktig Brace är **ej verifierade**. Befintliga M5-skruvars längd/gängingrepp måste kontrolleras eftersom adapterplattan bygger 3 mm. Full täckning, ändfästen, skuggbild och **slutligt kabel-/borrläge** är **ännu inte fastställda**.
-
-**LED-värme:** PETG kan vara rimligt för ett prov men är inte värmespridare som aluminium. Kör temperatur- och vidhäftningsprov med en kort LED-sektion vid rätt 24 V innan full längd. Ändra vid värmeproblem. **Ingenting är därmed godkänt för skarp montering.**
+- Tre 8 mm BRIMETI COB-banor längs den **HORISONTELLA understruten**: **en rakt ned, två framåt**. Vinklarna är **nya provvärden 0°/15°/25°**, inte äldre 0°/25°/50°. Det ursprungliga 90°-vända strutfästet förblir ogiltigt.
+- **Nytt parametriskt CAD-utkast**: [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py) och [geometri-/montagegrindar](delar/led/README.md). **Hård maxgräns är 6,2 mm utstick under den horisontella strutplattans undersida**, med teoretiskt ca 5,83 mm för standardprovgeometrin. Hyllor **1,6 mm**, endast tunn baswebb och lokala M5-bossar; ingen hängande distanspelare.
+- V1E:s befintliga M5/Brace-låspunkter (56 mm c/c) och stationer 160,2 mm längs X från `strut_plate.svg`; inga nya mekaniska skruvhål. **Fysisk kollision, M5-grepp, verklig användbar Z, kylning och ljusbild måste testas**, och byggd print kan avvika från CAD.
+- **50° kräver mer bygghöjd** (~8,84 mm även med tunn hylla) och underkänns av aktuell CAD-budget. Om större ljusvinkel behövs ska en annan befintlig monteringsyta prövas i stället för ytterligare Z-sänkning.
+- **Inget aluminiumprofilsköp beslutat.** Testa kort LED-sektion för värme och tejp i PETG innan permanent montering. Ingen STL/STEP från äldre konstruktioner får printas.
 
 ## Monteringsbeslut i arbete — kabel och utformning (2026-11-10)
 
 **Kablar:** Tre 24 V COB-remsor kopplas **parallellt**, varje remsa med lödda +24 V/GND-anslutningar och mekanisk avlastning. Förlägg en gemensam tvåledarmatning till balken. Använd **befintlig öppning eller plattkant om möjligt**; annars kan **en** kabelgenomföring borras i den horisontella understrutplattan. En annan LowRider-byggare verkar ha borrat hål, men syftet är inte verifierat. **Exakt hålposition/diameter är inte beslutade och inget har borrats**: gör torrmontering med M5/Brace och full XYZ-rörelse, markera fri plats, kontrollera båda sidor, avgrada/skydda och dragavlasta. Befintliga M5-låspunkter och bärande smala partier får inte försvagas. Dra LED-lågspänningen separat från 230 V. [Full kontroll- och kabelplan](delar/led/README.md#kabeldragning--monteringsplan-ännu-ej-borrad).
 
-**Formgivning av CAD:** Den korrekta parametriska `build123d`-källan har nu mjuka hörnradier och diskreta fasningar (bas 1,8 mm, hylländar 1,5 mm, pelare/rygg 0,8 mm, 0,35 mm hyllkantfas). M5-hålen och 8 mm plana LED-ytor påverkas inte avsiktligt. **Tidigare STL/STEP är äldre geometri**; exportera från aktuell källa och kontrollera build123d-CI innan provprint. Lokal motsvarande CadQuery-prototyp gav en giltig solid; detta bevisar inte passning eller mekanik i den verkliga LowRidern. [CAD-underlag](delar/led/README.md).
+**Formgivning av CAD:** Lågprofilens 1,6 mm hyllor har rundade ändar (1,2 mm) och diskret långkantfas (0,2 mm), baswebbens hörn radie 0,7 mm och förstärkta M5-bossar radie 0,6 mm. **Z-budget 6,2 mm gäller före estetiska detaljer.** Äldre 3 mm hel bas och långa pelare är supersederade. [Aktuellt CAD-underlag](delar/led/README.md).
 
 ## Kraftdomäner och stopp — principer, inte kopplingsorder
 
@@ -46,8 +44,8 @@
 
 ## Närmast återstående arbete
 
-- Kontrollera faktisk Brimeti-bredd, originalets HORISONTELLA understrut, befintliga två M5/Brace-låsskruvar och om 3 mm adapter kräver längre skruvar.
-- **CAD utbytt efter upptäckt 90°-fel.** Kontrollera rättad build123d-export i CI, provprinta **ett** mittfäste; därefter kontroll av skruvar/kollisionsfrihet, belysnings-/kameratest och mekaniskt full-svep.
+- Kontrollera faktisk Brimeti-bredd, originalets HORISONTELLA understrut, befintliga två M5/Brace-låsskruvar och grepp med **2,2 mm lokala bossar**; inget får sticka ned i den verkliga Z-kollisionszonen.
+- **Lågprofil-CAD ersätter både 90°-fel och tidigare ~21 mm nedsänkta pelare.** Kontrollera build123d-export och CAD-Z-bounds **≤6,2 mm** i CI, provprinta **ett** mittfäste; därefter skruvar/kollision, verklig Z-frigång, belysnings-/kameratest och full XYZ-svep.
 - Läs outputmärkning på befintlig 24 V-kandidat och 150 W-laddare; mät/bedöm effekt innan köp av boost/PSU.
 - Specificera separat övervakningsmatning, två stoppvägar, förväntat stoppbeteende, kabelskydd och återstartsspärr. Samordna med `cnc/docs/verktygsovervakning.md`; ändra inte aktiv FluidNC.
 
