@@ -92,30 +92,33 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - minimum ytterfootprint 941 × 1563 mm
 - faktisk köpt bordsskiva: **1800 × 1000 mm**, **300 kr**. Bredd 1000 mm räcker för 941 mm minimumfootprint; ingen planerad 41 mm kantbreddning. Underredets status/styvhet måste kontrolleras.
 
-## Sensorenhet: ändlägesbrytare (köpta 2026-11-09)
+## Sensorenhet — komponenter och tillgång
 
-- [x] **10 × QUARKZMAN KW11-3Z-N, rullspak, COM/NO/NC**, Amazon.se, **92,94 kr visat för hela paketet**, Prime-frakt 0 kr. **Beräknad leverans lördag 2026-11-14; inte mottagna ännu.**
-- [ ] **2 ×** installeras som separata lägesgivare för infälld och utfälld BLTouch-arm, med **separata mekaniska hårdstopp**. Hålavstånd/spakväg kräver verklig passningskontroll; monteringen är ännu inte godkänd.
-- **Omron SS-3GL13PT från DigiKey reserveras som reservdelar till originalmaskinen**, inte till den nya sensorarmen. Se [ANDLAGEN.md](machine/delar/nollpunkt/ANDLAGEN.md) och [inköp](PROCUREMENT.md).
+**Uppdaterad 2026-11-10.** Aktuell konstruktion och delindelning finns i [CAD-underlaget](machine/delar/sensorer/README.md). Leveransdatum, orderrader och belopp ägs av [PROCUREMENT.md](PROCUREMENT.md); återstående arbete av [CHECKLIST.md](CHECKLIST.md).
 
-## Core-sensorer – beställt, ej mottaget (2026-11-08)
+| Del | Antal i konstruktionen / tillgång |
+| --- | --- |
+| Raspberry Pi Camera Module 3 Standard, `41020240` | 1, mottagen i Electrokit-order |
+| Raspberry Pi Zero 2 WH med header, `41022617` | 1, mottagen i Electrokit-order |
+| CSI-kamerakabel 200 mm, `41020808` | 1, mottagen i Electrokit-order; verklig kontaktriktning och böjar provas |
+| ADXL345, `41016234` | 1, mottagen i Electrokit-order; fäste ritat i sidotornet, fysisk passning inte verifierad |
+| Spektrum S664 / SPMS664 | 1 befintligt servo; rörelseomfång godkänt enligt mätloggen |
+| BLTouch | 1 planerad; finns hos grannen enligt senaste rapport, revision och hämtning inte bekräftade |
+| LM2596 | 2 används: en till Pi/BLTouch, en till servo. 10 st köpta enligt användaren 2026-10-28 |
+| Neodymmagnet Ø6 × 3 mm | 1 till parkeringsstopp; 60-pack Vinabo finns enligt användaren 2026-10-27 |
+| M3-skruv av stål | Tillgänglig enligt användaren; huvud mot parkeringsmagneten |
+| M3 × 10 | CAD avser 2 till kamera, 2 till ADXL345, 2 till BLTouch/hylsa och 6 till panel. Antal och faktiska skruvlängder kontrolleras vid provpassning |
+| INMP441 | Tidigare beställd enligt användaren; antal och leverans obekräftade. Ingen färdig placering i sidotornet |
+| QUARKZMAN KW11-3Z-N | Köpt 10-pack, reservdelar. **Inga används på armen enligt D020** |
+| Omron SS-3GL13PT | Befintlig reserv till grundmaskinen; används inte på sensorarmen |
 
-- [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[ ] Mottagning, kabelfrigång och fysisk provpassning återstår.**
-- [x] Beställt: **1 × ADXL345** (`41016234`); ingen bestämd fysisk monteringsplats. **[ ] Mottagning återstår.**
-- [x] **11 unika CAD-delar, 12 utskrifter inklusive 2 × KW11-hållare, i build123d**: [källa, separata STEP/STL, montage-GLB och grön CI](machine/delar/sensorer/README.md). BRep-kontroll av statiska delintersektioner och 7-läges servoarm/BLTouch-probattrapp godkänd 2026-11-09. **[ ] Fysiskt provprintad/monterad, servohorn/KW11-rullspak/hårdstopp och riktigt Core-/kjol-avstånd är EJ verifierade.** Äldre OpenSCAD-prototyp är arkiverad.
-- [ ] Pi:s verkliga **5 V kraftmatning**: regulator, skydd och kabel väljs efter spännings-/last- och EMC-granskning; **inget antaget att detta redan finns**. Se [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md).
-- **Ingen fläkt beställd eller kravsatt** för Pi: börja med passiv kylning och mät temperatur under stillbildsarbete. Uteslut inte framtida kylning om mätningar visar behov.
-- **BLTouch** och **SPMS664** har separat tidigare inköps-/designhistorik. Exakt probrevision och mått måste verifieras mot levererad del; inga pinnar är nya tilldelade.
+Regulatorerna är valda och finns; deras slutliga matningsinstallation, säkring, ledningar och lastprov återstår. Ingen fläkt är kravsatt: prova passivt och mät verkligt kylbehov. LED-utrymmen är ritade, men inget belysningsinköp är beslutat före bildprov.
 
-## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
+## Grundbyggets äldre inköpsunderlag
 
-- [x] 10 × Omron/Aratas `SS-3GL13PT` köpta i DigiKey-order 2026-09-03. Originalmaskinen har använt Omron; **kvarvarande Omron ska behållas som LowRider-reserv** och inte förbrukas på sensorenheten. Inventera bara vid behov.
-- Servoarmen använder **inga brytare** enligt [D020](DECISIONS.md): hårda stopp, magnet i parkerat läge och kamerakontroll. De 10 köpta QUARKZMAN KW11-3Z-N är reservdelar.
-- [x] **Neodymmagneter Ø6 x 3 mm** (Vinabo, 60 st, köpta 2026-10-27 enligt användaren) till armens parkeringsstopp.
-- [x] **M3-skruv av stål** till armens parkeringsstopp, finns hemma enligt användaren. Sensorenheten använder också M3 x 10 till kameraklämningen (2 st), ADXL345 (2 st), BLTouch-hylsan (2 st) och sidopanelen (6 st). Inga M2-skruvar behövs.
-- [x] **LM2596 DC-DC-moduler** (Zuahaly, 10 st, köpta 2026-10-28 enligt användaren) som regulatorer i sidotornet: två stycken, 24→5,1 V till Pi och BLTouch och 24→6,0 V till servot.
+Listorna nedan beskriver tidigare behov, inte aktuell återstående byggplan. Maskinen är byggd och har fräst. Gå till [CHECKLIST.md](CHECKLIST.md) för nästa arbete; köp eller printa inte om grunddelar enbart för att en historisk ruta nedan är tom.
 
-## Kvar — mekanik
+### Tidigare behov — mekanik
 
 - [ ] senaste LR4-printar i 30 mm-variant
 - [ ] **Separat printat Makita/65 mm-verktygsfäste för KATSU 101750**, [V1E:s Makita 701 Tool Mount and Dust Shoe](https://www.printables.com/model/1033926-makita-701-tool-mount-and-dust-shoe-for-the-lowrid); **utskriftsstatus okänd**, inte bekräftat bland 14 plattor. Kontrollera rätt del/variant och passning; V1E anger 30 % infill i huvudtabellen. Ej samma sak som köpta 1/8-tumshylsan.
@@ -123,7 +126,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 - [ ] material till permanenta struts, 5–6 mm MDF/hardboard, max 6,35 mm
 - [ ] rail/belt/table-infästning på köpt 180×100-bordsskiva; kontrollera underrede och verklig layout före håltagning
 
-## Kvar — motorer/styrning/lågspänning
+### Tidigare behov — motorer/styrning/lågspänning
 
 - [x] Elecrow Jackpot3 `CQA240812C2`
 - [x] 5 × STEPPERONLINE `17HS19-2004S1`

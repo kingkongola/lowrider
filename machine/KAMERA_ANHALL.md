@@ -1,12 +1,12 @@
 # Core-kamera, Y-anhåll och kalibrering – fysisk design (ej monterat)
 
-**2026-11-08 · Status: konstruktionsunderlag och öppna kontroller – INGEN verifierad montering.**
+**Konsoliderad 2026-11-10.** Denna fil äger kamerans fysiska användningskrav, Y-anhållet och kalibreringsprincipen. Konstruktion/printdelar ägs av [sensorenhetens CAD-underlag](delar/sensorer/README.md), aktuell status av [CHECKLIST.md](../CHECKLIST.md), mottagning av [PROCUREMENT.md](../PROCUREMENT.md) och verkliga mått av [CALIBRATION.md](../CALIBRATION.md).
 
 Program/mätlogik och användarflöde ägs av [cnc/docs/kamera-arbetsflode.md](https://github.com/kingkongola/cnc/blob/main/docs/kamera-arbetsflode.md), [kameraindexering 0033](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0033-dubbelring-kameraindexering.md) och [kalibreringsutredning 0034](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0034-kamerakalibrering-z.md). Detta dokument äger endast fysisk konstruktion och maskinbegränsningar.
 
 ## Beslut och tänkt funktion
 
-- Kameran för arbetsstyckesregistrering, indexering och framtida oregelbunden nesting är **Raspberry Pi Camera Module 3 på den rörliga Core**. Hårdvaran är **beställd och exakt variant bekräftad via orderbild 2026-11-09: Raspberry Pi Camera Module 3 Standard**, Electrokit art. `41020240`. Raspberry Pi Zero 2 WH (`41022617`) och CSI-kabel 200 mm (`41020808`) finns i samma order. **Mottagning är inte bekräftad.** Ingen Tapo krävs för dessa arbetsflöden.
+- Kameran för arbetsstyckesregistrering och indexering är **Raspberry Pi Camera Module 3 Standard** på sensorenheten vid rörliga Core, kopplad till Pi Zero 2 WH. Modellvalet är avgjort. Aktuell leveransstatus läses i ordermatrisen; den kopieras inte hit. Ingen Tapo krävs för dessa arbetsflöden.
 - Även vid en full geometrisk kamerakalibrering behöver en **känt mätt materialyta/plan** finnas för metrisk pixel-till-XY. Befintlig/planerad **BLTouch** kan efter fysisk verifiering användas för ytplanets Z eller trepunktsplan – kameran blir inte därmed en full 3D-skanner.
 - **Y-anhållet:** användaren vill skjuta fram mycket långa skivor, t.ex. 2,4 m, mot en list **längs maskinens Y** utan obligatoriskt kortsidesanslag. En låg skruvad list kan monteras ungefär parallellt och rätas med befintligt `cnc anslag trimma`. Färdigtrimmad arbetskant ska ligga **så nära minsta verkligt användbara X** som möjligt; om listen står längre i negativ X skapas onödigt materialspill, i positiv X försvinner fräsbredd. **Exakt läge är EJ valt**.
 - Skruvhuvuden måste vara försänkta och fria från fräsbanor; förlägg skruvarna på listens yttersida, aldrig i skärsvängen. Mät verkligt minsta Core-/dammsko-/kameraunderrede-X, fräsradie och motsvarande höjd/Z-svep före borrning. En lista vid X-min kan ändå kollidera med dammskon på tunna ämnen.
@@ -37,49 +37,11 @@ Fixtur, referensmönster, fokusläge och fotografier på **flera Z-höjder** ing
 
 **Core-kamerans optiska axel ska nominellt peka rakt ned, vinkelrätt mot ett normalt plant arbetsstycke**, inte avsiktligt mot fräsens ingrepp. Den äger optisk registrering, oregelbundna skivkonturer, indexering och resultatkontroll; **Tapo C200** är separat fast överblickskamera. **INMP441 + ADXL345** jämförs mot förväntat fräsingrepp som passiv övervakning. Undvik att ändra kameravinkel för att kunna se verktyget genom dammskon.
 
-**CAD-krav:** kamera i styvt, kalibreringsstabilt fäste på gemensamma Core-basen, med lodrät optisk riktning som nominell parameter. Välj faktisk X/Y-offset, objektivavstånd, fri sikt, dammskofrigång och rörliga Z-gränser efter CAD-kollisionsprov och fysisk verifiering. Optiken kompenseras i Z och kalibreras; rak montering gör inte pixel→XY automatiskt exakt. Servoarmens lägen och kabelväg får inte skymma kameran i planerade bildlägen.
+**CAD-krav:** kamera i styvt, kalibreringsstabilt fäste på gemensamma Core-basen, med lodrät optisk riktning som nominell parameter. Välj faktisk X/Y-offset, objektivavstånd, fri sikt, dammskofrigång och rörliga Z-gränser efter CAD-kollisionsprov och fysisk verifiering. Optiken kompenseras i Z och kalibreras; rak montering gör inte pixel→XY automatiskt exakt. Servo och dammsko får synas och maskas bort; överlappande bilder ska tillsammans täcka den yta som ska avläsas. Armens kabel får inte fastna eller påverka kamerans kalibrerade läge.
 
-## Återfunna CAD-modeller som underlag för gemensam Core-enhet (2026-11-08)
+## Mekaniskt underlag
 
-**Ursprung:** befintliga CAD-filer checkades in i commit [59efbec6](https://github.com/kingkongola/lowrider/commit/59efbec6c1a6) **2026-11-05**. Användaren vill kombinera dessa med Core-kamera, accelerometer och mikrofon, servoarm, BLTouch-stift, två armändlägen och kablage på **befintliga Core-skruvar/fästen**. Detta är en konstruktionsinriktning, **inte** färdig CAD eller beslut om montering.
-
-**Börja i Version C (direktdriven arm, utan fyrled):**
-
-- Parametrisk källa: [`machine/delar/nollpunkt/fallarm_c.py`](delar/nollpunkt/fallarm_c.py) (`build123d`), som importerar delar från [`fallarm.py`](delar/nollpunkt/fallarm.py). Variablerna `PX/PZ, LX/LZ, XC/YC` och formgeneratorerna ger underlag för en gemensam, reproducerbar montering.
-- Genererade STEP: [`fallarm_C_faste.step`](delar/nollpunkt/fallarm_C_faste.step), [`fallarm_C_arm.step`](delar/nollpunkt/fallarm_C_arm.step), [`fallarm_C_kapa.step`](delar/nollpunkt/fallarm_C_kapa.step); STL-varianter ligger bredvid. Färdigpreparerat [`fallarm_C.3mf`](delar/nollpunkt/fallarm_C.printa/fallarm_C.3mf) med [förhandsvisning](delar/nollpunkt/fallarm_C.printa/forhandsvisning.png). Enligt `sammanfattning.json` ca **3,32 h / 73,9 g PLA**, **inte faktiskt utskriftsprov**.
-- [`kontroll_c.py`](delar/nollpunkt/kontroll_c.py) har utkast till kollisionssvep mot Core, Makita-fästen, dammsko, kjol och ett tidigare skannat punktmoln. **Kan inte köras reproducerbart ur git som det står**: hårdkodade lokala sökvägar till `/Users/bemca/...`, `/tmp/nollpunkt-prov0/cad/Core.stl` och `scan_M.npy`; **Core.stl och scan_M.npy finns inte i detta repos nuvarande träd**. Måste ersättas med spårade källor eller explicit bygg-/importsteg för att verifiera fri gång.
-- Version C:s två modellerade fästpunkter har lokala koordinater **(y=43,95; z=64,25 och 125,25 mm)** samt en modellerad nedre klämskruv **(x=36,6; z=64,26 mm)**. Koordinaterna är i den **lokala fräsramen M**, inte maskinens MPos. Hålbilden bygger på dåvarande CAD och är **inte fysiskt inmätt**.
-- Version C är byggd kring **tidigare V5/TP05C-prob med cylindrisk kropp Ø33 mm**. **BLTouch är inte en drop-in-del**: kontrollera faktisk BLTouch-variant, stifthöjd, skruvhål, kabelriktning och rörelse-/kontaktgeometri innan kåpa, arm och servostopp ändras. Tidigare version [`fallarm.py`](delar/nollpunkt/fallarm.py) med stag/vev är jämförelse, inte rekommenderad grund.
-
-**Designprincip för sammanslagning (att CAD:a senare):**
-
-1. **En gemensam bärande basplatta/rygg** på verifierade befintliga Core-/verktygsfästskruvar, så få nya fästen och kablage som möjligt; inga antagna nya hål i Core.
-2. **Flera utbytbara funktionsmoduler** i stället för en monolitisk 3D-print: (a) direktdriven servoarm med BLTouch, egna stela stopp och två Omron-givare; (b) styv kamerabracket med fast avstånd till Core och egen optisk sikt; (c) **accelerometer styvt mot Core** och (d) mikrofon med akustiskt öppet men dammskyddat läge. Stora mekaniska vibrationer bör inte direkt färga mikrofonens luftljud, medan accelerometern måste kunna följa Core.
-3. Eventuell Pi/ESP32, kontakter och dragavlastning är separata servicebara delmoduler under samma övergripande fäst-/kabelstrategi. **Placering och eltopologi är öppna.**
-4. Säkerställ åtkomst till befintlig fräsverktygsklämma, fast verktygsmätarknapp, dammsko, Z-rörelse och full X/Y-reach; kameran ska kunna se markörer på material utan att servoarmen/skon skymmer. Kablage får inte gå i rörlig probarm utan nödvändig avlastning.
-5. Bygg CAD **efter** att rätt original-Core-mesh/STEP och levererade sensormått samlats. Kör därefter reproducerbart kollisionssvep med både armens alla lägen och maskinens X/Y/Z, och jämför mot fysiken. Ingen dimension, strömförsörjning eller krockfrihet är ännu fastställd.
-
-## Komplettering 2026-11-09: KW11-rullbrytare beställda och CAD-fästen integrerade
-
-**Beställt och inte levererat:** 10 × QUARKZMAN `KW11-3Z-N` (rullspak, 1NO/1NC, 92,94 kr, fri Prime-frakt, beräknad ankomst **2026-11-14**). Omron från original-LowRidern sparas som reserv. **Gällande CAD har nu 11 unika STL/STEP-delar**, eftersom en ny universalhållare `kw11_hallare` printas **2 ×** och skruvas på varsitt kort integrerat fästöra på servokassetten. Kod [kw11_faste.py](delar/sensorer/kw11_faste.py), komplett montage [core_enhet.py](delar/sensorer/core_enhet.py), [grön CI](https://github.com/kingkongola/lowrider/actions/runs/42616662416). Ingen original-Core modifieras; kamera och Pi rörs inte vid servobyte.
-
-**Avsiktligt ej godkänt:** KW11-rullspakarnas verkliga slag och aktivering av rörlig arm, separat hårdstopp i båda lägena, kabelanslutning och fysisk damm-/servohornfrigång. Den gröna CI-körningen bevisar **endast** intern CAD-mesh och att delarna inte överlappar modellens övriga solider. M2-hålbild för 8,5–9,5 mm är ett justerbart utkast tills de köpta exemplarens mått kan kontrolleras vid leverans.
-
-## Gällande sensorenhet – build123d, modularitet och CAD-verifiering 2026-11-09
-
-**Core betyder här befintlig V1E-del; den NYA konstruktionen heter sensorenheten.** Nuvarande [build123d-konstruktion](delar/sensorer/core_enhet.py), [modul-/utskriftskontrakt](delar/sensorer/README.md) och [kopplingsutkast](delar/sensorer/KOPPLING_CORE_V0.md) supersederar **OpenSCAD-studien nedan**. 10 separata moduler: bärplatta på samma två befintliga M5 som tidigare C-servofäste, öppningsbar kabelkåpa, servicebar SPMS664-kassett, lös BLTouch-arm, separat kamera, Pi-kapsling+lock+docka, rigid ADXL345-bricka och egen INMP441-pod på Pi-kapslingen. **Kamera/Pi behöver inte tas loss när servot byts.**
-
-**[Grön CAD/3D-montage-CI](https://github.com/kingkongola/lowrider/actions/runs/42609388224)**: 10 STL och 10 STEP genereras av samma build123d-källa. Alla 10 STL är vattentäta med en komponent. Exakta BRep-test ger **inga korsningar mellan modulerna**, inklusive armen + förenklat BLTouch-hus i 7 vinklar från 0° till −90° mot våra övriga moduler och ritad servo. [Genererad GLB-översikt](https://github.com/kingkongola/lowrider/actions/runs/42609388224/artifacts/13669886409) innehåller den verkliga Core-referensmeshen, tool mounts, dammsko/kjol och separata nya moduler; den är **inte bevisad verklig passning**.
-
-**Kvar P0 före arm-/maskinmontage:** 2 fysiska Omron + hårda anslag ännu inte integrerade i den nya mekaniken, servo-METALLHORN, flexible BLTouch-kabel och all X/Y/Z/kjol-frigång under fysisk drift. BLTouch använder 45,7 mm till utfällt stift enligt tillverkarritning som **utkast**, bekräfta faktiskt exemplar. Core-/dammsko-STL kontrolleras endast med **samplad yt-närhet**, inte en exakt kollisionsalgoritm. Fästskruvar, faktiskt servo, befintlig kåpa/verktygsfäste och dimensioner behöver fysisk jämförelse. **Endast bänktest/provprint av fristående kapslingar/kåpor är aktuellt, inte automatisk probning.**
-
-## Första parametriska Core-prototypen incheckad 2026-11-09 (arkiverad OpenSCAD-studie) (test-CAD, inte färdig montering)
-
-**Kod + provprintfiler:** [machine/delar/sensorer/core_sensorer_v0.scad](delar/sensorer/core_sensorer_v0.scad) och [README](delar/sensorer/README.md). Fem separata CAD-delar: `pi_bas`, `pi_lock`, `kamera`, `bltouch_mattjigg`, `bltouch_arm`. Ger **fysiskt provbara** kamerahållare och Pi Zero 2 WH-kapsling, samt BLTouch-arm som **endast är ett geometriskt utkast** utifrån direktdriven servoarm C. **Ingen fläkt** i denna passiva Pi-kapsling (temperatur ska mätas under verklig belastning). Alternativet bordsmonterad lång ljusarm är inte inbyggt; LED kan vid behov eftermonteras efter ljusprov.
-
-**[Automatiskt CAD-prov på GitHub](https://github.com/kingkongola/lowrider/actions/runs/42599158774) grönt:** fem STL exporteras från incheckad OpenSCAD-källa och verifieras som vattentäta, enkelkomponents mesher med giltig positiv volym. Detta bevisar **inte** mekanisk passning, servohorn, skruvhål eller krockfrihet i riktig LowRider. [Kopplingsutkast](delar/sensorer/KOPPLING_CORE_V0.md) markerar alla oallokerade GPIO, regulator/strömskydd och kabelvägar.
-
-**P0 före fysisk armmontering:** original-Core-mesh/STEP eller verifierade infästningspunkter, faktiskt BLTouch-hålmönster och stiftavstånd samt passning mot befintliga `fallarm_C_faste` och `fallarm_C_kapa`. Den gamla kåpan och basplattan är **inte omgjorda eller bevisat kompatibla** med den nya armen. Varje tänkt säker mätsekvens kräver dessutom elektrisk I/O-verifiering och fysisk rörelsegrind.
+Aktuellt sidotorn, modellens delindelning, digitala kontroller och printberedning beskrivs bara i [sensorenhetens CAD-underlag](delar/sensorer/README.md). Gamla arm C-, OpenSCAD- och modulbyggen är historik i [arkivet](../docs/arkiv/2026-11-09-status-och-sensorunderlag.md), inte alternativa printorder.
 
 ## 2,5D-flatbäddsskanning – historisk idé, inte mekaniskt krav
 
@@ -87,7 +49,7 @@ Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtri
 
 **Aktuellt krav:** armen måste kunna mäta valt Z-plan med frigång för verktyg, dammsko, bord och kablage i kända lägen. Minimera massa och antal delar. Återuppta skanning och säker rörelseplanering **endast om verkligt behov uppstår**.
 
-**Kontroll före arm-CAD:** [beslut 0007](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0007-hardvara-pa-sikt.md) strök BLTouch 2026-10-12 på grund av dess korta stift (~8 mm enligt dåvarande antagande) och önskat verktygsavstånd (~12 mm). Senare beslut överväger annan, utfällbar mekanik men **motsägelsen är inte geometriskt löst**. Mät faktiska probmått, verktygsspets, armens stopp och höjd i båda lägena innan BLTouch-fäste låses. **Inget löfte om fysisk kollisionsfrihet.**
+**Kontroll vid fysisk armprovning:** [beslut 0007](https://github.com/kingkongola/cnc/blob/main/docs/beslut/0007-hardvara-pa-sikt.md) strök BLTouch 2026-10-12 på grund av dess korta stift (~8 mm enligt dåvarande antagande) och önskat verktygsavstånd (~12 mm). Senare beslut överväger annan, utfällbar mekanik men **verklig frigång är ännu inte fysiskt verifierad**. Mät faktiska probmått, verktygsspets, armens stopp och höjd i båda lägena innan BLTouch-fäste låses. **Inget löfte om fysisk kollisionsfrihet.**
 
 ## Beslut 2026-11-08 – en enda rund 3D-printad skruvbricka, identisk överallt
 

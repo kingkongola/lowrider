@@ -4,7 +4,7 @@ This file provides guidance to Codex (claude.ai/code) when working with code in 
 
 ## What this repo is
 
-A documentation-only repo (no build, lint, or test commands) that is the single source of truth (SSOT) for one physical build: a **LowRider V4** CNC router (650 × 1250 mm work area, Jackpot3 controller, KATSU 101750 router, Ø30×1.5 mm tubes). All content is **Swedish**; keep new edits in Swedish and match the existing terse, factual style. PrintNC/IndyMill are explicitly not alternatives.
+Dokumentation och CAD för ett fysiskt bygge: en **LowRider V4** CNC-fräs (arbetsyta 650 × 1250 mm, Jackpot3, KATSU 101750, Ø30×1,5 mm rör). Repot är källa till sanning för bygget. Det finns inget allmänt applikationsbygge eller lintkommando; CAD-exporterna har egna kontroller och arbetsflöden. Ny text skrivs på **svenska**, kort och sakligt. PrintNC/IndyMill är inte alternativ.
 
 ## Canonical-file hierarchy
 
@@ -21,6 +21,14 @@ Top-level files supersede `research/` on any conflict. Each top-level file owns 
 - `CALIBRATION.md` — calibration protocol + the only measurement log; `machine/` holds `config.yaml` backups pulled from the controller (`http://192.168.50.184/config.yaml`).
 - `BUILD_LOG.md` — history only; old choices may live here but are not current state.
 - `README.md` — current-status summary and work order; it repeats headline facts (geometry, costs, order status), so keep it in sync when those change.
+
+## Aktuell status kontra historik
+
+Läs `README.md` och `CHECKLIST.md` först. Maskinen är byggd och har fräst; gamla obockade monteringskort är inte dagens återstående byggplan. `docs/arkiv/`, daterad research och äldre loggrader är historik, inte aktuella krav.
+
+För sensorenheten äger `machine/delar/sensorer/README.md` aktuellt CAD-spår och listan över printdelar; `KOPPLING_CORE_V0.md` äger planerad koppling. Senaste arbetsmodellen är `sidotorn.py`. Befintligt `core-build123d.yml` kontrollerar äldre `core_enhet.py`; dess gröna status får inte tillskrivas sidotornet. D020 tar bort armbrytarna, D021 väljer signalpinnar och `CALIBRATION.md` dokumenterar det godkända servoomfånget. Återöppna inte detta som obesvarat utan motsägande ny evidens.
+
+Fysisk arbetsstatus hålls i `CHECKLIST.md`, mottagning i `PROCUREMENT.md` och mätningar i `CALIBRATION.md`. Journalen i `cnc` äger historik och mjukvarudokumenten programmets funktion; de ska hänvisa till aktuell fysisk status. Skilj ritad, digitalt kontrollerad, printberedd, printad, provpassad och fysiskt verifierad.
 
 Geometry numbers (tubes 816/816/1505, strut input 819, `front_wing_size=10.8`, GT2 999/1705/1705, minimum table 941 × 1563) appear in several files; change them everywhere or nowhere.
 

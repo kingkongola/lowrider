@@ -1,10 +1,10 @@
 # Kalibrering — protokoll och mätlogg
 
-Gäller LR-30 / manualens "Initial Calibration" ([docs.v1e.com/lowrider](https://docs.v1e.com/lowrider/)). Detta är enda kanoniska loggen för kalibreringsmätningar; `BUILD_LOG.md` får bara hänvisa hit. Ordning: **1 steps/mm → 2 squaring → 3 Z-nivå**. Gör inte om ett tidigare steg utan att alla senare steg mäts om.
+Maskinkalibreringen gäller LR-30 / manualens "Initial Calibration" ([docs.v1e.com/lowrider](https://docs.v1e.com/lowrider/)). Detta är enda kanoniska loggen för kalibreringsmätningar och fysiska sensorprov; `BUILD_LOG.md` får bara hänvisa hit. Ordning: **1 steps/mm → 2 squaring → 3 Z-nivå**. Gör inte om ett tidigare steg utan att alla senare steg mäts om.
 
 Ändra aldrig annat i config än det steget kräver. Spara config-backup (`machine/`) före och efter varje ändring.
 
-## Aktuell status 2026-11-09 – källfil kontra fysisk mätning
+## Aktuell maskinkalibrering 2026-11-10 – källfil kontra fysisk mätning
 
 - **Konfiguration i Git** enligt `machine/AKTIV` → `config-2026-11-05-z800.yaml`: **X max_travel 637 mm**, Y 1240 mm, Z **max_travel 98 mm**; Z **max_rate 800 mm/min**. Den äldre tabellen nedan är uttryckligen **baslinjen från 2026-10-04** (X 642 och Z max_rate 900), inte gällande värden. Z 800 avser matningshastighet, **inte** axelns rörelseområde eller Z-nivå.
 - **Fysisk squaring:** kontrollmätt **efter struts 2026-10-13**, diagonalskillnad **0,5 mm** och då godkänd; se loggraden nedan. `BUILD_LOG.md` 2026-10-22 begär senare ny kontroll efter ytterligare arbete med offerskivan; någon sådan **ytterligare kontrollmätning är inte loggad**.
@@ -56,7 +56,7 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 | 2026-10-04 | 3 | Z-nivå **uppskjuten**: bordet är inte plant och ingen offerskiva är planfräst, så mätning mot bordet ger fel större än målet (0,5 mm) | Görs efter permanenta struts + planfräst MDF-offerskiva, med bladmått (samma blad vid vänster/mitten/höger, 3 mätningar per punkt, medelvärde). Justera `pulloff_mm` på Z-sidan som triggar mer negativt, aldrig under 4 mm | – |
 | 2026-10-13 | 2 (om, efter struts) | Efter strutplattorna: diagonaler (måttband) **1↔3 = 1346,0**, **2↔4 = 1343,25**, skillnad **2,75 mm** (1↔3 längst). Y motor0 `pulloff_mm` 6,2 → **7,7** (+1,5 mm, skalat från 4/10: +2,2 mm gav −2,4 mm skillnad). Efter `$HY` och nya tejpmärken: **1↔3 = 1344,5**, **2↔4 = 1344,0** | Skillnad **0,5 mm** → **godkänd** (<1 mm). Y-bältet flyttades under sessionen (hårdvarustopp Y fungerade inte pga rem). Pulloff gick förlorad vid omstart när den bara var live; sparad som config | `config-2026-10-13-step2b.yaml` (motor0 7,7), uppladdad som `config.yaml` och verifierad identisk |
 
-## Status 2026-10-04
+## Historisk status 2026-10-04
 
 - Steg 1 steps/mm: **klart** (X 50,0835, Y 50,2054).
 - Steg 2 squaring: **klart för tillfället** (diagonalskillnad 1,6 mm); görs om efter permanenta struts.
@@ -68,3 +68,13 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - `max_travel_mm: 642` i X (soft limit MPos 645) är **för långt**: körning mot MPos 644,8 fick remmen att hoppa över kuggar (två gånger, först tolkat som ett kärvande buntband). Larmet Hard Limit uppstod sedan på vägen tillbaka, eftersom X-positionen tappats.
 - Efter homing joggade användaren till **MPos X 613,0** , **MPos X 640,0** och **MPos X 642,0**, alla fria. **Vid MPos X 643,0 tar något i** (okänt vad). **Infört:** soft limit MPos 640 (`max_travel_mm: 637`), 3 mm marginal; `config-2026-10-22-x637.yaml` uppladdad, verifierad med `$I` efter omstart. Backup: `config-2026-10-22-fore.yaml`. `cnc` (MASKIN_GRANS) följer samma gräns.
 - Åtgärd (poka-yoke): sätt `max_travel_mm` i X så att soft limit ligger några mm före det verkliga ändläget; då vägrar FluidNC alla program som går längre. `cnc`:s `MASKIN_X`/`MASKIN_GRANS` följer samma värde.
+
+## 2026-11-10 — Fällservots rörelseomfång verifierat på bänk
+
+**Resultat: osäkerheten om servot klarar CAD-armens 150° rörelse är stängd.** Sidotornets arm går mellan utfällt 0° och parkerat −150° enligt D020 och `machine/delar/sensorer/sidotorn.py`. Användaren såg minst 180° rörelse i det lösa servot och godkände omfånget för konstruktionen. Vinkeln är visuellt bedömd, inte uppmätt med vinkelverktyg.
+
+- **Utrustning:** Spektrum S664 / SPMS664, fristående ESP32-S3 som servotestare, USB `/dev/cu.usbmodem3101`. Ingen arm eller annan mekanisk last ansluten.
+- **Inkoppling:** GPIO 18 till vit signal, separat 6 V till röd, svart till matningsminus och ESP:ns GND. Användaren mätte 6 V mellan röd och svart samt 6,06 V mellan röd och ESP:ns GND.
+- **Prov:** 50 Hz; först 1500 → 1800 → 1200 → 1500 µs, därefter 1600 → 2500 → 500 µs. Användaren såg rörelse efter programrättningen och bekräftade bra gång/ljud vid de två yttersta provlägena. 500 och 2500 µs är provade kommandovärden; de är inte uppmätta mekaniska stopp.
+- **Programfel rättat:** ursprungsprogrammet begärde 16 bitars pulsupplösning, men ESP32-S3 stöder högst 14 för denna pulsgenerator. Ändrat till 14 bitar med motsvarande pulsskalning och kontroll av att `ledcAttach` lyckas. USB-seriekommunikation vid start aktiverad med `CDCOnBoot=cdc`. Den provade källkoden är sparad i [servoprov.ino](machine/servoprov/servoprov.ino), kompilerad med Arduino-ESP32 3.3.12 för `esp32:esp32:esp32s3:CDCOnBoot=cdc`.
+- **Avgränsning:** detta verifierar det lösa servots rörelseomfång. Monterade armens pulsvärden, passning och rörelse mot stoppen provas efter montage. Jackpot3/FluidNC och `machine/AKTIV` har inte ändrats.

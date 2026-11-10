@@ -1,6 +1,6 @@
 # Decisions
 
-Endast beslut som påverkar den LowRider V4 som faktiskt byggs. Nyare beslut supersederar äldre när det anges uttryckligen.
+Endast beslut som påverkar den LowRider V4 som faktiskt byggs. Nyare beslut supersederar äldre när det anges uttryckligen. **Aktuell fysisk status ägs av CHECKLIST.md, inte av daterade beslutstexter.** För sensorenheten gäller D020 (ändlägesprincip) och D021 (pinnval). D017–D019 nedan innehåller äldre konstruktionsspår och läses med sina ersättningsnotiser.
 
 ## D001 — LowRider V4
 **Status:** låst
@@ -100,43 +100,43 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 
 **Fällservots signal på `gpio.27`, BLTouch-styrning på `gpio.26`, BLTouch-signal på `gpio.36` (probe-porten).** Fast verktygslängdsknapp flyttas till `gpio.39` som `toolsetter_pin`. Utgångarna ställs på 5 V, inte 24 V, med bygeln på kortet. Armen och proben styrs alltså från Jackpot, inte via Wi-Fi från Pi:n.
 
-**Varför:** de fyra utgångsportarna (`gpio.26/27/0/2`) är de enda med full PWM på 5 V-läget. `gpio.0/2` är startpinnar på ESP32, så de undviks. `gpio.26` kan ge en kort puls vid start enligt V1 Engineering; den går till BLTouch, där en puls inte flyttar armen, och den rena `gpio.27` till servot. `gpio.36` är den port probe redan använder.
+**Varför:** de fyra utgångsportarna (`gpio.26/27/0/2`) är de enda med full PWM på 5 V-läget. `gpio.0/2` är startpinnar på ESP32, så de undviks. `gpio.26` kan ge en kort puls vid start enligt V1 Engineering; den går till BLTouch, där uppstartsbeteendet behöver provas separat utan att fällarmen drivs av samma signal, och `gpio.27` till servot. `gpio.36` är den port probe redan använder.
 
 **Inför inkoppling:** bygeln kontrolleras med multimeter, utgångens signalnivå mäts, och BLTouch-signalens polaritet provas med `?`-rapporten före G38. Konfigändringen står i `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
 
 ## D020 — Inga armbrytare: hårda stopp, tyngdkraft och kamerakontroll
-**Status:** beslutat 2026-11-09; ersätter brytardelen av D019. CAD-utkast `machine/delar/sensorer/sidotorn.py`, ej printat, ej verifierat
+**Status:** beslutat 2026-11-09; ersätter brytarkraven i D017–D019. Senaste arbetsmodell är `machine/delar/sensorer/sidotorn.py`. Aktuell provstatus: [CHECKLIST.md](CHECKLIST.md).
 
-Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer lägena. **Parkerat ligger armen vid -150 grader och hålls av en Ø6 x 3 mm neodymmagnet i stoppet mot ett M3-skruvhuvud i armen, så att den inte faller vid strömavbrott.** Kameran bekräftar parkerat läge som **startspärr före varje jobb**: inget svar eller oklar bild ger ingen start. Spärren är ingen säkerhetsfunktion och stoppar inte pågående rörelse, enligt `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
+Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer lägena. **Parkerat ligger armen vid -150 grader och hålls av en Ø6 x 3 mm neodymmagnet i stoppet mot ett M3-skruvhuvud i armen, så att den inte faller vid strömavbrott.** Kameran ska bekräfta parkerat läge som **startspärr före varje jobb när sensorenheten tas i bruk**. Dagens kod aktiverar spärren först efter inlärning; därefter ger inget svar eller oklar bild ingen start. Före inlärning släpper koden igenom så att grundmaskinen kan användas utan sensorenhet. Inlärning och fysisk verifiering återstår. Spärren är ingen säkerhetsfunktion och stoppar inte pågående rörelse, enligt `machine/delar/sensorer/KOPPLING_CORE_V0.md`.
 
 **Varför:** sökning i CAD hittade ingen plats för brytaren i utfällt läge utan extra bärande del. Utan brytare försvinner hållare, tapp, lödning och två Jackpot-ingångar.
 
 **Magneten** sätts in bakifrån i stoppet mot 0,6 mm plast och låses med en droppe superlim på baksidan; skruvhuvudet slår aldrig på magneten. Servot är original från Arrma Quake och orkar dra loss armen. **Prov före drift:** att magneten håller armen med servot strömlöst när maskinen körs. De 10 köpta KW11 behålls som reservdelar. Spärrens programvara hör till `kingkongola/cnc`.
 
 ## D019 — Separata KW11-brytare på servokassetten, spara Omron
-**Status:** inköp bekräftat 2026-11-09; CAD-fäste granskat, verklig passning ej verifierad
+**Status:** historiskt brytarspår; ersatt av D020. Inköpet är fortsatt verkligt, men brytarna är reservdelar. Texten nedan beskriver det tidigare förslaget.
 
 Beställt **10 × QUARKZMAN KW11-3Z-N med rullspak (COM/NO/NC)** på Amazon.se för visade 92,94 kr, fri Prime-frakt, beräknad leverans lördag **2026-11-14**. De **befintliga Omron SS-3GL13PT är reserv för originalmaskinens ändlägen**; förbrukas inte på sensorenheten.
 
 En enda liten **build123d KW11-hållare printas 2 ×** och har justerbara M2-hål för 8,5–9,5 mm brytarhålbild och M3-slits för lägesjustering. Båda brytarna tillhör löstagbar servokassett; Core, kamera och Pi behöver inte ändras. [Grön CAD-körning med 11 STL + 11 STEP](https://github.com/kingkongola/lowrider/actions/runs/42616662416), inga BRep-överlapp med våra fasta moduler eller i det förenklade BLTouch-svepet. **Aktiveringskammar och två separata hårdstopp saknas fortfarande och är P0**; grön CAD betyder inte att man har verifierat rullspaksvägen. Inga GPIO/maskininställningar ändrade.
 
 ## D018 — Modulär sensorenhet i build123d, original-Core orörd
-**Status:** CAD-granskad, ej fysiskt verifierad (2026-11-09)
+**Status:** äldre modulärt CAD-spår (2026-11-09). Principerna om servicebarhet och original-Core gäller; brytarkraven ersätts av D020. Senaste sidotornsmodell och dess egen kontrollstatus beskrivs i [CAD-underlaget](machine/delar/sensorer/README.md). Följande stycken är den daterade modulgranskningen.
 
 Det som tidigare i chattar kallades "Core-enheten" ska heta **sensorenheten**; **Core** betyder enbart V1E:s befintliga del. Löstagbar gemensam bärplatta på **två befintliga M5 från servoarm C:s verktygsfäste**, skruvade och individuellt utbytbara kamera, SPMS664/BLTouch, Pi Zero, ADXL345 och INMP441. Ingen helplastklump, inga nya borrhål på Core. Skruvat kanallock gör kabelstammen inspekterbar. Servo ska kunna bytas utan att kamera och dess kalibrering rubbas.
 
-**Gällande CAD:** [build123d `core_enhet.py`](machine/delar/sensorer/core_enhet.py), [dokument](machine/delar/sensorer/README.md), [kabel-/GPIO-utkast](machine/delar/sensorer/KOPPLING_CORE_V0.md). Den tidigare OpenSCAD-prototypen (`core_sensorer_v0.scad`) är arkiverad; dess gamla STL/zip ska **inte printas för montage**. [GitHub CI 42609388224](https://github.com/kingkongola/lowrider/actions/runs/42609388224): 10 separata vattentäta STL och 10 STEP, inga BRep-kollisioner i statiskt montage eller 0–90° probarmssvep mot **egna** CAD-delar/servoskissen, färgkodad GLB. **Inget provat på riktig maskin.**
+**Då granskad CAD:** [build123d `core_enhet.py`](machine/delar/sensorer/core_enhet.py), [dokument](machine/delar/sensorer/README.md), [kabel-/GPIO-utkast](machine/delar/sensorer/KOPPLING_CORE_V0.md). Den tidigare OpenSCAD-prototypen (`core_sensorer_v0.scad`) är arkiverad; dess gamla STL/zip ska **inte printas för montage**. [GitHub CI 42609388224](https://github.com/kingkongola/lowrider/actions/runs/42609388224): 10 separata vattentäta STL och 10 STEP, inga BRep-kollisioner i statiskt montage eller 0–90° probarmssvep mot **egna** CAD-delar/servoskissen, färgkodad GLB. **Inget provat på riktig maskin.**
 
-**Explicit blockerande:** ingen fysisk kollisions-/passningsverifiering mot verklig Core och dammsko, servohornets metall, de två nya QUARKZMAN KW11-3Z-N:s **verkliga rullspakar** eller **separata hårda stopp**; BLTouch-brytare, verklig utfälld stiftlängd, kabelslinga och elektrisk pinmappning är inte färdiga. Ingen automatisk rörelse eller G38 ändras. En fläkt är inte basfunktion; termisk mätning först.
+**Öppna frågor vid den äldre modulgranskningen:** fysisk passning, servohorn, då planerade brytarrullar, stopp, stift, kablar och pinnval var inte verifierade. Brytarkraven har därefter ersatts av D020 och pinnvalet avgjorts i D021. Aktuellt återstående arbete läses i CHECKLIST.md, inte i denna historiska granskning. En fläkt är inte basfunktion; termisk mätning först.
 
 ## D017 — Core-kamera och mätarm: minsta fysiska prototyp
-**Status:** test-CAD och kopplingsunderlag framtagna 2026-11-09; **inte godkända för drift**
+**Status:** historiskt prototypunderlag från 2026-11-09, följt av D018–D021. Följande leverans- och pinnstatus avser beslutstillfället; aktuell status finns i ägarfilerna.
 
-Camera Module 3 **Standard** och Pi Zero 2 WH är beställda, ej mottagna. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Befintlig belysning provas före eventuella nya LED.
+Vid beslutstillfället var Camera Module 3 **Standard** och Pi Zero 2 WH beställda och inte mottagna; senare leveranser ägs av PROCUREMENT.md. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Befintlig belysning provas före eventuella nya LED.
 
 Servoarm **C** används som mekaniskt referens-CAD. Ny BLTouch-anpassning utgår från samma servoaxel, men kroppens korta stift, horisontella frigång, kabel och lodrätt mätläge **är ännu inte verifierade**. Den äldre cylindriska klämman ersätts i *prototypstudien*, inte på den levande CNC:n. Skannerförsprång och 2,5D är **parkerade**, får inte skapa nya CAD-krav.
 
-S-09 (två mekaniskt åtskilda vilolägen, utan mux i basplanen) ligger kanoniskt i [cnc:s sensorarkitektur](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md). Ingen ny GPIO är reserverad: se [JACKPOT3_IO.md](machine/delar/nollpunkt/JACKPOT3_IO.md) och [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md). Ingen maskinkonfiguration eller motor-rörelse får ändras av detta beslut.
+S-09 (två mekaniskt åtskilda vilolägen, utan mux i basplanen) ligger kanoniskt i [cnc:s sensorarkitektur](https://github.com/kingkongola/cnc/blob/main/docs/sensorarkitektur.md). Vid detta beslutstillfälle var inga nya GPIO reserverade; D021 anger det senare pinnvalet. Se [JACKPOT3_IO.md](machine/delar/nollpunkt/JACKPOT3_IO.md) och [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md). Ingen maskinkonfiguration eller motor-rörelse får ändras av detta beslut.
 
 ## D015 — Jackpot3 från Elecrow
 **Status:** **köpt 2026-09-03**

@@ -175,3 +175,14 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Plan: planfräs offerskivan ytterligare **0,7 mm** så att gropen tas, sedan Z-nivå (steg 3) och ny squaring. Planfilen görs om med `cnc plana` (filen `Planfras_offer_075` från 2026-10-15 är byggd före nuvarande postprocessor).
 - Offerskivan var 9 mm MDF från början och har planats två gånger tidigare (0,5 mm per gång eller ~2 mm totalt, osäkert), plus 0,7 mm i dag (`plan07`). **Verklig tjocklek okänd och går inte att mäta vid kanten** (en ofräst ram runt den planade ytan). Användaren: styrhålen får gå så djupt fräsen räcker, även igenom offerskivan.
 - **Planfräsning `plan07` klar 2026-10-22** (Ø22 planfräs, ratt 3, F1500, 0,7 mm). Användaren: ytan är plan nu, kullen borta. Ingen mätning med linjal/mätur rapporterad. Kvar: Z-nivå (steg 3) och ny squaring.
+
+## 2026-11-10 — Servots rörelseomfång godkänt för BLTouch-armen
+
+- Fristående bänkprov med ESP32-S3 slutfört efter rättning av provprogrammets pulsupplösning. Användaren godkänner servots rörelseomfång för sidotornets arm; denna konstruktionsosäkerhet är stängd.
+- Provvärden, observationer och rättad källkod: [mätloggen](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk). Monterad arm och Jackpot-styrning återstår att prova.
+
+## 2026-11-10 — Leverans och dokumentation konsoliderad
+
+- Användaren rapporterar att Electrokit-order har kommit. Leveransraderna är uppdaterade i [PROCUREMENT.md](PROCUREMENT.md); faktiskt debiterat belopp är fortfarande inte bekräftat.
+- BLTouch finns hos grannen för möjlig hämtning; ingen genomförd hämtning eller fysisk provpassning rapporterad.
+- README leder till ägarfilerna, CHECKLIST äger aktuell arbetsstatus, sensorunderlaget skiljer sidotorn från äldre modulbygge, och ersatta brytarkrav hänvisar till D020. Äldre statuslistor och underlag bevaras i [arkivet](docs/arkiv/2026-11-09-status-och-sensorunderlag.md).

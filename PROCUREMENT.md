@@ -1,18 +1,16 @@
 # Procurement — canonical order matrix
 
-**Live snapshot: 2026-09-21.** Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Leveransstatus uppdaterad 2026-11-10.** Äldre pris- och lagerunderlag är daterade inköpsögonblick, inte dagens erbjudanden. Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## Mikrobrytare för sensorenhet – beställda 2026-11-09
 
 **Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **beräknad leverans lördag 2026-11-14**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Ännu ej mottagna och faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.
 
-**Ändamål:** två brytare indikerar BLTouch-servoarmens infällda respektive utfällda läge. Befintliga **Omron SS-3GL13PT behålls som reservdelar till LowRidern**; de ska inte förbrukas på sensorenheten.
+**Aktuell användning:** reservdelar. Armbrytare och deras hållare utgick genom [D020](DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). De ska inte inväntas eller monteras för sidotornet. Omron-reserven behålls till grundmaskinen. Tidigare brytarstudie finns i [arkivet](docs/arkiv/2026-11-09-status-och-sensorunderlag.md).
 
-**CAD-styrande osäkerhet:** KW11-3Z-varianter säljs med olika uppgivet hålavstånd (**8,5–9,5 mm**) och spakmått. Endast den beställda modellens artikeltext/bild är bekräftad; dimensionera en **utbytbar fästkassett med justerbar hålbild**, verifiera fysisk måttbild, COM/NO/NC och aktiverings-/återgångsväg vid mottagning. Rullspaken ska aldrig utgöra hårdstopp. **IP-klass, kontaktkvalitet och Prime-leveransdatum ska inte behandlas som testade egenskaper.**
+## Electrokit — mottaget 2026-11-10
 
-## Sensorbeställning 2026-11-08 — orderrader bekräftade 2026-11-09, ej mottaget
-
-**Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Denna källa bekräftar följande **beställda** produkter och antal, **inte leverans eller faktisk debitering**.
+**Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Orderbilden bekräftar följande produkter och antal. **Användaren bekräftade 2026-11-10 att kameran och allt i Electrokit-order har kommit.** Det bekräftar mottagning, men inte funktion, passning eller faktisk kortdebitering.
 
 | Produkt | Electrokit art.nr | Antal | Orderrad exkl. moms | Inkl. moms |
 | --- | --- | ---: | ---: | ---: |
@@ -28,9 +26,13 @@
 
 **Delsumma synliga varor:** 849,60 kr exkl. moms. **Frakt:** 39,20 kr exkl. moms; **moms:** 222,20 kr. Dessa belopp motsvarar **1 111,00 kr inkl. moms** för just dessa synliga orderrader. Orderns sista summa är delvis skymd i skärmbilden; bokför därför ännu inte detta som **faktiskt debiterat** i `COSTS.md`.
 
-**Kamerasatsens tre rader:** 493,60 kr **exkl. moms** / **617,00 kr inkl. moms**, utan att allokera gemensam frakt. **Modellvalet är nu definitivt verifierat: Camera Module 3 Standard**, inte Wide; Zero 2 WH och 200 mm CSI-kabel är också verifierat beställda. Bekräfta fysisk kontakt-/pin-kompatibilitet och kabelräckvidd vid provmontering; artikeltexten i skärmbilden ensam säger inget om mekanisk frigång.
+**Kamerasatsens tre rader:** 493,60 kr **exkl. moms** / **617,00 kr inkl. moms**, utan att allokera gemensam frakt. **Modellvalet är nu definitivt verifierat: Camera Module 3 Standard**, inte Wide; Zero 2 WH och 200 mm CSI-kabel ingår också i den mottagna ordern. Bekräfta fysisk kontakt-/pin-kompatibilitet och kabelräckvidd vid provmontering; artikeltexten i skärmbilden ensam säger inget om mekanisk frigång.
 
-**Övriga sensorer:** tidigare användaruppgift anger även beställda/köpta mikrofoner (INMP441) och BLTouch, men **de syns inte i denna orderbild**. Deras exakt antal, modell, leverantör och leveransstatus är fortfarande obekräftade. Ingen del är ännu rapporterad mottagen, monterad, elektriskt kontrollerad eller kalibrerad.
+## Övriga sensorleveranser
+
+- **BLTouch:** användaren uppgav 2026-11-10 att proben finns hos grannen och nog kan hämtas i dag. Hämtning till verkstaden, exakt revision och passning är ännu inte bekräftade. Den ingår inte i den visade Electrokit-orderbilden.
+- **INMP441:** tidigare uppgift om beställning finns, men exakt antal, modell och leverans är fortsatt obekräftade. Den ska inte markeras mottagen genom Electrokit-leveransen.
+- **Spektrum S664 / SPMS664:** befintligt servo, använt i dagens bänkprov. Resultat ägs av [mätloggen](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk).
 
 **Ansvar:** fysisk monterings-/kollisionskontroll, spänningsnivåer, kraftmatning, probens verkliga signaler och maskinkonfiguration hör hit. [CNC:s kamerakod](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md) är endast offline-prototyp; ingen optisk maskinkalibrering har verifierats på riktig hårdvara.
 

@@ -1,66 +1,7 @@
-# Jackpot3 I/O – kartläggning inför sensorarm och BLTouch
+# Jackpot3 I/O — hänvisning
 
-**2026-11-08. Underlag, inte inkopplingsorder.** Inga nya GPIO har konfigurerats. Informationen om vad maskinen **redan använder** kommer från [aktuell `machine/AKTIV`](../../AKTIV) → [`config-2026-11-05-z800.yaml`](../../config-2026-11-05-z800.yaml). Kortets generella egenskaper kommer från [V1E Jackpot3-dokumentationen](https://docs.v1e.com/electronics/jackpot3/). Skillnaden mellan *pinne upptagen i YAML*, *på PCB tillgänglig* och *lämplig för en funktion* får inte suddas ut.
+**Konsoliderad 2026-11-10.** Valda sensorpinnar ägs av [D021 i DECISIONS.md](../../../DECISIONS.md#d021--pinnar-på-jackpot3-för-sensorenhetens-arm-och-bltouch). Kopplingen och skillnaden mellan valt, konfigurerat och fysiskt verifierat beskrivs i [sensorenhetens kopplingsunderlag](../sensorer/KOPPLING_CORE_V0.md).
 
-## Det som redan är reserverat
+Repots avsedda maskinkonfiguration pekas ut av [machine/AKTIV](../../AKTIV). Den är en sparad filversion; vid en faktisk ändring ska nu laddad konfiguration först läsas från kortet. Befintliga Y-/Z-ändlägen för separat uppriktning av motorerna ska inte återanvändas för sensorer.
 
-| Gränssnitt i aktiv FluidNC-konfiguration | GPIO | Användning |
-| --- | --- | --- |
-| X limit | `gpio.25` | X-ändläge |
-| Y motor0 / motor1 limits | `gpio.33` / `gpio.35` | Y-autosquare |
-| Z motor0 / motor1 limits | `gpio.32` / `gpio.34` | Z-autosquare |
-| `probe.pin` | `gpio.36:low` | Konfigurerad probe-ingång; touchplattan (spaden) övergavs enligt beslut 0007, faktiskt ansluten givare ej verifierad |
-| `probe.toolsetter_pin` | `NO_PIN` | Ännu inte konfigurerad |
-| `user_inputs.digital0..7` | `NO_PIN` | Ingen extra användaringång konfigurerad |
-| `user_outputs.digital0..3` | `gpio.26 / 27 / 0 / 2` | Reserverade i YAML, faktisk användning inte genomgången |
-| `user_outputs.analog0..3` | `NO_PIN` | Ingen PWM-utgång är konfigurerad |
-| `uart1` | `gpio.16` / `gpio.4` | Befintlig TMC-UART |
-| `i2so`, SPI, SD | Flera andra | Ändra inte utan analys av maskindrift |
-
-V1E dokumenterar **sju dedikerade skyddade ingångar** på Jackpot3. Med fem befintliga maskinändlägen + en probe-ingång är i praktiken **sex upptagna**. `gpio.39` är dokumenterad som input-only och verkar inte användas i denna YAML, men dess åtkomlighet på **just din installation** och anslutningstyp är inte verifierad.
-
-### Det nya sensorbygget behöver
-
-- Två separata digitala läsningar: **arm infälld** respektive **arm utfälld** (Omron `SS-3GL13PT` × 2).
-- En digital triggersignal från **BLTouch**.
-- En *annan* probe-/toolsetter-ingång om den planerade fasta verktygslängdsknappen ska kunna finnas samtidigt.
-- En styrbar servo-PWM till **Spektrum SPMS664** och en **separat** styrsignal till BLTouch-stiftet.
-- Rätt matningsspänning, jordning, kabelskydd och mekaniska säkra ändstopp.
-
-**Därmed räcker inte ”en återstående vanlig sensorport” för två armkontakter + separat toolsetter.** Vi måste pröva expansion/modulport eller RJ11 (och hur FluidNC stöder avläsningen), inte plocka en befintlig Y/Z-limit och förstöra autosquare.
-
-## Möjliga anslutningsvägar (inte låsta)
-
-1. V1E anger att **`gpio.12` och `gpio.15` är delade mellan RJ11 och modulporten**. Modulporten har även `gpio.13` och `gpio.14` enligt dokumentationen. De är bara **potentiella resurser** tills mekanik, elektrisk nivå, skydd, uppstartsfunktion och firmwarefunktion kontrollerats.
-2. Kortet har fyra väljbara **5 V/24 V-utgångar**; full PWM anges i 5 V-läge och enklare PWM i 24 V-läge. Detta är **inte** bevis att samtliga kan styra både BLTouch och SPMS664 med lämpliga pulser och ström. **`gpio.26` kan pulsera vid uppstart** enligt V1E; märk som olämplig kandidat för ett rörligt servo eller probe-stift tills uppstartsrisken är eliminerad.
-3. `gpio.0` och `gpio.2` finns i befintlig utgångskonfiguration. Ändra dem inte förrän uppstart, elektriska anslutningar och aktuella användningar har utretts.
-4. V1E anger att de dedikerade switch-ingångarna är aktiva lågt med **10 kΩ pull-up**. Den planerade COM–NO-logiken kan därför provas som en logisk kandidat, men slutligt val kräver fysisk kabel-/kortkontroll och en fungerande felmodell för öppna/fastnade kontakter.
-5. Konfigurerad `probe.pin = gpio.36:low` har historiskt framdraget kablage, men ingen verifierad monterad touchplatta; den kan inte godtyckligt användas som två separata samtidiga probsignaler. Vi måste verifiera stöd för en dedikerad `toolsetter_pin` i **installerad FluidNC 3.9.9** före inkoppling.
-
-## FluidNC-funktioner som måste styra konstruktionen
-
-**Läsbart men inte safety-I/O:** [FluidNC user_inputs](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/user_inputs.md) stöder `digital0..7` och att läsa dem med G-kod **`M66 P<n>`**. Detta är en möjlig avläsningsväg för båda ändlägeskontakterna, **inte** automatiskt realtidsövervakade spärrar eller säkerhetsklassad interlock. Exakt anslutning, M66-läsning i användarens FluidNC 3.9.9, latens och felbeteende måste verifieras utan rörelse.
-
-**Viktig skillnad för två prober:** [FluidNC probe-dokumentation](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/probe.md) anger att `probe.pin` och `probe.toolsetter_pin` behandlas av **samma G38-logik**. Man kan **inte** selektivt adressera bara den ena med G38. Båda visas separat i status för felsökning, men aktivering av endera kan avsluta en probning. Därför krävs **mekaniskt/elektriskt entydiga vilolägen och programkontroll** innan både BLTouch och verktygslängdsknapp får vara inkopplade. Välj inte mux, extra elektronik eller maskinsekvens innan användaren har godkänt behov och metod.
-
-**Servots uppstartsfara:** [FluidNC rc_servo](https://github.com/bdring/fluidnc-wiki-content/blob/main/config/rc_servo.md) dokumenterar att RC-servoaxeln kan röra sig mot maskinposition noll vid aktivering och att beräknad axelposition inte bevisar att servot nått sitt fysiska läge. De två valda Omron-brytarna är därför viktiga oavsett framtida servokonfiguration. Ingen `rc_servo`-axel får läggas till och aktiveras på maskinen före kollisions-, uppstarts- och strömbortfallsprov.
-
-## Beslut om probvilolägen (2026-11-08)
-
-**Användaren valde mekaniskt åtskilda vilolägen (alternativ 1), utan elektrisk omkopplare/mux i grundutförandet.** Detta är *inte* en lösning på I/O-portbristen för två armändlägen eller två separata probsignaler.
-
-- BLTouch-mätning: arm utfälld med båda ändlägenas sekvenskontroll, stift i mätläge, fasta verktygsknappen opåverkad.
-- Verktygslängdsmätning: arm infälld och stift indraget, fasta knappen aktiveras bara vid beröring av fräs.
-- Båda probsignaler ska vara inaktiva före G38. [Mjukvarans virtuella förkontroll](https://github.com/kingkongola/cnc/blob/main/src/cnc/probval.py) är **inte** bevis för att den inaktiva signalen förblir inaktiv medan maskinen rör sig.
-- Om BLTouch-larm, kabelstörning eller den fasta knappen kan utlösa oavsiktlig G38-kontakt i ett verkligt prov måste konstruktionen stoppas och **elektrisk separering omprövas**. Inga nya GPIO och ingen koppling har godkänts.
-
-## Princip att låsa när vi har full pinout
-
-- **Inget nytt kort som reflex:** undersök först dokumenterade expansions-/modulporten på redan köpt Jackpot3.
-- **Inga antagna pinnar:** märk varje kandidat med fysiskt kortstift, elektrisk kompatibilitet, bootbeteende och verifierat FluidNC-stöd.
-- **Poka-yoke:** ett saknat, motsägande eller ofärskt ändläge tillåter inte probning; styrsignaler till servo/BLTouch får aldrig skickas av ljud-/kameraanalys.
-- **En ändring i taget:** behåll den senast bekräftade maskinkonfigurationen orörd. Ny konfigurationsfil får först vara ett separat granskningsförslag och kräver godkännande för varje riktig rörelse.
-
-**Status:** logisk resurssammanställning gjord; **ingen** fysisk pinout verifierad och **ingen** spänningssatt mätning eller kabeldragning gjord. Fortsätt med ren mjukvarusimulering och besluta om fysisk IO-topologi innan CAD-fästet tillverkas.
-
-Se [projektjournalen](https://github.com/kingkongola/cnc/blob/main/docs/PROJEKTJOURNAL_SENSORER.md) för motiv och beslut, och [fysisk provgrind](INKOPPLING_OCH_PROV.md) för nästa konkreta steg utan att ändra aktiv firmware.
+Den gamla portbristutredningen avsåg två armbrytare som utgått enligt D020. Den finns i [arkivet](../../../docs/arkiv/2026-11-09-status-och-sensorunderlag.md) och är ingen aktuell uppgift att lösa.
