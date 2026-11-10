@@ -1,0 +1,44 @@
+name: Trevinklad LED-strutklamma (build123d)
+
+on:
+  push:
+    paths:
+      - 'machine/delar/led/tre_vinklar.py'
+      - '.github/workflows/led-tre-vinklar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installera build123d och kontrollverktyg
+        run: python -m pip install 'build123d==0.10.0' 'trimesh>=4'
+      - name: Exportera STEP och STL
+        run: python machine/delar/led/tre_vinklar.py --ut export/led
+      - name: Kontrollera mesh och enda sammanhängande kropp
+        run: |
+          python - <<'PY'
+          import trimesh
+          from pathlib import Path
+          path=Path('export/led/led_3vinklar.stl')
+          mesh=trimesh.load(path,force='mesh')
+          assert mesh.is_watertight, 'STL is not watertight'
+          assert len(mesh.split())==1, 'More than one connected component'
+          assert mesh.volume>0
+          assert Path('export/led/led_3vinklar.step').stat().st_size>100
+          print('STL',len(mesh.faces),'triangles,',round(mesh.volume/1000,1),'cm3')
+          PY
+      - name: CAD-filer for provprint (ej termiskt/mekaniskt verifierade)
+        uses: actions/upload-artifact@v4
+        with:
+          name: led-trevinklar-provprint
+          path: export/led/
+          retention-days: 30
