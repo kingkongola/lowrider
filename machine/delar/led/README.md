@@ -13,6 +13,8 @@
 [`tre_vinklar.py`](tre_vinklar.py) i **build123d** skapar ett provfäste som sitter **under den horisontella bottenplattan** med två befintliga M5-hål på samma brace-station.
 
 - **Tre långa hyllor** för **8 mm COB**: en rakt ned (0°) och två framåt (25° och 50° initialt).
+- **Formgivning uppdaterad 2026-11-10:** parametriska **hörnradier** på monteringsbas (1,8 mm), LED-hyllors ändar (1,5 mm), stödribbor och pelare (0,8 mm), samt **0,35 mm fasning på de långa hyllkanterna**. LED:s självhäftande anliggningsyta förblir plan. Alla värden är startparametrar i `Param` och kan ändras. Dessa ändringar är i källkoden, **inte ännu godkänd build123d-CI/fysisk 3D-print**; tidigare nedladdade STL/STEP innehåller inte säkert de nya radierna.
+- **Ingen påhittad kabelgenomföring i CAD:** borrläge och eventuell clipskanal bestäms först vid torrmontering så att skruvförband, Brace och rör förblir fria.
 - Hyllorna är 10 mm breda och 154 mm långa med smal ryggförstyvning på den icke lysande sidan.
 - Gemensam tvärgående adapter 78 mm längs Y, 18 mm längs X och 3 mm tjock, med **två genomgående Ø5,4 mm** M5-hål (56 mm c-c).
 - Alla mått (LED-bredd, vinklar, framriktning, M5-avstånd och längd) är parametrar; `--fram-sida -1` vänder strålriktningen. Vid annan vald monteringsstation måste geometrin speglas i rätt Y-riktning.
@@ -27,7 +29,16 @@ python machine/delar/led/tre_vinklar.py --ut export/led
 python machine/delar/led/tre_vinklar.py --vinklar 0 20 45 --led-bredd 8.2 --m5-pitch 56
 ```
 
-GitHub Actions: [led-tre-vinklar.yml](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml). Exporterar STL/STEP och kontrollerar vattentät mesh/antal solider; **CI-status och fysisk verklig passning är inte verifierade här**. En lokal motsvarande **CadQuery**-modell är exporterad och kontrollerad som en sluten solid, men den ersätter inte verifiering av build123d-exporten.
+GitHub Actions: [led-tre-vinklar.yml](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml). Exporterar STL/STEP och kontrollerar vattentät mesh/antal solider; **CI-status för den ändrade build123d-modellen och fysisk verklig passning är inte verifierade här**. Den motsvarande lokala **CadQuery**-kontrollen med samma radier och fasningar gav en enda giltig solid, men är **inte** ett bevis på att den aktuella build123d-källan exporterar korrekt.
+
+## Kabeldragning — monteringsplan, ännu ej borrad
+
+1. Tre LED-remsor får **varsin lödd +24 V- och GND-ledning** och ansluts **parallellt** i en skyddad förgrening med gemensam säkrad 24 V-matning; aldrig i serie. Tre ungefär 0,8 m remsor ger uppgivet cirka **24 W / 1 A totalt**.
+2. Löd- och kappositioner väljs efter verklig Brimeti-remsspecifikation, lägg krympslang/isolering och **mekanisk dragavlastning** på varje remsa, så att flexkortets kopparpads inte bär kabelns rörelser.
+3. Försök först ta ledningarna **runt befintlig öppning eller plattkant**. Om det inte blir skyddat och prydligt: planera **en gemensam kabelgenomföring** genom den horisontella understrutplattan, inte ett hål per remsa. **Hålcentrum och diameter är medvetet inte låsta** (4–5 mm är en tänkbar storleksordning, beroende på verklig kabel och genomföringsskydd).
+4. Markera föreslaget hål på den faktiskt monterade plattan, **kontrollera båda sidor** så att det inte skär M5/Brace-låsning, rör, fästöron eller bärande smala bryggor. Ingen borrning innan sådan kontroll och kallt XYZ-svep. Avgrada och använd genomföringsskydd, samt dragavlasta vid plattan.
+5. Låt kabeln följa redan planerad balk-/rörelsekabelväg med korrekt böjradie och säkring. **Håll lågspännings-LED åtskilt från 230 V**. Fastställ längd först efter komplett rörelseprov. Se [CABLE_ROUTING.md](../../../CABLE_ROUTING.md).
+6. **CAD efter verklig torrpassning:** lägg in kabelöppning/notch och separat clips/dragavlastning som parametrar *om det behövs*. Ingen borrposition är någonsin härledd ur enbart SVG.
 
 ## Spärrar före riktig montering
 
