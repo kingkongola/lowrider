@@ -99,14 +99,13 @@ Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtri
 
 **Status:** konceptbeslut, inte CAD-modellerad, utskriven eller verifierad detalj.
 
-## Belysning – minsta möjliga lösning (bedömt 2026-11-09, inte inköp)
+## Belysning – aktuellt val 2026-11-10 (D022)
 
-**Kameran är en IMX708 (Raspberry Pi Camera Module 3 Standard) på Core, nominellt rakt ned.** Den har liten sensor och gynnas av stabilt ljus. **Belysning är ett mätförhållande, men inte automatiskt ytterligare en produktfunktion.**
+**D022 ersätter den äldre 2026-11-09-planen** om att vänta med LED-inköp. Tidigare diskuterade **G4-lampor ska inte användas** för LowRiderns huvudbelysning. Den valda lösningen är **BRIMETI COB 24 V, 4000 K, 8 mm, 320 LED/m**, 5 m för angivna 145 kr via Prime, säljaruppgift 10 W/m och 100 lm/W. Uppgifterna är inte oberoende mätta.
 
-1. **Testa först befintlig arbetsbelysning och flyttbar lampa**, utan extra elektronik eller permanenta fästen. Fotografera plywood/äldre urfräsningar, synliga skruvbrickor och blankare beslag vid flera Core-positioner; kontrollera verkliga skuggor från bom, dammsko och fixturer.
-2. Om testet visar att fast garagebelysning ger positionsberoende skuggor: **liten vit diffuserad LED vid kameran på Core**, gärna två små symmetriska ljuskällor runt dess siktfält i stället för en hård sidostråle. Ger ljus som följer kameran utan att en bom skymmer ett avlägset armfäste. Minimerad vikt/servicebehov är krav; inga faktiska dimensioner, ljusstyrkor, spänning, kabeldragning eller delar beslutade.
-3. Undvik starka reflexer, skuggor och potentiellt LED-flicker; verifiera jämförbarhet med låst fokus och efter behov låst exponering/gain/vitbalans. Enbart samma lampplacering betyder **inte** färg- eller måttkonstans.
-4. **Inga inköp, extra LED-drivrutiner eller CAD-fästen före fysisk bildjämförelse.** Kontrollera från start att fästet har tillräcklig optisk fri sikt och att det går att eftermontera litet ljus utan att krocka med servoarm, BLTouch, dammsko eller kablar.
+**Montering:** en lång remsa nedåt och två framåt under den **horisontella understruten** längs X; tre valbara provvinklar 0°/25°/50°. Varken riktningen i färdig maskin, ljusfördelning eller kylning är provad. Ingen aluminiumprofil är beslutad för första prototypen. [LED-CAD/monteringsstatus](delar/led/README.md), [parametrisk build123d-kod](delar/led/tre_vinklar.py), [samlat el-/LED-kontrakt](EL_BELYSNING_OCH_STOPP.md).
+
+**Kamerans kontroll:** imager IMX708 på Core pekar rakt ned. Fotografera plywood, skruvbrickor och blanka beslag över verklig XY/Z-täckning; jämför skuggor, reflexer, exponering och bildnoggrannhet. En liten separat LED vid kameran är **en möjlig senare optisk komplettering** om prov visar behov, inte huvudlösning eller beslutat köp. Inga tidigare G4-fästen eller 90°-vända understrutsklips får användas.
 
 **Konflikter i bilderna:** prova ett **nytt foto från annan Core-position** före separat riktad BLTouch-mätning. BLTouch behöver ett faktiskt oklart höjd/djupvärde och säker rörelseprövning; det är inte en allmän problemlösare för skuggor eller färger. Se [kameraflödets avgränsning](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md).
 
