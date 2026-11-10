@@ -28,6 +28,10 @@
 - **Fysiska grindar före STL för drift:** mät faktisk COB-bredd och kapsteg, strutplattans geometri/tjocklek och skruvlägen; kontrollera rör, Core/kamera, servoarm, dammsko och full X/Y/Z-rörelse. Gör en liten provbit/klips och jämför skugga/reflexer i kamerabilder innan alla fästen printas.
 - **Forumreferenser:** [Doug Josephs raka klips](https://forum.v1e.com/t/design8studios-lowrider-4-cnc-upgrading-full-size-lr3-lr4/45723/64), [Jonathan Jones LR4-hållare](https://forum.v1e.com/t/new-lr4-build-in-catalunya/48215/131), [Jason Yeagers vinklade LED-kanal](https://forum.v1e.com/t/fluidnc-led-musings/46566/135).
 
+## CAD-uppdatering 2026-11-10 — tre LED-ytor utan aluminiumprofil
+
+Det finns nu en **parametrisk build123d-prototyp**: [`machine/delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py) med [fysiska grindar](delar/led/README.md) och [automatiserad STEP/STL-export](https://github.com/kingkongola/lowrider/actions/workflows/led-tre-vinklar.yml). Parametrar startar på **8 mm LED, 6 mm strut, 155 mm modullängd, pitch 160,2 mm, 0°/25°/50°**, 5 utskrifter för ca 795,8 mm balklängd. Två U-klämmor per modul använder nederkanten på original `strut_plate.svg` och M3-tryckskruv, utan nya hål och utan befintliga strutskruvar. **Ingen aluminiumprofil väljs i första provet.** En jämförbar Maxel COB (10 W/m) anges av sin tillverkare inte kräva extern kylning, vilket **inte** verifierar BRIMETI:s temperatur på PETG. Kontrollera en provmodul termiskt under maxljus, vidhäftning, faktisk tjocklek, krockar, optiska vinklar och full rörelse innan alla printas. Lokalt exporterad CadQuery-kontroll är sluten och sammanhängande, men build123d-CI och fysisk prototyp behöver bekräftas. De äldre fästenas inkompatibilitet kvarstår. **Detta är ett CAD-förslag, inte låst slutkonstruktion.**
+
 ## Kraftdomäner och stopp — principer, inte kopplingsorder
 
 1. **Maskin:** befintlig Mean Well 24 V/60 W matar Jackpot3/stegmotorer; KATSU är separat 230 V-last. Fysiskt nåbar maskinstopp-/NVR-kedja med manuell återställning enligt D013 ska finnas och verifieras oberoende av Wi-Fi/Pi/smartrelä.
@@ -40,7 +44,7 @@
 ## Närmast återstående arbete
 
 - Kontrollera faktisk Brimeti-profilbredd och den verkliga X-strutens underkant och skruvar.
-- Gör 3D-montageutkast med **riktning ned/fram/fram**, provvinklar justerbara; en provklips först, sedan belysnings-/kameratest.
+- **CAD-utkast finns** i [`delar/led/tre_vinklar.py`](delar/led/tre_vinklar.py). Kontrollera build123d-export i CI och provprinta **en** modul; därefter belysnings-/kameratest och mekaniskt full-svep.
 - Läs outputmärkning på befintlig 24 V-kandidat och 150 W-laddare; mät/bedöm effekt innan köp av boost/PSU.
 - Specificera separat övervakningsmatning, två stoppvägar, förväntat stoppbeteende, kabelskydd och återstartsspärr. Samordna med `cnc/docs/verktygsovervakning.md`; ändra inte aktiv FluidNC.
 
