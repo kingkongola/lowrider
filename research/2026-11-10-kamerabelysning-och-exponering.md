@@ -13,6 +13,7 @@ sources_checked:
   - iDEAL LED SCOB-24-3mm-3K-4W, tillverkarens produktsida
   - Raspberry Pi, officiell kameradokumentation
   - Amazon.se, AGOTD B0H6SFHLTJ, säljarens produktsida läst i webbläsaren
+  - Amazon.se, JUTHREE B09JB4WR5Q, säljarens produktsida läst i webbläsaren
   - Lokal sidotorn.py och cnc/src/cnc/pikamera.py
 supersedes: null
 ---
@@ -32,10 +33,13 @@ Aktuell konstruktion ägs av `machine/delar/sensorer/sidotorn.py`, belysningskra
 | [NauticLED G4-Pro10-WW-SP](https://www.nauticled.com/shop/nauticled-g4-pro10-ww-sp-482) | G4, reglerad ingång 10–35 V DC, 1,6 W, 170 lm, 2700 K, 120° spridning, Ø30 mm. | Klarar nominellt både 17 och 24 V. Sockel och lampkropp kräver större hållare; ingen passning mot vår modell verifierad. Sidans sammanfattning och tabell anger olika CRI-gränser, därför används inget precist CRI-värde här. |
 | [iDEAL LED SCOB-24-3mm-3K-4W](https://idealled.com.au/product/cob-high-performance-24v-3mm-4w-led-striplight/) | 24 V, 4 W/m, 340 lm/m, 3000 K, 3 × 1,6 mm, kapbar var 20 mm. | Även denna minsta bit är längre än nuvarande spår. Australisk leverantör, ingen svensk köpväg kontrollerad. Inte prioriterad för snabbt bygge. |
 | [AGOTD B0H6SFHLTJ, användarens Amazon-länk](https://www.amazon.se/dp/B0H6SFHLTJ) | Säljarens sida anger G4 LED, 3 W, 210 lm, 3000 K, **12 V AC/DC**, 360°, inte dimbar, 5-pack. | Inte specificerad för direkt 17/24 V. Kräver separat 12 V-matning. Texten nämner 10 × 37 mm som exempel; exakt måttritning och faktisk passning är inte verifierade. Ljusflöde och flimmerfrihet är säljaruppgifter, inte egna prov. |
+| [JUTHREE B09JB4WR5Q, användarens andra Amazon-länk](https://www.amazon.se/dp/B09JB4WR5Q) | Säljaren anger G4 LED, 6 W, 600 lm, 3000 K, **12 V AC/DC**, 360°, ej dimbar, Ø10 × 39 mm, 10-pack. | Inte en 24 V-lampa trots användarens sökfras. Separat 12 V-matning och ny hållare krävs. Lumen, förbrukning, temperatur och flimmer är inte egna provresultat. |
 
 **Observerade köpdata:** Electrokit visade 149 kr inkl. moms och lagerförd vara med angiven 1–3 vardagars leverans. [Velltra](https://www.velltra.se/product/led-strip-cob-10w-m-24vdc-1220lm-m-4000k-ip20-5m-malmbergs-9975354) visade 389 kr för 5 m Malmbergs-list och angav normalt 2–5 vardagar; sidan visar även bevakningsfunktion, så lagersaldo ska inte betraktas som verifierat. Frakt och leverans till användarens adress har inte kontrollerats.
 
 Amazon visade 107,64 kr för AGOTD:s 5-pack och lagerförd vara vid webbläsarkontrollen 2026-11-10. Leverans till användarens adress och slutlig kassa är inte kontrollerade. Ingen beställning är rapporterad.
+
+För JUTHREE:s 10-pack visade Amazon 319,78 kr och leverans 24–28 november i webbläsarens platsinställning. Detta är inte ett verifierat leveransbesked till användarens adress. Ingen beställning är rapporterad.
 
 ## Beräkningar och slutsatser, inte uppmätt resultat
 
@@ -44,6 +48,13 @@ Amazon visade 107,64 kr för AGOTD:s 5-pack och lagerförd vara vid webbläsarko
 - Högre matningsspänning betyder inte automatiskt mer ljus. En lampas specificerade spänningsområde måste följas. En vanlig 12 V G4 är inte automatiskt lämplig för 17 eller 24 V; G4 är sockeln, inte en spänningsklass.
 - De nuvarande CAD-spåren är preliminära. Ingen kandidat ovan är en verifierad direkt ersättning utan monteringskontroll.
 - För just AGOTD:s uppgivna 210 lm/3 W blir **två lampor 420 lm/6 W** och **fyra 840 lm/12 W**. En eventuell separat LM2596 för 12 V får inte ersätta de redan planerade 5,1 V- och 6 V-regulatorerna; ytterligare modul kräver egen placering och lastprov. Lampornas spridning gör att summan lumen inte är ett uppmätt ljusflöde mot kamerans arbetsyta.
+- För JUTHREE:s uppgivna 600 lm/6 W blir **två lampor 1200 lm/12 W** och **fyra 2400 lm/24 W**. Två lampor skulle dra nominellt 1 A från en 12 V-matning. Omkopplarens/regulatorns verkliga lastmarginal och lampornas temperatur behöver provas; inga uppmätta data finns ännu.
+
+## G4 som servicebar konstruktion
+
+Användaren föreslog G4 för att lamporna är lättutbytbara och finns från flera leverantörer. Detta är en rimlig konstruktionsfördel. Sockeln standardiserar stiftgränssnittet, inte lampkroppens yttermått, matningsspänning, ljusflöde eller ljusriktning.
+
+Rekommendationen är att vid ett G4-val använda riktiga socklar på separat demonterbar hållare med fria lampkroppar, åtkomst för byte och stöd mot maskinvibrationer. Omnidirektionella kapslar behöver ljusstyrning nedåt genom hållarens placering och vid behov reflektor; deras totala lumen är inte ljusflödet på materialet. Lampmått och värmeutrymme måste verifieras innan infästningen printas. Detta är förslag, inte en redan konstruerad eller vald ersättning till LED-spåren.
 
 ## Stillbilder och tidsåtgång
 
