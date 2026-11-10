@@ -218,3 +218,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - Användaren rapporterar navets A-/B-mått enligt det annoterade fotot; värden och definitioner finns endast i [mätloggen](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten).
 - Användaren förtydligar att det befintliga hornet ska passa i en formad ficka i den printade armen och påpekar hornets avsmalning. Detta är konstruktionsavsikten; fickan är ännu inte modellerad. Två breddmått, armens tjocklek, hållägen och monterad höjd återstår före slutlig CAD och provpassning.
+
+## 2026-11-10 — Hornets avsmalning och krav på klämning
+
+- Användaren rapporterar C och D enligt bilden med breddmått vid mittenhålet och yttersta hålet. C rättades direkt; aktuella värden och definitioner finns i [mätloggen](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten).
+- Användaren kräver att infästningen kläms fast så att några tiondelars mätfel inte lämnar glapp. Principen är ficka och skruvad bygel med sneda kontaktytor, fast anliggning och kvarvarande klämväg. Detta är ännu inte modellerat eller fysiskt verifierat; konstruktionskraven ägs av [CAD-underlaget](machine/delar/sensorer/README.md).

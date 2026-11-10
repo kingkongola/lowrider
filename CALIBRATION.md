@@ -94,5 +94,9 @@ Användaren rapporterar följande enligt det annoterade fotot av det tillgängli
 | --- | --- | --- |
 | A | Navets ytterdiameter, ytterkant till ytterkant över den runda kragen | Ø9 mm |
 | B | Total höjd vid navet, lägsta till högsta plastytan, utan centrumskruv | 6 mm |
+| C | Hela armens bredd tvärs längdriktningen vid mittenhålets centrum | 7,3 mm |
+| D | Hela armens bredd tvärs längdriktningen vid yttersta hålets centrum | 6,8 mm |
 
-Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. Hornet smalnar av enligt användaren och fotot; bredd vid två definierade ställen, den flata armens tjocklek och hålens lägen återstår. Navets sittläge på servoaxeln och det färdiga montaget är inte verifierade genom dessa två mått. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
+Användaren rättade C från 7,5 till **7,3 mm i samma svar**; det senare värdet gäller. Båda breddmåtten avser plastens ytterkanter, inte håldiametrarna. Den rapporterade breddskillnaden är 0,5 mm mellan mätpunkterna; avståndet mellan dem är ännu inte angivet, så avsmalningsvinkeln kan inte bestämmas.
+
+Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. Den flata armens tjocklek och hålens lägen återstår. Navets sittläge på servoaxeln och det färdiga montaget är inte verifierade genom dessa mått. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
