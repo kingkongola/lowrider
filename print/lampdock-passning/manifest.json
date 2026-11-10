@@ -1,0 +1,31 @@
+{
+  "typ": "lampdock",
+  "build123d": "0.13.0",
+  "kallor_sha256": {
+    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
+    "passningsprov.py": "5fb9178ed7bf8cad68b9cc1a6454ad3c72b4b97412d725f4ee933cad74863a37",
+    "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
+    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
+    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae"
+  },
+  "delar": {
+    "lampdock-passning.stl": {
+      "sha256": "e311fc633c516ce8a65316f02b29be9fec7b4dd53b83d514dfdc8a568d1e8abe",
+      "mm": [
+        27.7,
+        12.0,
+        11.0
+      ],
+      "volym_mm3": 3087.465
+    },
+    "lampfot-passning.stl": {
+      "sha256": "adec515448144e7b20debf31f37fe221c37c81ce29a11069791eba83b5092a56",
+      "mm": [
+        27.0,
+        10.0,
+        2.0
+      ],
+      "volym_mm3": 444.879
+    }
+  }
+}

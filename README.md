@@ -8,6 +8,7 @@
 - **Sensorenhetens senaste konstruktionsspår är sidotornet** i [sidotorn.py](machine/delar/sensorer/sidotorn.py). Ett [litet kamerafickeprov](print/README.md) är printkontrollerat och skivat. Sidotornet är ännu inte rapporterat provprintat eller monterat. Tidigare modulbygge och dess gröna tester är historik, inte godkännande av sidotornet.
 - **Electrokit-order är mottagen. CR Touch Auto Leveling Kit är tillgängligt.** Probfästets CAD och kopplingsplan är nu anpassade till CR Touch och en [separat provplatta](print/crtouch-passning.json) är framtagen. Fysisk passning och inkoppling återstår. Full leveransstatus ägs av [PROCUREMENT.md](PROCUREMENT.md).
 - **Servots rörelseomfång är verifierat och räcker till konstruktionen.** Provresultatet ägs av [CALIBRATION.md](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk).
+- **Lampornas eftermontering har nu en egen skruvdocka i CAD.** Separat G4-bärare är ett utkast; ett [litet kallt dockprov](print/lampdock-passning.json) är berett. Hornmått, valda socklar/lampor och fysisk provning återstår före slutdelarna.
 - **Pinnar för Jackpot3 är valda i D021 men sensoranslutningen är inte driftsatt.** Dagens prov använde en fristående ESP32-S3. Repots avsedda maskinkonfiguration pekas ut av [machine/AKTIV](machine/AKTIV); den är inte liveavläst i denna dokumentgranskning.
 
 ## En källa per uppgift

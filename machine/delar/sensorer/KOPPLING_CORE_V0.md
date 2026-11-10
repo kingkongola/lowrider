@@ -48,7 +48,9 @@ LED-produkt och matningsspänning är ännu inte valda. Förslaget är tvåledar
 
 Den planerade kabelstammen innehåller redan 24 V till tornet; lokal belysning behöver därför inte automatiskt en extra matningskabel längs maskinen. Delning med Pi/prob-regulatorn är möjlig först när LED:s tillåtna spänning och regulatorns lastmarginal är verifierade. Koppla inte lampor direkt till Pi:s signalpinnar eller till servots 6 V-gren. Ingen extra styrelektronik behövs för första prov med kontinuerligt ljus.
 
-Eftermonteringens mekaniska krav finns i [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--förslag-diskuterat-2026-11-10-ej-färdig-konstruktion). Förslaget är ännu inte en färdig inkopplingsorder.
+De undersökta G4-lamporna är 12 V-produkter. De kräver separat lämplig matning, exempelvis en ytterligare regulator från 24 V; någon sådan placering och lastmarginal är ännu inte verifierad. Tornets två regulatorfickor är redan avsedda för Pi/CR Touch och servo.
+
+Eftermonteringens mekaniska krav finns i [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul). Lampdockan finns nu i CAD, men matningen är ännu inte en färdig inkopplingsorder.
 
 ## Skillnad mellan bänkprov och maskininstallation
 

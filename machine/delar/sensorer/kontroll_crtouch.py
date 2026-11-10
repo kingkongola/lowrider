@@ -32,7 +32,8 @@ def main():
                 cad.FLANS_Z - (46 + 29) / 2) * Cylinder(1.6, 46 - 29)
     delar = {"torn": torn, "arm": arm, "hylsa": hylsa, "prob": prob, "kontaktkuvert": kontakt,
              "stiftkuvert": stift}
-    kallor = [Path(cad.__file__), Path(cad.cr.__file__), cad.cr.REFERENS, Path(__file__)]
+    kallor = [Path(cad.__file__), Path(cad.cr.__file__), cad.cr.REFERENS, Path(__file__),
+              Path(cad.lampor.__file__)]
     rapport = {"build123d": build123d.__version__, "kallor_sha256": {
         p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
         "komponenter": {}, "granssnitt": {}, "svep": {}, "fel": [], "oppna_referensfragor": []}

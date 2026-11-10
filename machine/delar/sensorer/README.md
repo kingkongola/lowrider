@@ -10,7 +10,7 @@
 - Sidotorn med integrerad servoram, kameraficka, Pi-utrymme, två regulatorfickor, kabelvägar och avtagbar sidopanel.
 - Separat CR Touch-anpassad probarm och skyddshylsa. Hårda stopp och magnetparkering enligt [D020](../../../DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). Inga armbrytare eller KW11-hållare.
 - Camera Module 3 Standard riktad rakt ned. Bilder får innehålla servo/dammsko som maskas bort; överlappande bilder ska täcka materialet enligt det överenskomna kameraflödet.
-- Två förberedande LED-urtag som är öppna från undersidan, med ritade ledningsvägar till elektronik-/CSI-rummet. Ingen faktisk LED-produkt, lödanslutning, hållare eller diffusor är passningsverifierad. Eftermonteringens åtkomst ska kontrolleras före tornets print; utbytbar belysning beskrivs i [kameraunderlaget](../../KAMERA_ANHALL.md#belysning--minsta-möjliga-lösning-bedömt-2026-11-09-inte-inköp).
+- Fast lampdocka med två blinda M3-pilothål och asymmetrisk styrtapp. Separat skruvad G4-bärare är ritad som utkast i [lampor.py](lampor.py); lampor och socklar är utrymmeskuvert tills produkter valts och mätts. De gamla små LED-spåren finns kvar som preliminära kabelvägar, inte G4-fästen. Användningskraven ägs av [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul).
 - Pi Zero 2 WH tar bilder; värddatorn gör den tyngre analysen. ADXL345 sitter på massiv bärare kopplad till övre maskininfästningen för vibrationsmätning. INMP441 har ännu ingen färdig integrerad placering i sidotornet.
 - Två LM2596 planerade: en för Pi/CR Touch, en för servot. Matning och valda Jackpot-pinnar beskrivs i [kopplingsunderlaget](KOPPLING_CORE_V0.md); komponenttillgång ägs av [BOM.md](../../../BOM.md).
 
@@ -27,6 +27,7 @@ Detta är modellens delindelning, inte en färdig skivad printorder.
 | `arm.stl` | 1 | Rörlig CR Touch-arm; servohornsinfästningen återstår före slutprint |
 | `kapa.stl` | 1 | Ny CR Touch-hylsa; fysisk provpassning återstår |
 | `bricka.stl` | 2 | Distanser vid ADXL345 |
+| `lampbarare-utkast.stl` | 1, senare | Preliminär bärare; sockeladapter, verkliga lampmått och värmeprov återstår |
 
 `crtouch.stl`, `kabel.stl`, kontaktkuvert, servo- och elektronikobjekt i sammanställningen är **referenser**, inte printdelar. Gamla `bltouch.stl` hör till det ersatta underlaget. STEP-sammanställningen visar både utfällt och parkerat läge för samma arm; det betyder inte två armar. Referensmodellens licens/attribution finns i [referenskatalogen](referenser/README.md).
 
@@ -36,11 +37,22 @@ Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste oriente
 
 **CR Touch har en egen provplatta:** [crtouch-passning.json](../../../print/crtouch-passning.json), med liten armfot och hela skyddshylsan. Den kan verifiera sensorns montage utan att hela armen eller tornet printas. Hylsan vänds med flänsytan mot bädden; efter prov i PLA bereds eventuell slutdel i avsett material på nytt.
 
+**Lampdockan har en liten kall provplatta:** [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
+
+Användarens servohornsbild visar ett enarmat horn med tre hål och en centrumskruv. Planen är skruvad anslutning till ett horn som passar servoaxeln, utan printad tandning. Navets mått, armens bredd/tjocklek och hålens avstånd från axeln saknas fortfarande. De tre lösa ringdelarnas funktion kan inte avgöras säkert från bilden. Därför är servohornsinfästningen fortfarande öppen.
+
+## Lampmodulens service och begränsning
+
+Kameran sitter kvar när lampmodulen lossas. I CAD prövas demontering med proben i mätläge: ta bort två skruvar, frigör styrtappen genom 1,2 mm rörelse framåt, sänk modulen 8 mm och för den åt sidan. Stäng av matningen efter att armen ställts i mätläge och före demontering. Detta är en geometrisk servicestudie; verkliga ledningar/kontakter och handgrepp återstår att prova. Sidopanelen kan kräva att lampmodulen tas bort först.
+
+Den preliminära G4-bäraren breddar enheten längs balken till **101 mm** enligt CAD. Den ingår alltså inte i tornkroppens tidigare Y-gräns. Slitsarna är till för **utbytbara sockeladaptrar**, inte ett löfte om att en okänd G4-sockel passar direkt. Keramiksockel och eventuell metalladapter väljs efter verkliga delar. Plastens värmetålighet, kabeldragning, nedåtriktat ljus och reflexer kräver prov med vald lampa. Ingen varm lampa ska provas i PLA-passningsdelarna.
+
 ## Vad de digitala kontrollerna visar
 
 - De återfunna STL-filerna från kl. 09:08 är ersatta som aktuellt probunderlag. Nu exporteras färsk CR Touch-anpassad geometri med giltighetskontroll och `manifest.json` som knyter källor och exportfiler till varandra. Kör `sidotorn.py --ut KATALOG` för komplett STEP/STL-underlag.
 - [kontroll_crtouch.py](kontroll_crtouch.py) kontrollerar verkliga CAD-intrång, skruvstapel och rörelse i 2° steg. Avståndsgränsen i rapporten kan även utesluta kollision mellan provlägen för prob, hylsa, stiftkuvert och kontaktkuvert mot CAD-tornet. Det gäller inte skanning eller en verklig flexibel kabel. Referensens egna skruvhuvudavvikelser redovisas separat som kvarstående fysisk kontroll.
 - [granska_sidotorn.py](granska_sidotorn.py) undersöker armens svep, stopp, komponentutrymmen, kabelutrymme och närhet till skannad maskin/geometrireferenser. Den skriver mätresultat och använder sampling; den är inte ett fullständigt automatiskt godkännande. Skanning och referensfiler finns inte i Git och måste tillföras för en reproducerbar ny körning.
+- [kontroll_lampor.py](kontroll_lampor.py) prövar lampbärarens gränssnitt, skruvar/mejselutrymme, styrtapp, en antagen 90° synfältskon och armens 150° rörelse mot bäraren/lampkuverten. [Rapporten](../../../print/lampdock-passning/kontroll-cad.json) skiljer exakt CAD-kontroll från demonteringens stickprov. Den godkänner inte fysisk optik, värme, valda socklar eller flexibel kabel.
 - Det befintliga GitHub-flödet `core-build123d.yml` bygger **core_enhet.py**, inte sidotornet. Dess gröna körningar får inte anges som godkännande för senaste modellen.
 - Ingen fysisk passning, skruvåtkomst, verklig kabelböj, magnetkraft eller monterad rörelse är verifierad enbart av dessa kontroller. Första provprinten används för att pröva just sådana passningar.
 

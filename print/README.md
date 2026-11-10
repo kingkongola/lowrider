@@ -5,7 +5,7 @@ Jobbet [sensor-passning.json](sensor-passning.json) innehåller **en liten kamer
 ## Underlag och beredning
 
 - [passningsprov.py](../machine/delar/sensorer/passningsprov.py) skär ut kamerafickan direkt ur [sidotorn.py](../machine/delar/sensorer/sidotorn.py), vänder den med öppningen uppåt och placerar den på bädden. Inga nya passningsmått läggs till.
-- [manifest.json](sensor-passning/manifest.json) knyter exporten till källorna med SHA-256, ett digitalt fingeravtryck av filinnehållet. Vid källändring ska provet exporteras och skivas om.
+- [manifest.json](sensor-passning/manifest.json) knyter exporten till källorna med SHA-256, ett digitalt fingeravtryck av filinnehållet. Vid källändring exporteras provet om; om STL-innehållet ändrats ska det skivas om.
 - PLA och standardprofil med 0,20 mm lager: billigt passningsprov utan krav på slutdelens värme- eller lasttålighet. Automatisk trädstöd används för utskurna kabelvägar och överhäng. Stöden bryts loss efter print.
 - Bambu P1S, 0,4 mm munstycke, texturerad PEI-platta. Jobbet förutsätter PLA i skrivaren; laddat material är inte verifierat här.
 - `bricka.stl` exporteras samtidigt men ingår inte i första plattan.
@@ -47,3 +47,22 @@ uv run --project ~/dev/printa printa skiva print/crtouch-passning.json
 5. Rapportera passning och mått till [CALIBRATION.md](../CALIBRATION.md) innan slutdelar bereds. Modellen har redan inritat kroppsspel och håltillägg enligt [kitunderlaget](../research/2026-11-10-crtouch-anpassning.md); skala inte hela plattan.
 
 [CAD-kontrollen](crtouch-passning/kontroll-cad.json) och [maskinreferensernas stickprov](crtouch-passning/kontroll-maskin.txt) redovisar digital kontroll och avgränsningar. Detta är ett **passningsprov**, inte godkänd elektrisk probing eller monterad servofunktion. Servohornets infästning, verkligt kablage, belysning och den slutliga tornutskriften återstår enligt checklistan.
+
+## Lampdocka — kallt skruv- och styrprov
+
+[lampdock-passning.json](lampdock-passning.json) innehåller en liten del av tornväggen och lampmodulens fot, i PLA med 0,20 mm lager och utan stöd. Ingen lampa eller sockel ingår. [Manifest](lampdock-passning/manifest.json) och [CAD-kontroll](lampdock-passning/kontroll-cad.json) hör till aktuell källgeometri. Provbitens bakre hålrum är fyllt för stödfria lager; framsida, styrtapp och blindhålsdjup behålls. Huvudtornets elektronikrum har inte fyllts.
+
+Plattan är printkontrollerad och skivad utan fel eller varningar: cirka **8 minuter, 2,6 g PLA**. Fysisk utskrift och passning är ännu inte rapporterade.
+
+```sh
+uv run --offline --no-project --python 3.12 --with build123d==0.13.0 python machine/delar/sensorer/passningsprov.py --typ lampdock --ut print/lampdock-passning
+uv run --project ~/dev/printa printa skiva print/lampdock-passning.json
+```
+
+Visa `lampdock-passning.printa/forhandsvisning.png` och öppna sedan `lampdock-passning.3mf` i Bambu Studio. Prova så här utan matning:
+
+1. Lägg foten mot dockans framsida. Tappen ska gå fritt i sitt hål. Upp och ned ska foten stoppas av tappen.
+2. Prova två M3×6 för hand. De blinda pilothålen är små hål där skruven formar gängor i plasten. Foten ska ligga an innan skruvarna når hålbottnen; tvinga inte om den kärvar.
+3. Lossa, ta bort och återmontera foten. Rapportera om hål/tapp behöver korrigeras i CAD. Modellens frigångshål har redan spel och håltillägg; skala inte hela delen.
+
+Detta är ett kallt passningsprov. Lampbäraren och sockeladaptrarna blir inte värme- eller monteringsgodkända av att dockan passar.

@@ -1,0 +1,2449 @@
+{
+  "build123d": "0.13.0",
+  "kallor_sha256": {
+    "kontroll_lampor.py": "9a1594d2a957e554d10ecfc973477a61a15d65fae4ac7e5d02f67bf3eaf0514d",
+    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
+    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
+    "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
+    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470"
+  },
+  "komponenter": {
+    "torn": {
+      "giltig": true,
+      "solider": 1,
+      "bbox_mm": [
+        -7.3,
+        17.0,
+        25.803,
+        107.5,
+        72.5,
+        171.0
+      ]
+    },
+    "panel": {
+      "giltig": true,
+      "solider": 1,
+      "bbox_mm": [
+        10.15,
+        56.45,
+        58.15,
+        81.53,
+        72.5,
+        168.85
+      ]
+    },
+    "barare": {
+      "giltig": true,
+      "solider": 1,
+      "bbox_mm": [
+        50.0,
+        -0.0,
+        124.0,
+        105.5,
+        101.0,
+        142.0
+      ]
+    }
+  },
+  "granssnitt": {
+    "barare/torn": {
+      "intrang_mm3": 0,
+      "avstand_mm": 0.0
+    },
+    "barare/panel": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 2.0
+    },
+    "barare/lampkuvert": {
+      "intrang_mm3": 0,
+      "avstand_mm": 0.0
+    },
+    "barare/lins": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 5.3106
+    },
+    "barare/kamerakort": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 4.22239
+    },
+    "barare/synfalt90": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 4.03051
+    },
+    "lampkuvert/torn": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 6.5
+    },
+    "lampkuvert/panel": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 6.5
+    },
+    "lampkuvert/lins": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 25.75
+    },
+    "lampkuvert/synfalt90": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 20.23886
+    },
+    "M3x6_54.5/barare": {
+      "intrang_mm3": 0,
+      "avstand_mm": 0.0
+    },
+    "mejsel_54.5/barare": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 0.3
+    },
+    "mejsel_54.5/torn": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 4.2
+    },
+    "M3x6_73.0/barare": {
+      "intrang_mm3": 0,
+      "avstand_mm": 0.0
+    },
+    "mejsel_73.0/barare": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 0.3
+    },
+    "mejsel_73.0/torn": {
+      "intrang_mm3": 0.0,
+      "avstand_mm": 2.77598
+    }
+  },
+  "svep": {
+    "arm": {
+      "minsta": {
+        "grader": -130,
+        "avstand_mm": 31.79902,
+        "intrang_mm3": 0.0
+      },
+      "rotationsgrans_mm": 0.84514,
+      "mellanlagen_fria_mot_lampmodul": true,
+      "lagen": [
+        {
+          "grader": -150,
+          "avstand_mm": 37.77114,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -148,
+          "avstand_mm": 36.87362,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -146,
+          "avstand_mm": 35.98771,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -144,
+          "avstand_mm": 35.13525,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -142,
+          "avstand_mm": 34.34126,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -140,
+          "avstand_mm": 33.62836,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -138,
+          "avstand_mm": 33.01498,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -136,
+          "avstand_mm": 32.51561,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -134,
+          "avstand_mm": 32.14141,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -132,
+          "avstand_mm": 31.90067,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -130,
+          "avstand_mm": 31.79902,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -128,
+          "avstand_mm": 31.83943,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -126,
+          "avstand_mm": 32.0224,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -124,
+          "avstand_mm": 32.34603,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -122,
+          "avstand_mm": 32.80551,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -120,
+          "avstand_mm": 33.34835,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -118,
+          "avstand_mm": 33.94491,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -116,
+          "avstand_mm": 34.59459,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -114,
+          "avstand_mm": 35.29673,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -112,
+          "avstand_mm": 36.05062,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -110,
+          "avstand_mm": 36.85545,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -108,
+          "avstand_mm": 37.71039,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -106,
+          "avstand_mm": 38.61449,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -104,
+          "avstand_mm": 39.56678,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -102,
+          "avstand_mm": 40.5777,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -100,
+          "avstand_mm": 41.67354,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -98,
+          "avstand_mm": 42.84819,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -96,
+          "avstand_mm": 44.09332,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -94,
+          "avstand_mm": 45.31362,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -92,
+          "avstand_mm": 46.5156,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -90,
+          "avstand_mm": 47.77035,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -88,
+          "avstand_mm": 49.07249,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -86,
+          "avstand_mm": 50.41695,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -84,
+          "avstand_mm": 51.79896,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -82,
+          "avstand_mm": 53.21408,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -80,
+          "avstand_mm": 54.65814,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -78,
+          "avstand_mm": 56.12729,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -76,
+          "avstand_mm": 57.61794,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -74,
+          "avstand_mm": 59.12676,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -72,
+          "avstand_mm": 60.65066,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -70,
+          "avstand_mm": 62.18677,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -68,
+          "avstand_mm": 63.73243,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -66,
+          "avstand_mm": 65.28516,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -64,
+          "avstand_mm": 66.84265,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -62,
+          "avstand_mm": 68.40274,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -60,
+          "avstand_mm": 69.96344,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -58,
+          "avstand_mm": 71.52285,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -56,
+          "avstand_mm": 71.72538,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -54,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -52,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -50,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -48,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -46,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -44,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -42,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -40,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -38,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -36,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -34,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -32,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -30,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -28,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -26,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -24,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -22,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -20,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -18,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -16,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -14,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -12,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -10,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -8,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -6,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -4,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -2,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": 0,
+          "avstand_mm": 71.72019,
+          "intrang_mm3": 0.0
+        }
+      ]
+    },
+    "prob": {
+      "minsta": {
+        "grader": -150,
+        "avstand_mm": 5.48146,
+        "intrang_mm3": 0.0
+      },
+      "rotationsgrans_mm": 1.54126,
+      "mellanlagen_fria_mot_lampmodul": true,
+      "lagen": [
+        {
+          "grader": -150,
+          "avstand_mm": 5.48146,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -148,
+          "avstand_mm": 6.071,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -146,
+          "avstand_mm": 6.81288,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -144,
+          "avstand_mm": 7.69965,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -142,
+          "avstand_mm": 8.72238,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -140,
+          "avstand_mm": 9.87243,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -138,
+          "avstand_mm": 11.14208,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -136,
+          "avstand_mm": 12.52461,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -134,
+          "avstand_mm": 14.01407,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -132,
+          "avstand_mm": 15.49716,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -130,
+          "avstand_mm": 16.88783,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -128,
+          "avstand_mm": 18.35865,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -126,
+          "avstand_mm": 19.90785,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -124,
+          "avstand_mm": 21.53357,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -122,
+          "avstand_mm": 23.23381,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -120,
+          "avstand_mm": 25.00648,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -118,
+          "avstand_mm": 26.84938,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -116,
+          "avstand_mm": 28.6247,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -114,
+          "avstand_mm": 30.5638,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -112,
+          "avstand_mm": 32.60993,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -110,
+          "avstand_mm": 34.72298,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -108,
+          "avstand_mm": 36.95119,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -106,
+          "avstand_mm": 39.28548,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -104,
+          "avstand_mm": 41.70565,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -102,
+          "avstand_mm": 42.91696,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -100,
+          "avstand_mm": 44.11987,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -98,
+          "avstand_mm": 45.39156,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -96,
+          "avstand_mm": 46.67019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -94,
+          "avstand_mm": 47.94874,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -92,
+          "avstand_mm": 49.28059,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -90,
+          "avstand_mm": 50.65998,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -88,
+          "avstand_mm": 52.08151,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -86,
+          "avstand_mm": 53.54017,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -84,
+          "avstand_mm": 55.03129,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -82,
+          "avstand_mm": 56.55056,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -80,
+          "avstand_mm": 58.09401,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -78,
+          "avstand_mm": 59.65794,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -76,
+          "avstand_mm": 61.23897,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -74,
+          "avstand_mm": 62.83395,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -72,
+          "avstand_mm": 64.43997,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -70,
+          "avstand_mm": 66.05437,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -68,
+          "avstand_mm": 67.67464,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -66,
+          "avstand_mm": 69.29847,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -64,
+          "avstand_mm": 70.92371,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -62,
+          "avstand_mm": 72.54837,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -60,
+          "avstand_mm": 74.17057,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -58,
+          "avstand_mm": 75.78856,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -56,
+          "avstand_mm": 77.4007,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -54,
+          "avstand_mm": 79.00545,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -52,
+          "avstand_mm": 80.60136,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -50,
+          "avstand_mm": 82.18706,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -48,
+          "avstand_mm": 83.76125,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -46,
+          "avstand_mm": 85.3227,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -44,
+          "avstand_mm": 86.87027,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -42,
+          "avstand_mm": 88.40283,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -40,
+          "avstand_mm": 89.91934,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -38,
+          "avstand_mm": 91.41879,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -36,
+          "avstand_mm": 92.90022,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -34,
+          "avstand_mm": 94.36272,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -32,
+          "avstand_mm": 95.80539,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -30,
+          "avstand_mm": 97.22741,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -28,
+          "avstand_mm": 98.62794,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -26,
+          "avstand_mm": 100.00621,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -24,
+          "avstand_mm": 101.36146,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -22,
+          "avstand_mm": 102.69295,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -20,
+          "avstand_mm": 103.99997,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -18,
+          "avstand_mm": 105.28181,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -16,
+          "avstand_mm": 106.53778,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -14,
+          "avstand_mm": 107.76719,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -12,
+          "avstand_mm": 108.96935,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -10,
+          "avstand_mm": 110.14354,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -8,
+          "avstand_mm": 111.28902,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -6,
+          "avstand_mm": 112.40502,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -4,
+          "avstand_mm": 113.49072,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -2,
+          "avstand_mm": 114.48996,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": 0,
+          "avstand_mm": 115.23047,
+          "intrang_mm3": 0.0
+        }
+      ]
+    },
+    "hylsa": {
+      "minsta": {
+        "grader": -150,
+        "avstand_mm": 2.57127,
+        "intrang_mm3": 0.0
+      },
+      "rotationsgrans_mm": 1.41857,
+      "mellanlagen_fria_mot_lampmodul": true,
+      "lagen": [
+        {
+          "grader": -150,
+          "avstand_mm": 2.57127,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -148,
+          "avstand_mm": 3.92338,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -146,
+          "avstand_mm": 5.715,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -144,
+          "avstand_mm": 6.2639,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -142,
+          "avstand_mm": 6.89563,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -140,
+          "avstand_mm": 7.6133,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -138,
+          "avstand_mm": 8.64394,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -136,
+          "avstand_mm": 10.29458,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -134,
+          "avstand_mm": 11.72092,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -132,
+          "avstand_mm": 13.00432,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -130,
+          "avstand_mm": 14.37252,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -128,
+          "avstand_mm": 15.82384,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -126,
+          "avstand_mm": 17.35652,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -124,
+          "avstand_mm": 18.96868,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -122,
+          "avstand_mm": 20.65837,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -120,
+          "avstand_mm": 22.42353,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -118,
+          "avstand_mm": 24.26201,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -116,
+          "avstand_mm": 26.17155,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -114,
+          "avstand_mm": 28.14985,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -112,
+          "avstand_mm": 30.19449,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -110,
+          "avstand_mm": 32.31273,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -108,
+          "avstand_mm": 34.56414,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -106,
+          "avstand_mm": 36.45691,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -104,
+          "avstand_mm": 37.89,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -102,
+          "avstand_mm": 39.39716,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -100,
+          "avstand_mm": 40.86401,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -98,
+          "avstand_mm": 42.24842,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -96,
+          "avstand_mm": 43.60097,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -94,
+          "avstand_mm": 45.01342,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -92,
+          "avstand_mm": 46.4806,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -90,
+          "avstand_mm": 47.9958,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -88,
+          "avstand_mm": 49.55285,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -86,
+          "avstand_mm": 51.14614,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -84,
+          "avstand_mm": 52.77053,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -82,
+          "avstand_mm": 54.42136,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -80,
+          "avstand_mm": 56.09438,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -78,
+          "avstand_mm": 57.78571,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -76,
+          "avstand_mm": 59.49182,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -74,
+          "avstand_mm": 61.2095,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -72,
+          "avstand_mm": 62.93579,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -70,
+          "avstand_mm": 64.66799,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -68,
+          "avstand_mm": 66.40361,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -66,
+          "avstand_mm": 68.14037,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -64,
+          "avstand_mm": 69.87614,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -62,
+          "avstand_mm": 71.60897,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -60,
+          "avstand_mm": 73.33701,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -58,
+          "avstand_mm": 75.05858,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -56,
+          "avstand_mm": 76.77209,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -54,
+          "avstand_mm": 78.47603,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -52,
+          "avstand_mm": 80.16901,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -50,
+          "avstand_mm": 81.84971,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -48,
+          "avstand_mm": 83.51688,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -46,
+          "avstand_mm": 85.16934,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -44,
+          "avstand_mm": 86.80596,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -42,
+          "avstand_mm": 88.42567,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -40,
+          "avstand_mm": 90.02747,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -38,
+          "avstand_mm": 91.61036,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -36,
+          "avstand_mm": 93.17341,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -34,
+          "avstand_mm": 94.71574,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -32,
+          "avstand_mm": 96.23647,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -30,
+          "avstand_mm": 97.73476,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -28,
+          "avstand_mm": 99.2098,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -26,
+          "avstand_mm": 100.66081,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -24,
+          "avstand_mm": 102.08699,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -22,
+          "avstand_mm": 103.48758,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -20,
+          "avstand_mm": 104.86181,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -18,
+          "avstand_mm": 106.20887,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -16,
+          "avstand_mm": 107.52795,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -14,
+          "avstand_mm": 108.81815,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -12,
+          "avstand_mm": 110.07846,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -10,
+          "avstand_mm": 111.3077,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -8,
+          "avstand_mm": 112.50441,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -6,
+          "avstand_mm": 113.66675,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -4,
+          "avstand_mm": 114.79245,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -2,
+          "avstand_mm": 115.87898,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": 0,
+          "avstand_mm": 116.92196,
+          "intrang_mm3": 0.0
+        }
+      ]
+    },
+    "kontaktkuvert": {
+      "minsta": {
+        "grader": -144,
+        "avstand_mm": 39.47711,
+        "intrang_mm3": 0.0
+      },
+      "rotationsgrans_mm": 0.7543,
+      "mellanlagen_fria_mot_lampmodul": true,
+      "lagen": [
+        {
+          "grader": -150,
+          "avstand_mm": 39.85272,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -148,
+          "avstand_mm": 39.62102,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -146,
+          "avstand_mm": 39.49544,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -144,
+          "avstand_mm": 39.47711,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -142,
+          "avstand_mm": 39.56618,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -140,
+          "avstand_mm": 39.76182,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -138,
+          "avstand_mm": 39.85012,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -136,
+          "avstand_mm": 40.04169,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -134,
+          "avstand_mm": 40.33846,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -132,
+          "avstand_mm": 40.73554,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -130,
+          "avstand_mm": 41.19433,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -128,
+          "avstand_mm": 41.70851,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -126,
+          "avstand_mm": 42.31165,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -124,
+          "avstand_mm": 43.00411,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -122,
+          "avstand_mm": 43.78084,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -120,
+          "avstand_mm": 44.63651,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -118,
+          "avstand_mm": 45.38355,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -116,
+          "avstand_mm": 46.12045,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -114,
+          "avstand_mm": 46.89957,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -112,
+          "avstand_mm": 47.72019,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -110,
+          "avstand_mm": 48.58153,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -108,
+          "avstand_mm": 49.48276,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -106,
+          "avstand_mm": 50.42775,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -104,
+          "avstand_mm": 51.43173,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -102,
+          "avstand_mm": 52.49176,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -100,
+          "avstand_mm": 53.60325,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -98,
+          "avstand_mm": 54.76173,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -96,
+          "avstand_mm": 55.96252,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -94,
+          "avstand_mm": 57.13244,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -92,
+          "avstand_mm": 58.21802,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -90,
+          "avstand_mm": 59.21737,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -88,
+          "avstand_mm": 60.1269,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -86,
+          "avstand_mm": 61.06212,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -84,
+          "avstand_mm": 62.02294,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -82,
+          "avstand_mm": 63.01314,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -80,
+          "avstand_mm": 64.03105,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -78,
+          "avstand_mm": 65.07414,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -76,
+          "avstand_mm": 66.13999,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -74,
+          "avstand_mm": 67.22623,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -72,
+          "avstand_mm": 68.33061,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -70,
+          "avstand_mm": 69.45094,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -68,
+          "avstand_mm": 70.58514,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -66,
+          "avstand_mm": 71.73121,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -64,
+          "avstand_mm": 72.88721,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -62,
+          "avstand_mm": 74.05131,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -60,
+          "avstand_mm": 75.22176,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -58,
+          "avstand_mm": 76.39687,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -56,
+          "avstand_mm": 77.57503,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -54,
+          "avstand_mm": 78.75471,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -52,
+          "avstand_mm": 79.93445,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -50,
+          "avstand_mm": 81.11283,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -48,
+          "avstand_mm": 82.28851,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -46,
+          "avstand_mm": 83.46022,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -44,
+          "avstand_mm": 84.62672,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -42,
+          "avstand_mm": 85.78683,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -40,
+          "avstand_mm": 86.93944,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -38,
+          "avstand_mm": 88.08347,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -36,
+          "avstand_mm": 89.21788,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -34,
+          "avstand_mm": 90.34168,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -32,
+          "avstand_mm": 91.45393,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -30,
+          "avstand_mm": 92.55372,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -28,
+          "avstand_mm": 93.64017,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -26,
+          "avstand_mm": 94.71244,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -24,
+          "avstand_mm": 95.76973,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -22,
+          "avstand_mm": 96.81128,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -20,
+          "avstand_mm": 97.83633,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -18,
+          "avstand_mm": 98.84417,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -16,
+          "avstand_mm": 99.83349,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -14,
+          "avstand_mm": 100.79982,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -12,
+          "avstand_mm": 101.74138,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -10,
+          "avstand_mm": 102.65699,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -8,
+          "avstand_mm": 103.54551,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -6,
+          "avstand_mm": 104.40581,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -4,
+          "avstand_mm": 105.23681,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": -2,
+          "avstand_mm": 106.03747,
+          "intrang_mm3": 0.0
+        },
+        {
+          "grader": 0,
+          "avstand_mm": 106.80678,
+          "intrang_mm3": 0.0
+        }
+      ]
+    }
+  },
+  "fel": [],
+  "skruvstapel_mm": {
+    "M3x6_grepp_i_docka": 4.8,
+    "till_blind_halbotten": 2.0,
+    "till_dockans_baksida": 3.2
+  },
+  "felvand_fot_blockeras_mm3": 7.068583,
+  "demontering_stickprov": [
+    {
+      "forflyttning_mm": [
+        0,
+        0.0,
+        0
+      ],
+      "intrang_mm3": 0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.1,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.2,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.3,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.4,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.5,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.6,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.7,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.8,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -0.9,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.0,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.1,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -0.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -1.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -1.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -2.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -2.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -3.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -3.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -4.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -4.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -5.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -5.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -6.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -6.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -7.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -7.5
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        0,
+        -1.2,
+        -8.0
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        1,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        2,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        3,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        4,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        5,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        6,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        7,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        8,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        9,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        10,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        11,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        12,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        13,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        14,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        15,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        16,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        17,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        18,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        19,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        20,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        21,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        22,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        23,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        24,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        25,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        26,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        27,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        28,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        29,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        30,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        31,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        32,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        33,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        34,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        35,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        36,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        37,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        38,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        39,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        40,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        41,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        42,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        43,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        44,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        45,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        46,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        47,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        48,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        49,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        50,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        51,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        52,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        53,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        54,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        55,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        56,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        57,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        58,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        59,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        60,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        61,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        62,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        63,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        64,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    },
+    {
+      "forflyttning_mm": [
+        65,
+        -1.2,
+        -8
+      ],
+      "intrang_mm3": 0.0
+    }
+  ],
+  "begransningar": [
+    "G4-kroppar och socklar är preliminära utrymmeskuvert, inte verifierad produktgeometri.",
+    "Sockeladapter, verkliga fästskruvar, ledningar, värme och ljusbild återstår.",
+    "Demonteringsbanan är stickprov, inte kontinuerligt bevis. Arm först i mätläge; matning sedan frånkopplad.",
+    "Synfältskonen utgår från linscentrum; verklig optik och maskning provas med kameran.",
+    "Skruvmejselkuvert: Ø4 x30 mm skaft. Verkligt handtag/bits kontrolleras vid montage.",
+    "Originalmaskin och skanning ingår inte i denna exakta CAD-kontroll."
+  ]
+}

@@ -6,7 +6,8 @@ All geometri i fräsramen M, millimeter: x bort från balken, y längs balken
 Kraven kommer från användaren 2026-11-09: bilderna sys ihop, så servo och dammsko
 får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
 egen belysning krävs i det mörka garaget (förtydligat 2026-11-10).
-LED-urtagen nedan är provisoriska; lampval och servicebar infästning återstår.
+De gamla LED-urtagen är provisoriska kabelvägar, inte G4-sockelfästen.
+Lampdockan är fast; separat G4-bärare är preliminär tills lampor/socklar har valts.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
 bara driver rörelsen. Parkerat hålls armen av en magnet mot stoppet även utan
@@ -23,6 +24,7 @@ import json
 import math
 
 import crtouch as cr
+import lampor
 from pathlib import Path
 
 from build123d import (Box, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
@@ -276,6 +278,9 @@ def torn(prob_x=PROB[0]):
         s -= box((x0, y - 2.5, b - 1), (x1, y + 2.5, b + 2))
         s -= Pos(cx - 6.5, y, b + 6) * Cylinder(1.5, 12) if y < cy else Pos(cx - 6.5, y, b + 3) * Cylinder(1.5, 6)
     s = med_elektronik(s)
+    # Permanent docka för separat lampbärare; inga lampmått låses i kamerafästet.
+    s += lampor.tornbossar()
+    s -= lampor.tornhal()
     return s
 
 
@@ -462,7 +467,7 @@ def main():
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x))):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare())):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
@@ -485,11 +490,10 @@ def main():
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
         namn(box((PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15), (PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15)), "Pi_Zero_2_ATTRAPP", (.15, .55, .3)),
         namn(l, "Sidopanel", (.16, .18, .2)),
+        namn(lampor.barare(), "Lampbarare_PRELIMINAR", (.3, .5, .7)),
+        namn(lampor.lampkuvert(), "G4_SOCKEL_OCH_LAMPA_KONSTRUKTIONSUTRYMME", (.95, .95, .7)),
         *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
     ]
-    for y, e in ((LED_Y[0], "LED_1_ATTRAPP"), (LED_Y[1], "LED_2_ATTRAPP")):
-        x0, x1 = LED_X[0 if y < cy else 1]
-        delar.append(namn(box((x0, y - 2.5, BUK), (x1, y + 2.5, BUK + 2)), e, (.95, .95, .8)))
     export_step(Compound(label="Sidotorn_v2", children=delar), str(a.ut / "sidotorn_v2.step"))
     # Komponenternas lägen till granskningen, så att den alltid kontrollerar det som faktiskt ritats.
     (a.ut / "elektronik.json").write_text(json.dumps({
@@ -500,8 +504,8 @@ def main():
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
-    kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa")]
+    kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__)]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
     (a.ut / "manifest.json").write_text(json.dumps({
         "kallor_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},

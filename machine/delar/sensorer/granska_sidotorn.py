@@ -22,6 +22,13 @@ ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b"
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 E = json.loads((a.ut / "elektronik.json").read_text())
 torn, arm, bl, lock, kabel, kapa = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "kapa"))
+lampbarare = trimesh.load(a.ut / "lampbarare-utkast.stl")
+for namn, m in ref.items():
+    gap = np.maximum(np.maximum(lampbarare.bounds[0] - m.bounds[1], m.bounds[0] - lampbarare.bounds[1]), 0)
+    grans = float(np.linalg.norm(gap))
+    print(f"lampbärare mot {namn}: avstånd minst {grans:.2f} mm enligt separerade omslutningslådor")
+    if grans == 0:
+        print("  Överlappande omslutningslådor: kräver särskild mesh-/CAD-granskning, inget godkännande här.")
 P = np.load(a.ref / "scan_pts_plan.npy")
 PIV, PARK = np.array([45.0, 0, 43.6]), -150
 sm = lambda m, n: trimesh.sample.sample_surface(m, n, seed=2)[0]

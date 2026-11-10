@@ -2,6 +2,7 @@
 
 Kameraprovet kontrollerar kortficka, styrtappar och kontaktutrymme.
 --typ crtouch ger probfot och hylsa för prov av den verkliga sensorn.
+--typ lampdock ger en utskuren tornvägg och lampfot; ingen varm lampa monteras i provet.
 Proven ersätter inte kontroll av tornets infästning, kabelväg eller belysning.
 Kör: uv run --offline --no-project --python 3.12 --with build123d==0.13.0 \
     python machine/delar/sensorer/passningsprov.py --ut print/sensor-passning
@@ -27,7 +28,7 @@ def pa_badden(del_):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--ut", type=Path, required=True)
-    ap.add_argument("--typ", choices=("kamera", "crtouch"), default="kamera")
+    ap.add_argument("--typ", choices=("kamera", "crtouch", "lampdock"), default="kamera")
     a = ap.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
 
@@ -41,7 +42,7 @@ def main():
             "kamera-passning.stl": pa_badden(Rot(180, 0, 0) * kamera),
             "bricka.stl": pa_badden(cad.bricka()),
         }
-    else:
+    elif a.typ == "crtouch":
         x, y = cad.PROB
         fot = cad.arm() & cad.box((x - 16, cad.ARM_Y[0], cad.FLANS_Z),
                                   (x + 16, y + 7, cad.FLANS_Z + 5))
@@ -49,7 +50,18 @@ def main():
             "probfaste-passning.stl": pa_badden(fot),
             "crtouch-hylsa.stl": pa_badden(Rot(180, 0, 0) * cad.skyddshylsa()),
         }
-    kallor = [Path(cad.__file__), Path(__file__), Path(cad.cr.__file__), cad.cr.REFERENS]
+    else:
+        dock = cad.torn() & cad.box((49.5, 46, 125), (77.2, 56.1, 137))
+        # Fyll elektronikens bakre hålrum endast på provbiten för stödfria lager.
+        # Framsida, styrtapp och piloternas blinda djup behålls från konstruktionen.
+        dock += cad.box((49.5, 51.0, 125), (77.2, 58.0, 137))
+        dock -= cad.lampor.tornhal()
+        delar = {
+            "lampdock-passning.stl": pa_badden(Rot(-90, 0, 0) * dock),
+            "lampfot-passning.stl": pa_badden(Rot(-90, 0, 0) * cad.lampor.dockplatta()),
+        }
+    kallor = [Path(cad.__file__), Path(__file__), Path(cad.cr.__file__), cad.cr.REFERENS,
+              Path(cad.lampor.__file__)]
     manifest = {
         "typ": a.typ,
         "build123d": build123d.__version__,

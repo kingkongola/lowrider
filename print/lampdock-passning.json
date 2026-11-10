@@ -1,0 +1,11 @@
+{
+  "namn": "lampdock-passning",
+  "process": "standard",
+  "material": "pla",
+  "stod": false,
+  "delar": [
+    {"fil": "lampdock-passning/lampdock-passning.stl", "antal": 1},
+    {"fil": "lampdock-passning/lampfot-passning.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

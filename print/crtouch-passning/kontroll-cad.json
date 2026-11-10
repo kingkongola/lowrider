@@ -1,10 +1,11 @@
 {
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "sidotorn.py": "f9667ee03a1dd9600193c92eb8526d150d19fb6861f683974f1c4e89b6adae3e",
+    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
     "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
-    "kontroll_crtouch.py": "eb3cb92e3ec2581d9432ed0871ef1fc38fa78ec4db2e100b105e35a0785f5d7d"
+    "kontroll_crtouch.py": "9c29d28437a99c2e9b2403bc742c50dbe1c0f8585295c11e69cdf387ac0ba71a",
+    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae"
   },
   "komponenter": {
     "torn": {
