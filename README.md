@@ -40,6 +40,7 @@ Det här repot är single source of truth för den LowRider V4 som faktiskt bygg
 - `WORK_ORDERS.md` — arbetskort om cirka en timme, med beroenden och återrapportering; lokal webbsidestatus är inte SSOT.
 - `CALIBRATION.md` — kalibreringsprotokoll (steps/mm, squaring, Z-nivå) och enda mätloggen; baslinje-config i `machine/`.
 - `CABLE_ROUTING.md` — kabellager, routing, mätprotokoll och verifierade kapmått (ännu tomma innan fysisk full-travel-kontroll).
+- [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md) — aktuellt 2026-11-10: 24 V-LED (ned/fram/fram), tillgängliga nätaggregat, separat övervakningsmatning, tänkt automatisk frånkoppling och återstående verifieringar. Inget färdigt elschema eller LED-klips.
 
 ## Monteringsguide
 
