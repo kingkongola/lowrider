@@ -6,6 +6,10 @@ This file provides guidance to Codex (claude.ai/code) when working with code in 
 
 A documentation-only repo (no build, lint, or test commands) that is the single source of truth (SSOT) for one physical build: a **LowRider V4** CNC router (650 × 1250 mm work area, Jackpot3 controller, KATSU 101750 router, Ø30×1.5 mm tubes). All content is **Swedish**; keep new edits in Swedish and match the existing terse, factual style. PrintNC/IndyMill are explicitly not alternatives.
 
+## Aktuellt LED-beslut (D022, 2026-11-10)
+
+**G4-lampor är INTE längre aktuella till LowRider.** Valet är BRIMETI COB-list: 24 V, 4000 K, 8 mm, 320 LED/m, 5 m rulle, 10 W/m och 100 lm/W enligt säljaren, 145 kr med Prime enligt användaren. Tre banor under **horisontell understrut**: en nedåt, två framåt. Vinklar 0°/25°/50° är **provisoriska**, inte färdigmätta. Tidigare 90°-felvänd LED-CAD/STL får **inte** användas. Nuvarande parametrisk build123d finns i `machine/delar/led/tre_vinklar.py`, men fysiskt fäste, kylning, skuggor och elmatning är **inte verifierade**. Läs [D022](DECISIONS.md) för beslut, [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md) för matning/stoppar och [LED-CAD README](machine/delar/led/README.md) för mekaniska spärrar. **Föreslå inte G4-komponenter, ny optik eller aluminiumprofil som redan beslutade köp.** Äldre kameraanteckningar om "köp ingen LED före bildprov" är historik.
+
 ## Canonical-file hierarchy
 
 Top-level files supersede `research/` on any conflict. Each top-level file owns one kind of fact — update the owner rather than duplicating information elsewhere:
