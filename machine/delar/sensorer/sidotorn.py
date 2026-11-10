@@ -5,7 +5,9 @@ All geometri i fräsramen M, millimeter: x bort från balken, y längs balken
 
 Kraven kommer från användaren 2026-11-09: bilderna sys ihop, så servo och dammsko
 får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
-plats för två diffuserade LED men inget inköp före bildprov.
+två preliminära kamera-LED-spår (inte valt huvudljus). D022 väljer i stället
+BRIMETI 24 V COB på horisontell understrut. Dessa spår är endast reserv om
+bildprov senare visar behov; inget köp eller inkoppling beslutad för dem.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
 bara driver rörelsen. Parkerat hålls armen av en magnet mot stoppet även utan
