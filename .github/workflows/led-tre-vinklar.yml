@@ -1,4 +1,4 @@
-name: Trevinklad LED-strutklamma (build123d)
+name: Lagprofil LED understrut (build123d, Z-budget)
 
 on:
   push:
@@ -33,6 +33,20 @@ jobs:
           assert mesh.is_watertight, 'STL is not watertight'
           assert len(mesh.split())==1, 'More than one connected component'
           assert mesh.volume>0
+          # Hård geometri-spärr: ingenting får ligga ovanför understrutens
+          # undersida eller mer än 6.2 mm under den i standardmodellen.
+          assert mesh.bounds[1,2] <= 0.001, ('Protrudes into strut',mesh.bounds)
+          assert mesh.bounds[0,2] >= -6.201, ('Excessive Z intrusion',mesh.bounds)
+          import sys
+          sys.path.insert(0,'machine/delar/led')
+          from tre_vinklar import Param, teoretiskt_intrang, validera
+          assert teoretiskt_intrang(Param()) <= 6.2
+          try:
+              validera(Param(vinklar=(0,25,50)))
+          except ValueError:
+              print('PASS: old 50-degree geometry rejected by Z guard')
+          else:
+              raise AssertionError('50-degree geometry escaped Z guard')
           assert Path('export/led/led_3vinklar.step').stat().st_size>100
           print('STL',len(mesh.faces),'triangles,',round(mesh.volume/1000,1),'cm3')
           PY
