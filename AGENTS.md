@@ -4,7 +4,7 @@ This file provides guidance to Codex (claude.ai/code) when working with code in 
 
 ## What this repo is
 
-A documentation-only repo (no build, lint, or test commands) that is the single source of truth (SSOT) for one physical build: a **LowRider V4** CNC router (650 × 1250 mm work area, Jackpot3 controller, KATSU 101750 router, Ø30×1.5 mm tubes). All content is **Swedish**; keep new edits in Swedish and match the existing terse, factual style. PrintNC/IndyMill are explicitly not alternatives.
+A repository serving as the single source of truth (SSOT), including documentation, parametric CAD sources and dedicated GitHub Actions CAD tests, for one physical build: a **LowRider V4** CNC router (650 × 1250 mm work area, Jackpot3 controller, KATSU 101750 router, Ø30×1.5 mm tubes). All content is **Swedish**; keep new edits in Swedish and match the existing terse, factual style. PrintNC/IndyMill are explicitly not alternatives.
 
 ## Aktuellt LED-beslut (D022, 2026-11-10)
 
