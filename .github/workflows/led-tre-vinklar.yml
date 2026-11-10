@@ -34,25 +34,25 @@ jobs:
           assert len(mesh.split())==1, 'More than one connected component'
           assert mesh.volume>0
           # Hård geometri-spärr: ingenting får ligga ovanför understrutens
-          # undersida eller mer än 6.2 mm under den i standardmodellen.
+          # undersida eller mer än 6.65 mm under den i standardmodellen.
           assert mesh.bounds[1,2] <= 0.001, ('Protrudes into strut',mesh.bounds)
-          assert mesh.bounds[0,2] >= -6.201, ('Excessive Z intrusion',mesh.bounds)
+          assert mesh.bounds[0,2] >= -6.651, ('Excessive Z intrusion',mesh.bounds)
           import sys
           sys.path.insert(0,'machine/delar/led')
           from tre_vinklar import Param, teoretiskt_intrang, validera
           from math import isclose
           p=Param()
-          assert p.vinklar == (0.0,15.0,30.0)
+          assert p.vinklar == (0.0,15.0,35.0)
           assert isclose(p.led_bredd,8)
           assert isclose(p.led_marginal,0.5)
-          assert 5.9 <= teoretiskt_intrang(p) <= 6.2
-          # A 30-degree rail at the OLD 10 mm width must be rejected.
+          assert 6.6 <= teoretiskt_intrang(p) <= 6.65
+          # A 35-degree rail at the OLD 10 mm width must be rejected.
           try:
               validera(Param(led_marginal=1.0))
           except ValueError:
-              print('PASS: 30 degrees on 10mm carrier exceeds Z limit')
+              print('PASS: 35 degrees on 10mm carrier exceeds Z limit')
           else:
-              raise AssertionError('Wide 30-degree rail escaped Z guard')
+              raise AssertionError('Wide 35-degree rail escaped Z guard')
           try:
               validera(Param(vinklar=(0,25,50)))
           except ValueError:
