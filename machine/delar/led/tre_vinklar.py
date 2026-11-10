@@ -10,9 +10,10 @@ Förstärkning: varje lutad bana har en tunn övre rygghylla och ett
 LÄNGSGÅENDE KANTSTAG från lägsta LED-kanten upp mot understruten.
 Det bildar en triangulärt styvad profil utan extra Z-utstick.
 KODEN AVVISAR geometrier som överskrider max_z_intrang_mm. Angivna
-vinklar 0/15/25 grader är valda för att hålla den teoretiska tjockleken
-under 6.2 mm. Äldre 0/25/50-grader var endast provvärden; 50 grader
-kan ge runt 9 mm intrång med samma 10 mm breda hylla.
+vinklar 0/15/30 grader valda med 9 mm hyllbredd för teoretiskt
+Z-intrång ca 6.04 mm (< 6.2 mm). Tidigare 10 mm hylla vid 30 grader
+skulle kräva ca 6.54 mm, därför har sidomarginalen minskats från 1 till
+0.5 mm per sida. Samma 8 mm LED-list behålls.
 
 STILL NOT DRIFT-VERIFIED: physical brace clearance, M5 bolt length,
 LED temperature, cable passage, and fully assembled XYZ sweep.
@@ -35,8 +36,8 @@ from build123d import Axis, Box, Cylinder, Pos, Rot, chamfer, fillet, export_ste
 @dataclass(frozen=True)
 class Param:
     led_bredd: float = 8.0
-    led_marginal: float = 1.0       # 10 mm brett fäste; ger 8 mm plan LED-yta
-    vinklar: tuple[float, float, float] = (0.0, 15.0, 25.0)
+    led_marginal: float = 0.5       # 9 mm hylla till 8 mm LED; max Z 6,2 mm vid 30°
+    vinklar: tuple[float, float, float] = (0.0, 15.0, 30.0)
     led_ys: tuple[float, float, float] = (-16.0, 0.0, 16.0)
     framat: int = 1                # +1 eller -1 beroende på monteringssida
     segment_langd: float = 154.0
@@ -173,7 +174,7 @@ def main():
     a = argparse.ArgumentParser()
     a.add_argument("--ut", type=Path, default=Path("export/led"))
     a.add_argument("--led-bredd", type=float, default=8.0)
-    a.add_argument("--vinklar", nargs=3, type=float, default=(0, 15, 25))
+    a.add_argument("--vinklar", nargs=3, type=float, default=(0, 15, 30))
     a.add_argument("--fram-sida", choices=(-1, 1), type=int, default=1)
     a.add_argument("--m5-pitch", type=float, default=56.0)
     a.add_argument("--segment-langd", type=float, default=154.0)
