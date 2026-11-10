@@ -6,6 +6,9 @@ Befintliga M5/Brace-hål c/c 56 mm enligt strut_plate.svg används.
 
 Utformningskrav: MINIMERA INTRÅNG I MASKINENS Z. De gamla 13–17 mm
 låga LED-hyllorna på pelare är ersatta av tunna ytor direkt mot plattan.
+Förstärkning: varje lutad bana har en tunn övre rygghylla och ett
+LÄNGSGÅENDE KANTSTAG från lägsta LED-kanten upp mot understruten.
+Det bildar en triangulärt styvad profil utan extra Z-utstick.
 KODEN AVVISAR geometrier som överskrider max_z_intrang_mm. Angivna
 vinklar 0/15/25 grader är valda för att hålla den teoretiska tjockleken
 under 6.2 mm. Äldre 0/25/50-grader var endast provvärden; 50 grader
@@ -47,6 +50,14 @@ class Param:
     boss_tjocklek: float = 2.2
     led_hylla_tjocklek: float = 1.6
     led_toppfrigang: float = 0.15
+    # Längsgående triangulär lådprofil på BAKSIDAN av lutade remsor:
+    # tunn överdel mot strutens undersida + kantstag från lägsta
+    # (nedre) hyllkanten tillbaka till överdelen.
+    tak_tjocklek: float = 0.9
+    kantstag_bredd: float = 1.2
+    stag_kantindrag: float = 0.75
+    stag_overlapp: float = 0.20
+    stag_min_vinkel: float = 5.0
     max_z_intrang_mm: float = 6.2
     bas_hornradie: float = 0.7
     boss_hornradie: float = 0.6
@@ -77,6 +88,12 @@ def validera(p: Param) -> None:
         raise ValueError("Segmentet måste vara längre än tvärfästet")
     if p.boss_tjocklek <= p.bas_webb_tjocklek or p.bas_webb_tjocklek <= 0:
         raise ValueError("Boss ska vara tjockare än webb")
+    if not (0 < p.tak_tjocklek < p.led_hylla_tjocklek):
+        raise ValueError("Stagets tak ska vara tunnare än LED-hyllan")
+    if not (0 < p.stag_kantindrag < p.led_marginal + 1.0):
+        raise ValueError("Kantstaget måste ligga på LED-hyllans baksida")
+    if p.kantstag_bredd <= 0 or p.stag_overlapp <= 0:
+        raise ValueError("Ogiltigt kantstag")
     if p.skruv_pitch_y + p.skruv_haldia >= p.bas_langd_y:
         raise ValueError("M5-hålen får inte plats på tvärfästet")
     if any(abs(y) + (p.led_bredd + 2 * p.led_marginal) / 2 >=
@@ -115,6 +132,35 @@ def bygg(p: Param):
         rail = fillet(rail.edges().filter_by(Axis.Z), radius=p.hylla_hornradie)
         rail = chamfer(rail.edges().filter_by(Axis.X), length=p.hylla_kantfas)
         out += Pos(0, p.framat * y, z) * Rot(X=p.framat * angle) * rail
+
+        # Övre bärande skinn, från ena änden av den 154 mm långa
+        # hyllan till den andra. Det ligger DIREKT under z=0,
+        # och förenas med mittens skruvade tvärwebb.
+        # Båda skins tillsammans ökar böjstyvheten ute vid
+        # de oskruvade ändarna; ett ensamt kort stag gör inte det.
+        roof = Box(p.segment_langd, w, p.tak_tjocklek)
+        roof = fillet(roof.edges().filter_by(Axis.Z), radius=p.hylla_hornradie)
+        out += Pos(0, p.framat * y, -p.tak_tjocklek / 2) * roof
+
+        if angle >= p.stag_min_vinkel:
+            # Lägre kanten ligger på NEGATIV lokal Y för positiv X-vridning.
+            # Staget löper längs HELA X och går UPP från den lägre
+            # LED-kanten mot den horisontella strutplattans undersida.
+            # Det är på LED:s baksida, så ljus-/tejpytan förblir fri.
+            edge_local_y = -w / 2 + p.stag_kantindrag
+            world_y = y + edge_local_y * cos(v) - t / 2 * sin(v)
+            low_back_z = -p.led_toppfrigang - (
+                w - p.stag_kantindrag) * sin(v)
+            bottom = low_back_z - p.stag_overlapp
+            top = -p.tak_tjocklek / 2
+            height = top - bottom
+            if height <= 0:
+                raise ValueError("Kantstaget ryms inte i Z")
+            gusset = Box(p.segment_langd, p.kantstag_bredd, height)
+            gusset = fillet(
+                gusset.edges().filter_by(Axis.Z), radius=0.35
+            )
+            out += Pos(0, p.framat * world_y, (bottom + top) / 2) * gusset
 
     for y in (-p.skruv_pitch_y / 2, p.skruv_pitch_y / 2):
         out -= Pos(0, y, -1.0) * Cylinder(
