@@ -14,6 +14,14 @@
 
 **V1E:** [LR4 Core Assembly](https://docs.v1e.com/lowrider/#core-assembly) anger minst **140 mm fri ledning för eventuell touchplate** vid Core. Det är **inte** ett mått för X-brytaren. [Wire Routing](https://docs.v1e.com/lowrider/#wire-routing) anger förlängningar på Core och YZ_Max-sidan, full Z- och X-rörelse samt dragavlastade skarvar, men **inte exakta kapmått för vår maskinstorlek**. V1E:s BOM har tre motorkabelförlängningar som typkonfiguration.
 
+## LED under horisontell understrut – plan 2026-11-10
+
+**D022:** Tre 8 mm BRIMETI COB-banor under den horisontella understrutten (en ned, två fram). Varje remsa löds med +24 V/GND och parallellkopplas, sedan går **en gemensam lågspänningsmatning** mot valt LED-aggregat. För cirka 3 × 0,8 m gäller säljaruppgift 24 W totalt (~1 A vid 24 V). Ska inte antas få effekt från motorernas HDR-60-24.
+
+**Håltagning:** undersök först befintlig öppning eller kabelväg via kant. Om kabelgenomföring krävs: borrning av **ett hål** är en möjlig metod, men **diameter och koordinat är inte mätta/beslutade**. Kontrollera båda sidor om plattan och verkliga M5/Brace-låspunkter, bärande smala sektioner, rör, rörelse/kollision. Hålet ska avgradas/skyddas och kabeln dragavlastas nära LED-lödningen och vid genomföringen. Inga nya hål i CAD före vald fysisk rutt. Lågspänningskabel och nätspänning ska inte samsas oskyddat. Märk kablar, säkra LED-grenen och fullfölj böj- och dragprov genom hela X/Y/Z-slaget.
+
+[LED-CAD och kontrollgrind](machine/delar/led/README.md) · [Samlad el-/stopp-SSOT](machine/EL_BELYSNING_OCH_STOPP.md).
+
 ## Mätprotokoll – fylls efter fysisk provmontering, före kapning
 
 | Ledning | Start → slut / faktisk väg | Köpt ledning | Mätt rutt inkl. rörelsemarginal | Slutlig längd | Funktion godkänd |
