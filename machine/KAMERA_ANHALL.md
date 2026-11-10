@@ -65,12 +65,14 @@ Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtri
 
 **Kameran är en IMX708 (Raspberry Pi Camera Module 3 Standard) på Core, nominellt rakt ned.** Den har liten sensor och gynnas av stabilt ljus. **Belysning är ett mätförhållande, men inte automatiskt ytterligare en produktfunktion.**
 
-**Förtydligande 2026-11-10:** vi tar stillbilder med maskinen stilla och kan därför prova längre exponeringstid i stället för att börja med maximalt ljusflöde. Vibrationer ska ha lagt sig före exponeringen; jämnt ljus och tydliga kanter i verkliga bilder avgör behovet. Inget minsta lumenantal är ännu mätt eller kravsatt. Daterad kandidatjämförelse (24 V-list, G4 och färdig 5 V-kameralampa), källor och räkneexempel finns i [belysningsutredningen](../research/2026-11-10-kamerabelysning-och-exponering.md).
+**Användarkrav, förtydligat 2026-11-10:** garaget är mörkt och befintlig belysning duger inte till kameran. **Egen belysning ska ingå.** Tidigare förslag att börja med enbart garage-/arbetsljus är därmed ersatt. Användaren vill ha rejält ljus och undersöker G4 LED; exakt lampa och antal är ännu inte valda.
 
-1. **Testa först befintlig arbetsbelysning och flyttbar lampa**, utan extra elektronik eller permanenta fästen. Fotografera plywood/äldre urfräsningar, synliga skruvbrickor och blankare beslag vid flera Core-positioner; kontrollera verkliga skuggor från bom, dammsko och fixturer.
-2. Om testet visar att fast garagebelysning ger positionsberoende skuggor: **liten vit diffuserad LED vid kameran på Core**, gärna två små symmetriska ljuskällor runt dess siktfält i stället för en hård sidostråle. Ger ljus som följer kameran utan att en bom skymmer ett avlägset armfäste. Minimerad vikt/servicebehov är krav; inga faktiska dimensioner, ljusstyrkor, spänning, kabeldragning eller delar beslutade.
+Vi tar stillbilder med maskinen stilla, så exponeringstid är fortfarande en avvägning mot ljusstyrka. Användarens bedömning om cirka fem sekunder i det befintliga mörkret är inte en uppmätt exponering. Vibrationer ska ha lagt sig före bilden; jämnt ljus och tydliga kanter avgör det verkliga behovet. Daterade kandidater och räkneexempel finns i [belysningsutredningen](../research/2026-11-10-kamerabelysning-och-exponering.md).
+
+1. **Välj och provbelys med egen LED-belysning.** Fotografera plywood/äldre urfräsningar, synliga skruvbrickor och blankare beslag; kontrollera verkliga skuggor från bom, dammsko och fixturer.
+2. **Jämnt, ljusspritt vitt LED-ljus vid kameran**, gärna från två sidor. Ger ljus som följer kameran utan att en bom skymmer ett avlägset armfäste. Minimerad vikt/servicebehov är krav; exakta lampor, ljusflöde, matning och infästning är ännu inte låsta.
 3. Undvik starka reflexer, skuggor och potentiellt LED-flicker; verifiera jämförbarhet med låst fokus och efter behov låst exponering/gain/vitbalans. Enbart samma lampplacering betyder **inte** färg- eller måttkonstans.
-4. **Inga inköp eller extra LED-styrning före fysisk bildjämförelse.** Kontrollera från start att fästet har tillräcklig optisk fri sikt och att det går att eftermontera litet ljus utan att krocka med servoarm, BLTouch, dammsko eller kablar.
+4. Kontrollera lampornas tillåtna spänning och verkliga yttermått före val. Fästet ska ha optisk fri sikt och belysningen kunna eftermonteras utan krock med servoarm, BLTouch, dammsko eller kablar. Ingen automatisk dimring krävs för första provet.
 
 ### Eftermontering — förslag diskuterat 2026-11-10, ej färdig konstruktion
 

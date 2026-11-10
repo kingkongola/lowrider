@@ -4,7 +4,7 @@
 
 ## Checkout-regel efter falska positiva
 
-**Kamerabelysning 2026-11-10:** [daterad jämförelse av LED-list, G4 och kameralampa](research/2026-11-10-kamerabelysning-och-exponering.md). Ingen kandidat vald eller beställd; verkligt bildprov med längre exponering ska styra belysningsbehovet. Detta är evidens, inte nya orderrader.
+**Kamerabelysning 2026-11-10:** [daterad jämförelse av LED-list, G4 och kameralampa](research/2026-11-10-kamerabelysning-och-exponering.md), inklusive användarens AGOTD-länk. Egen LED-belysning krävs i det mörka garaget; exakt modell och antal är ännu inte valda. Detta är evidens, inte nya orderrader.
 
 **En fraktsida, plattformsfrakt eller korgsumma räcker inte.** En köpväg räknas som svensk först när den faktiska handlar-/säljarcheckouten accepterar svensk leveransadress. Roboter-Bausatz och Allegro är dokumenterade exempel på varför.
 

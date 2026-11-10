@@ -112,7 +112,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | QUARKZMAN KW11-3Z-N | Köpt 10-pack, reservdelar. **Inga används på armen enligt D020** |
 | Omron SS-3GL13PT | Befintlig reserv till grundmaskinen; används inte på sensorarmen |
 
-Regulatorerna är valda och finns; deras slutliga matningsinstallation, säkring, ledningar och lastprov återstår. Ingen fläkt är kravsatt: prova passivt och mät verkligt kylbehov. LED-utrymmen är ritade, men inget belysningsinköp är beslutat före bildprov.
+Regulatorerna är valda och finns; deras slutliga matningsinstallation, säkring, ledningar och lastprov återstår. Ingen fläkt är kravsatt: prova passivt och mät verkligt kylbehov. Egen LED-belysning ska ingå enligt [kameraunderlaget](machine/KAMERA_ANHALL.md); exakt lampa, antal och eventuell ytterligare matningsmodul är ännu inte valda.
 
 ## Grundbyggets äldre inköpsunderlag
 
