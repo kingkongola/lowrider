@@ -95,6 +95,17 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D022 — COB-list ersätter G4-lampor för LowRider-belysning
+**Status:** valt 2026-11-10; montering, strömförsörjning och CAD ej fysiskt verifierade
+
+**Aktuellt belysningsval är BRIMETI 24 V COB LED-list**: 5 m rulle, 4000 K neutralvit, **8 mm** bredd, 320 LED/m, säljaruppgift **10 W/m och 100 lm/W**, pris **145 kr via Amazon Prime** enligt användaren. Angivet ljusflöde är därmed cirka 1 000 lm/m, inte uppmätt. Inköp/betalning/mottagning verifieras separat. **Tidigare idéer med G4-lampor, den gamla 12 V RGB-listen eller enbart kameranära LED som huvudbelysning är inte längre aktuella. Köp eller CAD-projektera inte G4-lampor till detta bygge.** Detta är ett komponent- och funktionsval, inte ett påstående att ljusmängden eller CRI är verifierad.
+
+**Placering:** tre 8 mm remsor på LowRider V4:s **horisontella undre strutplatta** längs X, **en rakt ned och två framåt**. Prova 0°/25°/50°; dessa vinklar är parametrar, inte låsta slutvärden. Första LED-CAD:en med **90° felvänd vertikal strut är ogiltig** och dess tidigare STL/STEP får inte användas. [Aktuellt build123d-utkast](machine/delar/led/tre_vinklar.py) använder understrutens två befintliga M5-positioner, 56 mm c/c enligt `strut_plate.svg`. Även det rättade utkastet kräver kontroll mot verklig Brace, M5-skruvlängd, fysisk rörelse, temperatur och vidhäftning. **Ingen separat aluminiumprofil som första lösning**; provprint i PETG och temperaturtest före full montering.
+
+**Matning:** befintlig Mean Well HDR-60-24 (24 V/60 W) reserveras för Jackpot3 och motorerna. LED och Pi ska inte okritiskt läggas på den. LED-matning dimensioneras efter faktiskt monterad längd (10 W/m uppgivet); återbruk av befintliga aggregat utreds innan ytterligare köp. Pi/kamera ska kunna övervaka/logga efter frånkopplad maskin och får därför inte vara beroende av maskinens brutna matningsgren. Fysisk NVR/stoppväg kvarstår oberoende av sensorövervakning. Automatisk kompletterande frånkoppling ska utredas separat. **Inget färdigt elschema och ingen säkerhetsklassning genom detta beslut.**
+
+**Ägare:** [samlad fysisk SSOT/elektrisk status](machine/EL_BELYSNING_OCH_STOPP.md), [LED-fästets kontrollgrindar](machine/delar/led/README.md), [komponentstatus i BOM](BOM.md). Kamerabildens mätkvalitet verifieras separat. G4 i G-kod betyder väntkommando och har inget med lampvalet att göra.
+
 ## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch
 **Status:** valt 2026-11-09 på användarens uppdrag; ej inkopplat, `machine/AKTIV` och FluidNC är oförändrade
 
