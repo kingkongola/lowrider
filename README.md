@@ -5,7 +5,7 @@
 ## Nuläge
 
 - **Grundmaskinen är byggd och har fräst.** Permanenta struts och dammsugning är monterade enligt byggloggen. Offerskivan är planfräst. Återstående kalibrering och kontroller står i checklistan; den gamla monteringsordningen är inte nästa arbete.
-- **Sensorenhetens senaste konstruktionsspår är sidotornet** i [sidotorn.py](machine/delar/sensorer/sidotorn.py). Det är ett CAD-utkast, ännu inte rapporterat provprintat eller monterat. Tidigare modulbygge och dess gröna tester är historik, inte godkännande av sidotornet.
+- **Sensorenhetens senaste konstruktionsspår är sidotornet** i [sidotorn.py](machine/delar/sensorer/sidotorn.py). Ett [litet kamerafickeprov](print/README.md) är printkontrollerat och skivat. Sidotornet är ännu inte rapporterat provprintat eller monterat. Tidigare modulbygge och dess gröna tester är historik, inte godkännande av sidotornet.
 - **Electrokit-order är mottagen**, enligt användaren i dag. **BLTouch finns hos grannen och kan möjligen hämtas i dag**; den är ännu inte rapporterad hämtad eller provpassad. Full leveransstatus ägs av [PROCUREMENT.md](PROCUREMENT.md).
 - **Servots rörelseomfång är verifierat och räcker till konstruktionen.** Provresultatet ägs av [CALIBRATION.md](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk).
 - **Pinnar för Jackpot3 är valda i D021 men sensoranslutningen är inte driftsatt.** Dagens prov använde en fristående ESP32-S3. Repots avsedda maskinkonfiguration pekas ut av [machine/AKTIV](machine/AKTIV); den är inte liveavläst i denna dokumentgranskning.

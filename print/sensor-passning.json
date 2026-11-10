@@ -1,0 +1,10 @@
+{
+  "namn": "sensor-passning",
+  "process": "standard",
+  "material": "pla",
+  "stod": true,
+  "delar": [
+    {"fil": "sensor-passning/kamera-passning.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

@@ -1,0 +1,27 @@
+{
+  "build123d": "0.13.0",
+  "kallor_sha256": {
+    "sidotorn.py": "4c829f661a8aae81b6b190df15241933809c46b7a2cd2c78f3c0b78a3afb1a1b",
+    "passningsprov.py": "39229b2f0b0b69bdcaf52bb5f503e4527138de15325e06c24a6a99107c900775"
+  },
+  "delar": {
+    "kamera-passning.stl": {
+      "sha256": "b90db28c101e4613e632db70fde4406f1893a5991023f1c38ad471764cc2e343",
+      "mm": [
+        30.0,
+        36.0,
+        11.01
+      ],
+      "volym_mm3": 4971.044
+    },
+    "bricka.stl": {
+      "sha256": "aaa31a2f6ad17121794f45eb0086141cfe14f408d097c2d181ccaabb73af9f67",
+      "mm": [
+        7.0,
+        7.0,
+        3.5
+      ],
+      "volym_mm3": 102.919
+    }
+  }
+}

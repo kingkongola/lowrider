@@ -1,6 +1,6 @@
 # Sensorenhet — aktuell konstruktion och printunderlag
 
-**Uppdaterad 2026-11-10.** Senaste konstruktionsspåret är **sidotorn v2** i [sidotorn.py](sidotorn.py), senast ändrat i commit `46f1f6b` 2026-11-09. Det är ritat men ännu inte rapporterat provprintat eller monterat. Aktuell arbets- och verifieringsstatus ägs av [CHECKLIST.md](../../../CHECKLIST.md).
+**Uppdaterad 2026-11-10.** Senaste konstruktionsspåret är **sidotorn v2** i [sidotorn.py](sidotorn.py), med geometrin från commit `46f1f6b` 2026-11-09. Det är ritat men ännu inte rapporterat provprintat eller monterat. Aktuell arbets- och verifieringsstatus ägs av [CHECKLIST.md](../../../CHECKLIST.md).
 
 ## Vad konstruktionen innehåller
 
@@ -29,6 +29,8 @@ Detta är modellens delindelning, inte en färdig skivad printorder.
 `bltouch.stl`, `kabel.stl`, servo- och elektronikobjekt i sammanställningen är **referenser**, inte printdelar. STEP-sammanställningen visar både utfällt och parkerat läge för samma arm; det betyder inte två armar.
 
 Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste orienteras för utskrift och läggas mot byggplattan före skivning; en monteringsmodell är inte automatiskt rätt printläge. Hylsan är avsedd med öronen mot bädden enligt CAD-kommentaren. Övriga lägen, lagerlast, stöd och material är inte slutligt beredda.
+
+**Första lilla kamerafickeprovet är nu berett:** [jobb och provförfarande](../../../print/README.md). Det tas direkt ur aktuell torngeometri och har ett källmanifest. Det är ett passningsprov, inte ett godkännande av hela tornet. Armens nuvarande Ø7,5-hål vid servoaxeln definierar inte en färdig koppling till servohornet; den infästningen återstår före armens slutprint.
 
 ## Vad de digitala kontrollerna visar
 

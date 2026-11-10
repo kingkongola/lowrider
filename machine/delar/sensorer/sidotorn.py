@@ -5,7 +5,8 @@ All geometri i fräsramen M, millimeter: x bort från balken, y längs balken
 
 Kraven kommer från användaren 2026-11-09: bilderna sys ihop, så servo och dammsko
 får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
-plats för två diffuserade LED men inget inköp före bildprov.
+egen belysning krävs i det mörka garaget (förtydligat 2026-11-10).
+LED-urtagen nedan är provisoriska; lampval och servicebar infästning återstår.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
 bara driver rörelsen. Parkerat hålls armen av en magnet mot stoppet även utan
@@ -394,6 +395,8 @@ def arm(blt_x=BLT[0]):
     for x in (blt_x - 9, blt_x + 9):
         a -= Pos(x, BLT[1], F + 2) * Cylinder(1.3, 10)     # M3 x 10 gängar direkt i foten, genom hylsans och BLTouchens öron
     a -= Pos(blt_x, BLT[1], F + 2) * Cylinder(5, 10)
+    # Detta frigångshål är inte en färdig koppling till servohornet.
+    # Hornets infästning och kraftöverföring måste lösas före slutprint.
     a -= cyl_y(PX, PZ, y0 - 1, y1 + 1, 7.5)
     return a
 

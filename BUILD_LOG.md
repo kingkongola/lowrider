@@ -186,3 +186,9 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren rapporterar att Electrokit-order har kommit. Leveransraderna är uppdaterade i [PROCUREMENT.md](PROCUREMENT.md); faktiskt debiterat belopp är fortfarande inte bekräftat.
 - BLTouch finns hos grannen för möjlig hämtning; ingen genomförd hämtning eller fysisk provpassning rapporterad.
 - README leder till ägarfilerna, CHECKLIST äger aktuell arbetsstatus, sensorunderlaget skiljer sidotorn från äldre modulbygge, och ersatta brytarkrav hänvisar till D020. Äldre statuslistor och underlag bevaras i [arkivet](docs/arkiv/2026-11-09-status-och-sensorunderlag.md).
+
+## 2026-11-10 — Första kamerafickeprovet printberett
+
+- Ett litet passningsprov har skurits direkt ur aktuell torngeometri, med sparat källmanifest. Exporten är giltig och sammanhängande; `printa skiva` godkänner slutplattan utan kontrollfel eller varningar. Förhandsvisningen ur g-koden är granskad.
+- Plattan innehåller endast kamerafickeprovet. PLA, 0,20 mm lager och trädstöd; beräknat cirka 16 minuter och 5,4 g. [Jobb och provförfarande](print/README.md). Utskrift eller fysisk passning är inte rapporterad.
+- Granskningen visar att armens frigångshål vid servoaxeln inte är en färdig infästning i servohornet. Det återstår före armens slutprint; servots godkända rörelseomfång påverkas inte.
