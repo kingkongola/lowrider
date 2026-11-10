@@ -85,3 +85,14 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - Detta är användarens ungefärliga erfarenhetsvärde, inte ett nytt uppmätt prov. Material, hålriktning och utskriftsinställningar för exemplet är inte specificerade. Värdet används som start vid passningsberedning, inte som en generell procentuell skalning av hela delen.
 - Kontrollera befintlig spelmån före ändring, så att tillägget inte läggs på två gånger. Ett frigångshål (där skruven ska löpa fritt), ett gänghål och en ficka behöver bedömas efter sin funktion. Små hål och yttre styrtappar ska inte automatiskt få samma korrigering som exemplet med Ø20 mm.
 - Behåll funktionsmåttet och redovisa passningstillägget i CAD-underlaget. Bekräfta resultatet med provprint i avsett material och utskriftsläge innan större delar låses.
+
+## 2026-11-10 — Servohornets nav, första måtten
+
+Användaren rapporterar följande enligt det annoterade fotot av det tillgängliga hornet:
+
+| Mått | Definition | Rapporterat värde |
+| --- | --- | --- |
+| A | Navets ytterdiameter, ytterkant till ytterkant över den runda kragen | Ø9 mm |
+| B | Total höjd vid navet, lägsta till högsta plastytan, utan centrumskruv | 6 mm |
+
+Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. Hornet smalnar av enligt användaren och fotot; bredd vid två definierade ställen, den flata armens tjocklek och hålens lägen återstår. Navets sittläge på servoaxeln och det färdiga montaget är inte verifierade genom dessa två mått. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).

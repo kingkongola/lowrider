@@ -213,3 +213,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Exakta CAD-kontroller av delmöten, skruvåtkomst och armsvep passerar. Arm, prob, hylsa och kontaktkuvert går fria från lampmodulen även mellan de kontrollerade 2°-lägena enligt avståndsgränsen. Demontering med utfälld arm prövas separat som stickprov. Avgränsningar och rapporter ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
 - Ett tangentmöte vid lampbossen rättades till överlappande gods så att exporterad tornmesh är tät. Dockprovet fick massiv rygg för stödfria lager, utan att fylla huvudtornets elektronikrum. Kallt dock-/fotprov är kontrollerat och skivat: cirka 8 minuter och 2,6 g PLA, utan stöd eller kontrollvarningar. [Jobb och provförfarande](print/README.md#lampdocka--kallt-skruv--och-styrprov). Ingen fysisk print eller passning rapporterad.
 - Tidigare lokala Lowrider-committar pushade till `sidotorn-v2` och de två dokumentationscommittarna till `cnc/main` efter användarens godkännande. De åtta ocommittade CNC-kodfilerna ingick inte.
+
+## 2026-11-10 — Första hornmåtten och formad infästningsficka
+
+- Användaren rapporterar navets A-/B-mått enligt det annoterade fotot; värden och definitioner finns endast i [mätloggen](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten).
+- Användaren förtydligar att det befintliga hornet ska passa i en formad ficka i den printade armen och påpekar hornets avsmalning. Detta är konstruktionsavsikten; fickan är ännu inte modellerad. Två breddmått, armens tjocklek, hållägen och monterad höjd återstår före slutlig CAD och provpassning.

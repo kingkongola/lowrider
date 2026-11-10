@@ -39,7 +39,9 @@ Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste oriente
 
 **Lampdockan har en liten kall provplatta:** [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
 
-Användarens servohornsbild visar ett enarmat horn med tre hål och en centrumskruv. Planen är skruvad anslutning till ett horn som passar servoaxeln, utan printad tandning. Navets mått, armens bredd/tjocklek och hålens avstånd från axeln saknas fortfarande. De tre lösa ringdelarnas funktion kan inte avgöras säkert från bilden. Därför är servohornsinfästningen fortfarande öppen.
+Användarens servohornsbild visar ett enarmat horn med tre hål och en centrumskruv. Användaren förtydligar att hornet ska passa i en **formad ficka i den printade armen** och att hornets avsmalning ska följas. Fickan ska positionera hornet; skruvar ska hålla delarna ihop. Den slutliga kraftöverföringen och infästningen måste kontrolleras med verkligt horn. Ingen printad axeltandning planeras.
+
+De första navmåtten är rapporterade i [mätloggen](../../../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten). Bredd på två ställen krävs för avsmalningen; armens tjocklek, hålens avstånd från axeln och det monterade navets läge återstår. Fickan är ännu inte modellerad och ska ha uttryckligt passningsspel utöver komponentmåtten. De tre lösa ringdelarnas funktion kan inte avgöras säkert från bilden. Servohornsinfästningen är fortfarande öppen.
 
 ## Lampmodulens service och begränsning
 
