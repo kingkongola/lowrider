@@ -8,6 +8,8 @@
 
 ## Mikrobrytare för sensorenhet – beställda 2026-11-09
 
+**Används inte på armen enligt D020** (inga armbrytare); de blir reservdelar. Köpet står kvar här för leverans- och kostnadsuppföljning.
+
 **Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **beräknad leverans lördag 2026-11-14**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Ännu ej mottagna och faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.
 
 **Aktuell användning:** reservdelar. Armbrytare och deras hållare utgick genom [D020](DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). De ska inte inväntas eller monteras för sidotornet. Omron-reserven behålls till grundmaskinen. Tidigare brytarstudie finns i [arkivet](docs/arkiv/2026-11-09-status-och-sensorunderlag.md).
