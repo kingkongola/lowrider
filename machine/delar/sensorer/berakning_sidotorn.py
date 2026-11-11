@@ -96,6 +96,18 @@ jord = R * (I_servo + 0.3)
 krav("Jordförskjutning torn mot Jackpot", jord, "V", jord <= 0.5, "signaler 3,3/5 V tål detta; proben har egen jordledare")
 krav("Servo, toppström mot LM2596 B", V["servo_stromtopp_a"], "A", V["servo_stromtopp_a"] <= 3.0, "modulen klarar 3 A kort tid; pulserna stängs av vid stoppet")
 
+# 6b. Probstiftet mot fräsens spets och kjolen (beslut 0007-frågan). Kjolens underkant ur skanningen.
+KJOL_Z = 24.0                      # mm i fräsramen; offerskivan -87,5, kjolen 111,5 över (README)
+VERKTYG_UNDER_KJOL = 30.0          # antagande: längsta verktyg sticker högst 30 mm under kjolen; mäts
+stift = S.crtouch().bounding_box().min.Z
+krav("Probstiftet under fräsens spets vid mätning", (KJOL_Z - VERKTYG_UNDER_KJOL) - stift, "mm", (KJOL_Z - VERKTYG_UNDER_KJOL) - stift >= 5,
+     f"stiftet {KJOL_Z - stift:.1f} mm under kjolen; verktyget antas högst {VERKTYG_UNDER_KJOL:.0f}")
+parkerat = min(S.parkera(o).bounding_box().min.Z for o in (S.arm(), S.crtouch(), S.skyddshylsa()))
+stopp = min(d.bounding_box().min.Z for d in S.stoppdelar())
+torn_z = S.torn().bounding_box().min.Z
+lagst = min(parkerat, stopp, torn_z)
+krav("Parkerat: inget under kjolens underkant", lagst - KJOL_Z, "mm", lagst - KJOL_Z >= 1.0, "arm, prob, stoppdelar och torn")
+
 # 7. CR Touch-kabeln vid navet.
 r_kabel = S.HUB_D / 2
 langd = r_kabel * math.radians(-S.PARK)

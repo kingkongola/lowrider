@@ -377,3 +377,117 @@ komponenter:
     damm: X
     service: N gängan tål få omdragningar
     funktion: F 0.1 (PLA), provprint i PETG
+  Stoppdel nedre:
+    matt: A sidotorn.py (stoppdelar)
+    tillverkning: S printjobb sidotorn-smadelar, ramsidan mot bädden
+    insattning: A kontroll_montage.py steg 1c (efter servot)
+    fastsattning: A kontroll_montage.py steg 1c; A berakning_sidotorn.py (skruvarna)
+    koppling: X
+    rorelse: A kontroll_omgivning.py
+    last: A berakning_sidotorn.py (stoppkraft); F 6.10 cykelprov
+    varme: X
+    damm: N
+    service: S två M3 x 20; printas om utan nytt torn
+    funktion: F 4.9, 6.10
+  Stoppdel övre:
+    matt: A sidotorn.py (stoppdelar)
+    tillverkning: S printjobb sidotorn-smadelar; meshen var otät, rättad 2026-11-11
+    insattning: A kontroll_montage.py steg 1c
+    fastsattning: A kontroll_montage.py steg 1c; A berakning_sidotorn.py
+    koppling: X
+    rorelse: A kontroll_omgivning.py
+    last: A berakning_sidotorn.py (stopp och magnet); F 4.9
+    varme: N magneten i delen
+    damm: N
+    service: S två M3 x 20; magneten limmad i delen
+    funktion: F 4.9
+  M3 stålskruv mot magneten:
+    matt: N M3 x 10 stål, skalle Ø5,5
+    tillverkning: X
+    insattning: S skruvas i armens bula
+    fastsattning: N skruvdjupet ställer hållkraften
+    koppling: X
+    rorelse: A kontroll_omgivning.py (magnetstal-referens)
+    last: A berakning_sidotorn.py (magnetens mål)
+    varme: X
+    damm: N stålspån dras till magneten
+    service: S
+    funktion: F 4.9
+  Servokabel och kontakt:
+    matt: N servots egen kabel
+    tillverkning: X
+    insattning: S upp ovanför servot till kopplingskortet
+    fastsattning: N 3-polig stiftlist på kopplingskortet
+    koppling: S ledningslistan i MONTAGE.md
+    rorelse: X servokroppen står still
+    last: N kontakten kan vibrera loss; säkras med en droppe smältlim efter prov
+    varme: X
+    damm: X inne
+    service: S kontakten gör servot utbytbart
+    funktion: F 1.2, 4.8
+  CR Touch-kabel och kontakt:
+    matt: N kitets kabel, kapas
+    tillverkning: X
+    insattning: S i armens spår, genom skenan över servot
+    fastsattning: S buntband på armen och vid skenan
+    koppling: S fem ledare till kopplingskortet (MONTAGE.md)
+    rorelse: A berakning_sidotorn.py (ögla 40 mm); F 6.10 cykelprov
+    last: F 6.10
+    varme: X
+    damm: N utvändig del längs armen
+    service: S kontakten vid proben gör den utbytbar
+    funktion: F 1.3, 6.3
+  Kondensator 470-1000 µF:
+    matt: N 6,3 x 11 mm liggande
+    tillverkning: X
+    insattning: S på kopplingskortet
+    fastsattning: S lödd
+    koppling: S över servons +6 V och GND
+    rorelse: X
+    last: N
+    varme: N under 50 grader enligt beräkningen; elektrolytens livslängd sjunker med värme
+    damm: X inne
+    service: N
+    funktion: F 1.2 (servot rycker inte i Pi:ns matning)
+  Verktygsfäste och Core (befintliga):
+    matt: A skanningen och R-modellerna (kontroll_omgivning.py)
+    tillverkning: X
+    insattning: X
+    fastsattning: S M5 genom örat in i Core som i dag; distansen i örats försänkning
+    koppling: X
+    rorelse: A kontroll_omgivning.py
+    last: A berakning_sidotorn.py (klämtryck); N gängdjupet i Core ej känt, mät befintlig skruv
+    varme: X
+    damm: X
+    service: S tornet lossas med två M5
+    funktion: F 5.2
+  Dammsko och kjol (befintliga):
+    matt: A skanningen och R-modellerna
+    tillverkning: X
+    insattning: X
+    fastsattning: X
+    koppling: X
+    rorelse: A kontroll_omgivning.py; A berakning_sidotorn.py (inget parkerat under kjolen)
+    last: X
+    varme: X
+    damm: N borsten kan skymma kamerans hörn
+    service: X
+    funktion: F 5.3
+
+# Varje STL som sidotorn.py exporterar ska höra till en rad (tackning.py --cad). En ny del i CAD
+# utan rad underkänns; så missades stoppdelarna 2026-11-11 innan kontrollen fanns.
+cad:
+  torn: Torn
+  sidopanel: Sidopanel
+  arm: Arm
+  kapa: Skyddshylsa
+  hornbygel: Hornbygel
+  bricka: Distansbricka
+  crtouch: CR Touch
+  kabel: Tornkabel 12 ledare
+  stopp-nedre: Stoppdel nedre
+  stopp-ovre: Stoppdel övre
+  hornskruvar-referens: Hornbygel
+  magnetstal-referens: M3 stålskruv mot magneten
+cad_undantag:
+  lampbarare-utkast: G4-bäraren har utgått enligt D022 och exporteras bara som reserv

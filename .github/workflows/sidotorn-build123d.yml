@@ -44,7 +44,7 @@ jobs:
         run: python kontroll_stiftlist.py
       - name: Täckningsmatriserna är kompletta och TACKNING.md aktuell
         working-directory: machine/delar/sensorer/tackning
-        run: python -m pip install pyyaml && python tackning.py --kontroll
+        run: python -m pip install pyyaml && python tackning.py --kontroll --cad ../../../../export/sidotorn/manifest.json
       - name: Beräkningar med kriterier (krafter, värme, el)
         working-directory: machine/delar/sensorer
         run: python berakning_sidotorn.py

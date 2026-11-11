@@ -1,0 +1,12 @@
+# Utförda prov och kontroller med bevis. En ruta räknas som VERIFIERAD först när den har en post här
+# med utfall godkänd. En kodlänk eller ett planerat prov är inte bevis (granskning från Codex 2026-11-11).
+# Format per post:
+#   - matris: komponenter | system
+#     rad: <radnamn exakt som i matrisen>
+#     kolumn: <kolumnnyckel, t.ex. funktion>
+#     datum: ÅÅÅÅ-MM-DD
+#     metod: vad som gjordes
+#     protokoll: var resultatet står (CALIBRATION.md-avsnitt, fil, foto)
+#     ansvarig: vem som gjorde provet
+#     utfall: godkänd | underkänd
+poster: []
