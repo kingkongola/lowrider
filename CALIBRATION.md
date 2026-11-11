@@ -82,7 +82,7 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 | Kroppens längd, öronens undersida till botten | 35,0 | ca 35,1 |
 | Stiftet ut när det är indraget | ca 3 (osäkert) | ca 3 |
 
-Skruvhålens diameter: 3,6 mm (uppmätt). Ej uppmätt: kontaktöppningens läge mot hålen, hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
+Skruvhålens diameter: 3,6 mm (uppmätt). Kontaktöppningen sitter mitt i sidled (7,0 mm från vardera örats ytterkant) och 6,5 mm från flänsens överkant, 1,4 mm från underkanten (kontrollsummor 27,1 och 17,4 stämmer). Hålens mittlinje ca 5,8 mm under överkanten, uppskattat ur foto. Ej uppmätt: hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
 
 ## 2026-11-11 — CR Touch-prov 1 underkänt: hylsan går inte att montera
 
@@ -98,7 +98,7 @@ Skruvhålens diameter: 3,6 mm (uppmätt). Ej uppmätt: kontaktöppningens läge 
 - **Orsak:** CAD:ens servo har plan ovansida och H = 10 mm mättes mot den plana delen. Den printade delen tar i kragen innan hornet ligger an.
 - **Åtgärd:** kragens diameter och höjd mäts; fickan får urtag för kragen och omprövas. Hornprovet är **inte** godkänt.
 - **Uppmätt av användaren 2026-11-11:** kragen Ø12 mm, 1 mm över servots plana ovansida. Inlagd i servomodellen (`SERVO_KRAGE`). Med H = 10 mm når varken fickan (till 5 mm) eller bygeln (till 6,2 mm) kragen i CAD; orsaken till böjningen är därför ännu inte fastställd.
-- **Fler mått 2026-11-11:** hornet satt på servot; det var **servots mittskruv** som böjde hornet mot lodlinjen när den drogs åt. Mässingsaxelns topp ligger 7,0 mm över servots plana ovansida och 5,2 mm över kragens topp (ger kragen 1,8 mm, mot tidigare angivet 1 mm; bekräftas). Trolig orsak: bygeln eller dess skruvskallar på servosidan, 20-30 mm ut längs hornet, tar i servohusets upphöjningar innan navet sitter på axeln. Servohusets ovansida är inte plan i CAD; profilen under hornarmen mäts.
+- **Fler mått 2026-11-11:** hornet satt på servot; det var **servots mittskruv** som böjde hornet mot lodlinjen när den drogs åt. Mässingsaxelns topp ligger 7,0 mm över servots plana ovansida och 5,2 mm över kragens topp (kragen omätt till 1,75 mm, som ersätter tidigare angivna 1 mm). Trolig orsak: bygeln eller dess skruvskallar på servosidan, 20-30 mm ut längs hornet, tar i servohusets upphöjningar innan navet sitter på axeln. Servohusets ovansida är inte plan i CAD; profilen under hornarmen mäts.
 
 ## 2026-11-10 — Fällservots rörelseomfång verifierat på bänk
 
