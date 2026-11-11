@@ -5,9 +5,10 @@ All geometri i fräsramen M, millimeter: x bort från balken, y längs balken
 
 Kraven kommer från användaren 2026-11-09: bilderna sys ihop, så servo och dammsko
 får synas och maskas bort; servot står kvar; kameran rakt ned, linsen 130 mm;
-egen belysning krävs i det mörka garaget (förtydligat 2026-11-10).
-De gamla LED-urtagen är provisoriska kabelvägar, inte G4-sockelfästen.
-Lampdockan är fast; separat G4-bärare är preliminär tills lampor/socklar har valts.
+egen belysning krävs i det mörka garaget (förtydligat 2026-11-10). D022 väljer
+BRIMETI 24 V COB på horisontell understrut som huvudljus. De gamla LED-urtagen
+är provisoriska kabelvägar. Lampdockan ligger kvar som reserv; G4-bäraren har
+utgått ur printplanen.
 
 Torn och arm skiljer ansvar: armens två hårda stopp bestämmer lägena, servot
 bara driver rörelsen. Parkerat hålls armen av en magnet mot stoppet även utan

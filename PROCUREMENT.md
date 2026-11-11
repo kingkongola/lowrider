@@ -2,6 +2,10 @@
 
 **Leveransstatus uppdaterad 2026-11-10.** Äldre pris- och lagerunderlag är daterade inköpsögonblick, inte dagens erbjudanden. Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
+## LED-val 2026-11-10 – Prime och inköpsstatus
+
+**G4-lampor utgår enligt D022** och ska inte stå på aktiv inköpslista. BRIMETI COB 5 m, 24 V, 4000 K, 8 mm, 320 LED/m, enligt säljaren 10 W/m och 100 lm/W, **145 kr enligt användarens Amazon Prime-fynd**. **Vald**, men orderbekräftelse, faktiskt debiterat belopp och leverans är inte verifierade i repot. Därför **inte registrerad som betald/mottagen** och inte bokförd i `COSTS.md`. **Inget nytt LED-nätaggregat, boost eller aluminiumprofil beslutat**; återanvänd befintliga aggregat om de klarar verifierade spännings-/lastkrav. [Samlad SSOT](machine/EL_BELYSNING_OCH_STOPP.md).
+
 ## Mikrobrytare för sensorenhet – beställda 2026-11-09
 
 **Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **beräknad leverans lördag 2026-11-14**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Ännu ej mottagna och faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.

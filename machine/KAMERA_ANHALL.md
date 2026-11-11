@@ -63,11 +63,15 @@ Historik 2026-11-08: undersökte kamera + BLTouch som höjdskanner; en framåtri
 
 **Status:** konceptbeslut, inte CAD-modellerad, utskriven eller verifierad detalj.
 
-## Belysning – minsta möjliga lösning (bedömt 2026-11-09, inte inköp)
+## Belysning – aktuellt val 2026-11-10 (D022)
 
-**Kameran är en IMX708 (Raspberry Pi Camera Module 3 Standard) på Core, nominellt rakt ned.** Den har liten sensor och gynnas av stabilt ljus. **Belysning är ett mätförhållande, men inte automatiskt ytterligare en produktfunktion.**
+**D022 ersätter den äldre 2026-11-09-planen** om att vänta med LED-inköp. Tidigare diskuterade **G4-lampor ska inte användas** för LowRiderns huvudbelysning. Den valda lösningen är **BRIMETI COB 24 V, 4000 K, 8 mm, 320 LED/m**, 5 m för angivna 145 kr via Prime, säljaruppgift 10 W/m och 100 lm/W. Uppgifterna är inte oberoende mätta.
 
-**Användarkrav, förtydligat 2026-11-10:** garaget är mörkt och befintlig belysning duger inte till kameran. **Egen belysning ska ingå.** Tidigare förslag att börja med enbart garage-/arbetsljus är därmed ersatt. Användaren vill ha rejält ljus och undersöker G4 LED; exakt lampa och antal är ännu inte valda.
+**Användarkrav, förtydligat 2026-11-10:** garaget är mörkt och befintlig belysning duger inte till kameran. **Egen belysning ska ingå.** Valet är gjort i D022: BRIMETI 24 V COB-list, inte G4.
+
+**Montering:** en lång remsa nedåt och två framåt under den **horisontella understruten** längs X; provvinklar 0°/15°/35° (D022). Varken riktningen i färdig maskin, ljusfördelning eller kylning är provad. Ingen aluminiumprofil är beslutad för första prototypen. [LED-CAD/monteringsstatus](delar/led/README.md), [parametrisk build123d-kod](delar/led/tre_vinklar.py), [samlat el-/LED-kontrakt](EL_BELYSNING_OCH_STOPP.md).
+
+**Kamerans kontroll:** imager IMX708 på Core pekar rakt ned. Fotografera plywood, skruvbrickor och blanka beslag över verklig XY/Z-täckning; jämför skuggor, reflexer, exponering och bildnoggrannhet. En liten separat LED vid kameran är **en möjlig senare optisk komplettering** om prov visar behov, inte huvudlösning eller beslutat köp. Inga tidigare G4-fästen eller 90°-vända understrutsklips får användas.
 
 Vi tar stillbilder med maskinen stilla, så exponeringstid är fortfarande en avvägning mot ljusstyrka. Användarens bedömning om cirka fem sekunder i det befintliga mörkret är inte en uppmätt exponering. Vibrationer ska ha lagt sig före bilden; jämnt ljus och tydliga kanter avgör det verkliga behovet. Daterade kandidater och räkneexempel finns i [belysningsutredningen](../research/2026-11-10-kamerabelysning-och-exponering.md).
 
@@ -77,6 +81,8 @@ Vi tar stillbilder med maskinen stilla, så exponeringstid är fortfarande en av
 4. Kontrollera lampornas tillåtna spänning och verkliga yttermått före val. Fästet ska ha optisk fri sikt och belysningen kunna eftermonteras utan krock med servoarm, CR Touch, dammsko eller kablar. Ingen automatisk dimring krävs för första provet.
 
 ### Eftermontering — demonterbar lampmodul
+
+**Utgått ur printplanen enligt D022 (COB-list i stället för G4).** Texten nedan är historik; geometrin ligger kvar i CAD som reserv för en eventuell liten kamera-LED efter bildprov.
 
 Användaren vill kunna börja printa utan att lampornas leverans styr hela bygget. Tornet har nu en fast skruvdocka för en separat lampmodul. Kamerafästet ska kunna lämnas orört vid lampservice så att dess kalibrering inte ändras. CAD, servicebana och provdelar beskrivs i [sensorunderlaget](delar/sensorer/README.md#lampmodulens-service-och-begränsning); fysisk eftermontering är ännu inte verifierad.
 

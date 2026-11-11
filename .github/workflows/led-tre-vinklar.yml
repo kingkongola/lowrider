@@ -1,0 +1,70 @@
+name: Lagprofil LED understrut (build123d, Z-budget)
+
+on:
+  push:
+    paths:
+      - 'machine/delar/led/tre_vinklar.py'
+      - '.github/workflows/led-tre-vinklar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installera build123d och kontrollverktyg
+        run: python -m pip install 'build123d==0.10.0' 'ocp_gordon<0.3' 'trimesh>=4'
+      - name: Exportera STEP och STL
+        run: python machine/delar/led/tre_vinklar.py --ut export/led
+      - name: Kontrollera mesh och enda sammanhängande kropp
+        run: |
+          python - <<'PY'
+          import trimesh
+          from pathlib import Path
+          path=Path('export/led/led_3vinklar.stl')
+          mesh=trimesh.load(path,force='mesh')
+          assert mesh.is_watertight, 'STL is not watertight'
+          assert len(mesh.split())==1, 'More than one connected component'
+          assert mesh.volume>0
+          # Hård geometri-spärr: ingenting får ligga ovanför understrutens
+          # undersida eller mer än 6.65 mm under den i standardmodellen.
+          assert mesh.bounds[1,2] <= 0.001, ('Protrudes into strut',mesh.bounds)
+          assert mesh.bounds[0,2] >= -6.651, ('Excessive Z intrusion',mesh.bounds)
+          import sys
+          sys.path.insert(0,'machine/delar/led')
+          from tre_vinklar import Param, teoretiskt_intrang, validera
+          from math import isclose
+          p=Param()
+          assert p.vinklar == (0.0,15.0,35.0)
+          assert isclose(p.led_bredd,8)
+          assert isclose(p.led_marginal,0.5)
+          assert 6.6 <= teoretiskt_intrang(p) <= 6.65
+          # A 35-degree rail at the OLD 10 mm width must be rejected.
+          try:
+              validera(Param(led_marginal=1.0))
+          except ValueError:
+              print('PASS: 35 degrees on 10mm carrier exceeds Z limit')
+          else:
+              raise AssertionError('Wide 35-degree rail escaped Z guard')
+          try:
+              validera(Param(vinklar=(0,25,50)))
+          except ValueError:
+              print('PASS: old 50-degree geometry rejected by Z guard')
+          else:
+              raise AssertionError('50-degree geometry escaped Z guard')
+          assert Path('export/led/led_3vinklar.step').stat().st_size>100
+          print('STL',len(mesh.faces),'triangles,',round(mesh.volume/1000,1),'cm3')
+          PY
+      - name: CAD-filer for provprint (ej termiskt/mekaniskt verifierade)
+        uses: actions/upload-artifact@v4
+        with:
+          name: led-trevinklar-provprint
+          path: export/led/
+          retention-days: 30

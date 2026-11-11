@@ -6,6 +6,10 @@ This file provides guidance to Codex (claude.ai/code) when working with code in 
 
 Dokumentation och CAD för ett fysiskt bygge: en **LowRider V4** CNC-fräs (arbetsyta 650 × 1250 mm, Jackpot3, KATSU 101750, Ø30×1,5 mm rör). Repot är källa till sanning för bygget. Det finns inget allmänt applikationsbygge eller lintkommando; CAD-exporterna har egna kontroller och arbetsflöden. Ny text skrivs på **svenska**, kort och sakligt. PrintNC/IndyMill är inte alternativ.
 
+## Aktuellt LED-beslut (D022, 2026-11-10)
+
+**G4-lampor är INTE längre aktuella till LowRider.** Valet är BRIMETI COB-list: 24 V, 4000 K, 8 mm, 320 LED/m, 5 m rulle, 10 W/m och 100 lm/W enligt säljaren, 145 kr med Prime enligt användaren. Tre banor under **horisontell understrut**: en nedåt, två framåt. **Z-intrång är prioriterad designgräns:** nuvarande lågprofil tillåter **max 6,65 mm nedstick för själva fästet under horisontell understrut** (cirka 6,6 mm accepterat; LED och tejp tillkommer), med **0°/15°/35° som provisoriska vinklar**, **9 mm hylla för 8 mm LED** (35° med 10 mm hylla bryter budgeten). Båda äldre 90°-felvänd och cirka 21 mm hängande CAD/STL är ogiltiga. **Aktuell CAD har längsgående kantstag på baksidan av 15°/35°-remsorna, upp till ett tunt överliggande stag/skinn, utan extra Z-intrång**. Kontrollera fysisk styvhet, printbarhet och värme innan montering. Nuvarande parametrisk build123d finns i `machine/delar/led/tre_vinklar.py`, men fysiskt fäste, kylning, skuggor och elmatning är **inte verifierade**. Läs [D022](DECISIONS.md) för beslut, [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md) för matning/stoppar och [LED-CAD README](machine/delar/led/README.md) för mekaniska spärrar. **Föreslå inte G4-komponenter, ny optik eller aluminiumprofil som redan beslutade köp.** Äldre kameraanteckningar om "köp ingen LED före bildprov" är historik.
+
 ## Canonical-file hierarchy
 
 Top-level files supersede `research/` on any conflict. Each top-level file owns one kind of fact — update the owner rather than duplicating information elsewhere:

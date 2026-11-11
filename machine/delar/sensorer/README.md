@@ -10,7 +10,7 @@
 - Sidotorn med integrerad servoram, kameraficka, Pi-utrymme, två regulatorfickor, kabelvägar och avtagbar sidopanel.
 - Separat CR Touch-anpassad probarm och skyddshylsa. Hårda stopp och magnetparkering enligt [D020](../../../DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). Inga armbrytare eller KW11-hållare.
 - Camera Module 3 Standard riktad rakt ned. Bilder får innehålla servo/dammsko som maskas bort; överlappande bilder ska täcka materialet enligt det överenskomna kameraflödet.
-- Fast lampdocka med två blinda M3-pilothål och asymmetrisk styrtapp. Separat skruvad G4-bärare är ritad som utkast i [lampor.py](lampor.py); lampor och socklar är utrymmeskuvert tills produkter valts och mätts. De gamla små LED-spåren finns kvar som preliminära kabelvägar, inte G4-fästen. Användningskraven ägs av [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul).
+- **Utgått ur printplanen enligt D022:** fast lampdocka med två blinda M3-pilothål och asymmetrisk styrtapp. Separat skruvad G4-bärare är ritad som utkast i [lampor.py](lampor.py); lampor och socklar är utrymmeskuvert tills produkter valts och mätts. De gamla små LED-spåren finns kvar som preliminära kabelvägar, inte G4-fästen. Användningskraven ägs av [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul).
 - Pi Zero 2 WH tar bilder; värddatorn gör den tyngre analysen. ADXL345 sitter på massiv bärare kopplad till övre maskininfästningen för vibrationsmätning. INMP441 har ännu ingen färdig integrerad placering i sidotornet.
 - Två LM2596 planerade: en för Pi/CR Touch, en för servot. Matning och valda Jackpot-pinnar beskrivs i [kopplingsunderlaget](KOPPLING_CORE_V0.md); komponenttillgång ägs av [BOM.md](../../../BOM.md).
 
@@ -38,7 +38,7 @@ Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste oriente
 
 **CR Touch har en egen provplatta:** [crtouch-passning.json](../../../print/crtouch-passning.json), med liten armfot och hela skyddshylsan. Den kan verifiera sensorns montage utan att hela armen eller tornet printas. Hylsan vänds med flänsytan mot bädden; efter prov i PLA bereds eventuell slutdel i avsett material på nytt.
 
-**Lampdockan har en liten kall provplatta:** [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
+**Utgått enligt D022, printas inte.** Lampdockan har en liten kall provplatta: [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
 
 ## Hornficka och M3-bygel
 
@@ -53,6 +53,8 @@ Bygeln ligger på armens fria sida efter kontroll mot undre verktygsfästet. Mag
 **Litet hornprov:** [horn-passning.json](../../../print/horn-passning.json) innehåller ficka och bygel, utan resten av armen. [Kontrollen](../../../print/horn-passning/kontroll-cad.json) prövar 81 kombinationer med oberoende ±0,2 mm avvikelse i de två breddmåtten, armens tjocklek och navdiametern. Den kontrollerar sättning, klämväg och skruvgrepp i CAD. Friktion, plastens hållfasthet/krypning och verkligt glapp är ännu inte verifierade. Glappfri infästning får inte anges som fysiskt godkänd före prov med det verkliga hornet.
 
 ## Lampmodulens service och begränsning
+
+**Utgått ur printplanen enligt D022 (COB-list i stället för G4).** Texten nedan är historik; geometrin ligger kvar i CAD som reserv för en eventuell liten kamera-LED efter bildprov.
 
 Kameran sitter kvar när lampmodulen lossas. I CAD prövas demontering med proben i mätläge: ta bort två skruvar, frigör styrtappen genom 1,2 mm rörelse framåt, sänk modulen 8 mm och för den åt sidan. Stäng av matningen efter att armen ställts i mätläge och före demontering. Detta är en geometrisk servicestudie; verkliga ledningar/kontakter och handgrepp återstår att prova. Sidopanelen kan kräva att lampmodulen tas bort först.
 
@@ -74,3 +76,5 @@ Inför print: följ nästa steg i [CHECKLIST.md](../../../CHECKLIST.md). Inför 
 `core_enhet.py` är det äldre modulbygget med separat Pi-låda och brytarhållare. `core_sensorer_v0.scad` är en ännu äldre OpenSCAD-studie. `kw11_faste.py` och de gamla arm C-filerna är historiska underlag. De finns kvar som referenser, men deras STL/3MF och GitHub-artefakter är inte sidotornets utskriftsleverans.
 
 Beslut D018:s princip om servicebarhet och original-Core gäller fortfarande. Sidotornet är senaste arbetsmodell, inte en genomförd eller driftsgodkänd ersättning. Tidigare granskningar och mått finns i [arkivet](../../../docs/arkiv/2026-11-09-status-och-sensorunderlag.md) och Git-historiken.
+
+**Belysning (D022):** huvudljuset är tre BRIMETI COB-banor under horisontell understrut, se [`../../EL_BELYSNING_OCH_STOPP.md`](../../EL_BELYSNING_OCH_STOPP.md) och [LED-underlaget](../led/README.md). Lampdockan och G4-bäraren nedan har utgått ur printplanen; geometrin ligger kvar i CAD som reserv för en eventuell liten kamera-LED efter bildprov. **Matning (D023):** Pi, kamera, ADXL och CR Touch matas från övervakningsgruppen som lever efter maskinstopp, inte från maskinens brutna 24 V.

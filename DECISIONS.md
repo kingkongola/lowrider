@@ -114,6 +114,19 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 - **Godtagen korsning:** med Jackpot avstängd kan proben mata in högst ca 0,5 mA via ingångens 10 kΩ (beräknat, ej uppmätt). Försumbart. Proben kör sitt självtest när Pi:n startar, inte när maskinen gör det.
 - **Öppet:** vilken nätdel övervakningen får, och om LED-listen ska ligga där (lyser efter stopp så kameran ser) eller på maskinens 24 V (kräver uppmätt marginal på HDR-60-24).
 
+## D022 — COB-list ersätter G4-lampor för LowRider-belysning
+**Status:** valt 2026-11-10; montering, strömförsörjning och CAD ej fysiskt verifierade
+
+**Aktuellt belysningsval är BRIMETI 24 V COB LED-list**: 5 m rulle, 4000 K neutralvit, **8 mm** bredd, 320 LED/m, säljaruppgift **10 W/m och 100 lm/W**, pris **145 kr via Amazon Prime** enligt användaren. Angivet ljusflöde är därmed cirka 1 000 lm/m, inte uppmätt. Inköp/betalning/mottagning verifieras separat. **Tidigare idéer med G4-lampor, den gamla 12 V RGB-listen eller enbart kameranära LED som huvudbelysning är inte längre aktuella. Köp eller CAD-projektera inte G4-lampor till detta bygge.** Detta är ett komponent- och funktionsval, inte ett påstående att ljusmängden eller CRI är verifierad.
+
+**Placering och Z-budget (35° accepterat 2026-11-10):** tre 8 mm remsor på LowRider V4:s **horisontella undre strutplatta** längs X, **en rakt ned och två framåt**. Aktuellt parametriskt prov: **0°/15°/35°**, **9 mm breda hyllor till 8 mm LED-list**, med längsgående stag upp mot en tunn överyta. Användaren accepterar **cirka 6,6 mm nedstick för själva fästet**. Teoretiskt max blir **6,62 mm**; koden använder en strikt avrundningsmarginal på **6,65 mm** (`max_z_intrang_mm`). LED-listens/tejpens egen tjocklek, lödning och möjliga skruvskallar ingår inte. De tidigare 0°/15°/30°, 0°/15°/25° och 0°/25°/50° är supersederade som aktuella CAD-vinklar. **Z-minimering är fortsatt prioriterad**; ingen vinkel får ökas utan kontroll av faktisk utskjutning och ljusbild.
+
+**Ogiltiga modeller:** den första 90° felvända strutmodellen och den efterföljande cirka 21 mm nedhängande modellen. [Aktuell build123d-källa](machine/delar/led/tre_vinklar.py) använder de två befintliga M5/Brace-positionerna 56 mm c/c i `strut_plate.svg`. Riktig Brace-kollision, M5-grepp, rörelse, temperatur, printbarhet och belysningsbild är ännu **inte verifierade**. [Detaljerad montagegrind](machine/delar/led/README.md). **Ingen separat aluminiumprofil som första lösning.**
+
+**Matning:** befintlig Mean Well HDR-60-24 (24 V/60 W) reserveras för Jackpot3 och motorerna. LED och Pi ska inte okritiskt läggas på den. LED-matning dimensioneras efter faktiskt monterad längd (10 W/m uppgivet); återbruk av befintliga aggregat utreds innan ytterligare köp. Pi/kamera ska kunna övervaka/logga efter frånkopplad maskin och får därför inte vara beroende av maskinens brutna matningsgren. Fysisk NVR/stoppväg kvarstår oberoende av sensorövervakning. Automatisk kompletterande frånkoppling ska utredas separat. **Inget färdigt elschema och ingen säkerhetsklassning genom detta beslut.**
+
+**Ägare:** [samlad fysisk SSOT/elektrisk status](machine/EL_BELYSNING_OCH_STOPP.md), [LED-fästets kontrollgrindar](machine/delar/led/README.md), [komponentstatus i BOM](BOM.md). Kamerabildens mätkvalitet verifieras separat. G4 i G-kod betyder väntkommando och har inget med lampvalet att göra.
+
 ## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch
 **Status:** valt 2026-11-09 på användarens uppdrag; ej inkopplat, `machine/AKTIV` och FluidNC är oförändrade
 
@@ -153,7 +166,7 @@ Det som tidigare i chattar kallades "Core-enheten" ska heta **sensorenheten**; *
 ## D017 — Core-kamera och mätarm: minsta fysiska prototyp
 **Status:** historiskt prototypunderlag från 2026-11-09, följt av D018–D021. Följande leverans- och pinnstatus avser beslutstillfället; aktuell status finns i ägarfilerna.
 
-Vid beslutstillfället var Camera Module 3 **Standard** och Pi Zero 2 WH beställda och inte mottagna; senare leveranser ägs av PROCUREMENT.md. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Befintlig belysning provas före eventuella nya LED.
+Vid beslutstillfället var Camera Module 3 **Standard** och Pi Zero 2 WH beställda och inte mottagna; senare leveranser ägs av PROCUREMENT.md. Pi placeras inom 200 mm CSI-kabel från kameran på Core, med **fläktlös provkapsling** tills mätt termiskt behov finns. Tidigare plan att prova befintlig belysning före LED-inköp **ersätts av D022 (2026-11-10)**: huvudbelysningen är BRIMETI COB under horisontell understrut; separat kamera-LED är en möjlig senare optisk komplettering.
 
 Servoarm **C** används som mekaniskt referens-CAD. Ny BLTouch-anpassning utgår från samma servoaxel, men kroppens korta stift, horisontella frigång, kabel och lodrätt mätläge **är ännu inte verifierade**. Den äldre cylindriska klämman ersätts i *prototypstudien*, inte på den levande CNC:n. Skannerförsprång och 2,5D är **parkerade**, får inte skapa nya CAD-krav.
 

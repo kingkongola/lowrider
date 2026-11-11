@@ -4,6 +4,12 @@
 
 **Anpassat för CR Touch Auto Leveling Kit.** Creality anger nominellt 5 V. Funktionskopplingen nedan behåller D021:s pinnval; den är ännu inte fysiskt inkopplad eller provad. Kit, källor och referensbegränsningar finns i [CR Touch-underlaget](../../../research/2026-11-10-crtouch-anpassning.md).
 
+## Förtydligande 2026-11-10 – Pi:s oberoende matning
+
+**Kravändring för kommande elkonstruktion:** Raspberry Pi/kamera ska kunna fortsätta logga efter att KATSU och Jackpot3 har frånkopplats. Därför är diagrammets äldre `P24 → V5 → PI` (Pi från samma brytna 24 V som Jackpot) **historiskt och inte längre giltigt som matningslösning**. Använd en separat, verifierad kraftdomän utanför maskinstoppets frånkopplade gren; 20 V-laptopladdare är kandidat, inte bestämd. Servo/prob ska inte kunna bakmata avstängd Jackpot. Matningsgrupperna är valda i D023 och stoppet i D024. Se [aktuell SSOT för el/LED/stopp](../../EL_BELYSNING_OCH_STOPP.md) och [cnc:s övervakningsplan](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md). **Inga aktiva pinnar eller kablar ändras här.**
+
+## Brytare utgår 2026-11-09
+
 ## Signalvägar
 
 | Funktion | Vald anslutning enligt D021 | Kontroll före inkoppling |
@@ -49,7 +55,7 @@ LED-produkt och matningsspänning är ännu inte valda. Förslaget är tvåledar
 
 Den planerade kabelstammen innehåller redan 24 V till tornet; lokal belysning behöver därför inte automatiskt en extra matningskabel längs maskinen. Delning med Pi/prob-regulatorn är möjlig först när LED:s tillåtna spänning och regulatorns lastmarginal är verifierade. Koppla inte lampor direkt till Pi:s signalpinnar eller till servots 6 V-gren. Ingen extra styrelektronik behövs för första prov med kontinuerligt ljus.
 
-De undersökta G4-lamporna är 12 V-produkter. De kräver separat lämplig matning, exempelvis en ytterligare regulator från 24 V; någon sådan placering och lastmarginal är ännu inte verifierad. Tornets två regulatorfickor är redan avsedda för Pi/CR Touch och servo.
+**Utgått enligt D022:** G4 används inte; COB-listens matning ägs av [EL_BELYSNING_OCH_STOPP.md](../../EL_BELYSNING_OCH_STOPP.md) och D023. Historik: de undersökta G4-lamporna är 12 V-produkter. De kräver separat lämplig matning, exempelvis en ytterligare regulator från 24 V; någon sådan placering och lastmarginal är ännu inte verifierad. Tornets två regulatorfickor är redan avsedda för Pi/CR Touch och servo.
 
 Eftermonteringens mekaniska krav finns i [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul). Lampdockan finns nu i CAD, men matningen är ännu inte en färdig inkopplingsorder.
 

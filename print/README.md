@@ -74,6 +74,8 @@ uv run --project ~/dev/printa printa skiva print/crtouch-passning.json
 
 ## Lampdocka — kallt skruv- och styrprov
 
+**Utgått enligt D022, printas inte.** Belysningen är COB-list under horisontell understrut.
+
 [lampdock-passning.json](lampdock-passning.json) innehåller en liten del av tornväggen och lampmodulens fot, i PLA med 0,20 mm lager och utan stöd. Ingen lampa eller sockel ingår. [Manifest](lampdock-passning/manifest.json) och [CAD-kontroll](lampdock-passning/kontroll-cad.json) hör till aktuell källgeometri. Provbitens bakre hålrum är fyllt för stödfria lager; framsida, styrtapp och blindhålsdjup behålls. Huvudtornets elektronikrum har inte fyllts.
 
 Plattan är printkontrollerad och skivad utan fel eller varningar: cirka **8 minuter, 2,6 g PLA**. Fysisk utskrift och passning är ännu inte rapporterade.

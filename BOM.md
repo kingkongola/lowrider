@@ -168,6 +168,14 @@ Listorna nedan beskriver tidigare behov, inte aktuell återstående byggplan. Ma
 - [ ] slangupphängning/dragavlastning
 - [ ] verifierad statisk jordväg före XPS/reguljär trä/MDF-drift
 
+## LED och övervakningsmatning – aktuellt 2026-11-10
+
+- **Vald enligt D022, tidigare G4-lampor utgår:** BRIMETI COB LED-list **5 m / 24 V / 4000 K / 8 mm / 320 LED/m**, angivet **10 W/m** och **100 lm/W**. Användaren anger **145 kr med Amazon Prime**. **Betalning/mottagning är inte verifierad**; för inte upp som debiterad i `COSTS.md` utan bekräftelse. Ingen ny G4-belysning ska beställas.
+- **Befintligt:** Mean Well HDR-60-24 **24 V / 60 W** för Jackpot3/stegmotorer, 10 × LM2596 buck, möjlig 150 W-laptopladdare (utspänning obekräftad), möjlig 24 V-elsparkcykelladdare (verklig output obekräftad). Klippt Altec Lansing 17 V-kabel är inte aktuell som LED-matning.
+- **Behov, ej köpt:** verifierad och separat övervakningsmatning till Pi/kamera utanför maskinstoppets brytna matningsgren, LED-matning efter faktisk installerad längd och kylning. Inga nya boost/PSU eller Shelly-reläer beställda genom denna plan.
+- **Fästen, ej klara:** tre 8 mm LED-remsor, **1 ned + 2 fram**. Den 90° felvända första CAD:n **och den efterföljande ~21 mm nedsänkta pelarversionen** är ogiltiga. [Aktuell parametrisk build123d-CAD](machine/delar/led/tre_vinklar.py) bygger på HORISONTELL understrut med befintliga M5/Brace-låshål **56 mm c/c**, med hård gräns **≤6,65 mm CAD-budget under understruten för fästet** (provvinklar **0°/15°/35°** och **9 mm hylla till 8 mm LED**; ca 6,62 mm teoretiskt, exklusive LED/tejp). Tunn **1 mm webb**, **2,2 mm lokala M5-bossar**, plus **1,2 mm längsgående kantstag** på de två lutade listerna upp till en 0,9 mm överdel. Förstärkningen ökar inte Z-intrånget. **Endast provmodell:** faktisk Brace-passning, M5-grepp, Z-frigång, skugga, PETG-värme och build123d-CI måste verifieras. Ingen aluminiumprofil beslutad; [CAD-status](machine/delar/led/README.md).
+- **Kanoniskt kravläge, effektbudget, stoppberoenden och nästa tester:** [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md). Mjukvarans stoppolicy: [`cnc/docs/verktygsovervakning.md`](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md).
+
 ## Köp inte ännu
 
 - hel OSB/ply-deck om inte det verkliga bordet visar konkret behov

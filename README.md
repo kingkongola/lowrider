@@ -9,7 +9,7 @@
 - **Electrokit-order är mottagen. CR Touch Auto Leveling Kit är tillgängligt.** Probfästets CAD och kopplingsplan är nu anpassade till CR Touch och en [separat provplatta](print/crtouch-passning.json) är framtagen. Fysisk passning och inkoppling återstår. Full leveransstatus ägs av [PROCUREMENT.md](PROCUREMENT.md).
 - **Servots rörelseomfång är verifierat och räcker till konstruktionen.** Provresultatet ägs av [CALIBRATION.md](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk).
 - **Horninfästningen har nu en formad ficka och separat M3-bygel i CAD.** Den använder originalhornet utan uppborrning och har ett [litet passningsprov](print/horn-passning.json). Fysisk klämning och glapp återstår att prova; inget M2-köp behövs för den valda metoden.
-- **Lampornas eftermontering har nu en egen skruvdocka i CAD.** Separat G4-bärare är ett utkast; ett [litet kallt dockprov](print/lampdock-passning.json) är berett. Valda socklar/lampor och fysisk provning återstår före slutdelarna.
+- **Belysningen är BRIMETI 24 V COB-list enligt D022:** tre banor under horisontell understrut, provvinklar 0°/15°/35°, cirka 6,6 mm nedstick för fästet. G4-lamporna och sidotornets lampdocka/G4-bärare har utgått ur printplanen. [LED-underlaget](machine/delar/led/README.md), [el och stopp](machine/EL_BELYSNING_OCH_STOPP.md). Fysisk passning, värme och ljusbild är inte provade.
 - **Pinnar för Jackpot3 är planerade men sensoranslutningen är inte driftsatt.** Aktuella beslut ägs av [DECISIONS.md](DECISIONS.md). Bänkprovet 2026-11-10 använde en fristående ESP32-S3. Repots avsedda maskinkonfiguration pekas ut av [machine/AKTIV](machine/AKTIV); den är inte liveavläst i denna dokumentgranskning.
 
 ## En källa per uppgift
@@ -23,6 +23,7 @@
 | Vad har faktiskt debiterats? | [COSTS.md](COSTS.md) |
 | Vilken sensorkonstruktion och vilka printdelar gäller? | [Sensorenhetens CAD-underlag](machine/delar/sensorer/README.md) |
 | Hur är sensorernas planerade elkoppling uppdelad? | [Kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
+| Hur matas belysning, Pi och stopp? | [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md), beslut D022–D024 |
 | Vad är uppmätt eller fysiskt provat? | [CALIBRATION.md](CALIBRATION.md) |
 | Vilken maskinkonfiguration avses? | [machine/AKTIV](machine/AKTIV) → sparad konfigurationsfil |
 | Vad hände tidigare? | [BUILD_LOG.md](BUILD_LOG.md) |
