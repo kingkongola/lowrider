@@ -104,6 +104,7 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 - **Avvägning, medvetet vald:** motorernas stopp är programvara, inte strömbrytning. Stegmotorer stannar när pulserna upphör; fräsen, den farliga delen, bryts elektriskt.
 - **Falskt stopp är billigt** tack vare körlogg, återstart och svarta lådan i `cnc` (0019, 0031). Därför får sensorer stoppa. Villkor: återstarten provas en gång på riktiga maskinen med avsiktligt stopp på spill. Pushover-notis skickas efter stopp men ingår inte i stoppkedjan.
 - **Före inkoppling:** att FluidNC 3.9.9 stoppar som väntat på `estop_pin`, kontaktorns motorlastklass, och att spolens matning (D023) finns.
+- **Inte säkerhetsklassat (förtydligat 2026-11-11, granskning issue #2):** laddningspumpen och Pi:ns stoppvakt är ett övervakningsstopp, inte en säkerhetsklassad nödstoppskrets. Nödstoppsknappens brytande kontakter är säkerhetskedjan. Stoppvakten kör i övervakat läge (start kräver friska sensorer och hjärtslag från datorn) eller uttryckligt manuellt läge.
 - **Utförande 2026-11-11 (förslag, ej provat):** Pi:n styr spole och larmslinga med **en pulsad signal via laddningspump**, inte med fasta utgångar, så att en Pi som hänger sig också släpper kontaktorn. Pinnar: OK-puls `GPIO23`, startknapp `GPIO25`. Schema och bänkprov: [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md#elschema-matning-och-stoppkedja-2026-11-11-förslag-ej-provat).
 
 ## D023 — Två matningsgrupper: maskin och övervakning
