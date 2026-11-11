@@ -62,8 +62,23 @@ PI_RUM = (12.0, 78.2)                    # x0, x1
 PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
+# Pi:ns 40-poliga stiftlist (WH = fabrikslödd). Kamerakontakten vänd mot kameran (+x) och komponenterna mot
+# panelen ger stiftlisten längs kortets nedre långsida, i hålens linje 3,5 mm från kanten, stift 1 mot -x.
+# Härlett ur Pi Zeros layout, kontrolleras mot levererat kort. Stiftens topp 8,5 mm över kortet (vanlig list).
+STIFT_Z_YTTRE, STIFT_Z_INRE = PI_CENTER[1] - 11.5 - 1.27, PI_CENTER[1] - 11.5 + 1.27   # jämna stift ytterst
+STIFT_TOPP_Y = PI_Y + 1.4 + 8.5
+LIST_TOPP_Y = PI_Y + 1.4 + 2.5                                   # listens plastkropp
+
+
+def stift_lage(n):
+    """x, z för stift n (1-40)."""
+    kol = (n - 1) // 2
+    return PI_CENTER[0] - 24.13 + kol * 2.54, STIFT_Z_YTTRE if n % 2 == 0 else STIFT_Z_INRE
+
+
 PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
+PANEL_HAL = [(15.0, 125.5), (71.5, 133.0),   # (71,5, 133): ger lödplats åt stift 38 (mikrofonens data)
+             (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
 ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
 # Två LM2596-moduler 43 x 21 mm: A till Pi/CR Touch, B till servo.
 # Matningsval ägs av KOPPLING_CORE_V0.md; här modelleras modulernas utrymme.
@@ -321,6 +336,7 @@ def med_elektronik(s):
     s -= prisma_y(inset(sidoprofil(), 2.0), Y1 - 2, Y1 + 1)
     # Tvärribba som styvar väggarna; fönster för kablar.
     s += box((48, 50.5, 110.5), (51, Y1 - 2.1, 135))
+    s -= box((47.5, 62.0, 129.0), (51.5, Y1 - 1.9, 135.5))   # kabelfönster: ledningar från stift 34-38 till mikrofonen
     # Pi (hålbild 58 x 23) och accelerometer på tornets innervägg.
     # Pi:n ligger på fyra pelare med tappar i hålen (Ø2,75) och hålls på plats av panelens fingrar.
     for x, z in PI_HAL:
@@ -550,6 +566,7 @@ def main():
         namn(l, "Sidopanel", (.16, .18, .2)),
         namn(lampor.barare(), "Lampbarare_PRELIMINAR", (.3, .5, .7)),
         namn(lampor.lampkuvert(), "G4_SOCKEL_OCH_LAMPA_KONSTRUKTIONSUTRYMME", (.95, .95, .7)),
+        namn(box((PI_CENTER[0] - 25.4, PI_Y + 1.4, PI_CENTER[1] - 11.5 - 2.54), (PI_CENTER[0] + 25.4, LIST_TOPP_Y, PI_CENTER[1] - 11.5 + 2.54)), "Stiftlist_ATTRAPP", (.1, .1, .1)),
         namn(box((MIK[0] - 7, Y1 - 2 - 2.5, MIK[1] - 7), (MIK[0] + 7, Y1 - 2.5, MIK[1] + 7)), "INMP441_ATTRAPP", (.45, .2, .55)),
         *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
     ]

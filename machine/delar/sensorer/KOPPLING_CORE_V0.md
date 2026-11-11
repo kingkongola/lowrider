@@ -22,6 +22,7 @@
 | Kamera | Camera Module 3 → CSI-kabel → Pi Zero 2 WH | Kontaktriktning, låsning, verkliga böjar och räckvidd |
 | Kamera till värddator | Pi → bild och metadata via nätverk | Kameratjänst, låst fokus och bildprov |
 | ADXL345 | Lokalt till Pi; SPI är den planerade vägen för vibrationer | Levererat kort, matning, hålbild och signalanslutningar |
+| Pi-stift, lödda | Ledningar löds direkt på stiftlisten, inga instickskontakter. Planerade stift och lödplats kontrolleras i `kontroll_stiftlist.py`: 2 (5 V in), 4 (5 V CR Touch), 6/9/34 GND, 1/17 3,3 V, ADXL 19/21/23/24, INMP441 12/35/38 | Kortets verkliga orientering och stiftlistens höjd mäts |
 | INMP441 | Till Pi via I²S, 3,3 V (aldrig 5 V). Planerat: SCK → GPIO18 (stift 12), WS → GPIO19 (stift 35), SD → GPIO20 (stift 38), L/R → GND, VDD → 3,3 V (stift 1/17), GND. Krockar inte med ADXL:ens SPI (GPIO 8–11) | Placerad i sidopanelen 2026-11-11. Leverans, Pi-drivrutin och samtidig drift med kamera och ADXL ej provade |
 
 Armbrytare och deras GPIO ingår inte enligt D020. Bordets och maskinens befintliga ändlägen påverkas inte.
