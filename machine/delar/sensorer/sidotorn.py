@@ -62,6 +62,11 @@ PI_RUM = (12.0, 78.2)                    # x0, x1
 PI_Y = 55.0                              # kortets undersida
 PI_CENTER = (45.0, 151.0)
 PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (-11.5, 11.5)]
+# microSD sitter på komponentsidan vid kortsidan mitt emot kamerakontakten, alltså mot bakväggen,
+# 6,9-18,9 mm från stiftlistans kant (Raspberry Pi Zero 2 W mechanical drawing). Kortet sticker ut
+# ca 2,5 mm. En springa genom bakväggen: Pi:n sätts in utan kort, kortet skjuts in utifrån.
+SD_Z = (PI_CENTER[1] - 15 + 6.9, PI_CENTER[1] - 15 + 18.9)
+SD_SPRINGA = (PI_Y + 1.0, PI_Y + 3.4)        # y: kortet ligger 0-1,5 mm över kretskortet
 # Pi:ns 40-poliga stiftlist (WH = fabrikslödd). Kamerakontakten vänd mot kameran (+x) och komponenterna mot
 # panelen ger stiftlisten längs kortets nedre långsida, i hålens linje 3,5 mm från kanten, stift 1 mot -x.
 # Härlett ur Pi Zeros layout, kontrolleras mot levererat kort. Stiftens topp 8,5 mm över kortet (vanlig list).
@@ -77,8 +82,17 @@ def stift_lage(n):
 
 
 PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
-PANEL_HAL = [(15.0, 125.5), (71.5, 133.0),   # (71,5, 133): ger lödplats åt stift 38 (mikrofonens data)
-             (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
+# Fyra panelskruvar i tornets pelare: två hängande (från y 64,5) och två hela. Pelarna står utanför
+# Pi:ns väg in. (71,5, 132,2): lödplats åt stift 38 och fri väg för kortets hörn.
+PANEL_HAL = [(15.0, 125.5), (71.5, 132.2), (15.0, 62.5), (45.5, 62.5)]
+# Panelens två övre skruvar går genom panelens fingrar och Pi:ns övre hål in i Pi:ns distanser:
+# M2.5 x 20, formar gänga i Ø2,1-hål. Sätet i fingret ger rätt djup, så skruven når aldrig framsidan.
+PI_SKRUV = [(PI_CENTER[0] - 29, PI_CENTER[1] + 11.5), (PI_CENTER[0] + 29, PI_CENTER[1] + 11.5)]
+PI_SKRUV_SATE = 69.3        # skallens anläggning i fingret
+PI_SKRUV_L = 20.0
+# Kopplingskort (hålkort ca 9 x 23 mm, VHB-tejp på framväggen): jordpunkt, servons kontakt och
+# kondensator, CR Touch-kabelns skarvar. Ytan är fri enligt kontroll_montage.py.
+KOPPLINGSKORT = ((38.6, 51.0, 111.5), (47.5, 55.5, 135.0))
 ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
 # Två LM2596-moduler 43 x 21 mm: A till Pi/CR Touch, B till servo.
 # Matningsval ägs av KOPPLING_CORE_V0.md; här modelleras modulernas utrymme.
@@ -92,6 +106,12 @@ MIK_RUTA = 14.6              # ramens innermått, rymmer 14 x 14 med spel
 MIK_HAL_D = 1.5              # ljudhål genom panelen
 MIK_NAT = (7.0, 0.4)         # utvändig försänkning för dammnät eller ventildekal: diameter, djup
 REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3.0, 3.5), (18.0, 39.5))]   # panelens fingrar pressar modulens hörn
+
+# Infästning mot maskinen: V1E:s två M5 genom verktygsfästets öron in i Core, ca 16 mm längre
+# eftersom tornets distans och platta (x -7,3 till 9) hamnar mellan skallen och örat.
+M5_Z = (64.25, 125.25)
+M5_KANAL_D = 9.0            # M5 insex-skalle Ø8,5
+SERVO_PILOT = 2.6           # M3 formar egen gänga i PETG
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
@@ -284,9 +304,11 @@ def torn(prob_x=PROB[0]):
     s -= box((PX - 30.2, FRAM_Y[0] - 1, 33.4), (PX + 10.2, FRAM_Y[1] + 2, 53.8))
     s -= box((PX - 30.4, FRAM_Y[1], 33.2), (PX + 10.4, KAPA_Y - KAPA_T, 54.0))
     s += box((8, FRAM_Y[0], 53.8), (xb - 3, 52, 58.5))
+    # Servoskruvarna: M3 x 10 formar egen gänga i förborrat Ø2,6-hål (bakom ramen är det massivt,
+    # så en mutter får inte plats). Blint hål 3 mm förbi ramen.
     for x in (PX - 33.3, PX + 14):
         for z in (PZ - 4.7, PZ + 4.7):
-            s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
+            s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 3, SERVO_PILOT)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     def stopp(sida):
         y = (ARM_Y[0],ARM_Y[1]+1.2) if sida<0 else (ARM_Y[1]-2.5,BULA_Y[1]+.5)
@@ -325,6 +347,9 @@ def torn(prob_x=PROB[0]):
     # Permanent docka för separat lampbärare; inga lampmått låses i kamerafästet.
     s += lampor.tornbossar()
     s -= lampor.tornhal()
+    # Den nedre M5-skruvens skalle döljs av servokåpan: en rak kanal ovanför servot för skruven och
+    # insexnyckeln, utifrån (+x). Skärs sist, så att inget senare fyller igen den.
+    s -= cyl_x(43.95, M5_Z[0], 9.0, 130, M5_KANAL_D)
     return s
 
 
@@ -341,7 +366,10 @@ def med_elektronik(s):
     # Pi:n ligger på fyra pelare med tappar i hålen (Ø2,75) och hålls på plats av panelens fingrar.
     for x, z in PI_HAL:
         s += cyl_y(x, z, 50.5, PI_Y, 6.0)
-        s += cyl_y(x, z, PI_Y - .5, PI_Y + 1.9, 2.4)
+        if (x, z) in PI_SKRUV:
+            s -= cyl_y(x, z, PI_SKRUV_SATE - PI_SKRUV_L - .3, PI_Y + .1, 2.1)
+        else:
+            s += cyl_y(x, z, PI_Y - .5, PI_Y + 1.9, 2.4)
     # ADXL345 mäter fräsningens vibrationer: den sitter på en massiv platta som går direkt in i fästblocket vid övre M5.
     s += box((12, 50.5, 111), (38, 53.5, 126))
     for x, z in ACC_HAL:
@@ -356,9 +384,9 @@ def med_elektronik(s):
     for x0 in REG_X0.values():
         for dx, dz in ((0, 0), (18, 0), (0, 40), (18, 40)):
             s += box((x0 + dx, 50.5, REG_Z0 + dz), (x0 + dx + 3, PI_Y, REG_Z0 + dz + 3))
-    for x, z in PANEL_HAL[:4]:
+    for x, z in PANEL_HAL[:2]:
         s += cyl_y(x, z, 64.5, Y1 - 2, 7.0)
-    for x, z in PANEL_HAL[4:]:
+    for x, z in PANEL_HAL[2:]:
         s += cyl_y(x, z, 50.5, Y1 - 2, 7.0)
     for x, z in PANEL_HAL:
         s -= cyl_y(x, z, 62.0, Y1 - 1.5, 2.5)
@@ -373,10 +401,13 @@ def med_elektronik(s):
     s -= box((25, 52, 53.5), (43, 62, 61))
     # Börja bakom magnetstoppet: kabelspåret får inte öppna magnetens skyddshud.
     s -= box((37, 30.5, 55), (43, 52.5, 57.5))
+    # Springa för microSD genom bakväggen, med nagelgrop runt öppningen.
+    s -= box((PI_RUM[0] - 6.5, SD_SPRINGA[0], SD_Z[0] - .6), (PI_RUM[0] + 1.0, SD_SPRINGA[1], SD_Z[1] + .6))
+    s -= box((PI_RUM[0] - 6.5, SD_SPRINGA[0] - 1.5, SD_Z[0] + 2), (PI_RUM[0] - 3.0, SD_SPRINGA[1] + 1.5, SD_Z[1] - 2))
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
-    for y in (60, 65):                                      # buntbandsbryggor strax ovanför utgången, utanför ADXL-kortet
-        s += box((11, y, 118.5), (20, y + 2, 121.5))
+    for y in (60, 65):                                      # buntbandsbryggor strax ovanför utgången; slutar före ADXL-skruven
+        s += box((11, y, 118.5), (14.3, y + 2, 121.5))
     return s
 
 
@@ -388,7 +419,12 @@ def sidopanel():
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
     # Fingrar som pressar korten mot sina anlägg när panelen skruvas på.
     for x, z in PI_HAL:
-        p += cyl_y(x, z, PI_Y + 1.45, Y1 - 1.9, 5.0) - cyl_y(x, z, PI_Y + 1.0, PI_Y + 2.6, 3.2)
+        if (x, z) in PI_SKRUV:
+            p += cyl_y(x, z, PI_Y + 1.45, Y1 - 1.9, 7.0)
+            p -= cyl_y(x, z, PI_Y + 1.0, Y1 + 1, 2.9)
+            p -= cyl_y(x, z, PI_SKRUV_SATE, Y1 + 1, 5.0)
+        else:
+            p += cyl_y(x, z, PI_Y + 1.45, Y1 - 1.9, 5.0) - cyl_y(x, z, PI_Y + 1.0, PI_Y + 2.6, 3.2)
     for x, z in REG_FINGER:
         p += cyl_y(x, z, PI_Y + 1.65, Y1 - 1.9, 5.0)
     for z in (139, 144, 149, 154, 159, 164):
@@ -566,6 +602,7 @@ def main():
         namn(l, "Sidopanel", (.16, .18, .2)),
         namn(lampor.barare(), "Lampbarare_PRELIMINAR", (.3, .5, .7)),
         namn(lampor.lampkuvert(), "G4_SOCKEL_OCH_LAMPA_KONSTRUKTIONSUTRYMME", (.95, .95, .7)),
+        namn(box((PI_CENTER[0] - 32.5 - 2.6, PI_Y + 1.4, SD_Z[0] + .5), (PI_CENTER[0] - 32.5 + 12.0, PI_Y + 2.4, SD_Z[1] - .5)), "microSD_ATTRAPP", (.2, .2, .2)),
         namn(box((PI_CENTER[0] - 25.4, PI_Y + 1.4, PI_CENTER[1] - 11.5 - 2.54), (PI_CENTER[0] + 25.4, LIST_TOPP_Y, PI_CENTER[1] - 11.5 + 2.54)), "Stiftlist_ATTRAPP", (.1, .1, .1)),
         namn(box((MIK[0] - 7, Y1 - 2 - 2.5, MIK[1] - 7), (MIK[0] + 7, Y1 - 2.5, MIK[1] + 7)), "INMP441_ATTRAPP", (.45, .2, .55)),
         *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
@@ -576,11 +613,12 @@ def main():
         "Pi": [[PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15], [PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15]],
         **{f"LM2596_{k}": [[x0, PI_Y, REG_Z0], [x0 + 21, PI_Y + 14, REG_Z0 + 43]] for k, x0 in REG_X0.items()},
         "ADXL": [[ACC_HAL[0][0] - 2.5, PI_Y, ACC_HAL[0][1] - 7.8], [ACC_HAL[1][0] + 2.5, PI_Y + 3, ACC_HAL[0][1] + 7.8]],
+        "microSD": [[PI_CENTER[0] - 32.5 - 2.6, PI_Y + 1.4, SD_Z[0] + .5], [PI_CENTER[0] - 32.5 + 12.0, PI_Y + 2.4, SD_Z[1] - .5]],
         "Mikrofon": [[MIK[0] - 7, Y1 - 2 - 2.5, MIK[1] - 7], [MIK[0] + 7, Y1 - 2.5, MIK[1] + 7]], "mik": [*MIK, MIK_HAL_D],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
-        "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
+        "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "pi_skruv": PI_SKRUV, "topp": TOPP}))
     kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
     exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast", "hornbygel")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]

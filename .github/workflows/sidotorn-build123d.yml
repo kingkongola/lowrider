@@ -39,6 +39,9 @@ jobs:
       - name: Pi-stiftlistens lödplats per stift och ledningsgator
         working-directory: machine/delar/sensorer
         run: python kontroll_stiftlist.py
+      - name: Monteringen i ordning (verktygsåtkomst för varje skruv)
+        working-directory: machine/delar/sensorer
+        run: python kontroll_montage.py
       - name: CR Touch-fot, hylsa och rörelse
         run: python machine/delar/sensorer/kontroll_crtouch.py --ut export/kontroll-crtouch
       - name: Hornfickans klämväg, skruvar och rörelse

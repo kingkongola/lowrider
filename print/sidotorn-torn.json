@@ -1,0 +1,8 @@
+{
+  "namn": "sidotorn-torn",
+  "process": "styrka",
+  "material": "petg",
+  "stod": true,
+  "delar": [{"fil": "sidotorn-slutdelar/torn.stl", "antal": 1}],
+  "andringar": {}
+}

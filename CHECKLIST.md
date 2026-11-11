@@ -64,6 +64,8 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 
 ### Fas 4 — Montera tornet på bänken
 
+**Detaljerad ordning, skruvlista och ledningslista: [MONTAGE.md](machine/delar/sensorer/MONTAGE.md)** (simulerad 2026-11-11, varje skruv nåbar enligt `kontroll_montage.py`).
+
 Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte går att göra inne i tornet.
 
 - [ ] **4.1 Löd först, utanför tornet:** ledningar på Pi:ns stiftlist (stiften i [kontroll_stiftlist.py](machine/delar/sensorer/kontroll_stiftlist.py)), på mikrofonen och ADXL:en. Inga instickskontakter. Mät ledningslängderna i CAD innan du klipper.
