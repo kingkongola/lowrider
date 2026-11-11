@@ -68,21 +68,29 @@ BEVIS = ("datum", "metod", "protokoll", "ansvarig", "utfall")
 
 
 def resultat(matriser):
+    """Senaste spårbara resultat per ruta styr: ett senare underkännande upphäver ett äldre godkännande."""
     poster = (yaml.safe_load((HAR / "resultat.yaml").read_text()) or {}).get("poster") or []
-    fel, verifierat = [], set()
+    fel, senaste = [], {}
     for i, p in enumerate(poster):
         saknas = [k for k in BEVIS if not str(p.get(k, "")).strip()]
         if saknas:
             fel.append(f"resultat.yaml post {i}: saknar {saknas}")
             continue
         kol, rader = matriser.get(p.get("matris"), ({}, {}))
+        fil = str(p["protokoll"]).split(",")[0].split()[0]
         if p.get("rad") not in rader or p.get("kolumn") not in kol:
             fel.append(f"resultat.yaml post {i}: {p.get('matris')}/{p.get('rad')}/{p.get('kolumn')} finns inte")
         elif p["utfall"] not in ("godkänd", "underkänd"):
             fel.append(f"resultat.yaml post {i}: utfall ska vara godkänd eller underkänd")
-        elif p["utfall"] == "godkänd":
-            verifierat.add((p["matris"], p["rad"], p["kolumn"]))
-    return verifierat, fel
+        elif not any((REPO / d / fil).exists() for d in ("", "machine/delar/sensorer", "machine/delar/sensorer/tackning")):
+            fel.append(f"resultat.yaml post {i}: protokollet {fil!r} finns inte i repot")
+        else:
+            nyckel = (p["matris"], p["rad"], p["kolumn"])
+            if nyckel not in senaste or str(p["datum"]) >= str(senaste[nyckel]["datum"]):
+                senaste[nyckel] = p
+    godkant = {k for k, p in senaste.items() if p["utfall"] == "godkänd"}
+    underkant = {k for k, p in senaste.items() if p["utfall"] == "underkänd"}
+    return godkant, underkant, fel
 
 
 def cad_kontroll(manifest, d):
@@ -118,17 +126,37 @@ def rendera(cad=None):
             for k, rubr in kol.items():
                 if status(str(rad[k])) == "SAKNAS":
                     saknas.append(f"| {rubrik} | {namn} | {rubr} | {rad[k].split('SAKNAS', 1)[1].strip(' :;')} |")
-    verifierat, f = resultat(matriser)
+    godkant, underkant, f = resultat(matriser)
     fel += f
     if fel:
         raise SystemExit("UNDERKÄND:\n" + "\n".join(fel))
-    sammanfattning = [rad.replace("VERIFIERAT", str(sum(1 for v in verifierat if v[0] == m))) for m, rad in sammanfattning]
+    sammanfattning = [rad.replace("VERIFIERAT", f"{sum(1 for v in godkant if v[0] == m)} / {sum(1 for v in underkant if v[0] == m)}")
+                      for m, rad in sammanfattning]
+    x_utan = [f"{m}/{n}/{k}" for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol
+              if status(str(r[k])) == "X" and len(str(r[k]).strip()) <= 2]
+    a_typ = Counter()
+    for m, (kol, rader) in matriser.items():
+        for n, r in rader.items():
+            for k in kol:
+                t = str(r[k])
+                if status(t) != "A" and not t.startswith("A "):
+                    continue
+                if re.search(r"test_\w+\.py|cnc|sensorpi", t):
+                    a_typ["extern (cnc-repot)"] += 1
+                elif "kontroll_omgivning" in t or "skanning" in t:
+                    a_typ["lokal (skanningsdata, ej CI)"] += 1
+                else:
+                    a_typ["i lowriders CI"] += 1
     huvud = ["# Täckning: vad är kontrollerat?", "",
              "Genererad av `tackning.py` ur `komponenter.yaml` och `system.yaml`. Ändra i YAML-filerna, inte här.", "",
              "Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F eller X: rutan har en definierad kontroll eller är inte relevant. F betyder ett **planerat** fysiskt prov; om det är utfört ägs av CHECKLIST.md. Nominella antaganden (N) och SAKNAS räknas inte.", "",
-             "| Matris | Storlek | " + " | ".join(f"{s} ({NAMN[s]})" for s in STATUS) + " | Har kontroll | Verifierat med bevis | Relevanta rutor |",
+             "| Matris | Storlek | " + " | ".join(f"{s} ({NAMN[s]})" for s in STATUS) + " | Har kontroll | Godkända / underkända | Relevanta rutor |",
              "|---" * (len(STATUS) + 5) + "|", *sammanfattning, "",
-             "**Verifierat med bevis** räknar rutor med godkänd post i `resultat.yaml` (datum, metod, protokoll, ansvarig). Att en kontroll finns är inte detsamma som att den är utförd.", "",
+             "**Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.", "",
+             "**Var de automatiska kontrollerna körs:** " + ", ".join(f"{k}: {v}" for k, v in sorted(a_typ.items())) + ". cnc-repots tester körs i cnc, inte i lowriders CI.", "",
+             "## Underkända prov", "", *([f"- {m} / {n} / {k}" for m, n, k in sorted(underkant)] or ["- inga"]), "",
+             f"## X utan skäl ({len(x_utan)} rutor)", "", "Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.", "",
+             *(", ".join(x_utan[i:i + 6]) for i in range(0, len(x_utan), 6)), "",
              f"## Inte kontrollerat ({len(saknas)} rutor)", "", "| Matris | Rad | Kolumn | Vad saknas |", "|---|---|---|---|", *saknas, ""]
     return "\n".join(huvud + delar)
 
@@ -138,11 +166,14 @@ def strikt():
     for fil, nyckel, m in (("komponenter.yaml", "komponenter", "komponenter"), ("system.yaml", "funktioner", "system")):
         kol, rader, _, _ = las(fil, nyckel)
         matriser[m] = (kol, rader)
-    verifierat, _ = resultat(matriser)
+    godkant, underkant, _ = resultat(matriser)
     kvar = [(m, n, k) for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol
-            if status(str(r[k])) != "X" and (m, n, k) not in verifierat]
-    if kvar:
-        raise SystemExit(f"STRIKT UNDERKÄND: {len(kvar)} relevanta rutor saknar godkänt bevis, t.ex. {kvar[:3]}")
+            if status(str(r[k])) != "X" and (m, n, k) not in godkant]
+    x_utan = [(m, n, k) for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol
+              if status(str(r[k])) == "X" and len(str(r[k]).strip()) <= 2]
+    if kvar or underkant or x_utan:
+        raise SystemExit(f"STRIKT UNDERKÄND: {len(kvar)} relevanta rutor utan godkänt bevis, {len(underkant)} underkända, "
+                         f"{len(x_utan)} X utan skäl")
     print("STRIKT GODKÄND: varje relevant ruta är verifierad")
 
 

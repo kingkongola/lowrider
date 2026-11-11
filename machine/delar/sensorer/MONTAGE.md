@@ -8,7 +8,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 
 | Förband | Fästelement | Antal | Hur | Varför |
 | --- | --- | --- | --- | --- |
-| **Tornet → maskinen** | M5 insex (DIN 912), **befintlig längd + 16 mm**, smal bricka DIN 433 (Ø9) under skallen, medelstark gänglåsning (blå), **0,6–0,8 Nm**, märkfärgsstreck över skallen | 2 | Genom tornets platta och distans, verktygsfästets öra, in i Core som i dag. Den nedre nås genom kanalen Ø9,4 ovanför servot | Core sitter bakom örat; skallen är på tornets sida. Distansen sitter i örats försänkning, så formen håller läget och klämkraften kan vara låg: PETG kryper över ca 18 MPa (`berakning_sidotorn.py`). Märkfärgen visar om en skruv vridit sig |
+| **Tornet → maskinen** | M5 insex (DIN 912), **befintlig längd + 16 mm**, smal bricka DIN 433 (Ø9) under skallen, medelstark gänglåsning (blå), **0,4–0,5 Nm med momentskruvmejsel**, märkfärgsstreck över skallen | 2 | Genom tornets platta och distans, verktygsfästets öra, in i Core som i dag. Den nedre nås genom kanalen Ø9,4 ovanför servot | Core sitter bakom örat; skallen är på tornets sida. Distansen sitter i örats försänkning, så formen håller läget och klämkraften kan vara låg: PETG kryper över ca 18 MPa; 0,8 Nm överskrider det när gänglåsningen sänker friktionen (`berakning_sidotorn.py`, granskning issue #2). Märkfärgen visar om en skruv vridit sig |
 | Servot → tornet | M3 × 10, formar gänga i Ø2,6 | 4 | Framifrån genom öronen | Bakom ramen är det massivt; en mutter får inte plats (rättat 2026-11-11, var Ø3,4 frigångshål) |
 | Stoppdelarna → ramen | M3 × 20, försänkt skalle | 4 | Efter servot, framifrån | Stoppen stod framför servot och hindrade det att sättas in (rättat 2026-11-11). Ett trasigt stopp printas om utan nytt torn |
 | Hornet → servoaxeln | Servots egen mittskruv | 1 | Framifrån, före eller efter armen | |
@@ -56,7 +56,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 10. **Ändlägena (fas 4.8 i checklistan):** hornet på axeln så att armen står mitt i rörelsen vid 1500 µs, mittskruven, sedan armen med bygeln och två M3 × 10. CR Touch med hylsan, två M3 × 8; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.
 12. **microSD** in utifrån genom springan i bakväggen. Ett kort som ska bytas dras ut med en pincett.
-13. **På maskinen, armen utfälld:** den övre M5 rakt utifrån, den nedre genom kanalen. Bricka, blå gänglåsning, dra med handkraft; plasten får inte tryckas ihop.
+13. **På maskinen, armen utfälld:** den övre M5 rakt utifrån, den nedre genom kanalen. Bricka, blå gänglåsning, 0,4–0,5 Nm med momentskruvmejsel; plasten får inte tryckas ihop.
 14. **Tornkabeln** ut bakåt, buntband vid bryggorna, sedan längs X-vägen till balken enligt [CABLE_ROUTING.md](../../../CABLE_ROUTING.md).
 
 ## Miljökrav: värme och damm

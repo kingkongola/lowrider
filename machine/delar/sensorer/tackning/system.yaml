@@ -17,7 +17,7 @@ funktioner:
     konstruktion: S två M5, kanal för den nedre
     auto: A kontroll_montage.py, kontroll_omgivning.py
     berakning: A berakning_sidotorn.py (klämtryck under krypgränsen)
-    bank: X
+    bank: X kan bara provas på maskinen
     maskin: F 5.2-5.3
     felfall: S blå gänglåsning och märkfärg; F 6.11 uppstartsrutin
     agare: S MONTAGE.md
@@ -67,7 +67,7 @@ funktioner:
     konstruktion: S fast märke och mönster på armen
     auto: A cnc test_armsparr.py
     berakning: F 6.5 märkets plats väljs ur första bilden
-    bank: X
+    bank: X kan bara provas på maskinen
     maskin: F 6.5
     felfall: S oklar bild ger okänt läge och stopp
     agare: S cnc docs/beslut/0036
@@ -95,7 +95,7 @@ funktioner:
   Matning, övervakning:
     krav: S D023
     konstruktion: S HDR nr 2, LM2596 A
-    auto: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
     berakning: A berakning_sidotorn.py; S spänningsfall i EL_BELYSNING_OCH_STOPP.md
     bank: F 1.1, provkörning steg 1
     maskin: F 6.4
@@ -105,7 +105,7 @@ funktioner:
   Matning, maskin och servo:
     krav: S D023, D024
     konstruktion: S HDR nr 1, LM2596 B, kondensator
-    auto: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
     berakning: A berakning_sidotorn.py
     bank: F 1.1
     maskin: F 6.2
@@ -115,9 +115,9 @@ funktioner:
   Jord och störningar:
     krav: S en jordpunkt i tornet, skärm jordad i en ände
     konstruktion: S kopplingskortet, LiYCY
-    auto: X
-    berakning: X
-    bank: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
+    berakning: X störningar räknas inte fram tillförlitligt; de mäts med KATSU igång (6.8)
+    bank: X kan bara provas på maskinen
     maskin: F 6.8 störningsprov med KATSU igång
     felfall: S mat_z mäter två gånger; falsk kontakt i första sökningen ger larm i den andra
     agare: S KOPPLING_CORE_V0.md
@@ -136,7 +136,7 @@ funktioner:
     krav: S D024 (bara grön knapp)
     konstruktion: S stoppvakten
     auto: A cnc test_sensorpi.py
-    berakning: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
     bank: F stopplådans bänkprov
     maskin: F provkörning steg 10
     felfall: S fasthållen knapp startar inte om
@@ -146,8 +146,8 @@ funktioner:
     krav: S D021, D024
     konstruktion: S konfigförslaget (sex rader); estop_pin ej inlagd
     auto: A probstyrning.yml
-    berakning: X
-    bank: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
+    bank: X kan bara provas på maskinen
     maskin: A konfig.py --med-stopp; F 6.1
     felfall: N fel polaritet på probe.pin avvisas av check_mode_start
     agare: S machine/probstyrning/README.md
@@ -156,7 +156,7 @@ funktioner:
     krav: S cnc pi/README.md
     konstruktion: S sensorpi.py med systemd
     auto: A cnc test_sensorpi.py (16 tester)
-    berakning: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
     bank: F 1.5-1.8
     maskin: F fas 6
     felfall: S tjänsten startar om sig själv; stoppvakten släpper vid krasch
@@ -166,8 +166,8 @@ funktioner:
     krav: S cnc docs
     konstruktion: S armsparr, probval, matsekvens
     auto: A cnc testsviten (4 fel fanns före 2026-11-11, ej i dessa delar)
-    berakning: X
-    bank: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
+    bank: X kan bara provas på maskinen
     maskin: F fas 6-7
     felfall: A cnc test_pistopp.py (stopp begärs och bekräftas, annars fel)
     agare: S cnc
@@ -175,8 +175,8 @@ funktioner:
   Nätverk:
     krav: S ingen säkerhet över Wi-Fi
     konstruktion: S HTTP på port 8080
-    auto: X
-    berakning: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
+    berakning: X ingen beräkning behövs; beteendet är binärt
     bank: F 1.5
     maskin: N Wi-Fi-räckvidd i garaget
     felfall: S bortfall ger fel i armspärren (stopp); stopp går ändå via knapp och pump
@@ -185,9 +185,9 @@ funktioner:
   Kabelföring genom rörelsen:
     krav: S CABLE_ROUTING.md
     konstruktion: S MONTAGE.md, kabelväg ut ur tornet
-    auto: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
     berakning: S längd = X-motorkabelns + 0,3 m, böjradie 10 x diameter
-    bank: X
+    bank: X kan bara provas på maskinen
     maskin: F 5.3
     felfall: N avbruten ledare i pumpkedjan stoppar; avbruten probledare ger ingen kontakt (larm vid G38)
     agare: S CABLE_ROUTING.md
@@ -195,7 +195,7 @@ funktioner:
   Värme i tornet:
     krav: S MONTAGE.md, miljökrav
     konstruktion: S PETG, slitsar
-    auto: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
     berakning: A berakning_sidotorn.py
     bank: F 1.5 (vcgencmd)
     maskin: F 6.9 långkörning
@@ -205,9 +205,9 @@ funktioner:
   Damm och spån:
     krav: S MONTAGE.md, miljökrav
     konstruktion: S dammnät på mikrofonen
-    auto: X
-    berakning: X
-    bank: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
+    berakning: X ingen beräkning behövs; beteendet är binärt
+    bank: X kan bara provas på maskinen
     maskin: F 8.0 dammprov
     felfall: S smutsig lins ger stopp via armspärren
     agare: S MONTAGE.md
@@ -216,29 +216,29 @@ funktioner:
     krav: N
     konstruktion: S SD utifrån, panel med sex skruvar
     auto: A kontroll_montage.py
-    berakning: X
-    bank: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
+    bank: X kan bara provas på maskinen
     maskin: N
-    felfall: X
+    felfall: X inget felfall utöver de i andra rader
     agare: S MONTAGE.md
-    aterstallning: X
+    aterstallning: X inget att återställa
   230 V-säkerhet:
     krav: S D024, AUDIT.md
     konstruktion: S layout i EL_BELYSNING_OCH_STOPP.md
-    auto: X
-    berakning: X
-    bank: X
+    auto: X går inte att kontrollera automatiskt; prövas fysiskt
+    berakning: X säkringar och kontaktor väljs efter märkström och motorlastklass; ingen egen beräkning
+    bank: X kan bara provas på maskinen
     maskin: F kopplas av någon van vid nätspänning
     felfall: S felfallstabell i EL_BELYSNING_OCH_STOPP.md
     agare: S machine/EL_BELYSNING_OCH_STOPP.md
     aterstallning: S koppla bort stickproppen före öppning
   Dokumentens samstämmighet:
     krav: S CLAUDE.md (en källa per sak)
-    konstruktion: X
+    konstruktion: X gäller dokument, inte konstruktion
     auto: A kontroll_dokument.py (BOM har varje fästelement i MONTAGE.md)
-    berakning: X
-    bank: X
-    maskin: X
+    berakning: X ingen beräkning behövs; beteendet är binärt
+    bank: X kan bara provas på maskinen
+    maskin: X gäller dokument, inte maskinen
     felfall: N fel skruvar köps eller tas fram
     agare: S BOM.md
     aterstallning: A kontroll_dokument.py visar vad som ska rättas
@@ -248,7 +248,7 @@ funktioner:
     konstruktion: S CR Touch utfällt 63,6 mm under kjolen
     auto: A berakning_sidotorn.py
     berakning: A berakning_sidotorn.py; N längsta verktygets utstick antaget 30 mm
-    bank: X
+    bank: X kan bara provas på maskinen
     maskin: F 7.1 och 7.2
     felfall: S fräsen tar i först om ett mycket långt verktyg sitter i; mat_z sänker Z bara med stiftet ute
     agare: S machine/probstyrning/README.md

@@ -28,6 +28,13 @@ GRANS_MM3 = 0.5          # mer gods än så i en annan del räknas som krock (ST
 STEG = 2
 PIV = np.array([S.PX, 0.0, S.PZ])
 
+# Skanningsdatan ska vara exakt den som kontrollsummorna i repot anger (granskning issue #2, fynd 6).
+import hashlib
+_summor = dict(reversed(r.split()) for r in (Path(__file__).parent / "skanning" / "SHA256SUMS").read_text().splitlines() if r.strip())
+for _namn, _sha in _summor.items():
+    if hashlib.sha256((a.ref / _namn).read_bytes()).hexdigest() != _sha:
+        raise SystemExit(f"UNDERKÄND: {_namn} stämmer inte med skanning/SHA256SUMS; fel skanningsdata")
+_cad = json.loads((a.ut / "manifest.json").read_text())["kallor_sha256"]
 L = lambda p: trimesh.load(p, force="mesh")
 ref = {k: L(a.ref / f"R_{k}.stl") for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, S.SERVO_DY, 0])
@@ -111,7 +118,8 @@ for n in rorliga:
             fel.append(f"{n} krockar med {k} vid {g} grader ({v:.1f} mm3)")
 
 if a.rapport:
-    a.rapport.write_text(json.dumps({**rapport, "fel": fel}, ensure_ascii=False, indent=1) + "\n")
+    a.rapport.write_text(json.dumps({**rapport, "fel": fel, "cad_kallor_sha256": _cad, "skanning_sha256": _summor},
+                                    ensure_ascii=False, indent=1) + "\n")
 if fel:
     raise SystemExit("UNDERKÄND: " + "; ".join(fel))
 print("GODKÄND: torn, panel och armens hela rörelse mot skannad omgivning")

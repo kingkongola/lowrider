@@ -27,6 +27,9 @@ def main():
     a = ap.parse_args()
     a.ut.parent.mkdir(parents=True, exist_ok=True)
     torn, arm = cad.torn_monterat(), cad.arm()
+    kropp_t = cad.torn()
+    sn, so = cad.stoppdelar()
+    stopp = sn + so
     hylsa, prob, kontakt = cad.skyddshylsa(), cad.crtouch(), cad.kontaktkuvert()
     stift = Pos(cad.PROB[0], cad.PROB[1] + cad.cr.STIFT_Y,
                 cad.FLANS_Z - (46 + 29) / 2) * Cylinder(1.6, 46 - 29)
@@ -74,10 +77,18 @@ def main():
                     f"M3-huvud {sida}: {v:.6f} mm³ i probattrappen; samma avvikelse finns i originalets egna skruvar. Kontrollera verklig skalle/utrymme.")
             elif v > .001:
                 rapport["fel"].append(f"Skruvintrång {sida}/{namn}: {v:.4f} mm³")
+    # Vägen in (granskning issue #2, fynd 1): proben förs upp underifrån mot armfoten och hylsan,
+    # 40 mm i 1 mm-steg. Slutläget räcker inte; både hylsan och servot underkändes fysiskt på vägen.
+    for dz in range(1, 41):
+        q = Pos(0, 0, -dz) * delar["prob"]
+        traff = [hn for hn in ("arm", "hylsa") if volym(q & delar[hn]) > .001]
+        if traff:
+            rapport["fel"].append(f"Insättning: proben {dz} mm före slutläget tar i {', '.join(traff)}")
+            break
     # Avståndsgräns mellan två provvinklar: varje punkt flyttar högst
     # 2*r*sin(steg/4) till närmaste provläge. Distansfunktionen är 1-Lipschitz.
-    steg = 2
     for namn in ("arm", "prob", "hylsa", "kontaktkuvert", "stiftkuvert"):
+        steg = 1 if namn == "arm" else 2      # armen närmar sig stoppen; tätare steg ger lägre gräns
         o = delar[namn]
         b = o.bounding_box()
         radie = max(math.hypot(x - cad.PX, z - cad.PZ)
@@ -86,15 +97,23 @@ def main():
         rader = []
         for g in range(int(cad.PARK), 1, steg):
             q = Pos(cad.PX, 0, cad.PZ) * Rot(0, g, 0) * Pos(-cad.PX, 0, -cad.PZ) * o
-            d = q.distance_to(torn)
+            # Inflygningen mot stoppen (5° före ändläget) är avsedd för armen; där mäts bara tornkroppen.
+            nara_slut = namn == "arm" and min(abs(g - cad.PARK), abs(g)) <= 5
+            d = q.distance_to(kropp_t) if nara_slut else q.distance_to(torn)
             v = volym(q & torn) if d < .0001 else 0.0
             rader.append({"grader": g, "avstand_mm": round(d, 5), "intrang_mm3": round(v, 6)})
             if v > .001:
                 rapport["fel"].append(f"{namn}/torn vid {g}°: {v:.4f} mm³")
-        minrad = min(rader, key=lambda r: r["avstand_mm"])
+        # Avsedd kontakt: bara armen mot sina stopp i ändlägena. Allt annat måste hålla gränsen,
+        # annars är kollisionsfrihet mellan provvinklarna obevisad (granskning issue #2, fynd 5).
+        ovriga = rader     # ändlägena mäts mot tornkroppen ovan; stoppkontakten är avsedd
+        minrad = min(ovriga, key=lambda r: r["avstand_mm"])
+        fria = minrad["avstand_mm"] > granser
+        if not fria:
+            rapport["fel"].append(f"{namn}: mellanlägen obevisade, minsta avstånd {minrad['avstand_mm']} mm vid {minrad['grader']}° mot gräns {granser:.3f} mm")
         rapport["svep"][namn] = {"steg_grader": steg, "minsta": minrad,
             "rotationsgrans_mm": round(granser, 5),
-            "mellanlagen_fria_mot_cad_torn": minrad["avstand_mm"] > granser,
+            "mellanlagen_fria_mot_cad_torn": fria,
             "lagen": rader}
         print(namn, "minsta", minrad, "mellanlägesgräns", round(granser, 3), flush=True)
     rapport["begransningar"] = [

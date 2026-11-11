@@ -85,6 +85,7 @@ Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte g�
 
 - [ ] **5.1** L1 och L2 lösta: nätdel vald, kabel byggd.
 - [ ] **5.2** Tornet på verktygsfästet med två M5.
+- [ ] **5.3b Frigång mot kjolen:** armen parkerad, mät att stoppdelarna och tornet ligger ovanför dammkjolens underkant. CAD ger 1,8 mm, vilket är mindre än skanningens noggrannhet, så det är inte bevisat. Godkänt: minst 1 mm uppmätt.
 - [ ] **5.3 Hela rörelsen för hand eller med låg hastighet:** X, Y och Z ytterlägen. Godkänt: inget tar i, kabeln sträcks inte. Kabellängden förs in i [CABLE_ROUTING.md](CABLE_ROUTING.md).
 
 ### Fas 6 — Koppla till Jackpot och dator

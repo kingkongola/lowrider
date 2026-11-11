@@ -4,12 +4,24 @@ Genererad av `tackning.py` ur `komponenter.yaml` och `system.yaml`. Ändra i YAM
 
 Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F eller X: rutan har en definierad kontroll eller är inte relevant. F betyder ett **planerat** fysiskt prov; om det är utfört ägs av CHECKLIST.md. Nominella antaganden (N) och SAKNAS räknas inte.
 
-| Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Verifierat med bevis | Relevanta rutor |
+| Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Godkända / underkända | Relevanta rutor |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Komponenter | 38 × 11 | 61 | 76 | 71 | 97 | 113 | 0 | 77 % | 0 | 305 |
-| Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 | 192 |
+| Komponenter | 38 × 11 | 61 | 76 | 71 | 97 | 113 | 0 | 77 % | 0 / 2 | 305 |
+| Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 / 0 | 192 |
 
-**Verifierat med bevis** räknar rutor med godkänd post i `resultat.yaml` (datum, metod, protokoll, ansvarig). Att en kontroll finns är inte detsamma som att den är utförd.
+**Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.
+
+**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 80, lokal (skanningsdata, ej CI): 16. cnc-repots tester körs i cnc, inte i lowriders CI.
+
+## Underkända prov
+
+- komponenter / Servohorn / fastsattning
+- komponenter / Skyddshylsa / insattning
+
+## X utan skäl (0 rutor)
+
+Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.
+
 
 ## Inte kontrollerat (0 rutor)
 

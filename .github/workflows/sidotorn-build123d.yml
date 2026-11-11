@@ -36,6 +36,9 @@ jobs:
         run: python -m pip install 'build123d==0.13.0' 'cadquery-ocp-novtk==8.0.1.1.0' 'ocp_gordon==0.3.1'
       - name: Bygg torn, arm, panel och STEP
         run: python machine/delar/sensorer/sidotorn.py --ut export/sidotorn
+      - name: Krockberäkningen felar stängt (självtest)
+        working-directory: machine/delar/sensorer
+        run: python kontrollhjalp.py
       - name: Mikrofonens kort, lödning, ledningsväg och ljudhål
         working-directory: machine/delar/sensorer
         run: python kontroll_mikrofon.py

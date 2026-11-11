@@ -22,7 +22,7 @@ komponenter:
     tillverkning: S printjobb sidotorn-torn, 5,6 h, stöd 7 %; F provprint i PLA före PETG
     insattning: X basdel
     fastsattning: A kontroll_montage.py steg 4 (båda M5); F 5.2
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py (Core, fästen, dammsko, kjol, skanning)
     last: F 6.7 knackprov med ADXL, kriterium första resonans över 1,2 kHz
     varme: A berakning_sidotorn.py (ca 48 grader vid toppeffekt); F 6.9 långkörning
@@ -49,7 +49,7 @@ komponenter:
     koppling: A berakning_sidotorn.py (kabeln förlängs ca 20 mm, ögla 40 mm); F 6.10 cykelprov
     rorelse: A kontroll_omgivning.py (svep -150 till 0 grader)
     last: A berakning_sidotorn.py (stoppkrafter mot PETG); F 6.10
-    varme: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
     damm: N utfälld nära dammskon; ej bedömt
     service: S två M3 i bygeln
     funktion: F 4.9, 6.2
@@ -58,10 +58,10 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar
     insattning: A kontroll_crtouch.py (skruvstapel)
     fastsattning: A kontroll_crtouch.py; F 0.2
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: N tunn vägg; slag mot arbetsstycke ej bedömt
-    varme: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
     damm: N
     service: S två M3 x 8
     funktion: F 0.2
@@ -70,11 +70,11 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar (en reserv)
     insattning: A kontroll_montage.py steg 3
     fastsattning: A kontroll_horn.py; F 0.1
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: F 0.1 glapp och grepp
-    varme: X
-    damm: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
+    damm: X dammokänslig mekanisk del
     service: S
     funktion: F 0.1
   Distansbricka:
@@ -82,13 +82,13 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar
     insattning: A kontroll_montage.py steg 6
     fastsattning: A kontroll_montage.py steg 6
-    koppling: X
-    rorelse: X
+    koppling: X ingen elektrisk funktion
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
-    varme: X
-    damm: X
-    service: X
-    funktion: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
+    damm: X dammokänslig mekanisk del
+    service: X byts inte separat
+    funktion: X ingen egen funktion utöver passningen
   LED-fäste:
     matt: A led-tre-vinklar.yml (Z-budget)
     tillverkning: S printjobb led-fasten, PETG
@@ -96,18 +96,18 @@ komponenter:
     fastsattning: N befintliga M5 vid Brace; kollision med Brace ej verifierad
     koppling: S lödda parallella grenar enligt EL_BELYSNING_OCH_STOPP.md, säkring F2; F genomföring vid montering
     rorelse: N Z-intrång 6,51 mm; frigång mot arbetsstycke ej verifierad
-    last: X
+    last: X bär bara LED-listen
     varme: F värmeprov på PETG (CHECKLIST LED-avsnittet)
     damm: N
     service: N
     funktion: F 6.6
   Pi Zero 2 WH:
     matt: A officiell ritning i CAD (hål, stiftlist, SD); N stiftlistens sida härledd, F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 7
     fastsattning: A kontroll_montage.py steg 9 (M2.5)
     koppling: A kontroll_stiftlist.py
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N lödda ledare, inga kontakter
     varme: A berakning_sidotorn.py; F 1.5 och 6.9
     damm: N inne i tornet
@@ -115,23 +115,23 @@ komponenter:
     funktion: F 1.5
   microSD:
     matt: S ritning
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 12
     fastsattning: N friktion i hållaren
-    koppling: X
-    rorelse: X
+    koppling: X ingen egen ledare; kopplas via annan rad
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: S kaptontejp över springan håller kortet (MONTAGE.md)
-    varme: X
+    varme: X tål tornets beräknade 48 grader (datablad 85 grader)
     damm: N springan öppen mot Core
     service: A kontroll_montage.py steg 12
     funktion: F 1.5
   Camera Module 3:
     matt: A ritning RP-008153 och STEP i CAD
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S fickan öppen nedåt
     fastsattning: A kontroll_montage.py steg 5
     koppling: S CSI-kabeln som ark i granska_sidotorn.py
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
     varme: N
     damm: A cnc test_armsparr.py (oskarp bild stoppar); S rengöring med blåsbälg; F 8.0
@@ -139,47 +139,47 @@ komponenter:
     funktion: F 1.6, 7.3
   CSI-kabel:
     matt: N 200 mm räcker enligt arkmodellen
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S två 45-gradersvikningar som ark
     fastsattning: N kontakternas låsning
     koppling: S granska_sidotorn.py
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
-    varme: X
+    varme: X tål tornets beräknade 48 grader (datablad 85 grader)
     damm: X inne
     service: S
     funktion: F 1.6
   ADXL345:
     matt: N hålbild 15 mm nominell; F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 6
     fastsattning: A kontroll_montage.py steg 6
     koppling: A kontroll_stiftlist.py
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: F 6.7 knackprov; plattan är en del av framväggen
-    varme: X
+    varme: X tål tornets beräknade 48 grader (datablad 85 grader)
     damm: X inne
     service: S panelen av
     funktion: F 1.7, 8.1
   INMP441:
     matt: N 14 x 14 mm; F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_mikrofon.py
     fastsattning: N ram och skumtejp
     koppling: A kontroll_mikrofon.py, kontroll_stiftlist.py
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
-    varme: X
+    varme: X tål tornets beräknade 48 grader (datablad 85 grader)
     damm: S dammnät över ljudhålet
     service: S med panelen
     funktion: F 1.8, 8.1
   LM2596 A:
     matt: N 43 x 21 mm; F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 8
     fastsattning: N panelens fingrar
     koppling: S ledningslistan i MONTAGE.md
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N justerskruven säkras med smältlim
     varme: A berakning_sidotorn.py
     damm: X inne
@@ -187,11 +187,11 @@ komponenter:
     funktion: F 1.1
   LM2596 B:
     matt: N 43 x 21 mm; F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 8
     fastsattning: N panelens fingrar
     koppling: S ledningslistan i MONTAGE.md
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N smältlim
     varme: A berakning_sidotorn.py (servot drar bara vid rörelse)
     damm: X inne
@@ -199,7 +199,7 @@ komponenter:
     funktion: F 1.1
   Servo SPMS664:
     matt: N referenskropp; öronens mått ej uppmätta; F 1.4
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 1b (före stoppdelarna)
     fastsattning: A kontroll_montage.py steg 1
     koppling: S till kopplingskortet
@@ -211,35 +211,35 @@ komponenter:
     funktion: F 1.2, 4.9
   Servohorn:
     matt: F uppmätt A-I (CALIBRATION.md)
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 2
     fastsattning: A kontroll_horn.py; F 0.1
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: F 0.1
-    varme: X
-    damm: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
+    damm: X dammokänslig mekanisk del
     service: S
     funktion: F 0.1
   CR Touch:
     matt: N tredjepartsreferens; F 0.2
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_crtouch.py
     fastsattning: A kontroll_crtouch.py
     koppling: S kopplingskortet; N polaritet, F 1.3
     rorelse: A kontroll_omgivning.py
     last: N
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: S stiftet ute bara vid mätning, hylsa, självtest (MONTAGE.md); F 8.0
     service: S
     funktion: F 1.3, 7.2
   Magnet:
     matt: N Ø6 x 3
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 10
     fastsattning: N lim
-    koppling: X
-    rorelse: X
+    koppling: X ingen elektrisk funktion
+    rorelse: X rör sig inte relativt sina grannar
     last: A berakning_sidotorn.py (tål ca 3,7 g); F 4.9 och 8.0b
     varme: N neodym tappar kraft över ca 80 grader
     damm: N stålspån dras till magneten; ej bedömt
@@ -251,7 +251,7 @@ komponenter:
     insattning: A kontroll_montage.py steg 11
     fastsattning: N VHB-tejp
     koppling: S ledningslistan
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
     varme: N
     damm: X inne
@@ -259,25 +259,25 @@ komponenter:
     funktion: F provkörning steg 1
   Tornkabel 12 ledare:
     matt: N ca 3 m; F 5.3 snöre
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S ut bakåt genom utgången
     fastsattning: S buntband vid bryggorna
     koppling: S ledarlista i KOPPLING_CORE_V0.md
     rorelse: S följer X-motorns kabel, längd + 0,3 m (MONTAGE.md); F 5.3
     last: N flexkabel
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: N
     service: N lödd i tornet
     funktion: F 5.3, 6.x
   Y-kabel 8 ledare:
     matt: N längd ej mätt
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: N i Y-kedjan
     fastsattning: N
     koppling: S elschemat
     rorelse: S i Y-kedjan med övriga kablar; F 5.3
     last: N
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: N
     service: N
     funktion: F 6.x
@@ -287,8 +287,8 @@ komponenter:
     insattning: S layout på DIN-skenan
     fastsattning: S skruvas på bordets framkant
     koppling: S elschemat
-    rorelse: X
-    last: X
+    rorelse: X sitter i stopplådan på bordet, rör sig inte mot något
+    last: X stillastående i lådan; ingen mekanisk last
     varme: N HDR-60-24 och kontaktor i sluten låda
     damm: N
     service: S plastlåda, 230 V bakom plintar; öppnas spänningslös
@@ -299,70 +299,70 @@ komponenter:
     insattning: S DIN-hållare i lådan
     fastsattning: S DIN-hållare
     koppling: S elschemat
-    rorelse: X
-    last: X
+    rorelse: X sitter i stopplådan på bordet, rör sig inte mot något
+    last: X stillastående i lådan; ingen mekanisk last
     varme: N
     damm: X i lådan
     service: N
     funktion: F bänkprov, släpper inom 0,2 s
   Kontaktor, nödstopp, startknapp:
     matt: N datablad ej lästa; motorlastklass kontrolleras före köp
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S layout; knapparna i locket
     fastsattning: S DIN-skena och 22 mm hål i locket
     koppling: S elschemat
-    rorelse: X
-    last: X
+    rorelse: X sitter i stopplådan på bordet, rör sig inte mot något
+    last: X stillastående i lådan; ingen mekanisk last
     varme: N
     damm: N
     service: N
     funktion: F stopplådans bänkprov, 10 i provkörningen
   HDR-60-24 nr 2:
     matt: N samma som nr 1
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S layout på DIN-skenan
     fastsattning: N DIN-skena
     koppling: S elschemat
-    rorelse: X
-    last: X
+    rorelse: X sitter i stopplådan på bordet, rör sig inte mot något
+    last: X stillastående i lådan; ingen mekanisk last
     varme: N halv last
     damm: N
     service: N
     funktion: F provkörning steg 1
   COB-list:
     matt: N säljaruppgifter
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: N
     fastsattning: N tejp på fästets hyllor
     koppling: S EL_BELYSNING_OCH_STOPP.md, säkring F2
-    rorelse: X
-    last: X
+    rorelse: X rör sig inte relativt sina grannar
+    last: X ingen nämnvärd mekanisk last
     varme: F värmeprov
     damm: N
     service: N
     funktion: F 6.6
   Jackpot-anslutningar:
     matt: N kontaktrevision ej fotograferad
-    tillverkning: X
-    insattning: X
+    tillverkning: X befintlig del i maskinen
+    insattning: X befintlig, sätts inte in
     fastsattning: N befintliga kontakter
     koppling: A probstyrning.yml (konfigförslaget); S KOPPLING_CORE_V0.md
-    rorelse: X
-    last: X
-    varme: X
-    damm: X
+    rorelse: X rör sig inte relativt sina grannar
+    last: X ingen nämnvärd mekanisk last
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
+    damm: X dammokänslig mekanisk del
     service: N
     funktion: F 6.1-6.3
   M5 tornet till maskinen:
     matt: F mät en befintlig V1E-skruv (MONTAGE.md)
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 4
     fastsattning: S bricka, blå gänglåsning, handkraft
-    koppling: X
-    rorelse: X
+    koppling: X ingen elektrisk funktion
+    rorelse: X rör sig inte relativt sina grannar
     last: A berakning_sidotorn.py (0,7 Nm ger ca 14 MPa i PETG); F 0.0 skruvprov
-    varme: X
-    damm: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
+    damm: X dammokänslig mekanisk del
     service: S
     funktion: F 5.2
   Självgängande M3 och M2.5 i PETG:
@@ -370,11 +370,11 @@ komponenter:
     tillverkning: N hålen blir ca 0,1 mm mindre i print
     insattning: A kontroll_montage.py
     fastsattning: A berakning_sidotorn.py (urdragning); F 0.0 skruvprov i PETG
-    koppling: X
-    rorelse: X
+    koppling: X ingen elektrisk funktion
+    rorelse: X rör sig inte relativt sina grannar
     last: N
-    varme: X
-    damm: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
+    damm: X dammokänslig mekanisk del
     service: N gängan tål få omdragningar
     funktion: F 0.1 (PLA), provprint i PETG
   Stoppdel nedre:
@@ -382,10 +382,10 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar, ramsidan mot bädden
     insattning: A kontroll_montage.py steg 1c (efter servot)
     fastsattning: A kontroll_montage.py steg 1c; A berakning_sidotorn.py (skruvarna)
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: A berakning_sidotorn.py (stoppkraft); F 6.10 cykelprov
-    varme: X
+    varme: X ingen värmekälla nära; utanför tornets varma rum
     damm: N
     service: S två M3 x 20; printas om utan nytt torn
     funktion: F 4.9, 6.10
@@ -394,7 +394,7 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar; meshen var otät, rättad 2026-11-11
     insattning: A kontroll_montage.py steg 1c
     fastsattning: A kontroll_montage.py steg 1c; A berakning_sidotorn.py
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: A berakning_sidotorn.py (stopp och magnet); F 4.9
     varme: N magneten i delen
@@ -403,47 +403,47 @@ komponenter:
     funktion: F 4.9
   M3 stålskruv mot magneten:
     matt: N M3 x 10 stål, skalle Ø5,5
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S skruvas i armens bula
     fastsattning: N skruvdjupet ställer hållkraften
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py (magnetstal-referens)
     last: A berakning_sidotorn.py (magnetens mål)
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: N stålspån dras till magneten
     service: S
     funktion: F 4.9
   Servokabel och kontakt:
     matt: N servots egen kabel
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S upp ovanför servot till kopplingskortet
     fastsattning: N 3-polig stiftlist på kopplingskortet
     koppling: S ledningslistan i MONTAGE.md
     rorelse: X servokroppen står still
     last: N kontakten kan vibrera loss; säkras med en droppe smältlim efter prov
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: X inne
     service: S kontakten gör servot utbytbart
     funktion: F 1.2, 4.8
   CR Touch-kabel och kontakt:
     matt: N kitets kabel, kapas
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S i armens spår, genom skenan över servot
     fastsattning: S buntband på armen och vid skenan
     koppling: S fem ledare till kopplingskortet (MONTAGE.md)
     rorelse: A berakning_sidotorn.py (ögla 40 mm); F 6.10 cykelprov
     last: F 6.10
-    varme: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: N utvändig del längs armen
     service: S kontakten vid proben gör den utbytbar
     funktion: F 1.3, 6.3
   Kondensator 470-1000 µF:
     matt: N 6,3 x 11 mm liggande
-    tillverkning: X
+    tillverkning: X köpt färdig, tillverkas inte
     insattning: S på kopplingskortet
     fastsattning: S lödd
     koppling: S över servons +6 V och GND
-    rorelse: X
+    rorelse: X sitter fast i tornet och följer det; frigång gäller tornet
     last: N
     varme: N under 50 grader enligt beräkningen; elektrolytens livslängd sjunker med värme
     damm: X inne
@@ -451,27 +451,27 @@ komponenter:
     funktion: F 1.2 (servot rycker inte i Pi:ns matning)
   Verktygsfäste och Core (befintliga):
     matt: A skanningen och R-modellerna (kontroll_omgivning.py)
-    tillverkning: X
-    insattning: X
+    tillverkning: X befintlig del i maskinen
+    insattning: X befintlig, sätts inte in
     fastsattning: S M5 genom örat in i Core som i dag; distansen i örats försänkning
-    koppling: X
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: A berakning_sidotorn.py (klämtryck); N gängdjupet i Core ej känt, mät befintlig skruv
-    varme: X
-    damm: X
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
+    damm: X dammokänslig mekanisk del
     service: S tornet lossas med två M5
     funktion: F 5.2
   Dammsko och kjol (befintliga):
     matt: A skanningen och R-modellerna
-    tillverkning: X
-    insattning: X
-    fastsattning: X
-    koppling: X
+    tillverkning: X befintlig del i maskinen
+    insattning: X befintlig, sätts inte in
+    fastsattning: X befintlig, sitter som i dag
+    koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py; A berakning_sidotorn.py (inget parkerat under kjolen)
-    last: X
-    varme: X
+    last: X ingen nämnvärd mekanisk last
+    varme: X ingen värmekälla och ingen värmekänslighet att tala om
     damm: N borsten kan skymma kamerans hörn
-    service: X
+    service: X byts inte separat
     funktion: F 5.3
 
 # Varje STL som sidotorn.py exporterar ska höra till en rad (tackning.py --cad). En ny del i CAD

@@ -12,6 +12,7 @@ Instickskontakternas höjd redovisas för jämförelse men är inte ett krav.
 Kör: python kontroll_stiftlist.py
 """
 import sidotorn as S
+from kontrollhjalp import krock as _krock
 
 # Planerade stift, ägs av KOPPLING_CORE_V0.md. Ändra där först.
 STIFT = {
@@ -26,10 +27,7 @@ t, p = S.torn(), S.sidopanel()
 
 
 def krock(a, b):
-    try:
-        return (a & b).volume
-    except Exception:
-        return 0.0
+    return _krock(a, b)
 
 
 fel = []

@@ -78,7 +78,8 @@ def main():
     if volym(magnet&torn)>1e-5:r['fel'].append('Ø6x3-magneten får inte plats i sitt urtag')
     heads=Compound(children=[hf.cy(x,z,hf.SKRUVSATE,hf.SKRUVSATE+3,5.5) for x,z in hf.SKRUVAR])
     if volym(cad.horn_lage(heads)&arm)>1e-5:r['fel'].append('Bygelns skruvskallar intränger i armen')
-    hinder={'torn':torn,'servoattrapp':cad.servo_attrapp(),
+    sn,so=cad.stoppdelar()
+    hinder={'tornkropp':cad.torn(),'stoppdelar':sn+so,'servoattrapp':cad.servo_attrapp(),
             'lampmodul':Compound(children=[cad.lampor.barare(),cad.lampor.lampkuvert()])}
     delar={'arm':arm,'bygel':cad.horn_lage(bygel),'bygel_M3x10':cad.horn_lage(hf.skruvar()),'magnetstal_M3x10':stal}
     for nam,o in delar.items():
@@ -93,9 +94,16 @@ def main():
                 d=q.distance_to(hi);v=volym(q&hi) if d<.0001 else 0
                 rr.append({'grader':g,'avstand_mm':round(d,6),'intrang_mm3':round(v,7)})
                 if v>1e-5:r['fel'].append(f'{nam}/{hn} vid {g}°: {v:.6f} mm³')
-            mini=min(rr,key=lambda v:v['avstand_mm'])
+            # Avsedd kontakt i ändlägena: armen mot stoppen, stålskruven mot magnetstoppet parkerat.
+            # Mot stoppdelarna är kontakt avsedd i ändlägena: armen i båda, stålskruven parkerad.
+            # Inflygningen 5° före ändläget undantas bara mot stoppdelarna, aldrig mot tornkroppen.
+            till={('arm','stoppdelar'):(cad.PARK,0),('magnetstal_M3x10','stoppdelar'):(cad.PARK,)}.get((nam,hn),())
+            ovr=[v for v in rr if not any(abs(v['grader']-t)<=5 for t in till)]
+            mini=min(ovr,key=lambda v:v['avstand_mm'])
+            fria=mini['avstand_mm']>granser
+            if not fria:r['fel'].append(f"{nam}/{hn}: mellanlägen obevisade, {mini['avstand_mm']} mm vid {mini['grader']}° mot gräns {granser:.4f}")
             r['svep'][nam+'/'+hn]={'steg_grader':steg,'minsta':mini,'rotationsgrans_mm':round(granser,6),
-                'mellanlagen_fria':mini['avstand_mm']>granser,'lagen':rr}
+                'mellanlagen_fria':fria,'lagen':rr}
             print(nam,hn,mini,flush=True)
     r['begransningar']=[
         'Geometriskt klämprov, inte mätning av skruvförspänning, friktion, hållfasthet eller krypning i plast.',

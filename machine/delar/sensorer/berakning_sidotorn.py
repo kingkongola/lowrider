@@ -16,8 +16,8 @@ ANTAG = {
     "petg_skikt_skjuv_mpa": (15, "vidhäftning mellan lager i skjuvning; försiktigt antagande"),
     "servo_moment_nm": (1.6, "SPMS664 226 oz-in vid 6 V, Horizon Hobby"),
     "servo_stromtopp_a": (3.0, "typisk standardservo med metalldrev vid 6 V; ej uppmätt"),
-    "m5_moment_nm": (0.7, "vald åtdragning 0,6-0,8 Nm (MONTAGE.md)"),
-    "mutter_faktor_k": (0.2, "friktionsfaktor torr gänga"),
+    "m5_moment_nm": ((0.4, 0.5), "angivet intervall i MONTAGE.md; hela intervallet prövas"),
+    "mutter_faktor_k": ((0.15, 0.25), "friktionsfaktor; blå gänglåsning smörjer, därför ner till 0,15"),
     "magnet_dragkraft_n": (12.0, "Ø6 x 3 N42 mot tjockt stål, typiskt säljarvärde"),
     "magnet_glapp_faktor": (0.45, "0,6 mm plast mellan magnet och stål; grov tumregel"),
     "magnet_mal_faktor": (0.6, "litet stålmål (M3-skalle Ø5,5) mättas"),
@@ -44,11 +44,16 @@ def krav(namn, varde, enhet, villkor, text):
 
 
 # 1. M5 mot PETG: distansens ring mot örats försänkning och skallen med bricka mot plattan.
-F_m5 = V["m5_moment_nm"] / (V["mutter_faktor_k"] * 0.005)
+#    Värsta fall över hela momentintervallet och friktionens osäkerhet (granskning issue #2, fynd 3).
+T_min, T_max = V["m5_moment_nm"]
+K_min, K_max = V["mutter_faktor_k"]
+F_max = T_max / (K_min * 0.005)
+F_min = T_min / (K_max * 0.005)
 ring = math.pi / 4 * (9.6 ** 2 - 5.4 ** 2)
 bricka = math.pi / 4 * (9.0 ** 2 - 5.4 ** 2)
-krav("M5 tryck på distansen", F_m5 / ring, "MPa", F_m5 / ring <= V["petg_krypgrans_mpa"], f"förspänning {F_m5:.0f} N på {ring:.0f} mm²")
-krav("M5 tryck under brickan", F_m5 / bricka, "MPa", F_m5 / bricka <= V["petg_krypgrans_mpa"], f"DIN 433 Ø9 på {bricka:.0f} mm²")
+krav("M5 tryck på distansen, värsta fall", F_max / ring, "MPa", F_max / ring <= V["petg_krypgrans_mpa"], f"{T_max} Nm, K {K_min}: {F_max:.0f} N på {ring:.0f} mm²")
+krav("M5 tryck under brickan, värsta fall", F_max / bricka, "MPa", F_max / bricka <= V["petg_krypgrans_mpa"], f"DIN 433 Ø9 på {bricka:.0f} mm²")
+krav("M5 minsta förspänning", F_min, "N", F_min >= 250, f"{T_min} Nm, K {K_max}; läget hålls av distansen i örats försänkning, förspänningen bara mot lossning")
 krav("M5-kanalen rymmer brickan", S.M5_KANAL_D - 9.0, "mm spel", S.M5_KANAL_D - 9.0 >= 0.3, f"kanal Ø{S.M5_KANAL_D}")
 
 # 2. Hårda stopp: servots moment på stoppets inre ände (värsta fall).
@@ -106,15 +111,19 @@ parkerat = min(S.parkera(o).bounding_box().min.Z for o in (S.arm(), S.crtouch(),
 stopp = min(d.bounding_box().min.Z for d in S.stoppdelar())
 torn_z = S.torn().bounding_box().min.Z
 lagst = min(parkerat, stopp, torn_z)
-krav("Parkerat: inget under kjolens underkant", lagst - KJOL_Z, "mm", lagst - KJOL_Z >= 1.0, "arm, prob, stoppdelar och torn")
+SKAN_TOL = 2.0
+marginal = lagst - KJOL_Z
+krav("Parkerat: inget under kjolens underkant (CAD)", marginal, "mm", marginal >= 1.0, "arm, prob, stoppdelar och torn")
+if marginal < SKAN_TOL + 1.0:
+    rader.append(f"OSÄKER Parkerat mot kjolen: {marginal:.1f} mm är mindre än skanningens noggrannhet {SKAN_TOL} mm + 1 mm; frigången är inte bevisad av CAD, mäts på maskinen (CHECKLIST 5.3b)")
 
 # 7. CR Touch-kabeln vid navet.
 r_kabel = S.HUB_D / 2
 langd = r_kabel * math.radians(-S.PARK)
 krav("CR Touch-kabel, längdändring vid navet", langd, "mm", True, "kräver en fri ögla på minst 40 mm, böjradie minst 15 mm; F cykelprov")
 
-# Negativtest (KONTROLLER.md princip 7): full åtdragning 2,5 Nm måste underkännas.
-assert 2.5 / (V["mutter_faktor_k"] * 0.005) / ring > V["petg_krypgrans_mpa"], "M5-kriteriet kan inte fela"
+# Negativtest (KONTROLLER.md princip 7): det tidigare intervallets övre del, 0,8 Nm, måste underkännas.
+assert 0.8 / (K_min * 0.005) / bricka > V["petg_krypgrans_mpa"], "M5-kriteriet kan inte fela"
 
 print("\n".join(rader))
 print("\nAntaganden (byt mot mätvärden när de finns):")

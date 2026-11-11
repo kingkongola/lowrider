@@ -7,6 +7,7 @@ Kortmåtten är nominella (14 x 14 mm); mät levererad modul och ändra MIK_RUTA
 Kör: python kontroll_mikrofon.py
 """
 import sidotorn as S
+from kontrollhjalp import krock as _krock
 
 t, p = S.torn(), S.sidopanel()
 mx, mz = S.MIK
@@ -14,10 +15,7 @@ Y1 = S.Y1
 
 
 def krock(a, b):
-    try:
-        return (a & b).volume
-    except Exception:
-        return 0.0
+    return _krock(a, b)
 
 
 kort = S.box((mx - 7, Y1 - 2 - 2.5, mz - 7), (mx + 7, Y1 - 2.05, mz + 7))

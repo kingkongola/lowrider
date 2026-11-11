@@ -12,6 +12,7 @@ from build123d import Cylinder, Pos, Rot
 
 import hornfaste as hf
 import sidotorn as S
+from kontrollhjalp import krock as _krock
 
 Y1 = S.Y1
 torn_utan, arm, crt, kapa, panel = S.torn(), S.arm(), S.crtouch(), S.skyddshylsa(), S.sidopanel()
@@ -37,10 +38,7 @@ def cyl_z(x, y, z0, z1, d):
 def krock(verktyg, delar):
     ut = {}
     for namn, d in delar.items():
-        try:
-            v = (verktyg & d).volume
-        except Exception:
-            v = 0.0
+        v = _krock(verktyg, d, namn)
         if v > 0.05:
             ut[namn] = round(v, 1)
     return ut
