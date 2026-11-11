@@ -15,7 +15,7 @@
 | X | Ej relevant med explicit motivering |
 | SAKNAS | Kontrollmetod saknas; synligt tomrum |
 
-`resultat` i JSON ar skilt fran kontrollmetod. Fysisk status byts till `godkand` endast tillsammans med reproducerbar evidens eller logg.
+`resultat` i JSON ar skilt fran kontrollmetod. En ruta far markeras `godkand` forst med ett separat `bevis`-objekt som innehaller `datum`, `metod`, `protokoll` (t.ex. fil eller logg) och `ansvarig`. Kodlank under `evidens` ar **inte** korbevis.
 
 ## 1. Komponentmatris – 32 objekttyper, 352 celler
 
