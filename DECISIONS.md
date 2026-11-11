@@ -129,6 +129,8 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 
 **Ägare:** [samlad fysisk SSOT/elektrisk status](machine/EL_BELYSNING_OCH_STOPP.md), [LED-fästets kontrollgrindar](machine/delar/led/README.md), [komponentstatus i BOM](BOM.md). Kamerabildens mätkvalitet verifieras separat. G4 i G-kod betyder väntkommando och har inget med lampvalet att göra.
 
+**Tillägg 2026-11-11 (användaren): hornet hålls av formficka i armen och M3×10 genom armen som mittskruv; kilbygeln utgår.** Inga M2-skruvar. Magnetens stålskruv flyttas 26,5 mm ut, förbi hornets spets; parkeringsstoppet följer armens kant dit. Hårda stopp och magnetparkering enligt D020 kvarstår.
+
 **Tillägg 2026-11-11 (användaren): CR Touchen skruvas direkt i armfoten, utan skyddshylsa.** Hylsan gick inte att montera på den verkliga proben (CR Touch-prov 1, CALIBRATION.md); den gav en del till och en kärvningsrisk. Proben skyddas av att den sitter parkerad högt när fräsen går och fälls ut bara vid mätning.
 
 ## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch

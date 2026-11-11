@@ -1,24 +1,32 @@
-"""Formad hornficka med skruvad M3-kilbygel, konstruktionsutkast.
+"""Servohornet i armen: formficka och mittskruven genom armen (omgjort 2026-11-11).
 
-Komponentmått: CALIBRATION.md, 2026-11-10, servohornets nav.
-Lokalt x längs hornet, y från dess plana utsida mot servot, z tvärs hornet.
-Yttre hornreferens: rak avsmalning och konstruerad rund spets; inga splines
-eller håldiametrar påstås vara uppmätta. Hylsa och servo styrs i sidotorn.py.
+Beprövad lösning (printade robotarmar, pan/tilt): hornet ligger infällt i en ficka med hornets
+kontur, så att fickans väggar tar vridmomentet (formlåsning, inte friktion). Servots mittskruv
+byts mot en M3 x 10 som går genom armens botten och hornets fläns in i axeln och klämmer
+arm, horn och axel i ett förband. Ingen bygel, inga extra skruvar.
+
+Armbotten väljs så att M3 x 10 får exakt fabriksskruvens gängdjup i axeln (6 - 1,7 = 4,3 mm);
+då kan den inte bottna i axeln (felsäkring). Mått: CALIBRATION.md 2026-11-10 och 2026-11-11.
+Lokalt x längs hornet, y från hornets plana utsida (0) mot servot, z tvärs hornet.
+Hornets spetsform och tandning är inte uppmätta; passningen provas med provbiten.
 """
 import math
-from build123d import Axis, Compound, Cylinder, Face, Pos, Rot, Vector, Wire, extrude, fillet, loft
+from build123d import Axis, Cylinder, Face, Pos, Rot, Vector, Wire, extrude, fillet
 
 NAV_D, NAV_H = 9.0, 6.0
 C, D, E, F, G = 7.3, 6.8, 14.5, 18.8, 2.5
 H_MONTERAT = 10.0
-HORN_HAL_D = 2.4  # rapporterat cirka 2,4–2,5; mindre värdet i frigångskontroll
-SPELRAD = .6  # justermån på fria ytor; fasta anliggningar återläggs efter urtaget
-NAV_FRITT_D = 11.0  # sidofrigång; separat bakre navanslag bestämmer längdläget
-SKRUVAR = ((22.0,7.5),(28.0,7.5))  # x,z; M3x10, utanför hornet
-KAP_Y = (G+.7,G+3.7)
-SKRUVSATE = KAP_Y[1]-1.5
-SKRUV_L = 10.0
-PILOT_BOTTEN = -6.2
+HORN_HAL_D = 2.4      # rapporterat cirka 2,4–2,5
+SPEL = 0.15           # per sida i fickan; samma typ av passning som kamerafickan (godkänd 2026-11-11)
+FLANS = 1.7           # navets fläns under mittskruvens skalle, uppmätt 2026-11-11
+FABRIKSSKRUV_L = 6.0  # servots mittskruv, uppmätt 2026-11-11 (Ø3)
+MITTSKRUV_L = 10.0    # M3 x 10 ur befintligt lager
+BOTTEN = MITTSKRUV_L - FABRIKSSKRUV_L   # 4,0: samma gängdjup som fabriksskruven
+SKALLE = (5.5, 3.0)   # M3 insex, Ø x höjd
+SATE_D, GENOM_D = 6.2, 3.4
+NAV_R = 7.0           # navbossens radie runt axeln
+RYGG = 2.5            # gods under hornarmen, utanför fickans botten
+FICKA_Y1 = 3.0        # fickan går genom armens platta (lokalt till 2,9) men inte in i bulan
 
 
 def box(a, b):
@@ -41,7 +49,6 @@ def h(t,c=C,d=D):
 
 def armkuvert(y0,y1,spel=0,c=C,d=D,nav_d=NAV_D):
     # Spetsradien konstrueras tangent till den raka sidan vid F.
-    # Exakt spetsform återstår att provpassa; den är inte infästningens datum.
     m = (c-d)/2/(F-E)
     r = d/2 * math.sqrt(1+m*m)
     slut = F-d/2*m
@@ -58,56 +65,39 @@ def horn(c=C,d=D,g=G,nav_d=NAV_D):
     return o
 
 
-def kropp():
-    b=fillet(box((9,-3,-6),(31.8,0,5)).edges().filter_by(Axis.Y),1.2)
-    # Djupet behövs bara vid skruvarna; fri nos undviker dammkjolens svep.
-    b+=fillet(box((19.2,-6.8,4),(31.8,0,13.5)).edges().filter_by(Axis.Y),1.2)
-    b+=box((16.2,-.1,11),(31.8,5,13.5))
-    return b
+def nav():
+    """Gods som läggs till armen: boss runt axeln och rygg under hela hornet."""
+    boss = cy(0, 0, -(BOTTEN + SKALLE[1] + .3), 0, 2 * NAV_R)
+    rygg = armkuvert(-RYGG, 0, 2.0)
+    return boss + rygg
 
 
-def anlaggningar():
-    """Två sidostöd och bakre navanslag för montering före åtdragning."""
-    return Compound(children=[*[py([(ta,-6),(tb,-6),(tb,-h(tb)),(ta,-h(ta))],-.1,1.7)
-                              for ta,tb in ((13.2,14.7),(17.9,18.7))],
-                              box((-6.5,-.1,-1.5),(-NAV_D/2,1.7,1.5))])
+def ficka():
+    """Hornets kontur med spel, öppen mot servot; navet fritt ut mot kragen."""
+    return armkuvert(0, FICKA_Y1, SPEL) + cy(0, 0, 0, NAV_H + 3, NAV_D + 2 * SPEL)
 
 
-def urtag():
-    # Öppen från bygelns sida: hornet kan skjutas in före bygelmontage.
-    # Bakom den tunna hornarmen behålls gods för magnetkontaktens skruv.
-    return Compound(children=[armkuvert(0,G+.8,SPELRAD),cy(0,0,-8,9,NAV_FRITT_D),
-                              box((-5.6,0,0),(F+4,9,11)),box((16.0,.7,.8),(32,9,11))])
+def skruvhal():
+    """Försänkt säte för M3-skallen och genomgående hål genom botten."""
+    return (cy(0, 0, -(BOTTEN + SKALLE[1] + 1), -BOTTEN, SATE_D)
+            + cy(0, 0, -BOTTEN - .1, .1, GENOM_D))
 
 
-def bulthal():
-    """Blinda Ø2,6-piloter; M3 formar gänga i plasten, inga nya muttrar."""
-    return Compound(children=[cy(x,z,PILOT_BOTTEN,8,2.6) for x,z in SKRUVAR])
+def mittskruv():
+    """M3 x 10 i sitt läge: skallen i sätet, skaftet genom botten och flänsen in i axeln."""
+    return (cy(0, 0, -BOTTEN - SKALLE[1], -BOTTEN, SKALLE[0])
+            + cy(0, 0, -BOTTEN, -BOTTEN + MITTSKRUV_L, 3.0))
 
 
-def bygel():
-    b=py([(16.2,h(16.2)-.8),(31.8,h(31.8)-.8),(31.8,11),(16.2,11)],*KAP_Y)
-    snitt=[]
-    for t in (16.2,17.8):
-        n=h(t)
-        snitt.append(Face(Wire.make_polygon([Vector(t,y,z) for y,z in
-            ((G+.8,n-.8),(G-.8,n+.8),(G+1.0,n+.8),(G+1.0,n-.8))],close=True)))
-    b+=loft(snitt,ruled=True)
-    for x,z in SKRUVAR:
-        b-=cy(x,z,-1,9,3.4)
-        b-=cy(x,z,SKRUVSATE,9,6.2)
-    return b
-
-
-def skruvar():
-    return Compound(children=[cy(x,z,SKRUVSATE,SKRUVSATE+3,5.5)
-                              +cy(x,z,SKRUVSATE-SKRUV_L,SKRUVSATE,3) for x,z in SKRUVAR])
+def gangdjup():
+    return MITTSKRUV_L - BOTTEN - FLANS
 
 
 def provkropp():
-    """Litet självständigt prov; plan extra rygg för stödfria lager."""
-    b=fillet(box((-6.5,-6.8,-6),(31.8,0,13.5)).edges().filter_by(Axis.Y),1)+kropp()
-    b -= urtag()
-    b -= bulthal()
-    b += anlaggningar()
+    """Litet självständigt prov av armens nav: samma ficka, botten och säte som armen."""
+    b = box((-8, -RYGG, -7.5), (25, 2.9, 7.5))
+    b = fillet(b.edges().filter_by(Axis.Y), 2.0)
+    b += nav()
+    b -= ficka()
+    b -= skruvhal()
     return b

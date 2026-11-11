@@ -29,31 +29,23 @@ Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthå
 
 ## Alla tre PLA-proven på en platta
 
-[sensorprov-pla.json](sensorprov-pla.json) lägger hornprovet, CR Touch-provet (bara foten) och kameraprovet på samma platta: ca 37 min, 12,8 g PLA (omskivad 2026-11-11 utan hylsan). Styrkeprofilen gäller alla tre; den ger fler väggar och mer fyllning men samma mått. Automatiskt stöd byggs bara vid kamerafickan, enligt förhandsvisningen 2026-11-11; Provförfarandena nedan gäller som för de separata jobben.
+[sensorprov-pla.json](sensorprov-pla.json) (historik, ersatt av sensorprov-2) lägger hornfickan, CR Touch-foten och kameraprovet på samma platta: ca 37 min, 12,8 g PLA (omskivad 2026-11-11 utan hylsan). Styrkeprofilen gäller alla tre; den ger fler väggar och mer fyllning men samma mått. Automatiskt stöd byggs bara vid kamerafickan, enligt förhandsvisningen 2026-11-11; Provförfarandena nedan gäller som för de separata jobben.
 
-## Servohorn — ficka och M3-bygel
+## Armen på servot — sensorprov-2
 
-[horn-passning.json](horn-passning.json) innehåller en liten hornficka och en separat kilbygel, en del med sned kontaktyta som pressar hornet mot fasta stöd. Geometrin kommer från [hornfaste.py](../machine/delar/sensorer/hornfaste.py); [manifestet](horn-passning/manifest.json) anger källor och exporter. Provkroppen har extra plan rygg för utskriften. Själva fickan, stöden, bygeln och skruvhålen motsvarar armens infästning.
+[sensorprov-2.json](sensorprov-2.json): **armen**, kameralocket och de två stoppdelarna i PETG, styrkeprofil, cirka **1,0 h och 10 g** (skivat 2026-11-11, stöd 3 % av banan). Armen är en riktig slutdel och provas direkt på servot, utan tornet. Den ersätter hornprovet och CR Touch-fotprovet. Lilla nedre stoppet har liten bäddkontakt (31 mm²); printa får en brätte runt det.
 
-PLA, 0,20 mm lager, styrkeprofil med fem väggar och 30 % inre fyllning: klämfunktionen behöver styvare provdelar än ett rent formprov. Fickan står med ryggen på bädden och bygeln med utsidan nedåt. Automatiska stöd används vid överhäng och tas bort före provning. Slutarmens material och utskrift bereds efter provet.
+**Prov, utan matning:**
 
-Slutplattan är kontrollerad och skivad utan fel eller varningar: cirka **13 minuter och 4,7 g PLA**. [Monteringsbild](horn-passning/delar.png) visar delarna isärdragna; det förenklade hornet är endast referens och skrivs inte ut.
+1. **Gängan först:** skruva en M3×10 för hand i servots mässingsaxel, utan horn. Går den lätt flera varv: fortsätt. Tar den emot: sluta, axeln är 4-40.
+2. Kontrollera att hornet är plant. Tryck in det **rakt i armens ficka** från servosidan; navet åt servot. Det ska gå med lätt tryck och sitta utan glapp i sidled.
+3. Sätt paketet arm + horn på axeln. M3×10 genom navbossen, insex 2,5. Dra tills det sitter, inte hårdare.
+4. Vicka armen åt båda håll med servot stilla: inget glapp mellan arm och horn. Skruva CR Touchen i foten med kitets M3×6.
+5. Rapportera i [mätloggen](../CALIBRATION.md).
 
-```sh
-uv run --offline --no-project --python 3.12 --with build123d==0.13.0 python machine/delar/sensorer/passningsprov.py --typ horn --ut print/horn-passning
-uv run --project ~/dev/printa printa skiva print/horn-passning.json
-```
+Kontrollen [kontroll_horn.py](../machine/delar/sensorer/kontroll_horn.py) prövar fickan, skruvstapeln, insättningen och svepet. Den bevisar inte hållfasthet eller verkligt glapp.
 
-Granska `horn-passning.printa/forhandsvisning.png` före utskrift och öppna därefter `horn-passning.3mf` i Bambu Studio. Utskrift startas av användaren.
-
-**Provmontering med löst horn:**
-
-1. Ta bort stöd och löst material. För in hornet från fickans öppna sida, något lyft från botten, och sänk det mot botten och sidostöden. Navet ska nå sitt bakre anslag utan tvång. Det större runda urtaget ska inte pressa navet runtom.
-2. Lägg bygelns sneda nos mot hornets kant. Sätt i **två M3×10** av befintlig typ. Skruvarna går genom bygeln och formar gängor i fickans blinda Ø2,6-hål; de går inte genom originalhornet. Inga M2 eller nya muttrar ingår.
-3. Dra växelvis och försiktigt för hand tills hornet hålls. Bygelns nos ska nå hornet innan bygeln bottnar; skruvarna ska klämma innan spetsarna når hålbottnen. Avbryt om plastgängan släpper, något spricker eller hornet bara sitter när bygeln böjs kraftigt.
-4. Håll provkroppen och försök vicka hornet åt båda håll. Kontrollera även om det kan lyftas eller förskjutas längs fickan. Lossa och återmontera för att se att greppet går att upprepa. Rapportera glapp och var delarna tar emot i [mätloggen](../CALIBRATION.md).
-
-[CAD-kontrollen](horn-passning/kontroll-cad.json) prövar 81 måttkombinationer och den monterade armens rörelse. Den bevisar inte friktion, plastgängornas hållfasthet eller verkligt glapp. Skala inte hela provet och borra inte originalhornet för denna metod.
+Det gamla hornprovet (`horn-passning`, kilbygel) har utgått. `horn-passning.json` innehåller nu bara navets formficka som liten reservprovbit.
 
 ## CR Touch — armfot
 

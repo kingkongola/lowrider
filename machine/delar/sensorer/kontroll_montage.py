@@ -18,7 +18,6 @@ Y1 = S.Y1
 torn_utan, arm, crt, panel = S.torn(), S.arm(), S.crtouch(), S.sidopanel()
 stopp_n, stopp_o = S.stoppdelar()
 torn = torn_utan + stopp_n + stopp_o      # från steg 1c sitter stoppdelarna på
-bygel = S.horn_lage(hf.bygel())
 servo = S.servo_attrapp()
 P = S.parkera
 
@@ -59,18 +58,18 @@ for x, z in S.STOPP_SKRUV:
     seat = (min(stopp_n.bounding_box().min.Y, 99) if z < 40 else 30.5) + 3.5
     steg.append((f"1c stoppdelens skruv x{x:.0f} z{z:.0f} (mejsel Ø5,5 framifrån)", cyl_y(x, z, -80, seat - 3.2, 5.5),
                  {"torn": torn_utan, "servo": servo, "stopp nedre": stopp_n, "stopp övre": stopp_o}))
-# 2. Hornets mittskruv i servoaxeln, framifrån. Prövas både utan och med arm.
-h_yta = 32.6 + S.SERVO_DY - hf.H_MONTERAT
-mitt = cyl_y(S.PX, S.PZ, -80, h_yta - 2.0, 5.0)
-steg.append(("2a hornets mittskruv, före armen (mejsel Ø5)", mitt, {"torn": torn}))
-steg.append(("2b hornets mittskruv, med armen på (mejsel Ø5)", mitt, {"torn": torn, "arm": arm, "bygel": bygel}))
-# 3. Bygelns två M3. Skallen sitter på servosidan av armen; nyckeln går mot servot.
-skr = S.horn_lage(hf.skruvar())
-for i, s in enumerate(skr.solids()):
-    bb = s.bounding_box()
-    x, z = (bb.min.X + bb.max.X) / 2, (bb.min.Z + bb.max.Z) / 2
-    steg.append((f"3 bygelskruv {i + 1}, armen på servot (insex 2,5 med skaft Ø5,5)",
-                 cyl_y(x, z, bb.max.Y + .2, bb.max.Y + 60, 5.5), {"torn": torn, "servo": servo}))
+# 2. Hornet i armens formficka på bänken; armen med hornet rakt in på servoaxeln (15 mm i steg).
+#    Servots axel är avsedd anläggning för hornets nav; resten av servot och tornet får inte röras.
+axel = S.cyl_y(S.PX, S.PZ, 0, 60, 6.2)
+paket = arm + S.horn_lage(hf.horn())
+for d in [0.2, 0.5] + list(range(1, 16)):
+    steg.append((f"2a armen med hornet {d} mm från axeln", Pos(0, -d, 0) * paket,
+                 {"torn": torn, "servo utom axeln": servo - axel}))
+# 3. Mittskruven M3 x 10 utifrån genom armens botten; insex 2,5 med skaft Ø5,5 rakt längs axeln.
+skalle_y = 32.6 + S.SERVO_DY - hf.H_MONTERAT - hf.BOTTEN - hf.SKALLE[1]
+steg.append(("3 mittskruven M3 x 10 genom armen (insex 2,5, skaft Ø5,5 utifrån)",
+             cyl_y(S.PX, S.PZ, skalle_y - .05, skalle_y - 80, 5.5),
+             {"torn": torn, "servo": servo, "arm": arm, "horn": S.horn_lage(hf.horn())}))
 # 4. M5 till verktygsfästet, insexnyckel från tornets insida (+x) med allt monterat.
 #    Tornet monteras med armen utfälld.
 for z in S.M5_Z:

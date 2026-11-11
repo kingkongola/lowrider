@@ -1,7 +1,7 @@
 """Exakt kontroll av sidotornet mot den skannade omgivningen. Avbryter med fel vid krock.
 
 Skärningsvolymer räknas med manifold3d (exakta booleska operationer på täta mesh), inte med
-punktprov. Armen, CR Touchen, hornbygeln och skruvarna vrids genom hela rörelsen
+punktprov. Armen, CR Touchen, hornet, mittskruven och magnetens stålskruv vrids genom hela rörelsen
 (parkerat -150 till utfällt 0 grader, 2 graders steg) och kontrolleras mot referensdelarna,
 mot tornet och mot skanningens punktmoln.
 
@@ -38,7 +38,7 @@ _cad = json.loads((a.ut / "manifest.json").read_text())["kallor_sha256"]
 L = lambda p: trimesh.load(p, force="mesh")
 ref = {k: L(a.ref / f"R_{k}.stl") for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, S.SERVO_DY, 0])
-del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "hornbygel", "hornskruvar-referens", "magnetstal-referens", "stopp-nedre", "stopp-ovre", "kameralock")}
+del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "horn-referens", "mittskruv-referens", "magnetstal-referens", "stopp-nedre", "stopp-ovre", "kameralock")}
 P = np.load(a.ref / "scan_pts_plan.npy")
 
 # Avsiktliga anläggningar: tornets M5-distanser ligger mot verktygsfästena och servot sitter i sin ram.
@@ -88,7 +88,7 @@ for n in ("torn", "sidopanel", "stopp-nedre", "stopp-ovre", "kameralock"):
     if sp:
         fel.append(f"{n} går in i skanningen ({sp} punkter)")
 
-rorliga = ("arm", "crtouch", "hornbygel", "hornskruvar-referens", "magnetstal-referens")
+rorliga = ("arm", "crtouch", "horn-referens", "mittskruv-referens", "magnetstal-referens")
 for n in rorliga:
     varst = {}
     for g in range(int(S.PARK), 1, STEG):
@@ -101,7 +101,7 @@ for n in rorliga:
         mal["sidopanel"] = del_["sidopanel"]
         mal["kameralock"] = del_["kameralock"]
         for k, r in mal.items():
-            if n in ("hornbygel", "hornskruvar-referens") and k == "SPMS664_referens":
+            if n in ("horn-referens", "mittskruv-referens") and k == "SPMS664_referens":
                 continue                         # hornet sitter på servots axel
             v = vol(m, r)
             if v > varst.get(k, (-1, 0))[0]:

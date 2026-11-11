@@ -108,7 +108,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | LM2596 | 2 planerade: 5,1 V till Pi/CR Touch och 6,0 V till servo. 10 st köpta enligt användaren 2026-10-28. Utgångarna mäts före anslutning; justerskruven säkras med smältlim |
 | Neodymmagnet Ø6 × 3 mm | 1 till parkeringsstopp; 60-pack Vinabo finns enligt användaren 2026-10-27 |
 | M3-skruv av stål | Tillgänglig enligt användaren; huvud mot parkeringsmagneten |
-| M3 × 10 | 10: 2 kamera, 2 ADXL345, 2 hornbygel, 4 servo (formar gänga i Ø2,6). Ur befintliga 83 st; se [MONTAGE.md](machine/delar/sensorer/MONTAGE.md) |
+| M3 × 10 | 9: 2 kamera, 2 ADXL345, 1 mittskruv genom armen, 4 servo (formar gänga i Ø2,6). Ur befintliga 83 st; se [MONTAGE.md](machine/delar/sensorer/MONTAGE.md) |
 | M3 × 8 | 4 till sidopanelen. Lager ej inventerat |
 | M3 × 20 | 4 till stoppdelarna. Lager ej inventerat |
 | Kaptontejp | Bit över microSD-springan |

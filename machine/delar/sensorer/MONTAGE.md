@@ -11,8 +11,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | **Tornet → maskinen** | M5 insex (DIN 912), **befintlig längd + 16 mm**, smal bricka DIN 433 (Ø9) under skallen, medelstark gänglåsning (blå), **0,4–0,5 Nm med momentskruvmejsel**, märkfärgsstreck över skallen | 2 | Genom tornets platta och distans, verktygsfästets öra, in i Core som i dag. Den nedre nås genom kanalen Ø9,4 ovanför servot | Core sitter bakom örat; skallen är på tornets sida. Distansen sitter i örats försänkning, så formen håller läget och klämkraften kan vara låg: PETG kryper över ca 18 MPa; 0,8 Nm överskrider det när gänglåsningen sänker friktionen (`berakning_sidotorn.py`, granskning issue #2). Märkfärgen visar om en skruv vridit sig |
 | Servot → tornet | M3 × 10, formar gänga i Ø2,6 | 4 | Framifrån genom öronen | Bakom ramen är det massivt; en mutter får inte plats (rättat 2026-11-11, var Ø3,4 frigångshål) |
 | Stoppdelarna → ramen | M3 × 20, försänkt skalle | 4 | Efter servot, framifrån | Stoppen stod framför servot och hindrade det att sättas in (rättat 2026-11-11). Ett trasigt stopp printas om utan nytt torn |
-| Hornet → servoaxeln | Servots egen mittskruv | 1 | Framifrån, före eller efter armen | |
-| Armen → hornet | Hornbygel + M3 × 10 | 2 | Bygeln kilar hornet i armens ficka | Provas i hornprovet |
+| Armen + hornet → servoaxeln | **M3 × 10** i stället för servots mittskruv, genom armens botten (4,0 mm) och hornets fläns (1,7 mm) | 1 | Hornet i armens formficka, paketet på axeln, skruven utifrån (insex 2,5) | Fickan tar vridmomentet, skruven klämmer allt. Samma gängdjup som fabriksskruven (4,3 mm), kan inte bottna. Provas först för hand: går den inte lätt är axeln 4-40 |
 | CR Touch → armen | M3 × 6 ur kitet, underifrån genom öronen (1,8 mm) in i armfoten | 2 | Skallen sitter i CR Touchens urtag vid kroppen, som Creality avsett | Ingen hylsa (beslut 2026-11-11): hylsan gick inte att montera |
 | Magneten | Ø6 × 3 neodym, droppe cyanoakrylatlim | 1 | Bakifrån i parkeringsstoppet | Utan lim kan den dras ur mot armens stålskruv |
 | Magnetens motpart | M3 stålskruv i armens bula | 1 | Skruvdjupet ställer hållkraften | Provas med vibration (fas 4) |
@@ -53,7 +52,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 8. **Pi:n**: CSI-kabeln i Pi:ns kontakt först, sedan rakt in på tapparna. **Inget microSD-kort i** ännu.
 9. **Servot** in framifrån genom ramen, fyra M3 × 10. Servokabeln upp ovanför servot till kopplingskortet.
 9b. **Stoppdelarna** mot ramens framsida, två M3 × 20 var. Magneten är redan limmad i den övre.
-10. **Ändlägena (fas 4.8 i checklistan):** hornet på axeln så att armen står mitt i rörelsen vid 1500 µs, mittskruven, sedan armen med bygeln och två M3 × 10. CR Touch med kitets två M3 × 6 underifrån; kabeln i armens spår.
+10. **Ändlägena (fas 4.8 i checklistan):** hornet i armens ficka, paketet på axeln så att armen står mitt i rörelsen vid 1500 µs, sedan M3 × 10 genom armen. CR Touch med kitets två M3 × 6 underifrån; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.
 12. **microSD** in utifrån genom springan i bakväggen. Ett kort som ska bytas dras ut med en pincett.
 13. **På maskinen, armen utfälld:** den övre M5 rakt utifrån, den nedre genom kanalen. Bricka, blå gänglåsning, 0,4–0,5 Nm med momentskruvmejsel; plasten får inte tryckas ihop.

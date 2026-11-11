@@ -1,0 +1,13 @@
+{
+  "namn": "sensorprov-2",
+  "process": "styrka",
+  "material": "petg",
+  "stod": true,
+  "delar": [
+    {"fil": "sidotorn-slutdelar/arm.stl", "antal": 1},
+    {"fil": "sidotorn-slutdelar/kameralock.stl", "antal": 1},
+    {"fil": "sidotorn-slutdelar/stopp-nedre.stl", "antal": 1},
+    {"fil": "sidotorn-slutdelar/stopp-ovre.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

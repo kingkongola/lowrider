@@ -25,8 +25,7 @@ Detta är modellens delindelning, inte en färdig skivad printorder.
 | --- | ---: | --- |
 | `torn.stl` | 1 | Torn, infästning, servoram och fasta stopp |
 | `sidopanel.stl` | 1 | Avtagbart lock med hållfingrar för elektroniken |
-| `arm.stl` | 1 | Rörlig CR Touch-arm med formad hornficka; provpassning återstår |
-| `hornbygel.stl` | 1 | Kilbygel med två M3×10 i blinda plastgänghål; ingen ny muttertyp |
+| `arm.stl` | 1 | Rörlig CR Touch-arm med hornets formficka och försänkt M3 × 10 som mittskruv; provpassning återstår |
 | `bricka.stl` | 2 | Distanser vid ADXL345 |
 | `lampbarare-utkast.stl` | 1, senare | Preliminär bärare; sockeladapter, verkliga lampmått och värmeprov återstår |
 
@@ -40,17 +39,15 @@ Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste oriente
 
 **Utgått enligt D022, printas inte.** Lampdockan har en liten kall provplatta: [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
 
-## Hornficka och M3-bygel
+## Hornet: formficka och mittskruv M3 × 10 (omgjort 2026-11-11)
 
-Funktionskravet är en stabil, glappfri och servicebar anslutning till det befintliga hornet som tål några tiondelars måttavvikelse. Användarens förslag om klämning är inte ett krav på viss metod. **Aktuellt val är formad ficka och separat M3-kilbygel**, eftersom befintliga M3-typer ska användas utan nytt fraktköp. Hornets små hål lämnas orörda. Metodjämförelse och daterat underlag finns i [infästningsutredningen](../../../research/2026-11-10-servohorn-infastning.md).
+**Beprövad lösning** (printade robotarmar, pan/tilt-fästen): hornet ligger infällt i en ficka med hornets kontur, och servots mittskruv går genom armen. Fickans väggar tar vridmomentet genom formlåsning, inte friktion. Mittskruven klämmer arm, horn och axel i ett förband. Den tidigare kilbygeln utgick: en liten kil med två skruvar höll hornet med friktion (användarens beslut 2026-11-11).
 
-[hornfaste.py](hornfaste.py) äger geometrin utifrån [användarens A–I-mått](../../../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten). Fickans botten, två sidostöd och ett bakre navanslag ger läget. Bygelns sneda yta pressar hornet mot stöden. Två M3×10 formar gänga i blinda Ø2,6-piloter i armkroppen. Skruvspetsarna belastar inte själva hornet. Ingen printad axeltandning eller uppborrning av originalhornet behövs.
+[hornfaste.py](hornfaste.py) äger geometrin. Fickan har 0,15 mm spel per sida, samma typ av passning som kamerafickan som godkändes. Servots mittskruv (Ø3, 6 mm, fläns 1,7 mm, uppmätt) byts mot en **M3 × 10** ur lagret. Armbotten är **4,0 mm**, så skruven får exakt fabriksskruvens gängdjup, 4,3 mm, och kan inte bottna i axeln. Skallen sitter försänkt i navbossen. Hornet sätts rakt in i fickan från servosidan; flippat går det inte i botten.
 
-Bygeln ska ha kvar klämväg efter kontakt. Fritt utrymme runt övriga ytor är justermån, inte avsedd presspassning. Det större navhålet avlastar navet i sidled; det är sidostöd och anslag som positionerar hornet. Rak avsmalning mellan mätpunkterna och spetsens rundning är modellantaganden. Referenshornet saknar verifierad inre tandning och återger bara de två uppmätta små hållägena.
+**Magnetens stålskruv flyttades** till 26,5 mm ut, förbi hornets spets, eftersom bulan 11 mm ut låg i hornets väg. Parkeringsstoppets anliggning följer nu armens verkliga kant från 7 mm förbi magneten; utanför den raka delen (t > 15) ligger ytan 0,15 mm ute. Magnetens hävarm blev längre (säkerhet 11,7 mot 1 g i `berakning_sidotorn.py`).
 
-Bygeln ligger på armens fria sida efter kontroll mot undre verktygsfästet. Magnetens stålskruv ligger bakom hornets platta arm; parkeringsstopp och magneturtag följer den placeringen. Hornet sätts i armen före montering på servoaxeln: för in det från den öppna sidan 0,5 mm ovanför botten och sänk sedan till anläggen. En separat ribba bevarar utfällda lägets mekaniska stopp. Detta ändrar inte D020:s princip med hårda stopp, magnet och kamerakontroll, men fysisk parkering och magnetkraft ska provas efter montage.
-
-**Litet hornprov:** [horn-passning.json](../../../print/horn-passning.json) innehåller ficka och bygel, utan resten av armen. [Kontrollen](../../../print/horn-passning/kontroll-cad.json) prövar 81 kombinationer med oberoende ±0,2 mm avvikelse i de två breddmåtten, armens tjocklek och navdiametern. Den kontrollerar sättning, klämväg och skruvgrepp i CAD. Friktion, plastens hållfasthet/krypning och verkligt glapp är ännu inte verifierade. Glappfri infästning får inte anges som fysiskt godkänd före prov med det verkliga hornet.
+**Kontroller:** [kontroll_horn.py](kontroll_horn.py) prövar fickan, skruvstapeln, insättningen, ±0,2 mm måttvariation (redovisas) och svepet; negativtest: ett horn 0,05 mm större än spelet tar i. Fysisk passning provas med **armen själv** på servot (`print/sensorprov-2`). Mittskruvens gänga är inte provad: M3 × 10 ska gå lätt för hand i axeln, annars är det 4-40 och lösningen ändras.
 
 ## Lampmodulens service och begränsning
 

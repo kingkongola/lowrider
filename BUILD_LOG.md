@@ -244,3 +244,10 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användarens önskan: bara objektivet ska synas underifrån. Nytt **kameralock** (`kameralock()` i `sidotorn.py`): platta under fickan med hål för objektivet och skallarna, pelare upp till ett öra under varje M3-skalle. Samma två M3 × 10, nu 9 mm gänga. Plattans ovansida följer tornets sluttande undersida vid fickans vänstra kant. Tornet är oförändrat.
 - CAD-kontroller: inget intrång i torn, kort, tappar, skallar eller objektiv; locket rakt upp 15 mm fritt; skruvarna nåbara (insex 2,5); omgivningskontrollen mot skanningen GODKÄND lokalt. Negativtest: 0,2 mm för brett öra underkänns. Öronen behöver stöd vid print.
 - Provjobb `print/kameralock-prov` (PLA, ca 5 min, 1,2 g); locket också på `sidotorn-smadelar`. Ingen utskrift rapporterad.
+
+## 2026-11-11 — Horninfästningen omgjord: formficka och M3×10 genom armen
+
+- Hornprov 1 böjde hornet för att provbiten satt mellan servot och hornet (användaren). Användaren underkände kilbygeln som konstruktion: en liten kil med två skruvar höll hornet med friktion.
+- Ny lösning efter beprövad praxis: hornet i en formficka med 0,15 mm spel, servots mittskruv (Ø3 × 6, uppmätt) ersatt av M3×10 genom 4,0 mm armbotten; samma gängdjup som fabriksskruven (4,3 mm). Inga M2.
+- Magnetens stålskruv låg i hornets insättningsväg och flyttades 26,5 mm ut; utsidan provades först men krockade med undre verktygsfästet i alla tio lägen. Parkeringsstoppet följer armens verkliga kant. Magnetens säkerhet mot 1 g ökade till 11,7.
+- Alla CI-kontroller och omgivningskontrollen GODKÄND. Ny platta `print/sensorprov-2` (PETG, ca 1 h): arm, kameralock och stoppdelar. Ingen utskrift rapporterad; mittskruvens gänga (M3/4-40) inte provad.

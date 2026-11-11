@@ -50,8 +50,8 @@ def main():
             "probfaste-passning.stl": pa_badden(fot),
         }
     elif a.typ == "horn":
-        delar={"hornficka-passning.stl":pa_badden(Rot(90,0,0)*cad.hf.provkropp().mirror(Plane.XY)),
-               "hornbygel.stl":pa_badden(Rot(-90,0,0)*cad.hf.bygel().mirror(Plane.XY))}
+        # Fickans öppning mot bädden: plan undersida, fickans tak bryggas, navbossen uppåt.
+        delar={"hornficka-passning.stl":pa_badden(Rot(-90,0,0)*cad.hf.provkropp().mirror(Plane.XY))}
     else:
         dock = cad.torn() & cad.box((49.5, 46, 125), (77.2, 56.1, 137))
         # Fyll elektronikens bakre hålrum endast på provbiten för stödfria lager.

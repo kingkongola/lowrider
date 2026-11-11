@@ -44,14 +44,14 @@ komponenter:
   Arm:
     matt: A sidotorn.py, kontroll_horn.py, kontroll_crtouch.py
     tillverkning: S printjobb sidotorn-smadelar
-    insattning: A kontroll_montage.py steg 2-3
-    fastsattning: A kontroll_horn.py (klämväg); F 0.1 hornprovet
+    insattning: A kontroll_montage.py steg 2-3; A kontroll_horn.py (hornet rakt in)
+    fastsattning: A kontroll_horn.py (formficka och mittskruv); F hornprov 2
     koppling: A berakning_sidotorn.py (kabeln förlängs ca 20 mm, ögla 40 mm); F 6.10 cykelprov
     rorelse: A kontroll_omgivning.py (svep -150 till 0 grader)
     last: A berakning_sidotorn.py (stoppkrafter mot PETG); F 6.10
     varme: X ingen värmekälla nära; utanför tornets varma rum
     damm: N utfälld nära dammskon; ej bedömt
-    service: S två M3 i bygeln
+    service: S mittskruven M3 x 10 utifrån; armen och hornet lossnar tillsammans
     funktion: F 4.9, 6.2
   Skyddshylsa:
     utgatt: hylsan gick inte att montera (CR Touch-prov 1); CR Touchen skruvas direkt i armfoten, användarens beslut 2026-11-11
@@ -67,6 +67,7 @@ komponenter:
     service: S två M3 x 8
     funktion: F 0.2
   Hornbygel:
+    utgatt: kilbygeln höll hornet med friktion och en liten kil; ersatt av formficka och M3 x 10 genom armen (användarens beslut 2026-11-11)
     matt: A kontroll_horn.py
     tillverkning: S printjobb sidotorn-smadelar (en reserv)
     insattning: A kontroll_montage.py steg 3
@@ -223,10 +224,10 @@ komponenter:
     service: S fyra skruvar framifrån; armen först av
     funktion: F 1.2, 4.9
   Servohorn:
-    matt: F uppmätt A-I (CALIBRATION.md)
+    matt: F uppmätt A-I och mittskruven (CALIBRATION.md)
     tillverkning: X köpt färdig, tillverkas inte
-    insattning: A kontroll_montage.py steg 2
-    fastsattning: A kontroll_horn.py; F 0.1
+    insattning: A kontroll_horn.py (rakt in i formfickan, 12 mm)
+    fastsattning: A kontroll_horn.py (formficka, spel 0,15, negativtest; M3 x 10 med fabriksskruvens gängdjup 4,3); F hornprov 2
     koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: F 0.1
@@ -493,14 +494,14 @@ cad:
   torn: Torn
   sidopanel: Sidopanel
   arm: Arm
-  hornbygel: Hornbygel
   bricka: Distansbricka
   kameralock: Kameralock
   crtouch: CR Touch
   kabel: Tornkabel 12 ledare
   stopp-nedre: Stoppdel nedre
   stopp-ovre: Stoppdel övre
-  hornskruvar-referens: Hornbygel
+  horn-referens: Servohorn
+  mittskruv-referens: Servohorn
   magnetstal-referens: M3 stålskruv mot magneten
 cad_undantag:
   lampbarare-utkast: G4-bäraren har utgått enligt D022 och exporteras bara som reserv

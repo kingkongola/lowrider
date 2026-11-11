@@ -2,7 +2,7 @@
 research_date: 2026-11-10
 scope: Servohornets infästning, måttavvikelser och befintliga fästelement
 status: recommendation-ready
-decision_state: M3-kilbygel i CAD; fysisk passning och glapp återstår
+decision_state: ersatt 2026-11-11 av formficka + M3×10 genom armen (DECISIONS.md, D020-tillägg); kilbygeln utgick
 price_basis: observerade SEK inklusive moms; inget köpt; frakt ej fastställd
 region: Sweden / EU
 sources_checked:
@@ -14,7 +14,7 @@ supersedes: null
 
 # Servohornets infästning
 
-Mätvärden ägs endast av [CALIBRATION.md](../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten), konstruktionen av [CAD-underlaget](../machine/delar/sensorer/README.md#hornficka-och-m3-bygel). Användaren vill ha en glappfri, servicebar infästning. Klämning var ett förslag, inte ett låst metodkrav. M2 saknas och ett separat köp med frakt avvisades.
+Mätvärden ägs endast av [CALIBRATION.md](../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten), konstruktionen av [CAD-underlaget](../machine/delar/sensorer/README.md#hornet-formficka-och-mittskruv-m3--10-omgjort-2026-11-11). Användaren vill ha en glappfri, servicebar infästning. Klämning var ett förslag, inte ett låst metodkrav. M2 saknas och ett separat köp med frakt avvisades.
 
 | Metod | Bedömning |
 | --- | --- |

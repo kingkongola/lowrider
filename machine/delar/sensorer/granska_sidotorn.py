@@ -22,7 +22,7 @@ ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b"
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 E = json.loads((a.ut / "elektronik.json").read_text())
 torn, arm, bl, lock, kabel = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "crtouch", "sidopanel", "kabel"))
-hornbygel,hornskruvar,magnetstal=(trimesh.load(a.ut/f'{n}.stl') for n in ('hornbygel','hornskruvar-referens','magnetstal-referens'))
+hornref,mittskruv,magnetstal=(trimesh.load(a.ut/f'{n}.stl') for n in ('horn-referens','mittskruv-referens','magnetstal-referens'))
 lampbarare = trimesh.load(a.ut / "lampbarare-utkast.stl")
 for namn, m in ref.items():
     gap = np.maximum(np.maximum(lampbarare.bounds[0] - m.bounds[1], m.bounds[0] - lampbarare.bounds[1]), 0)
@@ -39,7 +39,7 @@ print("torn bbox", torn.bounds.round(1).tolist(), "tät", torn.is_watertight)
 sk = P[((P > torn.bounds[0]) & (P < torn.bounds[1])).all(1)]
 print("skanpunkter i tornet x>12:", int((sk[torn.contains(sk)][:, 0] > 12).sum()))
 T = lambda g: trimesh.transformations.rotation_matrix(np.radians(g), [0, 1, 0], PIV)
-for nm, o in (("arm", arm), ("CR Touch", bl), ('hornbygel',hornbygel),('hornskruvar',hornskruvar),('magnetstål',magnetstal)):
+for nm, o in (("arm", arm), ("CR Touch", bl), ('horn',hornref),('mittskruv',mittskruv),('magnetstål',magnetstal)):
     q0 = sm(o, 9000)
     b = {}
     for g in range(PARK, 1, 5):

@@ -128,15 +128,15 @@ FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
 FLANS_Z = 6.4
 HUB_D = 15.0
 MAGNET = (6.2, 3.2)         # urtag för Ø6 x 3 mm neodymmagnet (Vinabo, finns hemma) i parkeringsstoppet
-BULA_T = 11.0               # armens bula för M3-skruvens stålhuvud, mm längs armen
+BULA_T = 26.5               # armens bula för M3-skruvens stålhuvud, mm längs armen; förbi hornets spets (22) så att hornet går rakt in i formfickan (2026-11-11)
 ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
 
-BULA_Y = (23.5,29.5)  # kontaktens stålskruv bakom hornets platta arm (H=10)
+BULA_Y = (23.5,29.5)  # kontaktens stålskruv på servosidan av armen (H=10)
 KAPA_Y = Y1
 KAPA_T = 1.4
 
 # Hårda stopp: armens två sidor slår mot var sitt fast block på 7-15 mm radie.
-STOPP_T = (7.0, 15.0)       # längs armen från navet
+STOPP_T = (7.0, 15.0)       # längs armen från navet (utfällda stoppet)
 STOPP_TJOCK = 4.0
 
 
@@ -211,6 +211,49 @@ def arm_geo(prob_x):
     return (ux, uz), (-uz, ux), L
 
 
+def arm_hogerkant(prob_x=PROB[0]):
+    """Armens +n-kant från t=19 till CR Touch-foten (samma spline som arm())."""
+    u, n, L = arm_geo(prob_x)
+    w0, w1 = ARM_W
+    F = FLANS_Z
+    def sid(t, s):
+        w = w0 + (w1 - w0) * t / L
+        return (PX + u[0] * t + s * n[0] * w, PZ + u[1] * t + s * n[1] * w)
+    v = lambda p: Vector(p[0], ARM_Y[0], p[1])
+    tr = lambda a, b: Vector(b[0] - a[0], 0, b[1] - a[1]).normalized()
+    h1, fot_h = sid(19, 1), (prob_x + 11, F)
+    return Spline([v(h1), v(((h1[0] + fot_h[0]) / 2 + 1.5, (h1[1] + fot_h[1]) / 2 - 1.0)), v(fot_h)],
+                  tangents=[tr(sid(10, 1), h1), Vector(1, 0, -.15).normalized()])
+
+
+def arm_sida(t, prob_x=PROB[0]):
+    """Avståndet från armens mittlinje till dess +n-kant vid t; rak avsmalning till t=19, sedan splinen."""
+    u, n, L = arm_geo(prob_x)
+    if t <= 19:
+        return ARM_W[0] + (ARM_W[1] - ARM_W[0]) * t / L
+    k = arm_hogerkant(prob_x)
+    pts = [k.position_at(i / 400) for i in range(401)]
+    ts = [u[0] * (p.X - PX) + u[1] * (p.Z - PZ) for p in pts]
+    ss = [n[0] * (p.X - PX) + n[1] * (p.Z - PZ) for p in pts]
+    for i in range(400):
+        if ts[i] <= t <= ts[i + 1]:
+            f = (t - ts[i]) / (ts[i + 1] - ts[i])
+            return ss[i] + f * (ss[i + 1] - ss[i])
+    raise ValueError(f"t={t} utanför armens kant")
+
+
+BULA_R = 3.7        # bulans radius längs armen
+
+
+def stoppkant(t, prob_x=PROB[0]):
+    """Parkeringsstoppets yta: armens kant, men aldrig innanför bulans plana ände (som sticker ut
+    där kanten kröker). Rak anliggning (t <= STOPP_T[1]) ligger an; resten 0,15 mm ute."""
+    s = arm_sida(t, prob_x)
+    if abs(t - BULA_T) <= BULA_R + .3:
+        s = max(s, arm_sida(BULA_T, prob_x) - .3)     # stålskallens yta (0,2 mm utanför bulans ände)
+    return s + (0 if t <= STOPP_T[1] else .15)
+
+
 def horn_lage(o, prob_x=PROB[0], spegla=True):
     """H mäts från servohusets ovansida vid axeln till hornets plana utsida."""
     u, _, _ = arm_geo(prob_x)
@@ -221,8 +264,7 @@ def horn_lage(o, prob_x=PROB[0], spegla=True):
 
 def magnet_skruv_attrapp(prob_x=PROB[0]):
     """M3x10-kuvert av stål, skallen i sitt 3,3 mm djupa säte; verklig längd provas."""
-    _,_,L=arm_geo(prob_x)
-    w=ARM_W[0]+(ARM_W[1]-ARM_W[0])*BULA_T/L
+    w=arm_sida(BULA_T,prob_x)
     y=sum(BULA_Y)/2-(32.6+SERVO_DY-hf.H_MONTERAT)
     s=Pos(BULA_T,y,w-1.8)*Cylinder(2.75,3)+Pos(BULA_T,y,w-8.3)*Cylinder(1.5,10)
     return horn_lage(s,prob_x,spegla=False)
@@ -241,14 +283,21 @@ def stopp_block(prob_x, sida, w0, w1):
     def pkt(t, ut):
         w = w0 + (w1 - w0) * t / L + ut
         return (PX + u[0] * t + sida * n[0] * w, PZ + u[1] * t + sida * n[1] * w)
-    pts = [pkt(STOPP_T[0], 0), pkt(STOPP_T[1], 0), pkt(STOPP_T[1], STOPP_TJOCK), pkt(STOPP_T[0], STOPP_TJOCK)]
-    return [vrid(p, PARK) for p in pts] if sida > 0 else pts
+    if sida < 0:
+        return [pkt(STOPP_T[0], 0), pkt(STOPP_T[1], 0), pkt(STOPP_T[1], STOPP_TJOCK), pkt(STOPP_T[0], STOPP_TJOCK)]
+    # Parkerat: anliggningen följer armens verkliga kant från STOPP_T[0] förbi magneten (bulan).
+    ts = [STOPP_T[0] + i * .5 for i in range(int((BULA_T + 4.5 - STOPP_T[0]) / .5) + 1)]
+    # Där kanten kröker (t > STOPP_T[1]) ligger ytan 0,15 mm ute: korda­bitar får inte gå in i armen;
+    # armen tar bara i den raka anliggningen. Magneten drar genom huden plus spelet.
+    kant = lambda t, ut: (PX + u[0] * t + n[0] * (stoppkant(t, prob_x) + ut), PZ + u[1] * t + n[1] * (stoppkant(t, prob_x) + ut))
+    pts = [kant(t, 0) for t in ts] + [kant(t, STOPP_TJOCK) for t in reversed(ts)]
+    return [vrid(p, PARK) for p in pts]
 
 
 def magnet_lage(prob_x):
     """Punkten där M3-huvudet möter huden, och riktningen in i stoppet."""
     u, n, L = arm_geo(prob_x)
-    w = ARM_W[0] + (ARM_W[1] - ARM_W[0]) * BULA_T / L
+    w = stoppkant(BULA_T, prob_x)       # huden räknas från stoppets yta
     x, z = vrid((PX + u[0] * BULA_T + n[0] * w, PZ + u[1] * BULA_T + n[1] * w), PARK)
     vinkel = math.degrees(math.atan2(n[1], n[0])) - PARK    # sidnormalen efter parkering
     return x, z, vinkel
@@ -551,10 +600,10 @@ def arm(prob_x=PROB[0]):
     a += fot
     # Bula för skruvhuvudet som fäster mot magneten.
     t = BULA_T
-    w = w0 + (w1 - w0) * t / L
+    w = arm_sida(t, prob_x)        # verkliga kanten: splinen mot foten börjar vid t=19
     # Bredare bula ger gods runt huvudurtaget och överlappar armens framyta.
     # Ändytan ligger 0,5 mm innanför nominella sidplanet; stålhuvudet tar mot magneten.
-    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.7, 6.0)
+    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(BULA_R, 6.0)
     bula &= box((-100,-100,-100),(200,30.0,200))  # frigång till servohusets ovansida
     a += bula
     s_p = (PX + u[0] * t + n[0] * w, PZ + u[1] * t + n[1] * w)
@@ -572,12 +621,10 @@ def arm(prob_x=PROB[0]):
     # Öppet framåt: kontakten kan kopplas ur utan att klämmas mellan arm och prob.
     a -= box((prob_x - cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[0], F - 1),
              (prob_x + cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[1], F + cr.KONTAKT_H))
-    # Hornet kläms mot botten, två sidostöd och bakre navanslag.
-    # Ø11-hålet avlastar navet i sidled; bygeln använder befintliga M3-typer.
-    a += horn_lage(hf.kropp(),prob_x)
-    a -= horn_lage(hf.urtag(),prob_x)
-    a -= horn_lage(hf.bulthal(),prob_x)
-    a += horn_lage(hf.anlaggningar(),prob_x)
+    # Hornet i formficka; M3 x 10 genom armens botten ersätter servots mittskruv (hornfaste.py).
+    a += horn_lage(hf.nav(),prob_x)
+    a -= horn_lage(hf.ficka(),prob_x)
+    a -= horn_lage(hf.skruvhal(),prob_x)
     # Bevara utfällda lägets stoppribba längs den öppna fickans sida.
     # Hornet förs in 0,5 mm ovanför botten och sänks därefter till sina anlägg.
     ribba=[sid(7,-1),sid(15,-1)]
@@ -645,14 +692,15 @@ def main():
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     sn, so = stoppdelar(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kameralock", kameralock()), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kameralock", kameralock()), ("lampbarare-utkast", lampor.barare()), ("stopp-nedre", sn), ("stopp-ovre", so)):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
-    export_stl(horn_lage(hf.skruvar(),a.prob_x),a.ut/'hornskruvar-referens.stl')
+    export_stl(horn_lage(hf.mittskruv(),a.prob_x),a.ut/'mittskruv-referens.stl')
+    export_stl(horn_lage(hf.horn(),a.prob_x),a.ut/'horn-referens.stl')
     export_stl(magnet_skruv_attrapp(a.prob_x),a.ut/'magnetstal-referens.stl')
     cx, cy, cz = LINS
     delar = [
@@ -662,10 +710,8 @@ def main():
         namn(so, "Stoppdel_ovre", (.16, .18, .2)),
         namn(kabel(), "Kabel_ATTRAPP", (.1, .1, .1)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
-        namn(horn_lage(hf.bygel(),a.prob_x),"Hornbygel_utfalld",(.3,.5,.7)),
-        namn(parkera(horn_lage(hf.bygel(),a.prob_x)),"Hornbygel_parkerad",(.3,.5,.7)),
         namn(horn_lage(hf.horn(),a.prob_x),"Servohorn_YTTRE_REFERENS",(.15,.15,.15)),
-        namn(horn_lage(hf.skruvar(),a.prob_x),"Hornbygel_M3x10_REFERENS",(.6,.6,.6)),
+        namn(horn_lage(hf.mittskruv(),a.prob_x),"Mittskruv_M3x10_REFERENS",(.6,.6,.6)),
         namn(magnet_skruv_attrapp(a.prob_x),"Magnetkontakt_M3x10_REFERENS",(.6,.6,.6)),
         namn(bl, "CR Touch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
@@ -696,9 +742,9 @@ def main():
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "pi_skruv": PI_SKRUV, "topp": TOPP}))
     kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kameralock", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kameralock", "lampbarare-utkast", "stopp-nedre", "stopp-ovre")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
-    exporter += [a.ut/'hornskruvar-referens.stl',a.ut/'magnetstal-referens.stl']
+    exporter += [a.ut/'mittskruv-referens.stl',a.ut/'horn-referens.stl',a.ut/'magnetstal-referens.stl']
     (a.ut / "manifest.json").write_text(json.dumps({
         "kallor_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
         "exporter_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in exporter},

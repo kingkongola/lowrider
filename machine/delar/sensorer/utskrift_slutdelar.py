@@ -5,7 +5,6 @@
 | torn      | upp och ned, ovansidan mot bädden | ingen plan baksida finns; kamerafickan pekar uppåt utan stöd |
 | sidopanel | yttersidan mot bädden        | slät utsida, fingrar och mikrofonram uppåt |
 | arm       | som ritad                    | minst överhäng, lagren går längs armen |
-| hornbygel | utsidan mot bädden           | som i passningsprovet |
 | bricka    | som ritad                    | |
 | kameralock | som ritad                   | plattan mot bädden, öronen uppåt |
 | stoppdelar | ramsidan mot bädden         | plan anläggning; skenorna i lagrens riktning |
@@ -22,7 +21,7 @@ import numpy as np
 import trimesh
 
 LAGE = {"torn": ([1, 0, 0], 180), "sidopanel": ([1, 0, 0], -90), "arm": ([1, 0, 0], 0),
-        "hornbygel": ([1, 0, 0], -90), "bricka": ([1, 0, 0], 0), "kameralock": ([1, 0, 0], 0),
+        "bricka": ([1, 0, 0], 0), "kameralock": ([1, 0, 0], 0),
         "stopp-nedre": ([1, 0, 0], -90), "stopp-ovre": ([1, 0, 0], -90)}
 
 

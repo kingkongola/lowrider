@@ -6,12 +6,12 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 | Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Godkända / underkända | Relevanta rutor |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Komponenter | 38 × 11 | 61 | 75 | 73 | 97 | 112 | 0 | 77 % | 1 / 1 | 306 |
+| Komponenter | 37 × 11 | 58 | 73 | 70 | 97 | 109 | 0 | 76 % | 1 / 1 | 298 |
 | Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 / 0 | 192 |
 
 **Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.
 
-**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 80, lokal (skanningsdata, ej CI): 16. cnc-repots tester körs i cnc, inte i lowriders CI.
+**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 77, lokal (skanningsdata, ej CI): 15. cnc-repots tester körs i cnc, inte i lowriders CI.
 
 ## Underkända prov
 
@@ -19,6 +19,7 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 ## Utgångna rader
 
+- komponenter / Hornbygel: kilbygeln höll hornet med friktion och en liten kil; ersatt av formficka och M3 x 10 genom armen (användarens beslut 2026-11-11)
 - komponenter / Skyddshylsa: hylsan gick inte att montera (CR Touch-prov 1); CR Touchen skruvas direkt i armfoten, användarens beslut 2026-11-11
 
 ## X utan skäl (0 rutor)
@@ -38,7 +39,6 @@ Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.
 | Torn | A | F | X | F | X | A | F | F | F | S | F |
 | Sidopanel | A | S | A | A | S | X | F | N | N | S | F |
 | Arm | A | S | A | F | F | A | F | X | N | S | F |
-| Hornbygel | A | S | A | F | X | A | F | X | X | S | F |
 | Distansbricka | A | S | A | A | X | X | N | X | X | X | X |
 | Kameralock | A | F | A | F | X | A | N | N | F | S | F |
 | LED-fäste | A | S | N | N | F | N | X | F | N | N | F |

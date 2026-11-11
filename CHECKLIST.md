@@ -24,7 +24,7 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 | L1 | **Övervakningens nätdel (D023) är inte vald.** Tornet behöver två matningar: maskinens 24 V till servot (LM2596 B) och övervakningens egen till Pi och CR Touch (LM2596 A) | Fas 5 | **Vald 2026-11-11:** en andra Mean Well HDR-60-24 eller likvärdig, ca 30 W last av 60 W ([underlag](machine/EL_BELYSNING_OCH_STOPP.md)). Ej beställd. Bänkproven i fas 1 kan köras på valfri 12–24 V-källa |
 | L2 | **Kabeln från tornet till balken är inte projekterad:** övervakningsmatning, 24 V maskin, gemensam jord, servosignal, CR Touch styrning och kontakt, ca 7 ledare | Fas 5 | **Förslag:** skärmad LiYCY 8 × 0,25 mm², ledarlista i [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md). Längd mäts med snöre vid full rörelse |
 | L3 | **Pi-sidans program saknas:** ingen tjänst som skickar bild till datorn (armspärren förutsätter en adress), ingen läsning av ADXL eller mikrofon | Fas 1 steg 1.6–1.8, fas 6 | **Byggt 2026-11-11:** [`cnc/pi/sensorpi.py`](https://github.com/kingkongola/cnc/tree/main/pi) med installation och tester utan hårdvara. Ej provat på riktig Pi |
-| L4 | **Slutdelarnas printjobb finns inte:** material, orientering och stöd för torn, panel, arm, bygel och brickor (hylsan utgick 2026-11-11) är inte valda | Fas 3 | Görs efter fas 2, när måtten är rättade. Utkastet `print/sidotorn-smadelar` (PETG, ca 1,6 h, 25 g) har printa-varningar: sidopanelens 117 mm² plana yta svävar 1,0 mm över bädden, brickan och nedre stoppet har liten bäddkontakt (29/31 mm²) |
+| L4 | **Slutdelarnas printjobb finns inte:** material, orientering och stöd för torn, panel, arm och brickor (hylsan och hornbygeln utgick 2026-11-11) är inte valda | Fas 3 | Görs efter fas 2, när måtten är rättade. Utkastet `print/sidotorn-smadelar` (PETG, ca 1,6 h, 25 g) har printa-varningar: sidopanelens 117 mm² plana yta svävar 1,0 mm över bädden, brickan och nedre stoppet har liten bäddkontakt (29/31 mm²) |
 | L5 | **LED-fästet saknar printjobb** och LED-listens matning är inte vald (D022/D023) | Fas 6 steg 6.6 | **Printjobb klart 2026-11-11:** `print/led-fasten.printa/led-fasten.3mf`, PETG, ca 32 min, ett provsegment. Matning efter L1 |
 | L6 | **Märket för armspärren och mönstret på armen är inte ritade** (beslut 0035/0036 i `cnc`) | Fas 6 steg 6.5 | Väljs från första riktiga kamerabild |
 | L8 | **Pi:ns pinnar för stoppet (D024) saknades, och en fast GPIO-utgång släpper inte kontaktorn om Pi:n hänger sig** | Stopplådan | **Löst 2026-11-11:** laddningspump, OK-puls `GPIO23`, startknapp `GPIO25`; [schema och bänkprov](machine/EL_BELYSNING_OCH_STOPP.md#elschema-matning-och-stoppkedja-2026-11-11-förslag-ej-provat). Tornkabeln blir 12-ledare |
@@ -33,7 +33,7 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 ### Fas 0 — Utskrift pågår
 
 - [ ] **0.0 Skruvprovet i PETG** (`print/skruvprov-petg.printa/skruvprov-petg.3mf`, ca 32 min): skruva i och ur M3 och M2.5 fem gånger, dra M5-provet till 0,7 Nm. Godkänt: gängan håller och distansen spricker inte.
-- [ ] **0.1 Hornprovet** (`print/horn-passning.3mf`, ca 13 min PLA). *Pågår enligt användaren 2026-11-11.* Godkänt: hornet sitter utan glapp med två M3×10, går att lossa och sätta igen. [Provförfarande](print/README.md#servohorn--ficka-och-m3-bygel).
+- [ ] **0.1 Armen på servot** (`print/sensorprov-2.printa/sensorprov-2.3mf`, ca 1 h PETG: arm, kameralock, två stopp). Hornprov 1 underkändes av felmontering; kilbygeln utgick 2026-11-11. Först: M3×10 för hand i servoaxeln (går den inte lätt: stopp, 4-40). Godkänt: hornet går rakt i fickan, sitter utan glapp när M3×10 är dragen, CR Touchen passar foten. [Provförfarande](print/README.md#armen-på-servot--sensorprov-2).
 
 ### Fas 1 — Elektronik på bänken, utan printade delar
 
@@ -60,7 +60,7 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 
 ### Fas 3 — Slutdelarna
 
-- [ ] **3.1** Printjobb för torn, sidopanel, arm, hornbygel och två brickor (L4): material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
+- [ ] **3.1** Printjobb för torn, sidopanel, arm och två brickor (L4): material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
 - [ ] **3.2** Printa. Godkänt: inga lagersläpp, hål och fickor rena från stöd.
 
 ### Fas 4 — Montera tornet på bänken
@@ -74,7 +74,7 @@ Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte g�
 - [ ] **4.3** Magneten Ø6×3 i parkeringsstoppet. ADXL:en på sin platta med M3×10 och brickor.
 - [ ] **4.4** Pi på tapparna, LM2596 A och B i fickorna, CSI-kabeln i Pi:n. Mikrofonen i panelens ram med en skumtejpsring runt ljudhålet, dammnät utvändigt.
 - [ ] **4.5** Panelen på med sex skruvar; fingrarna ska hålla korten. Godkänt: inget skramlar när tornet skakas.
-- [ ] **4.6** Servot in framifrån genom ramen. Hornet på armen med bygeln. **Sätt hornet på axeln så att armen står ungefär mitt i rörelsen vid 1500 µs**, annars räcker inte servots vinkel till båda stoppen.
+- [ ] **4.6** Servot in framifrån genom ramen. Hornet i armens formficka, paketet på axeln, M3×10 genom armen som mittskruv. **Sätt paketet på axeln så att armen står ungefär mitt i rörelsen vid 1500 µs**, annars räcker inte servots vinkel till båda stoppen.
 - [ ] **4.7** CR Touch direkt i armfoten, kitets 2 × M3×6 underifrån genom öronen. Ingen hylsa (beslut 2026-11-11).
 - [ ] **4.8 Ändlägena med ESP32:n.** Stega till respektive stopp, notera `utfalld_us` och `parkerad_us`, skriv in i `machine/probstyrning/installning.json`, kör `makron.py`. Godkänt: makrona skapas, armen ligger an mot båda stoppen, magneten tar.
 - [ ] **4.9 Magneten under vibration:** parkerad arm, knacka och skaka tornet. Godkänt: armen faller inte ned.

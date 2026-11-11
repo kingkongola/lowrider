@@ -84,6 +84,12 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 
 Skruvhålens diameter: 3,6 mm (uppmätt). Kontaktöppningen sitter mitt i sidled (7,0 mm från vardera örats ytterkant) och 6,5 mm från flänsens överkant, 1,4 mm från underkanten (kontrollsummor 27,1 och 17,4 stämmer). Hålens mittlinje ca 5,8 mm under överkanten, uppskattat ur foto. Ej uppmätt: hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
 
+## 2026-11-11 — Hornprov 1: orsaken var felmontering; mittskruven uppmätt
+
+- **Orsak till böjningen (användaren):** den printade biten sattes på mässingsaxeln mellan servot och hornet. Hornet drogs då ned mot biten av mittskruven. Glipan under hornarmen med enbart hornet åtdraget: **6,8 mm** (CAD med plant hus: 7,5 mm; huset ca 0,7 mm högre 20–28 mm ut).
+- **Mittskruven:** Ø3 mm, **6 mm** under skallen. Navets fläns under skallen **1,7 mm**, mässingsaxeln direkt under. Gängdjup i axeln därmed 4,3 mm. Gängtyp (M3 eller 4-40) inte provad.
+- **Beslut (användaren):** kilbygeln utgår; konstruktionen görs om med beprövad metod utan M2-skruvar. Hornet i formficka, M3×10 genom armen som mittskruv (`hornfaste.py`).
+
 ## 2026-11-11 — Kameraprov 1 godkänt: kortet passar i fickan
 
 - **Prov:** kamerafickan ur `print/sensorprov-pla` (PLA) med användarens Camera Module 3.
