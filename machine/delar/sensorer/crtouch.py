@@ -1,7 +1,8 @@
 """CR Touch-referens och passningsparametrar för sidotornet.
 
 Geometri från Jonathan Harpers E34M1, CC BY-NC-SA 4.0, se referenser/README.md.
-Måtten är CAD-referensmått, inte mätningar på användarens exemplar.
+Måtten är CAD-referensmått, utom de som anges som uppmätta (2026-11-11): hålavstånd 17,5, öron 1,8,
+fläns 27 x 17,5, kropp 16,1 x 17,5 x 35, kontaktöppning 13,1 x 9,5. Referensens hål ligger 18 mm isär.
 Origo: mitt mellan fästhålen på flänsens ovansida. Stiftet går i -Z.
 Proben vrids så att kontakt/kropp ligger bort från armens rygg (+Y).
 """
@@ -13,12 +14,12 @@ from pathlib import Path
 from build123d import Pos, Rot, import_step
 
 REFERENS = Path(__file__).parent / "referenser/e34m1-crtouch.step"
-HAL_CC = 18.0
-FLANS_T = 1.9
+HAL_CC = 17.5        # uppmätt på användarens CR Touch 2026-11-11 (referensen har 18,0)
+FLANS_T = 1.8        # öronens tjocklek, uppmätt 2026-11-11; stöd under öronen nära kroppen ej uppmätta
 KROPP_DJUP = 37.0
 STIFT_UTFALLT = 46.0  # konservativt referensläge; Creality anger 39,3 mm yttermått och 6 mm slag
 STIFT_Y = 2.25
-KONTAKT_B = 12.0      # konstruktionskuvert, inte uppmätt kontakt
+KONTAKT_B = 13.1      # kontaktöppningens bredd, uppmätt 2026-11-11 (höjd 9,5)
 KONTAKT_Y = (3.5, 14.0)
 KONTAKT_H = 10.0
 SPEL = 0.6           # per sida runt kroppen, redan inkluderat nedan
