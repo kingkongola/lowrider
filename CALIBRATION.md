@@ -82,7 +82,7 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 | Kroppens längd, öronens undersida till botten | 35,0 | ca 35,1 |
 | Stiftet ut när det är indraget | ca 3 (osäkert) | ca 3 |
 
-Ej uppmätt: skruvhålens diameter, kontaktöppningens läge mot hålen, hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
+Skruvhålens diameter: 3,6 mm (uppmätt). Ej uppmätt: kontaktöppningens läge mot hålen, hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
 
 ## 2026-11-11 — CR Touch-prov 1 underkänt: hylsan går inte att montera
 
