@@ -48,9 +48,14 @@ def check_matrix(name, entries, keys):
             if status in ("A","S","N") and not cell.get("evidens"):
                 problems.append(f"{ident}/{phase}: {status} kräver källreferens")
             if result == "godkand":
-                evidence = cell.get("evidens", "").strip()
-                if status in ("X","N","SAKNAS") or not evidence:
-                    problems.append(f"{ident}/{phase}: saknar giltigt verifieringsbevis")
+                # Källkod eller CAD-modell i 'evidens' är INTE ett körbevis.
+                # Godkänt kräver separat, spårbart protokoll från verklig kontroll.
+                proof = cell.get("bevis")
+                if status in ("X", "N", "SAKNAS") or not isinstance(proof, dict):
+                    problems.append(f"{ident}/{phase}: godkänd utan verifierbart bevis")
+                elif not all(isinstance(proof.get(k), str) and proof[k].strip()
+                             for k in ("datum", "metod", "protokoll", "ansvarig")):
+                    problems.append(f"{ident}/{phase}: bevis kräver datum, metod, protokoll och ansvarig")
             counts[status] += 1
     return problems, counts
 
