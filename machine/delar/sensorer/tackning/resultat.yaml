@@ -18,3 +18,11 @@ poster:
     protokoll: CALIBRATION.md, 2026-11-11 hornprov 1
     ansvarig: användaren
     utfall: underkänd
+  - matris: komponenter
+    rad: Skyddshylsa
+    kolumn: insattning
+    datum: 2026-11-11
+    metod: CR Touch-provet i PLA (sensorprov-pla); CR Touchen gick inte att få in i hylsan
+    protokoll: CALIBRATION.md, 2026-11-11 CR Touch-prov 1
+    ansvarig: användaren
+    utfall: underkänd

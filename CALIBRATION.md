@@ -69,6 +69,13 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - Efter homing joggade användaren till **MPos X 613,0** , **MPos X 640,0** och **MPos X 642,0**, alla fria. **Vid MPos X 643,0 tar något i** (okänt vad). **Infört:** soft limit MPos 640 (`max_travel_mm: 637`), 3 mm marginal; `config-2026-10-22-x637.yaml` uppladdad, verifierad med `$I` efter omstart. Backup: `config-2026-10-22-fore.yaml`. `cnc` (MASKIN_GRANS) följer samma gräns.
 - Åtgärd (poka-yoke): sätt `max_travel_mm` i X så att soft limit ligger några mm före det verkliga ändläget; då vägrar FluidNC alla program som går längre. `cnc`:s `MASKIN_X`/`MASKIN_GRANS` följer samma värde.
 
+## 2026-11-11 — CR Touch-prov 1 underkänt: hylsan går inte att montera
+
+- **Prov:** probfoten och skyddshylsan ur `print/sensorprov-pla` med användarens CR Touch.
+- **Resultat:** CR Touchen gick inte att få in i hylsan.
+- **Orsak (bekräftad i CAD efteråt):** hylsan är ritad för en 1,9 mm tunn fläns (BLTouch-antagande, `FLANS_T`). Referensen visar ett fullbrett parti ned till ca 5,2 mm, och hylsans skruvunderlägg hamnar i det. Simulerad insättning ovanifrån krockar 10–30 mm före slutläget. Ingen kontroll provade vägen in; bara slutläget.
+- **Åtgärd:** flänsens verkliga tjocklek och kroppens form mäts på användarens exemplar; hylsan och probfoten ritas om och en kontroll av vägen in läggs till.
+
 ## 2026-11-11 — Hornprov 1 underkänt: servots krage saknas i CAD
 
 - **Prov:** hornfickan och bygeln ur `print/sensorprov-pla` (PLA, styrkeprofil) monterade på SPMS664 med originalhornet.
