@@ -103,12 +103,13 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 - **Ingång:** alla sju skyddade ingångar är tagna (fem ändlägen, `gpio.36` prob, `gpio.39` planerad verktygslängdsknapp). **Stoppet tar `gpio.39`** (användaren 2026-11-10), eftersom det är viktigare och behöver skyddad ingång. Verktygslängdsknappen flyttas till modulporten (`gpio.13`/`gpio.14`, oskyddad 3,3 V) eller stryks; inte avgjort.
 - **Avvägning, medvetet vald:** motorernas stopp är programvara, inte strömbrytning. Stegmotorer stannar när pulserna upphör; fräsen, den farliga delen, bryts elektriskt.
 - **Falskt stopp är billigt** tack vare körlogg, återstart och svarta lådan i `cnc` (0019, 0031). Därför får sensorer stoppa. Villkor: återstarten provas en gång på riktiga maskinen med avsiktligt stopp på spill. Pushover-notis skickas efter stopp men ingår inte i stoppkedjan.
-- **Före inkoppling:** att FluidNC 3.9.9 stoppar som väntat på `estop_pin`, kontaktorns motorlastklass, och att spolens matning (D023, ej vald) finns.
+- **Före inkoppling:** att FluidNC 3.9.9 stoppar som väntat på `estop_pin`, kontaktorns motorlastklass, och att spolens matning (D023) finns.
+- **Utförande 2026-11-11 (förslag, ej provat):** Pi:n styr spole och larmslinga med **en pulsad signal via laddningspump**, inte med fasta utgångar, så att en Pi som hänger sig också släpper kontaktorn. Pinnar: OK-puls `GPIO23`, startknapp `GPIO25`. Schema och bänkprov: [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md#elschema-matning-och-stoppkedja-2026-11-11-förslag-ej-provat).
 
 ## D023 — Två matningsgrupper: maskin och övervakning
 **Status:** valt 2026-11-10 av användaren; inget köpt eller inkopplat. Underlag: [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md).
 
-- **Maskin, bryts av maskinstoppet:** KATSU på 230 V; Mean Well HDR-60-24 till Jackpot3 och motorer; LM2596 B **6,0 V** till fällservot. Servot hör hit eftersom Jackpot styr det: en avstängd Jackpot får inte lämna servot strömsatt med flytande signal.
+- **Maskin:** KATSU på 230 V; Mean Well HDR-60-24 till Jackpot3 och motorer; LM2596 B **6,0 V** till fällservot. **Förtydligat 2026-11-11 enligt D024:** nödstoppet bryter bara KATSU; HDR nr 1 och Jackpot behåller ström så att Z inte faller, och bryts först när maskinen kopplas från nätet. Servot hör hit eftersom Jackpot styr det: en avstängd Jackpot får inte lämna servot strömsatt med flytande signal.
 - **Övervakning, lever efter stopp:** egen matning före maskinstoppet; LM2596 A **5,1 V** till Pi, kamera, ADXL och mikrofon.
 - **CR Touch matas från Pi:ns 5,1 V** (Pi:ns 5 V-stift eller buck A, samma skena). Endast styrsignal (`gpio.26`), kontaktsignal (`gpio.36`) och jord går till Jackpot. Inget extra kablage vid Jackpot och ingen tredje buck i tornet.
 - **Godtagen korsning:** med Jackpot avstängd kan proben mata in högst ca 0,5 mA via ingångens 10 kΩ (beräknat, ej uppmätt). Försumbart. Proben kör sitt självtest när Pi:n startar, inte när maskinen gör det.

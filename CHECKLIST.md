@@ -27,6 +27,7 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 | L4 | **Slutdelarnas printjobb finns inte:** material, orientering och stöd för torn, panel, arm, hylsa, bygel och brickor är inte valda | Fas 3 | Görs efter fas 2, när måtten är rättade |
 | L5 | **LED-fästet saknar printjobb** och LED-listens matning är inte vald (D022/D023) | Fas 6 steg 6.6 | **Printjobb klart 2026-11-11:** `print/led-fasten.printa/led-fasten.3mf`, PETG, ca 32 min, ett provsegment. Matning efter L1 |
 | L6 | **Märket för armspärren och mönstret på armen är inte ritade** (beslut 0035/0036 i `cnc`) | Fas 6 steg 6.5 | Väljs från första riktiga kamerabild |
+| L8 | **Pi:ns pinnar för stoppet (D024) saknades, och en fast GPIO-utgång släpper inte kontaktorn om Pi:n hänger sig** | Stopplådan | **Löst 2026-11-11:** laddningspump, OK-puls `GPIO23`, startknapp `GPIO25`; [schema och bänkprov](machine/EL_BELYSNING_OCH_STOPP.md#elschema-matning-och-stoppkedja-2026-11-11-förslag-ej-provat). Tornkabeln blir 12-ledare |
 | L7 | **Avståndet mellan probstiftets spets och fräsens spets** har ingen mätmetod | Fas 7 | **Löst 2026-11-11:** proben mäter tjocklek som skillnad mot offerskivan, fräsen nollas som i dag; [metod](machine/probstyrning/README.md) |
 
 ### Fas 0 — Utskrift pågår

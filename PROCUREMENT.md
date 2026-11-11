@@ -152,7 +152,7 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 | Del | Förslag | Varför |
 | --- | --- | --- |
 | Nätdel (L1) | **Vald av användaren:** Mean Well HDR-60-24 eller likvärdig 24 V DIN, en till | Matar LED, Pi och kontaktorspole efter stopp, D023; se [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md) |
-| Kabel torn–balk (L2) | LiYCY 8 × 0,25 mm², skärmad, ca 3 m | Se [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
+| Kabel torn–balk (L2) | LiYCY **12** × 0,25 mm², skärmad, ca 3 m (stoppkedjans två ledare tillkom 2026-11-11) | Se [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
 | Skumtejp och dammnät/ventildekal | Liten bit av varje | Mikrofonens tätning och dammskydd |
 
 ### KATSU-stopp från Pi:n, trådbundet — planerat, ej beställt
@@ -162,14 +162,15 @@ Användarens val 2026-11-10: kontaktorlösningen, ca 500 kr totalt; ersätter ä
 | Del | Kandidat | Pris |
 | --- | --- | ---: |
 | Modulkontaktor 24 V AC/DC, 2 × NO, 25 A | Electrokit, Iskra IKD225-20-24V | 219 kr |
-| Transistorkort för spolen (< 0,1 A) | ej valt | några tior |
-| Kapsling med DIN-skena, stickpropp, uttag | ej valt | ca 150 kr |
-| Nödstopp (svampknapp) med **två** brytande kontakter | ej valt | ca 60–100 kr |
-| Grön startknapp | ej valt | ca 20 kr |
-| Optokopplare, Pi:ns stoppsignal till Jackpot | ej valt | några kr |
-| **Summa** | | **ca 500 kr** |
+| Pumpkort: laddningspump och drivsteg (ersätter "transistorkort", 2026-11-11) | Hålkortsbit; 2 × 10 µF, 2 × 1N4148, 1N4007, BC517, PC817, motstånd 22 k/2,2 k/100 k/3,3 k. [Schema](machine/EL_BELYSNING_OCH_STOPP.md#elschema-matning-och-stoppkedja-2026-11-11-förslag-ej-provat) | några tior |
+| Kapsling med DIN-skena, stickpropp, uttag | Plats för kontaktor, HDR-60-24 nr 2 och pumpkort | ca 150 kr |
+| Nödstopp (svampknapp) med **två** brytande kontakter | 22 mm panelmontage, 2 × NC | ca 60–100 kr |
+| Grön startknapp | 22 mm, 1 × NO | ca 20 kr |
+| Mean Well HDR-60-24 nr 2 (D023) | Se ovan | pris vid köp |
+| LiYCY 8 × 0,25 mm², lådan → balken | Längd mäts längs Y-kedjan | pris vid köp |
+| **Summa utan nätdel och kabel** | | **ca 500 kr** |
 
-Före köp: motorlastklass (AC-7b/AC-3) i kontaktorns datablad. 230 V-delen kopplas av någon van vid nätspänning. Spolen matas från övervakningens nätdel (D023), som ännu inte är vald.
+Före köp: motorlastklass (AC-7b/AC-3) i kontaktorns datablad. 230 V-delen kopplas av någon van vid nätspänning. Spolen matas från övervakningens nätdel (D023).
 
 ### Biltema/elbox
 

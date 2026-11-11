@@ -19,6 +19,7 @@ STIFT = {
     1: "3,3 V ADXL", 17: "3,3 V INMP441",
     19: "ADXL MOSI GPIO10", 21: "ADXL MISO GPIO9", 23: "ADXL SCLK GPIO11", 24: "ADXL CS GPIO8",
     12: "INMP441 SCK GPIO18", 35: "INMP441 WS GPIO19", 38: "INMP441 SD GPIO20", 34: "GND (INMP441)",
+    16: "Stopp: OK-puls GPIO23 (laddningspump, D024)", 22: "Stopp: startknapp GPIO25", 20: "GND (stopplådan)",
 }
 
 t, p = S.torn(), S.sidopanel()

@@ -16,6 +16,63 @@
 
 **Varför denna:** samma spänning som LED-listen och kontaktorspolen, så ingen extra regulator; samma montage och kapsling som redan finns i bygget; halv last ger marginal och svalt aggregat. Laptopladdaren (ca 20 V) räcker inte till 24 V-LED:en, och elsparkcykelladdarens utspänning är okänd. Föregående HDR-60-24 kostade enligt COSTS.md i en samlad DigiKey-order; aktuellt pris kontrolleras vid köp.
 
+## Elschema: matning och stoppkedja (2026-11-11, förslag, ej provat)
+
+Genomför D023 och D024. **Ingen 230 V-koppling görs efter detta dokument utan någon som är van vid nätspänning.** Komponentvärden är räknade, inte mätta; bänkprovet nedan avgör.
+
+```mermaid
+flowchart LR
+  V["Vägguttag 230 V"] --> L["Stopplådan på bordet"]
+  subgraph L["Stopplådan på bordet"]
+    N2["HDR-60-24 nr 2<br/>övervakning, alltid på"]
+    K["Kontaktor 2 × NO<br/>24 V spole"]
+    E["Nödstopp<br/>2 brytande kontakter"]
+    G["Grön startknapp NO"]
+    P["Pumpkort:<br/>laddningspump + Darlington<br/>+ optokopplare"]
+  end
+  V --> N1["HDR-60-24 nr 1, maskin<br/>(på balken, D016)"]
+  K -->|"230 V"| KATSU["KATSU"]
+  N1 --> J["Jackpot3 + motorer"]
+  N1 -->|"24 V maskin"| B["LM2596 B 6 V → servo"]
+  N2 -->|"24 V övervakning"| A["LM2596 A 5,1 V → Pi, kamera,<br/>ADXL, mikrofon, CR Touch"]
+  N2 -->|"24 V"| LED["COB-listen"]
+  PI["Pi i tornet"] -->|"OK-puls 100 Hz, GPIO23"| P
+  G -->|"GPIO25"| PI
+  P -->|"håller spolen"| K
+  E -->|"bryter spolen"| K
+  P -->|"optokopplare i slingan"| J
+  E -->|"bryter slingan, gpio.39"| J
+```
+
+**Laddningspumpen (varför):** en GPIO-utgång som fastnar hög när Pi:n hänger sig skulle hålla KATSU igång. Pumpen drar spolen bara så länge Pi:ns program växlar utgången. Fast hög, fast låg, krasch, omstart, avbruten ledare och ström av på Pi:n ger alla samma sak: kontaktorn släpper och Jackpots larmslinga öppnas.
+
+| Del på pumpkortet | Värde | Uppgift |
+| --- | --- | --- |
+| C1 | 10 µF keramisk/film | Släpper bara igenom växling; fast nivå blockeras |
+| D1, D2 | 1N4148 | Likriktar pulserna till C2 |
+| C2, R1 | 10 µF, 22 kΩ | Håller spänningen mellan pulserna; urladdas på ca 20–50 ms när pulserna slutar |
+| R2, R3 | 2,2 kΩ till basen, 100 kΩ bas–jord | Basström; R3 håller transistorn av om ledaren går av |
+| Q1 | BC517 (Darlington, 1 A) | Låg sida på spolen och optokopplarens lysdiod |
+| D3 | 1N4007 över spolen, katod mot +24 V | Tar spolens spänningsspik när den släpper |
+| R4 + U1 | 3,3 kΩ, PC817 | Lysdiod 24 V → R4 → U1 → Q1; U1:s transistor sluter Jackpots larmslinga |
+
+**Spolkretsen:** +24 V övervakning → nödstoppets kontakt 1 → spolen → Q1 → jord. **Larmslingan:** Jackpot `gpio.39` → nödstoppets kontakt 2 → U1:s transistor → Jackpots jord. Sluten slinga = normal drift; öppen = larm (`estop_pin`). Pi:n börjar pulsa först efter tryck på den gröna knappen, och slutar vid sensorlarm; se `cnc/pi/sensorpi.py`.
+
+**Kablar**
+
+| Sträcka | Kabel | Ledare |
+| --- | --- | --- |
+| Lådan → balken (Y-kedjan) | LiYCY 8 × 0,25 mm² | +24 V övervakning ×2, jord ×2 (LED-strömmen ca 1 A), OK-puls, startknapp, larmslinga ×2 |
+| Balken → tornet (X-vägen) | LiYCY 12 × 0,25 mm² | Se [kopplingsunderlaget](delar/sensorer/KOPPLING_CORE_V0.md) |
+| HDR nr 1 | Som i dag (D016) | Ändras inte |
+
+**Bänkprov av lådan före 230 V** (24 V-delen med kontaktorns spole, KATSU ej ansluten):
+1. Ingen puls: kontaktorn ligger ute, slingan är öppen (mät med multimeter).
+2. Puls 100 Hz från Pi:n eller ESP32:n: kontaktorn drar, slingan sluten.
+3. Avbryt programmet, sätt utgången fast hög, sätt den fast låg, dra ur pulsledaren: kontaktorn släpper varje gång inom 0,2 s.
+4. Tryck nödstoppet under puls: kontaktorn släpper och slingan öppnas.
+5. Mät spolens ström och spänningen på C2; logga i CALIBRATION.md.
+
 ## Verifierat, valt och osäkert — blanda inte ihop
 
 | Del | Fakta/status | Anmärkning |

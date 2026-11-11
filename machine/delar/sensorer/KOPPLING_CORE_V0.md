@@ -45,7 +45,7 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 
 ## Kabel torn–balk (L2, förslag 2026-11-11, ej köpt)
 
-**Skärmad flexkabel 8 × 0,25 mm² (typ LiYCY), ca 3 m**, längd mäts med snöre vid full X-rörelse. Skärmen kopplas till jord **bara i Jackpot-änden**, så att den inte bildar en jordslinga. Skärm behövs eftersom kabeln går bredvid KATSU:ns 230 V-kabel och bär probsignalen. Ledarna löds i tornet och dras genom buntbandsbryggorna vid utgången.
+**Skärmad flexkabel 12 × 0,25 mm² (typ LiYCY), ca 3 m**, längd mäts med snöre vid full X-rörelse. Skärmen kopplas till jord **bara i Jackpot-änden**, så att den inte bildar en jordslinga. Skärm behövs eftersom kabeln går bredvid KATSU:ns 230 V-kabel och bär probsignalen. Ledarna löds i tornet och dras genom buntbandsbryggorna vid utgången.
 
 | Ledare | Funktion | Ström (uppskattad) |
 | --- | --- | --- |
@@ -56,7 +56,10 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 | 5 | CR Touch styrning, `gpio.26` | signal |
 | 6 | CR Touch kontakt, `gpio.36` (S) | signal |
 | 7 | Probe-portens G, tvinnad med ledare 6 | signal |
-| 8 | Reserv | |
+| 8 | OK-puls till stopplådan, Pi `GPIO23` (stift 16), laddningspump enligt D024 | signal |
+| 9 | Startknapp från stopplådan, Pi `GPIO25` (stift 22) | signal |
+| 10 | Jord för 8–9, Pi stift 20 | signal |
+| 11–12 | Reserv | |
 
 Båda nätdelarnas minus förbinds vid Jackpot, så att signalerna har samma referens (D023). Strömmarna är räknade ur servots och Pi:ns data via LM2596:s verkningsgrad, inte uppmätta.
 
