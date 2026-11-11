@@ -18,7 +18,7 @@ Ett servo försöker alltid nå den vinkel pulsen anger. Står ett hårt stopp i
 2. Mjuk ramp i 20 steg från det ena ändläget till det andra, sedan 30 µs (ca 3 grader) **förbi** stoppet så att armen säkert ligger an.
 3. Kort vila, sedan **pulserna av** (`M67 E0 Q0`). Stoppet, och magneten i parkerat läge, bär armen. Servot står aldrig och trycker.
 
-Armens läge bekräftas av kameran före jobb (beslut 0035, förslag 0036 i `cnc`). Makrona själva vet inte var armen står.
+Armens läge bekräftas av kameran före jobb (beslut 0035 och 0036 i `cnc`; den utfällda armen behöver ett eget svart-vitt mönster där den täcker märket, annars kan utfällt läge inte bekräftas och mätning nekas). Makrona själva vet inte var armen står.
 
 ## Arbetsordning
 
