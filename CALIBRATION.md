@@ -84,6 +84,12 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 
 Skruvhålens diameter: 3,6 mm (uppmätt). Kontaktöppningen sitter mitt i sidled (7,0 mm från vardera örats ytterkant) och 6,5 mm från flänsens överkant, 1,4 mm från underkanten (kontrollsummor 27,1 och 17,4 stämmer). Hålens mittlinje ca 5,8 mm under överkanten, uppskattat ur foto. Ej uppmätt: hur långt ned stöden under öronen går. Kontakten sitter i ovansidan: kabeln sticks ned uppifrån genom armfoten.
 
+## 2026-11-11 — Kameraprov 1 godkänt: kortet passar i fickan
+
+- **Prov:** kamerafickan ur `print/sensorprov-pla` (PLA) med användarens Camera Module 3.
+- **Resultat:** användaren: "passade som en handske". Kortet går in i fickan på tapparna.
+- **Ej provat:** klämskruvarnas grepp (M3×10), CSI-kabelns vikning och linsens läge mot buken.
+
 ## 2026-11-11 — CR Touch-prov 1 underkänt: hylsan går inte att montera
 
 - **Prov:** probfoten och skyddshylsan ur `print/sensorprov-pla` med användarens CR Touch.

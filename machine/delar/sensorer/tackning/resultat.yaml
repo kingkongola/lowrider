@@ -26,3 +26,11 @@ poster:
     protokoll: CALIBRATION.md, 2026-11-11 CR Touch-prov 1
     ansvarig: användaren
     utfall: underkänd
+  - matris: komponenter
+    rad: Camera Module 3
+    kolumn: insattning
+    datum: 2026-11-11
+    metod: kamerafickan i PLA (sensorprov-pla) med användarens Camera Module 3; kortet in i fickan på tapparna
+    protokoll: CALIBRATION.md, 2026-11-11 Kameraprov 1
+    ansvarig: användaren
+    utfall: godkänd
