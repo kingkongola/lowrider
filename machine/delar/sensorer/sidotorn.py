@@ -274,7 +274,7 @@ def stoppdelar(prob_x=PROB[0]):
         p = prisma_y(stopp_block(prob_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
         return fillet(p.edges().filter_by(Axis.Y), 0.8)
     nedre = stopp(-1) + fillet(box((33, ARM_Y[1] + 1.0, 27.6), (42, FRAM_Y[0], 33.2)).edges().filter_by(Axis.Y), 1.2)
-    ovre = stopp(1) + fillet(box((31, 30.5, 54.0), (53, FRAM_Y[0], 59.4)).edges().filter_by(Axis.Y), 1.2)   # under M5-kanalen
+    ovre = stopp(1) + fillet(box((31, 30.5, 54.0), (54.5, FRAM_Y[0], 59.4)).edges().filter_by(Axis.Y), 1.2)   # under M5-kanalen
     ovre += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, 33.0, 58.5))
     ovre -= magnet_urtag(prob_x)
     delar = []

@@ -1,0 +1,8 @@
+{
+  "namn": "skruvprov-petg",
+  "process": "styrka",
+  "material": "petg",
+  "stod": false,
+  "delar": [{"fil": "skruvprov-petg/skruvprov.stl", "antal": 1}],
+  "andringar": {}
+}

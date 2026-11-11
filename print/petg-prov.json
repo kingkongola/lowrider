@@ -1,0 +1,11 @@
+{
+  "namn": "petg-prov",
+  "process": "styrka",
+  "material": "petg",
+  "stod": true,
+  "delar": [
+    {"fil": "skruvprov-petg/skruvprov.stl", "antal": 1},
+    {"fil": "led-fasten/led-fasten.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

@@ -4,11 +4,34 @@
   "material": "petg",
   "stod": true,
   "delar": [
-    {"fil": "sidotorn-slutdelar/sidopanel.stl", "antal": 1},
-    {"fil": "sidotorn-slutdelar/arm.stl", "antal": 1},
-    {"fil": "sidotorn-slutdelar/kapa.stl", "antal": 1},
-    {"fil": "sidotorn-slutdelar/hornbygel.stl", "antal": 2},
-    {"fil": "sidotorn-slutdelar/bricka.stl", "antal": 3}
+    {
+      "fil": "sidotorn-slutdelar/sidopanel.stl",
+      "antal": 1
+    },
+    {
+      "fil": "sidotorn-slutdelar/arm.stl",
+      "antal": 1
+    },
+    {
+      "fil": "sidotorn-slutdelar/kapa.stl",
+      "antal": 1
+    },
+    {
+      "fil": "sidotorn-slutdelar/hornbygel.stl",
+      "antal": 2
+    },
+    {
+      "fil": "sidotorn-slutdelar/bricka.stl",
+      "antal": 3
+    },
+    {
+      "fil": "sidotorn-slutdelar/stopp-nedre.stl",
+      "antal": 1
+    },
+    {
+      "fil": "sidotorn-slutdelar/stopp-ovre.stl",
+      "antal": 1
+    }
   ],
   "andringar": {}
 }

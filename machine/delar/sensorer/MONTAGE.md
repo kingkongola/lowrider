@@ -8,8 +8,9 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 
 | Förband | Fästelement | Antal | Hur | Varför |
 | --- | --- | --- | --- | --- |
-| **Tornet → maskinen** | M5 insex (DIN 912), **befintlig längd + 16 mm**, bricka M5 under skallen, medelstark gänglåsning (blå) | 2 | Genom tornets platta och distans, verktygsfästets öra, in i Core som i dag. Den nedre nås genom kanalen ovanför servot | Skanningen visar att Core sitter direkt bakom örat (x −38 till −15); skallen måste vara på tornets sida. Gänglåsning eftersom fräsen vibrerar |
+| **Tornet → maskinen** | M5 insex (DIN 912), **befintlig längd + 16 mm**, smal bricka DIN 433 (Ø9) under skallen, medelstark gänglåsning (blå), **0,6–0,8 Nm**, märkfärgsstreck över skallen | 2 | Genom tornets platta och distans, verktygsfästets öra, in i Core som i dag. Den nedre nås genom kanalen Ø9,4 ovanför servot | Core sitter bakom örat; skallen är på tornets sida. Distansen sitter i örats försänkning, så formen håller läget och klämkraften kan vara låg: PETG kryper över ca 18 MPa (`berakning_sidotorn.py`). Märkfärgen visar om en skruv vridit sig |
 | Servot → tornet | M3 × 10, formar gänga i Ø2,6 | 4 | Framifrån genom öronen | Bakom ramen är det massivt; en mutter får inte plats (rättat 2026-11-11, var Ø3,4 frigångshål) |
+| Stoppdelarna → ramen | M3 × 20, försänkt skalle | 4 | Efter servot, framifrån | Stoppen stod framför servot och hindrade det att sättas in (rättat 2026-11-11). Ett trasigt stopp printas om utan nytt torn |
 | Hornet → servoaxeln | Servots egen mittskruv | 1 | Framifrån, före eller efter armen | |
 | Armen → hornet | Hornbygel + M3 × 10 | 2 | Bygeln kilar hornet i armens ficka | Provas i hornprovet |
 | CR Touch → armen | M3 × 8 ur kitet, genom hylsan | 2 | | |
@@ -23,6 +24,8 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | Kopplingskort | Hålkort ca 9 × 23 mm, VHB-tejp | 1 | Framväggen x 39–47, z 112–135 | Jordpunkt, servokontakt, kondensator |
 | Sidopanelen | M3 × 8 i tornets pelare + de två M2.5 ovan | 4 + 2 | Utifrån | |
 | Tornkabeln | Buntband runt bryggorna vid utgången | 2 | | Dragavlastning: ledarna i tornet får aldrig bära kabelns vikt |
+| microSD-springan | Kaptontejp över springan | 1 | Utifrån | Håller kortet på plats mot vibration och stänger springan mot damm |
+| CR Touch-kabeln vid navet | Fri ögla minst 40 mm, böjradie minst 15 mm, buntband på armen och vid skenan | 2 | | Kabeln förlängs ca 20 mm när armen vrids 150° (`berakning_sidotorn.py`) |
 | LED-fästet | Befintliga M5/Brace i understruten | 2 per segment | | D022 |
 
 **M5-längden:** skruva ur en av V1E:s skruvar och mät den. Ny längd = gammal + 16 mm (tornets platta och distans är 16,3 mm), avrundat till standardlängd så att muttern i Core får full gängning utan att skruven bottnar.
@@ -42,18 +45,33 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 
 1. **Rensa printen.** Stöd ut ur elektronikrummet, kamerafickan och M5-kanalen. Kontrollera att kanalen är fri hela vägen (en M5-skruv ska glida igenom).
 2. **Löd allt som ska lödas, utanför tornet** (ledningslistan nedan): Pi:ns stift, ADXL, mikrofon, LM2596-modulerna, kopplingskortet. Krymp varje lödpunkt. Mät spänningarna på regulatorerna innan något kopplas till dem.
-3. **Magneten** i parkeringsstoppet med en droppe lim. Låt torka.
+3. **Magneten** i den övre stoppdelens ficka med en droppe lim. Låt torka.
 4. **Kameran** underifrån med CSI-kabeln redan i kameran. Två M3 × 10. För upp kabeln i CSI-rummet och vik den två gånger 45°.
 5. **ADXL** med två M3 × 10 och brickor från panelsidan.
 6. **Kopplingskortet** på framväggen.
 7. **LM2596 A och B** i fickorna.
 8. **Pi:n**: CSI-kabeln i Pi:ns kontakt först, sedan rakt in på tapparna. **Inget microSD-kort i** ännu.
 9. **Servot** in framifrån genom ramen, fyra M3 × 10. Servokabeln upp ovanför servot till kopplingskortet.
+9b. **Stoppdelarna** mot ramens framsida, två M3 × 20 var. Magneten är redan limmad i den övre.
 10. **Ändlägena (fas 4.8 i checklistan):** hornet på axeln så att armen står mitt i rörelsen vid 1500 µs, mittskruven, sedan armen med bygeln och två M3 × 10. CR Touch med hylsan, två M3 × 8; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.
 12. **microSD** in utifrån genom springan i bakväggen. Ett kort som ska bytas dras ut med en pincett.
 13. **På maskinen, armen utfälld:** den övre M5 rakt utifrån, den nedre genom kanalen. Bricka, blå gänglåsning, dra med handkraft; plasten får inte tryckas ihop.
 14. **Tornkabeln** ut bakåt, buntband vid bryggorna, sedan längs X-vägen till balken enligt [CABLE_ROUTING.md](../../../CABLE_ROUTING.md).
+
+## Miljökrav: värme och damm
+
+**Värme:** luften i tornet högst 50 °C vid 35 °C i garaget; Pi:ns processor under 80 °C (där den börjar strypa). Beräkning: ca 48 °C vid toppeffekt 4 W ([berakning_sidotorn.py](berakning_sidotorn.py)). Verifieras med en timmes körning där `vcgencmd measure_temp` loggas.
+
+**Damm:** inga öppningar mot fräsen. Panelens slitsar vänder bort från fräsen (X max-sidan), kabelutgången och SD-springan vetter mot Core; springan tejpas. Mikrofonen har dammnät. CR Touchens stift är ute bara vid mätning och skyddas av hylsan; självtest före varje mätning. **Linsen** sticker ut 2,6 mm och har inget glas framför: armspärren stoppar om bilden blir oskarp (smuts), och linsen rengörs med blåsbälg, inte trasa. Verifieras med ett dammprov under fräsning.
+
+## Kopplingskortet
+
+Hålkort ca 9 × 23 mm, 2,54 mm delning, VHB-tejp på framväggen. Uppifrån och ned: 3-polig stiftlist för servot (signal, +6 V, GND), kondensator 470–1000 µF/10 V liggande, fem lödpunkter för CR Touch-kabeln, en jordskena längs ena långsidan som enda jordpunkt. Ledningslistan nedan säger vad som går till varje punkt.
+
+## Kabelväg ut ur tornet
+
+Tornkabeln följer X-motorns kabel till balkens mitt (CABLE_ROUTING.md); längd = X-motorkabelns + 0,3 m. Böjradie minst 10 × kabelns diameter i rörliga delar. Kontrolleras med snöre och full X-rörelse (fas 5.3) och med ett cykelprov.
 
 ## Ledningslista inne i tornet
 

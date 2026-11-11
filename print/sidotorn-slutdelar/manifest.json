@@ -1,18 +1,20 @@
 {
   "typ": "sidotorn-slutdelar",
   "kallor_sha256": {
-    "sidotorn.py": "3dd8f50d483c4a76c08939d8de636f647a6b3402fb4ef4f7b6c095e5db1063b8",
+    "sidotorn.py": "987d1c56c8c78c7cabda445ff997bb2dde0de40ee528239b2ba4f8bf178757eb",
     "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
     "hornfaste.py": "53215a22b834e0b3d67341e53902c04d56ca4497e497f238f2a137513ad726cd"
   },
   "delar": {
-    "torn.stl": "c081d27ce0a2c2778dd7b5fe6d07350a5d76d8722ef15fc5eaa3eb7d6366579c",
-    "sidopanel.stl": "fe970151236792fd7a1a4a8ff9a2682a161adcc6b7fbb3675f6bd7a4790f1cff",
+    "torn.stl": "89bee24b31792ec4d28fbc5d3deec7f6b4142760a9c4d35c73a12dd2e5166f3c",
+    "sidopanel.stl": "d25f60fdd09ef6452488dc7796d5a7aa2b18518d8f2667376ec05a4c34b8df63",
     "arm.stl": "32eeb9045c2b43b010edf467747e46f18be4fb6558ad183ea2efd0f5b7932eca",
     "kapa.stl": "02972e017861f917bc751a7d7e59c377d558c3f1fdc6172309b176706667bc3a",
     "hornbygel.stl": "a29ff1cfd0da99149f1e9b5a0209346692739acb7049d8e7e0fb97e17afd3938",
-    "bricka.stl": "70faa53046508513bf66fffcea09ffa52a61035c6306fe0ac04f51a7a7398b12"
+    "bricka.stl": "70faa53046508513bf66fffcea09ffa52a61035c6306fe0ac04f51a7a7398b12",
+    "stopp-nedre.stl": "0b9bce5ea276ff9c9b524f66fad61eb9fffe0347540d95aa38b791505abb1d64",
+    "stopp-ovre.stl": "f867bcf3abe816469aede874c454413b44984f9ff8b831d0e729a8d2a4da074a"
   }
 }

@@ -32,6 +32,7 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 
 ### Fas 0 — Utskrift pågår
 
+- [ ] **0.0 Skruvprovet i PETG** (`print/skruvprov-petg.printa/skruvprov-petg.3mf`, ca 32 min): skruva i och ur M3 och M2.5 fem gånger, dra M5-provet till 0,7 Nm. Godkänt: gängan håller och distansen spricker inte.
 - [ ] **0.1 Hornprovet** (`print/horn-passning.3mf`, ca 13 min PLA). *Pågår enligt användaren 2026-11-11.* Godkänt: hornet sitter utan glapp med två M3×10, går att lossa och sätta igen. [Provförfarande](print/README.md#servohorn--ficka-och-m3-bygel).
 
 ### Fas 1 — Elektronik på bänken, utan printade delar
@@ -94,6 +95,11 @@ Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte g�
 - [ ] **6.4** Strömbortfall: slå av maskinens matning med parkerad arm. Godkänt: armen stannar parkerad, Pi:n lever vidare (D023).
 - [ ] **6.5** Märke och armmönster (L6), sedan armspärrens inlärning med riktiga bilder i båda lägena. Godkänt: `cnc armsparr kolla` säger parkerad respektive utfälld; täckt lins ger stopp.
 - [ ] **6.6** LED-fästet printas och monteras (L5), listen tänds. Godkänt: jämnt ljus i kamerabilden utan blänk på blanka beslag.
+- [ ] **6.7 Knackprov:** knacka på tornet och verktygsfästet medan `/adxl?s=2` spelar in. Godkänt: tornets första resonans ligger över 1,2 kHz eller utanför 300–1000 Hz (fräsens tandfrekvenser). Annars styvas fästet.
+- [ ] **6.8 Störningsprov:** KATSU igång utan ingrepp, `?` i konsolen i 5 minuter. Godkänt: probe-statusen växlar aldrig. Därefter G38 i luften med KATSU igång: inget falskt stopp.
+- [ ] **6.9 Långkörning:** en timme med bilder var tionde sekund, `vcgencmd measure_temp` och lufttemperatur i tornet loggas. Godkänt: luft under 50 °C, processor under 80 °C, ingen strypning.
+- [ ] **6.10 Cykelprov:** armen ut och in 200 gånger. Godkänt: CR Touch-kabeln hel (kontinuitet), magneten håller, stoppen oskadda.
+- [ ] **6.11 Uppstartsrutin:** KATSU går inte före grön knapp; nödstoppet stoppar; märkfärgen på M5 obruten.
 
 ### Fas 7 — Mätning och kalibrering, på spill
 
@@ -105,6 +111,8 @@ Kräver att grundmaskinens Z-nivå och squaring nedan är godkända, annars mät
 
 ### Fas 8 — Övervakning under fräsning
 
+- [ ] **8.0 Dammprov:** efter ett jobb på spill: linsen, mikrofonens nät och CR Touchens stift kontrolleras; armspärren ska inte larma för oskärpa.
+- [ ] **8.0b Vibrationsnivå:** ADXL:ens toppvärde under fräsning jämförs med magnetens marginal (ca 3,7 g). Ligger toppen över: byt till magnet Ø8 × 3.
 - [ ] **8.1** Spela in ADXL och mikrofon under ett stegrat prov på spill och jämför med körloggen, enligt [verktygsövervakningen](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md). Godkänt: ett avsiktligt fel syns tydligt över bruset.
 
 Utbyggnad efter fas 8 (bildsammanfogning, skruvbrickor, materialindexering) är inte krav för första versionen; se [kameraunderlaget](machine/KAMERA_ANHALL.md).

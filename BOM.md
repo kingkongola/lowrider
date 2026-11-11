@@ -110,6 +110,9 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | M3-skruv av stål | Tillgänglig enligt användaren; huvud mot parkeringsmagneten |
 | M3 × 10 | 10: 2 kamera, 2 ADXL345, 2 hornbygel, 4 servo (formar gänga i Ø2,6). Ur befintliga 83 st; se [MONTAGE.md](machine/delar/sensorer/MONTAGE.md) |
 | M3 × 8 | 4 till sidopanelen. Lager ej inventerat |
+| M3 × 20 | 4 till stoppdelarna. Lager ej inventerat |
+| Kaptontejp | Bit över microSD-springan |
+| Märkfärg | Streck över M5-skallarna |
 | M2.5 × 20 | 2: Pi:n och panelens övre kant. Lager ej inventerat |
 | M5 insex, befintlig längd + 16 mm | 2, tornet till verktygsfästet; mät en befintlig V1E-skruv först. Plus 2 brickor M5 och blå gänglåsning |
 | INMP441 | Tidigare beställd enligt användaren; antal och leverans obekräftade. Placerad i sidotornets panel 2026-11-11 (CAD) |

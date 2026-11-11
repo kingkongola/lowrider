@@ -15,16 +15,16 @@ funktioner:
     krav: S MONTAGE.md (inget i Core ändras)
     konstruktion: S två M5, kanal för den nedre
     auto: A kontroll_montage.py, kontroll_omgivning.py
-    berakning: SAKNAS klämkraft, krypning i PETG och tornets vibration ej beräknade
+    berakning: A berakning_sidotorn.py (klämtryck under krypgränsen)
     bank: X
     maskin: F 5.2-5.3
-    felfall: SAKNAS lossnar skruven syns det inte; ingen kontroll under drift
+    felfall: S blå gänglåsning och märkfärg; F 6.11 uppstartsrutin
     agare: S MONTAGE.md
   Armens rörelse och ändlägen:
     krav: S D020
     konstruktion: S hårda stopp, magnet, servo utan puls i vila
     auto: A kontroll_omgivning.py, probstyrning.yml (makronas självtest)
-    berakning: SAKNAS stoppkrafter och magnetens hållkraft
+    berakning: A berakning_sidotorn.py (stopp och magnet)
     bank: F 1.2, 4.8-4.9
     maskin: F 6.2
     felfall: S armspärren stoppar jobb om armen inte syns parkerad; N magneten släpper under fräsning upptäcks inte förrän nästa jobb
@@ -60,7 +60,7 @@ funktioner:
     krav: S beslut 0035 och 0036
     konstruktion: S fast märke och mönster på armen
     auto: A cnc test_armsparr.py
-    berakning: SAKNAS märkets plats ej vald (L6)
+    berakning: F 6.5 märkets plats väljs ur första bilden
     bank: X
     maskin: F 6.5
     felfall: S oklar bild ger okänt läge och stopp
@@ -69,7 +69,7 @@ funktioner:
     krav: S cnc verktygsovervakning.md
     konstruktion: S ADXL på styv platta, SPI
     auto: A cnc test_sensorpi.py (låtsas-SPI)
-    berakning: S 3200 prov/s räcker till skärtonen vid 18 300 rpm; SAKNAS plattans resonans
+    berakning: S 3200 prov/s räcker till skärtonen; F 6.7 knackprov
     bank: F 1.7
     maskin: F 8.1
     felfall: S full FIFO redovisas som möjlig lucka
@@ -87,16 +87,16 @@ funktioner:
     krav: S D023
     konstruktion: S HDR nr 2, LM2596 A
     auto: X
-    berakning: S ca 30 W av 60 W; SAKNAS spänningsfall i 0,25 mm²-ledarna vid 1,3 A ej räknat för hela vägen
+    berakning: A berakning_sidotorn.py; S spänningsfall i EL_BELYSNING_OCH_STOPP.md
     bank: F 1.1, provkörning steg 1
     maskin: F 6.4
-    felfall: SAKNAS ingen säkring vald på 24 V ut från lådan
+    felfall: S säkring F1 T2A och F2 T1A
     agare: S machine/EL_BELYSNING_OCH_STOPP.md
   Matning, maskin och servo:
     krav: S D023, D024
     konstruktion: S HDR nr 1, LM2596 B, kondensator
     auto: X
-    berakning: SAKNAS servons strömtopp mot LM2596 B och kabeln ej beräknad
+    berakning: A berakning_sidotorn.py
     bank: F 1.1
     maskin: F 6.2
     felfall: N servot utan matning släpper; magneten håller
@@ -107,8 +107,8 @@ funktioner:
     auto: X
     berakning: X
     bank: X
-    maskin: SAKNAS inget prov för störningar på probsignalen med KATSU igång
-    felfall: SAKNAS falsk probkontakt under G38 ger fel nollpunkt
+    maskin: F 6.8 störningsprov med KATSU igång
+    felfall: S mat_z mäter två gånger; falsk kontakt i första sökningen ger larm i den andra
     agare: S KOPPLING_CORE_V0.md
   Stoppkedjan:
     krav: S D024
@@ -134,7 +134,7 @@ funktioner:
     auto: A probstyrning.yml
     berakning: X
     bank: X
-    maskin: F 6.1; SAKNAS estop_pin på gpio.39 saknas i förslaget
+    maskin: A konfig.py --med-stopp; F 6.1
     felfall: N fel polaritet på probe.pin avvisas av check_mode_start
     agare: S machine/probstyrning/README.md
   Programvara på Pi:n:
@@ -153,7 +153,7 @@ funktioner:
     berakning: X
     bank: X
     maskin: F fas 6-7
-    felfall: SAKNAS datorn som begär stopp vid sensorlarm är inte byggd
+    felfall: A cnc test_pistopp.py (stopp begärs och bekräftas, annars fel)
     agare: S cnc
   Nätverk:
     krav: S ingen säkerhet över Wi-Fi
@@ -166,31 +166,31 @@ funktioner:
     agare: S cnc pi/README.md
   Kabelföring genom rörelsen:
     krav: S CABLE_ROUTING.md
-    konstruktion: SAKNAS tornkabelns väg längs X ej ritad
+    konstruktion: S MONTAGE.md, kabelväg ut ur tornet
     auto: X
-    berakning: SAKNAS böjradie och längd per kabel genom rörelsen inte räknade
+    berakning: S längd = X-motorkabelns + 0,3 m, böjradie 10 x diameter
     bank: X
     maskin: F 5.3
     felfall: N avbruten ledare i pumpkedjan stoppar; avbruten probledare ger ingen kontakt (larm vid G38)
     agare: S CABLE_ROUTING.md
   Värme i tornet:
-    krav: SAKNAS ingen temperaturgräns satt
+    krav: S MONTAGE.md, miljökrav
     konstruktion: S PETG, slitsar
     auto: X
-    berakning: SAKNAS förlusteffekt och temperaturhöjning inte räknade
+    berakning: A berakning_sidotorn.py
     bank: F 1.5 (vcgencmd)
-    maskin: SAKNAS långkörning med temperaturloggning saknas i checklistan
+    maskin: F 6.9 långkörning
     felfall: N Pi:n stryper sig själv
-    agare: SAKNAS ingen fil äger värmekraven
+    agare: S MONTAGE.md
   Damm och spån:
-    krav: SAKNAS inget krav formulerat
+    krav: S MONTAGE.md, miljökrav
     konstruktion: S dammnät på mikrofonen
     auto: X
     berakning: X
     bank: X
-    maskin: SAKNAS inget prov av damm på lins, mikrofon och CR Touch under fräsning
+    maskin: F 8.0 dammprov
     felfall: S smutsig lins ger stopp via armspärren
-    agare: SAKNAS ingen fil äger dammkraven
+    agare: S MONTAGE.md
   Underhåll:
     krav: N
     konstruktion: S SD utifrån, panel med sex skruvar
@@ -202,17 +202,17 @@ funktioner:
     agare: S MONTAGE.md
   230 V-säkerhet:
     krav: S D024, AUDIT.md
-    konstruktion: SAKNAS stopplådans layout, beröringsskydd och dragavlastning ej ritade
+    konstruktion: S layout i EL_BELYSNING_OCH_STOPP.md
     auto: X
     berakning: X
     bank: X
     maskin: F kopplas av någon van vid nätspänning
-    felfall: SAKNAS felfall i 230 V-delen (kortslutning, jordfel, säkring) inte genomgångna
+    felfall: S felfallstabell i EL_BELYSNING_OCH_STOPP.md
     agare: S machine/EL_BELYSNING_OCH_STOPP.md
   Dokumentens samstämmighet:
     krav: S CLAUDE.md (en källa per sak)
     konstruktion: X
-    auto: SAKNAS ingen automatisk kontroll av att BOM stämmer med CAD; skruvraderna rättades för hand 2026-11-11 efter att matrisen hittade fel
+    auto: A kontroll_dokument.py (BOM har varje fästelement i MONTAGE.md)
     berakning: X
     bank: X
     maskin: X

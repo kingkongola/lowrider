@@ -1,0 +1,10 @@
+{
+  "typ": "skruvprov-petg",
+  "kallor_sha256": {
+    "skruvprov.py": "7079fe384b27cc10fbb29296ac221eedfc40cad55fd6abfb7a89d31f1a01a16d",
+    "sidotorn.py": "9668a5c3b928c9461cec89fc5dbcfba3170524de9b4333245da49e82adf64ae3"
+  },
+  "delar": {
+    "skruvprov.stl": "bfc50acd9142feef44a0f5d044e4404f1182e837e05ca04982368d7345e75e36"
+  }
+}

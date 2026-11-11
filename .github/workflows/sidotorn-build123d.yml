@@ -14,6 +14,8 @@ on:
       - 'machine/delar/sensorer/passningsprov.py'
       - 'machine/delar/sensorer/kontroll_*.py'
       - 'machine/delar/sensorer/tackning/**'
+      - 'machine/delar/sensorer/*.md'
+      - 'BOM.md'
       - 'machine/delar/sensorer/referenser/**'
       - '.github/workflows/sidotorn-build123d.yml'
   workflow_dispatch:
@@ -43,6 +45,12 @@ jobs:
       - name: Täckningsmatriserna är kompletta och TACKNING.md aktuell
         working-directory: machine/delar/sensorer/tackning
         run: python -m pip install pyyaml && python tackning.py --kontroll
+      - name: Beräkningar med kriterier (krafter, värme, el)
+        working-directory: machine/delar/sensorer
+        run: python berakning_sidotorn.py
+      - name: BOM har varje fästelement i MONTAGE.md
+        working-directory: machine/delar/sensorer
+        run: python kontroll_dokument.py
       - name: Monteringen i ordning (verktygsåtkomst för varje skruv)
         working-directory: machine/delar/sensorer
         run: python kontroll_montage.py

@@ -58,6 +58,23 @@ flowchart LR
 
 **Spolkretsen:** +24 V övervakning → nödstoppets kontakt 1 → spolen → Q1 → jord. **Larmslingan:** Jackpot `gpio.39` → nödstoppets kontakt 2 → U1:s transistor → Jackpots jord. Sluten slinga = normal drift; öppen = larm (`estop_pin`). Pi:n börjar pulsa först efter tryck på den gröna knappen, och slutar vid sensorlarm; se `cnc/pi/sensorpi.py`.
 
+**Säkringar:** F1 T2A (trög) på övervakningens 24 V ut från lådan till balken, F2 T1A på LED-grenen vid balken. HDR-60-24 har egen intern säkring och kortslutningsskydd. Vägguttaget ska sitta på en krets med jordfelsbrytare.
+
+**Spänningsfall** (0,25 mm², räknat): LED-grenen 1 A över dubbla ledare i Y-kabeln ca 0,2 V; tornet ca 0,25 V jordförskjutning vid servots strömtopp. Allt inom marginal ([berakning_sidotorn.py](delar/sensorer/berakning_sidotorn.py)).
+
+**Lådans layout (förslag):** plastkapsling med DIN-skena för 8–12 moduler, IP54 eller bättre. På skenan från vänster: kabelplint 230 V in, HDR-60-24 nr 2 (3 moduler), kontaktor (1 modul), säkringshållare F1 (1 modul), plint 24 V ut, pumpkortet på DIN-hållare (2 moduler). Nödstoppet och den gröna knappen i locket (22 mm hål). Stickpropp och KATSU-uttag via kabelförskruvningar. Lådan skruvas på bordets framkant så att nödstoppet nås utan att sträcka sig över maskinen. Plast, så att inga utsatta metalldelar behöver skyddsjord.
+
+**Pumpkortet (hålkort, ca 30 × 40 mm):** C1 och D1/D2 vid ingången från Pi:n, C2/R1 bredvid, R2/R3 till Q1:s bas, Q1 i mitten, D3 över spolplintens två poler, R4 och PC817 vid larmslingans plint. Plintar: OK-puls, GND, +24 V, spole, larmslinga ×2.
+
+**Felfall i 230 V-delen:**
+| Fel | Följd | Skydd |
+| --- | --- | --- |
+| Kontaktorns kontakt svetsas fast | KATSU går trots stopp | Kontaktorn har 2 × NO: koppla båda i serie på fasen (eller bryt fas och nolla). En svetsad kontakt räcker då inte för att hålla KATSU igång. Prova vid varje uppstart: KATSU ska inte gå före grön knapp |
+| Kortslutning i KATSU-kabeln | Kretsens säkring löser | Husets säkring; kabeln dras utanför rörliga delar |
+| Jordfel | Risk för elchock | Jordfelsbrytare på kretsen; plastlåda |
+| Nödstoppet går sönder öppet | Spolen och slingan bryts | Felsäkert: allt stannar |
+| Nödstoppet går sönder slutet | Stopp bara via Pi och pump | Prova nödstoppet vid varje uppstart (CHECKLIST) |
+
 **Kablar**
 
 | Sträcka | Kabel | Ledare |

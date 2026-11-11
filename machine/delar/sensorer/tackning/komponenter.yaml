@@ -24,19 +24,19 @@ komponenter:
     fastsattning: A kontroll_montage.py steg 4 (båda M5); F 5.2
     koppling: X
     rorelse: A kontroll_omgivning.py (Core, fästen, dammsko, kjol, skanning)
-    last: SAKNAS styvhet och egenfrekvens för torn och ADXL-platta ej beräknade; knackprov saknas i checklistan
-    varme: SAKNAS temperatur i slutet rum med Pi och två LM2596 ej beräknad eller mätt
-    damm: SAKNAS öppningar (SD-springa, kabelutgång, panelslitsar) ej bedömda mot spån
-    service: S MONTAGE.md; kameran kräver att tornet tas av
+    last: F 6.7 knackprov med ADXL, kriterium första resonans över 1,2 kHz
+    varme: A berakning_sidotorn.py (ca 48 grader vid toppeffekt); F 6.9 långkörning
+    damm: S miljökrav i MONTAGE.md (öppningar bort från fräsen, springan tejpad); F 8.0 dammprov
+    service: S MONTAGE.md; kameran kräver att tornet tas av; stoppdelarna byts separat
     funktion: F fas 4 och 5
   Sidopanel:
     matt: A sidotorn.py, kontroll_mikrofon.py, kontroll_stiftlist.py
     tillverkning: S printjobb sidotorn-smadelar
-    insattning: SAKNAS panelens väg in med fingrar, mikrofonram och ledningar ej simulerad
+    insattning: A kontroll_montage.py steg 9b (panelen rakt in, 25 mm)
     fastsattning: A kontroll_montage.py steg 9
     koppling: S mikrofonledare 120 mm med servicebåge (MONTAGE.md)
     rorelse: X står still
-    last: SAKNAS fingrarnas klämkraft och glapp mot Pi och LM2596 ej beräknade
+    last: F 4.10 inget skramlar när tornet skakas
     varme: N ventilationsslitsar; luftflöde ej beräknat
     damm: N slitsarna släpper in damm; ej bedömt
     service: S fyra M3 och två M2.5 utifrån
@@ -46,9 +46,9 @@ komponenter:
     tillverkning: S printjobb sidotorn-smadelar
     insattning: A kontroll_montage.py steg 2-3
     fastsattning: A kontroll_horn.py (klämväg); F 0.1 hornprovet
-    koppling: SAKNAS CR Touch-kabelns böj vid navet under 150 graders rörelse ej simulerad
+    koppling: A berakning_sidotorn.py (kabeln förlängs ca 20 mm, ögla 40 mm); F 6.10 cykelprov
     rorelse: A kontroll_omgivning.py (svep -150 till 0 grader)
-    last: SAKNAS stoppkrafter 105-230 N mot printade stopp ej beräknade i PETG
+    last: A berakning_sidotorn.py (stoppkrafter mot PETG); F 6.10
     varme: X
     damm: N utfälld nära dammskon; ej bedömt
     service: S två M3 i bygeln
@@ -94,7 +94,7 @@ komponenter:
     tillverkning: S printjobb led-fasten, PETG
     insattning: N
     fastsattning: N befintliga M5 vid Brace; kollision med Brace ej verifierad
-    koppling: SAKNAS lödning och kabelväg på understruten ej projekterad
+    koppling: S lödda parallella grenar enligt EL_BELYSNING_OCH_STOPP.md, säkring F2; F genomföring vid montering
     rorelse: N Z-intrång 6,51 mm; frigång mot arbetsstycke ej verifierad
     last: X
     varme: F värmeprov på PETG (CHECKLIST LED-avsnittet)
@@ -109,7 +109,7 @@ komponenter:
     koppling: A kontroll_stiftlist.py
     rorelse: X
     last: N lödda ledare, inga kontakter
-    varme: SAKNAS strypning (throttling) i slutet rum ej bedömd; F 1.5 mäter
+    varme: A berakning_sidotorn.py; F 1.5 och 6.9
     damm: N inne i tornet
     service: A kontroll_montage.py steg 12 (SD utifrån)
     funktion: F 1.5
@@ -120,7 +120,7 @@ komponenter:
     fastsattning: N friktion i hållaren
     koppling: X
     rorelse: X
-    last: SAKNAS kan vibrera ur; ej bedömt
+    last: S kaptontejp över springan håller kortet (MONTAGE.md)
     varme: X
     damm: N springan öppen mot Core
     service: A kontroll_montage.py steg 12
@@ -134,7 +134,7 @@ komponenter:
     rorelse: X
     last: N
     varme: N
-    damm: SAKNAS linsen sticker ut 2,6 mm; inget skydd eller rengöringsrutin
+    damm: A cnc test_armsparr.py (oskarp bild stoppar); S rengöring med blåsbälg; F 8.0
     service: S tornet av för byte
     funktion: F 1.6, 7.3
   CSI-kabel:
@@ -156,7 +156,7 @@ komponenter:
     fastsattning: A kontroll_montage.py steg 6
     koppling: A kontroll_stiftlist.py
     rorelse: X
-    last: SAKNAS plattans resonans ej känd; påverkar mätningen
+    last: F 6.7 knackprov; plattan är en del av framväggen
     varme: X
     damm: X inne
     service: S panelen av
@@ -181,7 +181,7 @@ komponenter:
     koppling: S ledningslistan i MONTAGE.md
     rorelse: X
     last: N justerskruven säkras med smältlim
-    varme: SAKNAS förlusteffekt i slutet rum ej beräknad
+    varme: A berakning_sidotorn.py
     damm: X inne
     service: S panelen av
     funktion: F 1.1
@@ -193,18 +193,18 @@ komponenter:
     koppling: S ledningslistan i MONTAGE.md
     rorelse: X
     last: N smältlim
-    varme: SAKNAS servoströmmens förlust ej beräknad
+    varme: A berakning_sidotorn.py (servot drar bara vid rörelse)
     damm: X inne
     service: S panelen av
     funktion: F 1.1
   Servo SPMS664:
     matt: N referenskropp; öronens mått ej uppmätta; F 1.4
     tillverkning: X
-    insattning: SAKNAS servokroppens väg genom ramen ej simulerad (bara skruvarna)
+    insattning: A kontroll_montage.py steg 1b (före stoppdelarna)
     fastsattning: A kontroll_montage.py steg 1
     koppling: S till kopplingskortet
     rorelse: F bänkprov 2026-11-10 (CALIBRATION.md)
-    last: SAKNAS beteende och ström mot hårt stopp ej mätt; F 1.2 utan pulser
+    last: A berakning_sidotorn.py (toppström mot LM2596 B); F 1.2
     varme: N
     damm: N
     service: S fyra skruvar framifrån; armen först av
@@ -230,7 +230,7 @@ komponenter:
     rorelse: A kontroll_omgivning.py
     last: N
     varme: X
-    damm: SAKNAS stiftet i spån och damm ej bedömt
+    damm: S stiftet ute bara vid mätning, hylsa, självtest (MONTAGE.md); F 8.0
     service: S
     funktion: F 1.3, 7.2
   Magnet:
@@ -240,14 +240,14 @@ komponenter:
     fastsattning: N lim
     koppling: X
     rorelse: X
-    last: SAKNAS hållkraft under vibration ej beräknad; F 4.9
+    last: A berakning_sidotorn.py (tål ca 3,7 g); F 4.9 och 8.0b
     varme: N neodym tappar kraft över ca 80 grader
     damm: N stålspån dras till magneten; ej bedömt
     service: N limmad
     funktion: F 4.9
   Kopplingskort:
     matt: N ca 9 x 23 mm
-    tillverkning: SAKNAS hålkortets layout ej ritad
+    tillverkning: S layout i MONTAGE.md
     insattning: A kontroll_montage.py steg 11
     fastsattning: N VHB-tejp
     koppling: S ledningslistan
@@ -263,7 +263,7 @@ komponenter:
     insattning: S ut bakåt genom utgången
     fastsattning: S buntband vid bryggorna
     koppling: S ledarlista i KOPPLING_CORE_V0.md
-    rorelse: SAKNAS böj och längd genom hela X-rörelsen ej simulerad; F 5.3
+    rorelse: S följer X-motorns kabel, längd + 0,3 m (MONTAGE.md); F 5.3
     last: N flexkabel
     varme: X
     damm: N
@@ -275,29 +275,29 @@ komponenter:
     insattning: N i Y-kedjan
     fastsattning: N
     koppling: S elschemat
-    rorelse: SAKNAS genom Y-kedjan ej kontrollerat
+    rorelse: S i Y-kedjan med övriga kablar; F 5.3
     last: N
     varme: X
     damm: N
     service: N
     funktion: F 6.x
   Stopplåda:
-    matt: SAKNAS kapsling och layout ej valda eller ritade
-    tillverkning: SAKNAS kapsling inte vald
-    insattning: SAKNAS delarnas plats i lådan inte ritad
-    fastsattning: SAKNAS hur lådan sitter på bordet ej bestämt
+    matt: S layout i EL_BELYSNING_OCH_STOPP.md
+    tillverkning: S plastkapsling med DIN-skena, 8-12 moduler
+    insattning: S layout på DIN-skenan
+    fastsattning: S skruvas på bordets framkant
     koppling: S elschemat
     rorelse: X
     last: X
     varme: N HDR-60-24 och kontaktor i sluten låda
     damm: N
-    service: SAKNAS 230 V-delen ska kunna öppnas säkert
+    service: S plastlåda, 230 V bakom plintar; öppnas spänningslös
     funktion: F bänkprov på 24 V
   Pumpkort:
     matt: S komponentvärden räknade
-    tillverkning: SAKNAS hålkortslayout ej ritad
-    insattning: SAKNAS plats i lådan inte ritad
-    fastsattning: SAKNAS hur kortet sitter i lådan inte bestämt
+    tillverkning: S hålkortslayout i EL_BELYSNING_OCH_STOPP.md
+    insattning: S DIN-hållare i lådan
+    fastsattning: S DIN-hållare
     koppling: S elschemat
     rorelse: X
     last: X
@@ -308,8 +308,8 @@ komponenter:
   Kontaktor, nödstopp, startknapp:
     matt: N datablad ej lästa; motorlastklass kontrolleras före köp
     tillverkning: X
-    insattning: SAKNAS lådlayout
-    fastsattning: SAKNAS lådlayout
+    insattning: S layout; knapparna i locket
+    fastsattning: S DIN-skena och 22 mm hål i locket
     koppling: S elschemat
     rorelse: X
     last: X
@@ -320,7 +320,7 @@ komponenter:
   HDR-60-24 nr 2:
     matt: N samma som nr 1
     tillverkning: X
-    insattning: SAKNAS lådlayout
+    insattning: S layout på DIN-skenan
     fastsattning: N DIN-skena
     koppling: S elschemat
     rorelse: X
@@ -334,7 +334,7 @@ komponenter:
     tillverkning: X
     insattning: N
     fastsattning: N tejp på fästets hyllor
-    koppling: SAKNAS lödning och kabelväg
+    koppling: S EL_BELYSNING_OCH_STOPP.md, säkring F2
     rorelse: X
     last: X
     varme: F värmeprov
@@ -354,13 +354,13 @@ komponenter:
     service: N
     funktion: F 6.1-6.3
   M5 tornet till maskinen:
-    matt: SAKNAS längd beror på befintlig skruv; mät
+    matt: F mät en befintlig V1E-skruv (MONTAGE.md)
     tillverkning: X
     insattning: A kontroll_montage.py steg 4
     fastsattning: S bricka, blå gänglåsning, handkraft
     koppling: X
     rorelse: X
-    last: SAKNAS klämkraft mot PETG-distansen och krypning ej bedömd
+    last: A berakning_sidotorn.py (0,7 Nm ger ca 14 MPa i PETG); F 0.0 skruvprov
     varme: X
     damm: X
     service: S
@@ -369,7 +369,7 @@ komponenter:
     matt: A pilothål Ø2,6 och Ø2,1 i CAD
     tillverkning: N hålen blir ca 0,1 mm mindre i print
     insattning: A kontroll_montage.py
-    fastsattning: SAKNAS grepp och åtdragning i PETG ej provat; hornprovet är PLA
+    fastsattning: A berakning_sidotorn.py (urdragning); F 0.0 skruvprov i PETG
     koppling: X
     rorelse: X
     last: N

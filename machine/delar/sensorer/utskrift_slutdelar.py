@@ -8,6 +8,7 @@
 | kapa      | upp och ned                  | flänsytan mot bädden |
 | hornbygel | utsidan mot bädden           | som i passningsprovet |
 | bricka    | som ritad                    | |
+| stoppdelar | ramsidan mot bädden         | plan anläggning; skenorna i lagrens riktning |
 
 Läser STL från sidotorn.py:s export. Kör:
   python sidotorn.py --ut UT && python utskrift_slutdelar.py --fran UT --ut print/sidotorn-slutdelar
@@ -21,7 +22,8 @@ import numpy as np
 import trimesh
 
 LAGE = {"torn": ([1, 0, 0], 180), "sidopanel": ([1, 0, 0], -90), "arm": ([1, 0, 0], 0),
-        "kapa": ([1, 0, 0], 180), "hornbygel": ([1, 0, 0], -90), "bricka": ([1, 0, 0], 0)}
+        "kapa": ([1, 0, 0], 180), "hornbygel": ([1, 0, 0], -90), "bricka": ([1, 0, 0], 0),
+        "stopp-nedre": ([1, 0, 0], -90), "stopp-ovre": ([1, 0, 0], -90)}
 
 
 def main():
