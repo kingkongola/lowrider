@@ -1,0 +1,2548 @@
+{
+  "schema": 1,
+  "byggdel": "Sidotorn v2 – gällande D020/D021/D022, ej fysiskt godkänt",
+  "datum": "2026-11-11",
+  "kallor": [
+    "machine/delar/sensorer/sidotorn.py",
+    "machine/delar/sensorer/granska_sidotorn.py",
+    "DECISIONS.md",
+    "BOM.md",
+    "machine/EL_BELYSNING_OCH_STOPP.md"
+  ],
+  "statusbetydelse": {
+    "A": "Automatisk grind med exekverat eller redovisat test; observera resultat",
+    "S": "Geometrisk/beräknad diagnostik, ej automatiskt godkänt",
+    "F": "Specifikt fysiskt prov definierat, inte samma sak som utfört",
+    "N": "Nominellt antagande utan kontrollbevis",
+    "X": "Ej tillämpligt med skäl",
+    "SAKNAS": "Ingen godtagbar kontrollmetod ännu"
+  },
+  "resultatbetydelse": {
+    "ej_utfort": "Ej verifierat genom redovisad exekvering",
+    "godkand": "Verifiering med reproducerbart bevis",
+    "underkand": "Verifiering har fallerat",
+    "ej_tillampligt": "N/A"
+  },
+  "faser": [
+    "matt",
+    "print",
+    "insattning",
+    "infastning",
+    "koppling",
+    "rorelse",
+    "last_vibration",
+    "varme",
+    "damm",
+    "service",
+    "funktion"
+  ],
+  "utskrifter": [
+    "torn",
+    "arm",
+    "kapa",
+    "sidopanel",
+    "bricka"
+  ],
+  "attrapper_eller_hjalpgeometri": [
+    "bltouch",
+    "kabel"
+  ],
+  "komponenter": [
+    {
+      "id": "C01",
+      "namn": "Sidotorn och integrerad M5-bärplatta",
+      "typ": "printad",
+      "antal": 1,
+      "ritningsdel": "torn",
+      "problem": "verklig Core/verktygsfäste, väggtjocklek och M5-anläggning",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-geometri finns, men toleranser och faktiska mått är obekräftade; Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Sidotorn och integrerad M5-bärplatta; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provprinta Sidotorn och integrerad M5-bärplatta, granska orientering, stöd, toleranser, skiktbindning och faktisk utskrift.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Sidotorn och integrerad M5-bärplatta; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: verklig Core/verktygsfäste, väggtjocklek och M5-anläggning.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik skriver M5-anläggning, hålfrihet och intrång mot referens-STL; ingen godkännandeassertion.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Sidotorn och integrerad M5-bärplatta vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; verklig Core/verktygsfäste, väggtjocklek och M5-anläggning.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Sidotorn och integrerad M5-bärplatta; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Sidotorn och integrerad M5-bärplatta vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Sidotorn och integrerad M5-bärplatta efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Sidotorn och integrerad M5-bärplatta med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera att tornet sitter styvt på två befintliga M5 utan originalingrepp.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C02",
+      "namn": "Fällarm",
+      "typ": "printad",
+      "antal": 1,
+      "ritningsdel": "arm",
+      "problem": "stoppkontakt, metallhorn och 150 graders svep",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-geometri finns, men toleranser och faktiska mått är obekräftade; Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Fällarm; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provprinta Fällarm, granska orientering, stöd, toleranser, skiktbindning och faktisk utskrift.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Fällarm; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: stoppkontakt, metallhorn och 150 graders svep.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Fällarm med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: stoppkontakt, metallhorn och 150 graders svep.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD- och skanningsdiagnostik över −150…0° med 5° steg finns, men enbart utskrivna minavstånd utan automatiskt gränsvärde.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Fällarm; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Fällarm vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Fällarm efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Fällarm med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera utfällt 0° och parkerat −150° mot mekaniska hårdstopp utan att servot bär stoppkraft.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C03",
+      "namn": "BLTouch-skyddshylsa",
+      "typ": "printad",
+      "antal": 1,
+      "ritningsdel": "kapa",
+      "problem": "hylsan får inte ta i probstift eller dammsko",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-geometri finns, men toleranser och faktiska mått är obekräftade; Mått/varianter är ännu inte dokumenterat fysiskt jämförda med BLTouch-skyddshylsa; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provprinta BLTouch-skyddshylsa, granska orientering, stöd, toleranser, skiktbindning och faktisk utskrift.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera BLTouch-skyddshylsa; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: hylsan får inte ta i probstift eller dammsko.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera BLTouch-skyddshylsa med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: hylsan får inte ta i probstift eller dammsko.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik provsveper BLTouch-hylsan; riktig pinne, kabel och toleranser saknas.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på BLTouch-skyddshylsa; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova BLTouch-skyddshylsa vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera BLTouch-skyddshylsa efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av BLTouch-skyddshylsa med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera fritt probstift, skruvgrepp och fri hel rörelse med hylsan monterad.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C04",
+      "namn": "Sidopanel",
+      "typ": "printad",
+      "antal": 1,
+      "ritningsdel": "sidopanel",
+      "problem": "sex försänkta skruvar och fingrar över Pi/regulatorer",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-geometri finns, men toleranser och faktiska mått är obekräftade; Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Sidopanel; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provprinta Sidopanel, granska orientering, stöd, toleranser, skiktbindning och faktisk utskrift.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Sidopanel; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: sex försänkta skruvar och fingrar över Pi/regulatorer.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik skriver panelskruvhål, fingerintrång och godsring; ingen godkännandeassertion.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Sidopanel vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; sex försänkta skruvar och fingrar över Pi/regulatorer.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Sidopanel; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Sidopanel vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Sidopanel efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Sidopanel med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera att panelen håller elektronik och kan lossas utan att rubba kameran.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C05",
+      "namn": "ADXL-distansbricka",
+      "typ": "printad",
+      "antal": 2,
+      "ritningsdel": "bricka",
+      "problem": "två distanser under M3-huvud och begränsat skruvdjup",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-geometri finns, men toleranser och faktiska mått är obekräftade; Mått/varianter är ännu inte dokumenterat fysiskt jämförda med ADXL-distansbricka; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provprinta ADXL-distansbricka, granska orientering, stöd, toleranser, skiktbindning och faktisk utskrift.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera ADXL-distansbricka; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: två distanser under M3-huvud och begränsat skruvdjup.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera ADXL-distansbricka med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: två distanser under M3-huvud och begränsat skruvdjup.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera ADXL-distansbricka vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; två distanser under M3-huvud och begränsat skruvdjup.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på ADXL-distansbricka; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova ADXL-distansbricka vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera ADXL-distansbricka efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av ADXL-distansbricka med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera att kortet kläms styvt utan att M3 går in i motstående vägg.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C06",
+      "namn": "Spektrum SPMS664-servo",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "servoöron, kropp, axiallast och riktiga kablar",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Spektrum SPMS664-servo; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Spektrum SPMS664-servo; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: servoöron, kropp, axiallast och riktiga kablar.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Spektrum SPMS664-servo med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: servoöron, kropp, axiallast och riktiga kablar.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Spektrum SPMS664-servo; servoöron, kropp, axiallast och riktiga kablar.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Spektrum SPMS664-servo vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; servoöron, kropp, axiallast och riktiga kablar.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Spektrum SPMS664-servo; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Spektrum SPMS664-servo vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Spektrum SPMS664-servo efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Spektrum SPMS664-servo med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera kontroll över hela armrörelsen utan överström eller överstyrning.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C07",
+      "namn": "Metallservohorn och splines",
+      "typ": "mekanik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "faktisk spline/utstick och hornkontakt saknas i CAD",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen uppmätt horn-/splinegeometri finns i huvud-CAD. Mått och skruvuppbyggnad saknas.",
+          "evidens": ""
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Metallservohorn och splines; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: faktisk spline/utstick och hornkontakt saknas i CAD.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Metallservohorn och splines med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: faktisk spline/utstick och hornkontakt saknas i CAD.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Metallservohorn och splines vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; faktisk spline/utstick och hornkontakt saknas i CAD.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Metallservohorn och splines; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för Metallservohorn och splines; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Metallservohorn och splines efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Metallservohorn och splines med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera glappfri spline och full rörelse; inga delar tar i torn eller stopp.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C08",
+      "namn": "BLTouch (exakt revision ej verifierad)",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "riktigt stift, kontaktdon och kabel utanför attrapp",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med BLTouch (exakt revision ej verifierad); mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera BLTouch (exakt revision ej verifierad); kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: riktigt stift, kontaktdon och kabel utanför attrapp.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera BLTouch (exakt revision ej verifierad) med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: riktigt stift, kontaktdon och kabel utanför attrapp.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för BLTouch (exakt revision ej verifierad); riktigt stift, kontaktdon och kabel utanför attrapp.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera BLTouch (exakt revision ej verifierad) vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; riktigt stift, kontaktdon och kabel utanför attrapp.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på BLTouch (exakt revision ej verifierad); kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova BLTouch (exakt revision ej verifierad) vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera BLTouch (exakt revision ej verifierad) efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av BLTouch (exakt revision ej verifierad) med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera referensprecision, ut-/infällning och felaktigt aktiv probe före varje G38.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C09",
+      "namn": "Raspberry Pi Camera Module 3 Standard",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "fyra lägestappar, två M3-kantklämmor och rätt portorientering",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Raspberry Pi Camera Module 3 Standard; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Raspberry Pi Camera Module 3 Standard; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: fyra lägestappar, två M3-kantklämmor och rätt portorientering.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik skriver korthål, tappar och klämskruvdjup men ger inget testbeslut.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Raspberry Pi Camera Module 3 Standard; fyra lägestappar, två M3-kantklämmor och rätt portorientering.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Raspberry Pi Camera Module 3 Standard vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; fyra lägestappar, två M3-kantklämmor och rätt portorientering.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Raspberry Pi Camera Module 3 Standard; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Raspberry Pi Camera Module 3 Standard vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Raspberry Pi Camera Module 3 Standard efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Raspberry Pi Camera Module 3 Standard med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera skärpa, fokus, kalibrering, bildöverlapp och blickfält.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C10",
+      "namn": "Raspberry Pi Zero 2 WH",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "SD-kort, port-/GPIO-åtkomst, passiv kylning och matningsdomän",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Raspberry Pi Zero 2 WH; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik skriver Pi-ficka, pinnarnas läge och väggintrång; SD-kort/portar ingår inte.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Raspberry Pi Zero 2 WH med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: SD-kort, port-/GPIO-åtkomst, passiv kylning och matningsdomän.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Raspberry Pi Zero 2 WH; SD-kort, port-/GPIO-åtkomst, passiv kylning och matningsdomän.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Raspberry Pi Zero 2 WH vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; SD-kort, port-/GPIO-åtkomst, passiv kylning och matningsdomän.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Raspberry Pi Zero 2 WH; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Raspberry Pi Zero 2 WH vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Raspberry Pi Zero 2 WH efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Raspberry Pi Zero 2 WH med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera uppstart, kamera, temperatur, SD-kortsbyte och återstart efter strömavbrott.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C11",
+      "namn": "ADXL345-modul",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "nominell hålbild och stel koppling mot M5-blocket",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med ADXL345-modul; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera ADXL345-modul; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: nominell hålbild och stel koppling mot M5-blocket.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera ADXL345-modul med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: nominell hålbild och stel koppling mot M5-blocket.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för ADXL345-modul; nominell hålbild och stel koppling mot M5-blocket.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera ADXL345-modul vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; nominell hålbild och stel koppling mot M5-blocket.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på ADXL345-modul; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova ADXL345-modul vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera ADXL345-modul efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av ADXL345-modul med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera axelriktning, samplingsfrekvens och vibration/slag i verklig maskin.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C12",
+      "namn": "LM2596 A, föreslagen 5,1 V",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "24 V-matning enligt gammalt förslag strider mot D022:s separata Pi-domän",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med LM2596 A, föreslagen 5,1 V; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik screenar LM2596-attrappernas plats; verkliga komponenters kontakter och höjder ej modellerade.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera LM2596 A, föreslagen 5,1 V med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: 24 V-matning enligt gammalt förslag strider mot D022:s separata Pi-domän.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för LM2596 A, föreslagen 5,1 V; 24 V-matning enligt gammalt förslag strider mot D022:s separata Pi-domän.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera LM2596 A, föreslagen 5,1 V vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; 24 V-matning enligt gammalt förslag strider mot D022:s separata Pi-domän.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på LM2596 A, föreslagen 5,1 V; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova LM2596 A, föreslagen 5,1 V vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera LM2596 A, föreslagen 5,1 V efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av LM2596 A, föreslagen 5,1 V med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera rätt källa, reglering, transienter och ingen bakmatning till avstängd maskin.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C13",
+      "namn": "LM2596 B, föreslagen 6,0 V",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "servoströmstoppar, säkring och signaljord behöver projekteras",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med LM2596 B, föreslagen 6,0 V; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-diagnostik screenar LM2596-attrappernas plats; verkliga komponenters kontakter och höjder ej modellerade.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera LM2596 B, föreslagen 6,0 V med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: servoströmstoppar, säkring och signaljord behöver projekteras.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för LM2596 B, föreslagen 6,0 V; servoströmstoppar, säkring och signaljord behöver projekteras.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera LM2596 B, föreslagen 6,0 V vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; servoströmstoppar, säkring och signaljord behöver projekteras.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på LM2596 B, föreslagen 6,0 V; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova LM2596 B, föreslagen 6,0 V vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera LM2596 B, föreslagen 6,0 V efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av LM2596 B, föreslagen 6,0 V med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera 6,0 V under servostopp och isolerad påverkan på Pi/Jackpot.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C14",
+      "namn": "Neodymmagnet Ø6×3 mm",
+      "typ": "mekanik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "0,6 mm plasthud, limretention och hållkraft",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD ritar Ø6,2 ×3,2 mm magnetficka med 0,6 mm hud. Magnet och printtolerans ej uppmätta.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Neodymmagnet Ø6×3 mm; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: 0,6 mm plasthud, limretention och hållkraft.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Neodymmagnet Ø6×3 mm med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: 0,6 mm plasthud, limretention och hållkraft.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Neodymmagnet Ø6×3 mm vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; 0,6 mm plasthud, limretention och hållkraft.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Neodymmagnet Ø6×3 mm; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för Neodymmagnet Ø6×3 mm; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Neodymmagnet Ø6×3 mm efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Neodymmagnet Ø6×3 mm med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera strömlös parkering vid maskinvibration och kontrollerad lossdragning.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C15",
+      "namn": "M3 stålskruv för parkeringsmagnet",
+      "typ": "skruv",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "skruvdjup bestämmer magnetkraft och får inte skada armen",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3 stålskruv för parkeringsmagnet; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3 stålskruv för parkeringsmagnet; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: skruvdjup bestämmer magnetkraft och får inte skada armen.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3 stålskruv för parkeringsmagnet med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: skruvdjup bestämmer magnetkraft och får inte skada armen.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 stålskruv för parkeringsmagnet vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; skruvdjup bestämmer magnetkraft och får inte skada armen.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3 stålskruv för parkeringsmagnet; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3 stålskruv för parkeringsmagnet; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 stålskruv för parkeringsmagnet efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3 stålskruv för parkeringsmagnet med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera hållkraft, gängfäste och att huvud inte träffar magneten.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C16",
+      "namn": "M5-bultar befintliga maskinfästen",
+      "typ": "skruv",
+      "antal": 2,
+      "ritningsdel": "",
+      "problem": "rätt originalfästhål och kvarvarande gängingrepp",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M5-bultar befintliga maskinfästen; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M5-bultar befintliga maskinfästen; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: rätt originalfästhål och kvarvarande gängingrepp.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M5-bultar befintliga maskinfästen med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: rätt originalfästhål och kvarvarande gängingrepp.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M5-bultar befintliga maskinfästen vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; rätt originalfästhål och kvarvarande gängingrepp.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M5-bultar befintliga maskinfästen; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M5-bultar befintliga maskinfästen; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M5-bultar befintliga maskinfästen efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M5-bultar befintliga maskinfästen med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera M5-grepp och att inga originalbärförband försvagas.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C17",
+      "namn": "M3 servofäste",
+      "typ": "skruv",
+      "antal": 4,
+      "ritningsdel": "",
+      "problem": "servots öron och verktygsfrigång bakom kåpan",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3 servofäste; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3 servofäste; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: servots öron och verktygsfrigång bakom kåpan.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3 servofäste med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: servots öron och verktygsfrigång bakom kåpan.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 servofäste vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; servots öron och verktygsfrigång bakom kåpan.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3 servofäste; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3 servofäste; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 servofäste efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3 servofäste med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera att servot kan demonteras utan att kamerafästet rubbas.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C18",
+      "namn": "M3×10 kameraklämmor",
+      "typ": "skruv",
+      "antal": 2,
+      "ritningsdel": "",
+      "problem": "klämmer kanten utanför Ø2,2-korthål; får inte knäcka PCB",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3×10 kameraklämmor; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3×10 kameraklämmor; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: klämmer kanten utanför Ø2,2-korthål; får inte knäcka PCB.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3×10 kameraklämmor med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: klämmer kanten utanför Ø2,2-korthål; får inte knäcka PCB.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 kameraklämmor vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; klämmer kanten utanför Ø2,2-korthål; får inte knäcka PCB.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3×10 kameraklämmor; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3×10 kameraklämmor; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 kameraklämmor efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3×10 kameraklämmor med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera stabilt kort efter vibration utan klämskador eller optisk drift.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C19",
+      "namn": "M3×10 BLTouch-hylsa och arm",
+      "typ": "skruv",
+      "antal": 2,
+      "ritningsdel": "",
+      "problem": "skruv går genom öron och gängar direkt i printad arm",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3×10 BLTouch-hylsa och arm; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3×10 BLTouch-hylsa och arm; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: skruv går genom öron och gängar direkt i printad arm.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3×10 BLTouch-hylsa och arm med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: skruv går genom öron och gängar direkt i printad arm.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 BLTouch-hylsa och arm vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; skruv går genom öron och gängar direkt i printad arm.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3×10 BLTouch-hylsa och arm; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3×10 BLTouch-hylsa och arm; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 BLTouch-hylsa och arm efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3×10 BLTouch-hylsa och arm med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera gänggrepp, hållfasthet och fritt stift efter upprepad mätning.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C20",
+      "namn": "M3×10 ADXL-fäste",
+      "typ": "skruv",
+      "antal": 2,
+      "ritningsdel": "",
+      "problem": "3D-printad distans krävs så gängan inte når fel vägg",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3×10 ADXL-fäste; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3×10 ADXL-fäste; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: 3D-printad distans krävs så gängan inte når fel vägg.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3×10 ADXL-fäste med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: 3D-printad distans krävs så gängan inte når fel vägg.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 ADXL-fäste vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; 3D-printad distans krävs så gängan inte når fel vägg.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3×10 ADXL-fäste; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3×10 ADXL-fäste; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3×10 ADXL-fäste efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3×10 ADXL-fäste med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera momentöverföring och att kortet inte slår i väggen.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C21",
+      "namn": "M3 panelskruvar",
+      "typ": "skruv",
+      "antal": 6,
+      "ritningsdel": "",
+      "problem": "sex platta skallar, godsring och verktygsåtkomst",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med M3 panelskruvar; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera M3 panelskruvar; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: sex platta skallar, godsring och verktygsåtkomst.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera M3 panelskruvar med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: sex platta skallar, godsring och verktygsåtkomst.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 panelskruvar vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; sex platta skallar, godsring och verktygsåtkomst.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på M3 panelskruvar; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för M3 panelskruvar; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera M3 panelskruvar efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av M3 panelskruvar med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera att panelen kan lossas och återmonteras upprepade gånger.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C22",
+      "namn": "CSI-flex 200 mm, 15↔22 poler",
+      "typ": "kabel",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "två 45-graders vikningar utan fysisk böjradie/avlastning",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med CSI-flex 200 mm, 15↔22 poler; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera CSI-flex 200 mm, 15↔22 poler; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: två 45-graders vikningar utan fysisk böjradie/avlastning.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera CSI-flex 200 mm, 15↔22 poler med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: två 45-graders vikningar utan fysisk böjradie/avlastning.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för CSI-flex 200 mm, 15↔22 poler; två 45-graders vikningar utan fysisk böjradie/avlastning.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CSI-flex modelleras som 16 mm brett ark och skrivs ut som intrångsdiagnostik; verklig böjradie saknas.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på CSI-flex 200 mm, 15↔22 poler; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova CSI-flex 200 mm, 15↔22 poler vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera CSI-flex 200 mm, 15↔22 poler efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av CSI-flex 200 mm, 15↔22 poler med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera rätt kontaktriktning, stillbild vid full rörelse och inga veck.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C23",
+      "namn": "Servokabel och kontakt",
+      "typ": "kabel",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "slinga och kontakt ligger nära rörlig arm",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Servokabel och kontakt; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Servokabel och kontakt; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: slinga och kontakt ligger nära rörlig arm.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Servokabel och kontakt med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: slinga och kontakt ligger nära rörlig arm.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Servokabel och kontakt; slinga och kontakt ligger nära rörlig arm.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Servokabel och kontakt vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; slinga och kontakt ligger nära rörlig arm.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Servokabel och kontakt; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Servokabel och kontakt vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Servokabel och kontakt efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Servokabel och kontakt med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera att kabeln aldrig spänns eller skaver under hela 150°-rörelsen.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C24",
+      "namn": "BLTouch-kabel och kontakt",
+      "typ": "kabel",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "kabelspår i arm och skena över servo med obekräftad böjradie",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med BLTouch-kabel och kontakt; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera BLTouch-kabel och kontakt; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: kabelspår i arm och skena över servo med obekräftad böjradie.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera BLTouch-kabel och kontakt med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: kabelspår i arm och skena över servo med obekräftad böjradie.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för BLTouch-kabel och kontakt; kabelspår i arm och skena över servo med obekräftad böjradie.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera BLTouch-kabel och kontakt vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; kabelspår i arm och skena över servo med obekräftad böjradie.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på BLTouch-kabel och kontakt; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova BLTouch-kabel och kontakt vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera BLTouch-kabel och kontakt efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av BLTouch-kabel och kontakt med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera säker kabelväg under hela svepet utan att lyfta stift/probe.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C25",
+      "namn": "Samlad kabelstam och bakre utgång",
+      "typ": "kabel",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "buntbandsbryggor, full XYZ-rörelse och skydd mot dammsko/spindel",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Samlad kabelstam och bakre utgång; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Samlad kabelstam och bakre utgång; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: buntbandsbryggor, full XYZ-rörelse och skydd mot dammsko/spindel.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Samlad kabelstam och bakre utgång med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: buntbandsbryggor, full XYZ-rörelse och skydd mot dammsko/spindel.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Samlad kabelstam och bakre utgång; buntbandsbryggor, full XYZ-rörelse och skydd mot dammsko/spindel.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Samlad kabelstam och bakre utgång vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; buntbandsbryggor, full XYZ-rörelse och skydd mot dammsko/spindel.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Samlad kabelstam och bakre utgång; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Samlad kabelstam och bakre utgång vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Samlad kabelstam och bakre utgång efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Samlad kabelstam och bakre utgång med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera kabeldragning genom hela maskinens rörelseområde inklusive Z.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C26",
+      "namn": "Pi-matning från separat övervakningsdomän",
+      "typ": "power",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "D022 kräver drift när maskinmatningen stängs; exakt källa saknas",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Elektrisk källspecifikation, effektbudget, säkring och pin-/jordkoppling saknas; kan inte måttgranskas.",
+          "evidens": ""
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Pi-matning från separat övervakningsdomän; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: D022 kräver drift när maskinmatningen stängs; exakt källa saknas.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Pi-matning från separat övervakningsdomän med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: D022 kräver drift när maskinmatningen stängs; exakt källa saknas.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Pi-matning från separat övervakningsdomän; D022 kräver drift när maskinmatningen stängs; exakt källa saknas.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Pi-matning från separat övervakningsdomän vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; D022 kräver drift när maskinmatningen stängs; exakt källa saknas.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Pi-matning från separat övervakningsdomän; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Pi-matning från separat övervakningsdomän vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Pi-matning från separat övervakningsdomän efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Pi-matning från separat övervakningsdomän med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera Pi aktiv efter maskinstopp, utan bakmatning till Jackpot eller servot.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C27",
+      "namn": "Matningsskydd/säkring och jord-/returdragning",
+      "typ": "power",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "säkring, kablage, common ground, transientskydd ej dimensionerade",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Elektrisk källspecifikation, effektbudget, säkring och pin-/jordkoppling saknas; kan inte måttgranskas.",
+          "evidens": ""
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Matningsskydd/säkring och jord-/returdragning; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: säkring, kablage, common ground, transientskydd ej dimensionerade.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Matningsskydd/säkring och jord-/returdragning med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: säkring, kablage, common ground, transientskydd ej dimensionerade.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Matningsskydd/säkring och jord-/returdragning; säkring, kablage, common ground, transientskydd ej dimensionerade.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Matningsskydd/säkring och jord-/returdragning vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; säkring, kablage, common ground, transientskydd ej dimensionerade.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Matningsskydd/säkring och jord-/returdragning; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Matningsskydd/säkring och jord-/returdragning vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Matningsskydd/säkring och jord-/returdragning efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Matningsskydd/säkring och jord-/returdragning med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera säkring, avbrott, polaritet, spänningsfall och EMC utan 230 V öppen på balk.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C28",
+      "namn": "Servoavkoppling 470–1000 µF kandidat",
+      "typ": "elektronik",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "kondensator är förslag, exakt ESR/spänningsklass/placering ej bestämd",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "470–1000 µF är endast ett förslag; komponent, märkspänning och ESR ej beslutade.",
+          "evidens": "machine/delar/sensorer/README.md"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Servoavkoppling 470–1000 µF kandidat; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: kondensator är förslag, exakt ESR/spänningsklass/placering ej bestämd.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Servoavkoppling 470–1000 µF kandidat med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: kondensator är förslag, exakt ESR/spänningsklass/placering ej bestämd.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Bänkkontrollera rätt ledningsväg, polaritet, skydd och dragavlastning för Servoavkoppling 470–1000 µF kandidat; kondensator är förslag, exakt ESR/spänningsklass/placering ej bestämd.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Servoavkoppling 470–1000 µF kandidat vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; kondensator är förslag, exakt ESR/spänningsklass/placering ej bestämd.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Servoavkoppling 470–1000 µF kandidat; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova Servoavkoppling 470–1000 µF kandidat vid faktisk temperatur/last; kontrollera deformation, temperaturgräns och åtkomst.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Servoavkoppling 470–1000 µF kandidat efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Servoavkoppling 470–1000 µF kandidat med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera matningsstabilitet vid servo acceleration/stopp.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C29",
+      "namn": "V1E verktygsfästen/Core (befintligt)",
+      "typ": "referens",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "extern originalgeometri och verkliga M5-ankare; inga nya hål",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med V1E verktygsfästen/Core (befintligt); mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera V1E verktygsfästen/Core (befintligt); kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: extern originalgeometri och verkliga M5-ankare; inga nya hål.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera V1E verktygsfästen/Core (befintligt) med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: extern originalgeometri och verkliga M5-ankare; inga nya hål.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera V1E verktygsfästen/Core (befintligt) vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; extern originalgeometri och verkliga M5-ankare; inga nya hål.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på V1E verktygsfästen/Core (befintligt); kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för V1E verktygsfästen/Core (befintligt); material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera V1E verktygsfästen/Core (befintligt) efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av V1E verktygsfästen/Core (befintligt) med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera frigång i fysisk LowRider och att Core fungerar utan tillbehöret.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C30",
+      "namn": "Dammsko och kjol (befintliga)",
+      "typ": "referens",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "skannad geometrisk referens grov; kjolen kan deformeras",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Dammsko och kjol (befintliga); mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Dammsko och kjol (befintliga); kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: skannad geometrisk referens grov; kjolen kan deformeras.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Dammsko och kjol (befintliga) med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: skannad geometrisk referens grov; kjolen kan deformeras.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Dammsko och kjol (befintliga) vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; skannad geometrisk referens grov; kjolen kan deformeras.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Dammsko och kjol (befintliga); kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för Dammsko och kjol (befintliga); material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Dammsko och kjol (befintliga) efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Dammsko och kjol (befintliga) med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera svep över alla Z-lägen med rätt kjol och provspindel.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C31",
+      "namn": "Jackpot3 GPIO och probegränssnitt",
+      "typ": "referens",
+      "antal": 1,
+      "ritningsdel": "",
+      "problem": "D021-pinnar valda men nivå, skydd och signalprotokoll ej inkopplat",
+      "prio": "P0",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med Jackpot3 GPIO och probegränssnitt; mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Färdigköpt eller externt objekt; 3D-printas inte.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera Jackpot3 GPIO och probegränssnitt; kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: D021-pinnar valda men nivå, skydd och signalprotokoll ej inkopplat.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera Jackpot3 GPIO och probegränssnitt med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: D021-pinnar valda men nivå, skydd och signalprotokoll ej inkopplat.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Jackpot3 GPIO och probegränssnitt vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; D021-pinnar valda men nivå, skydd och signalprotokoll ej inkopplat.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på Jackpot3 GPIO och probegränssnitt; kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för Jackpot3 GPIO och probegränssnitt; material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera Jackpot3 GPIO och probegränssnitt efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av Jackpot3 GPIO och probegränssnitt med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera säker ingångslogik och att fel probe aldrig ger oavsiktlig G38-rörelse.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "C32",
+      "namn": "COB-huvudbelysning på undre strut (extern)",
+      "typ": "referens",
+      "antal": 3,
+      "ritningsdel": "",
+      "problem": "D022: 0/15/35 grader, egen strömväg och 6,65 mm fäst-Z-budget",
+      "prio": "P1",
+      "kalla": "machine/delar/sensorer/sidotorn.py",
+      "kontroller": {
+        "matt": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Mått/varianter är ännu inte dokumenterat fysiskt jämförda med COB-huvudbelysning på undre strut (extern); mät med skjutmått mot CAD och bokför avvikelser.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "print": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "COB-remsorna är färdigköpta; det separata strutfästet hör till machine/delar/led, inte sidotornets fem print-STL.",
+          "evidens": ""
+        },
+        "insattning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera COB-huvudbelysning på undre strut (extern); kontrollera insättningsväg, kantfrigång och hand-/fingerutrymme: D022: 0/15/35 grader, egen strömväg och 6,65 mm fäst-Z-budget.",
+          "evidens": ""
+        },
+        "infastning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Montera COB-huvudbelysning på undre strut (extern) med verkliga delar; kontrollera anliggning, skruvlängd/gängingrepp och verktygsåtkomst: D022: 0/15/35 grader, egen strömväg och 6,65 mm fäst-Z-budget.",
+          "evidens": ""
+        },
+        "koppling": {
+          "status": "X",
+          "resultat": "ej_tillampligt",
+          "kontroll": "Ingen separat elektrisk anslutning på denna komponent; kabelvägen kontrolleras som egen rad.",
+          "evidens": ""
+        },
+        "rorelse": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera COB-huvudbelysning på undre strut (extern) vid parkerat/utfällt läge samt hela X/Y/Z-området med fräsen avstängd; D022: 0/15/35 grader, egen strömväg och 6,65 mm fäst-Z-budget.",
+          "evidens": ""
+        },
+        "last_vibration": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova skakning, kabeldragning och återkommande belastning på COB-huvudbelysning på undre strut (extern); kontrollera lossning och lägesdrift.",
+          "evidens": ""
+        },
+        "varme": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera omgivnings-/drifttemperatur för COB-huvudbelysning på undre strut (extern); material och hållkraft får inte förändras.",
+          "evidens": ""
+        },
+        "damm": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera COB-huvudbelysning på undre strut (extern) efter spån/damm och dammsugning; inspektera slitsar, kontakt och nötningspunkter.",
+          "evidens": ""
+        },
+        "service": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demonstrera montering och demontering av COB-huvudbelysning på undre strut (extern) med realistiska verktyg utan att rubba kalibrerade delar.",
+          "evidens": ""
+        },
+        "funktion": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera ljus, kamerabilder, LED-temperatur och full frigång.",
+          "evidens": ""
+        }
+      }
+    }
+  ]
+}
