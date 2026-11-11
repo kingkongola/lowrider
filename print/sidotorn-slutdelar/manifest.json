@@ -1,16 +1,16 @@
 {
   "typ": "sidotorn-slutdelar",
   "kallor_sha256": {
-    "sidotorn.py": "db7610dd188791a18ea1eb5270c500a189507c6d9cde1899aedc8af0ed7dceb8",
+    "sidotorn.py": "d2e249b0f0f0240414d7af9c24af62869aedb7fde86e7dabdd16dbf889577154",
     "crtouch.py": "fc959a5208855104a9b6be7937c31e53296d88e7bd897a3f359bae218ee9c1cd",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
-    "hornfaste.py": "c6aa09862c3fcbf48a4319c1bc309114daea842a155696425c9f8a75d5be6aab"
+    "hornfaste.py": "57bb6f2d50a39d40104644676284a3a0c74a2e28d881ec8f69b84b47bcbea7ff"
   },
   "delar": {
     "torn.stl": "89bee24b31792ec4d28fbc5d3deec7f6b4142760a9c4d35c73a12dd2e5166f3c",
     "sidopanel.stl": "d25f60fdd09ef6452488dc7796d5a7aa2b18518d8f2667376ec05a4c34b8df63",
-    "arm.stl": "a7bdb288d016562907778d9ff7ead86568b619f31d0668158e74959e8275117c",
+    "arm.stl": "70865e56cd4a515c2a06cedf96f827a120482ce6acafa5efc496cbc96355a501",
     "bricka.stl": "70faa53046508513bf66fffcea09ffa52a61035c6306fe0ac04f51a7a7398b12",
     "kameralock.stl": "b6a026ea6b5decd353c72f0623f282e07392bf3e86f733e0e2419b8ae6853993",
     "stopp-nedre.stl": "0b9bce5ea276ff9c9b524f66fad61eb9fffe0347540d95aa38b791505abb1d64",

@@ -227,7 +227,7 @@ komponenter:
     matt: F uppmätt A-I och mittskruven (CALIBRATION.md)
     tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_horn.py (rakt in i formfickan, 12 mm)
-    fastsattning: A kontroll_horn.py (formficka, spel 0,15, negativtest; M3 x 10 med fabriksskruvens gängdjup 4,3); F hornprov 2
+    fastsattning: A kontroll_horn.py (formficka, spel 0,15, 7 krossribbor 0,2 mm, negativtest; M3 x 10 med fabriksskruvens gängdjup 4,3); F 0.1 armen på servot
     koppling: X ingen elektrisk funktion
     rorelse: A kontroll_omgivning.py
     last: F 0.1

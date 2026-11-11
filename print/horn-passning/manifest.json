@@ -2,22 +2,22 @@
   "typ": "horn",
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "sidotorn.py": "db7610dd188791a18ea1eb5270c500a189507c6d9cde1899aedc8af0ed7dceb8",
+    "sidotorn.py": "d2e249b0f0f0240414d7af9c24af62869aedb7fde86e7dabdd16dbf889577154",
     "passningsprov.py": "7799d28a1df45d736d258207622fe4d2b2391741b8a21708e46d22820666ec2f",
     "crtouch.py": "fc959a5208855104a9b6be7937c31e53296d88e7bd897a3f359bae218ee9c1cd",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
-    "hornfaste.py": "c6aa09862c3fcbf48a4319c1bc309114daea842a155696425c9f8a75d5be6aab"
+    "hornfaste.py": "57bb6f2d50a39d40104644676284a3a0c74a2e28d881ec8f69b84b47bcbea7ff"
   },
   "delar": {
     "hornficka-passning.stl": {
-      "sha256": "be00f9e87d78d53f2e817757a57081ab59048ac70f4c347a6d4ee4f66a766942",
+      "sha256": "76f7fabe7b06d7936a4d1c1c0d9e26fc1fc1042c624093d15f8a4a8e17fc2be5",
       "mm": [
         33.0,
         15.0,
         10.2
       ],
-      "volym_mm3": 2658.674
+      "volym_mm3": 2662.404
     }
   }
 }

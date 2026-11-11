@@ -3,7 +3,8 @@
 Beprövad lösning (printade robotarmar, pan/tilt): hornet ligger infällt i en ficka med hornets
 kontur, så att fickans väggar tar vridmomentet (formlåsning, inte friktion). Servots mittskruv
 byts mot en M3 x 10 som går genom armens botten och hornets fläns in i axeln och klämmer
-arm, horn och axel i ett förband. Ingen bygel, inga extra skruvar.
+arm, horn och axel i ett förband. Ingen bygel, inga extra skruvar. Sju krossribbor i fickan
+plattas till när hornet trycks in och tar bort glappet oavsett printtolerans.
 
 Armbotten väljs så att M3 x 10 får exakt fabriksskruvens gängdjup i axeln (6 - 1,7 = 4,3 mm);
 då kan den inte bottna i axeln (felsäkring). Mått: CALIBRATION.md 2026-11-10 och 2026-11-11.
@@ -11,7 +12,7 @@ Lokalt x längs hornet, y från hornets plana utsida (0) mot servot, z tvärs ho
 Hornets spetsform och tandning är inte uppmätta; passningen provas med provbiten.
 """
 import math
-from build123d import Axis, Cylinder, Face, Pos, Rot, Vector, Wire, extrude, fillet
+from build123d import Axis, Cone, Cylinder, Face, Pos, Rot, Vector, Wire, extrude, fillet
 
 NAV_D, NAV_H = 9.0, 6.0
 C, D, E, F, G = 7.3, 6.8, 14.5, 18.8, 2.5
@@ -27,6 +28,13 @@ SATE_D, GENOM_D = 6.2, 3.4
 NAV_R = 7.0           # navbossens radie runt axeln
 RYGG = 2.5            # gods under hornarmen, utanför fickans botten
 FICKA_Y1 = 3.0        # fickan går genom armens platta (lokalt till 2,9) men inte in i bulan
+# Krossribbor (crush ribs): halvrunda åsar längs insättningsriktningen som plattas till när hornet
+# trycks in. Ger glappfritt förband oavsett om fickan printas lite trång eller vid.
+RIBB_R = 0.5          # åsens radie
+RIBB_IN = 0.2         # hur långt åsen når förbi hornets kant (överlapp som krossas)
+RIBB_Y = (0.0, 2.0, 2.8)   # rak del från botten, sedan kon (infasning) mot fickans öppning
+RIBB_T = (6.0, 12.0)  # längs hornarmen, båda sidor
+RIBB_NAV = (180.0, 135.0, 225.0)   # grader runt navet (0 = längs hornet)
 
 
 def box(a, b):
@@ -77,6 +85,30 @@ def ficka():
     return armkuvert(0, FICKA_Y1, SPEL) + cy(0, 0, 0, NAV_H + 3, NAV_D + 2 * SPEL)
 
 
+def _ribba(x, z):
+    y0, y1, y2 = RIBB_Y
+    rak = Pos(x, (y0 + y1) / 2, z) * Rot(90, 0, 0) * Cylinder(RIBB_R, y1 - y0)
+    kon = Pos(x, (y1 + y2) / 2, z) * Rot(-90, 0, 0) * Cone(RIBB_R, 0, y2 - y1)
+    return rak + kon
+
+
+def ribbor_lagen():
+    """Ribbornas mittlinjer (x, z) i lokala koordinater: centrum RIBB_R - RIBB_IN utanför hornets kant."""
+    ut = RIBB_R - RIBB_IN
+    lag = [(t, s * (h(t) + ut)) for t in RIBB_T for s in (-1, 1)]
+    lag += [(math.cos(math.radians(g)) * (NAV_D / 2 + ut), math.sin(math.radians(g)) * (NAV_D / 2 + ut)) for g in RIBB_NAV]
+    return lag
+
+
+def ribbor():
+    """Krossribborna som läggs tillbaka i fickan efter urtaget."""
+    o = None
+    for x, z in ribbor_lagen():
+        r = _ribba(x, z)
+        o = r if o is None else o + r
+    return o
+
+
 def skruvhal():
     """Försänkt säte för M3-skallen och genomgående hål genom botten."""
     return (cy(0, 0, -(BOTTEN + SKALLE[1] + 1), -BOTTEN, SATE_D)
@@ -93,11 +125,13 @@ def gangdjup():
     return MITTSKRUV_L - BOTTEN - FLANS
 
 
-def provkropp():
-    """Litet självständigt prov av armens nav: samma ficka, botten och säte som armen."""
+def provkropp(med_ribbor=True):
+    """Litet självständigt prov av armens nav: samma ficka, ribbor, botten och säte som armen."""
     b = box((-8, -RYGG, -7.5), (25, 2.9, 7.5))
     b = fillet(b.edges().filter_by(Axis.Y), 2.0)
     b += nav()
     b -= ficka()
+    if med_ribbor:
+        b += ribbor() & box((-8, -.01, -7.5), (25, 2.9, 7.5))
     b -= skruvhal()
     return b

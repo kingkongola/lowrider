@@ -18,15 +18,16 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--ut',type=Path,required=True)
     a=ap.parse_args();hf=cad.hf
     arm,torn,horn=cad.arm(),cad.torn_monterat(),hf.horn()
-    kropp=hf.provkropp();skruv=hf.mittskruv()
+    arm0=cad.arm(med_ribbor=False)
+    kropp=hf.provkropp(med_ribbor=False);skruv=hf.mittskruv()
     kallor=[Path(__file__),Path(cad.__file__),Path(hf.__file__),Path(cad.lampor.__file__),Path(cad.cr.__file__),cad.cr.REFERENS]
     r={'build123d':build123d.__version__,'kallor_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
        'granssnitt':{},'mattskillnader':[],'svep':{},'fel':[]}
-    for nam,o in [('arm',arm),('torn',torn),('provkropp',kropp)]:
+    for nam,o in [('arm',arm),('torn',torn),('provkropp',kropp),('provkropp_med_ribbor',hf.provkropp())]:
         if not o.is_valid or len(o.solids())!=1:r['fel'].append('Ogiltig/delad kropp: '+nam)
     # Nominellt: hornet i fickan och M3-skruven i sätet utan intrång.
     for nam,x,y in [('prov/horn',kropp,horn),('prov/mittskruv',kropp,skruv),
-                   ('arm/horn',arm,cad.horn_lage(horn)),('arm/mittskruv',arm,cad.horn_lage(skruv))]:
+                   ('armens_vaggar/horn',arm0,cad.horn_lage(horn)),('arm/mittskruv',arm,cad.horn_lage(skruv))]:
         v=volym(x&y);r['granssnitt'][nam]={'intrang_mm3':round(v,7),'avstand_mm':round(x.distance_to(y),6)}
         if v>1e-5:r['fel'].append(f'{nam}: {v:.6f} mm³')
     # Formlåsningen: väggarna ska ligga inom SPEL från hornet. Ett horn som är 0,05 mm större
@@ -34,6 +35,13 @@ def main():
     stor=hf.armkuvert(.01,hf.G-.01,hf.SPEL+.05)
     r['negativtest_horn_spel_plus_005_intrang_mm3']=round(volym(kropp&stor),6)
     if r['negativtest_horn_spel_plus_005_intrang_mm3']<.01:r['fel'].append('Fickan är större än SPEL: hornet kan glappa')
+    # Krossribborna: varje ribba ska överlappa hornet lagom (krossas) men inte för mycket.
+    r['krossribbor']=[]
+    for x,z in hf.ribbor_lagen():
+        v=volym(hf._ribba(x,z)&horn);r['krossribbor'].append({'x_z_mm':[round(x,2),round(z,2)],'krossvolym_mm3':round(v,4)})
+        if not .1<=v<=.5:r['fel'].append(f'Krossribba {x:.1f},{z:.1f}: {v:.3f} mm³ utanför 0,1–0,5')
+    # Negativtest: utan ribbor ska hornet inte ha något överlapp (då vore det väggarna som kläms).
+    if volym(arm0&cad.horn_lage(horn))>1e-5:r['fel'].append('Fickans väggar tar i hornet; bara ribborna ska göra det')
     # Skruvstapeln: samma gängdjup som fabriksskruven, så att M3 x 10 inte kan bottna i axeln.
     r['gangdjup_mm']=hf.gangdjup();r['fabriksskruvens_gangdjup_mm']=hf.FABRIKSSKRUV_L-hf.FLANS
     if abs(hf.gangdjup()-(hf.FABRIKSSKRUV_L-hf.FLANS))>1e-9:r['fel'].append('Gängdjupet skiljer sig från fabriksskruvens')
@@ -47,12 +55,13 @@ def main():
     tr=sum(1 for m in r['mattskillnader'] if m['intrang_mm3']>1e-5)
     r['mattfall_som_tar_i']=f'{tr} av {len(r["mattskillnader"])} (väntat: horn >0,15 mm bredare per sida)'
     print('Måttfall som tar i:',r['mattfall_som_tar_i'],flush=True)
-    # Insättning: hornet rakt in i fickan från servosidan, 12 mm i steg.
+    # Insättning: hornet rakt in i fickan från servosidan, 12 mm i steg. Väggarna ska vara fria;
+    # ribborna börjar krossas först vid infasningen (y < 2,8).
     montering=[]
     for y in [.05,.2,.5]+list(range(1,13)):
-        q=cad.horn_lage(Pos(0,y,0)*horn);v=volym(q&arm)
-        montering.append({'horn_y_mm':y,'intrang_mm3':round(v,7)})
-        if v>1e-5:r['fel'].append(f'Hornet tar i armen {y} mm före sitt läge: {v:.6f} mm³')
+        q=cad.horn_lage(Pos(0,y,0)*horn);v=volym(q&arm0);vr=volym(q&arm)
+        montering.append({'horn_y_mm':y,'intrang_vaggar_mm3':round(v,7),'krossning_ribbor_mm3':round(vr,4)})
+        if v>1e-5:r['fel'].append(f'Hornet tar i armens väggar {y} mm före sitt läge: {v:.6f} mm³')
     r['hornmontering']=montering
     # Skruvens väg: skallen in i sätet utifrån, 12 mm.
     for y in [.2,.5]+list(range(1,13)):

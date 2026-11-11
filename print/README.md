@@ -38,7 +38,7 @@ Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthå
 **Prov, utan matning:**
 
 1. **Gängan först:** skruva en M3×10 för hand i servots mässingsaxel, utan horn. Går den lätt flera varv: fortsätt. Tar den emot: sluta, axeln är 4-40.
-2. Kontrollera att hornet är plant. Tryck in det **rakt i armens ficka** från servosidan; navet åt servot. Det ska gå med lätt tryck och sitta utan glapp i sidled.
+2. Kontrollera att hornet är plant. Tryck in det **rakt i armens ficka** från servosidan; navet åt servot. De sju krossribborna ska ta emot de sista 2 mm: tryck med tummen eller kläm försiktigt i ett skruvstycke med mjuka käftar. Hornet ska sitta utan glapp i sidled och inte falla ur av egen vikt.
 3. Sätt paketet arm + horn på axeln. M3×10 genom navbossen, insex 2,5. Dra tills det sitter, inte hårdare.
 4. Vicka armen åt båda håll med servot stilla: inget glapp mellan arm och horn. Skruva CR Touchen i foten med kitets M3×6.
 5. Rapportera i [mätloggen](../CALIBRATION.md).

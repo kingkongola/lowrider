@@ -569,7 +569,7 @@ def kameralock():
     return p - torn()
 
 
-def arm(prob_x=PROB[0]):
+def arm(prob_x=PROB[0], med_ribbor=True):
     """Svepande arm: navets rundning går över i en fot som bär CR Touchen."""
     y0, y1 = ARM_Y
     w0, w1 = ARM_W
@@ -624,6 +624,8 @@ def arm(prob_x=PROB[0]):
     # Hornet i formficka; M3 x 10 genom armens botten ersätter servots mittskruv (hornfaste.py).
     a += horn_lage(hf.nav(),prob_x)
     a -= horn_lage(hf.ficka(),prob_x)
+    if med_ribbor:
+        a += horn_lage(hf.ribbor(),prob_x)        # krossribbor: glappfritt trots printtolerans
     a -= horn_lage(hf.skruvhal(),prob_x)
     # Bevara utfällda lägets stoppribba längs den öppna fickans sida.
     # Hornet förs in 0,5 mm ovanför botten och sänks därefter till sina anlägg.

@@ -251,3 +251,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Ny lösning efter beprövad praxis: hornet i en formficka med 0,15 mm spel, servots mittskruv (Ø3 × 6, uppmätt) ersatt av M3×10 genom 4,0 mm armbotten; samma gängdjup som fabriksskruven (4,3 mm). Inga M2.
 - Magnetens stålskruv låg i hornets insättningsväg och flyttades 26,5 mm ut; utsidan provades först men krockade med undre verktygsfästet i alla tio lägen. Parkeringsstoppet följer armens verkliga kant. Magnetens säkerhet mot 1 g ökade till 11,7.
 - Alla CI-kontroller och omgivningskontrollen GODKÄND. Ny platta `print/sensorprov-2` (PETG, ca 1 h): arm, kameralock och stoppdelar. Ingen utskrift rapporterad; mittskruvens gänga (M3/4-40) inte provad.
+
+## 2026-11-11 — Krossribbor i hornfickan
+
+- Användaren frågade om glapp. Sju krossribbor (Ø1 mm, 0,2 mm överlapp, infasning) i fickan i stället för lim: de plattas till när hornet trycks in. Väggarna har kvar 0,15 mm spel.
+- `kontroll_horn.py` prövar väggar och ribbor separat: väggarna fria, varje ribba 0,1–0,5 mm³ krossvolym. Negativtest: ribbor utan överlapp och med 0,6 mm överlapp underkänns. Alla kontroller och omgivningskontrollen GODKÄND. `sensorprov-2` omskivad: ca 1,0 h, 10 g PETG.
