@@ -90,6 +90,18 @@ komponenter:
     damm: X dammokänslig mekanisk del
     service: X byts inte separat
     funktion: X ingen egen funktion utöver passningen
+  Kameralock:
+    matt: A sidotorn.py kameralock; kontroll_montage.py steg 5 (väg in, skallen under örat)
+    tillverkning: S printjobb sidotorn-smadelar; F kameralock-prov
+    insattning: A kontroll_montage.py steg 5a (rakt upp 15 mm, negativtest – 0,2 mm för brett öra underkänns)
+    fastsattning: A kontroll_montage.py steg 5b-5c; F kameralock-prov
+    koppling: X ingen elektrisk funktion; CSI-kabeln går uppåt på kortets baksida
+    rorelse: A kontroll_omgivning.py (fast del och mål för armens svep)
+    last: N klämmer kortkanten som skallen gjorde förut
+    varme: N kamerakortet värmer lite; PETG
+    damm: S täcker kortet, bara objektivet syns; F 8.0
+    service: S två skruvar underifrån, tornet av
+    funktion: F kameralock-prov (bilden fri från lockets kant)
   LED-fäste:
     matt: A led-tre-vinklar.yml (Z-budget)
     tillverkning: S printjobb led-fasten, PETG
@@ -483,6 +495,7 @@ cad:
   arm: Arm
   hornbygel: Hornbygel
   bricka: Distansbricka
+  kameralock: Kameralock
   crtouch: CR Touch
   kabel: Tornkabel 12 ledare
   stopp-nedre: Stoppdel nedre

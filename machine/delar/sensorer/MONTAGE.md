@@ -1,6 +1,6 @@
 # Sidotornet: print, montering, koppling och provkörning
 
-**Källa till sanning för hur sensorenheten sitter ihop och sitter fast.** Framtagen 2026-11-11 genom simulering i CAD: varje skruv är kontrollerad med verktygets verkliga form i den ordning delarna monteras ([kontroll_montage.py](kontroll_montage.py), 26 steg, alla GODKÄND). **Inget är provat på riktiga delar.** Status och avbockning ägs av [CHECKLIST.md](../../../CHECKLIST.md); kopplingens pinnar av [KOPPLING_CORE_V0.md](KOPPLING_CORE_V0.md); stoppkedjan av [EL_BELYSNING_OCH_STOPP.md](../../EL_BELYSNING_OCH_STOPP.md).
+**Källa till sanning för hur sensorenheten sitter ihop och sitter fast.** Framtagen 2026-11-11 genom simulering i CAD: varje skruv är kontrollerad med verktygets verkliga form i den ordning delarna monteras ([kontroll_montage.py](kontroll_montage.py), alla steg GODKÄND). **Inget är provat på riktiga delar.** Status och avbockning ägs av [CHECKLIST.md](../../../CHECKLIST.md); kopplingens pinnar av [KOPPLING_CORE_V0.md](KOPPLING_CORE_V0.md); stoppkedjan av [EL_BELYSNING_OCH_STOPP.md](../../EL_BELYSNING_OCH_STOPP.md).
 
 ## Så sitter allt fast
 
@@ -16,7 +16,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | CR Touch → armen | M3 × 6 ur kitet, underifrån genom öronen (1,8 mm) in i armfoten | 2 | Skallen sitter i CR Touchens urtag vid kroppen, som Creality avsett | Ingen hylsa (beslut 2026-11-11): hylsan gick inte att montera |
 | Magneten | Ø6 × 3 neodym, droppe cyanoakrylatlim | 1 | Bakifrån i parkeringsstoppet | Utan lim kan den dras ur mot armens stålskruv |
 | Magnetens motpart | M3 stålskruv i armens bula | 1 | Skruvdjupet ställer hållkraften | Provas med vibration (fas 4) |
-| Kameran | M3 × 10, klämmer kortkanten | 2 | Underifrån; tornet av maskinen | Kameran kan inte servas med tornet monterat |
+| Kameran + kameralocket | M3 × 10 genom lockets hål, skallen trycker lockets öra mot kortkanten | 2 | Underifrån; tornet av maskinen. Locket först, sedan skruvarna (insex 2,5) | Locket täcker kortet mot spån; bara objektivet syns (2026-11-11). M3 × 10 får 9 mm gänga. Kameran kan inte servas med tornet monterat |
 | ADXL345 | M3 × 10 + printad bricka | 2 | Från panelsidan, innan Pi:n sitter | Styvt mot plattan vid övre M5, för att mäta fräsens vibration |
 | Pi Zero 2 WH | Tappar (nedre hålen) + **M2.5 × 20 genom panelen** (övre hålen) | 2 | Skruvarna håller både Pi:n och panelen; sätet ger exakt djup | Rättat 2026-11-11: de gamla övre panelpelarna stod i Pi:ns väg |
 | LM2596 A och B | Fickor + panelens fingrar | — | Skruvas inte | |
@@ -35,7 +35,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | Platta | Fil | Tid | Vikt | Läge |
 | --- | --- | --- | --- | --- |
 | Tornet | `print/sidotorn-torn.json` | ca 5,6 h | 126 g | Upp och ned; ingen plan baksida finns. Stöd utanpå svepet, vid servoramen och delvis i elektronikrummet: plocka varsamt kring Pi-distanserna |
-| Smådelar | `print/sidotorn-smadelar.json` | ca 1,6 h | 27 g | Panel yttersida ned, arm som ritad, 2 stoppdelar, 2 byglar (en reserv), 3 brickor |
+| Smådelar | `print/sidotorn-smadelar.json` | ca 1,6 h | 27 g | Panel yttersida ned, arm som ritad, 2 stoppdelar, 2 byglar (en reserv), 3 brickor, kameralocket |
 
 PETG eftersom regulatorerna och Pi:n värmer upp det slutna tornet. **Printas först efter grind G2** (måtten från bänkproven införda). Exporten görs om då: `python sidotorn.py --ut UT && python utskrift_slutdelar.py --fran UT --ut print/sidotorn-slutdelar`.
 
@@ -46,7 +46,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 1. **Rensa printen.** Stöd ut ur elektronikrummet, kamerafickan och M5-kanalen. Kontrollera att kanalen är fri hela vägen (en M5-skruv ska glida igenom).
 2. **Löd allt som ska lödas, utanför tornet** (ledningslistan nedan): Pi:ns stift, ADXL, mikrofon, LM2596-modulerna, kopplingskortet. Krymp varje lödpunkt. Mät spänningarna på regulatorerna innan något kopplas till dem.
 3. **Magneten** i den övre stoppdelens ficka med en droppe lim. Låt torka.
-4. **Kameran** underifrån med CSI-kabeln redan i kameran. Två M3 × 10. För upp kabeln i CSI-rummet och vik den två gånger 45°.
+4. **Kameran** med CSI-kabeln redan i kameran. Lägg tornet upp och ned på bänken, så ligger kortet kvar på tapparna av egen tyngd. Lägg **kameralocket** rakt på (öronen in i skruvhålen, objektivet genom mitthålet) och skruva två M3 × 10 genom lockets hål. För upp kabeln i CSI-rummet och vik den två gånger 45°.
 5. **ADXL** med två M3 × 10 och brickor från panelsidan.
 6. **Kopplingskortet** på framväggen.
 7. **LM2596 A och B** i fickorna.

@@ -76,11 +76,18 @@ for i, s in enumerate(skr.solids()):
 for z in S.M5_Z:
     alla = {"torn": torn, "servo": servo, "arm utfälld": arm, "CR Touch utfälld": crt}
     steg.append((f"4 M5 z{z:.0f}, armen utfälld (insex 4, skalle och bricka Ø9 rakt utifrån)", cyl_x(43.95, z, 9.6, 130, 9.0), alla))
-# 5. Kamerans två klämskruvar underifrån; tornet på bänken, armen parkerad.
+# 5. Kameralocket rakt upp underifrån (15 mm i steg), sedan de två klämskruvarna genom locket.
+#    Skallen sitter under lockets öra, 1 mm lägre än utan lock; verktyget når den genom plattans hål.
+lock = S.kameralock()
+for d in [0.2, 0.5] + list(range(1, 16)):
+    steg.append((f"5a kameralocket {d} mm under sitt läge", Pos(0, 0, -d) * lock, {"torn": torn}))
+skalle_z = S.KORT_FRAM - S.LOCK_ORA_T - 3.0
 for x, y in S.KLAMMOR:
-    steg.append((f"5 kameraskruv x{x:.0f} (mejsel Ø6 underifrån)",
-                 cyl_z(x, y, S.BUK - 1.5, S.BUK - 80, 6.0),
-                 {"torn": torn, "arm parkerad": P(arm), "CR Touch parkerad": P(crt)}))
+    steg.append((f"5b kameraskruv x{x:.0f} genom locket (insex 2,5 Ø3 sista {skalle_z - S.BUK + .05:.2f} mm i tornets hål, skaft Ø6 från buken)",
+                 cyl_z(x, y, skalle_z - .05, S.BUK - .05, 3.0) + cyl_z(x, y, S.BUK - .05, S.BUK - 80, 6.0),
+                 {"torn": torn, "kameralock": lock, "arm parkerad": P(arm), "CR Touch parkerad": P(crt)}))
+    steg.append((f"5c kameraskruvens skalle x{x:.0f} i sitt läge under örat",
+                 cyl_z(x, y, skalle_z, skalle_z + 3.0, 5.5), {"torn": torn, "kameralock": lock}))
 # 6. ADXL-skruvar från panelsidan innan Pi:n sitter.
 for x, z in S.ACC_HAL:
     steg.append((f"6 ADXL-skruv x{x:.0f} (mejsel Ø6 från panelsidan)", cyl_y(x, z, S.PI_Y + 3.6, Y1 + 60, 6.0), {"torn": torn}))

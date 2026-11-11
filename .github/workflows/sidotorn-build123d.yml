@@ -54,7 +54,7 @@ jobs:
       - name: BOM har varje fästelement i MONTAGE.md
         working-directory: machine/delar/sensorer
         run: python kontroll_dokument.py
-      - name: Monteringen i ordning (verktygsåtkomst för varje skruv)
+      - name: Monteringen i ordning (verktygsåtkomst för varje skruv, kameralockets väg in)
         working-directory: machine/delar/sensorer
         run: python kontroll_montage.py
       - name: CR Touch-fot, väg in och rörelse

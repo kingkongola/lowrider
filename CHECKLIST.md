@@ -70,7 +70,7 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte går att göra inne i tornet.
 
 - [ ] **4.1 Löd först, utanför tornet:** ledningar på Pi:ns stiftlist (stiften i [kontroll_stiftlist.py](machine/delar/sensorer/kontroll_stiftlist.py)), på mikrofonen och ADXL:en. Inga instickskontakter. Mät ledningslängderna i CAD innan du klipper.
-- [ ] **4.2** Kameran underifrån: tappar i hålen, två M3×10 klämmer kanten. CSI-kabeln in i rummet och viks två gånger 45°.
+- [ ] **4.2** Kameran underifrån: tappar i hålen, kameralocket rakt upp, två M3×10 genom locket klämmer kanten. CSI-kabeln in i rummet och viks två gånger 45°.
 - [ ] **4.3** Magneten Ø6×3 i parkeringsstoppet. ADXL:en på sin platta med M3×10 och brickor.
 - [ ] **4.4** Pi på tapparna, LM2596 A och B i fickorna, CSI-kabeln i Pi:n. Mikrofonen i panelens ram med en skumtejpsring runt ljudhålet, dammnät utvändigt.
 - [ ] **4.5** Panelen på med sex skruvar; fingrarna ska hålla korten. Godkänt: inget skramlar när tornet skakas.

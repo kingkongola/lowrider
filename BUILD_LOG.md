@@ -237,3 +237,10 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användarens beslut efter [CR Touch-prov 1](CALIBRATION.md#2026-11-11--cr-touch-prov-1-underkänt-hylsan-går-inte-att-montera): ingen hylsa. Kitets M3×6 underifrån genom öronen (1,8 mm uppmätt) in i armfoten; hålavstånd 17,5 mm uppmätt. Tillägg i [D020](DECISIONS.md).
 - Hylsan borttagen ur export, kontroller, printjobb och dokument; täckningsmatrisens rad markerad som utgången och dess underkända prov behålls som historik. Alla kontroller i sidotornets CI passerar lokalt. Negativtest: ett 2 mm för högt slutläge underkänns; vägen in kan utan hylsa inte längre krocka och bevisar därför lite.
 - Nytt CR Touch-prov: bara foten, cirka 5 minuter och 1,6 g PLA. Ingen utskrift eller fysisk passning rapporterad. Hornprov 1 är fortfarande underkänt.
+
+## 2026-11-11 — Kameraprov godkänt; kameralock ritat
+
+- Användaren: kamerafickan passade "som en handske" ([Kameraprov 1](CALIBRATION.md)). Första godkända fysiska provet i täckningsmatrisen.
+- Användarens önskan: bara objektivet ska synas underifrån. Nytt **kameralock** (`kameralock()` i `sidotorn.py`): platta under fickan med hål för objektivet och skallarna, pelare upp till ett öra under varje M3-skalle. Samma två M3 × 10, nu 9 mm gänga. Plattans ovansida följer tornets sluttande undersida vid fickans vänstra kant. Tornet är oförändrat.
+- CAD-kontroller: inget intrång i torn, kort, tappar, skallar eller objektiv; locket rakt upp 15 mm fritt; skruvarna nåbara (insex 2,5); omgivningskontrollen mot skanningen GODKÄND lokalt. Negativtest: 0,2 mm för brett öra underkänns. Öronen behöver stöd vid print.
+- Provjobb `print/kameralock-prov` (PLA, ca 5 min, 1,2 g); locket också på `sidotorn-smadelar`. Ingen utskrift rapporterad.

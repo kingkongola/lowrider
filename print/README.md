@@ -75,6 +75,19 @@ uv run --project ~/dev/printa printa skiva print/crtouch-passning.json
 
 [CAD-kontrollen](crtouch-passning/kontroll-cad.json) och [maskinreferensernas stickprov](crtouch-passning/kontroll-maskin.txt) redovisar digital kontroll och avgränsningar. Detta är ett **passningsprov**, inte godkänd elektrisk probing eller monterad servofunktion. Servohornets infästning, verkligt kablage, belysning och den slutliga tornutskriften återstår enligt checklistan.
 
+## Kameralock
+
+[kameralock-prov.json](kameralock-prov.json) är **kameralocket** ur aktuell CAD (`kameralock()` i [sidotorn.py](../machine/delar/sensorer/sidotorn.py)), samma STL som slutdelen men i PLA. Locket täcker kamerafickan underifrån så att bara objektivet syns (användarens önskan 2026-11-11). Det hålls av kamerans två M3 × 10: skallen trycker lockets öra mot kortkanten, precis där skallen klämde förut, och får 9 mm gänga.
+
+Plattan ligger mot bädden. Öronen ligger 4,5 mm upp över skruvhålen och får **stöd bara under sig**, inne i hålen; plocka bort det med pincett. Ingen orientering klarar sig utan stöd: upp och ned hamnar hela plattan i luften. Öronen sitter diagonalt, så locket går bara in på ett sätt. Cirka 5 minuter och 1,2 g PLA (skivat 2026-11-11).
+
+**Prov på kamerafickeprovet (det du redan har printat), utan matning:**
+
+1. Lägg provbiten med fickan uppåt och kortet i fickan på tapparna, objektivet uppåt.
+2. Lägg locket rakt på: öronen in i skruvhålen, objektivet genom mitthålet.
+3. Två M3 × 10 genom lockets hål, insex 2,5. Dra tills kortet sitter still, inte hårdare.
+4. Kontrollera: kortet glappar inte, locket ligger an mot undersidan utan glipa, objektivet går fritt i hålet och inget av lockets kant syns i bilden (om kameran går att koppla in).
+
 ## Lampdocka — kallt skruv- och styrprov
 
 **Utgått enligt D022, printas inte.** Belysningen är COB-list under horisontell understrut.

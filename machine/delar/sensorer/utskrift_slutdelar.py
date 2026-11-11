@@ -7,6 +7,7 @@
 | arm       | som ritad                    | minst överhäng, lagren går längs armen |
 | hornbygel | utsidan mot bädden           | som i passningsprovet |
 | bricka    | som ritad                    | |
+| kameralock | som ritad                   | plattan mot bädden, öronen uppåt |
 | stoppdelar | ramsidan mot bädden         | plan anläggning; skenorna i lagrens riktning |
 
 Läser STL från sidotorn.py:s export. Kör:
@@ -21,7 +22,7 @@ import numpy as np
 import trimesh
 
 LAGE = {"torn": ([1, 0, 0], 180), "sidopanel": ([1, 0, 0], -90), "arm": ([1, 0, 0], 0),
-        "hornbygel": ([1, 0, 0], -90), "bricka": ([1, 0, 0], 0),
+        "hornbygel": ([1, 0, 0], -90), "bricka": ([1, 0, 0], 0), "kameralock": ([1, 0, 0], 0),
         "stopp-nedre": ([1, 0, 0], -90), "stopp-ovre": ([1, 0, 0], -90)}
 
 

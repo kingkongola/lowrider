@@ -1,7 +1,7 @@
 {
   "typ": "sidotorn-slutdelar",
   "kallor_sha256": {
-    "sidotorn.py": "3e69affdf56b279b2217a3508b5b5d2d50a74e49d370a78d163f581e52f82534",
+    "sidotorn.py": "f54e3670df31fc81b12c8b7fc498e2a2420386a3441a7e275a3c40a650c49095",
     "crtouch.py": "fc959a5208855104a9b6be7937c31e53296d88e7bd897a3f359bae218ee9c1cd",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
@@ -13,6 +13,7 @@
     "arm.stl": "18244a6d7dbadff1da8ca1f7b83c2da8e7684796b9f5b3e6ed726849662dd5c9",
     "hornbygel.stl": "a29ff1cfd0da99149f1e9b5a0209346692739acb7049d8e7e0fb97e17afd3938",
     "bricka.stl": "70faa53046508513bf66fffcea09ffa52a61035c6306fe0ac04f51a7a7398b12",
+    "kameralock.stl": "b6a026ea6b5decd353c72f0623f282e07392bf3e86f733e0e2419b8ae6853993",
     "stopp-nedre.stl": "0b9bce5ea276ff9c9b524f66fad61eb9fffe0347540d95aa38b791505abb1d64",
     "stopp-ovre.stl": "f867bcf3abe816469aede874c454413b44984f9ff8b831d0e729a8d2a4da074a"
   }

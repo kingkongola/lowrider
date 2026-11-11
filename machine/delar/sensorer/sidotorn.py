@@ -29,7 +29,7 @@ import lampor
 import hornfaste as hf
 from pathlib import Path
 
-from build123d import (Box, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
+from build123d import (Box, chamfer, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
                        ThreePointArc, Vector, Wire, export_step, export_stl, extrude, fillet, sweep, Axis, RectangleRounded, loft)
 
 # Tornets gränser: inte förbi Core-änden längs balken, inte förbi dammskon utåt.
@@ -481,6 +481,45 @@ def bricka():
     return Cylinder(3.5, 3.5) - Cylinder(1.7, 4.0)
 
 
+# Kameralocket (användarens önskan 2026-11-11): bara objektivet syns underifrån.
+LOCK_T = 1.2                 # plattans tjocklek under buken
+LOCK_ORA_T = 1.0             # örat mellan M3-skallen och kortet; skallen klämmer kortet genom örat
+LOCK_SKALLE_D = 6.5          # hål för skalle Ø5,5 och nyckel/mejsel
+LOCK_LINS_D = 9.5            # objektivet Ø8,5 + 0,5 spel runt om
+LOCK_X = (80.2, 106.6)       # täcker fickan (80,4-105,6) med överlapp
+LOCK_Y = (38.0, 64.0)        # fri från LED-spåren (33-38, 66-71)
+
+
+def kameralock():
+    """Lock under kamerafickan, hålls av kamerans två M3 x 10.
+
+    Plattan täcker fickan med hål för objektivet och skallarna. En pelare per skruv går upp i
+    fickan till ett öra överst i skallens hål: skallen trycker örat, örat och en 0,9 mm kantremsa
+    klämmer kortkanten där skallen gjorde förut. Skallen hamnar 1 mm lägre, så M3 x 10 får 9 mm
+    gänga. Plattans ovansida är plan; där tornet sluttar ned vid fickans vänstra kant blir den
+    lokalt tunnare (minst 0,5 mm). Öronen sitter diagonalt: locket går bara in på ett sätt."""
+    b, f = BUK, KORT_FRAM
+    y0, y1 = KORT_Y
+    cx, cy, _ = LINS
+    p = box((LOCK_X[0], LOCK_Y[0], b - LOCK_T), (LOCK_X[1], LOCK_Y[1], b))
+    p = fillet(p.edges().filter_by(Axis.Z), 1.5)
+    # Kantbrytning mot synsidan, utom vänsterkanten som ligger in under tornets sluttning.
+    p = chamfer([e for e in p.edges().group_by(Axis.Z)[0] if e.center().X > LOCK_X[0] + .6], .4)
+    for (sx, sy), ner in ((KLAMMOR[0], True), (KLAMMOR[1], False)):
+        rem = (y0 - .1, y0 + .8) if ner else (y1 - .8, y1 + .1)       # kantremsa, fri från tapparna
+        inre = (y0 - .1, y0 + 2.9) if ner else (y1 - 2.9, y1 + .1)
+        px = (86.0, 89.0) if ner else (97.0, 100.0)                     # pelaren utanför skallen
+        p += Pos(sx, sy, f - LOCK_ORA_T / 2) * Cylinder(2.7, LOCK_ORA_T)
+        p += box((min(sx, px[0]), rem[0], f - LOCK_ORA_T), (max(sx, px[1]), rem[1], f))
+        p += box((px[0], inre[0], b), (px[1], inre[1], f - .5))
+        p += box((px[0], rem[0], b), (px[1], rem[1], f))
+        p -= Pos(sx, sy, f) * Cylinder(1.7, 4)                          # M3 genom örat
+        lag = b - LOCK_T - 1
+        p -= Pos(sx, sy, (lag + f - LOCK_ORA_T) / 2) * Cylinder(LOCK_SKALLE_D / 2, f - LOCK_ORA_T - lag)
+    p -= Pos(cx, cy, b) * Cylinder(LOCK_LINS_D / 2, 8)
+    return p - torn()
+
+
 def arm(prob_x=PROB[0]):
     """Svepande arm: navets rundning går över i en fot som bär CR Touchen."""
     y0, y1 = ARM_Y
@@ -606,7 +645,7 @@ def main():
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     sn, so = stoppdelar(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kameralock", kameralock()), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
@@ -631,6 +670,7 @@ def main():
         namn(bl, "CR Touch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
         namn(parkera(copy.deepcopy(bl)), "CR Touch_parkerad_ATTRAPP", (.85, .2, .15)),
+        namn(kameralock(), "Kameralock", (.9, .62, .29)),
         namn(box((cx - KORT_B / 2, KORT_Y[0], KORT_FRAM), (cx + KORT_B / 2, KORT_Y[1], KORT_BAK)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
         namn(box((cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK), (cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP)), "Flatkontakt_ATTRAPP", (.85, .8, .6)),
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
@@ -656,7 +696,7 @@ def main():
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "pi_skruv": PI_SKRUV, "topp": TOPP}))
     kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kameralock", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
     exporter += [a.ut/'hornskruvar-referens.stl',a.ut/'magnetstal-referens.stl']
     (a.ut / "manifest.json").write_text(json.dumps({

@@ -8,6 +8,7 @@
 
 - Löstagbart tillbehör på befintliga M5-fästpunkter vid verktygsfästet. **Core** betyder V1E:s ursprungliga maskindel; sensorenheten är vårt tillbehör.
 - Sidotorn med integrerad servoram, kameraficka, Pi-utrymme, två regulatorfickor, kabelvägar och avtagbar sidopanel.
+- Kameralock under kamerafickan (2026-11-11): bara objektivet syns; hålls av kamerans två M3 × 10 ([provet](../../../print/README.md#kameralock)).
 - Separat CR Touch-anpassad probarm, utan skyddshylsa (beslut 2026-11-11). Hårda stopp och magnetparkering enligt [D020](../../../DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). Inga armbrytare eller KW11-hållare.
 - Camera Module 3 Standard riktad rakt ned. Bilder får innehålla servo/dammsko som maskas bort; överlappande bilder ska täcka materialet enligt det överenskomna kameraflödet.
 - **Utgått ur printplanen enligt D022:** fast lampdocka med två blinda M3-pilothål och asymmetrisk styrtapp. Separat skruvad G4-bärare är ritad som utkast i [lampor.py](lampor.py); lampor och socklar är utrymmeskuvert tills produkter valts och mätts. De gamla små LED-spåren finns kvar som preliminära kabelvägar, inte G4-fästen. Användningskraven ägs av [kameraunderlaget](../../KAMERA_ANHALL.md#eftermontering--demonterbar-lampmodul).

@@ -1,0 +1,13 @@
+{
+  "namn": "kameralock-prov",
+  "process": "standard",
+  "material": "pla",
+  "stod": true,
+  "delar": [
+    {
+      "fil": "sidotorn-slutdelar/kameralock.stl",
+      "antal": 1
+    }
+  ],
+  "andringar": {}
+}
