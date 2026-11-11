@@ -82,6 +82,7 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - **Resultat:** skruven gick inte att dra åt; hornet böjdes i Z-led (vinkelrätt mot sitt plan). Användarens foton visar en rund, upphöjd krage runt mässingsaxeln ovanför servots plana ovansida.
 - **Orsak:** CAD:ens servo har plan ovansida och H = 10 mm mättes mot den plana delen. Den printade delen tar i kragen innan hornet ligger an.
 - **Åtgärd:** kragens diameter och höjd mäts; fickan får urtag för kragen och omprövas. Hornprovet är **inte** godkänt.
+- **Uppmätt av användaren 2026-11-11:** kragen Ø12 mm, 1 mm över servots plana ovansida. Inlagd i servomodellen (`SERVO_KRAGE`). Med H = 10 mm når varken fickan (till 5 mm) eller bygeln (till 6,2 mm) kragen i CAD; orsaken till böjningen är därför ännu inte fastställd.
 
 ## 2026-11-10 — Fällservots rörelseomfång verifierat på bänk
 

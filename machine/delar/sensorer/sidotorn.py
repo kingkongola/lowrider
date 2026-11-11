@@ -120,7 +120,8 @@ STOPP_PILOT_DJUP = 9.0
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
 PARK = -150.0               # utfällt 0, parkerat mot magnet och hårt stopp (D020)
-SERVO_DY = -2.0             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
+SERVO_DY = -2.0
+SERVO_KRAGE = (12.0, 1.0)   # diameter, höjd över servots plana ovansida; uppmätt 2026-11-11             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
 ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
 PROB = (61.0, 34.0 + SERVO_DY)
 FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
@@ -315,7 +316,9 @@ def servo_attrapp():
     d = SERVO_DY
     kropp = box((14.8, 32.6 + d, 33.6), (55.2, 73 + d, 53.6))
     oron = box((5.1, 40.8 + d, 33.6), (64.9, 43.3 + d, 53.6))
-    return kropp + oron + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0)
+    # Kragen runt axeln: Ø12, 1 mm över servots plana ovansida (uppmätt 2026-11-11).
+    krage = cyl_y(PX, PZ, 32.6 + d - SERVO_KRAGE[1], 32.6 + d, SERVO_KRAGE[0])
+    return kropp + oron + krage + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0)
 
 
 def torn(prob_x=PROB[0]):
