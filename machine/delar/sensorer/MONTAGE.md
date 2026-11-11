@@ -13,7 +13,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | Stoppdelarna → ramen | M3 × 20, försänkt skalle | 4 | Efter servot, framifrån | Stoppen stod framför servot och hindrade det att sättas in (rättat 2026-11-11). Ett trasigt stopp printas om utan nytt torn |
 | Hornet → servoaxeln | Servots egen mittskruv | 1 | Framifrån, före eller efter armen | |
 | Armen → hornet | Hornbygel + M3 × 10 | 2 | Bygeln kilar hornet i armens ficka | Provas i hornprovet |
-| CR Touch → armen | M3 × 8 ur kitet, genom hylsan | 2 | | |
+| CR Touch → armen | M3 × 6 ur kitet, underifrån genom öronen (1,8 mm) in i armfoten | 2 | Skallen sitter i CR Touchens urtag vid kroppen, som Creality avsett | Ingen hylsa (beslut 2026-11-11): hylsan gick inte att montera |
 | Magneten | Ø6 × 3 neodym, droppe cyanoakrylatlim | 1 | Bakifrån i parkeringsstoppet | Utan lim kan den dras ur mot armens stålskruv |
 | Magnetens motpart | M3 stålskruv i armens bula | 1 | Skruvdjupet ställer hållkraften | Provas med vibration (fas 4) |
 | Kameran | M3 × 10, klämmer kortkanten | 2 | Underifrån; tornet av maskinen | Kameran kan inte servas med tornet monterat |
@@ -35,7 +35,7 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | Platta | Fil | Tid | Vikt | Läge |
 | --- | --- | --- | --- | --- |
 | Tornet | `print/sidotorn-torn.json` | ca 5,6 h | 126 g | Upp och ned; ingen plan baksida finns. Stöd utanpå svepet, vid servoramen och delvis i elektronikrummet: plocka varsamt kring Pi-distanserna |
-| Smådelar | `print/sidotorn-smadelar.json` | ca 1,6 h | 27 g | Panel yttersida ned, arm som ritad, hylsa upp och ned, 2 byglar (en reserv), 3 brickor |
+| Smådelar | `print/sidotorn-smadelar.json` | ca 1,6 h | 27 g | Panel yttersida ned, arm som ritad, 2 stoppdelar, 2 byglar (en reserv), 3 brickor |
 
 PETG eftersom regulatorerna och Pi:n värmer upp det slutna tornet. **Printas först efter grind G2** (måtten från bänkproven införda). Exporten görs om då: `python sidotorn.py --ut UT && python utskrift_slutdelar.py --fran UT --ut print/sidotorn-slutdelar`.
 
@@ -53,7 +53,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 8. **Pi:n**: CSI-kabeln i Pi:ns kontakt först, sedan rakt in på tapparna. **Inget microSD-kort i** ännu.
 9. **Servot** in framifrån genom ramen, fyra M3 × 10. Servokabeln upp ovanför servot till kopplingskortet.
 9b. **Stoppdelarna** mot ramens framsida, två M3 × 20 var. Magneten är redan limmad i den övre.
-10. **Ändlägena (fas 4.8 i checklistan):** hornet på axeln så att armen står mitt i rörelsen vid 1500 µs, mittskruven, sedan armen med bygeln och två M3 × 10. CR Touch med hylsan, två M3 × 8; kabeln i armens spår.
+10. **Ändlägena (fas 4.8 i checklistan):** hornet på axeln så att armen står mitt i rörelsen vid 1500 µs, mittskruven, sedan armen med bygeln och två M3 × 10. CR Touch med kitets två M3 × 6 underifrån; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.
 12. **microSD** in utifrån genom springan i bakväggen. Ett kort som ska bytas dras ut med en pincett.
 13. **På maskinen, armen utfälld:** den övre M5 rakt utifrån, den nedre genom kanalen. Bricka, blå gänglåsning, 0,4–0,5 Nm med momentskruvmejsel; plasten får inte tryckas ihop.
@@ -63,7 +63,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 
 **Värme:** luften i tornet högst 50 °C vid 35 °C i garaget; Pi:ns processor under 80 °C (där den börjar strypa). Beräkning: ca 48 °C vid toppeffekt 4 W ([berakning_sidotorn.py](berakning_sidotorn.py)). Verifieras med en timmes körning där `vcgencmd measure_temp` loggas.
 
-**Damm:** inga öppningar mot fräsen. Panelens slitsar vänder bort från fräsen (X max-sidan), kabelutgången och SD-springan vetter mot Core; springan tejpas. Mikrofonen har dammnät. CR Touchens stift är ute bara vid mätning och skyddas av hylsan; självtest före varje mätning. **Linsen** sticker ut 2,6 mm och har inget glas framför: armspärren stoppar om bilden blir oskarp (smuts), och linsen rengörs med blåsbälg, inte trasa. Verifieras med ett dammprov under fräsning.
+**Damm:** inga öppningar mot fräsen. Panelens slitsar vänder bort från fräsen (X max-sidan), kabelutgången och SD-springan vetter mot Core; springan tejpas. Mikrofonen har dammnät. CR Touchens stift är ute bara vid mätning, och proben sitter parkerad högt när fräsen går (ingen hylsa, beslut 2026-11-11); självtest före varje mätning. **Linsen** sticker ut 2,6 mm och har inget glas framför: armspärren stoppar om bilden blir oskarp (smuts), och linsen rengörs med blåsbälg, inte trasa. Verifieras med ett dammprov under fräsning.
 
 ## Kopplingskortet
 

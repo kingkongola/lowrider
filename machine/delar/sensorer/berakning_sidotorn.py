@@ -21,7 +21,7 @@ ANTAG = {
     "magnet_dragkraft_n": (12.0, "Ø6 x 3 N42 mot tjockt stål, typiskt säljarvärde"),
     "magnet_glapp_faktor": (0.45, "0,6 mm plast mellan magnet och stål; grov tumregel"),
     "magnet_mal_faktor": (0.6, "litet stålmål (M3-skalle Ø5,5) mättas"),
-    "armpaket_g": (26, "arm 5,6 + hylsa 5,6 + CR Touch ca 12 + bygel och skruvar ca 3 g"),
+    "armpaket_g": (21, "arm 5,6 + CR Touch ca 12 + bygel och skruvar ca 3 g (utan hylsa)"),
     "armpaket_tp_mm": (30, "tyngdpunktens avstånd från axeln, ur CAD ungefärligt"),
     "vibration_g": (3.0, "antagen topp vid verktygsfästet under fräsning; mäts i fas 8"),
     "pi_effekt_w": (1.5, "medel; 3 W vid bildtagning"),
@@ -107,7 +107,7 @@ VERKTYG_UNDER_KJOL = 30.0          # antagande: längsta verktyg sticker högst 
 stift = S.crtouch().bounding_box().min.Z
 krav("Probstiftet under fräsens spets vid mätning", (KJOL_Z - VERKTYG_UNDER_KJOL) - stift, "mm", (KJOL_Z - VERKTYG_UNDER_KJOL) - stift >= 5,
      f"stiftet {KJOL_Z - stift:.1f} mm under kjolen; verktyget antas högst {VERKTYG_UNDER_KJOL:.0f}")
-parkerat = min(S.parkera(o).bounding_box().min.Z for o in (S.arm(), S.crtouch(), S.skyddshylsa()))
+parkerat = min(S.parkera(o).bounding_box().min.Z for o in (S.arm(), S.crtouch()))
 stopp = min(d.bounding_box().min.Z for d in S.stoppdelar())
 torn_z = S.torn().bounding_box().min.Z
 lagst = min(parkerat, stopp, torn_z)

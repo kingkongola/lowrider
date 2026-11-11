@@ -15,7 +15,7 @@ import sidotorn as S
 from kontrollhjalp import krock as _krock
 
 Y1 = S.Y1
-torn_utan, arm, crt, kapa, panel = S.torn(), S.arm(), S.crtouch(), S.skyddshylsa(), S.sidopanel()
+torn_utan, arm, crt, panel = S.torn(), S.arm(), S.crtouch(), S.sidopanel()
 stopp_n, stopp_o = S.stoppdelar()
 torn = torn_utan + stopp_n + stopp_o      # från steg 1c sitter stoppdelarna på
 bygel = S.horn_lage(hf.bygel())
@@ -72,15 +72,15 @@ for i, s in enumerate(skr.solids()):
     steg.append((f"3 bygelskruv {i + 1}, armen på servot (insex 2,5 med skaft Ø5,5)",
                  cyl_y(x, z, bb.max.Y + .2, bb.max.Y + 60, 5.5), {"torn": torn, "servo": servo}))
 # 4. M5 till verktygsfästet, insexnyckel från tornets insida (+x) med allt monterat.
-#    Tornet monteras med armen utfälld (parkerad hylsa ligger nära den övre skruven).
+#    Tornet monteras med armen utfälld.
 for z in S.M5_Z:
-    alla = {"torn": torn, "servo": servo, "arm utfälld": arm, "CR Touch utfälld": crt, "hylsa utfälld": kapa}
+    alla = {"torn": torn, "servo": servo, "arm utfälld": arm, "CR Touch utfälld": crt}
     steg.append((f"4 M5 z{z:.0f}, armen utfälld (insex 4, skalle och bricka Ø9 rakt utifrån)", cyl_x(43.95, z, 9.6, 130, 9.0), alla))
 # 5. Kamerans två klämskruvar underifrån; tornet på bänken, armen parkerad.
 for x, y in S.KLAMMOR:
     steg.append((f"5 kameraskruv x{x:.0f} (mejsel Ø6 underifrån)",
                  cyl_z(x, y, S.BUK - 1.5, S.BUK - 80, 6.0),
-                 {"torn": torn, "arm parkerad": P(arm), "CR Touch parkerad": P(crt), "hylsa parkerad": P(kapa)}))
+                 {"torn": torn, "arm parkerad": P(arm), "CR Touch parkerad": P(crt)}))
 # 6. ADXL-skruvar från panelsidan innan Pi:n sitter.
 for x, z in S.ACC_HAL:
     steg.append((f"6 ADXL-skruv x{x:.0f} (mejsel Ø6 från panelsidan)", cyl_y(x, z, S.PI_Y + 3.6, Y1 + 60, 6.0), {"torn": torn}))

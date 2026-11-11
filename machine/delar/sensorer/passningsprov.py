@@ -1,7 +1,7 @@
 """Små passningsprov hämtade ur aktuell sidotornsgeometri.
 
 Kameraprovet kontrollerar kortficka, styrtappar och kontaktutrymme.
---typ crtouch ger probfot och hylsa för prov av den verkliga sensorn.
+--typ crtouch ger probfoten för prov av den verkliga sensorn.
 --typ lampdock ger en utskuren tornvägg och lampfot; ingen varm lampa monteras i provet.
 Proven ersätter inte kontroll av tornets infästning, kabelväg eller belysning.
 Kör: uv run --offline --no-project --python 3.12 --with build123d==0.13.0 \
@@ -48,7 +48,6 @@ def main():
                                   (x + 16, y + 7, cad.FLANS_Z + 5))
         delar = {
             "probfaste-passning.stl": pa_badden(fot),
-            "crtouch-hylsa.stl": pa_badden(Rot(180, 0, 0) * cad.skyddshylsa()),
         }
     elif a.typ == "horn":
         delar={"hornficka-passning.stl":pa_badden(Rot(90,0,0)*cad.hf.provkropp().mirror(Plane.XY)),

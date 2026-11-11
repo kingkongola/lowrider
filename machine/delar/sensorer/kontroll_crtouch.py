@@ -30,10 +30,10 @@ def main():
     kropp_t = cad.torn()
     sn, so = cad.stoppdelar()
     stopp = sn + so
-    hylsa, prob, kontakt = cad.skyddshylsa(), cad.crtouch(), cad.kontaktkuvert()
+    prob, kontakt = cad.crtouch(), cad.kontaktkuvert()
     stift = Pos(cad.PROB[0], cad.PROB[1] + cad.cr.STIFT_Y,
                 cad.FLANS_Z - (46 + 29) / 2) * Cylinder(1.6, 46 - 29)
-    delar = {"torn": torn, "arm": arm, "hylsa": hylsa, "prob": prob, "kontaktkuvert": kontakt,
+    delar = {"torn": torn, "arm": arm, "prob": prob, "kontaktkuvert": kontakt,
              "stiftkuvert": stift}
     kallor = [Path(cad.__file__), Path(cad.cr.__file__), cad.cr.REFERENS, Path(__file__),
               Path(cad.lampor.__file__),Path(cad.hf.__file__)]
@@ -42,16 +42,15 @@ def main():
         "komponenter": {}, "granssnitt": {}, "svep": {}, "fel": [], "oppna_referensfragor": []}
     for namn, o in delar.items():
         rapport["komponenter"][namn] = {"giltig": o.is_valid, "solider": len(o.solids())}
-        if not o.is_valid or (namn in ("arm", "hylsa", "torn") and len(o.solids()) != 1):
+        if not o.is_valid or (namn in ("arm", "torn") and len(o.solids()) != 1):
             rapport["fel"].append(f"Ogiltig/delad kropp: {namn}")
-    for n1, n2 in (("arm", "prob"), ("hylsa", "prob"), ("arm", "hylsa"),
-                   ("arm", "kontaktkuvert"), ("hylsa", "stiftkuvert")):
+    for n1, n2 in (("arm", "prob"), ("arm", "kontaktkuvert"), ("arm", "stiftkuvert")):
         v = volym(delar[n1] & delar[n2])
         rapport["granssnitt"][f"{n1}/{n2}"] = {"intrang_mm3": round(v, 6),
                                                     "avstand_mm": round(delar[n1].distance_to(delar[n2]), 5)}
         if v > .001:
             rapport["fel"].append(f"Intrång {n1}/{n2}: {v:.4f} mm³")
-    # M3x8: 2 mm skyddsöra + 1,9 mm referensfläns => 4,1 mm in i 4,5 mm armfot.
+    # Kitets M3x6 underifrån: 1,8 mm öra (uppmätt) => ca 4,2 mm in i armfoten.
     # Originalets egna M3x6-skruvar har också ett litet intrång i dess sensorattrapp.
     # Kontrollera att vår nya skruvstapel inte inför ett större intrång; redovisa
     # källmodellens avvikelse som öppen referensfråga, inte som godkänd fysisk passning.
@@ -63,31 +62,30 @@ def main():
     rapport["referensens_egna_skruvintrang_mm3"] = round(referensintrang, 6)
     for sida in (-1, 1):
         x, y = cad.PROB[0] + sida * cad.cr.HAL_CC / 2, cad.PROB[1]
-        sate = cad.FLANS_Z - cad.cr.FLANS_T - 2
+        sate = cad.FLANS_Z - cad.cr.FLANS_T          # skallen direkt under örat, ingen hylsa
         skruvref = next(s for s in originalskruvar
                         if (s.center().X < 3) == (sida > 0))
         # Använd originalets faktiska huvudform, inte en överskattande hel cylinder.
-        skruv = Pos(cad.PROB[0], y, cad.FLANS_Z - 2) * Rot(0, 0, 180) * Pos(-3, 2.618, -50) * skruvref
-        skruv += Pos(x, y, sate + 6.75) * Cylinder(1.5, 2.5)  # förläng M3x6-referensen till M3x8
-        for namn, o in (("prob", prob), ("hylsa", hylsa)):
+        skruv = Pos(cad.PROB[0], y, cad.FLANS_Z) * Rot(0, 0, 180) * Pos(-3, 2.618, -50) * skruvref
+        for namn, o in (("prob", prob),):
             v = volym(skruv & o)
-            rapport["granssnitt"][f"M3x8_{sida}/{namn}"] = {"intrang_mm3": round(v, 6)}
+            rapport["granssnitt"][f"M3x6_{sida}/{namn}"] = {"intrang_mm3": round(v, 6)}
             if namn == "prob" and 0 < v <= referensintrang + .0001:
                 rapport["oppna_referensfragor"].append(
                     f"M3-huvud {sida}: {v:.6f} mm³ i probattrappen; samma avvikelse finns i originalets egna skruvar. Kontrollera verklig skalle/utrymme.")
             elif v > .001:
                 rapport["fel"].append(f"Skruvintrång {sida}/{namn}: {v:.4f} mm³")
-    # Vägen in (granskning issue #2, fynd 1): proben förs upp underifrån mot armfoten och hylsan,
+    # Vägen in (granskning issue #2, fynd 1): proben förs upp underifrån mot armfoten,
     # 40 mm i 1 mm-steg. Slutläget räcker inte; både hylsan och servot underkändes fysiskt på vägen.
     for dz in range(1, 41):
         q = Pos(0, 0, -dz) * delar["prob"]
-        traff = [hn for hn in ("arm", "hylsa") if volym(q & delar[hn]) > .001]
+        traff = [hn for hn in ("arm",) if volym(q & delar[hn]) > .001]
         if traff:
             rapport["fel"].append(f"Insättning: proben {dz} mm före slutläget tar i {', '.join(traff)}")
             break
     # Avståndsgräns mellan två provvinklar: varje punkt flyttar högst
     # 2*r*sin(steg/4) till närmaste provläge. Distansfunktionen är 1-Lipschitz.
-    for namn in ("arm", "prob", "hylsa", "kontaktkuvert", "stiftkuvert"):
+    for namn in ("arm", "prob", "kontaktkuvert", "stiftkuvert"):
         steg = 1 if namn == "arm" else 2      # armen närmar sig stoppen; tätare steg ger lägre gräns
         o = delar[namn]
         b = o.bounding_box()
@@ -121,7 +119,8 @@ def main():
         "Kontaktkuvertet är reserverat utrymme, inte en uppmätt kontakt eller flexibel kabelmodell.",
         "Arm mot sina stopp får ha nollavstånd; mellanlägesgränsen godkänner inte avsedd stoppkontakt.",
         "Maskinens ursprungsdelar och skanning ingår i separat STL-stickprovskontroll.",
-        "Servohornets infästning och fysisk montering återstår enligt CHECKLIST.md."]
+        "Servohornets infästning och fysisk montering återstår enligt CHECKLIST.md.",
+        "Utan hylsa trycks proben rakt upp mot fotens undersida; vägen in kan inte krocka och bevisar lite. Negativtest 2026-11-11: 15 % bredare prob passerar vägen in, 2 mm för högt slutläge ger 321 mm³ intrång och underkänns."]
     a.ut.write_text(json.dumps(rapport, ensure_ascii=False, indent=2) + "\n")
     print("Fel:", rapport["fel"], flush=True)
     raise SystemExit(bool(rapport["fel"]))

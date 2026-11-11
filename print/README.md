@@ -1,6 +1,6 @@
 # Sensorenhetens passningsprov
 
-Jobbet [sensor-passning.json](sensor-passning.json) innehåller **en liten kameraficka ur senaste sidotornet**, inte hela tornet. Syftet är att kontrollera den mottagna Camera Module 3 Standard innan en stor utskrift. [CR Touch-provet](#cr-touch--armfot-och-skyddshylsa) har en separat platta. Fysisk provning är ännu inte rapporterad; aktuell status ägs av [CHECKLIST.md](../CHECKLIST.md).
+Jobbet [sensor-passning.json](sensor-passning.json) innehåller **en liten kameraficka ur senaste sidotornet**, inte hela tornet. Syftet är att kontrollera den mottagna Camera Module 3 Standard innan en stor utskrift. [CR Touch-provet](#cr-touch--armfot) har en separat platta. Fysisk provning är ännu inte rapporterad; aktuell status ägs av [CHECKLIST.md](../CHECKLIST.md).
 
 ## Underlag och beredning
 
@@ -29,7 +29,7 @@ Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthå
 
 ## Alla tre PLA-proven på en platta
 
-[sensorprov-pla.json](sensorprov-pla.json) lägger hornprovet, CR Touch-provet och kameraprovet på samma platta: ca 56 min, 18 g PLA. Styrkeprofilen gäller alla tre; den ger fler väggar och mer fyllning men samma mått. Automatiskt stöd byggs bara vid kamerafickan, enligt förhandsvisningen 2026-11-11; CR Touch-hylsan får inget stöd. Provförfarandena nedan gäller som för de separata jobben.
+[sensorprov-pla.json](sensorprov-pla.json) lägger hornprovet, CR Touch-provet (bara foten) och kameraprovet på samma platta: ca 37 min, 12,8 g PLA (omskivad 2026-11-11 utan hylsan). Styrkeprofilen gäller alla tre; den ger fler väggar och mer fyllning men samma mått. Automatiskt stöd byggs bara vid kamerafickan, enligt förhandsvisningen 2026-11-11; Provförfarandena nedan gäller som för de separata jobben.
 
 ## Servohorn — ficka och M3-bygel
 
@@ -55,11 +55,11 @@ Granska `horn-passning.printa/forhandsvisning.png` före utskrift och öppna dä
 
 [CAD-kontrollen](horn-passning/kontroll-cad.json) prövar 81 måttkombinationer och den monterade armens rörelse. Den bevisar inte friktion, plastgängornas hållfasthet eller verkligt glapp. Skala inte hela provet och borra inte originalhornet för denna metod.
 
-## CR Touch — armfot och skyddshylsa
+## CR Touch — armfot
 
-[crtouch-passning.json](crtouch-passning.json) innehåller **en liten armfot och den nya skyddshylsan**. Båda tas direkt ur aktuell CAD med [passningsprov.py](../machine/delar/sensorer/passningsprov.py). [Manifestet](crtouch-passning/manifest.json) knyter dem till källor och CR Touch-referens. Provet är PLA, 0,20 mm lager, utan stöd, för Bambu P1S 0,4 mm och texturerad PEI-platta.
+[crtouch-passning.json](crtouch-passning.json) innehåller **en liten armfot** ur aktuell CAD, gjord med [passningsprov.py](../machine/delar/sensorer/passningsprov.py). [Manifestet](crtouch-passning/manifest.json) knyter den till källor och CR Touch-referens. Provet är PLA, 0,20 mm lager, utan stöd, för Bambu P1S 0,4 mm och texturerad PEI-platta.
 
-Hylsans flänsyta ligger mot bädden. Den avsmalnande formen undviker en dold stödhylla. Printkontrollen ger varningar för små överhäng: 6 mm² i den aktuella provfoten och 13 mm² vid hylsans skruvunderlägg. Här får plasten brygga korta sträckor mellan kanterna. Inga kontrollfel finns. Slutplattan är omskivad efter hornändringen: cirka **20 minuter och 7,1 g PLA**. Resultat och förhandsvisning ligger i `crtouch-passning.printa/`; öppna `crtouch-passning.3mf` i Bambu Studio först efter bildgranskning.
+**Skyddshylsan utgick 2026-11-11** (användarens beslut efter CR Touch-prov 1, där den inte gick att montera). CR Touchen skruvas direkt i foten, som Creality avsett. Cirka 5 minuter och 1,6 g PLA (skivat 2026-11-11), utan stöd; ett litet överhäng på 6 mm² får brygga. Resultat i `crtouch-passning.printa/`; öppna `crtouch-passning.3mf` i Bambu Studio först efter bildgranskning.
 
 ```sh
 uv run --offline --no-project --python 3.12 --with build123d==0.13.0 python machine/delar/sensorer/passningsprov.py --typ crtouch --ut print/crtouch-passning
@@ -68,11 +68,10 @@ uv run --project ~/dev/printa printa skiva print/crtouch-passning.json
 
 **Provmontering, utan matning:**
 
-1. För in sensorkroppen från hylsans breda ände tills underläggen möter flänsens undersida. Den smala änden kan inte svälja flänsen; formen visar monteringsriktningen.
-2. Lägg provfoten över sensorn med den öppna kontaktsidan bort från armryggen. Kontakten och kabeln ska gå fria genom öppningen. Provet verifierar inte hela kabelns böjning när armen rör sig.
-3. Montera med kitets två M3×8 från undersidan, genom hylsa och sensorfläns in i provfotens plastgänghål. Skruva försiktigt för hand. Utan hylsa är den nominella avsikten M3×6.
-4. Kontrollera att delarna ligger an, skruvarna går att nå, skruvskallarna går fria från sensorkroppen och hylsans öppna ände går fri från stiftet. Referensens egna skruvskallar har en liten modellöverlappning; verklig skalle/fläns måste därför bedömas här. Tvinga inte ihop delarna om det tar emot.
-5. Rapportera passning och mått till [CALIBRATION.md](../CALIBRATION.md) innan slutdelar bereds. Modellen har redan inritat kroppsspel och håltillägg enligt [kitunderlaget](../research/2026-11-10-crtouch-anpassning.md); skala inte hela plattan.
+1. Lägg provfoten över sensorn med den öppna kontaktsidan bort från armryggen. Kontakten och kabeln ska gå fria genom öppningen. Provet verifierar inte hela kabelns böjning när armen rör sig.
+2. Montera med kitets två M3×6 från undersidan, genom sensorns öron in i provfotens plastgänghål. Skruva försiktigt för hand.
+3. Kontrollera att örat ligger an mot foten, skruvarna går att nå och skruvskallarna går fria från sensorkroppen. Referensens egna skruvskallar har en liten modellöverlappning; verklig skalle/fläns måste därför bedömas här. Tvinga inte ihop delarna om det tar emot.
+4. Rapportera passning och mått till [CALIBRATION.md](../CALIBRATION.md) innan slutdelar bereds. Modellen har redan inritat kroppsspel och håltillägg enligt [kitunderlaget](../research/2026-11-10-crtouch-anpassning.md); skala inte hela plattan.
 
 [CAD-kontrollen](crtouch-passning/kontroll-cad.json) och [maskinreferensernas stickprov](crtouch-passning/kontroll-maskin.txt) redovisar digital kontroll och avgränsningar. Detta är ett **passningsprov**, inte godkänd elektrisk probing eller monterad servofunktion. Servohornets infästning, verkligt kablage, belysning och den slutliga tornutskriften återstår enligt checklistan.
 

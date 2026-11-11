@@ -6,17 +6,20 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 | Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Godkända / underkända | Relevanta rutor |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Komponenter | 38 × 11 | 61 | 76 | 71 | 97 | 113 | 0 | 77 % | 0 / 2 | 305 |
+| Komponenter | 37 × 11 | 58 | 74 | 69 | 95 | 111 | 0 | 77 % | 0 / 1 | 296 |
 | Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 / 0 | 192 |
 
 **Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.
 
-**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 80, lokal (skanningsdata, ej CI): 16. cnc-repots tester körs i cnc, inte i lowriders CI.
+**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 77, lokal (skanningsdata, ej CI): 15. cnc-repots tester körs i cnc, inte i lowriders CI.
 
 ## Underkända prov
 
 - komponenter / Servohorn / fastsattning
-- komponenter / Skyddshylsa / insattning
+
+## Utgångna rader
+
+- komponenter / Skyddshylsa: hylsan gick inte att montera (CR Touch-prov 1); CR Touchen skruvas direkt i armfoten, användarens beslut 2026-11-11
 
 ## X utan skäl (0 rutor)
 
@@ -35,7 +38,6 @@ Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.
 | Torn | A | F | X | F | X | A | F | F | F | S | F |
 | Sidopanel | A | S | A | A | S | X | F | N | N | S | F |
 | Arm | A | S | A | F | F | A | F | X | N | S | F |
-| Skyddshylsa | A | S | A | F | X | A | N | X | N | S | F |
 | Hornbygel | A | S | A | F | X | A | F | X | X | S | F |
 | Distansbricka | A | S | A | A | X | X | N | X | X | X | X |
 | LED-fäste | A | S | N | N | F | N | X | F | N | N | F |

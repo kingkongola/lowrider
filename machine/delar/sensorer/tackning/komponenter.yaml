@@ -54,6 +54,7 @@ komponenter:
     service: S två M3 i bygeln
     funktion: F 4.9, 6.2
   Skyddshylsa:
+    utgatt: hylsan gick inte att montera (CR Touch-prov 1); CR Touchen skruvas direkt i armfoten, användarens beslut 2026-11-11
     matt: A kontroll_crtouch.py
     tillverkning: S printjobb sidotorn-smadelar
     insattning: A kontroll_crtouch.py (skruvstapel)
@@ -230,7 +231,7 @@ komponenter:
     rorelse: A kontroll_omgivning.py
     last: N
     varme: X ingen värmekälla och ingen värmekänslighet att tala om
-    damm: S stiftet ute bara vid mätning, hylsa, självtest (MONTAGE.md); F 8.0
+    damm: S stiftet ute bara vid mätning och parkerat högt, självtest (MONTAGE.md); F 8.0
     service: S
     funktion: F 1.3, 7.2
   Magnet:
@@ -480,7 +481,6 @@ cad:
   torn: Torn
   sidopanel: Sidopanel
   arm: Arm
-  kapa: Skyddshylsa
   hornbygel: Hornbygel
   bricka: Distansbricka
   crtouch: CR Touch

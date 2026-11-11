@@ -90,6 +90,7 @@ Skruvhålens diameter: 3,6 mm (uppmätt). Kontaktöppningen sitter mitt i sidled
 - **Resultat:** CR Touchen gick inte att få in i hylsan.
 - **Orsak (bekräftad i CAD efteråt):** hylsan är ritad för en 1,9 mm tunn fläns (BLTouch-antagande, `FLANS_T`). Referensen visar ett fullbrett parti ned till ca 5,2 mm, och hylsans skruvunderlägg hamnar i det. Simulerad insättning ovanifrån krockar 10–30 mm före slutläget. Ingen kontroll provade vägen in; bara slutläget.
 - **Åtgärd:** flänsens verkliga tjocklek och kroppens form mäts på användarens exemplar; hylsan och probfoten ritas om och en kontroll av vägen in läggs till.
+- **Beslut 2026-11-11 (användaren):** hylsan utgår. CR Touchen skruvas direkt i armfoten med kitets M3×6 underifrån genom öronen (1,8 mm, uppmätt). Probfoten provas på nytt ensam (`print/crtouch-passning`).
 
 ## 2026-11-11 — Hornprov 1 underkänt: servots krage saknas i CAD
 

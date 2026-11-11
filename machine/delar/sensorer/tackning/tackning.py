@@ -37,6 +37,8 @@ def las(fil, nyckel):
     d = yaml.safe_load((HAR / fil).read_text())
     kol, rader, fel = d["kolumner"], d[nyckel], []
     for namn, rad in rader.items():
+        if "utgatt" in rad:
+            continue                      # utgången rad: finns kvar som historik, räknas inte
         for k in kol:
             if k not in rad or not str(rad[k]).strip():
                 fel.append(f"{fil}: {namn}/{k} saknas")
@@ -68,6 +70,7 @@ BEVIS = ("datum", "metod", "protokoll", "ansvarig", "utfall")
 
 
 def resultat(matriser):
+    utg = matriser.get("_utgangna", {})
     """Senaste spårbara resultat per ruta styr: ett senare underkännande upphäver ett äldre godkännande."""
     poster = (yaml.safe_load((HAR / "resultat.yaml").read_text()) or {}).get("poster") or []
     fel, senaste = [], {}
@@ -78,6 +81,8 @@ def resultat(matriser):
             continue
         kol, rader = matriser.get(p.get("matris"), ({}, {}))
         fil = str(p["protokoll"]).split(",")[0].split()[0]
+        if (p.get("matris"), p.get("rad")) in utg:
+            continue                      # prov på utgången del: historik, påverkar inte täckningen
         if p.get("rad") not in rader or p.get("kolumn") not in kol:
             fel.append(f"resultat.yaml post {i}: {p.get('matris')}/{p.get('rad')}/{p.get('kolumn')} finns inte")
         elif p["utfall"] not in ("godkänd", "underkänd"):
@@ -110,11 +115,15 @@ def rendera(cad=None):
     for fil, nyckel, rubrik in (("komponenter.yaml", "komponenter", "Komponenter"), ("system.yaml", "funktioner", "Systemet")):
         kol, rader, f, d = las(fil, nyckel)
         fel += f
-        matriser["komponenter" if nyckel == "komponenter" else "system"] = (kol, rader)
+        matriser["komponenter" if nyckel == "komponenter" else "system"] = (kol, {n: r for n, r in rader.items() if "utgatt" not in r})
+        matriser.setdefault("_utgangna", {}).update({(("komponenter" if nyckel == "komponenter" else "system"), n): r["utgatt"] for n, r in rader.items() if "utgatt" in r})
         if nyckel == "komponenter" and cad:
             fel += cad_kontroll(cad, d)
         if f:
             continue
+        aktiva = {n: r for n, r in rader.items() if "utgatt" not in r}
+        utgangna = [n for n, r in rader.items() if "utgatt" in r]
+        rader = aktiva
         c = Counter(status(str(r[k])) for r in rader.values() for k in kol)
         tot = sum(c.values())
         mkey = "komponenter" if nyckel == "komponenter" else "system"
@@ -132,6 +141,7 @@ def rendera(cad=None):
         raise SystemExit("UNDERKÄND:\n" + "\n".join(fel))
     sammanfattning = [rad.replace("VERIFIERAT", f"{sum(1 for v in godkant if v[0] == m)} / {sum(1 for v in underkant if v[0] == m)}")
                       for m, rad in sammanfattning]
+    utg = matriser.pop("_utgangna", {})
     x_utan = [f"{m}/{n}/{k}" for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol
               if status(str(r[k])) == "X" and len(str(r[k]).strip()) <= 2]
     a_typ = Counter()
@@ -155,6 +165,7 @@ def rendera(cad=None):
              "**Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.", "",
              "**Var de automatiska kontrollerna körs:** " + ", ".join(f"{k}: {v}" for k, v in sorted(a_typ.items())) + ". cnc-repots tester körs i cnc, inte i lowriders CI.", "",
              "## Underkända prov", "", *([f"- {m} / {n} / {k}" for m, n, k in sorted(underkant)] or ["- inga"]), "",
+             "## Utgångna rader", "", *([f"- {m} / {n}: {sk}" for (m, n), sk in sorted(utg.items())] or ["- inga"]), "",
              f"## X utan skäl ({len(x_utan)} rutor)", "", "Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.", "",
              *(", ".join(x_utan[i:i + 6]) for i in range(0, len(x_utan), 6)), "",
              f"## Inte kontrollerat ({len(saknas)} rutor)", "", "| Matris | Rad | Kolumn | Vad saknas |", "|---|---|---|---|", *saknas, ""]
@@ -165,8 +176,10 @@ def strikt():
     matriser = {}
     for fil, nyckel, m in (("komponenter.yaml", "komponenter", "komponenter"), ("system.yaml", "funktioner", "system")):
         kol, rader, _, _ = las(fil, nyckel)
-        matriser[m] = (kol, rader)
+        matriser[m] = (kol, {n: r for n, r in rader.items() if "utgatt" not in r})
+        matriser.setdefault("_utgangna", {}).update({(m, n): r["utgatt"] for n, r in rader.items() if "utgatt" in r})
     godkant, underkant, _ = resultat(matriser)
+    matriser.pop("_utgangna", None)
     kvar = [(m, n, k) for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol
             if status(str(r[k])) != "X" and (m, n, k) not in godkant]
     x_utan = [(m, n, k) for m, (kol, rader) in matriser.items() for n, r in rader.items() for k in kol

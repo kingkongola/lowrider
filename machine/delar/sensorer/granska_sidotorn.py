@@ -21,7 +21,7 @@ L = lambda n: trimesh.load(a.ref / f"{n}.stl")
 ref = {k: L("R_" + k) for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, a.servo_dy, 0])
 E = json.loads((a.ut / "elektronik.json").read_text())
-torn, arm, bl, lock, kabel, kapa = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "kapa"))
+torn, arm, bl, lock, kabel = (trimesh.load(a.ut / f"{n}.stl") for n in ("torn", "arm", "crtouch", "sidopanel", "kabel"))
 hornbygel,hornskruvar,magnetstal=(trimesh.load(a.ut/f'{n}.stl') for n in ('hornbygel','hornskruvar-referens','magnetstal-referens'))
 lampbarare = trimesh.load(a.ut / "lampbarare-utkast.stl")
 for namn, m in ref.items():
@@ -39,7 +39,7 @@ print("torn bbox", torn.bounds.round(1).tolist(), "tät", torn.is_watertight)
 sk = P[((P > torn.bounds[0]) & (P < torn.bounds[1])).all(1)]
 print("skanpunkter i tornet x>12:", int((sk[torn.contains(sk)][:, 0] > 12).sum()))
 T = lambda g: trimesh.transformations.rotation_matrix(np.radians(g), [0, 1, 0], PIV)
-for nm, o in (("arm", arm), ("CR Touch", bl), ("hylsan", kapa),('hornbygel',hornbygel),('hornskruvar',hornskruvar),('magnetstål',magnetstal)):
+for nm, o in (("arm", arm), ("CR Touch", bl), ('hornbygel',hornbygel),('hornskruvar',hornskruvar),('magnetstål',magnetstal)):
     q0 = sm(o, 9000)
     b = {}
     for g in range(PARK, 1, 5):
@@ -144,14 +144,7 @@ start = np.array([mx, my, mz]) + ut * 3
 h = stralar(start, -ut, torn)
 print(f"magnetens hud mot armen: {round(h[1] - h[0], 2) if len(h) > 1 else None} mm; hålet öppet bakåt: {len(stralar(start, ut, torn)) == 0}")
 
-q = sm(bl, 30000)
-inne = q[kapa.contains(q)]
-djup = kapa.nearest.on_surface(inne)[1] if len(inne) else np.array([])
-# Detta namngivna delpar har avsiktliga anläggningsytor. STL:s float32-ytor
-# kan klassas innanför med <1e-6 mm djup trots noll CAD-volym. Redovisa dem.
-print(f"hylsan: tät {kapa.is_watertight}, CR Touch-punkter med intrångsdjup över 0,00001 mm {int((djup > .00001).sum())}, gränsytpunkter {int((djup <= .00001).sum())}, största klassade djup {float(djup.max()) if len(djup) else 0:.8f} mm")
-print("hylsans överkant mot flänsens undersida:", round(float(E["prob_montage"][2] - E["prob_flans_t"] - kapa.bounds[1, 2]), 2), "mm")
-print("hylsans botten under referenskroppen:", round(float(E["prob_montage"][2] - E["prob_kropp_djup"] - kapa.bounds[0, 2]), 2), "mm")
+# Hylsan utgick 2026-11-11; CR Touchen skruvas direkt i armfoten.
 
 # Mikrofonens ljudhål: fri stråle genom panelen och gods runt hålet. Krock för kort,
 # lödkant och ledningsväg till Pi:ns stiftlist kontrolleras exakt i CAD (se README).

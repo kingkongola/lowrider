@@ -1,7 +1,7 @@
 """Exakt kontroll av sidotornet mot den skannade omgivningen. Avbryter med fel vid krock.
 
 Skärningsvolymer räknas med manifold3d (exakta booleska operationer på täta mesh), inte med
-punktprov. Armen, CR Touchen, hylsan, hornbygeln och skruvarna vrids genom hela rörelsen
+punktprov. Armen, CR Touchen, hornbygeln och skruvarna vrids genom hela rörelsen
 (parkerat -150 till utfällt 0 grader, 2 graders steg) och kontrolleras mot referensdelarna,
 mot tornet och mot skanningens punktmoln.
 
@@ -38,7 +38,7 @@ _cad = json.loads((a.ut / "manifest.json").read_text())["kallor_sha256"]
 L = lambda p: trimesh.load(p, force="mesh")
 ref = {k: L(a.ref / f"R_{k}.stl") for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, S.SERVO_DY, 0])
-del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "kapa", "hornbygel", "hornskruvar-referens", "magnetstal-referens", "stopp-nedre", "stopp-ovre")}
+del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "hornbygel", "hornskruvar-referens", "magnetstal-referens", "stopp-nedre", "stopp-ovre")}
 P = np.load(a.ref / "scan_pts_plan.npy")
 
 # Avsiktliga anläggningar: tornets M5-distanser ligger mot verktygsfästena och servot sitter i sin ram.
@@ -88,7 +88,7 @@ for n in ("torn", "sidopanel", "stopp-nedre", "stopp-ovre"):
     if sp:
         fel.append(f"{n} går in i skanningen ({sp} punkter)")
 
-rorliga = ("arm", "crtouch", "kapa", "hornbygel", "hornskruvar-referens", "magnetstal-referens")
+rorliga = ("arm", "crtouch", "hornbygel", "hornskruvar-referens", "magnetstal-referens")
 for n in rorliga:
     varst = {}
     for g in range(int(S.PARK), 1, STEG):

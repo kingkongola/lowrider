@@ -528,7 +528,7 @@ def arm(prob_x=PROB[0]):
                    (PX + u[0] * 18 - n[0] * 3.0, PZ + u[1] * 18 - n[1] * 3.0))], y1 - 2.2, y1 + .1)
     a -= box((prob_x - 1.75, y1 - .5, F + 3), (prob_x + 1.75, PROB[1] - 4.5, F + 5))
     for x in (prob_x - cr.HAL_CC / 2, prob_x + cr.HAL_CC / 2):
-        a -= Pos(x, PROB[1], F + 2) * Cylinder(cr.M3_PILOT_D / 2, 10)  # M3 x 8 genom hylsa och fläns, eller M3 x 6 utan hylsa
+        a -= Pos(x, PROB[1], F + 2) * Cylinder(cr.M3_PILOT_D / 2, 10)  # kitets M3 x 6 underifrån genom örat (1,8) in i foten
     a -= Pos(prob_x, PROB[1], F + 2) * Cylinder(5, 10)
     # Öppet framåt: kontakten kan kopplas ur utan att klämmas mellan arm och prob.
     a -= box((prob_x - cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[0], F - 1),
@@ -560,7 +560,10 @@ def kontaktkuvert(prob_x=PROB[0]):
 
 
 def skyddshylsa(prob_x=PROB[0]):
-    """Öppen CR Touch-hylsa med gemensamma M3-fästen, fri stiftände och 0,6 mm kroppsspel."""
+    """UTGÅNGEN 2026-11-11 (användarens beslut): CR Touchen skruvas direkt i armfoten.
+
+    Hylsan gick inte att montera (CR Touch-prov 1) och exporteras inte längre. Funktionen finns
+    kvar som historik. Öppen CR Touch-hylsa med gemensamma M3-fästen och 0,6 mm kroppsspel."""
     x, y, f = prob_x, PROB[1], FLANS_Z
     t, b = -cr.FLANS_T, -cr.KROPP_DJUP - .6
     cy = cr.STIFT_Y
@@ -603,7 +606,7 @@ def main():
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     sn, so = stoppdelar(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
@@ -628,8 +631,6 @@ def main():
         namn(bl, "CR Touch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
         namn(parkera(copy.deepcopy(bl)), "CR Touch_parkerad_ATTRAPP", (.85, .2, .15)),
-        namn(skyddshylsa(a.prob_x), "CR Touch_hylsa_utfalld", (.9, .62, .29)),
-        namn(parkera(skyddshylsa(a.prob_x)), "CR Touch_hylsa_parkerad", (.9, .62, .29)),
         namn(box((cx - KORT_B / 2, KORT_Y[0], KORT_FRAM), (cx + KORT_B / 2, KORT_Y[1], KORT_BAK)), "Kamerakort_ATTRAPP", (.1, .45, .2)),
         namn(box((cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK), (cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP)), "Flatkontakt_ATTRAPP", (.85, .8, .6)),
         namn(Pos(cx, cy, cz + 3.45) * Cylinder(4.25, 6.9), "Lins_ATTRAPP", (.05, .05, .05)),
@@ -655,7 +656,7 @@ def main():
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "pi_skruv": PI_SKRUV, "topp": TOPP}))
     kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
     exporter += [a.ut/'hornskruvar-referens.stl',a.ut/'magnetstal-referens.stl']
     (a.ut / "manifest.json").write_text(json.dumps({

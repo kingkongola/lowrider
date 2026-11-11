@@ -71,7 +71,7 @@ def main():
 
     hinder = Compound(children=[barare, lampor])
     for namn, o in (("arm", cad.arm()), ("prob", cad.crtouch()),
-                     ("hylsa", cad.skyddshylsa()), ("kontaktkuvert", cad.kontaktkuvert())):
+                     ("kontaktkuvert", cad.kontaktkuvert())):
         bb = o.bounding_box()
         radie = max(math.hypot(x-cad.PX, z-cad.PZ)
                     for x in (bb.min.X, bb.max.X) for z in (bb.min.Z, bb.max.Z))
@@ -90,7 +90,7 @@ def main():
         print(namn, minrad, flush=True)
 
     # Service med proben utfälld, därefter matningen frånkopplad. Skruvar borttagna.
-    fasta = Compound(children=[torn, panel, kamera, lins, cad.arm(), cad.crtouch(), cad.skyddshylsa()])
+    fasta = Compound(children=[torn, panel, kamera, lins, cad.arm(), cad.crtouch()])
     lagen = [(0, -i / 10, 0) for i in range(13)]
     lagen += [(0, -1.2, -i / 2) for i in range(1, 17)]
     lagen += [(i, -1.2, -8) for i in range(1, 66)]
