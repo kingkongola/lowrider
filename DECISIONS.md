@@ -86,7 +86,7 @@ Tidigare plan: NVR + HDR fasta på bordet, Jackpot3 på rörlig balk och lång r
 NVR/maskinstopp sitter fast och åtkomligt på bordet. Jackpot3 samt Mean Well HDR-60-24 planeras på rörlig balk enligt V1E:s princip. Mean Well-aggregatet är inte identiskt med V1E:s exempel: verifiera lämplig kapsling/beröringsskydd, DIN-infästning, ventilation och dragavlastning innan 230 V ansluts. HDR är klass II utan PE-plint; eventuell skyddsjord i övrig installation och slangjord hanteras separat. Ingen oskyddad nätspänningsplint på balken. Använd inte den långa 24 V-slingan från det gamla förslaget utan ett konkret monteringsbehov. Kontrollera fräskabel, aggregatets matning, motor/endstop och dammsugarslang samtidigt genom hela rörelseområdet. Den redan köpta 3 m 20 AWG-kabeln finns i BOM, men behöver inte användas i denna rutt.
 
 ## D013 — NVR/maskinstopp
-**Status:** låst
+**Status:** låst; **NVR-brytaren ersatt av D024** (2026-11-10). Kravet på tydlig, lättåtkomlig stoppfunktion gäller.
 
 Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättåtkomlig stoppfunktion och dokumenterad terminalkoppling. Exakt KEDU-proveniens är inte ett projektkrav. Funktionen kallas NVR/maskinstopp, inte verifierad safety-rated E-stop.
 
@@ -95,12 +95,31 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D024 — Ett stopp för hand och från Pi:n: kontaktor för KATSU, larmingång för Jackpot
+**Status:** valt 2026-11-10 av användaren; ersätter D013:s NVR-brytare (KJD12 köps inte). Inget köpt eller inkopplat. Delar: [PROCUREMENT.md](PROCUREMENT.md#katsu-stopp-från-pin-trådbundet--planerat-ej-beställt).
+
+- **KATSU** matas via en kontaktor (24 V spole). Nödstoppets ena brytkontakt och Pi:ns utgång sitter i spolens krets. Spolen släpper vid nödstopp, Pi-larm, Pi-krasch, omstart eller strömavbrott. Pi:n drar den bara efter tryck på grön startknapp, och dess pinnar är av vid start, så KATSU startar aldrig av sig själv. Detta ersätter NVR-funktionen.
+- **Jackpot** bryts inte. Nödstoppets andra brytkontakt och Pi:ns stoppsignal (via optokopplare) ligger i serie på **en** ingång, satt som FluidNC-larmingång (`control/estop_pin`). Öppen krets = stopp och larm. Motorerna behåller ström, så Z faller inte.
+- **Ingång:** alla sju skyddade ingångar är tagna (fem ändlägen, `gpio.36` prob, `gpio.39` planerad verktygslängdsknapp). **Stoppet tar `gpio.39`** (användaren 2026-11-10), eftersom det är viktigare och behöver skyddad ingång. Verktygslängdsknappen flyttas till modulporten (`gpio.13`/`gpio.14`, oskyddad 3,3 V) eller stryks; inte avgjort.
+- **Avvägning, medvetet vald:** motorernas stopp är programvara, inte strömbrytning. Stegmotorer stannar när pulserna upphör; fräsen, den farliga delen, bryts elektriskt.
+- **Falskt stopp är billigt** tack vare körlogg, återstart och svarta lådan i `cnc` (0019, 0031). Därför får sensorer stoppa. Villkor: återstarten provas en gång på riktiga maskinen med avsiktligt stopp på spill. Pushover-notis skickas efter stopp men ingår inte i stoppkedjan.
+- **Före inkoppling:** att FluidNC 3.9.9 stoppar som väntat på `estop_pin`, kontaktorns motorlastklass, och att spolens matning (D023, ej vald) finns.
+
+## D023 — Två matningsgrupper: maskin och övervakning
+**Status:** valt 2026-11-10 av användaren; inget köpt eller inkopplat. Underlag: [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md).
+
+- **Maskin, bryts av maskinstoppet:** KATSU på 230 V; Mean Well HDR-60-24 till Jackpot3 och motorer; LM2596 B **6,0 V** till fällservot. Servot hör hit eftersom Jackpot styr det: en avstängd Jackpot får inte lämna servot strömsatt med flytande signal.
+- **Övervakning, lever efter stopp:** egen matning före maskinstoppet; LM2596 A **5,1 V** till Pi, kamera, ADXL och mikrofon.
+- **CR Touch matas från Pi:ns 5,1 V** (Pi:ns 5 V-stift eller buck A, samma skena). Endast styrsignal (`gpio.26`), kontaktsignal (`gpio.36`) och jord går till Jackpot. Inget extra kablage vid Jackpot och ingen tredje buck i tornet.
+- **Godtagen korsning:** med Jackpot avstängd kan proben mata in högst ca 0,5 mA via ingångens 10 kΩ (beräknat, ej uppmätt). Försumbart. Proben kör sitt självtest när Pi:n startar, inte när maskinen gör det.
+- **Öppet:** vilken nätdel övervakningen får, och om LED-listen ska ligga där (lyser efter stopp så kameran ser) eller på maskinens 24 V (kräver uppmätt marginal på HDR-60-24).
+
 ## D021 — Pinnar på Jackpot3 för sensorenhetens arm och BLTouch
 **Status:** valt 2026-11-09 på användarens uppdrag; ej inkopplat, `machine/AKTIV` och FluidNC är oförändrade
 
 **Modelluppgift 2026-11-10:** den tillgängliga proben är CR Touch Auto Leveling Kit, se [orderlistan](PROCUREMENT.md). Beslutet nedan togs med BLTouch som antagande. Pinnvalet ligger kvar som plan, men CR Touchens elektriska kompatibilitet måste verifieras enligt [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) före anslutning. Detta är ingen konfigurationsändring.
 
-**Fällservots signal på `gpio.27`, BLTouch-styrning på `gpio.26`, BLTouch-signal på `gpio.36` (probe-porten).** Fast verktygslängdsknapp flyttas till `gpio.39` som `toolsetter_pin`. Utgångarna ställs på 5 V, inte 24 V, med bygeln på kortet. Armen och proben styrs alltså från Jackpot, inte via Wi-Fi från Pi:n.
+**Fällservots signal på `gpio.27`, BLTouch-styrning på `gpio.26`, BLTouch-signal på `gpio.36` (probe-porten).** Fast verktygslängdsknapp flyttas till `gpio.39` som `toolsetter_pin` (**ersatt av D024:** `gpio.39` går till stoppet). Utgångarna ställs på 5 V, inte 24 V, med bygeln på kortet. Armen och proben styrs alltså från Jackpot, inte via Wi-Fi från Pi:n.
 
 **Varför:** de fyra utgångsportarna (`gpio.26/27/0/2`) är de enda med full PWM på 5 V-läget. `gpio.0/2` är startpinnar på ESP32, så de undviks. `gpio.26` kan ge en kort puls vid start enligt V1 Engineering; den går till BLTouch, där uppstartsbeteendet behöver provas separat utan att fällarmen drivs av samma signal, och `gpio.27` till servot. `gpio.36` är den port probe redan använder.
 

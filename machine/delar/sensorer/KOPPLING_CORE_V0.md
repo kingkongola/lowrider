@@ -11,7 +11,8 @@
 | Fällservots styrsignal | Jackpot `gpio.27`, utgång i 5 V-läge | Fysisk kontakt, signalnivå, 50 Hz, uppstart och monterade lägespulser |
 | CR Touch-stiftets styrsignal | Jackpot `gpio.26`, utgång i 5 V-läge | Faktisk kabelordning, pulskommandon och beteende vid uppstartspuls |
 | CR Touch-kontakt | Jackpot `gpio.36` | Utsignalsnivå, polaritet och status vid kontakt/larm |
-| Fast verktygslängdsknapp | Planerad `toolsetter_pin` på `gpio.39` | Knappens faktiska montage/anslutning är ännu inte verifierad |
+| Fast verktygslängdsknapp | Ingen pinne: `gpio.39` går till stoppet (D024). Modulporten eller struken, ej avgjort | Knappens faktiska montage/anslutning är ännu inte verifierad |
+| Stopp (nödstopp + Pi i serie) | `gpio.39` som `control/estop_pin`, D024 | FluidNC-beteende, optokopplare och ledningsdragning ej provade |
 | Kamera | Camera Module 3 → CSI-kabel → Pi Zero 2 WH | Kontaktriktning, låsning, verkliga böjar och räckvidd |
 | Kamera till värddator | Pi → bild och metadata via nätverk | Kameratjänst, låst fokus och bildprov |
 | ADXL345 | Lokalt till Pi; SPI är den planerade vägen för vibrationer | Levererat kort, matning, hålbild och signalanslutningar |
@@ -26,7 +27,7 @@ Behåll kitets kontakt vid sensorn. [TH3D:s sensor-side guide](https://tickets.t
 | Funktion vid sensorn | Planerad anslutning |
 | --- | --- |
 | Matningsjord, GND | LM2596 A minus och gemensam signaljord |
-| +5 V matning | LM2596 A plus, nominellt 5,0 V |
+| +5 V matning | LM2596 A plus, 5,1 V |
 | SERVO, styrsignal in till proben | Jackpot GPIO 26:s signalutgång i 5 V-läge |
 | ZStop GND, kontaktsignalens jord | Jackpot probe-portens G |
 | ZStop, kontaktsignal ut från proben | Jackpot probe-portens S, GPIO 36 |
@@ -35,7 +36,7 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 
 ## Matning och kabel
 
-- Befintlig 24 V-försörjning → **LM2596 A planerad till nominellt 5,0 V** för Pi och CR Touch. Detta ersätter tidigare 5,1 V-förslag; utgången ska mätas även med last. Ingen fysisk justering är gjord här.
+- Befintlig 24 V-försörjning → **LM2596 A ställs till 5,1 V** för Pi och CR Touch (användarens val 2026-11-10). 5,1 V är Raspberrys egen nätdels spänning; marginalen tar kabelns spänningsfall när Pi:n drar mycket, och ligger inom CR Touchens nominella 5 V. Utgången mäts tomgång och med last. Ingen fysisk justering är gjord här.
 - Samma 24 V-försörjning → **LM2596 B inställd på 6,0 V** till servot. Separat regulator ska hindra servots strömtoppar från att dra ned Pi-matningen.
 - Regulatorerna finns enligt BOM; båda utgångarna ställs och mäts innan elektroniken ansluts. Dimensionering av ström, säkring, ledningar och prov med faktisk last återstår.
 - Gemensam signaljord krävs mellan Jackpot och servomatning. Lägg servots returström så att den inte skapar störningar i prob- eller Pi-jord. Planerad kondensator nära servokontakten är 470–1000 µF; faktisk installation och val är inte verifierade.

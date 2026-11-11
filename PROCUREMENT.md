@@ -139,8 +139,23 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 
 ### NVR/maskinstopp
 
-Aktiv kandidat: Clas Ohlson art. `50-2929`, **KJD12 230 V / 10 A, 299 kr**.
-Köp först när terminalschema/mått är tillräckliga för kapslingen.
+**Köps inte** (D024, 2026-11-10): ersatt av kontaktorlådan nedan. Tidigare kandidat: Clas Ohlson `50-2929`, KJD12, 299 kr.
+
+### KATSU-stopp från Pi:n, trådbundet — planerat, ej beställt
+
+Användarens val 2026-11-10: kontaktorlösningen, ca 500 kr totalt; ersätter även NVR-brytaren (D024). Pi:n håller kontaktorn dragen; Pi-krasch, omstart, strömavbrott eller nödstopp släpper den, och KATSU startar bara efter tryck på grön knapp (Pi:ns pinnar är av vid start). Bryter bara KATSU, så Jackpot håller Z. Inget nätverk i stoppkedjan; Pushover-notis efteråt.
+
+| Del | Kandidat | Pris |
+| --- | --- | ---: |
+| Modulkontaktor 24 V AC/DC, 2 × NO, 25 A | Electrokit, Iskra IKD225-20-24V | 219 kr |
+| Transistorkort för spolen (< 0,1 A) | ej valt | några tior |
+| Kapsling med DIN-skena, stickpropp, uttag | ej valt | ca 150 kr |
+| Nödstopp (svampknapp) med **två** brytande kontakter | ej valt | ca 60–100 kr |
+| Grön startknapp | ej valt | ca 20 kr |
+| Optokopplare, Pi:ns stoppsignal till Jackpot | ej valt | några kr |
+| **Summa** | | **ca 500 kr** |
+
+Före köp: motorlastklass (AC-7b/AC-3) i kontaktorns datablad. 230 V-delen kopplas av någon van vid nätspänning. Spolen matas från övervakningens nätdel (D023), som ännu inte är vald.
 
 ### Biltema/elbox
 

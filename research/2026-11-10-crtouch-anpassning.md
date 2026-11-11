@@ -46,7 +46,7 @@ Referensens utfällda spets ligger 46 mm under flänsens ovansida. Det skiljer s
 
 ## El och fysisk verifiering
 
-CR Touch kräver nominellt 5 V enligt Creality. Matningsplanen ändras därför till 5,0 V för Pi/prob; servot behåller egen 6,0 V-regulator. Ingen regulator har ställts eller kopplats om genom dokumentändringen.
+CR Touch kräver nominellt 5 V enligt Creality. Matningsplanen ändras därför till 5,0 V för Pi/prob; servot behåller egen 6,0 V-regulator. Ingen regulator har ställts eller kopplats om genom dokumentändringen. **Ersatt samma dag:** användaren valde 5,1 V för Pi/prob; se [kopplingsunderlaget](../machine/delar/sensorer/KOPPLING_CORE_V0.md).
 
 [TH3D:s sensor-side guide](https://tickets.th3dstudio.com/help-guides/article/crtouch-sensor-pinout-%E2%80%93-sensor-side) skiljer servo/styrning, ZStop/kontakt, matning och två jordledare. Använd funktionsnamn och kontrollera den faktiska kabeln; färger och Creality-moderkortets IN/OUT-etiketter är inte en tillräcklig kopplingsanvisning. [Jackpot3:s dokumentation](https://docs.v1e.com/electronics/jackpot3/) beskriver 5 V-PWM-utgångar och de skyddade ingångarna. D021:s GPIO-plan behålls, men faktisk anslutning och startbeteende är ännu inte provade.
 

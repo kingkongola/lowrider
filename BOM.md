@@ -105,7 +105,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | Spektrum S664 / SPMS664 | 1 befintligt servo; rörelseomfång godkänt enligt mätloggen |
 | CR Touch Auto Leveling Kit | 1 tillgängligt enligt användaren. Standardkitets dokumenterade innehåll: sensor, fempolig kabel, tre metallbeslag, 2 × M3×6, 2 × M3×8, buntband och manual. Faktisk kartonginventering/passning inte rapporterad; [kitunderlag](research/2026-11-10-crtouch-anpassning.md) |
 | Probfästets skruvar | 2 × M3×8 med nya hylsan, alternativt 2 × M3×6 utan hylsa. Avses tas ur kitet; skalle och skruvstapel kontrolleras i passningsprovet |
-| LM2596 | 2 planerade: nominellt 5,0 V till Pi/CR Touch och 6,0 V till servo. 10 st köpta enligt användaren 2026-10-28. Utgångarna mäts före anslutning |
+| LM2596 | 2 planerade: 5,1 V till Pi/CR Touch och 6,0 V till servo. 10 st köpta enligt användaren 2026-10-28. Utgångarna mäts före anslutning |
 | Neodymmagnet Ø6 × 3 mm | 1 till parkeringsstopp; 60-pack Vinabo finns enligt användaren 2026-10-27 |
 | M3-skruv av stål | Tillgänglig enligt användaren; huvud mot parkeringsmagneten |
 | M3 × 10 | CAD avser 2 till kamera, 2 till ADXL345, 6 till panel och 2 till hornbygeln. Avses tas ur befintliga M3-typer; ledigt antal och faktiska längder provas vid montage. Probfästet har separat skruvrad ovan |
