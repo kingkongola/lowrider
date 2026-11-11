@@ -147,11 +147,11 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 
 **Köps inte** (D024, 2026-11-10): ersatt av kontaktorlådan nedan. Tidigare kandidat: Clas Ohlson `50-2929`, KJD12, 299 kr.
 
-### Övervakningens nätdel och tornkabeln — föreslaget 2026-11-11, ej beslutat
+### Övervakningens nätdel och tornkabeln — nätdelen vald 2026-11-11, inget beställt
 
 | Del | Förslag | Varför |
 | --- | --- | --- |
-| Nätdel (L1) | Mean Well HDR-60-24, en till | Matar LED, Pi och kontaktorspole efter stopp, D023; se [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md) |
+| Nätdel (L1) | **Vald av användaren:** Mean Well HDR-60-24 eller likvärdig 24 V DIN, en till | Matar LED, Pi och kontaktorspole efter stopp, D023; se [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md) |
 | Kabel torn–balk (L2) | LiYCY 8 × 0,25 mm², skärmad, ca 3 m | Se [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
 | Skumtejp och dammnät/ventildekal | Liten bit av varje | Mikrofonens tätning och dammskydd |
 

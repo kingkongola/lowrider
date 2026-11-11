@@ -112,7 +112,7 @@ Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk 
 - **Övervakning, lever efter stopp:** egen matning före maskinstoppet; LM2596 A **5,1 V** till Pi, kamera, ADXL och mikrofon.
 - **CR Touch matas från Pi:ns 5,1 V** (Pi:ns 5 V-stift eller buck A, samma skena). Endast styrsignal (`gpio.26`), kontaktsignal (`gpio.36`) och jord går till Jackpot. Inget extra kablage vid Jackpot och ingen tredje buck i tornet.
 - **Godtagen korsning:** med Jackpot avstängd kan proben mata in högst ca 0,5 mA via ingångens 10 kΩ (beräknat, ej uppmätt). Försumbart. Proben kör sitt självtest när Pi:n startar, inte när maskinen gör det.
-- **Öppet:** vilken nätdel övervakningen får, och om LED-listen ska ligga där (lyser efter stopp så kameran ser) eller på maskinens 24 V (kräver uppmätt marginal på HDR-60-24).
+- **Nätdel vald 2026-11-11 av användaren:** en andra Mean Well HDR-60-24 eller likvärdig 24 V DIN-nätdel, före nödstoppet. Den matar övervakningen, LED-listen (lyser efter stopp så kameran ser) och kontaktorns spole (D024), ca 30 W av 60 W. Inte beställd.
 
 ## D022 — COB-list ersätter G4-lampor för LowRider-belysning
 **Status:** valt 2026-11-10; montering, strömförsörjning och CAD ej fysiskt verifierade
