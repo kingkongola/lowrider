@@ -98,6 +98,7 @@ Ej uppmätt: skruvhålens diameter, kontaktöppningens läge mot hålen, hur lå
 - **Orsak:** CAD:ens servo har plan ovansida och H = 10 mm mättes mot den plana delen. Den printade delen tar i kragen innan hornet ligger an.
 - **Åtgärd:** kragens diameter och höjd mäts; fickan får urtag för kragen och omprövas. Hornprovet är **inte** godkänt.
 - **Uppmätt av användaren 2026-11-11:** kragen Ø12 mm, 1 mm över servots plana ovansida. Inlagd i servomodellen (`SERVO_KRAGE`). Med H = 10 mm når varken fickan (till 5 mm) eller bygeln (till 6,2 mm) kragen i CAD; orsaken till böjningen är därför ännu inte fastställd.
+- **Fler mått 2026-11-11:** hornet satt på servot; det var **servots mittskruv** som böjde hornet mot lodlinjen när den drogs åt. Mässingsaxelns topp ligger 7,0 mm över servots plana ovansida och 5,2 mm över kragens topp (ger kragen 1,8 mm, mot tidigare angivet 1 mm; bekräftas). Trolig orsak: bygeln eller dess skruvskallar på servosidan, 20-30 mm ut längs hornet, tar i servohusets upphöjningar innan navet sitter på axeln. Servohusets ovansida är inte plan i CAD; profilen under hornarmen mäts.
 
 ## 2026-11-10 — Fällservots rörelseomfång verifierat på bänk
 
