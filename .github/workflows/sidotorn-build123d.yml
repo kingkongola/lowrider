@@ -13,6 +13,7 @@ on:
       - 'machine/delar/sensorer/lampor.py'
       - 'machine/delar/sensorer/passningsprov.py'
       - 'machine/delar/sensorer/kontroll_*.py'
+      - 'machine/delar/sensorer/tackning/**'
       - 'machine/delar/sensorer/referenser/**'
       - '.github/workflows/sidotorn-build123d.yml'
   workflow_dispatch:
@@ -39,6 +40,9 @@ jobs:
       - name: Pi-stiftlistens lödplats per stift och ledningsgator
         working-directory: machine/delar/sensorer
         run: python kontroll_stiftlist.py
+      - name: Täckningsmatriserna är kompletta och TACKNING.md aktuell
+        working-directory: machine/delar/sensorer/tackning
+        run: python -m pip install pyyaml && python tackning.py --kontroll
       - name: Monteringen i ordning (verktygsåtkomst för varje skruv)
         working-directory: machine/delar/sensorer
         run: python kontroll_montage.py

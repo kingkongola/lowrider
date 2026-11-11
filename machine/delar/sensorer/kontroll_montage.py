@@ -104,6 +104,10 @@ for x, z in S.PI_SKRUV:
                  {"servo": servo, "arm": arm, "arm parkerad": P(arm)}))
 steg.append(("11 kopplingskortets yta på framväggen (kort, löd och kondensator)", S.box(*S.KOPPLINGSKORT),
              {"torn": torn, "panel": panel}))
+# 12. microSD skjuts in utifrån genom springan i bakväggen, efter att Pi:n sitter.
+sd0 = (S.PI_CENTER[0] - 32.5 - 2.6, S.PI_Y + 1.4, S.SD_Z[0] + .5)
+sd1 = (S.PI_CENTER[0] - 32.5 + 12.0, S.PI_Y + 2.4, S.SD_Z[1] - .5)
+steg.append(("12 microSD in utifrån genom bakväggen (kortets väg)", S.box((sd0[0] - 15, sd0[1], sd0[2]), sd1), {"torn": torn}))
 # 10. Magneten in bakifrån i parkeringsstoppet.
 mx, mz, vinkel = S.magnet_lage(S.PROB[0])
 ut = (math.cos(math.radians(vinkel)), math.sin(math.radians(vinkel)))

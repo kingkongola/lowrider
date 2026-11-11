@@ -1,0 +1,220 @@
+# Täckningsmatris för systemet: funktioner som går över flera komponenter.
+# Samma statuskoder som komponenter.yaml: A, S, F, N, X, SAKNAS.
+kolumner:
+  krav: Krav formulerat
+  konstruktion: Konstruktion finns
+  auto: Automatisk kontroll
+  berakning: Simulering eller beräkning
+  bank: Bänkprov
+  maskin: Prov på maskinen
+  felfall: Vad händer när det går fel
+  agare: Ägande fil
+
+funktioner:
+  Tornets infästning på maskinen:
+    krav: S MONTAGE.md (inget i Core ändras)
+    konstruktion: S två M5, kanal för den nedre
+    auto: A kontroll_montage.py, kontroll_omgivning.py
+    berakning: SAKNAS klämkraft, krypning i PETG och tornets vibration ej beräknade
+    bank: X
+    maskin: F 5.2-5.3
+    felfall: SAKNAS lossnar skruven syns det inte; ingen kontroll under drift
+    agare: S MONTAGE.md
+  Armens rörelse och ändlägen:
+    krav: S D020
+    konstruktion: S hårda stopp, magnet, servo utan puls i vila
+    auto: A kontroll_omgivning.py, probstyrning.yml (makronas självtest)
+    berakning: SAKNAS stoppkrafter och magnetens hållkraft
+    bank: F 1.2, 4.8-4.9
+    maskin: F 6.2
+    felfall: S armspärren stoppar jobb om armen inte syns parkerad; N magneten släpper under fräsning upptäcks inte förrän nästa jobb
+    agare: S machine/probstyrning/README.md
+  Probmätning till nollpunkt:
+    krav: S beslut 0036, probstyrning README (skillnadsmätning)
+    konstruktion: S mat_z-makro, G38 på gpio.36
+    auto: A makron.py självtest; cnc tester för probval
+    berakning: N stiftets XY-läge ur CAD
+    bank: F 1.3
+    maskin: F 7.1-7.2
+    felfall: S G38 utan kontakt ger larm; S okänt armläge nekar mätning
+    agare: S machine/probstyrning/README.md
+  Kamerabild och kalibrering:
+    krav: S KAMERA_ANHALL.md
+    konstruktion: S rakt ned, lins 130 mm
+    auto: A cnc tester (kameraseende, kalibrering)
+    berakning: S synfält 66 x 41 grader, ca 0,056 mm/px
+    bank: F 1.6
+    maskin: F 7.3
+    felfall: S suddig eller mörk bild ger fel i sensorpi och armspärren
+    agare: S machine/KAMERA_ANHALL.md
+  Belysning:
+    krav: S D022
+    konstruktion: S COB-fäste
+    auto: A led-tre-vinklar.yml
+    berakning: N säljaruppgifter
+    bank: F värmeprov
+    maskin: F 6.6
+    felfall: N lyser efter stopp eftersom den matas från övervakningen
+    agare: S machine/delar/led/README.md
+  Armspärren:
+    krav: S beslut 0035 och 0036
+    konstruktion: S fast märke och mönster på armen
+    auto: A cnc test_armsparr.py
+    berakning: SAKNAS märkets plats ej vald (L6)
+    bank: X
+    maskin: F 6.5
+    felfall: S oklar bild ger okänt läge och stopp
+    agare: S cnc docs/beslut/0036
+  Vibrationsmätning:
+    krav: S cnc verktygsovervakning.md
+    konstruktion: S ADXL på styv platta, SPI
+    auto: A cnc test_sensorpi.py (låtsas-SPI)
+    berakning: S 3200 prov/s räcker till skärtonen vid 18 300 rpm; SAKNAS plattans resonans
+    bank: F 1.7
+    maskin: F 8.1
+    felfall: S full FIFO redovisas som möjlig lucka
+    agare: S cnc pi/README.md
+  Ljudmätning:
+    krav: S cnc verktygsovervakning.md
+    konstruktion: S INMP441 i panelen
+    auto: A kontroll_mikrofon.py; cnc test_sensorpi.py
+    berakning: N
+    bank: F 1.8
+    maskin: F 8.1
+    felfall: S ingen inspelning ger fel i sensorpi
+    agare: S cnc pi/README.md
+  Matning, övervakning:
+    krav: S D023
+    konstruktion: S HDR nr 2, LM2596 A
+    auto: X
+    berakning: S ca 30 W av 60 W; SAKNAS spänningsfall i 0,25 mm²-ledarna vid 1,3 A ej räknat för hela vägen
+    bank: F 1.1, provkörning steg 1
+    maskin: F 6.4
+    felfall: SAKNAS ingen säkring vald på 24 V ut från lådan
+    agare: S machine/EL_BELYSNING_OCH_STOPP.md
+  Matning, maskin och servo:
+    krav: S D023, D024
+    konstruktion: S HDR nr 1, LM2596 B, kondensator
+    auto: X
+    berakning: SAKNAS servons strömtopp mot LM2596 B och kabeln ej beräknad
+    bank: F 1.1
+    maskin: F 6.2
+    felfall: N servot utan matning släpper; magneten håller
+    agare: S KOPPLING_CORE_V0.md
+  Jord och störningar:
+    krav: S en jordpunkt i tornet, skärm jordad i en ände
+    konstruktion: S kopplingskortet, LiYCY
+    auto: X
+    berakning: X
+    bank: X
+    maskin: SAKNAS inget prov för störningar på probsignalen med KATSU igång
+    felfall: SAKNAS falsk probkontakt under G38 ger fel nollpunkt
+    agare: S KOPPLING_CORE_V0.md
+  Stoppkedjan:
+    krav: S D024
+    konstruktion: S laddningspump, kontaktor, nödstopp, larmslinga
+    auto: A cnc test_sensorpi.py (stoppvakten)
+    berakning: S pumpens värden räknade
+    bank: F stopplådans bänkprov på 24 V
+    maskin: F provkörning steg 10
+    felfall: S Pi-krasch, fast utgång och kabelbrott släpper kontaktorn
+    agare: S machine/EL_BELYSNING_OCH_STOPP.md
+  Start efter stopp:
+    krav: S D024 (bara grön knapp)
+    konstruktion: S stoppvakten
+    auto: A cnc test_sensorpi.py
+    berakning: X
+    bank: F stopplådans bänkprov
+    maskin: F provkörning steg 10
+    felfall: S fasthållen knapp startar inte om
+    agare: S cnc pi/sensorpi.py
+  FluidNC-konfiguration:
+    krav: S D021, D024
+    konstruktion: S konfigförslaget (sex rader); estop_pin ej inlagd
+    auto: A probstyrning.yml
+    berakning: X
+    bank: X
+    maskin: F 6.1; SAKNAS estop_pin på gpio.39 saknas i förslaget
+    felfall: N fel polaritet på probe.pin avvisas av check_mode_start
+    agare: S machine/probstyrning/README.md
+  Programvara på Pi:n:
+    krav: S cnc pi/README.md
+    konstruktion: S sensorpi.py med systemd
+    auto: A cnc test_sensorpi.py (16 tester)
+    berakning: X
+    bank: F 1.5-1.8
+    maskin: F fas 6
+    felfall: S tjänsten startar om sig själv; stoppvakten släpper vid krasch
+    agare: S cnc pi/
+  Programvara på datorn:
+    krav: S cnc docs
+    konstruktion: S armsparr, probval, matsekvens
+    auto: A cnc testsviten (4 fel fanns före 2026-11-11, ej i dessa delar)
+    berakning: X
+    bank: X
+    maskin: F fas 6-7
+    felfall: SAKNAS datorn som begär stopp vid sensorlarm är inte byggd
+    agare: S cnc
+  Nätverk:
+    krav: S ingen säkerhet över Wi-Fi
+    konstruktion: S HTTP på port 8080
+    auto: X
+    berakning: X
+    bank: F 1.5
+    maskin: N Wi-Fi-räckvidd i garaget
+    felfall: S bortfall ger fel i armspärren (stopp); stopp går ändå via knapp och pump
+    agare: S cnc pi/README.md
+  Kabelföring genom rörelsen:
+    krav: S CABLE_ROUTING.md
+    konstruktion: SAKNAS tornkabelns väg längs X ej ritad
+    auto: X
+    berakning: SAKNAS böjradie och längd per kabel genom rörelsen inte räknade
+    bank: X
+    maskin: F 5.3
+    felfall: N avbruten ledare i pumpkedjan stoppar; avbruten probledare ger ingen kontakt (larm vid G38)
+    agare: S CABLE_ROUTING.md
+  Värme i tornet:
+    krav: SAKNAS ingen temperaturgräns satt
+    konstruktion: S PETG, slitsar
+    auto: X
+    berakning: SAKNAS förlusteffekt och temperaturhöjning inte räknade
+    bank: F 1.5 (vcgencmd)
+    maskin: SAKNAS långkörning med temperaturloggning saknas i checklistan
+    felfall: N Pi:n stryper sig själv
+    agare: SAKNAS ingen fil äger värmekraven
+  Damm och spån:
+    krav: SAKNAS inget krav formulerat
+    konstruktion: S dammnät på mikrofonen
+    auto: X
+    berakning: X
+    bank: X
+    maskin: SAKNAS inget prov av damm på lins, mikrofon och CR Touch under fräsning
+    felfall: S smutsig lins ger stopp via armspärren
+    agare: SAKNAS ingen fil äger dammkraven
+  Underhåll:
+    krav: N
+    konstruktion: S SD utifrån, panel med sex skruvar
+    auto: A kontroll_montage.py
+    berakning: X
+    bank: X
+    maskin: N
+    felfall: X
+    agare: S MONTAGE.md
+  230 V-säkerhet:
+    krav: S D024, AUDIT.md
+    konstruktion: SAKNAS stopplådans layout, beröringsskydd och dragavlastning ej ritade
+    auto: X
+    berakning: X
+    bank: X
+    maskin: F kopplas av någon van vid nätspänning
+    felfall: SAKNAS felfall i 230 V-delen (kortslutning, jordfel, säkring) inte genomgångna
+    agare: S machine/EL_BELYSNING_OCH_STOPP.md
+  Dokumentens samstämmighet:
+    krav: S CLAUDE.md (en källa per sak)
+    konstruktion: X
+    auto: SAKNAS ingen automatisk kontroll av att BOM stämmer med CAD; skruvraderna rättades för hand 2026-11-11 efter att matrisen hittade fel
+    berakning: X
+    bank: X
+    maskin: X
+    felfall: N fel skruvar köps eller tas fram
+    agare: S BOM.md
