@@ -1,0 +1,29 @@
+{
+  "_om": "Enda källan till pulsvärden och mätparametrar för fällarm och CR Touch. Ändra här, kör makron.py. Skriv aldrig om de genererade .nc-filerna för hand.",
+  "pwm_hz": 50,
+  "saker_z_mpos": 0.0,
+  "arm": {
+    "installd": false,
+    "_installd": "Sätts till ett datum först när pulserna är framtagna på monterad arm enligt README, steg 3, och loggade i CALIBRATION.md.",
+    "parkerad_us": null,
+    "utfalld_us": null,
+    "forbi_stopp_us": 30,
+    "ramp_steg": 20,
+    "ramp_paus_s": 0.04,
+    "vila_vid_stopp_s": 0.6
+  },
+  "stift": {
+    "_kalla": "BLTouch-protokollet (ANTCLABS). CR Touch anges kompatibel; verifieras på exemplaret enligt README, steg 2.",
+    "ut_us": 647,
+    "in_us": 1473,
+    "sjalvtest_us": 1782,
+    "larm_av_us": 2194,
+    "vanta_s": 0.5
+  },
+  "matning": {
+    "max_ned_mm": 25.0,
+    "snabb_mm_min": 150,
+    "langsam_mm_min": 40,
+    "lyft_mm": 2.0
+  }
+}

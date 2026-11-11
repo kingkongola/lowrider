@@ -41,6 +41,8 @@ Behåll kitets kontakt vid sensorn. [TH3D:s sensor-side guide](https://tickets.t
 
 Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan kortänden anpassas. Lita inte på en annan kabels färger eller på IN/OUT-etiketter på ett Creality-moderkort. Manualens Ender-firmware och instruktion att ta bort skrivarens Z-brytare gäller inte vår LowRider; dess homingbrytare behålls.
 
+**Styrning byggd i programvara 2026-11-11, ej provad:** makron, pulsvärden och konfigurationsförslag finns i [probstyrning](../../probstyrning/README.md).
+
 ## Matning och kabel
 
 - Befintlig 24 V-försörjning → **LM2596 A ställs till 5,1 V** för Pi och CR Touch (användarens val 2026-11-10). 5,1 V är Raspberrys egen nätdels spänning; marginalen tar kabelns spänningsfall när Pi:n drar mycket, och ligger inom CR Touchens nominella 5 V. Utgången mäts tomgång och med last. Ingen fysisk justering är gjord här. Justerskruven säkras med smältlim efter inställning; mät igen efter limning.

@@ -1,6 +1,6 @@
 # Procurement — canonical order matrix
 
-**Leveransstatus uppdaterad 2026-11-10.** Äldre pris- och lagerunderlag är daterade inköpsögonblick, inte dagens erbjudanden. Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
+**Leveransstatus uppdaterad 2026-11-11: användaren rapporterar att alla delar finns** ("alla delar finns!"). Det gäller sensorenhetens delar enligt denna matris; exakt antal INMP441 och KW11-leveransen är inte inventerade post för post. Fysisk passning är inte provad. Tidigare: Leveransstatus uppdaterad 2026-11-10.** Äldre pris- och lagerunderlag är daterade inköpsögonblick, inte dagens erbjudanden. Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## LED-val 2026-11-10 – Prime och inköpsstatus
 

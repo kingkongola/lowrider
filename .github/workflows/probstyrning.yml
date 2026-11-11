@@ -1,0 +1,30 @@
+name: Probstyrning (makron och konfigförslag)
+
+on:
+  push:
+    paths:
+      - 'machine/probstyrning/**'
+      - '.github/workflows/probstyrning.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kontroll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Självtest och att incheckade makron stämmer med installning.json
+        working-directory: machine/probstyrning
+        run: |
+          python makron.py
+          git diff --exit-code makron/ || (echo "makron/ är inte genererade ur aktuell installning.json" && exit 1)
+      - name: Konfigförslaget går att göra om ur backupen
+        run: |
+          python machine/probstyrning/konfig.py machine/config-2026-11-05-z800.yaml /tmp/forslag.yaml
+          diff /tmp/forslag.yaml machine/probstyrning/config-forslag-probstyrning.yaml
