@@ -13,47 +13,98 @@
 - [ ] Planera **3 × parallella lödda LED-grenar**, isolerade lödpunkter och dragavlastning, och en gemensam tvåledarmatning på balken. Prova först befintlig passage/kant; **om borrning krävs**, märk en enda genomföring efter kontroll av platta, M5/Brace, båda sidor och full XYZ, avgrada och skydda kabeln. Ingen hålposition eller diameter beslutad.
 - [ ] Verifiera befintliga aggregat och dimensionera separat matning för installerad LED-längd; Pi/övervakningen ska fortsatt fungera efter maskinstopp. El-/stoppkrav: [`machine/EL_BELYSNING_OCH_STOPP.md`](machine/EL_BELYSNING_OCH_STOPP.md).
 
-## Hela projektets återstående arbete
+## Sensorenheten — hela vägen i ordning (genomgång 2026-11-11)
 
-Grundmaskinen är byggd och har fräst. Det återstående arbetet gäller dess slutkontroller samt sensorenhetens konstruktion, montage, driftsättning och verifierade användning. En beredd provprint eller fungerande offlinekod betyder inte att hela sensorkedjan är klar.
+Genomgången är gjord som en torrkörning från användarens plats: vad som görs, med vad, vad som ska stämma innan nästa steg och vad steget låser upp. **Inget steg är godkänt förrän användaren rapporterat resultatet**; resultat förs i [CALIBRATION.md](CALIBRATION.md), måttändringar i CAD-källan. Varje grind (G) måste vara godkänd innan nästa fas börjar, om inget annat sägs.
 
-| Arbetsblock | Vad återstår? |
-| --- | --- |
-| Konstruktion och passning | Prova mottagna komponenter och hornets nya M3-infästning. Provpassa CR Touch-fästet. Provprinta ett LED-fäste enligt D022. Därefter bered alla slutdelars utskrifter. Detaljer nedan. |
-| Print och montage | Skriv ut och montera torn, panel, arm, hylsa och distanser. Kontrollera maskininfästning, skruvar, kabelböjar, hela armrörelsen, hårda stopp, magnetparkering och beteende utan servomatning. |
-| Matning och verklig sensorinhämtning | Ställ/prova regulatorerna med last, färdigställ ledningar och dragavlastning. Starta Pi, prova kamera och överföring till värddatorn samt ADXL345. Kopplingsägare: [KOPPLING_CORE_V0.md](machine/delar/sensorer/KOPPLING_CORE_V0.md). |
-| CR Touch och verktygsmätare | Verifiera CR Touch-anslutningen, genomför den elektriska provordningen, ta fram/granska komplett maskinkonfiguration, prova arm och stift via Jackpot och därefter kontrollerad kontaktmätning. Verifiera upprepbarhet, avstånd till verktygscentrum och att den andra proben inte kan ge fel mätresultat. [Provförfarande](machine/delar/nollpunkt/INKOPPLING_OCH_PROV.md). |
-| Kamera till användbar mätning | Prova egen belysning, låst fokus och verkliga stillbilder. Gör kalibreringsunderlaget, knyt bilden till verifierad stillastående maskinposition, mät XY-fel vid avsedda höjder och prova konturer/öppningar på verkligt trä. Kod finns; fysisk noggrannhet och sammanhängande maskinflöde är inte verifierade. [Fysisk metod](machine/KAMERA_ANHALL.md), [mjukvaruläge](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md). |
-| Ljud och vibration | Bekräfta INMP441-leverans och placering, prova faktisk insamling från mikrofon/ADXL345 och jämför med riktiga fräsjobb. Simulatorer bevisar inte att verkliga avvikelser upptäcks. Detta behöver inte blockera första kamera-/probversionen. |
-| Grundmaskinens avslut | Bekräfta de dokumenterade kontrollerna för kalibrering, kabel-/slangrörelse, dammhantering och el/maskinstopp enligt avsnittet nedan. Saknad slutrapport är inte bevis på att delarna saknas eller måste byggas om. |
+### Luckor som genomgången hittade (ingen plan täcker dem än)
 
-**Utbyggnad efter första fungerande kamera-/probversionen:** verklig bildsammanfogning när en bild inte räcker; prov av optiska skruvbrickor (ännu inte CAD-ritade), Y-anhåll och materialindexering; samt eventuell vidare modell av arbetsstyckets form och historik. Dessa delar är inte färdiga genom offlineprototyperna. Kontinuerlig 2,5D-skanning och AI-/matningsautomatik är inte krav för aktuell mekanik; återupptas endast vid konkret nytta enligt [kameraunderlaget](machine/KAMERA_ANHALL.md) och [mjukvarans avgränsning](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md).
+| # | Lucka | Blockerar | Förslag |
+| --- | --- | --- | --- |
+| L1 | **Övervakningens nätdel (D023) är inte vald.** Tornet behöver två matningar: maskinens 24 V till servot (LM2596 B) och övervakningens egen till Pi och CR Touch (LM2596 A) | Fas 5 | Kandidater i [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md). Bänkproven i fas 1 kan köras på valfri 12–24 V-källa |
+| L2 | **Kabeln från tornet till balken är inte projekterad:** övervakningsmatning, 24 V maskin, gemensam jord, servosignal, CR Touch styrning och kontakt, ca 7 ledare | Fas 5 | Välj kabel och kontakt efter L1; mät längd med snöre vid full rörelse |
+| L3 | **Pi-sidans program saknas:** ingen tjänst som skickar bild till datorn (armspärren förutsätter en adress), ingen läsning av ADXL eller mikrofon | Fas 1 steg 1.6–1.8, fas 6 | Byggs i `cnc`; kan göras nu |
+| L4 | **Slutdelarnas printjobb finns inte:** material, orientering och stöd för torn, panel, arm, hylsa, bygel och brickor är inte valda | Fas 3 | Görs efter fas 2, när måtten är rättade |
+| L5 | **LED-fästet saknar printjobb** och LED-listens matning är inte vald (D022/D023) | Fas 6 steg 6.6 | Printjobb kan göras nu; matning efter L1 |
+| L6 | **Märket för armspärren och mönstret på armen är inte ritade** (beslut 0035/0036 i `cnc`) | Fas 6 steg 6.5 | Väljs från första riktiga kamerabild |
+| L7 | **Avståndet mellan probstiftets spets och fräsens spets** har ingen mätmetod | Fas 7 | Mät med fräs och prob mot samma plana yta, båda via G38 eller pappersmetoden; dokumenteras före första mätning |
 
-## Sensorenhet — vad är faktiskt klart?
+### Fas 0 — Utskrift pågår
 
-| Delsteg | Status och källa |
-| --- | --- |
-| Electrokit-leverans | **Mottagen.** Innehåll och övriga leveranser: [PROCUREMENT.md](PROCUREMENT.md). |
-| Probmodell och tillgång | **CR Touch Auto Leveling Kit tillgängligt**, enligt användaren. Ersätter tidigare antagen BLTouch; se [PROCUREMENT.md](PROCUREMENT.md). |
-| Servots rörelseomfång | **Verifierat och tillräckligt.** [Bänkprovet](CALIBRATION.md#2026-11-10--fällservots-rörelseomfång-verifierat-på-bänk) stänger denna osäkerhet. |
-| Sidotorn, panel, arm, probhylsa och distanser | **CR Touch-anpassad CAD finns. Fysisk passning inte verifierad.** Senaste konstruktionsspåret och exportgränsen beskrivs i [CAD-underlaget](machine/delar/sensorer/README.md). |
-| Digital kontroll av senaste modellen | Färska CR Touch-exporter med källmanifest och separata CAD-/maskinkontroller. Tredjepartsreferensens begränsningar redovisas i [CAD-underlaget](machine/delar/sensorer/README.md); äldre GitHub-tester gäller ett annat konstruktionsspår. |
-| Verkliga komponentmått och passningar | Hornets A–I-mått är [rapporterade](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten). Formad ficka med M3-bygel finns i CAD och har ett litet provjobb. Glapp, skruvgrepp, verklig spetsform och hela montaget ska provpassas. Övriga komponenters passning mot sidotornet och CR Touchens kropp/kontakt är fortfarande inte verifierade. |
-| Belysning | D022: COB-list under horisontell understrut, se LED-avsnittet ovan. Tornets lampdocka och G4-bärare har utgått ur printplanen. |
-| Printberedning | Kamera-, CR Touch- och hornprov (lampdockprovet har utgått enligt D022) har egna jobb och källmanifest. [Jobb och provförfarande](print/README.md). Hela sidotornets slutliga utskriftsleverans återstår. |
-| Provprint och fysisk montering | Inte rapporterat utförda för sidotornet. |
-| Jackpot3-styrning, kamera och accelerometer | Inte rapporterat driftsatta i sensorenheten. Valda pinnar är ett konstruktionsbeslut, inte ett utfört kopplingsprov. |
-| Kamerakalibrering och CR Touch-mätning | Inte fysiskt verifierade. |
+- [ ] **0.1 Hornprovet** (`print/horn-passning.3mf`, ca 13 min PLA). *Pågår enligt användaren 2026-11-11.* Godkänt: hornet sitter utan glapp med två M3×10, går att lossa och sätta igen. [Provförfarande](print/README.md#servohorn--ficka-och-m3-bygel).
 
-## Nästa arbete — inför första provprint
+### Fas 1 — Elektronik på bänken, utan printade delar
 
-1. **Prova horninfästningen:** skriv ut den lilla fickan och M3-bygeln och prova med originalhornet samt två befintliga M3×10. Kontrollera klämväg, skruvgrepp och glapp enligt [provförfarandet](print/README.md#servohorn--ficka-och-m3-bygel). Hornets A–I-mått är rapporterade; fysisk passning är nästa steg. Jämför även mottagna kamera-/Pi-kort, flatkabelkontakter, LM2596-moduler och servots fästöron mot CAD. Resultat förs i [mätloggen](CALIBRATION.md), måttändringar i CAD-källan.
-2. **Utgått enligt D022, printas inte:** ~~Prova den nya lampdockan:~~ verifiera styrtapp och skruvgrepp med den lilla kalla provplattan. Lampbäraren kan ändras efter lampval utan att kamerafästet ritas om; verkliga sockeladaptrar, temperatur och kabelåtkomst är kvar enligt [CAD-underlaget](machine/delar/sensorer/README.md). Referensmodeller av elektronik, lampor och kablar ska inte bli utskriftsdelar.
-3. **Övriga passningsprov:** skriv ut [kamerafickeprovet och CR Touch-provet](print/README.md) och prova mot mottagna komponenter. Välj därefter små provbitar för Pi, regulatorer och servo där en trång passning kan tvinga fram omprint av hela tornet. Varje jobb ska printkontrolleras, skivas och förhandsvisas före utskrift.
-4. **Provprinta och montera för hand:** kontrollera skruvåtkomst, komponenthållning, kabelböjar och armens frigång. Detta kräver inte att hela kameramjukvaran är färdig.
-5. **Efter passningsprov:** skriv ut resterande delar och ställ in den monterade armens två pulsvärden. Prova magnetparkering, rörelse och strömbortfall. Servots redan godkända rörelseomfång behöver inte utredas på nytt.
+Allt här görs med lösa delar och sladdar. Varför först: varje komponent provas för sig innan den byggs in, så att ett fel inte förväxlas med ett monteringsfel.
 
-KW11-/Omron-armbrytare och deras hållare ingår inte, enligt D020. Se [inkopplingsprovet](machine/delar/nollpunkt/INKOPPLING_OCH_PROV.md) inför senare el- och funktionsprov; det är ett provförfarande, inte en andra statuslista.
+- [ ] **1.1 Regulatorerna.** Mata båda LM2596 från en 12–24 V-källa utan last. Ställ A på **5,1 V** och B på **6,0 V**, mät, säkra skruven med smältlim, mät igen. Godkänt: ±0,05 V efter limning.
+- [ ] **1.2 Servot utan pulser** (ESP32-servoprovet, 2 min). `1500`, sedan `x`, vrid hornet för hand. Godkänt: hornet går lätt att vrida. **Om inte:** armsekvensen måste ändras före fas 4. [Probstyrning](machine/probstyrning/README.md).
+- [ ] **1.3 CR Touch.** Matning från LM2596 A, styrning från ESP32:n. Stift ut (`650`), in (`1470`), självtest (`1780`), larm av (`2190`). Mät kontaktsignalen när stiftet trycks in. Godkänt: alla fyra kommandon fungerar; signalens nivå vid kontakt antecknad (avgör `gpio.36` eller `gpio.36:low`).
+- [ ] **1.4 Mät komponenterna mot CAD:** INMP441-kortet (CAD antar 14 × 14 mm), Pi:ns stiftlist (ska sitta på motsatt långsida mot USB-uttagen, i hålens linje), ADXL-kortets hålbild (CAD antar 15 mm), LM2596 (CAD antar 43 × 21 mm), CR Touchens kropp och hålbild. Godkänt: alla mått inom 0,3 mm, annars rättas CAD i fas 2.
+- [ ] **1.5 Pi startar.** Raspberry Pi OS på microSD, Wi-Fi, SSH. Matas från LM2596 A. Godkänt: `vcgencmd get_throttled` ger `0x0` under last (ingen undervolt).
+- [ ] **1.6 Kameran.** CSI-kabeln i båda ändar, ta en stillbild. Godkänt: skarp bild, låst fokus på ca 130 mm. *Kräver L3 för att nå datorn.*
+- [ ] **1.7 ADXL345 via SPI.** Godkänt: ca 1 g i vila, utslag när bänken knackas. *Kräver L3.*
+- [ ] **1.8 INMP441 via I²S** (3,3 V, aldrig 5 V). Godkänt: inspelning där ett fingerknäpp syns tydligt. *Kräver L3.*
+
+**G1:** alla komponenter fungerar lösa och alla mått är kända.
+
+### Fas 2 — Passningsprov och rättad CAD
+
+- [ ] **2.1** CR Touch-provet (`print/crtouch-passning`) och kamerafickeprovet (`print/sensor-passning`). Godkänt: kroppen sitter utan tvång, kamerakortet ligger an mot sina fyra distanser.
+- [ ] **2.2** För in mått från 1.4 och provresultat i CAD. Kör kontrollerna (`kontroll_*.py`, CI och `kontroll_omgivning.py` lokalt). Godkänt: alla GODKÄND.
+- [ ] **2.3** Om ett mått ändrades kraftigt: nytt litet provbit av just det stället, inte hela tornet.
+
+**G2:** CAD stämmer med de verkliga delarna, alla kontroller gröna.
+
+### Fas 3 — Slutdelarna
+
+- [ ] **3.1** Printjobb för torn, sidopanel, arm, hylsa, hornbygel och två brickor (L4): material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
+- [ ] **3.2** Printa. Godkänt: inga lagersläpp, hål och fickor rena från stöd.
+
+### Fas 4 — Montera tornet på bänken
+
+Ordningen spelar roll, eftersom panelen är enda åtkomsten och lödning inte går att göra inne i tornet.
+
+- [ ] **4.1 Löd först, utanför tornet:** ledningar på Pi:ns stiftlist (stiften i [kontroll_stiftlist.py](machine/delar/sensorer/kontroll_stiftlist.py)), på mikrofonen och ADXL:en. Inga instickskontakter. Mät ledningslängderna i CAD innan du klipper.
+- [ ] **4.2** Kameran underifrån: tappar i hålen, två M3×10 klämmer kanten. CSI-kabeln in i rummet och viks två gånger 45°.
+- [ ] **4.3** Magneten Ø6×3 i parkeringsstoppet. ADXL:en på sin platta med M3×10 och brickor.
+- [ ] **4.4** Pi på tapparna, LM2596 A och B i fickorna, CSI-kabeln i Pi:n. Mikrofonen i panelens ram med en skumtejpsring runt ljudhålet, dammnät utvändigt.
+- [ ] **4.5** Panelen på med sex skruvar; fingrarna ska hålla korten. Godkänt: inget skramlar när tornet skakas.
+- [ ] **4.6** Servot in framifrån genom ramen. Hornet på armen med bygeln. **Sätt hornet på axeln så att armen står ungefär mitt i rörelsen vid 1500 µs**, annars räcker inte servots vinkel till båda stoppen.
+- [ ] **4.7** CR Touch med hylsan på armen (2 × M3×8).
+- [ ] **4.8 Ändlägena med ESP32:n.** Stega till respektive stopp, notera `utfalld_us` och `parkerad_us`, skriv in i `machine/probstyrning/installning.json`, kör `makron.py`. Godkänt: makrona skapas, armen ligger an mot båda stoppen, magneten tar.
+- [ ] **4.9 Magneten under vibration:** parkerad arm, knacka och skaka tornet. Godkänt: armen faller inte ned.
+
+**G4:** tornet är komplett och fungerar på bänken.
+
+### Fas 5 — På maskinen (fräsen och Jackpot avstängda)
+
+- [ ] **5.1** L1 och L2 lösta: nätdel vald, kabel byggd.
+- [ ] **5.2** Tornet på verktygsfästet med två M5.
+- [ ] **5.3 Hela rörelsen för hand eller med låg hastighet:** X, Y och Z ytterlägen. Godkänt: inget tar i, kabeln sträcks inte. Kabellängden förs in i [CABLE_ROUTING.md](CABLE_ROUTING.md).
+
+### Fas 6 — Koppla till Jackpot och dator
+
+- [ ] **6.1** Jackpots utgångsbygel på 5 V. Läs maskinens aktuella `config.yaml`, kör `konfig.py`, granska de sex raderna, ladda upp. Ladda upp makrona.
+- [ ] **6.2** Från konsolen, fräsen avstängd: stift ut och in, `arm_ut.nc`, `arm_in.nc`. Godkänt: rätt rörelse, servot släpper vid stoppen.
+- [ ] **6.3** `?` i konsolen med stiftet fritt och intryckt för hand. Godkänt: probe-statusen växlar åt rätt håll.
+- [ ] **6.4** Strömbortfall: slå av maskinens matning med parkerad arm. Godkänt: armen stannar parkerad, Pi:n lever vidare (D023).
+- [ ] **6.5** Märke och armmönster (L6), sedan armspärrens inlärning med riktiga bilder i båda lägena. Godkänt: `cnc armsparr kolla` säger parkerad respektive utfälld; täckt lins ger stopp.
+- [ ] **6.6** LED-fästet printas och monteras (L5), listen tänds. Godkänt: jämnt ljus i kamerabilden utan blänk på blanka beslag.
+
+### Fas 7 — Mätning och kalibrering, på spill
+
+Kräver att grundmaskinens Z-nivå och squaring nedan är godkända, annars mäter kameran och proben fel maskin.
+
+- [ ] **7.1** Stiftets offset mot fräsens spets (L7).
+- [ ] **7.2** `mat_z.nc` tio gånger på samma punkt. Godkänt: spridning under 0,05 mm.
+- [ ] **7.3** Kamerakalibrering enligt `cnc` (beslut 0034) och XY-kontroll mot fräst kontur. Godkänt: under 0,5 mm fel.
+
+### Fas 8 — Övervakning under fräsning
+
+- [ ] **8.1** Spela in ADXL och mikrofon under ett stegrat prov på spill och jämför med körloggen, enligt [verktygsövervakningen](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md). Godkänt: ett avsiktligt fel syns tydligt över bruset.
+
+Utbyggnad efter fas 8 (bildsammanfogning, skruvbrickor, materialindexering) är inte krav för första versionen; se [kameraunderlaget](machine/KAMERA_ANHALL.md).
 
 ## Grundmaskin — kvarstående dokumenterade kontroller
 
