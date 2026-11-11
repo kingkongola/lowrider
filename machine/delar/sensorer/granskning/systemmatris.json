@@ -1,0 +1,897 @@
+{
+  "schema": 1,
+  "byggdel": "Sidotorn v2 som system – inte hela LowRider",
+  "datum": "2026-11-11",
+  "steg": [
+    "krav",
+    "konstruktion",
+    "automatisk",
+    "berakning",
+    "bankprov",
+    "maskinprov",
+    "felhantering",
+    "aterstallning"
+  ],
+  "systemfunktioner": [
+    {
+      "id": "S01",
+      "namn": "Mekaniskt montage på befintlig Core",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Två gamla M5, original-Core orörd.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Två bossar och bärblock i tornet ritas mot nominella fästen.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Referens-STL, M5-anläggning och intrång loggas utan assert.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provpassa M5, momentsäkra, kontrollera åtdragning och verktygsåtkomst.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Alla X/Y/Z-lägen med påmonterad dammsko, ingen påverkan på originalfunktion.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Vid lös infästning får inte kameramätning eller fräsning pågå.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Demontera hela sidotornet utan Core-modifiering.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "namn": "Servorörelse 0 till −150 grader",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Två hårda stopp, inte servo eller brytare som mekaniskt stopp.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Rörlig arm och två tornblock i sidotorn.py.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Punktprov var 5° rapporterar minavstånd; metallhorn/kablar saknas.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova hela rörelsen strömlöst först, därefter med strömbegränsning.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova med dammsko och faktisk maskin genom hela Z.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Vid blockering/strömbortfall får servo inte pressas genom mekaniskt stopp.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Manuell frigöring, återhoming och ofarlig startsekvens.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "namn": "Magnetisk parkering utan matning",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Magnet Ø6×3 + M3-huvud med 0,6 mm plasthud.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Parkeringsstopp och magnetficka finns.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Magnethud rapporteras som utskrift, inte toleransgrind.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät lossdragskraft i monterad arm och upprepa efter slag.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Fräsvibration utan servomatning; armen får inte falla.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Om magnet/arm lossnar ska maskinen inte starta.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontroll av slitage, byte av magnet och reproducerbar återparkering.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "namn": "BLTouch probegeometri och fräsfrigång",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Lodrät probe i mätläge, trygg parkering och säker stiftrörelse.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Förenklad BLTouch-proxy och hylsa i tornet.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Proxysvep men faktisk revision, skruvskallar och kontakt saknas.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät verklig BLTouch, kabel och stift; provmätning med avstängd spindel.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontroll i samtliga X/Y/Z-lägen, nollställ G38 och kontrollera falskt aktiverad probe.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Falsk/fast probe ger stopp och ingen automatisk körning.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Återställ efter fel med manuell verifiering av prob och arm.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "namn": "Kamerabild, täckning och koordinatkalibrering",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Stitching, varje punkt på material ≤50 mm ska synas i minst en bild.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Lins x93/y53/z130 med nominell camera module 3-geometri.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Beräknade 40/63 bilder är antaganden; täckningen ej regressionsgrind.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Fotografera 18/50 mm testobjekt, extrahera reprojektionsfel och täckningsmask.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kalibrera mot fräsens koordinater och verifiera ytterkanter på riktigt arbetsstycke.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Missad bild/otydlig armposition måste stoppa start (mjukvaruspärr, ej säkerhetsfunktion).",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kalibrera om efter kamerademontering och redovisa mätosäkerhet.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "namn": "Kamerainfästning/optisk stabilitet",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Kameran får inte flytta sig vid servo-/Pi-service.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Fyra styrtappar, två kantklämmor, integrerad nos.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Tappar/skruvhuvudsdjup diagnostiseras i CAD.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrmontera, mät kortdeformation och skärpa, byt servo utan kamerarörelse.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera mätpunktsdrift före/efter fräsning, servooperation och vibration.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Om kalibreringsmarkör förskjuts: neka mätning och kräv ny kalibrering.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Byt kamera och kalibrera om utan ny print.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S07",
+      "namn": "CSI 200 mm-kabel och serviceväg",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "200 mm 15↔22 FFC, rätt orientering och avlastning.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CSI-rum med två 45° vikningar modellerat.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Breddark i CAD; böjradie, verkligt kontaktdon och service inte beräknade.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Koppla riktig flex; prova full demonteringssekvens och dragavlastning.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Prova bilder vid servo + full XYZ-rörelse och vibration.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen bild eller intermittens ger ingen automatisk start.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Byt kabel och kontrollera kontakter utan att flytta kameran.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S08",
+      "namn": "Pi Zero 2 WH, SD och åtkomst",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Pi kvar i övervakningsdomän, fläktlös initialt.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Pi på fyra tappar, panelens fingrar håller.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD visar rum/pinnar men SD-kort och portars verktygsåtkomst saknas.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provmontera kort, byt SD-kort, testa ström, init, belastning och temperatur.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Värme-/dammtålighet på verktygshuvudet med kamera igång.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Pi-avbrott får inte påstås stoppa maskinen säkert; blockerar endast planerad start.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Strömlöst byte av SD/Pi utan att påverka maskinens basfunktion.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S09",
+      "namn": "Separat kraftdomän och säkra 5,1/6,0 V",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "D022: Pi lever vid maskinstopp; servo separat och ingen bakmatning.",
+          "evidens": "DECISIONS.md machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "LM2596 A/B fickor ritas, men gamla 24 V till Pi får inte antas giltigt.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Varken säkringsdimensionering, termik eller transient har en beräkningsgrind.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät märkning på källan, reglera, säkra, prova polaritet och strömtoppar.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Provstopp maskin, Pi förblir aktiv; inget bakflöde till avstängd Jackpot.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Fel i regulator/servostall får inte starta om Pi eller aktivera spindel.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Elåterstart med säker sekvens och explicit operatörsgodkännande.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S10",
+      "namn": "Jackpot3/probe-I/O och startlogik",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "D021 gpio.27/26/36/39 beslutade; ännu inte inkopplade.",
+          "evidens": "DECISIONS.md machine/delar/sensorer/KOPPLING_CORE_V0.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Mekaniken har plats, kabelsystem/pinmappningen inte elektriskt färdigställda.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen komplett logikanalys av bootpuls, G38, signaljord.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät 5 V-bygel, PWM, logik och probe polaritet utan aktiva axlar.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Verifiera på maskinen med spärrat skärande och korrekt G38-fall.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Fel prob eller oklart tillstånd måste ge utebliven start och aldrig blind G38.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Testa återstart efter watchdog, servoströmavbrott och oklara sensorsvar.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S11",
+      "namn": "ADXL processövervakning och vibration",
+      "prio": "P1",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Styvt kopplad ADXL på bärblocket som mäter vibration och slag.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Massiv platta vid M5, två skruvar med distansbrickor.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "CAD-hålbild är nominell och ingen signalkvalitetsberäkning redovisad.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät modulmått, samplingsfrekvens, orientering och brus på bänk.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Jämför data vid fräsning, tomgång och stillastående foto.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Felaktiga accelerometerdata får inte styra säkerhetsstopp utan riskanalys.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Testa diagnos/utbyte och kalibrera referensnivå.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S12",
+      "namn": "Kabelstam, dragavlastning, skav och EMC",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen kabel får sträckas i hela arbetsområdet eller störa probe/kamera.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Kabelkanaler, buntbandsbryggor, bakre utgång och armspår.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Statisk kabelproxy, ingen verklig böjradie eller EMC-dimensionering.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Torrkoppla alla kablar med faktisk längd och kontaktriktning.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Full X/Y/Z + servo genom alla lägen; spån, vibration och dammsugning.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Avbrott/förslitning får inte ge okontrollerad servo/proberörelse.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kabelstam går att byta utan ny mekanisk print.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S13",
+      "namn": "Värme, passiv ventilation, damm och material",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Passiv Pi initialt; kabinetthål innebär ingen IP-klassning.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Ventilationsslitsar vid regulatorer och Pi; plastmaterial ej kvalificerat.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen termisk modell eller uppmätta flöden.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Temperaturprov vid max kamerabelastning och regulatorlast.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Långt pass på maskinen med damm, slitage och vibration.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Termisk fel-/throttle-signal ger pausad automatisering.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Rengöringsrutin och möjlighet att byta panel/elektronik.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S14",
+      "namn": "Tornets printbarhet, hållfasthet och service",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Snabb PLA-provprint före definitiv PETG-utskrift.",
+          "evidens": "DECISIONS.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Fem unika printade STL, sex exemplar (två brickor).",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen verifierad FDM-orienterings- eller styrkekalkyl.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Grov PLA-print av alla printdelar; passning, lager och M3/M5-provmontage.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "PETG/körtest med mekaniska laster och upprepade servicecykler.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Sprickor/glapp = driftspärr; inspektion före användning.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Byt del utan att påverka maskinens original-Core.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S15",
+      "namn": "LED- och kamerabelysningsgränssnitt",
+      "prio": "P1",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "D022: 3 COB-banor 0/15/35° på undre horisontella strut; tornets extra spår är reserv.",
+          "evidens": "DECISIONS.md machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Torn har två valfria LED-spår men huvudbelysning hör till separat CAD.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "6,65 mm fäste-Z-budget exklusive LED, lim och ledare.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Mät 35° skuggning av 15°, temperatur och faktisk LED-bredd.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Säkra jämn bildkvalitet 18/50 mm och ingen kollision med fullt XYZ.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Om LED slutar lysa: neka automatisk skanning; inte fräsens säkerhetsskydd.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Byt remsor, dra loss skyddat kablage och kontrollera optisk kalibrering.",
+          "evidens": ""
+        }
+      }
+    },
+    {
+      "id": "S16",
+      "namn": "Maskinsäkerhet vid avbrott, service och omstart",
+      "prio": "P0",
+      "kontroller": {
+        "krav": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Kamerabaserad startspärr är ej säkerhetsklassad; NVR/estop måste fungera oberoende.",
+          "evidens": "DECISIONS.md machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "konstruktion": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Sensorpaketet får inte skapa beroende för baskörning av LowRider.",
+          "evidens": "machine/delar/sensorer/sidotorn.py"
+        },
+        "automatisk": {
+          "status": "SAKNAS",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen maskinell assertion med tröskel och godkänt mätprotokoll finns ännu.",
+          "evidens": ""
+        },
+        "berakning": {
+          "status": "S",
+          "resultat": "ej_utfort",
+          "kontroll": "Ingen komplett FMEA, hårdstoppstest eller fail-safe-tillståndssimulering.",
+          "evidens": "machine/delar/sensorer/granska_sidotorn.py"
+        },
+        "bankprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Simulera strömbortfall, losskopplad Pi, trasig probe och fast arm.",
+          "evidens": ""
+        },
+        "maskinprov": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Kontrollera fysisk stoppslinga och omstart; ingen återupptagen rörelse utan aktivt medgivande.",
+          "evidens": ""
+        },
+        "felhantering": {
+          "status": "N",
+          "resultat": "ej_utfort",
+          "kontroll": "Oklar status => ingen autonom start; riktig nödstoppfunktion separat.",
+          "evidens": "machine/EL_BELYSNING_OCH_STOPP.md"
+        },
+        "aterstallning": {
+          "status": "F",
+          "resultat": "ej_utfort",
+          "kontroll": "Manuell återstart med avstängd spindel, okulär kontroll och homing.",
+          "evidens": ""
+        }
+      }
+    }
+  ]
+}
