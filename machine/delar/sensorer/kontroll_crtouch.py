@@ -26,7 +26,7 @@ def main():
     ap.add_argument("--ut", required=True, type=Path)
     a = ap.parse_args()
     a.ut.parent.mkdir(parents=True, exist_ok=True)
-    torn, arm = cad.torn(), cad.arm()
+    torn, arm = cad.torn_monterat(), cad.arm()
     hylsa, prob, kontakt = cad.skyddshylsa(), cad.crtouch(), cad.kontaktkuvert()
     stift = Pos(cad.PROB[0], cad.PROB[1] + cad.cr.STIFT_Y,
                 cad.FLANS_Z - (46 + 29) / 2) * Cylinder(1.6, 46 - 29)

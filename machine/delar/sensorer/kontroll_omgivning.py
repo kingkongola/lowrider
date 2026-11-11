@@ -31,7 +31,7 @@ PIV = np.array([S.PX, 0.0, S.PZ])
 L = lambda p: trimesh.load(p, force="mesh")
 ref = {k: L(a.ref / f"R_{k}.stl") for k in ("befintlig_core", "tool_mount_t", "tool_mount_b", "dammsko", "kjol", "SPMS664_referens")}
 ref["SPMS664_referens"].apply_translation([0, S.SERVO_DY, 0])
-del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "kapa", "hornbygel", "hornskruvar-referens", "magnetstal-referens")}
+del_ = {n: L(a.ut / f"{n}.stl") for n in ("torn", "sidopanel", "arm", "crtouch", "kapa", "hornbygel", "hornskruvar-referens", "magnetstal-referens", "stopp-nedre", "stopp-ovre")}
 P = np.load(a.ref / "scan_pts_plan.npy")
 
 # Avsiktliga anläggningar: tornets M5-distanser ligger mot verktygsfästena och servot sitter i sin ram.
@@ -67,7 +67,7 @@ def skanpunkter(m):
 
 
 fel, rapport = [], {"statiskt": {}, "rorelse": {}}
-for n in ("torn", "sidopanel"):
+for n in ("torn", "sidopanel", "stopp-nedre", "stopp-ovre"):
     for k, r in ref.items():
         v = vol(del_[n], r)
         rapport["statiskt"][f"{n}/{k}"] = round(v, 3)
@@ -90,6 +90,7 @@ for n in rorliga:
         mal = dict(ref)
         if g not in (int(S.PARK), 0):          # vid ändlägena ska armen ta i stoppen
             mal["torn"] = del_["torn"]
+            mal["stopp-nedre"], mal["stopp-ovre"] = del_["stopp-nedre"], del_["stopp-ovre"]
         mal["sidopanel"] = del_["sidopanel"]
         for k, r in mal.items():
             if n in ("hornbygel", "hornskruvar-referens") and k == "SPMS664_referens":

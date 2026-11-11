@@ -17,7 +17,7 @@ def volym(o):
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--ut',type=Path,required=True)
     a=ap.parse_args();hf=cad.hf
-    arm,torn,bygel,horn=cad.arm(),cad.torn(),hf.bygel(),hf.horn()
+    arm,torn,bygel,horn=cad.arm(),cad.torn_monterat(),hf.bygel(),hf.horn()
     kropp=hf.provkropp()
     kallor=[Path(__file__),Path(cad.__file__),Path(hf.__file__),Path(cad.lampor.__file__),Path(cad.cr.__file__),cad.cr.REFERENS]
     r={'build123d':build123d.__version__,'kallor_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},

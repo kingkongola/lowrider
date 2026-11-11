@@ -14,7 +14,9 @@ import hornfaste as hf
 import sidotorn as S
 
 Y1 = S.Y1
-torn, arm, crt, kapa, panel = S.torn(), S.arm(), S.crtouch(), S.skyddshylsa(), S.sidopanel()
+torn_utan, arm, crt, kapa, panel = S.torn(), S.arm(), S.crtouch(), S.skyddshylsa(), S.sidopanel()
+stopp_n, stopp_o = S.stoppdelar()
+torn = torn_utan + stopp_n + stopp_o      # från steg 1c sitter stoppdelarna på
 bygel = S.horn_lage(hf.bygel())
 servo = S.servo_attrapp()
 P = S.parkera
@@ -49,7 +51,16 @@ steg = []
 for x in (S.PX - 33.3, S.PX + 14):
     for z in (S.PZ - 4.7, S.PZ + 4.7):
         steg.append((f"1 servoskruv x{x:.0f} z{z:.0f} (mejsel Ø6 framifrån)",
-                     cyl_y(x, z, -80, 38.8 - 2.5, 6.0), {"torn": torn}))
+                     cyl_y(x, z, -80, 38.8 - 2.5, 6.0), {"torn": torn_utan}))
+# 1b. Servokroppen in framifrån genom ramens fönster (kropp och öron svepta 60 mm).
+kropp = S.box((14.8, 30.6 + S.SERVO_DY - 60, 33.6), (55.2, 71 + S.SERVO_DY, 53.6))
+oron = S.box((5.1, 40.8 + S.SERVO_DY - 60, 33.6), (64.9, 43.3 + S.SERVO_DY, 53.6))
+steg.append(("1b servokroppen in genom ramen (svep), stoppdelarna inte på", kropp + oron, {"torn": torn_utan}))
+# 1c. Stoppdelarna mot ramens framsida, två M3 x 20 var; servot sitter, armen inte på.
+for x, z in S.STOPP_SKRUV:
+    seat = (min(stopp_n.bounding_box().min.Y, 99) if z < 40 else 30.5) + 3.5
+    steg.append((f"1c stoppdelens skruv x{x:.0f} z{z:.0f} (mejsel Ø5,5 framifrån)", cyl_y(x, z, -80, seat - 3.2, 5.5),
+                 {"torn": torn_utan, "servo": servo, "stopp nedre": stopp_n, "stopp övre": stopp_o}))
 # 2. Hornets mittskruv i servoaxeln, framifrån. Prövas både utan och med arm.
 h_yta = 32.6 + S.SERVO_DY - hf.H_MONTERAT
 mitt = cyl_y(S.PX, S.PZ, -80, h_yta - 2.0, 5.0)
@@ -66,7 +77,7 @@ for i, s in enumerate(skr.solids()):
 #    Tornet monteras med armen utfälld (parkerad hylsa ligger nära den övre skruven).
 for z in S.M5_Z:
     alla = {"torn": torn, "servo": servo, "arm utfälld": arm, "CR Touch utfälld": crt, "hylsa utfälld": kapa}
-    steg.append((f"4 M5 z{z:.0f}, armen utfälld (insex 4 och skalle Ø8,5 rakt utifrån)", cyl_x(43.95, z, 9.6, 130, 8.6), alla))
+    steg.append((f"4 M5 z{z:.0f}, armen utfälld (insex 4, skalle och bricka Ø9 rakt utifrån)", cyl_x(43.95, z, 9.6, 130, 9.0), alla))
 # 5. Kamerans två klämskruvar underifrån; tornet på bänken, armen parkerad.
 for x, y in S.KLAMMOR:
     steg.append((f"5 kameraskruv x{x:.0f} (mejsel Ø6 underifrån)",
@@ -108,6 +119,14 @@ steg.append(("11 kopplingskortets yta på framväggen (kort, löd och kondensato
 sd0 = (S.PI_CENTER[0] - 32.5 - 2.6, S.PI_Y + 1.4, S.SD_Z[0] + .5)
 sd1 = (S.PI_CENTER[0] - 32.5 + 12.0, S.PI_Y + 2.4, S.SD_Z[1] - .5)
 steg.append(("12 microSD in utifrån genom bakväggen (kortets väg)", S.box((sd0[0] - 15, sd0[1], sd0[2]), sd1), {"torn": torn}))
+# 9b. Panelen förs rakt in med fingrar och mikrofonram (25 mm i 1 mm-steg). Pi, LM2596 och
+#     mikrofonkortet sitter redan; fingrarna ska stanna 0,05 mm före korten.
+from build123d import Pos as _Pos
+kort = S.box((S.PI_CENTER[0] - 32.5, S.PI_Y, S.PI_CENTER[1] - 15), (S.PI_CENTER[0] + 32.5, S.PI_Y + 1.4, S.PI_CENTER[1] + 15))
+for x0 in S.REG_X0.values():
+    kort += S.box((x0, S.PI_Y, S.REG_Z0), (x0 + 21, S.PI_Y + 1.6, S.REG_Z0 + 43))
+for d in [0.3] + list(range(1, 26)):
+    steg.append((f"9b panelen {d} mm före sitt läge", _Pos(0, d, 0) * panel, {"torn": torn, "kort": kort}))
 # 10. Magneten in bakifrån i parkeringsstoppet.
 mx, mz, vinkel = S.magnet_lage(S.PROB[0])
 ut = (math.cos(math.radians(vinkel)), math.sin(math.radians(vinkel)))

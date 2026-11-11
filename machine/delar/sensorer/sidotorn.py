@@ -110,8 +110,12 @@ REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3
 # Infästning mot maskinen: V1E:s två M5 genom verktygsfästets öron in i Core, ca 16 mm längre
 # eftersom tornets distans och platta (x -7,3 till 9) hamnar mellan skallen och örat.
 M5_Z = (64.25, 125.25)
-M5_KANAL_D = 9.0            # M5 insex-skalle Ø8,5
+M5_KANAL_D = 9.4            # M5 insex-skalle Ø8,5 och smal bricka DIN 433 Ø9
 SERVO_PILOT = 2.6           # M3 formar egen gänga i PETG
+
+# Stoppdelarnas skruvar: två per del, M3 x 20 genom skenan in i ramen (formar gänga i Ø2,6).
+STOPP_SKRUV = [(35.2, 30.4), (39.8, 30.4), (43.0, 56.8), (50.0, 56.8)]   # övre förbi parkeringsstoppet
+STOPP_PILOT_DJUP = 9.0
 
 # Servo (SPMS664, befintligt läge) och arm.
 PX, PZ = 45.0, 43.6
@@ -258,6 +262,38 @@ def magnet_urtag(prob_x):
     return Pos(mitt[0], sum(BULA_Y) / 2, mitt[1]) * Rot(0, 90 - vinkel, 0) * Cylinder(MAGNET[0] / 2, langd)
 
 
+def stoppdelar(prob_x=PROB[0]):
+    """Hårda stopp i armens plan som två egna delar, skruvade mot ramens framsida.
+
+    Varför egna delar: stoppen står framför servots framsida, så servot kan inte föras in genom
+    ramen om de är printade i tornet (kontroll_montage.py steg 1b). Ett trasigt stopp printas om
+    utan nytt torn och utan ny kamerakalibrering. Två M3 x 20 per del, skallen försänkt.
+    """
+    def stopp(sida):
+        y = (ARM_Y[0], ARM_Y[1] + 1.2) if sida < 0 else (ARM_Y[1] - 2.5, BULA_Y[1] + .5)
+        p = prisma_y(stopp_block(prob_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
+        return fillet(p.edges().filter_by(Axis.Y), 0.8)
+    nedre = stopp(-1) + fillet(box((33, ARM_Y[1] + 1.0, 27.6), (42, FRAM_Y[0], 33.2)).edges().filter_by(Axis.Y), 1.2)
+    ovre = stopp(1) + fillet(box((31, 30.5, 54.0), (53, FRAM_Y[0], 59.4)).edges().filter_by(Axis.Y), 1.2)   # under M5-kanalen
+    ovre += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, 33.0, 58.5))
+    ovre -= magnet_urtag(prob_x)
+    delar = []
+    for d in (nedre, ovre):
+        for x, z in STOPP_SKRUV:
+            if d.bounding_box().min.Z - .1 <= z <= d.bounding_box().max.Z + .1 and d.bounding_box().min.X <= x <= d.bounding_box().max.X:
+                d -= cyl_y(x, z, 20, FRAM_Y[0] + 1, 3.4)
+                fram = d.bounding_box().min.Y if z < 40 else 30.5
+                d -= cyl_y(x, z, fram - 1, fram + 3.5, 6.0)
+        delar.append(d)
+    return delar[0], delar[1]
+
+
+def torn_monterat(prob_x=PROB[0]):
+    """Tornet med stoppdelarna påskruvade: det läge armen och proben möter i drift."""
+    nedre, ovre = stoppdelar(prob_x)
+    return torn(prob_x) + nedre + ovre
+
+
 def servokapa():
     """Yttre form runt servots bakdel; samma hörnradie som tornet."""
     k = box((12.6, FRAM_Y[0] + 1, 29.6), (57.4, KAPA_Y, 70.0))
@@ -291,7 +327,9 @@ def torn(prob_x=PROB[0]):
     # Fästplatta mot verktygsfästet, samma två M5-lägen som V1E-skruvarna.
     s += fillet(box((1, 39, 56), (9, Y0 + 1, 134)).edges().filter_by(Axis.Z), 1.5)
     s += fillet(box((1, Y0, 56), (14, 53, 134)).edges().filter_by(Axis.Z), 1.5)      # bär över lasten från fästplattan in i tornet
-    for z in (64.25, 125.25):
+    # Distansen Ø9,6 sitter i verktygsfästets försänkning för skallen (ca Ø10): formpassning håller
+    # läget, så klämkraften kan hållas låg (0,6-0,8 Nm, se berakning_sidotorn.py) mot PETG-krypning.
+    for z in M5_Z:
         s += cyl_x(43.95, z, -7.3, 1.2, 9.6)
         s -= cyl_x(43.95, z, -9, 10, 5.4)
     # Servoram med fönster för kroppen, och skena upp till fästplattan.
@@ -309,19 +347,9 @@ def torn(prob_x=PROB[0]):
     for x in (PX - 33.3, PX + 14):
         for z in (PZ - 4.7, PZ + 4.7):
             s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 3, SERVO_PILOT)
-    # Hårda stopp i armens plan, hållna av skenor över och under servot.
-    def stopp(sida):
-        y = (ARM_Y[0],ARM_Y[1]+1.2) if sida<0 else (ARM_Y[1]-2.5,BULA_Y[1]+.5)
-        p = prisma_y(stopp_block(prob_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
-        return fillet(p.edges().filter_by(Axis.Y), 0.8)
-    s += stopp(-1)
-    # Smalare nedre skena lämnar plats för magnetkontaktens stålskruv.
-    s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (42, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
-    s += stopp(1)
-    # Övre bärningen bakom armsvepet, förbunden via en vänster sidoribba.
-    s += fillet(box((31, 30.5, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
-    s += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, 33.0, 58.5))
-    s -= magnet_urtag(prob_x)
+    # Stoppdelarna skruvas mot ramens framsida efter att servot satts in (se stoppdelar()).
+    for x, z in STOPP_SKRUV:
+        s -= cyl_y(x, z, FRAM_Y[0] - .1, FRAM_Y[0] + STOPP_PILOT_DJUP, SERVO_PILOT)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
     # Nosen stiger mjukt upp i tornets framsida i stället för att vara en kloss.
@@ -358,7 +386,7 @@ def med_elektronik(s):
     b = BUK
     x0, x1 = PI_RUM
     s -= prisma_y(inset(sidoprofil(), 4.0), 51, Y1 - 1.9)
-    s -= prisma_y(inset(sidoprofil(), 2.0), Y1 - 2, Y1 + 1)
+    s -= prisma_y(inset(sidoprofil(), 1.9), Y1 - 2, Y1 + 1)   # panelsätet: 0,25 mm spel mot panelen
     # Tvärribba som styvar väggarna; fönster för kablar.
     s += box((48, 50.5, 110.5), (51, Y1 - 2.1, 135))
     s -= box((47.5, 62.0, 129.0), (51.5, Y1 - 1.9, 135.5))   # kabelfönster: ledningar från stift 34-38 till mikrofonen
@@ -414,6 +442,7 @@ def med_elektronik(s):
 def sidopanel():
     """Tornets hela sida som en enda panel, plan mot X max-sidan."""
     p = prisma_y(inset(sidoprofil(), 2.15), Y1 - 2, Y1)
+    p &= box((0, Y1 - 3, 0), (PANEL_X - 2.15, Y1 + 1, 200))   # klipper insetsens spets vid kamerablockets hörn
     for x, z in PANEL_HAL:
         p -= cyl_y(x, z, Y1 - 3, Y1 + 1, 3.4)
         p -= cyl_y(x, z, Y1 - 1, Y1 + 1, 6.2)
@@ -569,8 +598,9 @@ def main():
     a = p.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
+    sn, so = stoppdelar(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x))):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x)), ("stopp-nedre", sn), ("stopp-ovre", so)):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
@@ -583,6 +613,8 @@ def main():
     delar = [
         namn(t, "Sidotorn", (.16, .18, .2)),
         namn(servo_attrapp(), "Servo_SPMS664_ATTRAPP", (.1, .1, .12)),
+        namn(sn, "Stoppdel_nedre", (.16, .18, .2)),
+        namn(so, "Stoppdel_ovre", (.16, .18, .2)),
         namn(kabel(), "Kabel_ATTRAPP", (.1, .1, .1)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
         namn(horn_lage(hf.bygel(),a.prob_x),"Hornbygel_utfalld",(.3,.5,.7)),
@@ -620,7 +652,7 @@ def main():
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "pi_skruv": PI_SKRUV, "topp": TOPP}))
     kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast", "hornbygel")]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast", "hornbygel", "stopp-nedre", "stopp-ovre")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
     exporter += [a.ut/'hornskruvar-referens.stl',a.ut/'magnetstal-referens.stl']
     (a.ut / "manifest.json").write_text(json.dumps({
