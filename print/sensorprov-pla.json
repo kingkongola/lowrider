@@ -1,0 +1,14 @@
+{
+  "namn": "sensorprov-pla",
+  "process": "styrka",
+  "material": "pla",
+  "stod": true,
+  "delar": [
+    {"fil": "horn-passning/hornficka-passning.stl", "antal": 1},
+    {"fil": "horn-passning/hornbygel.stl", "antal": 1},
+    {"fil": "crtouch-passning/probfaste-passning.stl", "antal": 1},
+    {"fil": "crtouch-passning/crtouch-hylsa.stl", "antal": 1},
+    {"fil": "sensor-passning/kamera-passning.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

@@ -27,6 +27,10 @@ uv run --project ~/dev/printa printa skiva print/sensor-passning.json
 
 Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthållning, tornets maskininfästning, servohorn, CR Touch, belysning eller den övriga elektroniken.
 
+## Alla tre PLA-proven på en platta
+
+[sensorprov-pla.json](sensorprov-pla.json) lägger hornprovet, CR Touch-provet och kameraprovet på samma platta: ca 56 min, 18 g PLA. Styrkeprofilen gäller alla tre; den ger fler väggar och mer fyllning men samma mått. Automatiskt stöd byggs bara vid kamerafickan, enligt förhandsvisningen 2026-11-11; CR Touch-hylsan får inget stöd. Provförfarandena nedan gäller som för de separata jobben.
+
 ## Servohorn — ficka och M3-bygel
 
 [horn-passning.json](horn-passning.json) innehåller en liten hornficka och en separat kilbygel, en del med sned kontaktyta som pressar hornet mot fasta stöd. Geometrin kommer från [hornfaste.py](../machine/delar/sensorer/hornfaste.py); [manifestet](horn-passning/manifest.json) anger källor och exporter. Provkroppen har extra plan rygg för utskriften. Själva fickan, stöden, bygeln och skruvhålen motsvarar armens infästning.
