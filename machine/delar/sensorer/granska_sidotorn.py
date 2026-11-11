@@ -2,7 +2,7 @@
 
 --ref ska innehålla R_*.stl (Core, fästen, sko, kjol, servo) och scan_pts_plan.npy:
 skanningens punkter i fräsramen med bordet plant (5,9 graders rättning 2026-11-09).
-Dessa filer är för stora för repot och kommer från handover/skanning.
+Dessa filer är för stora för repot; se skanning/README.md (kontrollsummor och plats).
 """
 import argparse
 import json
@@ -101,7 +101,7 @@ for k, m in ref.items():
         print(f"intrång torn mot {k}: {float((torn.contains(q) & m.contains(q)).mean() * np.prod(hi - lo)):.2f} mm3")
 
 # Korten måste ligga inne i det slutna rummet: inte i väggen och inte ute i luften utanför den svepande formen.
-for nm in ("Pi", "LM2596_A", "LM2596_B", "ADXL", "Kort", "Flatkontakt"):
+for nm in ("Pi", "LM2596_A", "LM2596_B", "ADXL", "Kort", "Flatkontakt", "Mikrofon"):
     lo, hi = np.array(E[nm][0]), np.array(E[nm][1])
     g = np.array(np.meshgrid(np.linspace(lo[0], hi[0], 53), np.linspace(lo[1] + .05, hi[1] - .05, 4), np.linspace(lo[2], hi[2], 41), indexing="ij")).reshape(3, -1).T
     i_vagg = int(torn.contains(g).sum())
@@ -152,3 +152,9 @@ djup = kapa.nearest.on_surface(inne)[1] if len(inne) else np.array([])
 print(f"hylsan: tät {kapa.is_watertight}, CR Touch-punkter med intrångsdjup över 0,00001 mm {int((djup > .00001).sum())}, gränsytpunkter {int((djup <= .00001).sum())}, största klassade djup {float(djup.max()) if len(djup) else 0:.8f} mm")
 print("hylsans överkant mot flänsens undersida:", round(float(E["prob_montage"][2] - E["prob_flans_t"] - kapa.bounds[1, 2]), 2), "mm")
 print("hylsans botten under referenskroppen:", round(float(E["prob_montage"][2] - E["prob_kropp_djup"] - kapa.bounds[0, 2]), 2), "mm")
+
+# Mikrofonens ljudhål: fri stråle genom panelen och gods runt hålet. Krock för kort,
+# lödkant och ledningsväg till Pi:ns stiftlist kontrolleras exakt i CAD (se README).
+mx, mz, md = E["mik"]
+print("mikrofon: ljudhål fritt genom panelen:", not bool(lock.ray.intersects_any([[mx, 60.0, mz]], [[0, 1, 0]])[0]),
+      "panelgods bredvid hålet:", bool(lock.contains([[mx + md / 2 + .6, 71.5, mz]])[0]))

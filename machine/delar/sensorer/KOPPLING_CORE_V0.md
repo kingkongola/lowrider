@@ -22,7 +22,7 @@
 | Kamera | Camera Module 3 → CSI-kabel → Pi Zero 2 WH | Kontaktriktning, låsning, verkliga böjar och räckvidd |
 | Kamera till värddator | Pi → bild och metadata via nätverk | Kameratjänst, låst fokus och bildprov |
 | ADXL345 | Lokalt till Pi; SPI är den planerade vägen för vibrationer | Levererat kort, matning, hålbild och signalanslutningar |
-| INMP441 | Separat ljudinhämtning utreds vid praktiskt prov | Ingen färdig sidotornsplacering eller verifierad leveransstatus |
+| INMP441 | Till Pi via I²S, 3,3 V (aldrig 5 V). Planerat: SCK → GPIO18 (stift 12), WS → GPIO19 (stift 35), SD → GPIO20 (stift 38), L/R → GND, VDD → 3,3 V (stift 1/17), GND. Krockar inte med ADXL:ens SPI (GPIO 8–11) | Placerad i sidopanelen 2026-11-11. Leverans, Pi-drivrutin och samtidig drift med kamera och ADXL ej provade |
 
 Armbrytare och deras GPIO ingår inte enligt D020. Bordets och maskinens befintliga ändlägen påverkas inte.
 
@@ -42,7 +42,7 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 
 ## Matning och kabel
 
-- Befintlig 24 V-försörjning → **LM2596 A ställs till 5,1 V** för Pi och CR Touch (användarens val 2026-11-10). 5,1 V är Raspberrys egen nätdels spänning; marginalen tar kabelns spänningsfall när Pi:n drar mycket, och ligger inom CR Touchens nominella 5 V. Utgången mäts tomgång och med last. Ingen fysisk justering är gjord här.
+- Befintlig 24 V-försörjning → **LM2596 A ställs till 5,1 V** för Pi och CR Touch (användarens val 2026-11-10). 5,1 V är Raspberrys egen nätdels spänning; marginalen tar kabelns spänningsfall när Pi:n drar mycket, och ligger inom CR Touchens nominella 5 V. Utgången mäts tomgång och med last. Ingen fysisk justering är gjord här. Justerskruven säkras med smältlim efter inställning; mät igen efter limning.
 - Samma 24 V-försörjning → **LM2596 B inställd på 6,0 V** till servot. Separat regulator ska hindra servots strömtoppar från att dra ned Pi-matningen.
 - Regulatorerna finns enligt BOM; båda utgångarna ställs och mäts innan elektroniken ansluts. Dimensionering av ström, säkring, ledningar och prov med faktisk last återstår.
 - Gemensam signaljord krävs mellan Jackpot och servomatning. Lägg servots returström så att den inte skapar störningar i prob- eller Pi-jord. Planerad kondensator nära servokontakten är 470–1000 µF; faktisk installation och val är inte verifierade.
