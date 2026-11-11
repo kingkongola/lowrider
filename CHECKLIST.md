@@ -32,8 +32,8 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 
 ### Fas 0 — Utskrift pågår
 
-- [ ] **0.0 Skruvprovet i PETG** (`print/skruvprov-petg.printa/skruvprov-petg.3mf`, ca 32 min): skruva i och ur M3 och M2.5 fem gånger, dra M5-provet till 0,7 Nm. Godkänt: gängan håller och distansen spricker inte.
-- [ ] **0.1 Armen på servot** (`print/sensorprov-2.printa/sensorprov-2.3mf`, ca 1 h PETG: arm, kameralock, två stopp). Hornprov 1 underkändes av felmontering; kilbygeln utgick 2026-11-11. Först: M3×10 för hand i servoaxeln (går den inte lätt: stopp, 4-40). Godkänt: hornet går rakt i fickan, sitter utan glapp när M3×10 är dragen, CR Touchen passar foten. [Provförfarande](print/README.md#armen-på-servot--sensorprov-2).
+- [ ] **0.0 Skruvprovet i PETG** (på plattan `print/sensorprov-2`, se 0.1): skruva i och ur M3 och M2.5 fem gånger, dra M5-provet till 0,7 Nm. Godkänt: gängan håller och distansen spricker inte.
+- [ ] **0.1 Armen på servot** (`print/sensorprov-2.printa/sensorprov-2.3mf`, ca 2 h PETG: arm, kameralock, två stopp, skruvprovet och LED-fästets provsegment). Hornprov 1 underkändes av felmontering; kilbygeln utgick 2026-11-11. Först: M3×10 för hand i servoaxeln (går den inte lätt: stopp, 4-40). Godkänt: hornet går rakt i fickan, sitter utan glapp när M3×10 är dragen, CR Touchen passar foten. [Provförfarande](print/README.md#armen-på-servot--sensorprov-2).
 
 ### Fas 1 — Elektronik på bänken, utan printade delar
 

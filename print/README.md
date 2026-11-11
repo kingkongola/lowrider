@@ -33,7 +33,7 @@ Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthå
 
 ## Armen på servot — sensorprov-2
 
-[sensorprov-2.json](sensorprov-2.json): **armen**, kameralocket och de två stoppdelarna i PETG, styrkeprofil, cirka **1,0 h och 10 g** (skivat 2026-11-11, stöd 3 % av banan). Armen är en riktig slutdel och provas direkt på servot, utan tornet. Den ersätter hornprovet och CR Touch-fotprovet. Lilla nedre stoppet har liten bäddkontakt (31 mm²); printa får en brätte runt det.
+[sensorprov-2.json](sensorprov-2.json): **armen**, kameralocket, de två stoppdelarna, **skruvprovet** (CHECKLIST 0.0) och **LED-fästets provsegment** (aktuell export, kontrollsumma stämmer) i PETG, styrkeprofil, cirka **2,0 h och 34 g** (skivat 2026-11-11, stöd 1 % av banan). LED-segmentet får här styrkeprofilen i stället för standard: fler väggar, samma mått. Stoppdelarna kan bara provas mot magneten (Ø6×3 i övre stoppets ficka) tills tornet finns. Armen är en riktig slutdel och provas direkt på servot, utan tornet. Den ersätter hornprovet och CR Touch-fotprovet. Lilla nedre stoppet har liten bäddkontakt (31 mm²); printa får en brätte runt det.
 
 **Prov, utan matning:**
 
