@@ -1,25 +1,29 @@
 {
-  "datum": "2026-11-10",
+  "datum": "2026-11-11",
   "metod": "STL-stickprov var 5 grader; samplade ytor och punkt-i-mesh; lampbäraren mot referenser via separerade omslutningslådor. Inte fysisk verifiering eller kontinuerligt maskinsvep.",
-  "kontrollskript_sha256": "04395cfb522d7c4df23960e065d979b05e83065cdd6f537aca36d8678d1f1ef6",
+  "kontrollskript_sha256": "3ac057b790aebc8ed8ac6e6021c6ced7ab0f61ed533cd49bc6bcbe178e7cf574",
   "underlag_exportmanifest": {
     "kallor_sha256": {
-      "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
+      "sidotorn.py": "71864fe2ec08977bb2cb6b4b7db4fdde64f75d76d1e0aba45bdd442a17b1936a",
       "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
       "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
-      "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae"
+      "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
+      "hornfaste.py": "53215a22b834e0b3d67341e53902c04d56ca4497e497f238f2a137513ad726cd"
     },
     "exporter_sha256": {
-      "torn.stl": "f31570f1f8d3b27c4527419b133d2443f172febc47e4a6eedb4286ba870fca60",
-      "arm.stl": "efc3529d485f1d6fb717facc121d16b7f43c74eed112e16510a3fb460085f862",
+      "torn.stl": "800a9a902c174c6aa1c6f1f526a299c531fb1ec0806bd84cf72aea4e9e612009",
+      "arm.stl": "04056c9668829451db5686972cfe2bd1c7fe1cedafa88d38a97aad5e58ff2eee",
       "crtouch.stl": "cf6f0b3c21392d2ff7a282fd8fc761882ba0df6bd9f0f639b7af753308a7f2cc",
       "sidopanel.stl": "c3a75d4a6d33bc5e99f991171ff002cd9610e2b6122287f523849fd3ecae6121",
       "kabel.stl": "4877a6292ed22c529f6b50167c8dc2f39cd90e3102df005c2bc6c72fa776b113",
       "bricka.stl": "8af5e19f16f2289500496ead5f969316d2937c20b67fd1e759cf0f4430187987",
       "kapa.stl": "9ea6e132c876f00937d246f89bd3c3e3a84420182528f2c876c9c13903f0b2a0",
       "lampbarare-utkast.stl": "13f7778dd7c32383c78295932cca04844d2e4ca4905ec6b6d230b99adb0094c1",
-      "sidotorn_v2.step": "b375e8c44b7f54908575f513d5abd479fd8c56f98f9af2cc63977ebf8fbbdfad",
-      "elektronik.json": "188ad1d4edb16472550f493b569694e26841f1915664ca108d0ebf68dde19dfe"
+      "hornbygel.stl": "b833e45a63d20a8c9e2c38f6f7556067b9c5109936d55a5d1b08e455630482ca",
+      "sidotorn_v2.step": "de3e1624d8a4366879ae58c7f18101180e026c05fe119d3070a9e226cff1552f",
+      "elektronik.json": "cf97940af603a9f8dca4a26970192752e7c1da2ae5b12e07f37d74f464652ffa",
+      "hornskruvar-referens.stl": "fbbff654e0805f5c9a76ed1205599a522e140db10db191f15f86054714bc2524",
+      "magnetstal-referens.stl": "4f799b46e112c264a70c92155192bd573e587d5ca633c6ef83f9a2c1959fe8f0"
     },
     "prob_x": 61.0,
     "referenslicens": "CC BY-NC-SA 4.0, Jonathan Harper; se referenser/README.md"
@@ -33,5 +37,5 @@
     "R_tool_mount_t.stl": "c64cf46705c45b1999d8db96de9f0e434c7d5b2b309cf95ebe9b1660c197b0df",
     "scan_pts_plan.npy": "294c9e49b3f8a4df2d950573454796d837b5523aff488f0efafe14f1aba0790b"
   },
-  "rapport_sha256": "60a622553aae53a5baad3c9745f6f5ddc10eb859d0ce8da5c672f4980d3f95a2"
+  "rapport_sha256": "f9322d65663c5780628bbe93e4ee4663297575dc7365b65d6b6f761f1da04656"
 }

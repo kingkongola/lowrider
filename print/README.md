@@ -27,11 +27,35 @@ uv run --project ~/dev/printa printa skiva print/sensor-passning.json
 
 Detta prov godkänner inte M3-skruvarnas slutliga längd, kamerans fulla fasthållning, tornets maskininfästning, servohorn, CR Touch, belysning eller den övriga elektroniken.
 
+## Servohorn — ficka och M3-bygel
+
+[horn-passning.json](horn-passning.json) innehåller en liten hornficka och en separat kilbygel, en del med sned kontaktyta som pressar hornet mot fasta stöd. Geometrin kommer från [hornfaste.py](../machine/delar/sensorer/hornfaste.py); [manifestet](horn-passning/manifest.json) anger källor och exporter. Provkroppen har extra plan rygg för utskriften. Själva fickan, stöden, bygeln och skruvhålen motsvarar armens infästning.
+
+PLA, 0,20 mm lager, styrkeprofil med fem väggar och 30 % inre fyllning: klämfunktionen behöver styvare provdelar än ett rent formprov. Fickan står med ryggen på bädden och bygeln med utsidan nedåt. Automatiska stöd används vid överhäng och tas bort före provning. Slutarmens material och utskrift bereds efter provet.
+
+Slutplattan är kontrollerad och skivad utan fel eller varningar: cirka **13 minuter och 4,7 g PLA**. [Monteringsbild](horn-passning/delar.png) visar delarna isärdragna; det förenklade hornet är endast referens och skrivs inte ut.
+
+```sh
+uv run --offline --no-project --python 3.12 --with build123d==0.13.0 python machine/delar/sensorer/passningsprov.py --typ horn --ut print/horn-passning
+uv run --project ~/dev/printa printa skiva print/horn-passning.json
+```
+
+Granska `horn-passning.printa/forhandsvisning.png` före utskrift och öppna därefter `horn-passning.3mf` i Bambu Studio. Utskrift startas av användaren.
+
+**Provmontering med löst horn:**
+
+1. Ta bort stöd och löst material. För in hornet från fickans öppna sida, något lyft från botten, och sänk det mot botten och sidostöden. Navet ska nå sitt bakre anslag utan tvång. Det större runda urtaget ska inte pressa navet runtom.
+2. Lägg bygelns sneda nos mot hornets kant. Sätt i **två M3×10** av befintlig typ. Skruvarna går genom bygeln och formar gängor i fickans blinda Ø2,6-hål; de går inte genom originalhornet. Inga M2 eller nya muttrar ingår.
+3. Dra växelvis och försiktigt för hand tills hornet hålls. Bygelns nos ska nå hornet innan bygeln bottnar; skruvarna ska klämma innan spetsarna når hålbottnen. Avbryt om plastgängan släpper, något spricker eller hornet bara sitter när bygeln böjs kraftigt.
+4. Håll provkroppen och försök vicka hornet åt båda håll. Kontrollera även om det kan lyftas eller förskjutas längs fickan. Lossa och återmontera för att se att greppet går att upprepa. Rapportera glapp och var delarna tar emot i [mätloggen](../CALIBRATION.md).
+
+[CAD-kontrollen](horn-passning/kontroll-cad.json) prövar 81 måttkombinationer och den monterade armens rörelse. Den bevisar inte friktion, plastgängornas hållfasthet eller verkligt glapp. Skala inte hela provet och borra inte originalhornet för denna metod.
+
 ## CR Touch — armfot och skyddshylsa
 
 [crtouch-passning.json](crtouch-passning.json) innehåller **en liten armfot och den nya skyddshylsan**. Båda tas direkt ur aktuell CAD med [passningsprov.py](../machine/delar/sensorer/passningsprov.py). [Manifestet](crtouch-passning/manifest.json) knyter dem till källor och CR Touch-referens. Provet är PLA, 0,20 mm lager, utan stöd, för Bambu P1S 0,4 mm och texturerad PEI-platta.
 
-Hylsans flänsyta ligger mot bädden. Den avsmalnande formen undviker en dold stödhylla. Printkontrollen ger en varning för 13 mm² små överhäng vid skruvunderläggen: här får plasten brygga en kort sträcka mellan kanterna. Inga kontrollfel finns. Resultat och förhandsvisning ligger i `crtouch-passning.printa/`; öppna `crtouch-passning.3mf` i Bambu Studio först efter bildgranskning.
+Hylsans flänsyta ligger mot bädden. Den avsmalnande formen undviker en dold stödhylla. Printkontrollen ger varningar för små överhäng: 6 mm² i den aktuella provfoten och 13 mm² vid hylsans skruvunderlägg. Här får plasten brygga korta sträckor mellan kanterna. Inga kontrollfel finns. Slutplattan är omskivad efter hornändringen: cirka **20 minuter och 7,1 g PLA**. Resultat och förhandsvisning ligger i `crtouch-passning.printa/`; öppna `crtouch-passning.3mf` i Bambu Studio först efter bildgranskning.
 
 ```sh
 uv run --offline --no-project --python 3.12 --with build123d==0.13.0 python machine/delar/sensorer/passningsprov.py --typ crtouch --ut print/crtouch-passning

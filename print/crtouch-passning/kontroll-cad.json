@@ -1,11 +1,12 @@
 {
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
+    "sidotorn.py": "71864fe2ec08977bb2cb6b4b7db4fdde64f75d76d1e0aba45bdd442a17b1936a",
     "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
-    "kontroll_crtouch.py": "9c29d28437a99c2e9b2403bc742c50dbe1c0f8585295c11e69cdf387ac0ba71a",
-    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae"
+    "kontroll_crtouch.py": "26903c9dbe907dda7b7573c1f840155b4622d652bddb2d913ee67c07637bd2a6",
+    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
+    "hornfaste.py": "53215a22b834e0b3d67341e53902c04d56ca4497e497f238f2a137513ad726cd"
   },
   "komponenter": {
     "torn": {
@@ -95,142 +96,142 @@
         },
         {
           "grader": -144,
-          "avstand_mm": 0.7144,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -142,
-          "avstand_mm": 0.93098,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -140,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -138,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -136,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -134,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -132,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -130,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -128,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -126,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -124,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -122,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -120,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -118,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -116,
-          "avstand_mm": 1.0,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -114,
-          "avstand_mm": 1.01692,
+          "avstand_mm": 0.5,
           "intrang_mm3": 0.0
         },
         {
           "grader": -112,
-          "avstand_mm": 1.07688,
+          "avstand_mm": 0.5083,
           "intrang_mm3": 0.0
         },
         {
           "grader": -110,
-          "avstand_mm": 1.1651,
+          "avstand_mm": 0.69049,
           "intrang_mm3": 0.0
         },
         {
           "grader": -108,
-          "avstand_mm": 1.27815,
+          "avstand_mm": 0.95143,
           "intrang_mm3": 0.0
         },
         {
           "grader": -106,
-          "avstand_mm": 1.40985,
+          "avstand_mm": 1.24344,
           "intrang_mm3": 0.0
         },
         {
           "grader": -104,
-          "avstand_mm": 1.55466,
+          "avstand_mm": 1.55084,
           "intrang_mm3": 0.0
         },
         {
           "grader": -102,
-          "avstand_mm": 1.70785,
+          "avstand_mm": 1.86615,
           "intrang_mm3": 0.0
         },
         {
           "grader": -100,
-          "avstand_mm": 1.86551,
+          "avstand_mm": 2.18574,
           "intrang_mm3": 0.0
         },
         {
           "grader": -98,
-          "avstand_mm": 2.02443,
+          "avstand_mm": 2.50778,
           "intrang_mm3": 0.0
         },
         {
           "grader": -96,
-          "avstand_mm": 2.18204,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
           "grader": -94,
-          "avstand_mm": 2.33623,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
           "grader": -92,
-          "avstand_mm": 2.48532,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
           "grader": -90,
-          "avstand_mm": 2.6279,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
@@ -360,87 +361,87 @@
         },
         {
           "grader": -38,
-          "avstand_mm": 2.71896,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
           "grader": -36,
-          "avstand_mm": 2.69035,
+          "avstand_mm": 2.72048,
           "intrang_mm3": 0.0
         },
         {
           "grader": -34,
-          "avstand_mm": 2.64837,
+          "avstand_mm": 2.68089,
           "intrang_mm3": 0.0
         },
         {
           "grader": -32,
-          "avstand_mm": 2.59306,
+          "avstand_mm": 2.62558,
           "intrang_mm3": 0.0
         },
         {
           "grader": -30,
-          "avstand_mm": 2.52451,
+          "avstand_mm": 2.55703,
           "intrang_mm3": 0.0
         },
         {
           "grader": -28,
-          "avstand_mm": 2.44279,
+          "avstand_mm": 2.47531,
           "intrang_mm3": 0.0
         },
         {
           "grader": -26,
-          "avstand_mm": 2.348,
+          "avstand_mm": 2.38052,
           "intrang_mm3": 0.0
         },
         {
           "grader": -24,
-          "avstand_mm": 2.20351,
+          "avstand_mm": 2.27277,
           "intrang_mm3": 0.0
         },
         {
           "grader": -22,
-          "avstand_mm": 2.0446,
+          "avstand_mm": 2.15221,
           "intrang_mm3": 0.0
         },
         {
           "grader": -20,
-          "avstand_mm": 1.88421,
+          "avstand_mm": 2.01897,
           "intrang_mm3": 0.0
         },
         {
           "grader": -18,
-          "avstand_mm": 1.72492,
+          "avstand_mm": 1.87321,
           "intrang_mm3": 0.0
         },
         {
           "grader": -16,
-          "avstand_mm": 1.56989,
+          "avstand_mm": 1.71513,
           "intrang_mm3": 0.0
         },
         {
           "grader": -14,
-          "avstand_mm": 1.42303,
+          "avstand_mm": 1.5449,
           "intrang_mm3": 0.0
         },
         {
           "grader": -12,
-          "avstand_mm": 1.28904,
+          "avstand_mm": 1.36273,
           "intrang_mm3": 0.0
         },
         {
           "grader": -10,
-          "avstand_mm": 1.13633,
+          "avstand_mm": 1.16885,
           "intrang_mm3": 0.0
         },
         {
           "grader": -8,
-          "avstand_mm": 0.93098,
+          "avstand_mm": 0.9635,
           "intrang_mm3": 0.0
         },
         {
           "grader": -6,
-          "avstand_mm": 0.7144,
+          "avstand_mm": 0.7225,
           "intrang_mm3": 0.0
         },
         {

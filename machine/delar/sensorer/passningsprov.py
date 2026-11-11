@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 
 import build123d
-from build123d import Pos, Rot, export_stl
+from build123d import Pos, Rot, Plane, export_stl
 
 import sidotorn as cad
 
@@ -28,7 +28,7 @@ def pa_badden(del_):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--ut", type=Path, required=True)
-    ap.add_argument("--typ", choices=("kamera", "crtouch", "lampdock"), default="kamera")
+    ap.add_argument("--typ", choices=("kamera", "crtouch", "lampdock", "horn"), default="kamera")
     a = ap.parse_args()
     a.ut.mkdir(parents=True, exist_ok=True)
 
@@ -50,6 +50,9 @@ def main():
             "probfaste-passning.stl": pa_badden(fot),
             "crtouch-hylsa.stl": pa_badden(Rot(180, 0, 0) * cad.skyddshylsa()),
         }
+    elif a.typ == "horn":
+        delar={"hornficka-passning.stl":pa_badden(Rot(90,0,0)*cad.hf.provkropp().mirror(Plane.XY)),
+               "hornbygel.stl":pa_badden(Rot(-90,0,0)*cad.hf.bygel().mirror(Plane.XY))}
     else:
         dock = cad.torn() & cad.box((49.5, 46, 125), (77.2, 56.1, 137))
         # Fyll elektronikens bakre hålrum endast på provbiten för stödfria lager.
@@ -61,7 +64,7 @@ def main():
             "lampfot-passning.stl": pa_badden(Rot(-90, 0, 0) * cad.lampor.dockplatta()),
         }
     kallor = [Path(cad.__file__), Path(__file__), Path(cad.cr.__file__), cad.cr.REFERENS,
-              Path(cad.lampor.__file__)]
+              Path(cad.lampor.__file__),Path(cad.hf.__file__)]
     manifest = {
         "typ": a.typ,
         "build123d": build123d.__version__,

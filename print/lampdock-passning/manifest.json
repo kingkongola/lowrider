@@ -2,11 +2,12 @@
   "typ": "lampdock",
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
-    "passningsprov.py": "5fb9178ed7bf8cad68b9cc1a6454ad3c72b4b97412d725f4ee933cad74863a37",
+    "sidotorn.py": "71864fe2ec08977bb2cb6b4b7db4fdde64f75d76d1e0aba45bdd442a17b1936a",
+    "passningsprov.py": "e94adae06fbe8729b807ff27f2fc009cdc1506d4cae0e0c97cf31d1f86cd9dcc",
     "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
-    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae"
+    "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
+    "hornfaste.py": "53215a22b834e0b3d67341e53902c04d56ca4497e497f238f2a137513ad726cd"
   },
   "delar": {
     "lampdock-passning.stl": {

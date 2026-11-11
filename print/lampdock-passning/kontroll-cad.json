@@ -1,11 +1,12 @@
 {
   "build123d": "0.13.0",
   "kallor_sha256": {
-    "kontroll_lampor.py": "9a1594d2a957e554d10ecfc973477a61a15d65fae4ac7e5d02f67bf3eaf0514d",
-    "sidotorn.py": "f082dd3a47e358aef9f90fc12732fb75f2da301bb351895673a45479a934fd1c",
+    "kontroll_lampor.py": "07e1c146099d128f441d6913eaec6caa681f7939cafbaf4739353365bbe72bef",
+    "sidotorn.py": "71864fe2ec08977bb2cb6b4b7db4fdde64f75d76d1e0aba45bdd442a17b1936a",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
     "crtouch.py": "65b0000d2d86b964d80b4a2e714a97bbb2b1cd1ceb17636187dd18615f4b1659",
-    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470"
+    "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
+    "hornfaste.py": "53215a22b834e0b3d67341e53902c04d56ca4497e497f238f2a137513ad726cd"
   },
   "komponenter": {
     "torn": {
@@ -13,7 +14,7 @@
       "solider": 1,
       "bbox_mm": [
         -7.3,
-        17.0,
+        19.5,
         25.803,
         107.5,
         72.5,

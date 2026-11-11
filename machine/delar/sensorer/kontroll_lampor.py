@@ -31,7 +31,7 @@ def main():
     # ingen uppmätt optik eller analys av ljus/reflexer på arbetsstycket.
     synfalt = Pos(*cad.LINS) * Pos(0, 0, -7) * Cone(14, 0, 14)
     kallor = [Path(__file__), Path(cad.__file__), Path(cad.lampor.__file__),
-              Path(cad.cr.__file__), cad.cr.REFERENS]
+              Path(cad.cr.__file__), cad.cr.REFERENS, Path(cad.hf.__file__)]
     r = {"build123d": build123d.__version__, "kallor_sha256": {
         p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
         "komponenter": {}, "granssnitt": {}, "svep": {}, "fel": []}

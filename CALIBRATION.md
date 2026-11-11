@@ -96,7 +96,12 @@ Användaren rapporterar följande enligt det annoterade fotot av det tillgängli
 | B | Total höjd vid navet, lägsta till högsta plastytan, utan centrumskruv | 6 mm |
 | C | Hela armens bredd tvärs längdriktningen vid mittenhålets centrum | 7,3 mm |
 | D | Hela armens bredd tvärs längdriktningen vid yttersta hålets centrum | 6,8 mm |
+| E | Axelcentrum till mittenhålets centrum, längs hornet | 14,5 mm |
+| F | Axelcentrum till yttersta hålets centrum, längs hornet | 18,8 mm |
+| G | Tjocklek på hornets platta arm, utan navet | 2,5 mm |
+| H | Med hornet monterat: avstånd längs axeln från servohusets plana ovansida intill axeln till hornets plana sida mot printdelen | 10 mm |
+| I | Diameter på hornets små hål; användaren osäker mellan två närliggande värden | cirka Ø2,4–2,5 mm |
 
-Användaren rättade C från 7,5 till **7,3 mm i samma svar**; det senare värdet gäller. Båda breddmåtten avser plastens ytterkanter, inte håldiametrarna. Den rapporterade breddskillnaden är 0,5 mm mellan mätpunkterna; avståndet mellan dem är ännu inte angivet, så avsmalningsvinkeln kan inte bestämmas.
+Användaren rättade C från 7,5 till **7,3 mm i samma svar**; det senare värdet gäller. Båda breddmåtten avser plastens ytterkanter, inte håldiametrarna. Bredden minskar 0,5 mm över 4,3 mm mellan mätpunkterna. Rak, symmetrisk avsmalning mellan dessa punkter är ett konstruktionsantagande som ska provpassas.
 
-Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. Den flata armens tjocklek och hålens lägen återstår. Navets sittläge på servoaxeln och det färdiga montaget är inte verifierade genom dessa mått. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
+Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. H rapporterades efter sidovy som markerade de två mätplanen; användaren benämner servohusets yta **ovansidan**. Kopplingen mellan denna yta och servoattrappens koordinater är ett CAD-antagande tills hela montaget provpassats. Håldiametern är ungefärlig; navets inre tandning och spetsens exakta rundning är inte uppmätta. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).

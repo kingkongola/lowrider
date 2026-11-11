@@ -1,0 +1,11 @@
+{
+  "namn": "horn-passning",
+  "process": "styrka",
+  "material": "pla",
+  "stod": true,
+  "delar": [
+    {"fil": "horn-passning/hornficka-passning.stl", "antal": 1},
+    {"fil": "horn-passning/hornbygel.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

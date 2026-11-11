@@ -1,6 +1,6 @@
 # Sensorenhet — aktuell konstruktion och printunderlag
 
-**Uppdaterad 2026-11-10.** Senaste konstruktionsspåret är **sidotorn v2** i [sidotorn.py](sidotorn.py), nu mekaniskt anpassat till CR Touch. Grundgeometrin kommer från commit `46f1f6b` 2026-11-09; probreferens, armfot, kabelurtag, hylsa och magnetbula har därefter ändrats. Det är ännu inte rapporterat provprintat eller monterat. Aktuell arbets- och verifieringsstatus ägs av [CHECKLIST.md](../../../CHECKLIST.md).
+**Uppdaterad 2026-11-11.** Senaste konstruktionsspåret är **sidotorn v2** i [sidotorn.py](sidotorn.py), nu mekaniskt anpassat till CR Touch. Grundgeometrin kommer från commit `46f1f6b` 2026-11-09; probreferens, armfot, kabelurtag, hylsa, horninfästning och magnetstopp har därefter ändrats. Det är ännu inte rapporterat provprintat eller monterat. Aktuell arbets- och verifieringsstatus ägs av [CHECKLIST.md](../../../CHECKLIST.md).
 
 **CR Touch-anpassningen finns i CAD.** [crtouch.py](crtouch.py) läser en separat, källangiven tredjepartsreferens för sensorns kropp och stift. Armfoten har 18 mm hålavstånd, öppet kontaktutrymme och bredare kabelspår; den nya hylsan har kroppsspel och åtkomst till skruvarna. [Kit- och konstruktionsunderlaget](../../../research/2026-11-10-crtouch-anpassning.md) skiljer tillverkaruppgifter, CAD-referens och verkliga mätningar. **Fysisk passning är fortfarande inte verifierad.** Kamerafickeprovets geometri är oförändrad.
 
@@ -24,26 +24,33 @@ Detta är modellens delindelning, inte en färdig skivad printorder.
 | --- | ---: | --- |
 | `torn.stl` | 1 | Torn, infästning, servoram och fasta stopp |
 | `sidopanel.stl` | 1 | Avtagbart lock med hållfingrar för elektroniken |
-| `arm.stl` | 1 | Rörlig CR Touch-arm; servohornsinfästningen återstår före slutprint |
+| `arm.stl` | 1 | Rörlig CR Touch-arm med formad hornficka; provpassning återstår |
+| `hornbygel.stl` | 1 | Kilbygel med två M3×10 i blinda plastgänghål; ingen ny muttertyp |
 | `kapa.stl` | 1 | Ny CR Touch-hylsa; fysisk provpassning återstår |
 | `bricka.stl` | 2 | Distanser vid ADXL345 |
 | `lampbarare-utkast.stl` | 1, senare | Preliminär bärare; sockeladapter, verkliga lampmått och värmeprov återstår |
 
-`crtouch.stl`, `kabel.stl`, kontaktkuvert, servo- och elektronikobjekt i sammanställningen är **referenser**, inte printdelar. Gamla `bltouch.stl` hör till det ersatta underlaget. STEP-sammanställningen visar både utfällt och parkerat läge för samma arm; det betyder inte två armar. Referensmodellens licens/attribution finns i [referenskatalogen](referenser/README.md).
+`crtouch.stl`, `kabel.stl`, `hornskruvar-referens.stl`, `magnetstal-referens.stl`, kontaktkuvert, servo- och elektronikobjekt i sammanställningen är **referenser**, inte printdelar. Gamla `bltouch.stl` hör till det ersatta underlaget. STEP-sammanställningen visar både utfällt och parkerat läge för samma arm; det betyder inte två armar. Referensmodellens licens/attribution finns i [referenskatalogen](referenser/README.md).
 
 Källan exporterar huvudsakligen i monteringskoordinater. Delarna måste orienteras för utskrift och läggas mot byggplattan före skivning; en monteringsmodell är inte automatiskt rätt printläge. Hylsan är avsedd med öronen mot bädden enligt CAD-kommentaren. Övriga lägen, lagerlast, stöd och material är inte slutligt beredda.
 
-**Första lilla kamerafickeprovet är nu berett:** [jobb och provförfarande](../../../print/README.md). Det tas direkt ur aktuell torngeometri och har ett källmanifest. Det är ett passningsprov, inte ett godkännande av hela tornet. Armens nuvarande Ø7,5-hål vid servoaxeln definierar inte en färdig koppling till servohornet; den infästningen återstår före armens slutprint.
+**Första lilla kamerafickeprovet är berett:** [jobb och provförfarande](../../../print/README.md). Det tas direkt ur aktuell torngeometri och har ett källmanifest. Det är ett passningsprov, inte ett godkännande av hela tornet.
 
 **CR Touch har en egen provplatta:** [crtouch-passning.json](../../../print/crtouch-passning.json), med liten armfot och hela skyddshylsan. Den kan verifiera sensorns montage utan att hela armen eller tornet printas. Hylsan vänds med flänsytan mot bädden; efter prov i PLA bereds eventuell slutdel i avsett material på nytt.
 
 **Lampdockan har en liten kall provplatta:** [lampdock-passning.json](../../../print/lampdock-passning.json), med tornutsnitt och modulens fot. Styrtappen hindrar uppochnervänd montering. Två M3×6 avses ge 4,8 mm grepp i plasten utan att nå hålbottnen; verkliga skruvar och printspel provas före slutprint. Provbiten har extra massiv rygg för stödfria lager; huvudtornets elektronikrum fylls inte igen.
 
-Användarens servohornsbild visar ett enarmat horn med tre hål och en centrumskruv. Hornet ska passa i en **formad ficka i den printade armen** som följer avsmalningen. Användaren kräver klämning som tar upp några tiondelars mät-/printfel och hindrar glapp. Konstruktionsprincipen är en separat skruvad klämbygel med sneda kontaktytor: den ska pressa hornet mot fickans botten och fasta anliggningar på ena sidan. Bygeln ska trycka på hornets övre kant på motsatt sida, med utrymme för klämrörelsen. Enbart tryck mot en plan botten räcker inte som bevis på att sidoglapp försvinner.
+## Hornficka och M3-bygel
 
-Bygeln ska ha kvar klämväg efter kontakt; dess undersida får inte bottna mot armkroppen innan hornet kläms. Klämområdet, skruvstapeln och hållningen provas med varierad hornbredd och verklig provdel före godkännande. Lasten ska fördelas över hornet så att det inte skadas av punkttryck från skruvspetsar. Den slutliga kraftöverföringen och infästningen måste kontrolleras med verkligt horn. Ingen printad axeltandning planeras.
+Funktionskravet är en stabil, glappfri och servicebar anslutning till det befintliga hornet som tål några tiondelars måttavvikelse. Användarens förslag om klämning är inte ett krav på viss metod. **Aktuellt val är formad ficka och separat M3-kilbygel**, eftersom befintliga M3-typer ska användas utan nytt fraktköp. Hornets små hål lämnas orörda. Metodjämförelse och daterat underlag finns i [infästningsutredningen](../../../research/2026-11-10-servohorn-infastning.md).
 
-Navmått och två breddmått är rapporterade i [mätloggen](../../../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten). Armens tjocklek, hålens avstånd från axeln och det monterade navets läge återstår. Hålcentrumen definierar var breddmåtten togs; avstånd krävs för att bestämma avsmalningen. Fickan och klämbygeln är ännu inte modellerade. Passningsspel ska skiljas från skruvarnas klämväg. De tre lösa ringdelarnas funktion kan inte avgöras säkert från bilden. Servohornsinfästningen är fortfarande öppen.
+[hornfaste.py](hornfaste.py) äger geometrin utifrån [användarens A–I-mått](../../../CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten). Fickans botten, två sidostöd och ett bakre navanslag ger läget. Bygelns sneda yta pressar hornet mot stöden. Två M3×10 formar gänga i blinda Ø2,6-piloter i armkroppen. Skruvspetsarna belastar inte själva hornet. Ingen printad axeltandning eller uppborrning av originalhornet behövs.
+
+Bygeln ska ha kvar klämväg efter kontakt. Fritt utrymme runt övriga ytor är justermån, inte avsedd presspassning. Det större navhålet avlastar navet i sidled; det är sidostöd och anslag som positionerar hornet. Rak avsmalning mellan mätpunkterna och spetsens rundning är modellantaganden. Referenshornet saknar verifierad inre tandning och återger bara de två uppmätta små hållägena.
+
+Bygeln ligger på armens fria sida efter kontroll mot undre verktygsfästet. Magnetens stålskruv ligger bakom hornets platta arm; parkeringsstopp och magneturtag följer den placeringen. Hornet sätts i armen före montering på servoaxeln: för in det från den öppna sidan 0,5 mm ovanför botten och sänk sedan till anläggen. En separat ribba bevarar utfällda lägets mekaniska stopp. Detta ändrar inte D020:s princip med hårda stopp, magnet och kamerakontroll, men fysisk parkering och magnetkraft ska provas efter montage.
+
+**Litet hornprov:** [horn-passning.json](../../../print/horn-passning.json) innehåller ficka och bygel, utan resten av armen. [Kontrollen](../../../print/horn-passning/kontroll-cad.json) prövar 81 kombinationer med oberoende ±0,2 mm avvikelse i de två breddmåtten, armens tjocklek och navdiametern. Den kontrollerar sättning, klämväg och skruvgrepp i CAD. Friktion, plastens hållfasthet/krypning och verkligt glapp är ännu inte verifierade. Glappfri infästning får inte anges som fysiskt godkänd före prov med det verkliga hornet.
 
 ## Lampmodulens service och begränsning
 

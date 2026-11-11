@@ -108,7 +108,7 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | LM2596 | 2 planerade: nominellt 5,0 V till Pi/CR Touch och 6,0 V till servo. 10 st köpta enligt användaren 2026-10-28. Utgångarna mäts före anslutning |
 | Neodymmagnet Ø6 × 3 mm | 1 till parkeringsstopp; 60-pack Vinabo finns enligt användaren 2026-10-27 |
 | M3-skruv av stål | Tillgänglig enligt användaren; huvud mot parkeringsmagneten |
-| M3 × 10 | CAD avser 2 till kamera, 2 till ADXL345 och 6 till panel. Probfästet har separat skruvrad ovan; faktiska längder provas vid montage |
+| M3 × 10 | CAD avser 2 till kamera, 2 till ADXL345, 6 till panel och 2 till hornbygeln. Avses tas ur befintliga M3-typer; ledigt antal och faktiska längder provas vid montage. Probfästet har separat skruvrad ovan |
 | INMP441 | Tidigare beställd enligt användaren; antal och leverans obekräftade. Ingen färdig placering i sidotornet |
 | QUARKZMAN KW11-3Z-N | Köpt 10-pack, reservdelar. **Inga används på armen enligt D020** |
 | Omron SS-3GL13PT | Befintlig reserv till grundmaskinen; används inte på sensorarmen |

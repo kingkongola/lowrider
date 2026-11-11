@@ -223,3 +223,11 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - Användaren rapporterar C och D enligt bilden med breddmått vid mittenhålet och yttersta hålet. C rättades direkt; aktuella värden och definitioner finns i [mätloggen](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten).
 - Användaren kräver att infästningen kläms fast så att några tiondelars mätfel inte lämnar glapp. Principen är ficka och skruvad bygel med sneda kontaktytor, fast anliggning och kvarvarande klämväg. Detta är ännu inte modellerat eller fysiskt verifierat; konstruktionskraven ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
+
+## 2026-11-11 — Hornficka med befintliga M3-typer och liten provplatta
+
+- Återstående hornmått rapporterade 2026-11-10; [mätloggen](CALIBRATION.md#2026-11-10--servohornets-nav-första-måtten) äger värdena. Användaren förtydligade att klämning var ett förslag, medan stabil och glappfri infästning är funktionskravet. M2 saknas och nytt fraktköp avvisades.
+- Formad ficka och separat kilbygel modellerade för två M3×10 som formar gängor i plast. Originalhornet behålls utan uppborrning. Metodjämförelse och begränsningar finns i [infästningsunderlaget](research/2026-11-10-servohorn-infastning.md).
+- Bygeln placerad på fri sida, magnetkontaktens skruv bakom hornet. Stödskenor och kabelspår anpassade; förstärkningen kortad för frigång mot dammkjolen. CAD-kontrollerna passerar 81 måttkombinationer, monteringens stickprov, magnetficka och svep mot torn/servo/lampmodul. Detta bevisar inte fysisk klämkraft, plastgängornas hållfasthet eller glapp.
+- Färska stickprov mot maskinreferenserna hittar inga intrång för arm, prob, hylsa, bygel eller deras skruvkuvert. Tornets prövade referensöverlappningar är noll och magnetens skyddshud mäts digitalt till 0,6 mm. Rapport och källfingeravtryck finns vid [CR Touch-provet](print/crtouch-passning/kontroll-maskin-manifest.json); kabel och komponentpassningar kräver fortfarande verkligt montage.
+- Hornprovet är printkontrollerat och skivat: cirka 13 minuter, 4,7 g PLA, 0,20 mm lager och styrkeprofil. CR Touch-provet är omskivat mot aktuell export: cirka 20 minuter, 7,1 g, två varningar för små bryggytor och inga fel. Förhandsvisningarna ur g-koden granskade. [Jobb och provförfarande](print/README.md). Ingen utskrift eller fysisk passning rapporterad.

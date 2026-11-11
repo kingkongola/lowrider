@@ -25,6 +25,7 @@ import math
 
 import crtouch as cr
 import lampor
+import hornfaste as hf
 from pathlib import Path
 
 from build123d import (Box, Circle, Color, Compound, Cylinder, Face, Line, Plane, Polygon, Pos, Rot, Spline,
@@ -50,7 +51,7 @@ KONTAKT_TOPP = KORT_BAK + 2.6    # flatkontakten på kortets baksida
 KORT_TAK = KONTAKT_TOPP + 0.35   # kamerafickans tak
 FFC_B = 16.0                # flatkabelns bredd i kameraänden (15-polig, 1 mm delning)
 LED_Y = (LINS[1] - 17.5, LINS[1] + 15.5)     # kortet sticker längre åt fräsen, därför 2 mm från symmetri
-HUD = 0.6                   # plast mellan magneten och M3-huvudet, så att stålet aldrig slår på magneten
+HUD = 0.6                   # skyddsplast framför magneten
 BUK = LINS[2] + 2.6         # tornets plana undersida vid kameran
 TOPP = 171.0                # tornets ovansida; bestäms av Pi-kortet som måste gå fritt över den svepande undersidan
 XEND = 107.5               # tornets yttersta punkt, innanför dammskon
@@ -63,7 +64,8 @@ PI_HAL = [(PI_CENTER[0] + dx, PI_CENTER[1] + dz) for dx in (-29, 29) for dz in (
 PANEL_X = 82.5                           # sidopanelens bakre gräns mot kamerablocket
 PANEL_HAL = [(15.0, 125.5), (70.0, 134.4), (23.0, 164.5), (67.0, 164.5), (15.0, 62.5), (45.5, 62.5)]
 ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
-# Två LM2596-moduler 43 x 21 mm sida vid sida: A nominellt 5,0 V till Pi och CR Touch, B 6,0 V bara till servot (SPMS664 är specat 6,0-7,4 V).
+# Två LM2596-moduler 43 x 21 mm: A till Pi/CR Touch, B till servo.
+# Matningsval ägs av KOPPLING_CORE_V0.md; här modelleras modulernas utrymme.
 REG_X0 = {"A": 12.5, "B": 34.5}
 REG_Z0 = 66.5
 REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3.0, 3.5), (18.0, 39.5))]   # panelens fingrar pressar modulens hörn
@@ -81,7 +83,7 @@ MAGNET = (6.2, 3.2)         # urtag för Ø6 x 3 mm neodymmagnet (Vinabo, finns 
 BULA_T = 11.0               # armens bula för M3-skruvens stålhuvud, mm längs armen
 ARM_W = (7.5, 5.0)         # halv bredd vid navet och vid plattan
 
-BULA_Y = (ARM_Y[0] - 2.0, ARM_Y[1])   # armen är tjockare där M3-skruvens huvud möter magneten
+BULA_Y = (23.5,29.5)  # kontaktens stålskruv bakom hornets platta arm (H=10)
 KAPA_Y = Y1
 KAPA_T = 1.4
 
@@ -159,6 +161,23 @@ def arm_geo(prob_x):
     L = math.hypot(bx - PX, bz - PZ)
     ux, uz = (bx - PX) / L, (bz - PZ) / L
     return (ux, uz), (-uz, ux), L
+
+
+def horn_lage(o, prob_x=PROB[0], spegla=True):
+    """H mäts från servohusets ovansida vid axeln till hornets plana utsida."""
+    u, _, _ = arm_geo(prob_x)
+    horn_y = 32.6 + SERVO_DY - hf.H_MONTERAT
+    # Bygeln placeras på armens andra sida för frigång mot undre verktygsfästet.
+    return Pos(PX,horn_y,PZ) * Rot(0,math.degrees(math.atan2(-u[1],u[0])),0) * (o.mirror(Plane.XY) if spegla else o)
+
+
+def magnet_skruv_attrapp(prob_x=PROB[0]):
+    """M3x10-kuvert av stål, skallen i sitt 3,3 mm djupa säte; verklig längd provas."""
+    _,_,L=arm_geo(prob_x)
+    w=ARM_W[0]+(ARM_W[1]-ARM_W[0])*BULA_T/L
+    y=sum(BULA_Y)/2-(32.6+SERVO_DY-hf.H_MONTERAT)
+    s=Pos(BULA_T,y,w-1.8)*Cylinder(2.75,3)+Pos(BULA_T,y,w-8.3)*Cylinder(1.5,10)
+    return horn_lage(s,prob_x,spegla=False)
 
 
 def vrid(p, grader):
@@ -247,14 +266,16 @@ def torn(prob_x=PROB[0]):
             s -= cyl_y(x, z, FRAM_Y[0] - 1, FRAM_Y[1] + 1, 3.4)
     # Hårda stopp i armens plan, hållna av skenor över och under servot.
     def stopp(sida):
-        y = (ARM_Y[0] if sida < 0 else BULA_Y[0] - 0.5, ARM_Y[1] + 1.2)
+        y = (ARM_Y[0],ARM_Y[1]+1.2) if sida<0 else (ARM_Y[1]-2.5,BULA_Y[1]+.5)
         p = prisma_y(stopp_block(prob_x, sida, ARM_W[0], ARM_W[1]), y[0], y[1])
         return fillet(p.edges().filter_by(Axis.Y), 0.8)
     s += stopp(-1)
-    s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (45, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
+    # Smalare nedre skena lämnar plats för magnetkontaktens stålskruv.
+    s += fillet(box((33, ARM_Y[1] + 1.0, 27.6), (42, FRAM_Y[0] + .2, 33.2)).edges().filter_by(Axis.Y), 1.2)
     s += stopp(1)
-    s += fillet(box((31, ARM_Y[1] + 1.0, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
-    s += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, ARM_Y[1] + 1.2, 58.5))   # förstärker parkeringsstoppet mot skenan
+    # Övre bärningen bakom armsvepet, förbunden via en vänster sidoribba.
+    s += fillet(box((31, 30.5, 54.0), (47, FRAM_Y[0] + .2, 58.5)).edges().filter_by(Axis.Y), 1.2)
+    s += box((33.5, ARM_Y[0] + 2.0, 54.0), (37.0, 33.0, 58.5))
     s -= magnet_urtag(prob_x)
     # Kameran: nos under buken, urtag för kortet, två LED-spår symmetriskt runt linsen.
     cx, cy, _ = LINS
@@ -326,7 +347,8 @@ def med_elektronik(s):
     s -= box((LINS[0] - 7.5, LED_Y[0] - 1.0, KORT_TAK + 1.2), (LINS[0] - 5.5, 62.5, KORT_TAK + 3.0))
     # Servokabeln upp ovanför servot; CR Touch-kabeln genom skenan över servot.
     s -= box((25, 52, 53.5), (43, 62, 61))
-    s -= box((37, ARM_Y[1] + 0.5, 55), (43, 52.5, 57.5))
+    # Börja bakom magnetstoppet: kabelspåret får inte öppna magnetens skyddshud.
+    s -= box((37, 30.5, 55), (43, 52.5, 57.5))
     # Samlad kabel ut bakåt, in i gapet mot Core där den inte syns framifrån.
     s -= box((7, 56, 108), (13, 66, 118))
     for y in (60, 65):                                      # buntbandsbryggor strax ovanför utgången, utanför ADXL-kortet
@@ -389,8 +411,10 @@ def arm(prob_x=PROB[0]):
     # Bula för skruvhuvudet som fäster mot magneten.
     t = BULA_T
     w = w0 + (w1 - w0) * t / L
-    # Plastbula 0,25 mm innanför armens sidplan; M3-huvudet ska möta magneten, inte bulan.
-    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.0, 6.5)
+    # Bredare bula ger gods runt huvudurtaget och överlappar armens framyta.
+    # Ändytan ligger 0,5 mm innanför nominella sidplanet; stålhuvudet tar mot magneten.
+    bula = Pos(PX + u[0] * t + n[0] * (w - 3.5), sum(BULA_Y) / 2, PZ + u[1] * t + n[1] * (w - 3.5)) * Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0) * Cylinder(3.7, 6.0)
+    bula &= box((-100,-100,-100),(200,30.0,200))  # frigång till servohusets ovansida
     a += bula
     s_p = (PX + u[0] * t + n[0] * w, PZ + u[1] * t + n[1] * w)
     rot = Rot(0, 90 - math.degrees(math.atan2(n[1], n[0])), 0)
@@ -407,9 +431,18 @@ def arm(prob_x=PROB[0]):
     # Öppet framåt: kontakten kan kopplas ur utan att klämmas mellan arm och prob.
     a -= box((prob_x - cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[0], F - 1),
              (prob_x + cr.KONTAKT_B / 2, PROB[1] + cr.KONTAKT_Y[1], F + cr.KONTAKT_H))
-    # Detta frigångshål är inte en färdig koppling till servohornet.
-    # Hornets infästning och kraftöverföring måste lösas före slutprint.
-    a -= cyl_y(PX, PZ, y0 - 1, y1 + 1, 7.5)
+    # Hornet kläms mot botten, två sidostöd och bakre navanslag.
+    # Ø11-hålet avlastar navet i sidled; bygeln använder befintliga M3-typer.
+    a += horn_lage(hf.kropp(),prob_x)
+    a -= horn_lage(hf.urtag(),prob_x)
+    a -= horn_lage(hf.bulthal(),prob_x)
+    a += horn_lage(hf.anlaggningar(),prob_x)
+    # Bevara utfällda lägets stoppribba längs den öppna fickans sida.
+    # Hornet förs in 0,5 mm ovanför botten och sänks därefter till sina anlägg.
+    ribba=[sid(7,-1),sid(15,-1)]
+    ribba += [(p[0]+n[0]*1.5,p[1]+n[1]*1.5) for p in reversed(ribba)]
+    horn_y=32.6+SERVO_DY-hf.H_MONTERAT
+    a += prisma_y(ribba,horn_y-1.0,horn_y+.3)
     return a
 
 
@@ -467,19 +500,26 @@ def main():
     a.ut.mkdir(parents=True, exist_ok=True)
     t, ar, bl = torn(a.prob_x), arm(a.prob_x), crtouch(a.prob_x)
     l = sidopanel()
-    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare())):
+    for n, o in (("torn", t), ("arm", ar), ("crtouch", bl), ("sidopanel", l), ("kabel", kabel()), ("bricka", bricka()), ("kapa", skyddshylsa(a.prob_x)), ("lampbarare-utkast", lampor.barare()), ("hornbygel",horn_lage(hf.bygel(),a.prob_x))):
         forvantat = 2 if n == "crtouch" else 1
         if not o.is_valid or len(o.solids()) != forvantat:
             raise ValueError(f"{n}: ogiltig geometri eller fel antal solider")
         print(n, "giltig", o.is_valid, "solider", len(o.solids()), "volym cm3", round(o.volume / 1000, 1),
               "bbox", [round(v, 1) for v in (*o.bounding_box().min, *o.bounding_box().max)])
         export_stl(o, str(a.ut / f"{n}.stl"), tolerance=.05, angular_tolerance=.2)
+    export_stl(horn_lage(hf.skruvar(),a.prob_x),a.ut/'hornskruvar-referens.stl')
+    export_stl(magnet_skruv_attrapp(a.prob_x),a.ut/'magnetstal-referens.stl')
     cx, cy, cz = LINS
     delar = [
         namn(t, "Sidotorn", (.16, .18, .2)),
         namn(servo_attrapp(), "Servo_SPMS664_ATTRAPP", (.1, .1, .12)),
         namn(kabel(), "Kabel_ATTRAPP", (.1, .1, .1)),
         namn(ar, "Arm_utfalld", (.9, .62, .29)),
+        namn(horn_lage(hf.bygel(),a.prob_x),"Hornbygel_utfalld",(.3,.5,.7)),
+        namn(parkera(horn_lage(hf.bygel(),a.prob_x)),"Hornbygel_parkerad",(.3,.5,.7)),
+        namn(horn_lage(hf.horn(),a.prob_x),"Servohorn_YTTRE_REFERENS",(.15,.15,.15)),
+        namn(horn_lage(hf.skruvar(),a.prob_x),"Hornbygel_M3x10_REFERENS",(.6,.6,.6)),
+        namn(magnet_skruv_attrapp(a.prob_x),"Magnetkontakt_M3x10_REFERENS",(.6,.6,.6)),
         namn(bl, "CR Touch_utfalld_ATTRAPP", (.85, .2, .15)),
         namn(parkera(copy.deepcopy(ar)), "Arm_parkerad", (.9, .62, .29)),
         namn(parkera(copy.deepcopy(bl)), "CR Touch_parkerad_ATTRAPP", (.85, .2, .15)),
@@ -504,9 +544,10 @@ def main():
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
         "pi_hal": PI_HAL, "panel_hal": PANEL_HAL, "topp": TOPP}))
-    kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__)]
-    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast")]
+    kallor = [Path(__file__), Path(cr.__file__), cr.REFERENS, Path(lampor.__file__),Path(hf.__file__)]
+    exporter = [a.ut / f"{n}.stl" for n in ("torn", "arm", "crtouch", "sidopanel", "kabel", "bricka", "kapa", "lampbarare-utkast", "hornbygel")]
     exporter += [a.ut / "sidotorn_v2.step", a.ut / "elektronik.json"]
+    exporter += [a.ut/'hornskruvar-referens.stl',a.ut/'magnetstal-referens.stl']
     (a.ut / "manifest.json").write_text(json.dumps({
         "kallor_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in kallor},
         "exporter_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in exporter},
