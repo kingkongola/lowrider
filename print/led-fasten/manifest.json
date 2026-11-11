@@ -1,0 +1,19 @@
+{
+  "typ": "led-fasten",
+  "build123d": "0.13.0",
+  "parametrar": {
+    "vinklar": [
+      0.0,
+      15.0,
+      35.0
+    ],
+    "led_bredd": 8.0,
+    "segment_langd": 154.0
+  },
+  "kallor_sha256": {
+    "tre_vinklar.py": "c142e4988b15f2cdcc1926a9588c68a9b943726668ed0ae0b04117fdf4c3de1c"
+  },
+  "delar": {
+    "led-fasten.stl": "95471a6476bf02c22e8376bfd591d08d4437d37e0c85c9b890a338641546a687"
+  }
+}

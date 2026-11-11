@@ -21,13 +21,13 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 
 | # | Lucka | Blockerar | Förslag |
 | --- | --- | --- | --- |
-| L1 | **Övervakningens nätdel (D023) är inte vald.** Tornet behöver två matningar: maskinens 24 V till servot (LM2596 B) och övervakningens egen till Pi och CR Touch (LM2596 A) | Fas 5 | Kandidater i [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md). Bänkproven i fas 1 kan köras på valfri 12–24 V-källa |
-| L2 | **Kabeln från tornet till balken är inte projekterad:** övervakningsmatning, 24 V maskin, gemensam jord, servosignal, CR Touch styrning och kontakt, ca 7 ledare | Fas 5 | Välj kabel och kontakt efter L1; mät längd med snöre vid full rörelse |
-| L3 | **Pi-sidans program saknas:** ingen tjänst som skickar bild till datorn (armspärren förutsätter en adress), ingen läsning av ADXL eller mikrofon | Fas 1 steg 1.6–1.8, fas 6 | Byggs i `cnc`; kan göras nu |
+| L1 | **Övervakningens nätdel (D023) är inte vald.** Tornet behöver två matningar: maskinens 24 V till servot (LM2596 B) och övervakningens egen till Pi och CR Touch (LM2596 A) | Fas 5 | **Förslag:** en andra Mean Well HDR-60-24, ca 30 W last av 60 W ([underlag](machine/EL_BELYSNING_OCH_STOPP.md)). Väntar på användarens beslut. Bänkproven i fas 1 kan köras på valfri 12–24 V-källa |
+| L2 | **Kabeln från tornet till balken är inte projekterad:** övervakningsmatning, 24 V maskin, gemensam jord, servosignal, CR Touch styrning och kontakt, ca 7 ledare | Fas 5 | **Förslag:** skärmad LiYCY 8 × 0,25 mm², ledarlista i [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md). Längd mäts med snöre vid full rörelse |
+| L3 | **Pi-sidans program saknas:** ingen tjänst som skickar bild till datorn (armspärren förutsätter en adress), ingen läsning av ADXL eller mikrofon | Fas 1 steg 1.6–1.8, fas 6 | **Byggt 2026-11-11:** [`cnc/pi/sensorpi.py`](https://github.com/kingkongola/cnc/tree/main/pi) med installation och tester utan hårdvara. Ej provat på riktig Pi |
 | L4 | **Slutdelarnas printjobb finns inte:** material, orientering och stöd för torn, panel, arm, hylsa, bygel och brickor är inte valda | Fas 3 | Görs efter fas 2, när måtten är rättade |
-| L5 | **LED-fästet saknar printjobb** och LED-listens matning är inte vald (D022/D023) | Fas 6 steg 6.6 | Printjobb kan göras nu; matning efter L1 |
+| L5 | **LED-fästet saknar printjobb** och LED-listens matning är inte vald (D022/D023) | Fas 6 steg 6.6 | **Printjobb klart 2026-11-11:** `print/led-fasten.printa/led-fasten.3mf`, PETG, ca 32 min, ett provsegment. Matning efter L1 |
 | L6 | **Märket för armspärren och mönstret på armen är inte ritade** (beslut 0035/0036 i `cnc`) | Fas 6 steg 6.5 | Väljs från första riktiga kamerabild |
-| L7 | **Avståndet mellan probstiftets spets och fräsens spets** har ingen mätmetod | Fas 7 | Mät med fräs och prob mot samma plana yta, båda via G38 eller pappersmetoden; dokumenteras före första mätning |
+| L7 | **Avståndet mellan probstiftets spets och fräsens spets** har ingen mätmetod | Fas 7 | **Löst 2026-11-11:** proben mäter tjocklek som skillnad mot offerskivan, fräsen nollas som i dag; [metod](machine/probstyrning/README.md) |
 
 ### Fas 0 — Utskrift pågår
 

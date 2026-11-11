@@ -2,6 +2,20 @@
 
 **Status:** Utrednings-/implementationsunderlag till **[låst D022: COB i stället för G4](../DECISIONS.md)**, inte ett separat konkurrerande komponentbeslut. **G4-lampor utgår och ska inte köpas eller CAD-projekteras.** Detta är ett planeringsunderlag, **inte** ett godkänt 230 V-kopplingsschema, en säkerhetsklassad stoppkrets eller en färdig CAD/montering. Elektrisk detaljprojektering och fysisk verifiering återstår. Låsta D013/D016/D020/D021/**D022** i `DECISIONS.md` gäller där de är relevanta. **Matning och stopp är valda 2026-11-10 i D023 (två matningsgrupper: maskin och övervakning) och D024 (kontaktor för KATSU, larmingång för Jackpot; ersätter NVR-brytaren i D013).** Där texten nedan säger NVR eller lämnar matningen öppen gäller D023/D024. Mjukvarans övervaknings- och stoppolicy ägs av [cnc/verktygsovervakning](https://github.com/kingkongola/cnc/blob/main/docs/verktygsovervakning.md).
 
+## Förslag L1 2026-11-11: övervakningens nätdel (väntar på användarens beslut)
+
+**En andra Mean Well HDR-60-24** (24 V, 60 W, DIN, klass II), samma modell som maskinens. Den sitter i kontaktorlådan **före** nödstoppet och kontaktorn, så att den lever efter stopp (D023), och matar:
+
+| Last | Effekt (uppgift, ej mätt) |
+| --- | --- |
+| BRIMETI COB, 3 × ca 0,8 m à 10 W/m | ca 24 W |
+| Pi Zero 2 WH, kamera, ADXL, INMP441 via LM2596 A | ca 3 W |
+| CR Touch | under 1 W |
+| Kontaktorns 24 V-spole (D024) | ca 2 W, läses i databladet |
+| **Summa** | **ca 30 W av 60 W** |
+
+**Varför denna:** samma spänning som LED-listen och kontaktorspolen, så ingen extra regulator; samma montage och kapsling som redan finns i bygget; halv last ger marginal och svalt aggregat. Laptopladdaren (ca 20 V) räcker inte till 24 V-LED:en, och elsparkcykelladdarens utspänning är okänd. Föregående HDR-60-24 kostade enligt COSTS.md i en samlad DigiKey-order; aktuellt pris kontrolleras vid köp.
+
 ## Verifierat, valt och osäkert — blanda inte ihop
 
 | Del | Fakta/status | Anmärkning |

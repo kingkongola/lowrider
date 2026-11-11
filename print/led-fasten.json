@@ -1,0 +1,10 @@
+{
+  "namn": "led-fasten",
+  "process": "standard",
+  "material": "petg",
+  "stod": true,
+  "delar": [
+    {"fil": "led-fasten/led-fasten.stl", "antal": 1}
+  ],
+  "andringar": {}
+}

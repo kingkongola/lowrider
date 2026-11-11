@@ -28,6 +28,20 @@ Armens läge bekräftas av kameran före jobb (beslut 0035 och 0036 i `cnc`; den
 4. **Jackpot.** Sätt bygeln för utgångarna på 5 V. Läs maskinens aktuella `config.yaml`, kör `python konfig.py aktuell.yaml forslag.yaml`, granska diffen (sex rader) och ladda upp. Ladda upp `makron/*.nc` till Jackpots lokala filer. Prova i konsolen: `M67 E1 Q3.235` (stift ut), `M67 E1 Q7.365` (in), sedan `arm_ut.nc` och `arm_in.nc` med fräsen avstängd.
 5. **Mätning.** Först efter godkänt steg 4 och enligt [inkopplingsprovet](../delar/nollpunkt/INKOPPLING_OCH_PROV.md) steg 3: `mat_z.nc` över spill. Den söker snabbt nedåt högst 25 mm, lyfter 2 mm, fäller ut stiftet igen och mäter långsamt. Det långsamma värdet gäller. Avståndet mellan stiftets spets och fräsens spets mäts separat; utan det ger mätningen ingen nollpunkt.
 
+## Stiftet och fräsen: proben mäter skillnader (L7)
+
+Proben vet inte hur lång fräsen är, och den behöver inte veta det. Den mäter **materialets tjocklek** som skillnaden mellan två mätningar, och tjockleken är oberoende av verktyg. Fräsen nollas som i dag.
+
+1. **En gång, efter montering:** `mat_z.nc` på tre punkter på planfräst offerskiva. Medelvärdet av PRB Z blir `referens.offerskiva_prb_z`; spridningen ska vara under 0,05 mm. Görs om om armen eller proben ändras.
+2. **Per jobb:** `mat_z.nc` på materialet ger PRB Z. Tjockleken = PRB Z (material) − `offerskiva_prb_z`.
+3. **Per verktyg, som i dag:** nolla fräsen mot offerskivan med papper eller Z-platta. Materialets ovansida = den nollan + tjockleken.
+
+**Varför så:** utan verktygslängdsknapp (D024 gav `gpio.39` till stoppet) finns inget sätt att mäta fräsens längd automatiskt. Skillnadsmätningen undviker problemet helt. Den förutsätter att offerskivan är plan där du mäter; det är den planfräst.
+
+**Z-platta och CR Touch delar ingång:** båda använder `gpio.36`. Använder du en Z-platta i dag måste dess kontakt lossas när CR Touchen kopplas in, eller så nollas fräsen med papper.
+
+**Stiftets läge i XY (gropmetoden):** fräs en liten grop, 0,5 mm djup, i spill med fräsen. Notera MPos. Kör ut armen och stiftet och jogga tills stiftets spets står mitt över gropen; sänk försiktigt tills spetsen syns i gropen. Skillnaden i MPos X och Y är `xy_offset`. CAD säger ca 61 mm ut från balken och ca 34 mm längs balken; noggrannhet ±1 mm räcker, eftersom stiftet bara ska träffa materialet.
+
 ## Inte verifierat
 
 CR Touchens pulsvärden är BLTouch-protokollet. Signalens polaritet, servots beteende utan pulser, armens pulser och FluidNC 3.9.9:s `M67` på 50 Hz på just dessa pinnar är oprovade.

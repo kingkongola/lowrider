@@ -43,6 +43,23 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 
 **Styrning byggd i programvara 2026-11-11, ej provad:** makron, pulsvärden och konfigurationsförslag finns i [probstyrning](../../probstyrning/README.md).
 
+## Kabel torn–balk (L2, förslag 2026-11-11, ej köpt)
+
+**Skärmad flexkabel 8 × 0,25 mm² (typ LiYCY), ca 3 m**, längd mäts med snöre vid full X-rörelse. Skärmen kopplas till jord **bara i Jackpot-änden**, så att den inte bildar en jordslinga. Skärm behövs eftersom kabeln går bredvid KATSU:ns 230 V-kabel och bär probsignalen. Ledarna löds i tornet och dras genom buntbandsbryggorna vid utgången.
+
+| Ledare | Funktion | Ström (uppskattad) |
+| --- | --- | --- |
+| 1 | +24 V övervakning → LM2596 A (Pi, kamera, ADXL, mikrofon, CR Touch) | under 0,3 A |
+| 2 | +24 V maskin → LM2596 B (servo) | under 0,7 A vid stopp mot hårt stopp |
+| 3 | GND, gemensam för båda nätdelarna | under 1 A |
+| 4 | Servosignal, `gpio.27` | signal |
+| 5 | CR Touch styrning, `gpio.26` | signal |
+| 6 | CR Touch kontakt, `gpio.36` (S) | signal |
+| 7 | Probe-portens G, tvinnad med ledare 6 | signal |
+| 8 | Reserv | |
+
+Båda nätdelarnas minus förbinds vid Jackpot, så att signalerna har samma referens (D023). Strömmarna är räknade ur servots och Pi:ns data via LM2596:s verkningsgrad, inte uppmätta.
+
 ## Matning och kabel
 
 - Befintlig 24 V-försörjning → **LM2596 A ställs till 5,1 V** för Pi och CR Touch (användarens val 2026-11-10). 5,1 V är Raspberrys egen nätdels spänning; marginalen tar kabelns spänningsfall när Pi:n drar mycket, och ligger inom CR Touchens nominella 5 V. Utgången mäts tomgång och med last. Ingen fysisk justering är gjord här. Justerskruven säkras med smältlim efter inställning; mät igen efter limning.

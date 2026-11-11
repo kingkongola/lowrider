@@ -25,5 +25,16 @@
     "snabb_mm_min": 150,
     "langsam_mm_min": 40,
     "lyft_mm": 2.0
+  },
+  "referens": {
+    "_om": "Probens triggläge i maskinkoordinater (PRB Z) på planfräst offerskiva, medel av tre punkter. Mäts en gång efter montering och efter varje ändring av armen; se README, L7.",
+    "offerskiva_prb_z": null,
+    "spridning_mm": null,
+    "datum": null
+  },
+  "xy_offset": {
+    "_om": "Stiftets läge relativt fräsaxeln i maskinens X och Y. CAD: ca 61 mm ut från balken och ca 34 mm längs balken mot X max; tecken och exakt värde mäts med gropmetoden i README.",
+    "x_mm": null,
+    "y_mm": null
   }
 }

@@ -147,6 +147,14 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 
 **Köps inte** (D024, 2026-11-10): ersatt av kontaktorlådan nedan. Tidigare kandidat: Clas Ohlson `50-2929`, KJD12, 299 kr.
 
+### Övervakningens nätdel och tornkabeln — föreslaget 2026-11-11, ej beslutat
+
+| Del | Förslag | Varför |
+| --- | --- | --- |
+| Nätdel (L1) | Mean Well HDR-60-24, en till | Matar LED, Pi och kontaktorspole efter stopp, D023; se [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md) |
+| Kabel torn–balk (L2) | LiYCY 8 × 0,25 mm², skärmad, ca 3 m | Se [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
+| Skumtejp och dammnät/ventildekal | Liten bit av varje | Mikrofonens tätning och dammskydd |
+
 ### KATSU-stopp från Pi:n, trådbundet — planerat, ej beställt
 
 Användarens val 2026-11-10: kontaktorlösningen, ca 500 kr totalt; ersätter även NVR-brytaren (D024). Pi:n håller kontaktorn dragen; Pi-krasch, omstart, strömavbrott eller nödstopp släpper den, och KATSU startar bara efter tryck på grön knapp (Pi:ns pinnar är av vid start). Bryter bara KATSU, så Jackpot håller Z. Inget nätverk i stoppkedjan; Pushover-notis efteråt.
