@@ -9,4 +9,12 @@
 #     protokoll: var resultatet står (CALIBRATION.md-avsnitt, fil, foto)
 #     ansvarig: vem som gjorde provet
 #     utfall: godkänd | underkänd
-poster: []
+poster:
+  - matris: komponenter
+    rad: Servohorn
+    kolumn: fastsattning
+    datum: 2026-11-11
+    metod: hornprovet i PLA (sensorprov-pla), hornet i fickan med bygel och M3, servot under
+    protokoll: CALIBRATION.md, 2026-11-11 hornprov 1
+    ansvarig: användaren
+    utfall: underkänd

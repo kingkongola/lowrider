@@ -69,6 +69,13 @@ Homa Z, nollställ, probea/nudda touch plate/pappersmätning vid minst vänster,
 - Efter homing joggade användaren till **MPos X 613,0** , **MPos X 640,0** och **MPos X 642,0**, alla fria. **Vid MPos X 643,0 tar något i** (okänt vad). **Infört:** soft limit MPos 640 (`max_travel_mm: 637`), 3 mm marginal; `config-2026-10-22-x637.yaml` uppladdad, verifierad med `$I` efter omstart. Backup: `config-2026-10-22-fore.yaml`. `cnc` (MASKIN_GRANS) följer samma gräns.
 - Åtgärd (poka-yoke): sätt `max_travel_mm` i X så att soft limit ligger några mm före det verkliga ändläget; då vägrar FluidNC alla program som går längre. `cnc`:s `MASKIN_X`/`MASKIN_GRANS` följer samma värde.
 
+## 2026-11-11 — Hornprov 1 underkänt: servots krage saknas i CAD
+
+- **Prov:** hornfickan och bygeln ur `print/sensorprov-pla` (PLA, styrkeprofil) monterade på SPMS664 med originalhornet.
+- **Resultat:** skruven gick inte att dra åt; hornet böjdes i Z-led (vinkelrätt mot sitt plan). Användarens foton visar en rund, upphöjd krage runt mässingsaxeln ovanför servots plana ovansida.
+- **Orsak:** CAD:ens servo har plan ovansida och H = 10 mm mättes mot den plana delen. Den printade delen tar i kragen innan hornet ligger an.
+- **Åtgärd:** kragens diameter och höjd mäts; fickan får urtag för kragen och omprövas. Hornprovet är **inte** godkänt.
+
 ## 2026-11-10 — Fällservots rörelseomfång verifierat på bänk
 
 **Resultat: osäkerheten om servot klarar CAD-armens 150° rörelse är stängd.** Sidotornets arm går mellan utfällt 0° och parkerat −150° enligt D020 och `machine/delar/sensorer/sidotorn.py`. Användaren såg minst 180° rörelse i det lösa servot och godkände omfånget för konstruktionen. Vinkeln är visuellt bedömd, inte uppmätt med vinkelverktyg.
