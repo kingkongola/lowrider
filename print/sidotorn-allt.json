@@ -1,0 +1,12 @@
+{
+  "namn": "sidotorn-allt",
+  "process": "styrka",
+  "material": "petg",
+  "stod": true,
+  "delar": [
+    {"fil": "sidotorn-slutdelar/torn.stl", "antal": 1},
+    {"fil": "sidotorn-slutdelar/sidopanel.stl", "antal": 1},
+    {"fil": "sidotorn-slutdelar/bricka.stl", "antal": 3}
+  ],
+  "andringar": {}
+}
