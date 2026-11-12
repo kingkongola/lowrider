@@ -190,3 +190,10 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Beslut:** användaren: "vi kör med magneten". Strykningen (6f201ef) är återkallad; MONTAGE, BOM, CHECKLIST, DECISIONS och matrisen är som före den.
 - **Prov:** Ø6 × 3-magneten **pressad** in i övre stoppets Ø6,2-ficka (sensorprov-2, PETG): "passade perfekt".
 - **Ej provat:** limmets behov (MONTAGE steg 3 säger en droppe lim), hållkraft mot armens stålskruv och vibration (CHECKLIST 4.9).
+
+## 2026-11-12 — Servons kabelutgång (Spektrum S664), delmätning
+
+- **Observation (användarens foton):** kabeln kommer ut ur servons **kortsida** (änden längst från axeln), mitt i bredden, nära ryggen, genom en gummitätning, och går sedan rakt ut åt sidan. Servo-attrappen i CAD hade ingen kabel; tornets vägg (12,8–14,5 mm, 1,7 mm tjock) ligger 0,3 mm från servons kortsida, så varken tätning eller kabel får plats. Servon går därför inte att sätta i fickan.
+- **Uppmätt (skjutmått, användaren):** **B** gummitätningens bredd **10 mm**; **D** kabelns bredd **4 mm**.
+- **Kvar att mäta:** **A** (bakre kant till kabelns mitt), **C** (hur långt tätningen sticker ut från kortsidan, grovt ca 3 mm av fotot), **E, F, G** (kontaktens längd, bredd, höjd).
+- **Åtgärd:** urtag för tätningen och kabelrännil genom väggen, öppen mot fronten; kabeln läggs in i attrappen och en insättningskontroll läggs till i `kontroll_montage.py`.
