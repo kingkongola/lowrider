@@ -268,3 +268,10 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren: plattan `print/sensorprov-2` (PETG, styrka) är klar. Innehåll: arm, kameralock, stopp-nedre, stopp-ovre, skruvprov, LED-segment.
 - Inga provresultat rapporterade än; ingen matrisruta ändras förrän de är det. Servohorn/fastsättning står kvar som underkänd (gamla provet).
 - **Rättelse:** COB-listen (LED) har inte kommit; den ströks ur listan över mottagna. Mät COB-kortets bredd när den kommer.
+
+## 2026-11-12 — Servokabeln upptäcktes saknas i CAD; kabelband och kanal ritade
+
+- Användaren kunde inte sätta servon i fickan: kabeln kommer ut ur kortsidan genom en gummitätning och tornets vägg låg 0,3 mm från servon. Min servo-attrapp var en slät låda.
+- Uppmätt av användaren: tätning 10 mm bred, sticker ut 3,5 mm; kabel 4 mm bred; utgång 2,6 mm från ryggen; JR-kontakt 14 × 7,8 × 2,8 mm. Tätningens tjocklek (5 mm) är antagen.
+- `sidotorn.py`: `servokabel()` i attrappen, `kabelkanal_gods()` (4 mm utanpåliggande bula) och `kabelkanal_urtag()` (band för tätningen, öppet mot fronten, och kanal upp till elektronikrummet). `kontroll_montage.py` sveper tätningen med servokroppen och har negativtest (torn utan band blockerar 947 mm³).
+- Tornet måste printas om (`print/sidotorn-allt`).

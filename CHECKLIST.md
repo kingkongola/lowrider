@@ -60,7 +60,7 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 
 ### Fas 3 — Slutdelarna
 
-- [x] **3.1** (skivat 2026-11-12; armen, kameralocket och stoppdelarna är redan printade och godkända i sensorprov-2, så de ingår inte) **En platta:** `print/sidotorn-allt` med torn, sidopanel och tre brickor, 6,1 h, 137 g PETG (L4). De separata jobben sidotorn-torn och sidotorn-smadelar är ersatta: material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
+- [x] **3.1** (skivat 2026-11-12; **tornet ändrades samma dag för servokabeln (kabelband och kanal i sidoväggen), så ett torn printat före detta måste printas om**; armen, kameralocket och stoppdelarna är redan printade och godkända i sensorprov-2, så de ingår inte) **En platta:** `print/sidotorn-allt` med torn, sidopanel och tre brickor, 6,1 h, 137 g PETG (L4). De separata jobben sidotorn-torn och sidotorn-smadelar är ersatta: material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
 - [ ] **3.2** Printa. Godkänt: inga lagersläpp, hål och fickor rena från stöd.
 
 ### Fas 4 — Montera tornet på bänken

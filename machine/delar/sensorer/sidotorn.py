@@ -122,6 +122,12 @@ PX, PZ = 45.0, 43.6
 PARK = -150.0               # utfällt 0, parkerat mot magnet och hårt stopp (D020)
 SERVO_DY = -2.0
 SERVO_KRAGE = (12.0, 1.75)  # diameter, höjd över servots plana ovansida; uppmätt 2026-11-11             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
+# Servons kabelutgång (uppmätt 2026-11-12 av användaren): kortsidan längst från axeln, mitt i bredden.
+KABEL_A = 2.6               # från servons bakre kant till kabelns mitt
+KABEL_B, KABEL_C = 10.0, 3.5   # gummitätningens bredd och hur långt den sticker ut från kortsidan
+KABEL_H = 5.0               # tätningens tjocklek: ANTAGEN (ej mätt); kanalen har marginal
+KABEL_D = 4.0               # platt kabel, bredd över tre ledare
+KONTAKT = (14.0, 7.8, 2.8)  # JR-kontakt: längd, bredd, höjd
 ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
 PROB = (61.0, 34.0 + SERVO_DY)
 FRAM_Y = (43.3 + SERVO_DY, 49.3 + SERVO_DY)
@@ -367,10 +373,41 @@ def servo_attrapp():
     oron = box((5.1, 40.8 + d, 33.6), (64.9, 43.3 + d, 53.6))
     # Kragen runt axeln: Ø12, 1 mm över servots plana ovansida (uppmätt 2026-11-11).
     krage = cyl_y(PX, PZ, 32.6 + d - SERVO_KRAGE[1], 32.6 + d, SERVO_KRAGE[0])
-    return kropp + oron + krage + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0)
+    return kropp + oron + krage + cyl_y(PX, PZ, 26.6 + d, 33.0 + d, 6.0) + servokabel()
 
 
-def torn(prob_x=PROB[0]):
+def kabel_y():
+    """Kabelns läge längs servons kortsida (y)."""
+    return 73 + SERVO_DY - KABEL_A
+
+
+def servokabel():
+    """Gummitätningen på servons kortsida och kabeln som går ut och sedan upp i kanalen."""
+    x0, ky = PX - 30.2, kabel_y()
+    tatning = box((x0 - KABEL_C, ky - KABEL_H / 2, PZ - KABEL_B / 2), (x0, ky + KABEL_H / 2, PZ + KABEL_B / 2))
+    ut = box((x0 - KABEL_C - 1.5, ky - 1.0, PZ - KABEL_D / 2), (x0 - KABEL_C + .5, ky + 1.0, PZ + KABEL_D / 2))
+    upp = box((x0 - KABEL_C - 2.0, ky - KABEL_D / 2, PZ - KABEL_D / 2), (x0 - KABEL_C, ky + KABEL_D / 2, 64.0))
+    return tatning + ut + upp
+
+
+def kabelkanal_gods():
+    """Gods utanpå sidoväggen som bär kabelbandet och kanalen (läggs till före urtagen)."""
+    stor = box((6.6, 61.6, 36.8), (12.7, KAPA_Y, 68.0))
+    band = box((9.2, FRAM_Y[0], 36.8), (12.7, KAPA_Y, 50.4))
+    return stor + band
+
+
+def kabelkanal_urtag():
+    """Bandet för tätningen (öppet mot fronten så att servon kan skjutas in med kabeln på) och
+    kanalen upp längs ändväggen till elektronikrummet. Kontakten (7,8 x 2,8) passar genom kanalen."""
+    ky = kabel_y()
+    y_bak = ky + KABEL_H / 2 + .5
+    band = box((PX - 30.2 - KABEL_C - .5, FRAM_Y[0] - 1, PZ - KABEL_B / 2 - .3), (PX - 30.0, y_bak, PZ + KABEL_B / 2 + .3))
+    kanal = box((9.0, y_bak - 8.2, PZ - KABEL_B / 2 - .3), (PX - 30.0, y_bak, 66.0))
+    return band + kanal
+
+
+def torn(prob_x=PROB[0], med_kabelband=True):
     b = BUK
     s = extrude(Face(silhuett()), amount=Y1 - Y0, dir=(0, 1, 0))
     s = fillet(s.edges().filter_by(Axis.Y).filter_by(lambda e: e.center().X < 9), 7.0)
@@ -391,9 +428,12 @@ def torn(prob_x=PROB[0]):
     s += fillet(ram.faces().sort_by(Axis.Y)[0].edges(), 2.0)
     # Kåpa runt servots bakre del, i samma plan som sidopanelen.
     s += servokapa()
+    s += kabelkanal_gods()
     s -= box((PX - 30.2, FRAM_Y[0] - 1, 33.4), (PX + 10.2, FRAM_Y[1] + 2, 53.8))
     s -= box((PX - 30.4, FRAM_Y[1], 33.2), (PX + 10.4, KAPA_Y - KAPA_T, 54.0))
     s += box((8, FRAM_Y[0], 53.8), (xb - 3, 52, 58.5))
+    if med_kabelband:
+        s -= kabelkanal_urtag()
     # Servoskruvarna: M3 x 10 formar egen gänga i förborrat Ø2,6-hål (bakom ramen är det massivt,
     # så en mutter får inte plats). Blint hål 3 mm förbi ramen.
     for x in (PX - 33.3, PX + 14):

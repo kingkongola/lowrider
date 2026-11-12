@@ -50,7 +50,7 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 6. **Kopplingskortet** på framväggen.
 7. **LM2596 A och B** i fickorna.
 8. **Pi:n**: CSI-kabeln i Pi:ns kontakt först, sedan rakt in på tapparna. **Inget microSD-kort i** ännu.
-9. **Servot** in framifrån genom ramen, fyra M3 × 10. Servokabeln upp ovanför servot till kopplingskortet.
+9. **Servot** in framifrån genom ramen, fyra M3 × 10. **Kabeln kommer ut ur servons kortsida** (uppmätt 2026-11-12: tätning 10 mm bred och 3,5 mm utstickande, 2,6 mm från ryggen; kabel 4 mm bred; kontakt 14 × 7,8 × 2,8 mm). Tätningen glider i ett band i sidoväggen, öppet mot fronten, så servon går in med kabeln på. Dra sedan kabeln upp i kanalen längs ändväggen (kontakten passar) och in i elektronikrummet ovanför servokåpan, vidare till kopplingskortet. Kabeln ska ha minst ca 120 mm fri längd från tätningen; **mät servokabelns längd först**.
 9b. **Stoppdelarna** mot ramens framsida, två M3 × 20 var. Magneten är redan limmad i den övre.
 10. **Ändlägena (fas 4.8 i checklistan):** hornet i armens ficka, paketet på axeln så att armen står mitt i rörelsen vid 1500 µs, sedan M3 × 10 genom armen. CR Touch med kitets två M3 × 6 underifrån; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.

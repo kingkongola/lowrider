@@ -50,9 +50,11 @@ for x in (S.PX - 33.3, S.PX + 14):
         steg.append((f"1 servoskruv x{x:.0f} z{z:.0f} (mejsel Ø6 framifrån)",
                      cyl_y(x, z, -80, 38.8 - 2.5, 6.0), {"torn": torn_utan}))
 # 1b. Servokroppen in framifrån genom ramens fönster (kropp och öron svepta 60 mm).
-kropp = S.box((14.8, 30.6 + S.SERVO_DY - 60, 33.6), (55.2, 71 + S.SERVO_DY, 53.6))
+kropp = S.box((14.8, 32.6 + S.SERVO_DY - 60, 33.6), (55.2, 73 + S.SERVO_DY, 53.6))
+x0, ky = S.PX - 30.2, S.kabel_y()
+tatning = S.box((x0 - S.KABEL_C, ky - S.KABEL_H / 2 - 60, S.PZ - S.KABEL_B / 2), (x0, ky + S.KABEL_H / 2, S.PZ + S.KABEL_B / 2))   # tätningen svepts med kroppen
 oron = S.box((5.1, 40.8 + S.SERVO_DY - 60, 33.6), (64.9, 43.3 + S.SERVO_DY, 53.6))
-steg.append(("1b servokroppen in genom ramen (svep), stoppdelarna inte på", kropp + oron, {"torn": torn_utan}))
+steg.append(("1b servokroppen och kabeltätningen in genom ramen (svep), stoppdelarna inte på", kropp + oron + tatning, {"torn": torn_utan}))
 # 1c. Stoppdelarna mot ramens framsida, två M3 x 20 var; servot sitter, armen inte på.
 for x, z in S.STOPP_SKRUV:
     seat = (min(stopp_n.bounding_box().min.Y, 99) if z < 40 else 30.5) + 3.5
@@ -145,6 +147,11 @@ for namn, verktyg, delar in steg:
     print(("BLOCKERAT  " if k else "fritt      ") + namn + (f": {k} mm3" if k else ""))
     if k:
         fel.append(namn)
+# Negativtest: utan kabelbandet (som tornet såg ut före 2026-11-12) ska tätningen blockera servon.
+utan_band = krock(kropp + oron + tatning, {"torn utan kabelband": S.torn(med_kabelband=False)})
+if not utan_band:
+    raise SystemExit("UNDERKÄND: negativtestet fångar inte en torn utan kabelband")
+print(f"negativtest ok: torn utan kabelband blockerar servon {utan_band} mm3")
 if fel:
     raise SystemExit(f"UNDERKÄND: {len(fel)} steg blockerade")
 print("GODKÄND: alla monteringssteg nåbara")
