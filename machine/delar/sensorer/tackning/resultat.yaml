@@ -90,3 +90,11 @@ poster:
     protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 skruvprov, kameralock, LED-segment, magnet
     ansvarig: användaren
     utfall: godkänd
+  - matris: komponenter
+    rad: Stoppdel övre
+    kolumn: insattning
+    datum: 2026-11-12
+    metod: "Ø6 x 3-magneten pressad in i övre stoppets ficka (sensorprov-2, PETG)"
+    protokoll: CALIBRATION.md, 2026-11-12 magneten kvar; ficka provad
+    ansvarig: användaren
+    utfall: godkänd

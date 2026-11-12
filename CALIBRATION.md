@@ -184,3 +184,9 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Prov:** servot strömlöst, arm + CR Touch monterade och parkerade. Användaren la ett äpple (ca 150–200 g, ca 1,5–2 N) på armen: den rörde sig inte. Avstånd från axeln inte angivet; ingen våg använd.
 - **Tolkning:** armens tyngd i parkerat läge är ca 0,23 N (berakning_sidotorn.py), så friktionen håller minst ca 6–8 × tyngden. Magneten (ca 2,7 N) behövs inte mot tyngd.
 - **Kvar:** vibration. Magneten är **valfri**: lim inte i den. Mät armens läge med ADXL i fas 4; kryper armen limmas magneten, annars stryks den (BOM, MONTAGE, bula och urtag) vid nästa omarbetning.
+
+## 2026-11-12 — Magneten kvar; ficka provad
+
+- **Beslut:** användaren: "vi kör med magneten". Strykningen (6f201ef) är återkallad; MONTAGE, BOM, CHECKLIST, DECISIONS och matrisen är som före den.
+- **Prov:** Ø6 × 3-magneten **pressad** in i övre stoppets Ø6,2-ficka (sensorprov-2, PETG): "passade perfekt".
+- **Ej provat:** limmets behov (MONTAGE steg 3 säger en droppe lim), hållkraft mot armens stålskruv och vibration (CHECKLIST 4.9).
