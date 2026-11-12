@@ -60,7 +60,7 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 
 ### Fas 3 — Slutdelarna
 
-- [ ] **3.1** Printjobb för torn, sidopanel, arm och två brickor (L4): material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
+- [x] **3.1** (skivat 2026-11-12; armen, kameralocket och stoppdelarna är redan printade och godkända i sensorprov-2, så de ingår inte) Printjobb för torn (`print/sidotorn-torn`, 5,5 h, 121 g PETG) samt sidopanel och tre brickor (`print/sidotorn-smadelar`, 0,8 h, 16 g PETG) (L4): material, orientering så att lasten går längs lagren, stöd. Förhandsvisning granskas.
 - [ ] **3.2** Printa. Godkänt: inga lagersläpp, hål och fickor rena från stöd.
 
 ### Fas 4 — Montera tornet på bänken
