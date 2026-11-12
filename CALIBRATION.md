@@ -149,3 +149,16 @@ Användaren rapporterar följande enligt det annoterade fotot av det tillgängli
 Användaren rättade C från 7,5 till **7,3 mm i samma svar**; det senare värdet gäller. Båda breddmåtten avser plastens ytterkanter, inte håldiametrarna. Bredden minskar 0,5 mm över 4,3 mm mellan mätpunkterna. Rak, symmetrisk avsmalning mellan dessa punkter är ett konstruktionsantagande som ska provpassas.
 
 Instrument och mätosäkerhet är inte angivna. Värdena är komponentmått, inte färdiga CAD-fickmått eller tillägg för printspel. H rapporterades efter sidovy som markerade de två mätplanen; användaren benämner servohusets yta **ovansidan**. Kopplingen mellan denna yta och servoattrappens koordinater är ett CAD-antagande tills hela montaget provpassats. Håldiametern är ungefärlig; navets inre tandning och spetsens exakta rundning är inte uppmätta. Konstruktionens infästning ägs av [CAD-underlaget](machine/delar/sensorer/README.md).
+
+## 2026-11-12 — Måttunderlag från nätet (inte uppmätt)
+
+Slagna upp på användarens begäran i stället för att mäta alla köpta delar. **Källa är säljare och tillverkare, inte våra delar**; en ruta i täckningsmatrisen blir inte A av detta.
+
+| Del | Uppgift | Mot CAD | Status |
+|---|---|---|---|
+| Pi Zero 2 W | Kort 65 × 30 mm; samma hålbild som Zero/Zero W ([Raspberry Pi](https://www.raspberrypi.com/documentation/computers/zero.html)). Hålbilden 58 × 23 mm är allmänt känd men inte läst ur ritningsfilen här | `PI_HAL` ±29 × ±11,5 = 58 × 23 | Stämmer. Läs hålmitt och Ø ur den officiella ritningen (32374) vid behov |
+| ADXL345 (Electrokit 41016234) | 20,5 × 15,3 × 3,3 mm ([Electrokit](https://www.electrokit.com/adxl345-accelerometer-3-axel-monterad-pa-kort)); **hålavstånd saknas** | `ACC_HAL` 15 mm isär, "nominellt" | Hålavstånd **måste mätas** |
+| INMP441-kort | Chipet 4,72 × 3,76 × 1 mm ([TDK](https://invensense.tdk.com/digital/inmp441)); kortet anges som 14 Ø × 2,2 eller 14 × 12 × 2 mm, säljarna är oense; inga hål angivna | Ram 14 × 14 mm | Kortets mått **måste mätas** |
+| COB-listens kort | Ej slaget upp; säljaren anger 8 mm | 9 mm hylla | Bredden **måste mätas** |
+
+Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × bredd × tjocklek och COB-kortets bredd.
