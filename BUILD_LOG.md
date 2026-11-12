@@ -262,3 +262,8 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren: "allt har kommit". Mottagna enligt användaren: INMP441, BRIMETI COB-list (5 m) och KW11-3Z-N (10-pack, reservdelar), utöver Electrokit-ordern och CR Touch. Ägare: PROCUREMENT.md och BOM.md.
 - Inte verifierat: antal och modell post för post, funktion, passning och kortdebitering (COSTS.md oförändrad). Övervakningens andra nätdel (HDR-60-24) är fortfarande inte beställd.
 - Nästa mätsteg: skjutmått på de köpta delarna (INMP441, COB-listens bredd, ADXL, Pi) så N-rutorna i täckningsmatrisen kan bli A.
+
+## 2026-11-12 — sensorprov-2 utskriven
+
+- Användaren: plattan `print/sensorprov-2` (PETG, styrka) är klar. Innehåll: arm, kameralock, stopp-nedre, stopp-ovre, skruvprov, LED-segment.
+- Inga provresultat rapporterade än; ingen matrisruta ändras förrän de är det. Servohorn/fastsättning står kvar som underkänd (gamla provet).
