@@ -248,6 +248,7 @@ komponenter:
     service: S
     funktion: F 1.3, 7.2
   Magnet:
+    utgatt: "användaren 2026-11-12, servots friktion håller armen parkerad; ingen magnet"
     matt: N Ø6 x 3
     tillverkning: X köpt färdig, tillverkas inte
     insattning: A kontroll_montage.py steg 10
@@ -416,6 +417,7 @@ komponenter:
     service: S två M3 x 20; magneten limmad i delen
     funktion: F 4.9
   M3 stålskruv mot magneten:
+    utgatt: "användaren 2026-11-12, ingen magnet"
     matt: N M3 x 10 stål, skalle Ø5,5
     tillverkning: X köpt färdig, tillverkas inte
     insattning: S skruvas i armens bula

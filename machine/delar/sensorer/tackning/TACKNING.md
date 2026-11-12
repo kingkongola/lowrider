@@ -6,12 +6,12 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 | Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Godkända / underkända | Relevanta rutor |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Komponenter | 37 × 11 | 58 | 73 | 70 | 97 | 109 | 0 | 76 % | 8 / 0 | 298 |
+| Komponenter | 35 × 11 | 55 | 71 | 67 | 89 | 103 | 0 | 77 % | 8 / 0 | 282 |
 | Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 / 0 | 192 |
 
 **Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.
 
-**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 77, lokal (skanningsdata, ej CI): 15. cnc-repots tester körs i cnc, inte i lowriders CI.
+**Var de automatiska kontrollerna körs:** extern (cnc-repot): 11, i lowriders CI: 74, lokal (skanningsdata, ej CI): 14. cnc-repots tester körs i cnc, inte i lowriders CI.
 
 ## Underkända prov
 
@@ -20,6 +20,8 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 ## Utgångna rader
 
 - komponenter / Hornbygel: kilbygeln höll hornet med friktion och en liten kil; ersatt av formficka och M3 x 10 genom armen (användarens beslut 2026-11-11)
+- komponenter / M3 stålskruv mot magneten: användaren 2026-11-12, ingen magnet
+- komponenter / Magnet: användaren 2026-11-12, servots friktion håller armen parkerad; ingen magnet
 - komponenter / Skyddshylsa: hylsan gick inte att montera (CR Touch-prov 1); CR Touchen skruvas direkt i armfoten, användarens beslut 2026-11-11
 
 ## X utan skäl (0 rutor)
@@ -53,7 +55,6 @@ Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.
 | Servo SPMS664 | N | X | A | A | S | F | F | N | N | S | F |
 | Servohorn | F | X | A | F | X | A | F | X | X | S | F |
 | CR Touch | N | X | A | A | N | A | N | X | F | S | F |
-| Magnet | N | X | A | N | X | X | F | N | N | N | F |
 | Kopplingskort | N | S | A | N | S | X | N | N | X | S | F |
 | Tornkabel 12 ledare | N | X | S | S | S | F | N | X | N | N | F |
 | Y-kabel 8 ledare | N | X | N | N | S | F | N | X | N | N | F |
@@ -67,7 +68,6 @@ Ett X ska ha ett skäl. Dessa saknar det och underkänns i strikt läge.
 | Självgängande M3 och M2.5 i PETG | A | N | A | F | X | X | N | X | X | N | F |
 | Stoppdel nedre | A | S | A | A | X | A | F | X | N | S | F |
 | Stoppdel övre | A | S | A | A | X | A | F | N | N | S | F |
-| M3 stålskruv mot magneten | N | X | S | N | X | A | A | X | N | S | F |
 | Servokabel och kontakt | N | X | S | N | S | X | N | X | X | S | F |
 | CR Touch-kabel och kontakt | N | X | S | S | S | F | F | X | N | S | F |
 | Kondensator 470-1000 µF | N | X | S | S | S | X | N | N | X | N | F |

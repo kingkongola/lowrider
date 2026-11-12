@@ -151,6 +151,8 @@ Armens lägen avkänns **inte** med KW11. De två hårda stoppen bestämmer läg
 
 **Varför:** sökning i CAD hittade ingen plats för brytaren i utfällt läge utan extra bärande del. Utan brytare försvinner hållare, tapp, lödning och två Jackpot-ingångar.
 
+**Tillägg 2026-11-12 (användaren): magneten och stålskruven används inte.** Strömlöst servo håller armen (äpple på armen rörde den inte); ingen magnet. Urtag och bula i CAD står kvar oanvända. Gäller i stället för stycket nedan.
+
 **Magneten** sätts in bakifrån i stoppet mot 0,6 mm plast och låses med en droppe superlim på baksidan; skruvhuvudet slår aldrig på magneten. Servot är original från Arrma Quake och orkar dra loss armen. **Prov före drift:** att magneten håller armen med servot strömlöst när maskinen körs. De 10 köpta KW11 behålls som reservdelar. Spärrens programvara hör till `kingkongola/cnc`.
 
 ## D019 — Separata KW11-brytare på servokassetten, spara Omron
