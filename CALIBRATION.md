@@ -194,6 +194,6 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 ## 2026-11-12 — Servons kabelutgång (Spektrum S664), delmätning
 
 - **Observation (användarens foton):** kabeln kommer ut ur servons **kortsida** (änden längst från axeln), mitt i bredden, nära ryggen, genom en gummitätning, och går sedan rakt ut åt sidan. Servo-attrappen i CAD hade ingen kabel; tornets vägg (12,8–14,5 mm, 1,7 mm tjock) ligger 0,3 mm från servons kortsida, så varken tätning eller kabel får plats. Servon går därför inte att sätta i fickan.
-- **Uppmätt (skjutmått, användaren):** **B** gummitätningens bredd **10 mm**; **D** kabelns bredd **4 mm**.
-- **Kvar att mäta:** **A** (bakre kant till kabelns mitt), **C** (hur långt tätningen sticker ut från kortsidan, grovt ca 3 mm av fotot), **E, F, G** (kontaktens längd, bredd, höjd).
+- **Uppmätt (skjutmått, användaren):** **A** bakre kant till kabelns mitt **2,6 mm**; **B** gummitätningens bredd **10 mm**; **D** kabelns bredd **4 mm**.
+- **Kvar att mäta:** **C** (hur långt tätningen sticker ut från kortsidan, grovt ca 3 mm av fotot), **E, F, G** (kontaktens längd, bredd, höjd).
 - **Åtgärd:** urtag för tätningen och kabelrännil genom väggen, öppen mot fronten; kabeln läggs in i attrappen och en insättningskontroll läggs till i `kontroll_montage.py`.
