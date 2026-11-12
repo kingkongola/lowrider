@@ -162,3 +162,10 @@ Slagna upp på användarens begäran i stället för att mäta alla köpta delar
 | COB-listens kort | Ej slaget upp; säljaren anger 8 mm | 9 mm hylla | Bredden **måste mätas** |
 
 Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × bredd × tjocklek och COB-kortets bredd.
+
+## 2026-11-12 — Sensorprov-2 delprov 1: arm, horn och CR Touch monterade
+
+- **Prov:** armen ur `print/sensorprov-2` (PETG, grön), hornet i formfickan, arm + horn på servot med M3 × 10 genom armen, CR Touchen i armfoten med kitets två M3 × 6.
+- **Resultat:** användaren: hornet "verkar passa bra" i fickan; monterat på servot och CR Touchen på plats: "allt ser perfekt ut". Att M3 × 10 gick i axeln visar att axelgängan är M3, inte 4-40 (användaren har inte rapporterat något motsatt).
+- **Ej rapporterat/mätt:** glapp när armen vickas med servot stilla, hur hårt hornet krävde att tryckas in (krossribborna), om CR Touchen sitter rakt. Godkännandet gäller passform vid montering, inte hållfasthet eller glapp.
+- **Kvar i sensorprov-2:** kameralock, skruvprov (0.0), LED-segment, magnet i övre stoppet.
