@@ -178,3 +178,9 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Kameralocket:** godkänt av användaren ("funkar bra").
 - **LED-segmentet:** godkänt som printat prov av användaren. LED-listen (COB) har **inte kommit**, så passning, hylla och värme är **inte provade**; det görs när listan finns.
 - **Magneten:** ej provad än. Urtaget är Ø6,2 för Ø6 × 3 (0,1 mm spel per sida), öppet bakifrån, med en tunn hud mot armen. Den ska **glida in för hand, inte pressas**; den limmas med en droppe cyanoakrylat (MONTAGE.md steg 3).
+
+## 2026-11-12 — Armens strömlösa hållkraft (grov uppskattning)
+
+- **Prov:** servot strömlöst, arm + CR Touch monterade och parkerade. Användaren la ett äpple (ca 150–200 g, ca 1,5–2 N) på armen: den rörde sig inte. Avstånd från axeln inte angivet; ingen våg använd.
+- **Tolkning:** armens tyngd i parkerat läge är ca 0,23 N (berakning_sidotorn.py), så friktionen håller minst ca 6–8 × tyngden. Magneten (ca 2,7 N) behövs inte mot tyngd.
+- **Kvar:** vibration. Magneten är **valfri**: lim inte i den. Mät armens läge med ADXL i fas 4; kryper armen limmas magneten, annars stryks den (BOM, MONTAGE, bula och urtag) vid nästa omarbetning.
