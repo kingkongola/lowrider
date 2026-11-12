@@ -38,7 +38,7 @@ poster:
     rad: Servohorn
     kolumn: fastsattning
     datum: 2026-11-12
-    metod: sensorprov-2 (PETG): hornet i armens formficka, arm + horn på servot med M3 x 10 genom armen
+    metod: "sensorprov-2 (PETG): hornet i armens formficka, arm + horn på servot med M3 x 10 genom armen"
     protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 delprov 1
     ansvarig: användaren
     utfall: godkänd
@@ -46,7 +46,7 @@ poster:
     rad: Arm
     kolumn: fastsattning
     datum: 2026-11-12
-    metod: sensorprov-2 (PETG): armen monterad på servot med M3 x 10
+    metod: "sensorprov-2 (PETG): armen monterad på servot med M3 x 10"
     protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 delprov 1
     ansvarig: användaren
     utfall: godkänd
@@ -54,7 +54,7 @@ poster:
     rad: CR Touch
     kolumn: fastsattning
     datum: 2026-11-12
-    metod: sensorprov-2 (PETG): CR Touchen med kitets två M3 x 6 underifrån i armfoten
+    metod: "sensorprov-2 (PETG): CR Touchen med kitets två M3 x 6 underifrån i armfoten"
     protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 delprov 1
     ansvarig: användaren
     utfall: godkänd

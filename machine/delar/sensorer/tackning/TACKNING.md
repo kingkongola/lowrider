@@ -6,7 +6,7 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 | Matris | Storlek | A (automatisk kontroll) | S (simulerad/beräknad) | F (fysiskt prov) | N (nominellt antagande) | X (ej relevant) | SAKNAS (inte kontrollerat) | Har kontroll | Godkända / underkända | Relevanta rutor |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Komponenter | 37 × 11 | 58 | 73 | 70 | 97 | 109 | 0 | 76 % | 1 / 1 | 298 |
+| Komponenter | 37 × 11 | 58 | 73 | 70 | 97 | 109 | 0 | 76 % | 4 / 0 | 298 |
 | Systemet | 25 × 9 | 23 | 109 | 40 | 20 | 33 | 0 | 91 % | 0 / 0 | 192 |
 
 **Godkända / underkända** räknar rutornas senaste prov i `resultat.yaml` (datum, metod, protokoll, ansvarig). Ett senare underkännande upphäver ett äldre godkännande. Att en kontroll finns (A) är inte detsamma som att den är utförd.
@@ -15,7 +15,7 @@ Varje ruta har den sämsta status som står i den. **Har kontroll** = A, S, F el
 
 ## Underkända prov
 
-- komponenter / Servohorn / fastsattning
+- inga
 
 ## Utgångna rader
 
