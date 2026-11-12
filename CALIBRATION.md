@@ -169,3 +169,5 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Resultat:** användaren: hornet "verkar passa bra" i fickan; monterat på servot och CR Touchen på plats: "allt ser perfekt ut". Att M3 × 10 gick i axeln visar att axelgängan är M3, inte 4-40 (användaren har inte rapporterat något motsatt).
 - **Ej rapporterat/mätt:** glapp när armen vickas med servot stilla, hur hårt hornet krävde att tryckas in (krossribborna), om CR Touchen sitter rakt. Godkännandet gäller passform vid montering, inte hållfasthet eller glapp.
 - **Kvar i sensorprov-2:** kameralock, skruvprov (0.0), LED-segment, magnet i övre stoppet.
+
+**Tillägg 2026-11-12:** användaren förklarar delprov 1 **godkänt** och går vidare utan glappmätning. Öppen punkt vid tornmonteringen: i vilken splinesposition armen sätts på axeln så att den inte slår i ändlägena på fel ställe (parkering/utfälld). Hornet har ingen markerad nollposition; vinkeln ställs in vid montering mot stoppdelarna, inte i CAD.
