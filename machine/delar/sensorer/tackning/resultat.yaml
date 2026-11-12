@@ -58,3 +58,35 @@ poster:
     protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 delprov 1
     ansvarig: användaren
     utfall: godkänd
+  - matris: komponenter
+    rad: Självgängande M3 och M2.5 i PETG
+    kolumn: fastsattning
+    datum: 2026-11-12
+    metod: "M3 självgängande i armens Ø2,6-hål (PETG) vid armmonteringen; skruvprovet ej separat skruvat; M5-hål mätt Ø5,6"
+    protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 skruvprov, kameralock, LED-segment, magnet
+    ansvarig: användaren
+    utfall: godkänd
+  - matris: komponenter
+    rad: Kameralock
+    kolumn: fastsattning
+    datum: 2026-11-12
+    metod: "kameralocket på kamerabiten med kamerans två M3 x 10"
+    protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 skruvprov, kameralock, LED-segment, magnet
+    ansvarig: användaren
+    utfall: godkänd
+  - matris: komponenter
+    rad: Kameralock
+    kolumn: tillverkning
+    datum: 2026-11-12
+    metod: "kameralocket printat i PETG och monterat"
+    protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 skruvprov, kameralock, LED-segment, magnet
+    ansvarig: användaren
+    utfall: godkänd
+  - matris: komponenter
+    rad: LED-fäste
+    kolumn: tillverkning
+    datum: 2026-11-12
+    metod: "LED-segmentet printat och granskat; ingen LED-list monterad (COB ej kommen)"
+    protokoll: CALIBRATION.md, 2026-11-12 sensorprov-2 skruvprov, kameralock, LED-segment, magnet
+    ansvarig: användaren
+    utfall: godkänd

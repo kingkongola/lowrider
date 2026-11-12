@@ -171,3 +171,10 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Kvar i sensorprov-2:** kameralock, skruvprov (0.0), LED-segment, magnet i övre stoppet.
 
 **Tillägg 2026-11-12:** användaren förklarar delprov 1 **godkänt** och går vidare utan glappmätning. Öppen punkt vid tornmonteringen: i vilken splinesposition armen sätts på axeln så att den inte slår i ändlägena på fel ställe (parkering/utfälld). Hornet har ingen markerad nollposition; vinkeln ställs in vid montering mot stoppdelarna, inte i CAD.
+
+## 2026-11-12 — Sensorprov-2: skruvprov, kameralock, LED-segment, magnet
+
+- **Skruvprovet:** godkänt av användaren utan separat skruvning: självgängande M3 i armens Ø2,6-hål fungerade vid armmonteringen. M5-distanscylinderns hål mätt med skjutmått till **Ø5,6 mm** (ritat Ø5,4): 0,2 mm större än ritat, men M5 ska gå fritt, så det duger. Hålen för M2.5 är inte provade separat.
+- **Kameralocket:** godkänt av användaren ("funkar bra").
+- **LED-segmentet:** godkänt som printat prov av användaren. LED-listen (COB) har **inte kommit**, så passning, hylla och värme är **inte provade**; det görs när listan finns.
+- **Magneten:** ej provad än. Urtaget är Ø6,2 för Ø6 × 3 (0,1 mm spel per sida), öppet bakifrån, med en tunn hud mot armen. Den ska **glida in för hand, inte pressas**; den limmas med en droppe cyanoakrylat (MONTAGE.md steg 3).
