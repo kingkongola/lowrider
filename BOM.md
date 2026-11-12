@@ -115,8 +115,8 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 | Märkfärg | Streck över M5-skallarna |
 | M2.5 × 20 | 2: Pi:n och panelens övre kant. Lager ej inventerat |
 | M5 insex, befintlig längd + 16 mm | 2, tornet till verktygsfästet; mät en befintlig V1E-skruv först. Plus 2 brickor M5 och blå gänglåsning |
-| INMP441 | Tidigare beställd enligt användaren; antal och leverans obekräftade. Placerad i sidotornets panel 2026-11-11 (CAD) |
-| QUARKZMAN KW11-3Z-N | Köpt 10-pack, reservdelar. **Inga används på armen enligt D020** |
+| INMP441 | **Mottagen enligt användaren 2026-11-12** ("allt har kommit"); antal och modell inte inventerade. Placerad i sidotornets panel 2026-11-11 (CAD) |
+| QUARKZMAN KW11-3Z-N | Köpt 10-pack, **mottagen enligt användaren 2026-11-12**, reservdelar. **Inga används på armen enligt D020** |
 | Omron SS-3GL13PT | Befintlig reserv till grundmaskinen; används inte på sensorarmen |
 
 Regulatorerna är valda och finns; deras slutliga matningsinstallation, säkring, ledningar och lastprov återstår. Ingen fläkt är kravsatt: prova passivt och mät verkligt kylbehov. Egen LED-belysning ska ingå enligt [kameraunderlaget](machine/KAMERA_ANHALL.md); exakt lampa, antal och eventuell ytterligare matningsmodul är ännu inte valda.

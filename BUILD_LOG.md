@@ -256,3 +256,9 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - Användaren frågade om glapp. Sju krossribbor (Ø1 mm, 0,2 mm överlapp, infasning) i fickan i stället för lim: de plattas till när hornet trycks in. Väggarna har kvar 0,15 mm spel.
 - `kontroll_horn.py` prövar väggar och ribbor separat: väggarna fria, varje ribba 0,1–0,5 mm³ krossvolym. Negativtest: ribbor utan överlapp och med 0,6 mm överlapp underkänns. Alla kontroller och omgivningskontrollen GODKÄND. `sensorprov-2` omskivad: ca 1,0 h, 10 g PETG.
+
+## 2026-11-12 — Alla delar mottagna
+
+- Användaren: "allt har kommit". Mottagna enligt användaren: INMP441, BRIMETI COB-list (5 m) och KW11-3Z-N (10-pack, reservdelar), utöver Electrokit-ordern och CR Touch. Ägare: PROCUREMENT.md och BOM.md.
+- Inte verifierat: antal och modell post för post, funktion, passning och kortdebitering (COSTS.md oförändrad). Övervakningens andra nätdel (HDR-60-24) är fortfarande inte beställd.
+- Nästa mätsteg: skjutmått på de köpta delarna (INMP441, COB-listens bredd, ADXL, Pi) så N-rutorna i täckningsmatrisen kan bli A.
