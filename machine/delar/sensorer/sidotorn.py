@@ -122,11 +122,12 @@ PX, PZ = 45.0, 43.6
 PARK = -150.0               # utfällt 0, parkerat mot magnet och hårt stopp (D020)
 SERVO_DY = -2.0
 SERVO_KRAGE = (12.0, 1.75)  # diameter, höjd över servots plana ovansida; uppmätt 2026-11-11             # hela servopaketet flyttat längs balken så att kåpans vägg ryms före Core-änden
-# Servons kabelutgång (uppmätt 2026-11-12 av användaren): kortsidan längst från axeln, mitt i bredden.
+# Servons kabelutgång (uppmätt 2026-11-12 av användaren, fotona omgranskade 2026-11-13): kortsidan
+# NÄRMAST axeln, mitt i bredden, nära servons botten (längst från hornsidan).
 KABEL_A = 2.6               # från servons bakre kant till kabelns mitt
 KABEL_B, KABEL_C = 10.0, 3.5   # gummitätningens bredd och hur långt den sticker ut från kortsidan
 KABEL_H = 5.0               # tätningens tjocklek: ANTAGEN (ej mätt); kanalen har marginal
-KABEL_D = 4.0               # platt kabel, bredd över tre ledare
+SERVOKABEL_D = 4.0          # platt kabel, bredd över tre ledare (eget namn: KABEL_D är tornkabeln)
 KONTAKT = (14.0, 7.8, 2.8)  # JR-kontakt: längd, bredd, höjd
 ARM_Y = (21.5 + SERVO_DY, 25.5 + SERVO_DY)
 PROB = (61.0, 34.0 + SERVO_DY)
@@ -390,8 +391,8 @@ def servokabel():
     """Gummitätningen på servons kortsida och kabeln som går ut och sedan upp i kanalen."""
     x0, ky = KABEL_X, kabel_y()
     tatning = box((x0, ky - KABEL_H / 2, PZ - KABEL_B / 2), (x0 + KABEL_C, ky + KABEL_H / 2, PZ + KABEL_B / 2))
-    ut = box((x0 + KABEL_C - .5, ky - 1.0, PZ - KABEL_D / 2), (x0 + KABEL_C + 1.5, ky + 1.0, PZ + KABEL_D / 2))
-    upp = box((x0 + KABEL_C, ky - KABEL_D / 2, PZ - KABEL_D / 2), (x0 + KABEL_C + 2.0, ky + KABEL_D / 2, 64.0))
+    ut = box((x0 + KABEL_C - .5, ky - 1.0, PZ - SERVOKABEL_D / 2), (x0 + KABEL_C + 1.5, ky + 1.0, PZ + SERVOKABEL_D / 2))
+    upp = box((x0 + KABEL_C, ky - SERVOKABEL_D / 2, PZ - SERVOKABEL_D / 2), (x0 + KABEL_C + 2.0, ky + SERVOKABEL_D / 2, 64.0))
     return tatning + ut + upp
 
 
@@ -402,17 +403,31 @@ def kabelkanal_gods():
     return stor + band
 
 
-def kabelkanal_urtag():
+def kabelkanal_urtag(med_slits=True):
     """Bandet för tätningen (öppet mot fronten så att servon kan skjutas in med kabeln på) och
-    kanalen upp längs ändväggen till elektronikrummet. Kontakten (7,8 x 2,8) passar genom kanalen."""
+    kanalen upp längs ändväggen till elektronikrummet. Kabeln LÄGGS IN genom en slits från
+    panelsidan; den stela kontakten (14 x 7,8 x 2,8) kan inte trädas runt hörnet band -> kanal
+    (granskning 2026-11-13) och läggs i stället direkt i elektronikrummet."""
     ky = kabel_y()
     y_bak = ky + KABEL_H / 2 + .5
     band = box((KABEL_X - .2, FRAM_Y[0] - 1, PZ - KABEL_B / 2 - .3), (KABEL_X + KABEL_C + .5, y_bak, PZ + KABEL_B / 2 + .3))
     kanal = box((KABEL_X - .2, y_bak - 8.2, PZ - KABEL_B / 2 - .3), (61.0, y_bak, 66.0))
-    return band + kanal
+    # Mynningen: sidoväggen lägger sig som ett tak över kanalen vid z 66-70. Utan den här
+    # förlängningen fastnar den stela kontakten (2,8 mm tjock) där (granskning 2026-11-13).
+    # Raka vägen fortsätter upp till z 76, där rummet är fritt; ytterväggen behåller minst 3 mm.
+    mynning = box((KABEL_X - .2, y_bak - 8.2, 63.0), (KABEL_X + KONTAKT[2] + .6, y_bak, 76.0))
+    if not med_slits:
+        return band + kanal + mynning
+    # Slitsen: 2,5 mm genom bakväggen (panelsidan, bort från fräsen), från kabelns utgång upp till
+    # rummet. Den platta kabeln (4 x 1,3) trycks in på högkant och lägger sig platt i kanalen.
+    slits = box((SLITS_X[0], y_bak - .2, PZ - SERVOKABEL_D / 2 - .5), (SLITS_X[1], Y1 + 1, 76.0))
+    return band + kanal + mynning + slits
 
 
-def torn(prob_x=PROB[0], med_kabelband=True):
+SLITS_X = (KABEL_X + 1.0, KABEL_X + 3.5)    # 2,5 mm: kabeln 1,3 tjock på högkant, med spel
+
+
+def torn(prob_x=PROB[0], med_kabelband=True, med_slits=True):
     b = BUK
     s = extrude(Face(silhuett()), amount=Y1 - Y0, dir=(0, 1, 0))
     s = fillet(s.edges().filter_by(Axis.Y).filter_by(lambda e: e.center().X < 9), 7.0)
@@ -438,7 +453,7 @@ def torn(prob_x=PROB[0], med_kabelband=True):
     s -= box((PX - 30.4, FRAM_Y[1], 33.2), (PX + 10.4, KAPA_Y - KAPA_T, 54.0))
     s += box((8, FRAM_Y[0], 53.8), (xb - 3, 52, 58.5))
     if med_kabelband:
-        s -= kabelkanal_urtag()
+        s -= kabelkanal_urtag(med_slits)
     # Servoskruvarna: M3 x 10 formar egen gänga i förborrat Ø2,6-hål (bakom ramen är det massivt,
     # så en mutter får inte plats). Blint hål 3 mm förbi ramen.
     for x in (PX - 33.3, PX + 14):

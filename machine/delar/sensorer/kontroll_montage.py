@@ -55,6 +55,11 @@ x0, ky = S.KABEL_X, S.kabel_y()
 tatning = S.box((x0, ky - S.KABEL_H / 2 - 60, S.PZ - S.KABEL_B / 2), (x0 + S.KABEL_C, ky + S.KABEL_H / 2, S.PZ + S.KABEL_B / 2))   # tätningen svepts med kroppen
 oron = S.box((5.1, 40.8 + S.SERVO_DY - 60, 33.6), (64.9, 43.3 + S.SERVO_DY, 53.6))
 steg.append(("1b servokroppen och kabeltätningen in genom ramen (svep), stoppdelarna inte på", kropp + oron + tatning, {"torn": torn_utan}))
+# 1d. Servokabeln läggs in genom slitsen från panelsidan (panelen av), på högkant 1,3 mm, hela vägen
+#     från tätningen upp i rummet (svept 30 mm utifrån). Kontakten läggs direkt i rummet.
+kx = (S.SLITS_X[0] + S.SLITS_X[1]) / 2
+kabel_in = S.box((kx - .65, ky - 1.0, S.PZ - S.SERVOKABEL_D / 2), (kx + .65, Y1 + 30, 76.0))
+steg.append(("1d servokabeln in genom slitsen från panelsidan (svep, kabel 1,3 på högkant)", kabel_in, {"torn": torn_utan}))
 # 1c. Stoppdelarna mot ramens framsida, två M3 x 20 var; servot sitter, armen inte på.
 for x, z in S.STOPP_SKRUV:
     seat = (min(stopp_n.bounding_box().min.Y, 99) if z < 40 else 30.5) + 3.5
@@ -152,6 +157,11 @@ utan_band = krock(kropp + oron + tatning, {"torn utan kabelband": S.torn(med_kab
 if not utan_band:
     raise SystemExit("UNDERKÄND: negativtestet fångar inte en torn utan kabelband")
 print(f"negativtest ok: torn utan kabelband blockerar servon {utan_band} mm3")
+# Negativtest: utan slitsen (tornet före 2026-11-13) går kabeln inte att lägga in.
+utan_slits = krock(kabel_in, {"torn utan slits": S.torn(med_slits=False)})
+if not utan_slits:
+    raise SystemExit("UNDERKÄND: negativtestet fångar inte ett torn utan kabelslits")
+print(f"negativtest ok: torn utan slits blockerar kabeln {utan_slits} mm3")
 if fel:
     raise SystemExit(f"UNDERKÄND: {len(fel)} steg blockerade")
 print("GODKÄND: alla monteringssteg nåbara")
