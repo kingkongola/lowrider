@@ -381,19 +381,24 @@ def kabel_y():
     return 73 + SERVO_DY - KABEL_A
 
 
+# Kabeln sitter på kortsidan NÄRMAST axeln (fotona 2026-11-12: hornet nära kabelns ände):
+# kroppen går från x = PX - 30,2 till PX + 10,2, så ändytan är x = PX + 10,2 och kabeln går ut åt +x.
+KABEL_X = PX + 10.2
+
+
 def servokabel():
     """Gummitätningen på servons kortsida och kabeln som går ut och sedan upp i kanalen."""
-    x0, ky = PX - 30.2, kabel_y()
-    tatning = box((x0 - KABEL_C, ky - KABEL_H / 2, PZ - KABEL_B / 2), (x0, ky + KABEL_H / 2, PZ + KABEL_B / 2))
-    ut = box((x0 - KABEL_C - 1.5, ky - 1.0, PZ - KABEL_D / 2), (x0 - KABEL_C + .5, ky + 1.0, PZ + KABEL_D / 2))
-    upp = box((x0 - KABEL_C - 2.0, ky - KABEL_D / 2, PZ - KABEL_D / 2), (x0 - KABEL_C, ky + KABEL_D / 2, 64.0))
+    x0, ky = KABEL_X, kabel_y()
+    tatning = box((x0, ky - KABEL_H / 2, PZ - KABEL_B / 2), (x0 + KABEL_C, ky + KABEL_H / 2, PZ + KABEL_B / 2))
+    ut = box((x0 + KABEL_C - .5, ky - 1.0, PZ - KABEL_D / 2), (x0 + KABEL_C + 1.5, ky + 1.0, PZ + KABEL_D / 2))
+    upp = box((x0 + KABEL_C, ky - KABEL_D / 2, PZ - KABEL_D / 2), (x0 + KABEL_C + 2.0, ky + KABEL_D / 2, 64.0))
     return tatning + ut + upp
 
 
 def kabelkanal_gods():
     """Gods utanpå sidoväggen som bär kabelbandet och kanalen (läggs till före urtagen)."""
-    stor = box((6.6, 61.6, 36.8), (12.7, KAPA_Y, 68.0))
-    band = box((9.2, FRAM_Y[0], 36.8), (12.7, KAPA_Y, 50.4))
+    stor = box((57.3, 61.6, 36.8), (63.4, KAPA_Y, 68.0))
+    band = box((57.3, FRAM_Y[0], 36.8), (60.8, KAPA_Y, 50.4))
     return stor + band
 
 
@@ -402,8 +407,8 @@ def kabelkanal_urtag():
     kanalen upp längs ändväggen till elektronikrummet. Kontakten (7,8 x 2,8) passar genom kanalen."""
     ky = kabel_y()
     y_bak = ky + KABEL_H / 2 + .5
-    band = box((PX - 30.2 - KABEL_C - .5, FRAM_Y[0] - 1, PZ - KABEL_B / 2 - .3), (PX - 30.0, y_bak, PZ + KABEL_B / 2 + .3))
-    kanal = box((9.0, y_bak - 8.2, PZ - KABEL_B / 2 - .3), (PX - 30.0, y_bak, 66.0))
+    band = box((KABEL_X - .2, FRAM_Y[0] - 1, PZ - KABEL_B / 2 - .3), (KABEL_X + KABEL_C + .5, y_bak, PZ + KABEL_B / 2 + .3))
+    kanal = box((KABEL_X - .2, y_bak - 8.2, PZ - KABEL_B / 2 - .3), (61.0, y_bak, 66.0))
     return band + kanal
 
 

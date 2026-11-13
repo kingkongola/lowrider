@@ -1,14 +1,14 @@
 {
   "typ": "sidotorn-slutdelar",
   "kallor_sha256": {
-    "sidotorn.py": "8ee5d2275feca023f044029616cf377d7747c0175a85f43fec43f4c4a7618219",
+    "sidotorn.py": "0f78c7d80eff788ffcd7813f52a9fdb991d1a0f2a93ee703641c0f4355be7d6e",
     "crtouch.py": "fc959a5208855104a9b6be7937c31e53296d88e7bd897a3f359bae218ee9c1cd",
     "e34m1-crtouch.step": "a6954d9db7dd2fd9fa4fa5f1f4829fcf41a19a572515e2b55ec7f515f96be470",
     "lampor.py": "a3ad373c95ff84f4708ad4c2a05a5279c33086bb206aaa1d5c27e11531145eae",
     "hornfaste.py": "4e30c5717498488756feddd9dce2ee9443ab69f5446eeb43f7095da433d5c713"
   },
   "delar": {
-    "torn.stl": "31f72bad7860a93c47cbec386a33741c7dc16401d5b0f02cba09c871f94017e2",
+    "torn.stl": "2762bc2fba621159a9fb62353b312235eb6e0930d1956f000aa9004476402daa",
     "sidopanel.stl": "d25f60fdd09ef6452488dc7796d5a7aa2b18518d8f2667376ec05a4c34b8df63",
     "arm.stl": "70865e56cd4a515c2a06cedf96f827a120482ce6acafa5efc496cbc96355a501",
     "bricka.stl": "70faa53046508513bf66fffcea09ffa52a61035c6306fe0ac04f51a7a7398b12",

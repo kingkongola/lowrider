@@ -275,3 +275,4 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Uppmätt av användaren: tätning 10 mm bred, sticker ut 3,5 mm; kabel 4 mm bred; utgång 2,6 mm från ryggen; JR-kontakt 14 × 7,8 × 2,8 mm. Tätningens tjocklek (5 mm) är antagen.
 - `sidotorn.py`: `servokabel()` i attrappen, `kabelkanal_gods()` (4 mm utanpåliggande bula) och `kabelkanal_urtag()` (band för tätningen, öppet mot fronten, och kanal upp till elektronikrummet). `kontroll_montage.py` sveper tätningen med servokroppen och har negativtest (torn utan band blockerar 947 mm³).
 - Tornet måste printas om (`print/sidotorn-allt`).
+- **Rättelse 2026-11-13:** kabeln lades först på servons *bortre* ände (x = 14,8). Användarens fotografier visar att hornet sitter nära kabelns ände, så kabeln ligger på ändan närmast axeln (x = PX + 10,2 = 55,2). Bandet, bulan och kanalen är spegelvända till den sidan (`KABEL_X` i `sidotorn.py`); kontrollerna är omkörda och godkända.
