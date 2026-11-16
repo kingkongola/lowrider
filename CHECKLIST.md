@@ -13,6 +13,8 @@
 
 ## 1. Beställningar — nu
 
+- [x] **Mottagningsbekräftelse 2026-11-16:** alla faktiskt lagda beställningar uppges ha kommit hem, inklusive Electrokit-sensorerna och QUARKZMAN KW11. Det innebär inte att komponentrevision, montage eller funktion har provats. BRIMETI enligt D022 är vald, men köp är inte bekräftat.
+
 - [x] LaskaKit mekanikkärna — köpt 2026-09-03 för **444 kr faktiskt debiterat**
 - [x] 4 × **T8×8 brass nut, 2 mm pitch / 4-start / 8 mm lead** — Amazon.se/euroharry, **101,76 kr visat orderpris**, **mottaget 2026-09-10**
 - [x] 3 × GT2/2GT drive pulley **16T / 5 mm bore / 10 mm belt / 2 mm pitch** — eBay/POWGE, **72 kr**
