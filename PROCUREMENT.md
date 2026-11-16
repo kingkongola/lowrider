@@ -6,17 +6,17 @@
 
 **G4-lampor utgår enligt D022** och ska inte stå på aktiv inköpslista. BRIMETI COB 5 m, 24 V, 4000 K, 8 mm, 320 LED/m, enligt säljaren 10 W/m och 100 lm/W, **145 kr enligt användarens Amazon Prime-fynd**. **Vald**, men orderbekräftelse, faktiskt debiterat belopp och leverans är inte verifierade i repot. Därför **inte registrerad som betald/mottagen** och inte bokförd i `COSTS.md`. **Inget nytt LED-nätaggregat, boost eller aluminiumprofil beslutat**; återanvänd befintliga aggregat om de klarar verifierade spännings-/lastkrav. [Samlad SSOT](machine/EL_BELYSNING_OCH_STOPP.md).
 
-## Mikrobrytare för sensorenhet – beställda 2026-11-09
+## Mikrobrytare för sensorenhet – mottagna enligt användaren 2026-11-16
 
-**Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **beräknad leverans lördag 2026-11-14**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Ännu ej mottagna och faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.
+**Amazon.se / QUARKZMAN KW11-3Z-N**, 10 st, rullspak, **1NO + 1NC (SPDT)**. Användaren bekräftade köp 2026-11-09; **visat pris 92,94 kr för 10-pack**, Prime med gratis frakt, **mottagna enligt användaren 2026-11-16**. Amazon-produktlänk: https://amzn.eu/d/06DL5wYW. **Faktisk kortdebitering ej uttryckligen verifierad**; bokför inte 92,94 kr som debiterat i `COSTS.md` förrän bekräftat.
 
 **Ändamål:** två brytare indikerar BLTouch-servoarmens infällda respektive utfällda läge. Befintliga **Omron SS-3GL13PT behålls som reservdelar till LowRidern**; de ska inte förbrukas på sensorenheten.
 
 **CAD-styrande osäkerhet:** KW11-3Z-varianter säljs med olika uppgivet hålavstånd (**8,5–9,5 mm**) och spakmått. Endast den beställda modellens artikeltext/bild är bekräftad; dimensionera en **utbytbar fästkassett med justerbar hålbild**, verifiera fysisk måttbild, COM/NO/NC och aktiverings-/återgångsväg vid mottagning. Rullspaken ska aldrig utgöra hårdstopp. **IP-klass, kontaktkvalitet och Prime-leveransdatum ska inte behandlas som testade egenskaper.**
 
-## Sensorbeställning 2026-11-08 — orderrader bekräftade 2026-11-09, ej mottaget
+## Sensorbeställning 2026-11-08 — mottagen enligt användaren 2026-11-16
 
-**Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Denna källa bekräftar följande **beställda** produkter och antal, **inte leverans eller faktisk debitering**.
+**Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Orderbilden bekräftar följande **beställda** produkter och antal; **mottagning har bekräftats senare av användaren 2026-11-16**. Faktisk debitering och individuell funktionskontroll är inte verifierade.
 
 | Produkt | Electrokit art.nr | Antal | Orderrad exkl. moms | Inkl. moms |
 | --- | --- | ---: | ---: | ---: |
@@ -34,7 +34,7 @@
 
 **Kamerasatsens tre rader:** 493,60 kr **exkl. moms** / **617,00 kr inkl. moms**, utan att allokera gemensam frakt. **Modellvalet är nu definitivt verifierat: Camera Module 3 Standard**, inte Wide; Zero 2 WH och 200 mm CSI-kabel är också verifierat beställda. Bekräfta fysisk kontakt-/pin-kompatibilitet och kabelräckvidd vid provmontering; artikeltexten i skärmbilden ensam säger inget om mekanisk frigång.
 
-**Övriga sensorer:** tidigare användaruppgift anger även beställda/köpta mikrofoner (INMP441) och BLTouch, men **de syns inte i denna orderbild**. Deras exakt antal, modell, leverantör och leveransstatus är fortfarande obekräftade. Ingen del är ännu rapporterad mottagen, monterad, elektriskt kontrollerad eller kalibrerad.
+**Övriga sensorer:** tidigare användaruppgift anger beställda/köpta mikrofoner (INMP441) och BLTouch, men **de syns inte i denna orderbild**. Alla lagda beställningar anges vara **mottagna enligt användaren 2026-11-16**; exakt antal, modell och leverantör är fortsatt obekräftade. Inget är därmed automatiskt monterat, elektriskt kontrollerat eller kalibrerat.
 
 **Ansvar:** fysisk monterings-/kollisionskontroll, spänningsnivåer, kraftmatning, probens verkliga signaler och maskinkonfiguration hör hit. [CNC:s kamerakod](https://github.com/kingkongola/cnc/blob/main/docs/kamera-kod.md) är endast offline-prototyp; ingen optisk maskinkalibrering har verifierats på riktig hårdvara.
 
@@ -166,7 +166,7 @@ Kvar att anskaffa eller ordna:
 
 **Obs:** Alla tre köpta 16T-remhjul är mottagna 2026-09-21. Kontrollera dem vid inventering; köp inte dubbelt.
 
-Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta/beställda och **samtliga hittills lagda köp är debiterade**. DigiKey-paketet, LaskaKit-paketet och Z-muttrarna är mottagna.
+Motorer, router, controller, PSU, endstops, lager, GT2-delar, T8-skruv, kopplingar, Z-muttrar, 3 kg PLA och rör är köpta. **Samtliga lagda beställningar uppges mottagna enligt användaren 2026-11-16.** Verifierade debiteringar styrs av `COSTS.md`. D022:s BRIMETI-list är endast vald, inte bekräftad köpt.
 
 ## Checkout-gates
 
