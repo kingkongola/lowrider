@@ -30,6 +30,8 @@ Top-level files supersede `research/` on any conflict. Each top-level file owns 
 
 Läs `README.md` och `CHECKLIST.md` först. Maskinen är byggd och har fräst; gamla obockade monteringskort är inte dagens återstående byggplan. `docs/arkiv/`, daterad research och äldre loggrader är historik, inte aktuella krav.
 
+Vid ändrad parametrisk CAD-kod: använd Verkstads gemensamma `parametric-cad`-skill (`kingkongola/verkstad/.agents/skills/parametric-cad/SKILL.md`) för beroenden och kodrefaktorering. Fortsätt köra detta repos egna CAD-kontroller. Skillen ändrar inte produktens beslut eller provstatus.
+
 För sensorenheten äger `machine/delar/sensorer/README.md` aktuellt CAD-spår och listan över printdelar; `KOPPLING_CORE_V0.md` äger planerad koppling. Senaste arbetsmodellen är `sidotorn.py`. Befintligt `core-build123d.yml` kontrollerar äldre `core_enhet.py`; dess gröna status får inte tillskrivas sidotornet. D020 tar bort armbrytarna, D021 väljer signalpinnar och `CALIBRATION.md` dokumenterar det godkända servoomfånget. Återöppna inte detta som obesvarat utan motsägande ny evidens.
 
 Probmodellen korrigerades 2026-11-10 till **CR Touch Auto Leveling Kit**, nu tillgängligt enligt användaren. `sidotorn.py` är anpassad via `crtouch.py` och en källangiven tredjeparts-STEP. Ny hylsa, kontaktutrymme och provplatta finns; fysisk passning och inkoppling är ännu inte verifierade. Läs `research/2026-11-10-crtouch-anpassning.md` och CAD-underlaget. Återanvänd inte gamla BLTouch-exporter eller beställ en BLTouch av gammal vana.
