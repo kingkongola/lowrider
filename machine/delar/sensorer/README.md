@@ -43,7 +43,7 @@
 
 ## Nytt 2026-11-09: två identiska, justerbara KW11-hållare
 
-- **Köpt:** 10 × QUARKZMAN KW11-3Z-N från Amazon.se för 92,94 kr med fri Prime-frakt; beräknad leverans **lördag 2026-11-14**. Se [PROCUREMENT.md](../../../PROCUREMENT.md). Beställda, inte mottagna.
+- **Köpt:** 10 × QUARKZMAN KW11-3Z-N från Amazon.se för 92,94 kr med fri Prime-frakt; beräknad leverans **lördag 2026-11-14**. Se [PROCUREMENT.md](../../../PROCUREMENT.md). **Mottagna enligt användaren 2026-11-16**, ännu inte passningsprovade.
 - **CAD som kod:** [kw11_faste.py](kw11_faste.py), en fasad hållare med **två M2-långhål** för osäker KW11-hålbild **8,5–9,5 mm**, och två M3-långhål med cirka ±2 mm finjustering. **Antal utskrifter: 2 × `kw11_hallare.stl`.** Den befintliga **servokassetten** har fått två korta monteringsöron; inga nya hål på V1E Core eller på kamera-/Pi-delarna. Hållarna kan bytas utan att flytta kameran.
 - **CAD-grind:** [grön GitHub Actions-körning](https://github.com/kingkongola/lowrider/actions/runs/42616662416) gav 11 separata STL + 11 STEP och BRep utan modellöverlapp för de 2 hållarna, övriga moduler och förenklat BLTouch-svep. Detta testar **inte** brytarnas faktiska hus, rullspak, klickväg, ledaranslutningar eller de ännu saknade hårdstoppen. De nya fästena är **mått-/passningsprototyper**, inte driftsklara ändlägen.
 - **Provrutin efter leverans:** mät kropp, hålavstånd, pinnarnas läge och spakens verkliga tillslags-/återgångsväg. Skruva fast en lös brytare i en lös printad hållare först. Ta reda på hur två åtskilda mekaniska stopp ska byggas så att brytarna bara läser läget; använd aldrig brytarspaken som stopp.
@@ -62,7 +62,7 @@ CAD-referensen i [kw11_faste.py](kw11_faste.py) skiljer uttryckligen detta från
 
 **Tillåten provprint före leverans:** 1 × separat `kw11_hallare.stl` som *hål-/skruvpassningsprov*, inte ett driftsklart ändläge. Ingen automatisk fällning eller G38 är aktiverad. CAD:s gröna STL/STEP-test är en **export-/meshgrind**, inte en funktionsgrind för rullbrytare.
 
-## Innan leverans och första provprint
+## Inför första provprint (delarna har mottagits)
 
 **Kan granskas nu:** ladda ner senaste GitHub Actions-artefakten, öppna `sensorenhet-pa-core.glb` i en 3D-visare (moduler kan visas/döljas), eller STEP i Fusion. Kontrollera att layout, kabelkanal, kortens portåtkomst och konturer är rimliga.
 
