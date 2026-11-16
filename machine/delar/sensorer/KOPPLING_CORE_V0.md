@@ -38,7 +38,7 @@ flowchart LR
 
 | Signal | Koppling | Nuvarande status | Blockerare |
 |---|---|---|---|
-| Kamera-CSI | Module 3 Standard → 200 mm 15/22 FFC → Zero 2 WH | Beställd, inte mottagen | Kontaktriktning, böjradie, dragavlastning |
+| Kamera-CSI | Module 3 Standard → 200 mm 15/22 FFC → Zero 2 WH | Mottagen enligt användaren 2026-11-16 | Kontaktriktning, böjradie, dragavlastning |
 | Pi-matning | Reglerad 5 V → Pi:s korrekta ingång | Planerad | 24→5 V-regulator, ström, säkring, EMC, fysisk jorddragning |
 | Fällservo | Signal från 5 V-utgång + egen LM2596 på 6,0 V | `gpio.27`, D021, ej inkopplad | Bygel på 5 V, signalnivå mäts, pulslängder ställs vid provning |
 | BLTouch-styrning | Signal från 5 V-utgång + 5,1 V/GND från LM2596 A | `gpio.26`, D021, ej inkopplad | Puls vid start är ofarlig här; exakt revision kontrolleras |
