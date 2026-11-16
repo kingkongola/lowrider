@@ -94,18 +94,18 @@ Ordern på 2 × T8×8-mässingsmuttrar är inte längre aktiv; ersatt av Amazon/
 
 ## Sensorenhet: ändlägesbrytare (köpta 2026-11-09)
 
-- [x] **10 × QUARKZMAN KW11-3Z-N, rullspak, COM/NO/NC**, Amazon.se, **92,94 kr visat för hela paketet**, Prime-frakt 0 kr. **Beräknad leverans lördag 2026-11-14; inte mottagna ännu.**
+- [x] **10 × QUARKZMAN KW11-3Z-N, rullspak, COM/NO/NC**, Amazon.se, **92,94 kr visat för hela paketet**, Prime-frakt 0 kr. **Mottagna enligt användaren 2026-11-16; hålls som reserv enligt D020.**
 - [ ] **2 ×** installeras som separata lägesgivare för infälld och utfälld BLTouch-arm, med **separata mekaniska hårdstopp**. Hålavstånd/spakväg kräver verklig passningskontroll; monteringen är ännu inte godkänd.
 - **Omron SS-3GL13PT från DigiKey reserveras som reservdelar till originalmaskinen**, inte till den nya sensorarmen. Se [ANDLAGEN.md](machine/delar/nollpunkt/ANDLAGEN.md) och [inköp](PROCUREMENT.md).
 
-## Core-sensorer – beställt, ej mottaget (2026-11-08)
+## Core-sensorer – beställda 2026-11-08, mottagna enligt användaren 2026-11-16
 
-- [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[ ] Mottagning, kabelfrigång och fysisk provpassning återstår.**
-- [x] Beställt: **1 × ADXL345** (`41016234`); ingen bestämd fysisk monteringsplats. **[ ] Mottagning återstår.**
+- [x] Beställt: **1 × Raspberry Pi Camera Module 3 Standard** (`41020240`), **1 × Pi Zero 2 WH** med stiftlist (`41022617`), **1 × 200 mm CSI 15↔22-pin kabel** (`41020808`). Orderrader och moms i [PROCUREMENT.md](PROCUREMENT.md). **[x] Mottagna. [ ] Kabelfrigång och fysisk provpassning återstår.**
+- [x] **1 × ADXL345** (`41016234`), mottagen enligt användaren 2026-11-16. Fysisk passning och inkoppling återstår.
 - [x] **11 unika CAD-delar, 12 utskrifter inklusive 2 × KW11-hållare, i build123d**: [källa, separata STEP/STL, montage-GLB och grön CI](machine/delar/sensorer/README.md). BRep-kontroll av statiska delintersektioner och 7-läges servoarm/BLTouch-probattrapp godkänd 2026-11-09. **[ ] Fysiskt provprintad/monterad, servohorn/KW11-rullspak/hårdstopp och riktigt Core-/kjol-avstånd är EJ verifierade.** Äldre OpenSCAD-prototyp är arkiverad.
 - [ ] Pi:s verkliga **5 V kraftmatning**: regulator, skydd och kabel väljs efter spännings-/last- och EMC-granskning; **inget antaget att detta redan finns**. Se [kopplingsunderlag](machine/delar/sensorer/KOPPLING_CORE_V0.md).
 - **Ingen fläkt beställd eller kravsatt** för Pi: börja med passiv kylning och mät temperatur under stillbildsarbete. Uteslut inte framtida kylning om mätningar visar behov.
-- **BLTouch** och **SPMS664** har separat tidigare inköps-/designhistorik. Exakt probrevision och mått måste verifieras mot levererad del; inga pinnar är nya tilldelade.
+- **BLTouch**, **INMP441** och **SPMS664** har separat tidigare inköps-/designhistorik. Alla beställda delar uppges mottagna enligt användaren 2026-11-16, men exakta varianter och antal (särskilt INMP441) måste inventeras. Verkliga probmått måste verifieras före inkoppling; inga nya pinnar tilldelas.
 
 ## Servoarmens ändlägesgivare – bestämd princip 2026-11-08
 
