@@ -95,6 +95,15 @@ Kravet är 230 V NVR/no-voltage-release med lämplig märkström, tydlig lättå
 
 Inventera data-USB-C och FAT32 microSD innan köp. T8 400 mm kapas efter fysisk assembly-check, praktiskt mål ~150–160 mm ×2, inte automatiskt i halvor. **Förtydligat 2026-09-29:** V1E anger 145 mm eller längre; detta bevisar inte att 150 mm passar våra faktiska kopplingar/muttrar. Provpassa en sida i taget före kapning enligt manualens kapitel 0. Endstops är home/auto-square, inte runtime hard limits.
 
+## D025 — Inget kopplingskort i sidotornet; jordpunkt på regulator A, kondensator på regulator B
+**Status:** valt 2026-11-17 av användaren (stryknningen gjordes i lödkartan 2026-11-14 men fördes aldrig in här). Ersätter kopplingskortet i MONTAGE.md.
+
+- **Kopplingskortet stryks:** det köptes aldrig och fick knappt plats. Inget hålkort på framväggen.
+- **Jordpunkt (stjärnjord) = LM2596 A:s IN−.** Tornkabelns jord kommer dit; därifrån en bygel till B:s IN−. Pi:ns jord på A:s OUT− (samma kopparyta som IN−, kontrolleras med pip; annars på IN−). Servots returström går via B och bygeln och aldrig genom Pi:ns jord.
+- **Servot löds direkt på B:s OUT+/OUT−**, kontakten klipps. Signalen skarvas mot tornkabelns ledare. Servobyte kräver tre lödningar.
+- **Kondensator 470 µF/25 V (Panasonic FR, beställd 2026-11-16) löds direkt över B:s OUT+ och OUT−,** minusranden mot OUT−, nära servots lödpunkter. Buffrar servots strömtoppar.
+- **CR Touch:** kitkabeln skarvas tråd mot tråd. +5 V från Pi stift 4, GND till A:s OUT−, styrning och kontakt/kontaktjord till tornkabeln.
+
 ## D024 — Ett stopp för hand och från Pi:n: kontaktor för KATSU, larmingång för Jackpot
 **Status:** valt 2026-11-10 av användaren; ersätter D013:s NVR-brytare (KJD12 köps inte). Inget köpt eller inkopplat. Delar: [PROCUREMENT.md](PROCUREMENT.md#katsu-stopp-från-pin-trådbundet--planerat-ej-beställt).
 

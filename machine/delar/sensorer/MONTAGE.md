@@ -20,7 +20,6 @@ Principen: **ingenting i Core eller verktygsfästet ändras.** Tornet återanvä
 | Pi Zero 2 WH | Tappar (nedre hålen) + **M2.5 × 20 genom panelen** (övre hålen) | 2 | Skruvarna håller både Pi:n och panelen; sätet ger exakt djup | Rättat 2026-11-11: de gamla övre panelpelarna stod i Pi:ns väg |
 | LM2596 A och B | Fickor + panelens fingrar | — | Skruvas inte | |
 | Mikrofonen | Ram på panelen + ring av skumtejp | — | Ljudhålet tätat mot panelens hål | Annars hör den tornets inre |
-| Kopplingskort | Hålkort ca 9 × 23 mm, VHB-tejp | 1 | Framväggen x 39–47, z 112–135 | Jordpunkt, servokontakt, kondensator |
 | Sidopanelen | M3 × 8 i tornets pelare + de två M2.5 ovan | 4 + 2 | Utifrån | |
 | Tornkabeln | Buntband runt bryggorna vid utgången | 2 | | Dragavlastning: ledarna i tornet får aldrig bära kabelns vikt |
 | microSD-springan | Kaptontejp över springan | 1 | Utifrån | Håller kortet på plats mot vibration och stänger springan mot damm |
@@ -43,14 +42,14 @@ PETG eftersom regulatorerna och Pi:n värmer upp det slutna tornet. **Printas f�
 Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken och sätts på maskinen sist.
 
 1. **Rensa printen.** Stöd ut ur elektronikrummet, kamerafickan och M5-kanalen. Kontrollera att kanalen är fri hela vägen (en M5-skruv ska glida igenom).
-2. **Löd allt som ska lödas, utanför tornet** (ledningslistan nedan): Pi:ns stift, ADXL, mikrofon, LM2596-modulerna, kopplingskortet. Krymp varje lödpunkt. Mät spänningarna på regulatorerna innan något kopplas till dem.
+2. **Löd allt som ska lödas, utanför tornet** (ledningslistan nedan): Pi:ns stift, ADXL, mikrofon, LM2596-modulerna, servot och kondensatorn på B (D025). Krymp varje lödpunkt. Mät spänningarna på regulatorerna innan något kopplas till dem.
 3. **Magneten** i den övre stoppdelens ficka med en droppe lim. Låt torka.
 4. **Kameran** med CSI-kabeln redan i kameran. Lägg tornet upp och ned på bänken, så ligger kortet kvar på tapparna av egen tyngd. Lägg **kameralocket** rakt på (öronen in i skruvhålen, objektivet genom mitthålet) och skruva två M3 × 10 genom lockets hål. För upp kabeln i CSI-rummet och vik den två gånger 45°.
 5. **ADXL** med två M3 × 10 och brickor från panelsidan.
-6. **Kopplingskortet** på framväggen.
+6. *(Kopplingskortet utgick, D025.)*
 7. **LM2596 A och B** i fickorna.
 8. **Pi:n**: CSI-kabeln i Pi:ns kontakt först, sedan rakt in på tapparna. **Inget microSD-kort i** ännu.
-9. **Servot** in framifrån genom ramen, fyra M3 × 10. **Kabeln kommer ut ur servons kortsida närmast axeln** (uppmätt 2026-11-12: tätning 10 mm bred och 3,5 mm utstickande, 2,6 mm från ryggen; kabel 4 mm bred; kontakt 14 × 7,8 × 2,8 mm). Tätningen glider i ett band i sidoväggen, öppet mot fronten, så servon går in med kabeln på. **Lägg sedan in kabeln genom slitsen på panelsidan** (på högkant, den lägger sig platt i kanalen) upp i elektronikrummet; kontakten läggs direkt i rummet och träs aldrig genom kanalen (den kan inte vrida sig runt hörnet, granskning 2026-11-13). Vidare till kopplingskortet. Kabeln är minst ca 200 mm (användaren 2026-11-13); ca 100 behövs, överskottet viks ihop i rummet.
+9. **Servot** in framifrån genom ramen, fyra M3 × 10. **Kabeln kommer ut ur servons kortsida närmast axeln** (uppmätt 2026-11-12: tätning 10 mm bred och 3,5 mm utstickande, 2,6 mm från ryggen; kabel 4 mm bred; kontakt 14 × 7,8 × 2,8 mm). Tätningen glider i ett band i sidoväggen, öppet mot fronten, så servon går in med kabeln på. **Lägg sedan in kabeln genom slitsen på panelsidan** (på högkant, den lägger sig platt i kanalen) upp i elektronikrummet. Kontakten klipps och servots trådar löds på regulator B (D025); kabeln träs utan kontakt. Kabeln är minst ca 200 mm (användaren 2026-11-13); ca 100 behövs, överskottet viks ihop i rummet.
 9b. **Stoppdelarna** mot ramens framsida, två M3 × 20 var. Magneten är redan limmad i den övre.
 10. **Ändlägena (fas 4.8 i checklistan):** hornet i armens ficka, paketet på axeln så att armen står mitt i rörelsen vid 1500 µs, sedan M3 × 10 genom armen. CR Touch med kitets två M3 × 6 underifrån; kabeln i armens spår.
 11. **Panelen**: mikrofonens ledningar med en servicebåge, fyra M3 × 8 och två M2.5 × 20. Inget skramlar.
@@ -64,9 +63,9 @@ Ordningen följer av vad som skymmer vad. Tornet monteras komplett på bänken o
 
 **Damm:** inga öppningar mot fräsen. Panelens slitsar vänder bort från fräsen (X max-sidan), kabelutgången och SD-springan vetter mot Core; springan tejpas. Mikrofonen har dammnät. CR Touchens stift är ute bara vid mätning, och proben sitter parkerad högt när fräsen går (ingen hylsa, beslut 2026-11-11); självtest före varje mätning. **Linsen** sticker ut 2,6 mm och har inget glas framför: armspärren stoppar om bilden blir oskarp (smuts), och linsen rengörs med blåsbälg, inte trasa. Verifieras med ett dammprov under fräsning.
 
-## Kopplingskortet
+## Jordpunkt och servomatning (D025, ersätter kopplingskortet)
 
-Hålkort ca 9 × 23 mm, 2,54 mm delning, VHB-tejp på framväggen. Uppifrån och ned: 3-polig stiftlist för servot (signal, +6 V, GND), kondensator 470–1000 µF/10 V liggande, fem lödpunkter för CR Touch-kabeln, en jordskena längs ena långsidan som enda jordpunkt. Ledningslistan nedan säger vad som går till varje punkt.
+Jordpunkten är LM2596 A:s IN−. Servot och kondensatorn 470 µF/25 V löds direkt på B:s OUT+/OUT−, minusranden mot OUT−. CR Touch-kabeln skarvas tråd mot tråd med krympslang; skarvarna förskjuts och buntas mot en brygga.
 
 ## Kabelväg ut ur tornet
 
@@ -80,24 +79,25 @@ Längder = rak väg i CAD + 30 %. Kapa längre hellre än kortare. Alla skarvar 
 | --- | --- | --- | --- |
 | Tornkabel 1, +24 V övervakning | LM2596 A IN+ | 1 | 75 mm |
 | Tornkabel 2, +24 V maskin | LM2596 B IN+ | 1 | 105 mm |
-| Tornkabel 3, GND | Kopplingskortets jordpunkt; därifrån A IN−, B IN−, Pi GND (stift 6) | 4 | 65 mm |
+| Tornkabel 3, GND | LM2596 A IN− (jordpunkt) | 1 | 65 mm |
+| Bygel | A IN− → B IN− | 1 | ca 30 mm (mät) |
+| LM2596 A OUT− | Pi stift 6 (GND) | 1 | ca 65 mm (mät) |
 | LM2596 A OUT+ (5,1 V) | Pi stift 2 | 1 | 45 mm |
-| Pi stift 4 (5,1 V) | Kopplingskortet → CR Touch +5 V | 1 | 55 mm |
-| LM2596 B OUT+ (6 V) | Kopplingskortet: servokontaktens +, kondensator 470–1000 µF | 1 | 30 mm |
-| Tornkabel 4, servosignal | Kopplingskortet: servokontaktens signal | 1 | 65 mm |
-| Servot (egen kabel) | Kopplingskortet, 3-polig stiftlist | — | ca 100 mm av servots kabel |
-| CR Touch (kitets kabel, kapas) | Kopplingskortet: +5 V, GND, styrning (tornkabel 5), kontakt (tornkabel 6), kontaktjord (tornkabel 7) | 5 | ca 90 mm i tornet |
+| Pi stift 4 (5,1 V) | CR Touch +5 V (skarv) | 1 | 55 mm |
+| LM2596 B OUT+/OUT− (6 V) | Servots + och −, kondensator 470 µF/25 V över OUT+/OUT− | — | servots egen kabel |
+| Tornkabel 4, servosignal | Servots signal (skarv) | — | servots egen kabel |
+| CR Touch (kitets kabel, kapas) | +5 V (Pi stift 4), GND (A OUT−), styrning (tornkabel 5), kontakt (tornkabel 6), kontaktjord (tornkabel 7), skarvar | 5 | ca 90 mm i tornet |
 | Pi stift 1, 9, 19, 21, 23, 24 | ADXL: VCC, GND, SDA (MOSI), SDO (MISO), SCL, CS | 6 | 55 mm |
 | Pi stift 12, 17, 34, 35, 38 + L/R | INMP441: SCK, VDD, GND, WS, SD; L/R till GND på kortet | 5 | **120 mm** (panelen ska kunna öppnas) |
 | Pi stift 16, 22, 20 | Tornkabel 8, 9, 10 (OK-puls, startknapp, jord) | 3 | 75 mm |
 
-Ledare: 0,25 mm² (AWG 24) flertrådig för matning, 0,14 mm² (AWG 26) räcker för signaler. Kopplingskortet är **enda** jordpunkten i tornet, så att servots strömstötar inte går genom Pi:ns jord.
+Ledare: 0,25 mm² (AWG 24) flertrådig för matning, 0,14 mm² (AWG 26) räcker för signaler. LM2596 A:s IN− är **enda** jordpunkten i tornet (D025), så att servots strömstötar inte går genom Pi:ns jord.
 
 ## Provkörning (stegvis strömsättning)
 
 Varför stegvis: ett fel ska bara kunna skada en del, och du ska veta vilken.
 
-1. **Tornet på bänken, ingen last:** 24 V in på tornkabel 1 och 2 från en labbkälla eller nätdelen. Mät 5,1 V och 6,0 V på kopplingskortet. Strömmen utan last under 30 mA.
+1. **Tornet på bänken, ingen last:** 24 V in på tornkabel 1 och 2 från en labbkälla eller nätdelen. Mät 5,1 V på A:s OUT och 6,0 V på B:s OUT. Strömmen utan last under 30 mA.
 2. **Pi:n startar** (inget annat inkopplat än det lödda): `/status` svarar, `throttled=0x0`.
 3. **Kamera, ADXL, mikrofon:** `/bild.jpg`, `/adxl?s=2`, `/ljud?s=2` enligt `cnc/pi/README.md`.
 4. **Servot med ESP32:n** på signalledaren: ändlägen, magneten, servot släpper utan puls.
@@ -118,4 +118,4 @@ Varför stegvis: ett fel ska bara kunna skada en del, och du ska veta vilken.
 | microSD-kortet pekade in i bakväggen | Pi:n gick inte att sätta i med kort | Springa i bakväggen; kortet byts utifrån |
 | Övre panelpelarna i Pi:ns väg | Pi:n gick inte att sätta i | Pi:n skruvas med M2.5 genom panelen; pelarna borta |
 | Buntbandsbryggorna över ADXL-skruven | Skruven gick inte att nå | Bryggorna kortade |
-| Ingen plats för skarvar och jordpunkt | Lösa skarvar i tornet | Kopplingskort på framväggen |
+| Ingen plats för skarvar och jordpunkt | Lösa skarvar i tornet | Kopplingskort på framväggen (utgick 2026-11-17, D025: jordpunkt på A IN−, skarvar buntade) |

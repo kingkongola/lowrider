@@ -90,8 +90,8 @@ PANEL_HAL = [(15.0, 125.5), (71.5, 132.2), (15.0, 62.5), (45.5, 62.5)]
 PI_SKRUV = [(PI_CENTER[0] - 29, PI_CENTER[1] + 11.5), (PI_CENTER[0] + 29, PI_CENTER[1] + 11.5)]
 PI_SKRUV_SATE = 69.3        # skallens anläggning i fingret
 PI_SKRUV_L = 20.0
-# Kopplingskort (hålkort ca 9 x 23 mm, VHB-tejp på framväggen): jordpunkt, servons kontakt och
-# kondensator, CR Touch-kabelns skarvar. Ytan är fri enligt kontroll_montage.py.
+# Kopplingskortet utgick 2026-11-17 (D025). Ytan på framväggen hålls fri för CR Touch-kabelns
+# skarvar och buntning; kontroll_montage.py prövar att den är fri.
 KOPPLINGSKORT = ((38.6, 51.0, 111.5), (47.5, 55.5, 135.0))
 ACC_HAL = [(18.2, 118.5), (32.8, 118.5)]   # uppmätt 2026-11-17: c/c 14,6 (tidigare 15), Ø3,5 i kortet
 ACC_KORT = (20.6, 16.0, 3.2)               # uppmätt: längs hålraden, tvärs, höjd med högsta komponent (kortet 1,5)

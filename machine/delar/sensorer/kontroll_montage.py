@@ -124,7 +124,7 @@ for x, z in S.PANEL_HAL:
 for x, z in S.PI_SKRUV:
     steg.append((f"9 Pi-/panelskruv M2.5 x{x:.0f} z{z:.0f} (mejsel Ø5 utifrån)", cyl_y(x, z, Y1 + .1, Y1 + 80, 5.0),
                  {"servo": servo, "arm": arm, "arm parkerad": P(arm)}))
-steg.append(("11 kopplingskortets yta på framväggen (kort, löd och kondensator)", S.box(*S.KOPPLINGSKORT),
+steg.append(("11 skarvytan på framväggen (CR Touch-skarvar, D025)", S.box(*S.KOPPLINGSKORT),
              {"torn": torn, "panel": panel}))
 # 12. microSD skjuts in utifrån genom springan i bakväggen, efter att Pi:n sitter.
 sd0 = (S.PI_CENTER[0] - 32.5 - 2.6, S.PI_Y + 1.4, S.SD_Z[0] + .5)
