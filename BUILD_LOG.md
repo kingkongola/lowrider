@@ -281,5 +281,5 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 
 - Användaren: BRIMETI COB-listen har kommit. Ej mätt eller provad: bredd (CAD antar 8 mm i 9 mm hylla), passning i LED-segmentet, värme.
 - Användaren har byggt en lödstation i garaget; fas 1 (elektronik på bänk) kan börjas.
-- Användaren har printat två torn, det senaste "några dagar sedan". Plattan `print/sidotorn-allt` skivades senast 2026-11-13 14:33 (slits för servokabeln). Vilken version som är printad är inte fastställd; kontrolleras på den fysiska delen.
+- Användaren har printat två torn, det senaste "några dagar sedan". Plattan `print/sidotorn-allt` skivades senast 2026-11-13 14:33 (slits för servokabeln). Användaren: det printade tornet är från efter servokabelfixen. Tre versioner finns: be5d680 (kabel på fel ände, 2026-11-12), f6188f3 (rätt ände) och 38f2162 (slits från panelsidan, platta skivad 14:33, aktuell). Vilken av dem som är printad kontrolleras på delen och med servoinsättning.
 - MicroSD-kort till Pi:n anskaffat (steg 1.5).
