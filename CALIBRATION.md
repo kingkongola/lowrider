@@ -218,3 +218,10 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **LM2596:** 21,1 × 43 mm, högsta höjd 12 mm. CAD antar 21 × 43 i ficka 21,3 × 43,3 och 14 mm höjd: ryms, 0,1 mm spel per sida på bredden.
 - **COB-listen:** 8 mm enligt säljaren och användarens minne. **Ej uppmätt; ska dubbelkollas** med skjutmått (LED-hyllan är 9 mm).
 - Kontroller efter rättningen: `kontroll_montage`, `kontroll_stiftlist`, `kontroll_mikrofon`, `kontroll_parametrik` GODKÄND.
+
+## 2026-11-17 — Fas 1.5/1.6 förprov: Pi:n startar på laddare, kameran tar bild
+
+- **Pi:n:** Raspberry Pi OS Lite 64-bit (Debian 13 trixie, aarch64), flashad av användarens garage-Mac. Värdnamn `sidotorn` (192.168.50.100 vid provet), användare `admin`, SSH med nyckel från arbets-Macen (`~/.ssh/id_ed25519_sidotorn`). Matad från mobilladdare i PWR IN, inte från LM2596 A.
+- **Spänning:** `vcgencmd get_throttled` = `0x0` före och efter en stillbild; processorn 30 °C.
+- **Kameran:** Camera Module 3 hittas som `imx708` (4608 × 2592). `rpicam-still` gav en bild med autofokus på närmaste föremål; skärpan godtagbar.
+- **Ej gjort:** matning från LM2596 A (1.5 godkänns först då, kapitel 9 i manualen), låst fokus på ca 130 mm (1.6), sensorpi installerad.

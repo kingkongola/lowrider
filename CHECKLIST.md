@@ -43,8 +43,8 @@ Allt här görs med lösa delar och sladdar. Varför först: varje komponent pro
 - [ ] **1.2 Servot utan pulser** (ESP32-servoprovet, 2 min). `1500`, sedan `x`, vrid hornet för hand. Godkänt: hornet går lätt att vrida. **Om inte:** armsekvensen måste ändras före fas 4. [Probstyrning](machine/probstyrning/README.md).
 - [ ] **1.3 CR Touch.** Matning från LM2596 A, styrning från ESP32:n. Stift ut (`650`), in (`1470`), självtest (`1780`), larm av (`2190`). Mät kontaktsignalen när stiftet trycks in. Godkänt: alla fyra kommandon fungerar; signalens nivå vid kontakt antecknad (avgör `gpio.36` eller `gpio.36:low`).
 - [ ] **1.4 Mät komponenterna mot CAD:** (2026-11-17: INMP441, ADXL345 och LM2596 uppmätta och införda; kvar: COB-listens bredd, Pi:ns stiftlist och CR Touch)  INMP441-kortet (uppmätt 2026-11-17: runt Ø14,2 × 2,0 mm, ryms i ramen), Pi:ns stiftlist (ska sitta på motsatt långsida mot USB-uttagen, i hålens linje), ADXL-kortets hålbild (CAD antar 15 mm), LM2596 (CAD antar 43 × 21 mm), CR Touchens kropp och hålbild. Godkänt: alla mått inom 0,3 mm, annars rättas CAD i fas 2.
-- [ ] **1.5 Pi startar.** Raspberry Pi OS på microSD, Wi-Fi, SSH. Matas från LM2596 A. Godkänt: `vcgencmd get_throttled` ger `0x0` under last (ingen undervolt).
-- [ ] **1.6 Kameran.** CSI-kabeln i båda ändar, ta en stillbild. Godkänt: skarp bild, låst fokus på ca 130 mm. *Kräver L3 för att nå datorn.*
+- [ ] **1.5 Pi startar.** (förprov 2026-11-17: startar på laddare, SSH fungerar, `0x0`; kvar: matning från A)  Raspberry Pi OS på microSD, Wi-Fi, SSH. Matas från LM2596 A. Godkänt: `vcgencmd get_throttled` ger `0x0` under last (ingen undervolt).
+- [ ] **1.6 Kameran.** (2026-11-17: `imx708` hittas, bild tagen med autofokus; kvar: låst fokus 130 mm)  CSI-kabeln i båda ändar, ta en stillbild. Godkänt: skarp bild, låst fokus på ca 130 mm. *Kräver L3 för att nå datorn.*
 - [ ] **1.7 ADXL345 via SPI.** Godkänt: ca 1 g i vila, utslag när bänken knackas. *Kräver L3.*
 - [ ] **1.8 INMP441 via I²S** (3,3 V, aldrig 5 V). Godkänt: inspelning där ett fingerknäpp syns tydligt. *Kräver L3.*
 
