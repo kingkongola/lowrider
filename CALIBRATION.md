@@ -204,6 +204,7 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **A (Pi och CR Touch), mål 5,1 V:** 5,1 V före limning, **5,15 V efter smältlim**, utan last. På övre toleransgränsen (±0,05 V); godkänd av användaren, under Pi:ns 5,25 V och sjunker under last.
 - **B (servot, märkt med eltejp), mål 6,0 V:** 6,0 V före limning, **6,01 V efter smältlim**, utan last.
 - **Ej mätt:** spänning under last (görs i 1.5 med `vcgencmd get_throttled`), efter första långa körningen och på 24 V.
+- **Kontrollmätning samma dag, före Pi-provet:** A **5,16 V** utan last (0,01 V över ±0,05; inom multimeterns osäkerhet, godtaget).
 
 ## 2026-11-17 — Fas 1.4: INMP441 och ADXL345, foton (inte uppmätt)
 
