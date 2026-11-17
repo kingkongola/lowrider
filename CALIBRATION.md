@@ -211,3 +211,10 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Uppmätt (skjutmått, användaren):** diameter **14,2 mm**, kortet **0,8 mm**, **2,0 mm** på tjockaste stället (med chipet). Ramens innermått 14,6 mm rymmer kortet med 0,2 mm spel per sida, så **panelen behöver inte ritas om eller printas om**. CAD-attrappen är nu rund; `kontroll_mikrofon.py` (med nytt negativtest) och `kontroll_montage.py` GODKÄND. **Chipsidan fotograferad:** mikrofonens metallhölje (U1) i mitten, lödhålen i två rader om tre, två små komponenter under. Bekräftat: sidan med tryckt text och ljudhål (utan chip) läggs mot panelen; ledningarna går in från chipsidan.
 - **ADXL345 är GY-291** med åtta lödhål (GND, VCC, CS, INT1, INT2, SDO, SDA, SCL) och två fästhål. Ur fotot, skalat mot 2,54 mm stiftdelning: kort ca 15 × 20 mm, hålavstånd ca 15 mm. **Skattat, inte mätt**; mät c/c med skjutmått.
 - Kopplingen följer MONTAGE.md:s ledningslista; INT1/INT2 kopplas inte.
+
+## 2026-11-17 — Fas 1.4: ADXL345, LM2596 och COB-list
+
+- **ADXL345 (GY-291), skjutmått (användaren):** 20,6 × 16,0 mm, fästhål **c/c 14,6 mm** (CAD hade 15,0), håldiameter Ø3,5, kortet 1,5 mm, 3,2 mm vid högsta komponenten. CAD rättad: `ACC_HAL` 18,2/32,8, `ACC_KORT`. Redan printat torn har 15,0: M3 (Ø3,0) i kortets Ø3,5-hål ger 0,5 mm rörelse, så 0,4 mm avvikelse ryms; tornet printas **inte** om för detta.
+- **LM2596:** 21,1 × 43 mm, högsta höjd 12 mm. CAD antar 21 × 43 i ficka 21,3 × 43,3 och 14 mm höjd: ryms, 0,1 mm spel per sida på bredden.
+- **COB-listen:** 8 mm enligt säljaren och användarens minne. **Ej uppmätt; ska dubbelkollas** med skjutmått (LED-hyllan är 9 mm).
+- Kontroller efter rättningen: `kontroll_montage`, `kontroll_stiftlist`, `kontroll_mikrofon`, `kontroll_parametrik` GODKÄND.

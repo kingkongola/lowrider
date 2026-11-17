@@ -93,7 +93,8 @@ PI_SKRUV_L = 20.0
 # Kopplingskort (hålkort ca 9 x 23 mm, VHB-tejp på framväggen): jordpunkt, servons kontakt och
 # kondensator, CR Touch-kabelns skarvar. Ytan är fri enligt kontroll_montage.py.
 KOPPLINGSKORT = ((38.6, 51.0, 111.5), (47.5, 55.5, 135.0))
-ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot levererad ADXL345
+ACC_HAL = [(18.2, 118.5), (32.8, 118.5)]   # uppmätt 2026-11-17: c/c 14,6 (tidigare 15), Ø3,5 i kortet
+ACC_KORT = (20.6, 16.0, 3.2)               # uppmätt: längs hålraden, tvärs, höjd med högsta komponent (kortet 1,5)
 # Två LM2596-moduler 43 x 21 mm: A till Pi/CR Touch, B till servo.
 # Matningsval ägs av KOPPLING_CORE_V0.md; här modelleras modulernas utrymme.
 REG_X0 = {"A": 12.5, "B": 34.5}
@@ -799,7 +800,7 @@ def main():
     (a.ut / "elektronik.json").write_text(json.dumps({
         "Pi": [[PI_CENTER[0] - 32.5, PI_Y, PI_CENTER[1] - 15], [PI_CENTER[0] + 32.5, PI_Y + 1.4, PI_CENTER[1] + 15]],
         **{f"LM2596_{k}": [[x0, PI_Y, REG_Z0], [x0 + 21, PI_Y + 14, REG_Z0 + 43]] for k, x0 in REG_X0.items()},
-        "ADXL": [[ACC_HAL[0][0] - 2.5, PI_Y, ACC_HAL[0][1] - 7.8], [ACC_HAL[1][0] + 2.5, PI_Y + 3, ACC_HAL[0][1] + 7.8]],
+        "ADXL": [[(ACC_HAL[0][0] + ACC_HAL[1][0] - ACC_KORT[0]) / 2, PI_Y, ACC_HAL[0][1] - ACC_KORT[1] / 2], [(ACC_HAL[0][0] + ACC_HAL[1][0] + ACC_KORT[0]) / 2, PI_Y + ACC_KORT[2], ACC_HAL[0][1] + ACC_KORT[1] / 2]],
         "microSD": [[PI_CENTER[0] - 32.5 - 2.6, PI_Y + 1.4, SD_Z[0] + .5], [PI_CENTER[0] - 32.5 + 12.0, PI_Y + 2.4, SD_Z[1] - .5]],
         "Mikrofon": [[MIK[0] - MIK_D / 2, Y1 - 2.5 - MIK_T, MIK[1] - MIK_D / 2], [MIK[0] + MIK_D / 2, Y1 - 2.5, MIK[1] + MIK_D / 2]], "mik": [*MIK, MIK_HAL_D],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
