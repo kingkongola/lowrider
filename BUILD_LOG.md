@@ -289,3 +289,11 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användarens bockar (exporterade från manualen): 19 av 22 finns, bland annat breadboard, Dupont hona/hona, rak stiftlist, lödpenna med temperaturreglering, tredje hand, värmepistol, krokodilklämmor och multimeter med pipläge.
 - **Saknas eller ej bockat:** lödsvamp eller mässingsull, pincett, tusch/lackpenna/maskeringstejp till etiketter.
 - Pi:n flashad och startad (se CALIBRATION 2026-11-17); regulatorerna klara men inte bockade i manualen.
+
+## 2026-11-17 — Manualens kapitel 1–3 avbockade (användarens export 12:46 UTC)
+
+- **Kapitel 1** (delar och verktyg): 19 av 22; saknas lödsvamp/mässingsull, pincett och tusch/lackpenna/maskeringstejp (se ovan).
+- **Kapitel 2** (regulatorerna): 8 av 8. Mätvärden i manualen A 5,16 V, B 6,01 V; stämmer med CALIBRATION 2026-11-17.
+- **Kapitel 3** (Pi:n och kameran): 8 av 8. Imager, flatkabel, laddare i PWR IN, SSH, `pinout`, stillbild, `get_throttled` = `0x0`. Sista punkten är att sensorpi installeras efter kapitel 4 (inte installerad än).
+- Lödkartan: 0 av 40 ledningar lödda. Kapitel 4–15 inte påbörjade.
+- CHECKLIST oförändrad: 1.5 och 1.6 står kvar som förprov (A-matning och låst fokus återstår).
