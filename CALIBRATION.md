@@ -204,3 +204,9 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **A (Pi och CR Touch), mål 5,1 V:** 5,1 V före limning, **5,15 V efter smältlim**, utan last. På övre toleransgränsen (±0,05 V); godkänd av användaren, under Pi:ns 5,25 V och sjunker under last.
 - **B (servot, märkt med eltejp), mål 6,0 V:** 6,0 V före limning, **6,01 V efter smältlim**, utan last.
 - **Ej mätt:** spänning under last (görs i 1.5 med `vcgencmd get_throttled`), efter första långa körningen och på 24 V.
+
+## 2026-11-17 — Fas 1.4: INMP441 och ADXL345, foton (inte uppmätt)
+
+- **INMP441 är ett RUNT kort** (användarens foto), med sex lödhål i två bågar (L/R, WS, SCK respektive GND, VDD, SD) och ljudhålet i mitten. CAD och ramen i sidopanelen antar 14 × 14 mm fyrkant. **Ramen måste ritas om** efter uppmätt diameter, tjocklek och komponenthöjd; vilken sida mikrofonchipet sitter på är inte fastställt.
+- **ADXL345 är GY-291** med åtta lödhål (GND, VCC, CS, INT1, INT2, SDO, SDA, SCL) och två fästhål. Ur fotot, skalat mot 2,54 mm stiftdelning: kort ca 15 × 20 mm, hålavstånd ca 15 mm. **Skattat, inte mätt**; mät c/c med skjutmått.
+- Kopplingen följer MONTAGE.md:s ledningslista; INT1/INT2 kopplas inte.
