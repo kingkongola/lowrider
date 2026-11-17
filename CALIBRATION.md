@@ -225,4 +225,6 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Pi:n:** Raspberry Pi OS Lite 64-bit (Debian 13 trixie, aarch64), flashad av användarens garage-Mac. Värdnamn `sidotorn` (192.168.50.100 vid provet), användare `admin`, SSH med nyckel från arbets-Macen (`~/.ssh/id_ed25519_sidotorn`). Matad från mobilladdare i PWR IN, inte från LM2596 A.
 - **Spänning:** `vcgencmd get_throttled` = `0x0` före och efter en stillbild; processorn 30 °C.
 - **Kameran:** Camera Module 3 hittas som `imx708` (4608 × 2592). `rpicam-still` gav en bild med autofokus på närmaste föremål; skärpan godtagbar.
+- **Stiftlisten enligt Pi:n själv (`pinout`, efter omstart samma dag):** Raspberry Pi Zero2W rev 1.0 (902120), 512 MB. Stift 1 i microSD-änden i den inre raden; jämna stift vid kortkanten. Stämmer med lödkartan och `kontroll_stiftlist.py`. `throttled=0x0` efter omstart.
+- **Ordning:** sensorpi installeras efter kapitel 4 i manualen (stiftkontrollen med `pinctrl`), eftersom installationen slår på SPI och I²S. Installationsskriptet antar användaren `pi`; Pi:n har `admin`.
 - **Ej gjort:** matning från LM2596 A (1.5 godkänns först då, kapitel 9 i manualen), låst fokus på ca 130 mm (1.6), sensorpi installerad.
