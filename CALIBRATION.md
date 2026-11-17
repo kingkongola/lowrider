@@ -197,3 +197,10 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Uppmätt (skjutmått, användaren):** **A** bakre kant till kabelns mitt **2,6 mm**; **B** gummitätningens bredd **10 mm**; **D** kabelns bredd **4 mm**.
 - **Mätt senare samma dag:** **C** tätningen sticker ut **3,5 mm** från kortsidan; kontakten (standard servokontakt, 3 stift) **E** längd **14 mm**, **F** bredd **7,8 mm**, **G** höjd **2,8 mm**.
 - **Åtgärd:** urtag för tätningen och kabelrännil genom väggen, öppen mot fronten; kabeln läggs in i attrappen och en insättningskontroll läggs till i `kontroll_montage.py`.
+
+## 2026-11-17 — Fas 1.1: LM2596 A och B inställda och låsta
+
+- **Matning vid provet:** Altec Lansing-nätadapter 17 V (användaren). I maskinen matas de med 24 V; mät om då.
+- **A (Pi och CR Touch), mål 5,1 V:** 5,1 V före limning, **5,15 V efter smältlim**, utan last. På övre toleransgränsen (±0,05 V); godkänd av användaren, under Pi:ns 5,25 V och sjunker under last.
+- **B (servot, märkt med eltejp), mål 6,0 V:** 6,0 V före limning, **6,01 V efter smältlim**, utan last.
+- **Ej mätt:** spänning under last (görs i 1.5 med `vcgencmd get_throttled`), efter första långa körningen och på 24 V.

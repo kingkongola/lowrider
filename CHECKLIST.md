@@ -39,7 +39,7 @@ Genomgången är gjord som en torrkörning från användarens plats: vad som gö
 
 Allt här görs med lösa delar och sladdar. Varför först: varje komponent provas för sig innan den byggs in, så att ett fel inte förväxlas med ett monteringsfel.
 
-- [ ] **1.1 Regulatorerna.** Mata båda LM2596 från en 12–24 V-källa utan last. Ställ A på **5,1 V** och B på **6,0 V**, mät, säkra skruven med smältlim, mät igen. Godkänt: ±0,05 V efter limning.
+- [x] **1.1 Regulatorerna.** (godkänt 2026-11-17: A 5,15 V, B 6,01 V efter limning, på 17 V, [mätlogg](CALIBRATION.md)) Mata båda LM2596 från en 12–24 V-källa utan last. Ställ A på **5,1 V** och B på **6,0 V**, mät, säkra skruven med smältlim, mät igen. Godkänt: ±0,05 V efter limning.
 - [ ] **1.2 Servot utan pulser** (ESP32-servoprovet, 2 min). `1500`, sedan `x`, vrid hornet för hand. Godkänt: hornet går lätt att vrida. **Om inte:** armsekvensen måste ändras före fas 4. [Probstyrning](machine/probstyrning/README.md).
 - [ ] **1.3 CR Touch.** Matning från LM2596 A, styrning från ESP32:n. Stift ut (`650`), in (`1470`), självtest (`1780`), larm av (`2190`). Mät kontaktsignalen när stiftet trycks in. Godkänt: alla fyra kommandon fungerar; signalens nivå vid kontakt antecknad (avgör `gpio.36` eller `gpio.36:low`).
 - [ ] **1.4 Mät komponenterna mot CAD:** INMP441-kortet (CAD antar 14 × 14 mm), Pi:ns stiftlist (ska sitta på motsatt långsida mot USB-uttagen, i hålens linje), ADXL-kortets hålbild (CAD antar 15 mm), LM2596 (CAD antar 43 × 21 mm), CR Touchens kropp och hålbild. Godkänt: alla mått inom 0,3 mm, annars rättas CAD i fas 2.
