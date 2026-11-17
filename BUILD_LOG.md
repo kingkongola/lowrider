@@ -297,3 +297,9 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - **Kapitel 3** (Pi:n och kameran): 8 av 8. Imager, flatkabel, laddare i PWR IN, SSH, `pinout`, stillbild, `get_throttled` = `0x0`. Sista punkten är att sensorpi installeras efter kapitel 4 (inte installerad än).
 - Lödkartan: 0 av 40 ledningar lödda. Kapitel 4–15 inte påbörjade.
 - CHECKLIST oförändrad: 1.5 och 1.6 står kvar som förprov (A-matning och låst fokus återstår).
+
+## 2026-11-17 — Manualens kapitel 4 (rätt stift) avbockat (export 12:55 UTC)
+
+- Användaren har bockat alla 8 punkter: stift 1 vid tryckta 3V3 i microSD-änden (Zero 2 W har runda lödöar, ingen fyrkantig), pip 1↔17, 2↔4 och jordstiften, `pinctrl`-provet på GPIO 18/19/20/10/9/11/8 samt lackprickar.
+- Inga mätvärden från `pinctrl`-provet är rapporterade (bara bockar).
+- Manualens kapitel 4 rättat samma dag: kännetecknet är texten 3V3, inte en fyrkantig lödö.
