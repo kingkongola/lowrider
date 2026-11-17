@@ -228,3 +228,11 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Stiftlisten enligt Pi:n själv (`pinout`, efter omstart samma dag):** Raspberry Pi Zero2W rev 1.0 (902120), 512 MB. Stift 1 i microSD-änden i den inre raden; jämna stift vid kortkanten. Stämmer med lödkartan och `kontroll_stiftlist.py`. `throttled=0x0` efter omstart.
 - **Ordning:** sensorpi installeras efter kapitel 4 i manualen (stiftkontrollen med `pinctrl`), eftersom installationen slår på SPI och I²S. Installationsskriptet antar användaren `pi`; Pi:n har `admin`.
 - **Ej gjort:** matning från LM2596 A (1.5 godkänns först då, kapitel 9 i manualen), låst fokus på ca 130 mm (1.6), sensorpi installerad.
+
+## 2026-11-17 — Fas 1.7: ADXL345 svarar via SPI (lödd direkt på Pi:n)
+
+- **Koppling:** användaren lödde ADXL:en direkt på Pi:ns stift (färgkod enligt MONTAGE.md, 55 mm), utan bänkbrygga. En tråd (SDO) lossnade under lödningen och löddes om.
+- **sensorpi installerad** (cnc `ec5ea77`, anpassad: användare `admin`, sökvägen `/home/admin/sensorpi`, `--driftlage manuellt`). SPI, I²S och `adau7002-simple` påslagna i `config.txt`. Pi:n på laddare; `throttled=0x0`, 36,5 °C.
+- **`/adxl?s=2` i vila:** medel x/y/z 0,462 / 0,684 / 0,568 g, **|a| = 1,002 g** (min 0,897, max 1,153). 6 358 prov på 2 s vid 3 200 Hz (99,3 %). `fulla_fifo` = 1, **`luckor_mojliga: true`**: FIFO:n blev full en gång. Upprepas det hinner Pi:n inte tömma den, och enligt cnc/pi/README tar ESP32-S3:an vibrationen. Provas igen i kapitel 9.
+- **Ej gjort:** knackprov (utslag), upprepad luckkontroll.
+- **Kameran hittades inte efter omstarten** (`No cameras available`, inget imx708 i dmesg), fast den fungerade samma förmiddag. Misstänkt: flatkabeln rubbad under lödningen. Kontrolleras.
