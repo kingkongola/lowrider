@@ -91,6 +91,8 @@ Längder = rak väg i CAD + 30 %. Kapa längre hellre än kortare. Alla skarvar 
 | Pi stift 12, 17, 34, 35, 38 + L/R | INMP441: SCK, VDD, GND, WS, SD; L/R till GND på kortet | 5 | **120 mm** (panelen ska kunna öppnas) |
 | Pi stift 16, 22, 20 | Tornkabel 8, 9, 10 (OK-puls, startknapp, jord) | 3 | 75 mm |
 
+**Färgkod för sensorernas ledare (2026-11-17, patchkabel, användarens val):** orange = 3,3 V, vit-orange = jord, grön, vit-grön, blå, vit-blå = signaler. ADXL: VCC orange → stift 1, GND vit-orange → 9, CS grön → 24, SDO vit-grön → 21, SDA blå → 19, SCL vit-blå → 23. INMP441: VDD orange → 17, GND vit-orange → 34, SCK grön → 12, WS vit-grön → 35, SD blå → 38. Färgen är etiketten. På bänken har varje tråd ett lött hanstift i den fria änden och Dupont hona–hona till Pi-stiftet; hanstiftet klipps bort när tråden löds på Pi:n (därför +10 mm). Patchtråden kontrolleras först: flertrådig och koppar rakt igenom (skrapprov), inte CCA.
+
 Ledare: 0,25 mm² (AWG 24) flertrådig för matning, 0,14 mm² (AWG 26) räcker för signaler. LM2596 A:s IN− är **enda** jordpunkten i tornet (D025), så att servots strömstötar inte går genom Pi:ns jord.
 
 ## Provkörning (stegvis strömsättning)
