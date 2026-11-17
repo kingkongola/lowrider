@@ -235,4 +235,4 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **sensorpi installerad** (cnc `ec5ea77`, anpassad: användare `admin`, sökvägen `/home/admin/sensorpi`, `--driftlage manuellt`). SPI, I²S och `adau7002-simple` påslagna i `config.txt`. Pi:n på laddare; `throttled=0x0`, 36,5 °C.
 - **`/adxl?s=2` i vila:** medel x/y/z 0,462 / 0,684 / 0,568 g, **|a| = 1,002 g** (min 0,897, max 1,153). 6 358 prov på 2 s vid 3 200 Hz (99,3 %). `fulla_fifo` = 1, **`luckor_mojliga: true`**: FIFO:n blev full en gång. Upprepas det hinner Pi:n inte tömma den, och enligt cnc/pi/README tar ESP32-S3:an vibrationen. Provas igen i kapitel 9.
 - **Ej gjort:** knackprov (utslag), upprepad luckkontroll.
-- **Kameran hittades inte efter omstarten** (`No cameras available`, inget imx708 i dmesg), fast den fungerade samma förmiddag. Misstänkt: flatkabeln rubbad under lödningen. Kontrolleras.
+- **Kameran hittades inte efter omstarten** (`No cameras available`, inget imx708 i dmesg), fast den fungerade samma förmiddag. **Förklaring (användaren):** kameran var inte inkopplad vid provet. Inget fel.
