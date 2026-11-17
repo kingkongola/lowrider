@@ -207,6 +207,7 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 
 ## 2026-11-17 — Fas 1.4: INMP441 och ADXL345, foton (inte uppmätt)
 
-- **INMP441 är ett RUNT kort** (användarens foto), med sex lödhål i två bågar (L/R, WS, SCK respektive GND, VDD, SD) och ljudhålet i mitten. CAD och ramen i sidopanelen antar 14 × 14 mm fyrkant. **Ramen måste ritas om** efter uppmätt diameter, tjocklek och komponenthöjd; vilken sida mikrofonchipet sitter på är inte fastställt.
+- **INMP441 är ett RUNT kort** (användarens foto), med sex lödhål i två bågar (L/R, WS, SCK respektive GND, VDD, SD) och ljudhålet i mitten. CAD och ramen i sidopanelen antog 14 × 14 mm fyrkant.
+- **Uppmätt (skjutmått, användaren):** diameter **14,2 mm**, kortet **0,8 mm**, **2,0 mm** på tjockaste stället (med chipet). Ramens innermått 14,6 mm rymmer kortet med 0,2 mm spel per sida, så **panelen behöver inte ritas om eller printas om**. CAD-attrappen är nu rund; `kontroll_mikrofon.py` (med nytt negativtest) och `kontroll_montage.py` GODKÄND. Vilken sida chipet sitter på är inte fotograferat; antagande: ljudhålssidan utan chip mot panelen.
 - **ADXL345 är GY-291** med åtta lödhål (GND, VCC, CS, INT1, INT2, SDO, SDA, SCL) och två fästhål. Ur fotot, skalat mot 2,54 mm stiftdelning: kort ca 15 × 20 mm, hålavstånd ca 15 mm. **Skattat, inte mätt**; mät c/c med skjutmått.
 - Kopplingen följer MONTAGE.md:s ledningslista; INT1/INT2 kopplas inte.

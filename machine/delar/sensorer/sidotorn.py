@@ -99,10 +99,13 @@ ACC_HAL = [(18.0, 118.5), (33.0, 118.5)]   # nominellt, kontrolleras mot leverer
 REG_X0 = {"A": 12.5, "B": 34.5}
 REG_Z0 = 66.5
 # INMP441-mikrofon i sidopanelen: panelen är utbytbar och vänd bort från fräsen, så spån
-# inte blåser rakt i ljudhålet. Modulen är nominellt 14 x 14 mm (vissa 14 x 12), mäts vid leverans.
-# Ljudhålet sitter på kortets undersida (bottenport) och läggs mot panelens hål med en ring skumtejp som tätning.
+# inte blåser rakt i ljudhålet. Levererad modul är RUND (uppmätt 2026-11-17): Ø14,2, kort 0,8 mm,
+# 2,0 mm med chipet. Sex lödhål i två bågar vid kortets sidor, ljudhålet i mitten. Kortets ljudhålssida
+# (utan chip) läggs mot panelens hål med en ring skumtejp som tätning; ledningarna går ut bakåt från chipsidan.
 MIK = (39.5, 121.0)          # x, z för ljudhålets mitt på panelen, mellan regulatorernas fingrar och Pi:n
-MIK_RUTA = 14.6              # ramens innermått, rymmer 14 x 14 med spel
+MIK_D = 14.2                 # uppmätt kortdiameter
+MIK_T = 2.0                  # uppmätt tjocklek med chipet (kortet 0,8)
+MIK_RUTA = 14.6              # ramens innermått: Ø14,2 med 0,2 mm spel per sida
 MIK_HAL_D = 1.5              # ljudhål genom panelen
 MIK_NAT = (7.0, 0.4)         # utvändig försänkning för dammnät eller ventildekal: diameter, djup
 REG_FINGER = [(x0 + dx, REG_Z0 + dz) for x0 in REG_X0.values() for dx, dz in ((3.0, 3.5), (18.0, 39.5))]   # panelens fingrar pressar modulens hörn
@@ -572,9 +575,9 @@ def sidopanel():
         p -= box((28, Y1 - 3, z - 0.9), (62, Y1 + 1, z + 0.9))
     for z in (78, 83, 88, 93, 98):                           # luft in vid regulatorerna, ut vid Pi:n
         p -= box((15, Y1 - 3, z - 0.9), (53, Y1 + 1, z + 0.9))
-    # Mikrofonram på insidan: tre sidor håller kortet mot panelen. Översidan är helt öppen, eftersom
-    # kortets sex lödpunkter sitter i en rad längs den kanten (ca 13 mm); lödning och sex ledningar
-    # går fritt uppåt mot Pi:n bakom panelen. Bakom kortet är tornet öppet, så lödtennets höjd begränsar inte.
+    # Mikrofonram på insidan: tre sidor håller det runda kortet mot panelen, översidan är öppen.
+    # Lödpunkterna sitter i två bågar innanför kortets kant; ledningarna går bakåt ur chipsidan och
+    # sedan uppåt mot Pi:n. Bakom kortet är tornet öppet, så lödtennets höjd begränsar inte.
     mx, mz = MIK
     h, v, d = MIK_RUTA / 2, 1.2, 2.5
     ram = box((mx - h - v, Y1 - 2 - d, mz - h - v), (mx + h + v, Y1 - 1.9, mz + h))
@@ -788,7 +791,7 @@ def main():
         namn(lampor.lampkuvert(), "G4_SOCKEL_OCH_LAMPA_KONSTRUKTIONSUTRYMME", (.95, .95, .7)),
         namn(box((PI_CENTER[0] - 32.5 - 2.6, PI_Y + 1.4, SD_Z[0] + .5), (PI_CENTER[0] - 32.5 + 12.0, PI_Y + 2.4, SD_Z[1] - .5)), "microSD_ATTRAPP", (.2, .2, .2)),
         namn(box((PI_CENTER[0] - 25.4, PI_Y + 1.4, PI_CENTER[1] - 11.5 - 2.54), (PI_CENTER[0] + 25.4, LIST_TOPP_Y, PI_CENTER[1] - 11.5 + 2.54)), "Stiftlist_ATTRAPP", (.1, .1, .1)),
-        namn(box((MIK[0] - 7, Y1 - 2 - 2.5, MIK[1] - 7), (MIK[0] + 7, Y1 - 2.5, MIK[1] + 7)), "INMP441_ATTRAPP", (.45, .2, .55)),
+        namn(cyl_y(MIK[0], MIK[1], Y1 - 2.5 - MIK_T, Y1 - 2.5, MIK_D), "INMP441_ATTRAPP", (.45, .2, .55)),
         *[namn(box((x0, PI_Y, REG_Z0), (x0 + 21, PI_Y + 14, REG_Z0 + 43)), f"LM2596_{k}_ATTRAPP", (.1, .25, .6)) for k, x0 in REG_X0.items()],
     ]
     export_step(Compound(label="Sidotorn_v2", children=delar), str(a.ut / "sidotorn_v2.step"))
@@ -798,7 +801,7 @@ def main():
         **{f"LM2596_{k}": [[x0, PI_Y, REG_Z0], [x0 + 21, PI_Y + 14, REG_Z0 + 43]] for k, x0 in REG_X0.items()},
         "ADXL": [[ACC_HAL[0][0] - 2.5, PI_Y, ACC_HAL[0][1] - 7.8], [ACC_HAL[1][0] + 2.5, PI_Y + 3, ACC_HAL[0][1] + 7.8]],
         "microSD": [[PI_CENTER[0] - 32.5 - 2.6, PI_Y + 1.4, SD_Z[0] + .5], [PI_CENTER[0] - 32.5 + 12.0, PI_Y + 2.4, SD_Z[1] - .5]],
-        "Mikrofon": [[MIK[0] - 7, Y1 - 2 - 2.5, MIK[1] - 7], [MIK[0] + 7, Y1 - 2.5, MIK[1] + 7]], "mik": [*MIK, MIK_HAL_D],
+        "Mikrofon": [[MIK[0] - MIK_D / 2, Y1 - 2.5 - MIK_T, MIK[1] - MIK_D / 2], [MIK[0] + MIK_D / 2, Y1 - 2.5, MIK[1] + MIK_D / 2]], "mik": [*MIK, MIK_HAL_D],
         "Kort": [[cx - KORT_B / 2, KORT_Y[0], KORT_FRAM], [cx + KORT_B / 2, KORT_Y[1], KORT_BAK]],
         "Flatkontakt": [[cx - 11.45, KORT_Y[1] - 6.9, KORT_BAK], [cx + 11.45, KORT_Y[1] - .4, KONTAKT_TOPP]],
         "magnet": [*magnet_lage(a.prob_x), sum(BULA_Y) / 2], "kort_hal": KORT_HAL, "kort_bak": KORT_BAK, "kort_fram": KORT_FRAM, "klammor": KLAMMOR, "ffc_b": FFC_B, "lins": LINS, "prob_montage": [a.prob_x, PROB[1], FLANS_Z], "prob_hal_cc": cr.HAL_CC, "prob_flans_t": cr.FLANS_T, "prob_kropp_djup": cr.KROPP_DJUP, "prob_stift_y": cr.STIFT_Y,
