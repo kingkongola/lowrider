@@ -276,3 +276,10 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - `sidotorn.py`: `servokabel()` i attrappen, `kabelkanal_gods()` (4 mm utanpåliggande bula) och `kabelkanal_urtag()` (band för tätningen, öppet mot fronten, och kanal upp till elektronikrummet). `kontroll_montage.py` sveper tätningen med servokroppen och har negativtest (torn utan band blockerar 947 mm³).
 - Tornet måste printas om (`print/sidotorn-allt`).
 - **Rättelse 2026-11-13:** kabeln lades först på servons *bortre* ände (x = 14,8). Användarens fotografier visar att hornet sitter nära kabelns ände, så kabeln ligger på ändan närmast axeln (x = PX + 10,2 = 55,2). Bandet, bulan och kanalen är spegelvända till den sidan (`KABEL_X` i `sidotorn.py`); kontrollerna är omkörda och godkända.
+
+## 2026-11-17 — COB-listen mottagen; lödstation; tornversion okänd
+
+- Användaren: BRIMETI COB-listen har kommit. Ej mätt eller provad: bredd (CAD antar 8 mm i 9 mm hylla), passning i LED-segmentet, värme.
+- Användaren har byggt en lödstation i garaget; fas 1 (elektronik på bänk) kan börjas.
+- Användaren har printat två torn, det senaste "några dagar sedan". Plattan `print/sidotorn-allt` skivades senast 2026-11-13 14:33 (slits för servokabeln). Vilken version som är printad är inte fastställd; kontrolleras på den fysiska delen.
+- MicroSD-kort till Pi:n anskaffat (steg 1.5).

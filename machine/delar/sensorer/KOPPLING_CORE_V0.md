@@ -43,9 +43,9 @@ Identifiera och kontinuitetsmät varje ledare med matningen frånkopplad innan k
 
 **Styrning byggd i programvara 2026-11-11, ej provad:** makron, pulsvärden och konfigurationsförslag finns i [probstyrning](../../probstyrning/README.md).
 
-## Kabel torn–balk (L2, förslag 2026-11-11, ej köpt)
+## Kabel torn–balk (L2, beställd 2026-11-16, ej mottagen)
 
-**Skärmad flexkabel 12 × 0,25 mm² (typ LiYCY), ca 3 m**, längd mäts med snöre vid full X-rörelse. Skärmen kopplas till jord **bara i Jackpot-änden**, så att den inte bildar en jordslinga. Skärm behövs eftersom kabeln går bredvid KATSU:ns 230 V-kabel och bär probsignalen. Ledarna löds i tornet och dras genom buntbandsbryggorna vid utgången.
+**Släpvagnskabel 13 × 0,5 mm², koppar enligt säljaren, PVC, oskärmad, 2 m** (Aelmiyw, Amazon.se). Går i höljet med KATSU-kabeln från Core till fästpunkten mitt på balken och vidare till Jackpot, som sitter på balken; behov ca 1 m, kapas efter provrörelse i båda X-ändlägena. Ledare 13 är reserv. Ersätter den tidigare skärmade LiYCY 12 × 0,25 (för fast förläggning, inte rörlig slinga; V1E använder vanliga kablar buntade med fräskabeln). **Utan skärm:** probsignalen och dess jord läggs i närliggande ledare, och proben provas med fräsen igång före drift. Ytterdiameter ej känd; tornets kabelväg (`KABEL_D` = 6 mm, platshållare) ändras efter uppmätt mått. Ledarna löds i tornet och dras genom buntbandsbryggorna vid utgången.
 
 | Ledare | Funktion | Ström (uppskattad) |
 | --- | --- | --- |

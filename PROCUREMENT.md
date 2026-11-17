@@ -1,12 +1,12 @@
 # Procurement — canonical order matrix
 
-**Leveransstatus uppdaterad 2026-11-12: användaren rapporterar "allt har kommit".** Det betyder att även **INMP441** och **QUARKZMAN KW11-3Z-N (10-pack)** är **mottagna**. **Rättelse samma dag: BRIMETI COB-listen (LED) har INTE kommit** (användaren), den är fortfarande väntad. Antal och modell är inte inventerade post för post, ingen funktion eller passning är provad, och faktisk kortdebitering är fortfarande inte verifierad (därför inget nytt i `COSTS.md`). Stycken nedan som säger "ej mottagna" eller "obekräftade" är historik och ersätts av denna rad. Det enda som fortfarande **inte är beställt** är övervakningens andra nätdel (HDR-60-24, CHECKLIST L1).
+**Leveransstatus uppdaterad 2026-11-12: användaren rapporterar "allt har kommit".** Det betyder att även **INMP441** och **QUARKZMAN KW11-3Z-N (10-pack)** är **mottagna**. **BRIMETI COB-listen (LED) mottagen 2026-11-17** (användaren; den hade inte kommit 2026-11-12). Antal och modell är inte inventerade post för post, ingen funktion eller passning är provad, och faktisk kortdebitering är fortfarande inte verifierad (därför inget nytt i `COSTS.md`). Stycken nedan som säger "ej mottagna" eller "obekräftade" är historik och ersätts av denna rad. Det enda som fortfarande **inte är beställt** är övervakningens andra nätdel (HDR-60-24, CHECKLIST L1).
 
 **Leveransstatus uppdaterad 2026-11-11: användaren rapporterar att alla delar finns** ("alla delar finns!"). Det gäller sensorenhetens delar enligt denna matris; exakt antal INMP441 och KW11-leveransen är inte inventerade post för post. Fysisk passning är inte provad. Tidigare: Leveransstatus uppdaterad 2026-11-10.** Äldre pris- och lagerunderlag är daterade inköpsögonblick, inte dagens erbjudanden. Syfte: minimera total landad kostnad utan att ändra låsta specs. Lager/priser är flyktiga; faktisk checkout vinner alltid över denna snapshot. Faktiskt debiterade SEK-belopp bokförs i `COSTS.md`.
 
 ## LED-val 2026-11-10 – Prime och inköpsstatus
 
-**G4-lampor utgår enligt D022** och ska inte stå på aktiv inköpslista. BRIMETI COB 5 m, 24 V, 4000 K, 8 mm, 320 LED/m, enligt säljaren 10 W/m och 100 lm/W, **145 kr enligt användarens Amazon Prime-fynd**. **Vald**, men orderbekräftelse, faktiskt debiterat belopp och leverans är inte verifierade i repot. Därför **inte registrerad som betald/mottagen** och inte bokförd i `COSTS.md`. **Inget nytt LED-nätaggregat, boost eller aluminiumprofil beslutat**; återanvänd befintliga aggregat om de klarar verifierade spännings-/lastkrav. [Samlad SSOT](machine/EL_BELYSNING_OCH_STOPP.md).
+**G4-lampor utgår enligt D022** och ska inte stå på aktiv inköpslista. BRIMETI COB 5 m, 24 V, 4000 K, 8 mm, 320 LED/m, enligt säljaren 10 W/m och 100 lm/W, **145 kr enligt användarens Amazon Prime-fynd**. **Mottagen 2026-11-17 enligt användaren.** Faktiskt debiterat belopp är inte verifierat, därför inte bokförd i `COSTS.md`. **Inget nytt LED-nätaggregat, boost eller aluminiumprofil beslutat**; återanvänd befintliga aggregat om de klarar verifierade spännings-/lastkrav. [Samlad SSOT](machine/EL_BELYSNING_OCH_STOPP.md).
 
 ## Mikrobrytare för sensorenhet – beställda 2026-11-09
 
@@ -149,13 +149,15 @@ Ersatt av PrintOnion-köpet: 3 kg PLA för 426 kr.
 
 **Köps inte** (D024, 2026-11-10): ersatt av kontaktorlådan nedan. Tidigare kandidat: Clas Ohlson `50-2929`, KJD12, 299 kr.
 
-### Övervakningens nätdel och tornkabeln — nätdelen vald 2026-11-11, inget beställt
+### Övervakningens nätdel och tornkabeln — nätdelen vald 2026-11-11 (ej beställd), tornkabeln beställd 2026-11-16
 
 | Del | Förslag | Varför |
 | --- | --- | --- |
 | Nätdel (L1) | **Vald av användaren:** Mean Well HDR-60-24 eller likvärdig 24 V DIN, en till | Matar LED, Pi och kontaktorspole efter stopp, D023; se [EL_BELYSNING_OCH_STOPP.md](machine/EL_BELYSNING_OCH_STOPP.md) |
-| Kabel torn–balk (L2) | LiYCY **12** × 0,25 mm², skärmad, ca 3 m (stoppkedjans två ledare tillkom 2026-11-11) | Se [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) |
-| Skumtejp och dammnät/ventildekal | Liten bit av varje | Mikrofonens tätning och dammskydd |
+| Kabel torn–balk (L2) | **Beställd 2026-11-16 (användaren), ej mottagen:** Aelmiyw släpvagnskabel **13 × 0,5 mm²**, koppar enligt säljaren, PVC, oskärmad, **2 m**, Amazon.se, visat pris 142,33 kr. Ytterdiameter ej angiven, mäts vid mottagning. Ersätter LiYCY 12 × 0,25 (LiYCY är för fast förläggning; V1E använder vanliga kablar i slingan) | 12 ledare enligt [kopplingsunderlaget](machine/delar/sensorer/KOPPLING_CORE_V0.md) + 1 reserv. Jackpot sitter på balken, behov ca 1 m enligt användaren; kapas efter provrörelse |
+| Servokondensator | **Beställd 2026-11-16 (användaren), ej mottagen:** Panasonic FR 470 µF/25 V, Electrokit, flera st (antal ej angivet), 5,90 kr/st | Vid servots matning, KOPPLING_CORE |
+| Skumtejp | Liten bit | Mikrofonens tätning |
+| Dammskydd mikrofon | **Strumpbyxnylon, 0 kr** (vald 2026-11-16). Spänns över Ø7 mm-försänkningen, fästs i ytterkanten, inget lim över ljudhålet. Ej dammtät; dämpning provas med och utan | Ersätter dammnät/ventildekal |
 
 ### KATSU-stopp från Pi:n, trådbundet — planerat, ej beställt
 
