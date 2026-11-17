@@ -283,3 +283,9 @@ Detta är dokumentändringar, inte rapport om utfört bygge. Inga fysiska kontro
 - Användaren har byggt en lödstation i garaget; fas 1 (elektronik på bänk) kan börjas.
 - Användaren har printat två torn, det senaste "några dagar sedan". Plattan `print/sidotorn-allt` skivades senast 2026-11-13 14:33 (slits för servokabeln). Användaren: det printade tornet är från efter servokabelfixen. Tre versioner finns: be5d680 (kabel på fel ände, 2026-11-12), f6188f3 (rätt ände) och 38f2162 (slits från panelsidan, platta skivad 14:33, aktuell). Vilken av dem som är printad kontrolleras på delen och med servoinsättning.
 - MicroSD-kort till Pi:n anskaffat (steg 1.5).
+
+## 2026-11-17 — Kapitel 1 i manualen: delar och verktyg inventerade
+
+- Användarens bockar (exporterade från manualen): 19 av 22 finns, bland annat breadboard, Dupont hona/hona, rak stiftlist, lödpenna med temperaturreglering, tredje hand, värmepistol, krokodilklämmor och multimeter med pipläge.
+- **Saknas eller ej bockat:** lödsvamp eller mässingsull, pincett, tusch/lackpenna/maskeringstejp till etiketter.
+- Pi:n flashad och startad (se CALIBRATION 2026-11-17); regulatorerna klara men inte bockade i manualen.
