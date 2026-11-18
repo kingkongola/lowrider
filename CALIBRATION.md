@@ -234,7 +234,8 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Utrustning:** ESP32-S3 via kortets UART-port (USB-seriekrets, `/dev/cu.usbmodem5C381831901`), inte den inbyggda USB-porten som användes 2026-11-10. Därför är `servoprov.ino` (oförändrad källkod) kompilerad och uppladdad med `CDCOnBoot=default`, så att `Serial` går till UART-porten. Servots kabel är **vit = signal, röd = +, svart = −** (Futaba-färger), kontakten sitter kvar och har Dupont till B och ESP32 GPIO 18. ESP32 GND går till B OUT−.
 - **Prov:** armen var avtagen, eftersom den satt på fel kugg och CR Touchen kunde slå i tornet. Första kommandot (1500) är ett hopp från okänt läge i full fart. Sekvensen 1500 → 1700 → 1300 → 1500 → `x` gav enligt användaren rörelse åt båda hållen.
 - **Släpp utan pulser: ej avgjort.** Växellådan gör hornet för trögt att vrida för hand utan risk. Provet flyttas till monterad arm (kapitel 11): brum och servoström i serie efter `x`.
-- **Ej noterat:** vilket håll längre puls vrider. Behövs vid ändlägesinställningen.
+- **Rotationsriktning:** 1500 → 1800 µs vrider axeln **medurs sett mot axelns ände**. Enligt användaren är det det håll som sänker CR Touchen mot arbetsstycket, alltså mot utfällt läge. Därför väntas `utfalld_us` > `parkerad_us`. `makron.py` räknar ut riktningen själv och lägger `forbi_stopp_us` åt rätt håll, oavsett ordning.
+- **Ström** (multimeter i serie i servots plustråd, 10A-läget): 0,08–0,09 A i rörelse utan last och 0,00 A (under 10 mA) i stillastående, även vid 500 och 2500 µs. Servot brummade inte och trycker alltså inte mot något inre stopp där. Referensvärde för släppprovet i kapitel 11.
 
 ## 2026-11-18 — Fas 1.7: INMP441 via I²S (lödd direkt på Pi:n)
 
