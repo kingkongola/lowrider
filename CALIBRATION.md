@@ -229,6 +229,14 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Ordning:** sensorpi installeras efter kapitel 4 i manualen (stiftkontrollen med `pinctrl`), eftersom installationen slår på SPI och I²S. Installationsskriptet antar användaren `pi`; Pi:n har `admin`.
 - **Ej gjort:** matning från LM2596 A (1.5 godkänns först då, kapitel 9 i manualen), låst fokus på ca 130 mm (1.6), sensorpi installerad.
 
+## 2026-11-18 — Fas 1.7: INMP441 via I²S (lödd direkt på Pi:n)
+
+- **Koppling:** färgkod enligt MONTAGE.md, 120 mm, L/R byglad till GND. Överlägget `adau7002-simple`, ljudkort `adau7002`.
+- **Första provet: bara nollor i båda kanalerna.** WS (stift 35) växlade, men SCK (stift 12) låg fast på 0. Med stiftet som ingång och pull-up läste stift 12 fortfarande 0 (stift 35 och 38 läste 1), så det satt i jord. Pip 12–14 bekräftade att stift 12 nådde jord. Det fanns ingen brygga mellan stiften. Halvering: pip SCK–GND på mikrofonen. **Orsak:** SCK-tennet hade flutit ut på kortets jordring längs kanten. Användaren tog bort tennet, och SCK–GND piper inte längre.
+- **Efter åtgärd:** SCK läser 1 med pull-up och växlar under inspelning. Vänster kanal har ljud, höger är 0, som väntat med L/R på GND. 0 klick. DC-förskjutning cirka 1,5 % av full skala, normalt för INMP441. Första 0,5 s efter start −10 till −16 dBFS (insvängning), sedan bakgrund i garaget cirka −30 dBFS i topp.
+- **Fingerknäppsprov** (lampsignal, `/home/admin/knapp.sh`): två knäppar, **0 dBFS (klippt)** och −4 dBFS, mot −25 dBFS bakgrund. Mikrofonen fungerar. Ett knäpp nära mikrofonen når full skala, så nivån under fräsning ska kontrolleras (kapitel 15).
+- **Ej bedömt:** om SCK behöver seriemotstånd som SCL fick. Inga klick syns, så det behövs inte nu.
+
 ## 2026-11-17 — Fas 1.7: ADXL345 svarar via SPI (lödd direkt på Pi:n)
 
 - **Koppling:** användaren lödde ADXL:en direkt på Pi:ns stift (färgkod enligt MONTAGE.md, 55 mm), utan bänkbrygga. En tråd (SDO) lossnade under lödningen och löddes om.
