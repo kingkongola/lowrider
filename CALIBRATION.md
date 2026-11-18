@@ -229,6 +229,14 @@ Kvar att mäta med skjutmått: ADXL345 hålavstånd, INMP441 kortets längd × b
 - **Ordning:** sensorpi installeras efter kapitel 4 i manualen (stiftkontrollen med `pinctrl`), eftersom installationen slår på SPI och I²S. Installationsskriptet antar användaren `pi`; Pi:n har `admin`.
 - **Ej gjort:** matning från LM2596 A (1.5 godkänns först då, kapitel 9 i manualen), låst fokus på ca 130 mm (1.6), sensorpi installerad.
 
+## 2026-11-18 — Kapitel 8: CR Touch startar inte (blinkar rött, stiftet rör sig aldrig)
+
+- **Kabeln utmätt** (kitets femtrådiga kabel, rak: samma färgordning i båda ändar): **vit = G, svart = +5 V, gul = IN, röd = G, blå = OUT**. Vit och röd piper mot varandra (probens två jordstift) och sitter på plats 1 och 4, vilket stämmer med probsidans ordning G, V, IN, G, OUT. **Färgerna är omvända mot konventionen: svart är plus, röd är jord.**
+- **Matning:** 5,00 V mellan svart och vit vid proben, från regulator A. Lampan blinkar rött direkt vid start.
+- **Styrsignal:** först 1,25 V på gul utan pulser, eftersom ESP32:ns GND inte satt ihop med probens jord. Med gemensam jord blir det 0,24 V vid 1473 µs, som väntat (3,3 V × 1473/20 000). Kommandona 2194 (larm av), 647 (ut), 1473 (in) och 1782 (självtest) skickades som direkthopp utan ramp (`=` i `servoprov.ino`, så att rampen inte passerar andra kommandovärden). **Ingen reaktion.**
+- **Starttestet uteblir** helt: inget klick, inget surr, stiftet rör sig aldrig, och lampan blinkar. Samma sak med 5 V från Pi:ns stift 2 (Pi:n `throttled=0x0`) i stället för regulator A. Matningen är därmed utesluten.
+- **Slutsats: proben är trolig defekt** (spolen får aldrig ström). Ursprung och skick är okänt. Byte behövs innan 1.3 kan godkännas.
+
 ## 2026-11-18 — Kapitel 8: servot på regulator B
 
 - **Utrustning:** ESP32-S3 via kortets UART-port (USB-seriekrets, `/dev/cu.usbmodem5C381831901`), inte den inbyggda USB-porten som användes 2026-11-10. Därför är `servoprov.ino` (oförändrad källkod) kompilerad och uppladdad med `CDCOnBoot=default`, så att `Serial` går till UART-porten. Servots kabel är **vit = signal, röd = +, svart = −** (Futaba-färger), kontakten sitter kvar och har Dupont till B och ESP32 GPIO 18. ESP32 GND går till B OUT−.

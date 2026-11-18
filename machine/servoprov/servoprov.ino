@@ -1,7 +1,10 @@
 // Bänkprov av fällservot: ESP32 som servotestare. Styr över USB, 115200 baud.
 //   1500 + Enter   gå till pulsen 1500 µs (första kommandot måste vara 1500)
 //   + eller -      ändra 10 µs
-//   x              stäng av pulserna, servot blir slappt
+//   x              stäng av pulserna (servot slutar styra)
+//   =647 + Enter   hoppa direkt till 647 µs utan ramp. Bara för CR Touch:
+//                  en ramp sveper genom andra kommandovärden (t.ex. 1782 = självtest).
+//                  Använd aldrig = med servot inkopplat.
 // Skydd: inga pulser vid start, gränser 500-2500 µs och långsam rampning,
 // så att ett skrivfel inte kan slå servot i ändläget i full fart.
 
@@ -46,6 +49,21 @@ void satt(int us) {
   Serial.println(" µs");
 }
 
+bool hopp = false;              // raden började med '=': inget rampande
+
+void hoppa(int us) {
+  if (us < MIN_US || us > MAX_US) {
+    Serial.println("Utanför 500-2500 µs, ignoreras.");
+    return;
+  }
+  paslagen = true;
+  nu = mal = us;
+  skriv(nu);
+  Serial.print("Hopp (ingen ramp): ");
+  Serial.print(nu);
+  Serial.println(" µs");
+}
+
 void setup() {
   Serial.begin(115200);
   if (!ledcAttach(PIN, FREKV, BITAR)) { Serial.println("FEL: pulsgenerator kunde inte startas"); while (true) delay(1000); }
@@ -57,13 +75,15 @@ void setup() {
 void loop() {
   while (Serial.available()) {
     char c = Serial.read();
-    if (c == 'x') { tal = ""; stang(); }
+    if (c == 'x') { tal = ""; hopp = false; stang(); }
+    else if (c == '=') { tal = ""; hopp = true; }
     else if (c == '+' && paslagen) { tal = ""; satt(mal + 10); }
     else if (c == '-' && paslagen) { tal = ""; satt(mal - 10); }
     else if (isDigit(c)) tal += c;
     else if (c == '\n' || c == '\r') {
-      if (tal.length()) satt(tal.toInt());
+      if (tal.length()) { if (hopp) hoppa(tal.toInt()); else satt(tal.toInt()); }
       tal = "";
+      hopp = false;
     }
   }
   if (paslagen && nu != mal) {
