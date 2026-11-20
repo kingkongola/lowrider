@@ -16,6 +16,12 @@
 
 **Aktuell användning:** reservdelar. Armbrytare och deras hållare utgick genom [D020](DECISIONS.md#d020--inga-armbrytare-hårda-stopp-tyngdkraft-och-kamerakontroll). De ska inte inväntas eller monteras för sidotornet. Omron-reserven behålls till grundmaskinen. Tidigare brytarstudie finns i [arkivet](docs/arkiv/2026-11-09-status-och-sensorunderlag.md).
 
+## Tryckknappar i metall (G160) – i lager, inventerade 2026-11-20
+
+**Amazon, etikett `SKU: G160`, `X001EXH3UP`, "Button switch".** Användaren uppger **5 st**, köpta för att mäta frässtålets längd (verktygslängdsknapp). Fotot 2026-11-20 visar fyra: gängad metallkropp, mutter med O-ring och **två stift** (en slutande kontakt, troligen fjädrande). **Hålstorlek uppskattad till ca 12 mm mot tumstock, inte uppmätt;** mät gängan med skjutmått före konstruktion. Pris och debitering är inte kända och inte bokförda i `COSTS.md`.
+
+**Planerad användning:** verktygslängdsknapp (ingång inte avgjord, se D024) och en fotpedal till verkstadskameran i `electronic-tray`. Funktion och kontaktbeteende är inte provade.
+
 ## Electrokit — mottaget 2026-11-10
 
 **Källa:** användarens skärmbild av Electrokit-order/kvitto 2026-11-09 (priserna på orderraderna visas **exklusive 25 % moms**). Orderbilden bekräftar följande produkter och antal. **Användaren bekräftade 2026-11-10 att kameran och allt i Electrokit-order har kommit.** Det bekräftar mottagning, men inte funktion, passning eller faktisk kortdebitering.
